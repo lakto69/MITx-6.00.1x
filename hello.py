@@ -5,7 +5,7 @@ Created on Wed Jun  3 16:53:38 2020
 @author: leite.aml
 """
 #   '0123456789012345678901234567890
-s = 'abcdabcde'
+s = 'código alterado'
 print('s:', len(s))
 
 trechoG = s[0]
