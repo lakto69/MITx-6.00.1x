@@ -1,35 +1,28 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun  3 16:53:38 2020
+SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
 
-@author: leite.aml
-"""
-#   '0123456789012345678901234567890
-s = 'código alterado'
-print('s:', len(s))
+def approximate_size(size, a_kilobyte_is_1024_bytes=True):
+    '''Convert a file size to human-readable form.
 
-trechoG = s[0]
-trecho = ''
+    Keyword arguments:
+    size -- file size in bytes
+    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
+                                if False, use multiples of 1000
 
-for i in range(len(s)-1):
-    print('-i:',i)
+    Returns: string
 
-    if s[i] <= s[i + 1]:
-        trecho = s[i]
-        print('while:',i)
-        while (s[i] <= s[i+1]):
-            trecho += s[i+1]
-            i += 1
-            print('--',i)
-            if i == len(s)-1:
-                break
+    '''
+    if size < 0:
+        raise ValueError('number must be non-negative')
 
-        print('trecho:',trecho)
-        print('i:',i)
+    multiple = 1024 if a_kilobyte_is_1024_bytes else 1000
+    for suffix in SUFFIXES[multiple]:
+        size /= multiple
+        if size < multiple:
+            return '{0:.1f} {1}'.format(size, suffix)
 
-        if len(trechoG) < len(trecho):
-            trechoG = trecho
-            print('trechoG:', trechoG)
-    else:
-        print('i:',i)
-print('Longest substring in alphabetical order is: ' + str(trechoG))
+    raise ValueError('number too large')
+
+if __name__ == '__main__':
+    print(approximate_size(10000008000000, False))
+    print(approximate_size(10000008000000))
