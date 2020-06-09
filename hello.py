@@ -1,28 +1,14 @@
-SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-            1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
-
-def approximate_size(size, a_kilobyte_is_1024_bytes=True):
-    '''Convert a file size to human-readable form.
-
-    Keyword arguments:
-    size -- file size in bytes
-    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
-                                if False, use multiples of 1000
-
-    Returns: string
-
+def right_justify(texto=''):
+    ''' Recebe um string e imprime na tela no extremo direito
+    dela. Tela com 70 posições
     '''
-    if size < 0:
-        raise ValueError('number must be non-negative')
+    print(70*'-')
+    if len(texto) > 70:
+        print('Texto muito longo! Tente com um texto menor do 70 posições')
+    elif len(texto) == 70:
+        print(texto)
+    else:
+        vezes = 70 - len(texto)
+        print(vezes*" " + texto)
 
-    multiple = 1024 if a_kilobyte_is_1024_bytes else 1000
-    for suffix in SUFFIXES[multiple]:
-        size /= multiple
-        if size < multiple:
-            return '{0:.1f} {1}'.format(size, suffix)
-
-    raise ValueError('number too large')
-
-if __name__ == '__main__':
-    print(approximate_size(10000008000000, False))
-    print(approximate_size(10000008000000))
+right_justify('monty')
