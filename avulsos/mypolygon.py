@@ -31,6 +31,6 @@ def arc(t, r, angle):
 
 
 # circle(bob, 40)
-arc(bob, 40, 30)
+arc(bob, 50, 30)
 
 turtle.mainloop()
