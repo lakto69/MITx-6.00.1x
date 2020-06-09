@@ -6,5 +6,5 @@ def polygon(t, n, length):
     for i in range(n):
         t.fd(length)
         t.lt(angle)
-
+#rrr
 polygon(bob, 10, 10)
