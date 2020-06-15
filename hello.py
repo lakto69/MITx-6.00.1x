@@ -1,14 +1,10 @@
-def right_justify(texto=''):
-    ''' Recebe um string e imprime na tela no extremo direito
-    dela. Tela com 70 posições
-    '''
-    print(70*'-')
-    if len(texto) > 70:
-        print('Texto muito longo! Tente com um texto menor do 70 posições')
-    elif len(texto) == 70:
-        print(texto)
-    else:
-        vezes = 70 - len(texto)
-        print(vezes*" " + texto)
+def product(*, initial=1):
+    total = initial
+    yield
+    for n in _:
+        total *= n
+    return total
 
-right_justify('monty')
+choice
+
+print( product(4, 5, 2, initial=3) )
