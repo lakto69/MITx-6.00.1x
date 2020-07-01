@@ -1,0 +1,520 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,710
+In that last example, we looked at how using a dictionary
+
+2
+00:00:03,710 --> 00:00:06,150
+could let us make computation much more efficient.
+
+3
+00:00:06,150 --> 00:00:08,320
+We store away computed values that we
+
+4
+00:00:08,320 --> 00:00:10,670
+want to reuse so we simply look them up.
+
+5
+00:00:10,670 --> 00:00:12,080
+Nice idea.
+
+6
+00:00:12,080 --> 00:00:14,017
+To demonstrate it I showed you some examples
+
+7
+00:00:14,017 --> 00:00:14,850
+of running the code.
+
+8
+00:00:14,850 --> 00:00:17,060
+And we simply used the delay in time
+
+9
+00:00:17,060 --> 00:00:19,520
+before we printed out a result to try and get
+
+10
+00:00:19,520 --> 00:00:22,850
+a sense of how different the efficiencies were of that.
+
+11
+00:00:22,850 --> 00:00:24,850
+I'd like a little more formal way of doing that.
+
+12
+00:00:24,850 --> 00:00:26,600
+And I'm going to show you an example using
+
+13
+00:00:26,600 --> 00:00:28,660
+what we call a global variable.
+
+14
+00:00:28,660 --> 00:00:31,256
+Now I'm going to preface this by saying this
+
+15
+00:00:31,256 --> 00:00:32,380
+is a dangerous thing to do.
+
+16
+00:00:32,380 --> 00:00:34,890
+Globals are something that most computer scientists don't
+
+17
+00:00:34,890 --> 00:00:37,620
+like to use because they can really lead to side
+
+18
+00:00:37,620 --> 00:00:39,370
+effects in a very bad way.
+
+19
+00:00:39,370 --> 00:00:42,510
+But in some cases they're valuable, and this is one.
+
+20
+00:00:42,510 --> 00:00:45,830
+They're dangerous to use because global variables break
+
+21
+00:00:45,830 --> 00:00:49,070
+the scoping of variables that we get by a function call.
+
+22
+00:00:49,070 --> 00:00:50,412
+What do I mean by that?
+
+23
+00:00:50,412 --> 00:00:52,620
+Remember when we were looking at a recursive function
+
+24
+00:00:52,620 --> 00:00:55,880
+and we call fact on something, and it would call fact
+
+25
+00:00:55,880 --> 00:00:58,710
+on a smaller argument, and that would create a separate scope.
+
+26
+00:00:58,710 --> 00:01:00,779
+And the value of the parameter in that scope
+
+27
+00:01:00,779 --> 00:01:01,820
+was the one we would use.
+
+28
+00:01:01,820 --> 00:01:04,195
+And it would be different from the value of the parameter
+
+29
+00:01:04,195 --> 00:01:05,250
+in a different scope.
+
+30
+00:01:05,250 --> 00:01:06,830
+With global variables we're going
+
+31
+00:01:06,830 --> 00:01:09,020
+to have the ability to move that value,
+
+32
+00:01:09,020 --> 00:01:12,210
+that access to that variable, out of scopes.
+
+33
+00:01:12,210 --> 00:01:14,200
+And that's why it's dangerous to do.
+
+34
+00:01:14,200 --> 00:01:16,120
+It also allows for side effects because we
+
+35
+00:01:16,120 --> 00:01:17,950
+can change variable values in ways
+
+36
+00:01:17,950 --> 00:01:19,977
+that affect other computation.
+
+37
+00:01:19,977 --> 00:01:21,810
+But it's going to be really handy if we just
+
+38
+00:01:21,810 --> 00:01:23,351
+want to keep track of the information
+
+39
+00:01:23,351 --> 00:01:24,610
+inside of a function.
+
+40
+00:01:24,610 --> 00:01:26,630
+And I want to go back to my example of Fib
+
+41
+00:01:26,630 --> 00:01:30,450
+and Fib efficient to show you how that would work.
+
+42
+00:01:30,450 --> 00:01:32,570
+I'm going to take those two definitions
+
+43
+00:01:32,570 --> 00:01:34,790
+and I'm just going to change them slightly.
+
+44
+00:01:34,790 --> 00:01:37,520
+In particular, I'm going to add in a variable that
+
+45
+00:01:37,520 --> 00:01:40,320
+is going to just keep track of how often do I actually
+
+46
+00:01:40,320 --> 00:01:42,760
+call this function.
+
+47
+00:01:42,760 --> 00:01:46,629
+And so, I'm first going to say, that variable is global.
+
+48
+00:01:46,629 --> 00:01:47,920
+And this is simply a statement.
+
+49
+00:01:47,920 --> 00:01:50,870
+Notice global is a special term.
+
+50
+00:01:50,870 --> 00:01:53,700
+It says this variable name is something
+
+51
+00:01:53,700 --> 00:01:56,970
+that I can access outside the scope of the function.
+
+52
+00:01:56,970 --> 00:01:58,590
+I'll remind you, before this anything
+
+53
+00:01:58,590 --> 00:02:00,940
+inside the body of the function was only accessible
+
+54
+00:02:00,940 --> 00:02:03,095
+within the call of the function itself.
+
+55
+00:02:03,095 --> 00:02:04,470
+But this is something we're going
+
+56
+00:02:04,470 --> 00:02:06,610
+to be able to see up, for example,
+
+57
+00:02:06,610 --> 00:02:09,070
+at top level of the global environment.
+
+58
+00:02:09,070 --> 00:02:12,330
+And then, what I want to do with both of these functions
+
+59
+00:02:12,330 --> 00:02:15,740
+is simply increment them each time I call them.
+
+60
+00:02:15,740 --> 00:02:17,480
+It's going to keep track of how often did
+
+61
+00:02:17,480 --> 00:02:20,110
+I actually call this function.
+
+62
+00:02:20,110 --> 00:02:21,660
+The rest of it is just like before.
+
+63
+00:02:21,660 --> 00:02:24,920
+It is exactly what I did when I did these two computations.
+
+64
+00:02:24,920 --> 00:02:27,930
+So with that small change I can now
+
+65
+00:02:27,930 --> 00:02:33,000
+track the efficiency of this particular pair of functions.
+
+66
+00:02:33,000 --> 00:02:36,670
+I'm going to need to initialize that global variable outside.
+
+67
+00:02:36,670 --> 00:02:38,029
+I'm going to set it to zero.
+
+68
+00:02:38,029 --> 00:02:39,820
+And then what I'm going to do, for example,
+
+69
+00:02:39,820 --> 00:02:43,300
+is I'm going to call Fib on an argument like 12,
+
+70
+00:02:43,300 --> 00:02:47,132
+and then print out a string and the number of times
+
+71
+00:02:47,132 --> 00:02:48,090
+I called that function.
+
+72
+00:02:48,090 --> 00:02:49,790
+Because inside that function-- and I'm
+
+73
+00:02:49,790 --> 00:02:52,110
+going to go back to that previous slide for a second--
+
+74
+00:02:52,110 --> 00:02:57,150
+it's going to update that variable each time I call it.
+
+75
+00:02:57,150 --> 00:02:59,247
+I'll then re-initialize it to zero,
+
+76
+00:02:59,247 --> 00:03:01,830
+I'll set up my dictionary, and I'll do the same thing with Fib
+
+77
+00:03:01,830 --> 00:03:02,604
+efficient.
+
+78
+00:03:02,604 --> 00:03:04,520
+And it's going to give me a chance to measure,
+
+79
+00:03:04,520 --> 00:03:07,820
+in fact, how different are these two functions in terms of how
+
+80
+00:03:07,820 --> 00:03:09,790
+many times are they called.
+
+81
+00:03:09,790 --> 00:03:13,460
+So I have on my computer then those two functions.
+
+82
+00:03:13,460 --> 00:03:14,750
+I'm going to do exactly that.
+
+83
+00:03:14,750 --> 00:03:16,124
+I'm going to start with something
+
+84
+00:03:16,124 --> 00:03:18,392
+a little smaller, which is 12.
+
+85
+00:03:18,392 --> 00:03:20,350
+And I've just got a variable here, fibArg.
+
+86
+00:03:20,350 --> 00:03:22,391
+So I can just change that rather than changing it
+
+87
+00:03:22,391 --> 00:03:23,330
+in both places.
+
+88
+00:03:23,330 --> 00:03:25,150
+And let's see what happens if we call this.
+
+89
+00:03:25,150 --> 00:03:28,020
+
+
+90
+00:03:28,020 --> 00:03:32,120
+OK, it ran it and it said basically
+
+91
+00:03:32,120 --> 00:03:34,340
+I got 233 as the answer.
+
+92
+00:03:34,340 --> 00:03:36,490
+But with the inefficient Fibonacci
+
+93
+00:03:36,490 --> 00:03:39,960
+there were 287 calls to that function.
+
+94
+00:03:39,960 --> 00:03:42,370
+With the efficient one, because I'm keeping track of what
+
+95
+00:03:42,370 --> 00:03:45,030
+I've done, only 21.
+
+96
+00:03:45,030 --> 00:03:45,650
+All right.
+
+97
+00:03:45,650 --> 00:03:46,910
+Sounds pretty good.
+
+98
+00:03:46,910 --> 00:03:48,640
+Let's go back to the one that we used
+
+99
+00:03:48,640 --> 00:03:50,030
+to see a bigger difference.
+
+100
+00:03:50,030 --> 00:03:51,700
+Let's go to say, 30.
+
+101
+00:03:51,700 --> 00:03:54,850
+And let's call that.
+
+102
+00:03:54,850 --> 00:03:56,480
+I get the same answer both times,
+
+103
+00:03:56,480 --> 00:03:59,390
+that's good, but notice the difference.
+
+104
+00:03:59,390 --> 00:04:00,820
+Wow.
+
+105
+00:04:00,820 --> 00:04:04,700
+Using the dictionary I only called that function 57 times.
+
+106
+00:04:04,700 --> 00:04:08,160
+Without the dictionary 1.7 million.
+
+107
+00:04:08,160 --> 00:04:09,197
+Let's just do one more.
+
+108
+00:04:09,197 --> 00:04:11,280
+We won't make it too big or we'll be here forever.
+
+109
+00:04:11,280 --> 00:04:13,290
+But let's, I don't know, make it 34.
+
+110
+00:04:13,290 --> 00:04:14,595
+And let's call it.
+
+111
+00:04:14,595 --> 00:04:16,970
+And it's going to take a little while to find that answer
+
+112
+00:04:16,970 --> 00:04:18,829
+but it will find it, I hope, in a second.
+
+113
+00:04:18,829 --> 00:04:19,570
+There we go.
+
+114
+00:04:19,570 --> 00:04:20,910
+The answer is the same.
+
+115
+00:04:20,910 --> 00:04:22,380
+Look at the difference.
+
+116
+00:04:22,380 --> 00:04:25,350
+With the dictionary, with keeping track of those answers,
+
+117
+00:04:25,350 --> 00:04:27,190
+65 calls.
+
+118
+00:04:27,190 --> 00:04:29,890
+And boy, I've got to eyeball that, 11 billion
+
+119
+00:04:29,890 --> 00:04:32,540
+in the case of the inefficient Fibonacci.
+
+120
+00:04:32,540 --> 00:04:34,920
+So dictionaries can be really handy here,
+
+121
+00:04:34,920 --> 00:04:37,199
+and here's a great example of that.
+
+122
+00:04:37,199 --> 00:04:39,240
+As we go forward, we're going to use dictionaries
+
+123
+00:04:39,240 --> 00:04:42,300
+in a lot of different ways to really efficiently capture
+
+124
+00:04:42,300 --> 00:04:43,830
+and use information.
+
+125
+00:04:43,830 --> 00:04:46,070
+Especially the idea of being able to index
+
+126
+00:04:46,070 --> 00:04:47,152
+on arbitrary keys.
+
+127
+00:04:47,152 --> 00:04:48,610
+Something we're going to want to be
+
+128
+00:04:48,610 --> 00:04:50,910
+able to use as we generalize the kinds of procedures
+
+129
+00:04:50,910 --> 00:04:52,850
+we're going to compute.
+

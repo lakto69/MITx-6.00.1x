@@ -1,0 +1,488 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,000
+We've seen a number of examples of recursive function,
+
+2
+00:00:03,000 --> 00:00:04,880
+something you're going to use a lot.
+
+3
+00:00:04,880 --> 00:00:07,200
+But all of them so far have just been numerical.
+
+4
+00:00:07,200 --> 00:00:08,830
+So let me show you one more example
+
+5
+00:00:08,830 --> 00:00:12,040
+that I can do recursive problem solving, recursive functions,
+
+6
+00:00:12,040 --> 00:00:12,810
+on other things.
+
+7
+00:00:12,810 --> 00:00:15,080
+For example, on strings.
+
+8
+00:00:15,080 --> 00:00:16,600
+So here's the challenge.
+
+9
+00:00:16,600 --> 00:00:19,260
+How would I tell if a string of characters is a palindrome?
+
+10
+00:00:19,260 --> 00:00:22,210
+Meaning, that it reads the same forwards and backwards.
+
+11
+00:00:22,210 --> 00:00:23,710
+Now, I'm going to cheat a little bit
+
+12
+00:00:23,710 --> 00:00:25,980
+and remove punctuation and capitalization,
+
+13
+00:00:25,980 --> 00:00:29,250
+but I just want to know is something a palindrome?
+
+14
+00:00:29,250 --> 00:00:31,792
+Probably one of the most famous attributed to Napoleon,
+
+15
+00:00:31,792 --> 00:00:34,000
+although I don't know that he said it in English was,
+
+16
+00:00:34,000 --> 00:00:36,460
+able was I ere I saw Elba.
+
+17
+00:00:36,460 --> 00:00:38,600
+If you look at it frontwards or backwards,
+
+18
+00:00:38,600 --> 00:00:40,490
+it reads out exactly the same.
+
+19
+00:00:40,490 --> 00:00:42,310
+Second one attributed to Anne Michaels.
+
+20
+00:00:42,310 --> 00:00:43,660
+Are we not drawn onward?
+
+21
+00:00:43,660 --> 00:00:46,180
+We few, drawn onward to a new era.
+
+22
+00:00:46,180 --> 00:00:48,720
+And you can see if I read it from right to left or left
+
+23
+00:00:48,720 --> 00:00:50,727
+to right, it's exactly the same.
+
+24
+00:00:50,727 --> 00:00:52,310
+I'd like to write a piece of code that
+
+25
+00:00:52,310 --> 00:00:54,196
+can solve this recursively.
+
+26
+00:00:54,196 --> 00:00:56,070
+And you can think about doing it iteratively,
+
+27
+00:00:56,070 --> 00:01:00,190
+but recursive is so much better a solution to use.
+
+28
+00:01:00,190 --> 00:01:01,314
+So how would I do it?
+
+29
+00:01:01,314 --> 00:01:03,480
+Well, I'm going to do a little bit of cleanup first.
+
+30
+00:01:03,480 --> 00:01:06,006
+I'm going to convert the string to just the characters.
+
+31
+00:01:06,006 --> 00:01:07,630
+I'm going to strip out any punctuation,
+
+32
+00:01:07,630 --> 00:01:10,450
+and I'm going to convert everything from uppercase down
+
+33
+00:01:10,450 --> 00:01:12,890
+to lowercase so I just have it all as a sequence
+
+34
+00:01:12,890 --> 00:01:14,430
+of characters.
+
+35
+00:01:14,430 --> 00:01:17,700
+And then I've got a very simple solution.
+
+36
+00:01:17,700 --> 00:01:21,890
+If the string is empty, it's a palindrome.
+
+37
+00:01:21,890 --> 00:01:25,430
+If it's just of length 1, it's a palindrome.
+
+38
+00:01:25,430 --> 00:01:29,370
+Otherwise, how would I tell if some string is a palindrome?
+
+39
+00:01:29,370 --> 00:01:32,270
+Well, check the first and last element.
+
+40
+00:01:32,270 --> 00:01:35,260
+If they're the same, then check everything in between
+
+41
+00:01:35,260 --> 00:01:37,280
+to see if it's a palindrome.
+
+42
+00:01:37,280 --> 00:01:38,544
+That's cool.
+
+43
+00:01:38,544 --> 00:01:39,710
+That's a recursive solution.
+
+44
+00:01:39,710 --> 00:01:41,560
+I've just broken it into a simpler
+
+45
+00:01:41,560 --> 00:01:43,349
+version of the same problem.
+
+46
+00:01:43,349 --> 00:01:45,140
+And, of course, as I keep breaking it down,
+
+47
+00:01:45,140 --> 00:01:48,060
+eventually I'm going to get down to either string of 0
+
+48
+00:01:48,060 --> 00:01:51,690
+if the whole thing started off as even or a string of 1
+
+49
+00:01:51,690 --> 00:01:54,790
+if the whole thing started off with an odd length.
+
+50
+00:01:54,790 --> 00:01:56,350
+Can I do that?
+
+51
+00:01:56,350 --> 00:01:57,940
+You bet.
+
+52
+00:01:57,940 --> 00:02:01,040
+I'm simply going to write a little piece of code that's
+
+53
+00:02:01,040 --> 00:02:05,650
+going to say if I've got a piece of code that is palindrome,
+
+54
+00:02:05,650 --> 00:02:10,150
+I'll first convert this just into the string.
+
+55
+00:02:10,150 --> 00:02:12,560
+I stripped out all the separate spaces, the punctuation.
+
+56
+00:02:12,560 --> 00:02:14,610
+I remove uppercase to lowercase.
+
+57
+00:02:14,610 --> 00:02:19,040
+And then, as I said, if the first and last element are
+
+58
+00:02:19,040 --> 00:02:25,690
+the same, then I just want to check, is that a palindrome?
+
+59
+00:02:25,690 --> 00:02:29,434
+And there's the code, nice and compact, nice and simple.
+
+60
+00:02:29,434 --> 00:02:31,100
+I'm not going to walk through all of it,
+
+61
+00:02:31,100 --> 00:02:34,020
+but you can see the first part here is simply
+
+62
+00:02:34,020 --> 00:02:35,420
+something that's going to convert
+
+63
+00:02:35,420 --> 00:02:37,490
+that string into characters.
+
+64
+00:02:37,490 --> 00:02:39,620
+It takes advantage of a property of strings
+
+65
+00:02:39,620 --> 00:02:42,560
+that I can call a method called lower that will convert
+
+66
+00:02:42,560 --> 00:02:44,150
+everything into lowercase.
+
+67
+00:02:44,150 --> 00:02:47,050
+And then I've just got a nice little iterative loop here
+
+68
+00:02:47,050 --> 00:02:50,830
+that basically walks through each character in the string.
+
+69
+00:02:50,830 --> 00:02:54,650
+There's that iteration over the string itself.
+
+70
+00:02:54,650 --> 00:02:55,485
+So string iteration.
+
+71
+00:02:55,485 --> 00:02:58,140
+
+
+72
+00:02:58,140 --> 00:03:01,140
+And it basically says if that character is, in fact,
+
+73
+00:03:01,140 --> 00:03:03,600
+a character add it in.
+
+74
+00:03:03,600 --> 00:03:06,830
+And then there's that nice, elegant solution
+
+75
+00:03:06,830 --> 00:03:08,260
+to palindromes.
+
+76
+00:03:08,260 --> 00:03:10,550
+It says, give them one of those strings.
+
+77
+00:03:10,550 --> 00:03:17,770
+If it's of length 1 or less, it is a palindrome, return true.
+
+78
+00:03:17,770 --> 00:03:21,030
+Otherwise check the first and last-- there's
+
+79
+00:03:21,030 --> 00:03:22,530
+that call with minus 1 to a string,
+
+80
+00:03:22,530 --> 00:03:24,790
+the first and last character of the string--
+
+81
+00:03:24,790 --> 00:03:27,590
+and check by slicing out from the string
+
+82
+00:03:27,590 --> 00:03:29,750
+everything but the first and last character
+
+83
+00:03:29,750 --> 00:03:31,220
+and see if that's true.
+
+84
+00:03:31,220 --> 00:03:33,990
+And finally, I'll just convert the string
+
+85
+00:03:33,990 --> 00:03:36,390
+and call [? ispel ?] on it.
+
+86
+00:03:36,390 --> 00:03:37,850
+Let's try it out.
+
+87
+00:03:37,850 --> 00:03:40,990
+I've got those two characterizations over here.
+
+88
+00:03:40,990 --> 00:03:44,800
+I've got it loaded up, and if I call it, it says
+
+89
+00:03:44,800 --> 00:03:49,090
+is for example a simple thing like Eve a palindrome?
+
+90
+00:03:49,090 --> 00:03:49,590
+You bet.
+
+91
+00:03:49,590 --> 00:03:51,430
+E-V-E is a palindrome.
+
+92
+00:03:51,430 --> 00:03:54,880
+And what about, is able was I ere I saw Elba palindrome?
+
+93
+00:03:54,880 --> 00:03:56,520
+You bet.
+
+94
+00:03:56,520 --> 00:03:59,410
+Again, notice how thinking about it recursively has let me
+
+95
+00:03:59,410 --> 00:04:02,200
+find a really nice solution to this problem.
+
+96
+00:04:02,200 --> 00:04:05,290
+This is a very crisp piece of code
+
+97
+00:04:05,290 --> 00:04:08,409
+that solves what otherwise seems like a very hard problem.
+
+98
+00:04:08,409 --> 00:04:09,700
+Could you solve it iteratively?
+
+99
+00:04:09,700 --> 00:04:11,460
+Sure, but you'd have to keep track
+
+100
+00:04:11,460 --> 00:04:13,450
+of where you are on both ends of the palindrome
+
+101
+00:04:13,450 --> 00:04:15,500
+as you decrement them to walk in.
+
+102
+00:04:15,500 --> 00:04:16,730
+That sounds like a pain.
+
+103
+00:04:16,730 --> 00:04:18,920
+I'd much rather think of this recursively,
+
+104
+00:04:18,920 --> 00:04:22,000
+and that's what I did.
+
+105
+00:04:22,000 --> 00:04:24,790
+This is, as to all the previous examples,
+
+106
+00:04:24,790 --> 00:04:26,360
+but this is a really nice example
+
+107
+00:04:26,360 --> 00:04:29,470
+of what we call a divide and conquer algorithm.
+
+108
+00:04:29,470 --> 00:04:31,530
+I solve a hard problem by breaking it
+
+109
+00:04:31,530 --> 00:04:34,530
+into a set of other sub-problems that have the property
+
+110
+00:04:34,530 --> 00:04:36,540
+that they're easier to solve than the original.
+
+111
+00:04:36,540 --> 00:04:37,910
+In this case, it is shorter.
+
+112
+00:04:37,910 --> 00:04:40,160
+And that the solution of the [? sub-problems ?] can be
+
+113
+00:04:40,160 --> 00:04:42,740
+combined to solve the original problem.
+
+114
+00:04:42,740 --> 00:04:43,970
+We saw that with factorial.
+
+115
+00:04:43,970 --> 00:04:45,053
+We saw it with other ones.
+
+116
+00:04:45,053 --> 00:04:46,476
+This is a great example of it.
+
+117
+00:04:46,476 --> 00:04:48,600
+And we're going to come back to this idea of divide
+
+118
+00:04:48,600 --> 00:04:51,112
+and conquer algorithms as we go through the course,
+
+119
+00:04:51,112 --> 00:04:53,070
+because they're a very powerful pattern that we
+
+120
+00:04:53,070 --> 00:04:54,838
+want to be able to use.
+
+121
+00:04:54,838 --> 00:04:55,338
+
+

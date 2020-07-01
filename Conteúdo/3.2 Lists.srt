@@ -1,0 +1,416 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,550
+The second compound data construct
+
+2
+00:00:02,550 --> 00:00:04,770
+we're going to introduce is called a list.
+
+3
+00:00:04,770 --> 00:00:06,590
+And a list looks a lot like a tuple,
+
+4
+00:00:06,590 --> 00:00:08,320
+but it has one key difference.
+
+5
+00:00:08,320 --> 00:00:10,720
+Again, it's an ordered sequence of information,
+
+6
+00:00:10,720 --> 00:00:11,950
+accessible by an index.
+
+7
+00:00:11,950 --> 00:00:14,490
+And I'll remind you ordered means not that they are
+
+8
+00:00:14,490 --> 00:00:16,964
+in ascending order, but rather they're
+
+9
+00:00:16,964 --> 00:00:18,380
+ordered so that I can say, give me
+
+10
+00:00:18,380 --> 00:00:21,430
+the zeroth, the seventh, the ninth element.
+
+11
+00:00:21,430 --> 00:00:23,640
+They're denoted a little differently.
+
+12
+00:00:23,640 --> 00:00:25,200
+They're denoted with square brackets
+
+13
+00:00:25,200 --> 00:00:27,880
+to tell us that this is a list, not a tuple.
+
+14
+00:00:27,880 --> 00:00:29,390
+They can also contain elements.
+
+15
+00:00:29,390 --> 00:00:32,870
+Usually, they're homogeneous, all integers, all strings,
+
+16
+00:00:32,870 --> 00:00:35,310
+all tuples of integers or strings.
+
+17
+00:00:35,310 --> 00:00:37,990
+But we can, in fact, have mixed types in them.
+
+18
+00:00:37,990 --> 00:00:42,070
+But the big difference is that lists can be changed.
+
+19
+00:00:42,070 --> 00:00:44,190
+So a list is mutable.
+
+20
+00:00:44,190 --> 00:00:46,440
+And that means that I can go in and change
+
+21
+00:00:46,440 --> 00:00:48,874
+the element of a list to be something different.
+
+22
+00:00:48,874 --> 00:00:50,540
+Very different from a tuple or a string.
+
+23
+00:00:50,540 --> 00:00:51,748
+We said those were immutable.
+
+24
+00:00:51,748 --> 00:00:53,940
+I could not change portions inside of them.
+
+25
+00:00:53,940 --> 00:00:56,020
+I can with lists.
+
+26
+00:00:56,020 --> 00:00:58,930
+We're going to see that that's both really useful
+
+27
+00:00:58,930 --> 00:01:00,589
+and can provide some real problems,
+
+28
+00:01:00,589 --> 00:01:01,630
+or cause some challenges.
+
+29
+00:01:01,630 --> 00:01:03,180
+Because it opens up opportunities
+
+30
+00:01:03,180 --> 00:01:06,320
+for making mistakes that we don't expect.
+
+31
+00:01:06,320 --> 00:01:09,230
+With lists, again, I've got the same kind of idea
+
+32
+00:01:09,230 --> 00:01:12,900
+that I have an element at a particular index or position.
+
+33
+00:01:12,900 --> 00:01:15,480
+I start at zero, as I've done before.
+
+34
+00:01:15,480 --> 00:01:16,960
+So I can create a variable name.
+
+35
+00:01:16,960 --> 00:01:20,180
+I can bind it to an empty list, much as we did before.
+
+36
+00:01:20,180 --> 00:01:24,110
+And I can index elements of a list starting at zero.
+
+37
+00:01:24,110 --> 00:01:25,580
+The examples I show here are things
+
+38
+00:01:25,580 --> 00:01:27,850
+you would expect for any kind of construct like this.
+
+39
+00:01:27,850 --> 00:01:29,600
+I can ask for the length of a list.
+
+40
+00:01:29,600 --> 00:01:31,830
+We've used l e n before.
+
+41
+00:01:31,830 --> 00:01:33,750
+I can get out the zeroth element.
+
+42
+00:01:33,750 --> 00:01:36,080
+I can get out an element and do something to it,
+
+43
+00:01:36,080 --> 00:01:37,480
+like adding 1 to it.
+
+44
+00:01:37,480 --> 00:01:40,650
+And if I try and go beyond the end of the list,
+
+45
+00:01:40,650 --> 00:01:42,420
+I'm going to get an index error.
+
+46
+00:01:42,420 --> 00:01:46,780
+This has got things at 0, 1, and 2 indices, nothing at 3.
+
+47
+00:01:46,780 --> 00:01:48,410
+This will give me an error saying
+
+48
+00:01:48,410 --> 00:01:52,270
+I'm trying to go too far beyond the end of the list.
+
+49
+00:01:52,270 --> 00:01:56,717
+An index can also be an expression, or a variable.
+
+50
+00:01:56,717 --> 00:01:58,300
+It doesn't have to just be an integer.
+
+51
+00:01:58,300 --> 00:01:59,830
+It could be a value.
+
+52
+00:01:59,830 --> 00:02:02,350
+So for example, if I'd bind i to 2.
+
+53
+00:02:02,350 --> 00:02:05,870
+And then, I ask for the element of i minus 1.
+
+54
+00:02:05,870 --> 00:02:07,960
+Since i is 2, i minus 1 is 1.
+
+55
+00:02:07,960 --> 00:02:11,400
+And l of i minus 1 gives me that element
+
+56
+00:02:11,400 --> 00:02:12,759
+right there out of the list.
+
+57
+00:02:12,759 --> 00:02:14,300
+We're going to see that's handy as we
+
+58
+00:02:14,300 --> 00:02:17,280
+want to think about how to use expressions to tell us
+
+59
+00:02:17,280 --> 00:02:21,680
+where to look inside a list to pull out a value.
+
+60
+00:02:21,680 --> 00:02:23,702
+As I said, lists are mutable.
+
+61
+00:02:23,702 --> 00:02:25,410
+One of the things we want to look at here
+
+62
+00:02:25,410 --> 00:02:26,670
+is how do we do it?
+
+63
+00:02:26,670 --> 00:02:29,360
+And then, what's going to be the implication of that?
+
+64
+00:02:29,360 --> 00:02:32,760
+In particular, if I have a list like the one shown here,
+
+65
+00:02:32,760 --> 00:02:37,350
+2, 1, 3, I can now evaluate this expression that says,
+
+66
+00:02:37,350 --> 00:02:40,900
+take the first element, or the element at index 1,
+
+67
+00:02:40,900 --> 00:02:43,450
+and change it to be 5.
+
+68
+00:02:43,450 --> 00:02:45,690
+And that will literally change l itself.
+
+69
+00:02:45,690 --> 00:02:47,180
+It does not produce a new list.
+
+70
+00:02:47,180 --> 00:02:50,490
+It changes the same object.
+
+71
+00:02:50,490 --> 00:02:52,490
+This is different from strings and tuples,
+
+72
+00:02:52,490 --> 00:02:54,360
+an important distinction.
+
+73
+00:02:54,360 --> 00:02:56,840
+One way to think about it is when I first bound l,
+
+74
+00:02:56,840 --> 00:02:59,970
+it pointed to that structure, that list in memory somewhere.
+
+75
+00:02:59,970 --> 00:03:02,640
+When I evaluate the second expression,
+
+76
+00:03:02,640 --> 00:03:05,460
+it literally changes that middle element.
+
+77
+00:03:05,460 --> 00:03:09,540
+But l is still pointing to the same expression.
+
+78
+00:03:09,540 --> 00:03:12,730
+A lot of advantages to this, but some real challenges.
+
+79
+00:03:12,730 --> 00:03:15,860
+And that's what we're going to look at next.
+
+80
+00:03:15,860 --> 00:03:18,300
+Before we do it, one last piece.
+
+81
+00:03:18,300 --> 00:03:20,830
+Just as I can iterate over tuples,
+
+82
+00:03:20,830 --> 00:03:22,380
+I can iterate over lists.
+
+83
+00:03:22,380 --> 00:03:24,210
+They are also iterable.
+
+84
+00:03:24,210 --> 00:03:27,390
+A common pattern would be to, for example, walk down a list
+
+85
+00:03:27,390 --> 00:03:30,370
+and add up all the elements, if there are a bunch of integers.
+
+86
+00:03:30,370 --> 00:03:33,270
+I could certainly do that. the traditional way.
+
+87
+00:03:33,270 --> 00:03:35,280
+Here, I am running through a for loop
+
+88
+00:03:35,280 --> 00:03:37,930
+that's going over the range of possible indices.
+
+89
+00:03:37,930 --> 00:03:41,260
+So length, or ln of l gives me the number
+
+90
+00:03:41,260 --> 00:03:44,130
+of elements in a list.
+
+91
+00:03:44,130 --> 00:03:46,400
+Range will give me something that gives me everything
+
+92
+00:03:46,400 --> 00:03:49,870
+from 0 up to but one less than the overall length of the list.
+
+93
+00:03:49,870 --> 00:03:53,650
+And I could simply add things up, standard way of doing it.
+
+94
+00:03:53,650 --> 00:03:57,780
+Much cleaner is to recognize that I can simply iterate over
+
+95
+00:03:57,780 --> 00:04:00,090
+the elements of the list themselves.
+
+96
+00:04:00,090 --> 00:04:03,319
+So that loop says, let i take the first element
+
+97
+00:04:03,319 --> 00:04:05,360
+of the list, then the second element of the list,
+
+98
+00:04:05,360 --> 00:04:08,180
+and so on, and simply add those together.
+
+99
+00:04:08,180 --> 00:04:10,420
+This creates cleaner code that makes it easier
+
+100
+00:04:10,420 --> 00:04:13,250
+to see what I'm actually doing here.
+
+101
+00:04:13,250 --> 00:04:15,250
+So lists are iterable the same way
+
+102
+00:04:15,250 --> 00:04:17,480
+that strings and tuples are iterable,
+
+103
+00:04:17,480 --> 00:04:20,040
+a great property to have.
+

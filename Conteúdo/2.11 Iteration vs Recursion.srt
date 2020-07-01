@@ -1,0 +1,1128 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:02,900
+Let's go up a level just for a second.
+
+2
+00:00:02,900 --> 00:00:05,110
+What have we've built so far?
+
+3
+00:00:05,110 --> 00:00:07,410
+Simple objects, the idea of iteration,
+
+4
+00:00:07,410 --> 00:00:09,840
+for and while loops as a way of doing
+
+5
+00:00:09,840 --> 00:00:11,520
+particular kinds of computations,
+
+6
+00:00:11,520 --> 00:00:14,840
+reusing the same piece of code over and over again.
+
+7
+00:00:14,840 --> 00:00:16,820
+And now we've introduced the idea of functions
+
+8
+00:00:16,820 --> 00:00:19,040
+as a way of capturing that code.
+
+9
+00:00:19,040 --> 00:00:21,900
+That puts us in a position to introduce another really
+
+10
+00:00:21,900 --> 00:00:23,900
+big idea in computer science.
+
+11
+00:00:23,900 --> 00:00:26,184
+And that's the notion of recursion.
+
+12
+00:00:26,184 --> 00:00:28,600
+I'm going to show you an example of recursion in a second,
+
+13
+00:00:28,600 --> 00:00:32,009
+but let me give you the sense of what recursion is about.
+
+14
+00:00:32,009 --> 00:00:34,840
+Recursion is going to be a nice way to design solutions
+
+15
+00:00:34,840 --> 00:00:39,082
+to problems by breaking it up into pieces that I can reuse.
+
+16
+00:00:39,082 --> 00:00:40,915
+Divide and conquer, or decrease and conquer,
+
+17
+00:00:40,915 --> 00:00:42,870
+are words that we're going to use around here.
+
+18
+00:00:42,870 --> 00:00:45,290
+And it's, in particular, a programming technique
+
+19
+00:00:45,290 --> 00:00:48,500
+where inside of the function, it calls itself.
+
+20
+00:00:48,500 --> 00:00:50,740
+So I'm going to define a function, say f.
+
+21
+00:00:50,740 --> 00:00:52,380
+And inside the body the function,
+
+22
+00:00:52,380 --> 00:00:54,380
+I'm actually going to call f.
+
+23
+00:00:54,380 --> 00:00:56,884
+Now, this is the kind of thing that in high school geometry
+
+24
+00:00:56,884 --> 00:00:58,300
+class, you could get into trouble.
+
+25
+00:00:58,300 --> 00:00:58,800
+Right?
+
+26
+00:00:58,800 --> 00:01:01,540
+You don't define something in terms of itself.
+
+27
+00:01:01,540 --> 00:01:05,440
+But in recursion, as long as we don't set up an infinite loop,
+
+28
+00:01:05,440 --> 00:01:08,510
+we don't call it infinite numbers of times, we're fine.
+
+29
+00:01:08,510 --> 00:01:10,450
+And so we're going to see in recursion
+
+30
+00:01:10,450 --> 00:01:13,140
+that as long as we have one or more base cases
+
+31
+00:01:13,140 --> 00:01:16,030
+that are really easy to solve, and can be solved directly,
+
+32
+00:01:16,030 --> 00:01:19,780
+then I can solve a problem by reducing it to a solution
+
+33
+00:01:19,780 --> 00:01:21,940
+to a simpler version of the same problem
+
+34
+00:01:21,940 --> 00:01:25,560
+until I get down to a simple base case.
+
+35
+00:01:25,560 --> 00:01:27,060
+That notion of recursion is going
+
+36
+00:01:27,060 --> 00:01:28,700
+to nicely amplify iteration.
+
+37
+00:01:28,700 --> 00:01:30,820
+It's going to give us a much more simple way
+
+38
+00:01:30,820 --> 00:01:35,547
+of thinking about how to break problems up into simple pieces.
+
+39
+00:01:35,547 --> 00:01:37,380
+And so we're going to spend the next portion
+
+40
+00:01:37,380 --> 00:01:39,671
+of this lecture just looking at different ways of using
+
+41
+00:01:39,671 --> 00:01:41,500
+recursion.
+
+42
+00:01:41,500 --> 00:01:43,420
+If you think about iterative algorithms,
+
+43
+00:01:43,420 --> 00:01:46,550
+to set the stage for recursion, what do we have?
+
+44
+00:01:46,550 --> 00:01:48,660
+They're basically looping constructs.
+
+45
+00:01:48,660 --> 00:01:51,190
+And they are captured by the idea
+
+46
+00:01:51,190 --> 00:01:52,970
+of having a set of state variables
+
+47
+00:01:52,970 --> 00:01:56,120
+that update each time through the loop.
+
+48
+00:01:56,120 --> 00:01:57,987
+So I got a while loop or a for loop.
+
+49
+00:01:57,987 --> 00:01:59,570
+In the case of a while loop, we talked
+
+50
+00:01:59,570 --> 00:02:02,010
+about setting up the variable outside the loop,
+
+51
+00:02:02,010 --> 00:02:04,720
+inside the loop, changing it, usually decreasing it,
+
+52
+00:02:04,720 --> 00:02:06,880
+until I got down to a state where I'm done.
+
+53
+00:02:06,880 --> 00:02:09,039
+And then returning a value.
+
+54
+00:02:09,039 --> 00:02:12,140
+That's what an iterative algorithm does.
+
+55
+00:02:12,140 --> 00:02:14,980
+So here's a simple example to think about that.
+
+56
+00:02:14,980 --> 00:02:17,700
+Suppose I wanted to do integer multiplication.
+
+57
+00:02:17,700 --> 00:02:19,990
+And yeah, I know that already happens in Python,
+
+58
+00:02:19,990 --> 00:02:22,840
+but I want to use it as an example.
+
+59
+00:02:22,840 --> 00:02:26,200
+I could think about multiplying a by b as the same thing
+
+60
+00:02:26,200 --> 00:02:28,370
+as adding a to itself b times.
+
+61
+00:02:28,370 --> 00:02:30,530
+So it's really, if you like, a plus
+
+62
+00:02:30,530 --> 00:02:35,340
+a plus-- I've got b of those.
+
+63
+00:02:35,340 --> 00:02:38,970
+That's the same thing as a times b.
+
+64
+00:02:38,970 --> 00:02:41,880
+Iteratively, I would solve this by saying,
+
+65
+00:02:41,880 --> 00:02:44,030
+I want to capture the state of the computation
+
+66
+00:02:44,030 --> 00:02:46,450
+with an iteration variable, let's call it i.
+
+67
+00:02:46,450 --> 00:02:48,410
+I'm going to start it off at b because I've
+
+68
+00:02:48,410 --> 00:02:50,440
+got b additions to do.
+
+69
+00:02:50,440 --> 00:02:52,390
+And a current state of the computation,
+
+70
+00:02:52,390 --> 00:02:56,500
+I'm going to call it result. And I'll start that off at 0.
+
+71
+00:02:56,500 --> 00:03:00,820
+And then my iteration is to simply, at each stage,
+
+72
+00:03:00,820 --> 00:03:06,040
+do one more addition and reduce that variable by 1,
+
+73
+00:03:06,040 --> 00:03:08,300
+that iteration variable by 1.
+
+74
+00:03:08,300 --> 00:03:11,500
+And down here at the bottom is a function to do that.
+
+75
+00:03:11,500 --> 00:03:13,050
+Multiplication iterative.
+
+76
+00:03:13,050 --> 00:03:15,600
+Takes in two parameters, a and b.
+
+77
+00:03:15,600 --> 00:03:18,260
+It sets result when I call it to 0.
+
+78
+00:03:18,260 --> 00:03:20,230
+And then it runs the iteration I would expect,
+
+79
+00:03:20,230 --> 00:03:22,210
+that little loop right here, that
+
+80
+00:03:22,210 --> 00:03:25,110
+says as long as b is bigger than 0,
+
+81
+00:03:25,110 --> 00:03:27,810
+I'm going to change result by adding a to it.
+
+82
+00:03:27,810 --> 00:03:29,310
+I'm going to reduce b by 1.
+
+83
+00:03:29,310 --> 00:03:33,130
+And I'm going to keep doing that until b gets down to 0,
+
+84
+00:03:33,130 --> 00:03:37,880
+in which case, I'm going to return the result. Cool.
+
+85
+00:03:37,880 --> 00:03:41,020
+Nice iterative way of trying to make that happen.
+
+86
+00:03:41,020 --> 00:03:42,690
+There's the iteration.
+
+87
+00:03:42,690 --> 00:03:45,050
+There's how I'm changing the computation.
+
+88
+00:03:45,050 --> 00:03:47,460
+There's where I'm changing the iteration variable.
+
+89
+00:03:47,460 --> 00:03:52,081
+And when I'm done, I'm simply going to return the result. OK.
+
+90
+00:03:52,081 --> 00:03:53,080
+I'm not going to run it.
+
+91
+00:03:53,080 --> 00:03:54,360
+I encourage you to try it yourself,
+
+92
+00:03:54,360 --> 00:03:55,859
+but you'll see that it actually does
+
+93
+00:03:55,859 --> 00:03:58,190
+the multiplication I'd expect.
+
+94
+00:03:58,190 --> 00:04:01,350
+With that in mind, now let's look at a recursive solution
+
+95
+00:04:01,350 --> 00:04:02,780
+to this problem.
+
+96
+00:04:02,780 --> 00:04:05,510
+And here's a way about thinking about this idea of doing
+
+97
+00:04:05,510 --> 00:04:09,160
+successive additions to compute multiplication recursively.
+
+98
+00:04:09,160 --> 00:04:15,260
+Again, a times b is adding a to itself b times.
+
+99
+00:04:15,260 --> 00:04:16,760
+But I could think of that as saying,
+
+100
+00:04:16,760 --> 00:04:22,930
+that's the same as adding a to-- adding a to itself b minus 1
+
+101
+00:04:22,930 --> 00:04:24,360
+times.
+
+102
+00:04:24,360 --> 00:04:25,020
+OK, you say.
+
+103
+00:04:25,020 --> 00:04:26,790
+That sounds like semantics.
+
+104
+00:04:26,790 --> 00:04:29,230
+It is, but it's an important point.
+
+105
+00:04:29,230 --> 00:04:31,500
+Because what's this?
+
+106
+00:04:31,500 --> 00:04:36,474
+That's just a multiplied by b minus 1.
+
+107
+00:04:36,474 --> 00:04:38,080
+Ooh, that's cool.
+
+108
+00:04:38,080 --> 00:04:42,290
+Because now I've taken a problem and I've reduced it
+
+109
+00:04:42,290 --> 00:04:46,820
+to a simpler version of the same problem plus an operation
+
+110
+00:04:46,820 --> 00:04:48,801
+I know how to do.
+
+111
+00:04:48,801 --> 00:04:49,300
+OK.
+
+112
+00:04:49,300 --> 00:04:51,580
+What's a times b minus 1?
+
+113
+00:04:51,580 --> 00:04:52,890
+Oh, I know how to do that.
+
+114
+00:04:52,890 --> 00:04:58,480
+That is just a plus a times b minus 2.
+
+115
+00:04:58,480 --> 00:05:01,260
+I could do exactly the same reduction.
+
+116
+00:05:01,260 --> 00:05:04,380
+And I could keep unwinding this computation.
+
+117
+00:05:04,380 --> 00:05:05,580
+I need to stop somewhere.
+
+118
+00:05:05,580 --> 00:05:07,330
+I could keep unwinding this computation
+
+119
+00:05:07,330 --> 00:05:09,990
+until I get down to a base case, something
+
+120
+00:05:09,990 --> 00:05:11,420
+that I know how to do.
+
+121
+00:05:11,420 --> 00:05:12,920
+And what's the base case?
+
+122
+00:05:12,920 --> 00:05:16,410
+When b is equal to 1, the answer is just a.
+
+123
+00:05:16,410 --> 00:05:19,040
+And boy, that's nice, because there's
+
+124
+00:05:19,040 --> 00:05:23,050
+a recursive implementation of multiplication.
+
+125
+00:05:23,050 --> 00:05:27,270
+Inside the body it says, if b is equal to 1, that's
+
+126
+00:05:27,270 --> 00:05:31,050
+my base case, just return a.
+
+127
+00:05:31,050 --> 00:05:34,340
+Otherwise, return whatever I get by adding
+
+128
+00:05:34,340 --> 00:05:38,350
+a to-- doing the same thing, but on a slightly smaller problem.
+
+129
+00:05:38,350 --> 00:05:41,350
+Multiplying a times b minus 1.
+
+130
+00:05:41,350 --> 00:05:43,890
+And that will again call itself until we
+
+131
+00:05:43,890 --> 00:05:47,820
+get unwound down to the level that we want to get to.
+
+132
+00:05:47,820 --> 00:05:49,320
+There's the recursive step.
+
+133
+00:05:49,320 --> 00:05:52,040
+And that's a standard form for a recursive function,
+
+134
+00:05:52,040 --> 00:05:54,440
+and is a really elegant way of thinking about how
+
+135
+00:05:54,440 --> 00:05:55,470
+to solve this problem.
+
+136
+00:05:55,470 --> 00:05:58,350
+
+
+137
+00:05:58,350 --> 00:05:59,977
+I could do the same thing.
+
+138
+00:05:59,977 --> 00:06:01,560
+Let's think about computing factorial.
+
+139
+00:06:01,560 --> 00:06:03,520
+Factorial written in mathematically
+
+140
+00:06:03,520 --> 00:06:05,500
+as n followed by an exclamation point,
+
+141
+00:06:05,500 --> 00:06:08,340
+is the product of n times n minus 1 times n minus 2,
+
+142
+00:06:08,340 --> 00:06:11,930
+all the way down to 1, where n is a positive integer.
+
+143
+00:06:11,930 --> 00:06:13,350
+If I wanted to solve this problem,
+
+144
+00:06:13,350 --> 00:06:18,834
+I could say, for what values do I actually know factorial?
+
+145
+00:06:18,834 --> 00:06:19,500
+And that's easy.
+
+146
+00:06:19,500 --> 00:06:23,570
+If n is 1, factorial of 1 is just 1.
+
+147
+00:06:23,570 --> 00:06:26,540
+There's my base case and the value I want to return.
+
+148
+00:06:26,540 --> 00:06:27,630
+How would I return it?
+
+149
+00:06:27,630 --> 00:06:30,550
+Well, just as I did with the multiplication case,
+
+150
+00:06:30,550 --> 00:06:34,700
+n factorial is the same as multiplying n by n
+
+151
+00:06:34,700 --> 00:06:36,790
+minus 1 factorial.
+
+152
+00:06:36,790 --> 00:06:40,170
+So there's the recursive step.
+
+153
+00:06:40,170 --> 00:06:42,510
+And I've just written the body of code for something
+
+154
+00:06:42,510 --> 00:06:46,520
+that would be a definition for factorial, or fact.
+
+155
+00:06:46,520 --> 00:06:48,170
+What you're seeing here is a pattern.
+
+156
+00:06:48,170 --> 00:06:50,530
+And this is the idea of a recursive function.
+
+157
+00:06:50,530 --> 00:06:53,910
+Break it down into a smaller version of the same problem,
+
+158
+00:06:53,910 --> 00:06:56,000
+plus some operations I want to do,
+
+159
+00:06:56,000 --> 00:06:58,320
+and figure out when can I stop breaking it down
+
+160
+00:06:58,320 --> 00:07:00,100
+into smaller versions of the same problem
+
+161
+00:07:00,100 --> 00:07:02,190
+because I know how to compute it directly?
+
+162
+00:07:02,190 --> 00:07:07,400
+In the case of factorial, when I get down to a factorial of 1.
+
+163
+00:07:07,400 --> 00:07:10,130
+With that in mind, let's deal with something
+
+164
+00:07:10,130 --> 00:07:12,700
+that may be puzzling you, which is how in the world
+
+165
+00:07:12,700 --> 00:07:15,320
+does the computer know when to stop unwinding this?
+
+166
+00:07:15,320 --> 00:07:16,820
+And how does the computer know which
+
+167
+00:07:16,820 --> 00:07:19,590
+versions of the function-- of the parameters of the function
+
+168
+00:07:19,590 --> 00:07:20,390
+to use?
+
+169
+00:07:20,390 --> 00:07:21,610
+I'm calling fact of n.
+
+170
+00:07:21,610 --> 00:07:24,180
+How does it know which version of n to use?
+
+171
+00:07:24,180 --> 00:07:27,330
+We've already kind of seen it, but let's walk it through.
+
+172
+00:07:27,330 --> 00:07:29,340
+So here's my definition of fact.
+
+173
+00:07:29,340 --> 00:07:31,840
+Fact of n is if n is equal to 1, return 1.
+
+174
+00:07:31,840 --> 00:07:34,840
+Otherwise, return n times fact of n minus 1.
+
+175
+00:07:34,840 --> 00:07:37,370
+Then I'm going to call it on a value of 4,
+
+176
+00:07:37,370 --> 00:07:39,860
+and I want to print out the result of that.
+
+177
+00:07:39,860 --> 00:07:41,720
+I'm going to do this reasonably quickly,
+
+178
+00:07:41,720 --> 00:07:43,386
+because you've seen these pieces before.
+
+179
+00:07:43,386 --> 00:07:45,380
+But let's look at what happens.
+
+180
+00:07:45,380 --> 00:07:48,760
+When I define fact in that global scope,
+
+181
+00:07:48,760 --> 00:07:51,780
+I create a binding of fact to some code.
+
+182
+00:07:51,780 --> 00:07:53,117
+Hasn't been run yet.
+
+183
+00:07:53,117 --> 00:07:55,200
+And now I'm ready to run it by actually calling it
+
+184
+00:07:55,200 --> 00:07:58,200
+on print of fact 4.
+
+185
+00:07:58,200 --> 00:07:58,870
+OK.
+
+186
+00:07:58,870 --> 00:08:01,220
+Here we go.
+
+187
+00:08:01,220 --> 00:08:03,070
+I've got to call fact of 4.
+
+188
+00:08:03,070 --> 00:08:08,170
+Fact creates a new scope, inside of which n is bound to 4.
+
+189
+00:08:08,170 --> 00:08:10,270
+And relative to that, it's going to evaluate
+
+190
+00:08:10,270 --> 00:08:11,900
+the body of the procedure.
+
+191
+00:08:11,900 --> 00:08:14,640
+Says is n equal to 1?
+
+192
+00:08:14,640 --> 00:08:15,520
+No.
+
+193
+00:08:15,520 --> 00:08:16,770
+It's equal to 4 here.
+
+194
+00:08:16,770 --> 00:08:21,070
+So I go to the else clause, which says return n times
+
+195
+00:08:21,070 --> 00:08:23,310
+fact of n minus 1.
+
+196
+00:08:23,310 --> 00:08:23,990
+Aha.
+
+197
+00:08:23,990 --> 00:08:25,840
+I've got to call fact again.
+
+198
+00:08:25,840 --> 00:08:30,050
+I know I want to return 4 times fact of 3.
+
+199
+00:08:30,050 --> 00:08:31,920
+That's the value of n minus 1.
+
+200
+00:08:31,920 --> 00:08:33,929
+But I've got to call fact.
+
+201
+00:08:33,929 --> 00:08:34,840
+Great.
+
+202
+00:08:34,840 --> 00:08:38,919
+It creates a new frame, inside of which the formal parameter,
+
+203
+00:08:38,919 --> 00:08:41,299
+n up here, is bound to 3.
+
+204
+00:08:41,299 --> 00:08:43,600
+And relative to that, it does exactly the same thing.
+
+205
+00:08:43,600 --> 00:08:45,040
+So I'm now going to go faster.
+
+206
+00:08:45,040 --> 00:08:46,220
+Is 3 equal to 1?
+
+207
+00:08:46,220 --> 00:08:46,930
+No.
+
+208
+00:08:46,930 --> 00:08:50,305
+So I'm going to return 3 times calling fact
+
+209
+00:08:50,305 --> 00:08:52,780
+on n minus 1, which is 2.
+
+210
+00:08:52,780 --> 00:08:54,070
+That calls a new frame.
+
+211
+00:08:54,070 --> 00:08:55,690
+Here's the binding for n.
+
+212
+00:08:55,690 --> 00:08:57,160
+n's still not equal to 1.
+
+213
+00:08:57,160 --> 00:08:59,650
+I'm going to again go to the return clause, or the else
+
+214
+00:08:59,650 --> 00:09:02,120
+clause, that says return 2, which
+
+215
+00:09:02,120 --> 00:09:05,570
+is the value of n times fact of n minus 1, which is 1.
+
+216
+00:09:05,570 --> 00:09:06,920
+And that calls one more frame.
+
+217
+00:09:06,920 --> 00:09:09,880
+And aren't you glad I didn't do fact of 64?
+
+218
+00:09:09,880 --> 00:09:10,870
+Almost done.
+
+219
+00:09:10,870 --> 00:09:14,360
+In that frame, I now say is n equal to 1?
+
+220
+00:09:14,360 --> 00:09:14,960
+Great.
+
+221
+00:09:14,960 --> 00:09:16,130
+It is.
+
+222
+00:09:16,130 --> 00:09:20,210
+And so in that case, I know that's the expression
+
+223
+00:09:20,210 --> 00:09:20,870
+I want to call.
+
+224
+00:09:20,870 --> 00:09:24,560
+And it says, ah, return 1.
+
+225
+00:09:24,560 --> 00:09:26,260
+Where does that go?
+
+226
+00:09:26,260 --> 00:09:29,840
+I'm returning 1 to the person who asked for it.
+
+227
+00:09:29,840 --> 00:09:32,140
+And that was that call to fact.
+
+228
+00:09:32,140 --> 00:09:34,680
+That's great, because now that expression
+
+229
+00:09:34,680 --> 00:09:39,280
+says return 2 times 1, the value returned by that call to fact.
+
+230
+00:09:39,280 --> 00:09:41,480
+And who asked for that?
+
+231
+00:09:41,480 --> 00:09:42,980
+Right there.
+
+232
+00:09:42,980 --> 00:09:44,840
+That reduces to return to 3 times
+
+233
+00:09:44,840 --> 00:09:49,070
+2, which reduces that one to return 4 times 6,
+
+234
+00:09:49,070 --> 00:09:51,490
+which prints out 24.
+
+235
+00:09:51,490 --> 00:09:53,090
+And I'm done.
+
+236
+00:09:53,090 --> 00:09:56,810
+So you can see the computer, with these nested scopes,
+
+237
+00:09:56,810 --> 00:09:58,750
+these nested frames, nicely knows
+
+238
+00:09:58,750 --> 00:10:02,440
+exactly where to get values in order to do the computation.
+
+239
+00:10:02,440 --> 00:10:04,170
+And therefore, the computer knows
+
+240
+00:10:04,170 --> 00:10:07,960
+to stop at the right time.
+
+241
+00:10:07,960 --> 00:10:08,850
+I've just said that.
+
+242
+00:10:08,850 --> 00:10:11,170
+Simply going to put the slide up so you can see it.
+
+243
+00:10:11,170 --> 00:10:13,760
+Each recursive call creates its own scope.
+
+244
+00:10:13,760 --> 00:10:15,810
+Bindings of variables in a scope are not
+
+245
+00:10:15,810 --> 00:10:17,700
+changed by the recursive call.
+
+246
+00:10:17,700 --> 00:10:21,080
+And the flow of control passes back to the previous scope,
+
+247
+00:10:21,080 --> 00:10:23,990
+because that was the person who asked for that function call
+
+248
+00:10:23,990 --> 00:10:26,770
+as we did it.
+
+249
+00:10:26,770 --> 00:10:28,640
+And therefore, I'm going to be able to use
+
+250
+00:10:28,640 --> 00:10:30,296
+exactly the same variable name.
+
+251
+00:10:30,296 --> 00:10:32,170
+I need to because that's the formal parameter
+
+252
+00:10:32,170 --> 00:10:32,960
+of the function.
+
+253
+00:10:32,960 --> 00:10:35,090
+But it's always done in a different scope.
+
+254
+00:10:35,090 --> 00:10:37,510
+And therefore, it's always clear which version
+
+255
+00:10:37,510 --> 00:10:41,760
+I'm using when I'm calling the body of the procedure.
+
+256
+00:10:41,760 --> 00:10:43,800
+This leaves us then with this nice comparison
+
+257
+00:10:43,800 --> 00:10:46,810
+between iteration and recursion.
+
+258
+00:10:46,810 --> 00:10:49,120
+Both of these pieces of code do exactly the same thing
+
+259
+00:10:49,120 --> 00:10:51,310
+in terms of what they compute.
+
+260
+00:10:51,310 --> 00:10:53,770
+How they do it is done differently.
+
+261
+00:10:53,770 --> 00:10:55,900
+I'll let you decide your own style.
+
+262
+00:10:55,900 --> 00:10:57,940
+Personally, I like recursion better.
+
+263
+00:10:57,940 --> 00:10:59,610
+I think it's more intuitive.
+
+264
+00:10:59,610 --> 00:11:02,600
+I don't have to remember to set up a parameter variable
+
+265
+00:11:02,600 --> 00:11:03,540
+before I start things.
+
+266
+00:11:03,540 --> 00:11:06,140
+I don't have to worry about dealing with all those pieces.
+
+267
+00:11:06,140 --> 00:11:07,340
+I can make them a little different.
+
+268
+00:11:07,340 --> 00:11:08,923
+In this case, I've changed it slightly
+
+269
+00:11:08,923 --> 00:11:11,780
+to use range rather than setting up the iteration variable.
+
+270
+00:11:11,780 --> 00:11:14,340
+But I personally find the right-hand side easier
+
+271
+00:11:14,340 --> 00:11:16,610
+to look at, because I can easily see
+
+272
+00:11:16,610 --> 00:11:18,780
+where the recursive call is.
+
+273
+00:11:18,780 --> 00:11:21,110
+From the programmer's point of view,
+
+274
+00:11:21,110 --> 00:11:23,180
+recursion may be more efficient.
+
+275
+00:11:23,180 --> 00:11:25,010
+From the computer's point of view,
+
+276
+00:11:25,010 --> 00:11:26,200
+it may not be as efficient.
+
+277
+00:11:26,200 --> 00:11:27,430
+And we'll see that.
+
+278
+00:11:27,430 --> 00:11:30,630
+But basically, the idea is each of these things
+
+279
+00:11:30,630 --> 00:11:31,800
+does the same thing.
+
+280
+00:11:31,800 --> 00:11:35,031
+You get to decide which one you want to use.
+
+281
+00:11:35,031 --> 00:11:35,530
+
+

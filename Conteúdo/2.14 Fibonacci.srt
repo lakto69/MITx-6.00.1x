@@ -1,0 +1,376 @@
+0
+00:00:00,000 --> 00:00:00,349
+...
+
+1
+00:00:00,349 --> 00:00:01,890
+We just saw an example where we could
+
+2
+00:00:01,890 --> 00:00:05,710
+have multiple recursive calls inside the body of a function.
+
+3
+00:00:05,710 --> 00:00:07,051
+Perfectly fine.
+
+4
+00:00:07,051 --> 00:00:08,800
+I want to show you a different example now
+
+5
+00:00:08,800 --> 00:00:13,270
+in which we could have multiple base cases inside of a problem.
+
+6
+00:00:13,270 --> 00:00:15,690
+And for this I'm going to use another classical problem
+
+7
+00:00:15,690 --> 00:00:18,510
+called Fibonacci numbers.
+
+8
+00:00:18,510 --> 00:00:20,910
+And here's the story behind Fibonacci.
+
+9
+00:00:20,910 --> 00:00:23,740
+Leonardo of Pisa, also known as Fibonacci,
+
+10
+00:00:23,740 --> 00:00:25,610
+posed the following challenge-- he
+
+11
+00:00:25,610 --> 00:00:28,740
+said imagine I put a newborn pair of rabbits, one female,
+
+12
+00:00:28,740 --> 00:00:31,810
+one male, in a pen or an enclosure.
+
+13
+00:00:31,810 --> 00:00:35,380
+And I'm going to assume that rabbits mate at age one month
+
+14
+00:00:35,380 --> 00:00:37,880
+and that rabbits have a one month gestational period.
+
+15
+00:00:37,880 --> 00:00:40,640
+That is they produce a new pair, the female produces a new pair
+
+16
+00:00:40,640 --> 00:00:42,040
+at the end of a month.
+
+17
+00:00:42,040 --> 00:00:44,590
+He's also going to assume that rabbits never die
+
+18
+00:00:44,590 --> 00:00:47,650
+and that the female always produces one new pair, one
+
+19
+00:00:47,650 --> 00:00:51,570
+male and one female, every month from its second month on.
+
+20
+00:00:51,570 --> 00:00:54,610
+And Fibonacci wanted to know how many female rabbits are there
+
+21
+00:00:54,610 --> 00:00:56,880
+at the end of one year?
+
+22
+00:00:56,880 --> 00:00:59,270
+So let's do a little simulation of this
+
+23
+00:00:59,270 --> 00:01:02,050
+and then we'll figure out how to actually solve it.
+
+24
+00:01:02,050 --> 00:01:05,980
+So we start off with a pair of immature rabbits, a male
+
+25
+00:01:05,980 --> 00:01:08,450
+and a female, first month.
+
+26
+00:01:08,450 --> 00:01:11,580
+At the end of one month they've matured.
+
+27
+00:01:11,580 --> 00:01:14,295
+They can therefore mate and at the end of the next month
+
+28
+00:01:14,295 --> 00:01:15,670
+they're still around, but they've
+
+29
+00:01:15,670 --> 00:01:19,430
+produced offspring, another male and a female.
+
+30
+00:01:19,430 --> 00:01:21,820
+At the end of the next month the original pair
+
+31
+00:01:21,820 --> 00:01:24,320
+have produced another pair of offspring
+
+32
+00:01:24,320 --> 00:01:27,157
+and the first pair of offspring have matured.
+
+33
+00:01:27,157 --> 00:01:28,990
+And that means that at end of the next month
+
+34
+00:01:28,990 --> 00:01:33,080
+both sets of mature rabbits now produce offspring
+
+35
+00:01:33,080 --> 00:01:35,050
+and another one is matured.
+
+36
+00:01:35,050 --> 00:01:37,600
+And that keeps happening as we start
+
+37
+00:01:37,600 --> 00:01:40,870
+generating more rabbits and more rabbits and more rabbits
+
+38
+00:01:40,870 --> 00:01:44,430
+until we're overrun with rabbits.
+
+39
+00:01:44,430 --> 00:01:47,080
+Question is-- could I model this to deduce
+
+40
+00:01:47,080 --> 00:01:50,080
+how many female rabbits are there at the end of a year, two
+
+41
+00:01:50,080 --> 00:01:51,330
+years, five years?
+
+42
+00:01:51,330 --> 00:01:53,750
+And when will Australia completely get
+
+43
+00:01:53,750 --> 00:01:56,250
+overwhelmed with rabbits, just to take an example of a place
+
+44
+00:01:56,250 --> 00:01:58,230
+with too many rabbits.
+
+45
+00:01:58,230 --> 00:02:00,997
+So what does this say?
+
+46
+00:02:00,997 --> 00:02:02,330
+I've got a little sequence here.
+
+47
+00:02:02,330 --> 00:02:04,990
+In fact, they're known as the Fibonacci numbers, in which I
+
+48
+00:02:04,990 --> 00:02:07,590
+have the following property-- at the end of one month I've
+
+49
+00:02:07,590 --> 00:02:08,930
+got one female.
+
+50
+00:02:08,930 --> 00:02:10,580
+At the end of the second month I've
+
+51
+00:02:10,580 --> 00:02:13,080
+also got one female, that's now pregnant.
+
+52
+00:02:13,080 --> 00:02:14,670
+At the end of the third month I've
+
+53
+00:02:14,670 --> 00:02:17,930
+got two females, one pregnant, one not.
+
+54
+00:02:17,930 --> 00:02:21,160
+And in general, at n months I've got however
+
+55
+00:02:21,160 --> 00:02:25,050
+many females there were the previous time
+
+56
+00:02:25,050 --> 00:02:27,020
+and I've also got however many females
+
+57
+00:02:27,020 --> 00:02:29,020
+there were two months ago.
+
+58
+00:02:29,020 --> 00:02:29,530
+Why?
+
+59
+00:02:29,530 --> 00:02:32,300
+Because every female alive at month n minus 2
+
+60
+00:02:32,300 --> 00:02:36,240
+will have produced one new female in month n,
+
+61
+00:02:36,240 --> 00:02:38,310
+and those can be added to the number that
+
+62
+00:02:38,310 --> 00:02:41,230
+were alive in month n minus 1 to get the total that
+
+63
+00:02:41,230 --> 00:02:43,160
+were alive in month n.
+
+64
+00:02:43,160 --> 00:02:46,600
+So there is basically the definition
+
+65
+00:02:46,600 --> 00:02:49,080
+of Fibonacci numbers.
+
+66
+00:02:49,080 --> 00:02:51,330
+And how do I capture that in code?
+
+67
+00:02:51,330 --> 00:02:53,570
+Well here I've got two base cases.
+
+68
+00:02:53,570 --> 00:02:55,560
+I've got how many females at time
+
+69
+00:02:55,560 --> 00:02:58,430
+0, how many females at time 1.
+
+70
+00:02:58,430 --> 00:03:03,540
+And my recursive case notice involves two invocations
+
+71
+00:03:03,540 --> 00:03:09,340
+of that function-- one for n minus 1 and one for n minus 2.
+
+72
+00:03:09,340 --> 00:03:12,460
+And if I want to turn that into code, there it is.
+
+73
+00:03:12,460 --> 00:03:13,730
+I've got two bass cases.
+
+74
+00:03:13,730 --> 00:03:15,220
+I'm doing it in one test, but I'm
+
+75
+00:03:15,220 --> 00:03:20,180
+saying if x is either equal to 0 or x is equal to 1, return 1.
+
+76
+00:03:20,180 --> 00:03:26,190
+Otherwise return fib of x minus 1 plus fib of x minus 2.
+
+77
+00:03:26,190 --> 00:03:28,890
+And if I were to run that, I can see that I can actually
+
+78
+00:03:28,890 --> 00:03:32,710
+compute Fibonacci given fib.
+
+79
+00:03:32,710 --> 00:03:36,160
+I can check that my base cases work- fib of 0
+
+80
+00:03:36,160 --> 00:03:41,300
+gives me 1 fib of 1 gives me 1.
+
+81
+00:03:41,300 --> 00:03:43,410
+And just a couple of trials, fib of 2
+
+82
+00:03:43,410 --> 00:03:45,350
+should give me the sum of those.
+
+83
+00:03:45,350 --> 00:03:49,080
+And fib of 3 should give me the sum of those.
+
+84
+00:03:49,080 --> 00:03:52,089
+And fib of 4 should give me the sum of those.
+
+85
+00:03:52,089 --> 00:03:53,630
+And you can see, in fact, it is doing
+
+86
+00:03:53,630 --> 00:03:56,270
+what I expected it would do.
+
+87
+00:03:56,270 --> 00:03:58,810
+Here's a case where I've got two base cases.
+
+88
+00:03:58,810 --> 00:04:00,430
+And in fact, I kind of know I need it
+
+89
+00:04:00,430 --> 00:04:03,420
+because my return here in the general case
+
+90
+00:04:03,420 --> 00:04:06,390
+needs two different invocations of that function.
+
+91
+00:04:06,390 --> 00:04:08,310
+And I need two base cases to make sure
+
+92
+00:04:08,310 --> 00:04:10,336
+that I can settle that out.
+
+93
+00:04:10,336 --> 00:04:10,836
+
+

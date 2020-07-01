@@ -1,0 +1,880 @@
+0
+00:00:00,000 --> 00:00:00,810
+...
+
+1
+00:00:00,810 --> 00:00:03,490
+Let me show you an example of using a dictionary-- actually
+
+2
+00:00:03,490 --> 00:00:05,820
+of creating and then using a dictionary.
+
+3
+00:00:05,820 --> 00:00:08,430
+And I'm going to use an example of simply wanting
+
+4
+00:00:08,430 --> 00:00:10,350
+to analyze song lyrics.
+
+5
+00:00:10,350 --> 00:00:12,660
+I want to see how often does a word appear in a lyric,
+
+6
+00:00:12,660 --> 00:00:14,030
+for example.
+
+7
+00:00:14,030 --> 00:00:16,146
+So I'm going to write three functions to do this.
+
+8
+00:00:16,146 --> 00:00:18,020
+They're reasonably straightforward functions.
+
+9
+00:00:18,020 --> 00:00:19,395
+And it's going to let you see how
+
+10
+00:00:19,395 --> 00:00:23,240
+we use dictionaries to capture information in a valuable way.
+
+11
+00:00:23,240 --> 00:00:25,800
+So first I'm going to create a frequency dictionary that's
+
+12
+00:00:25,800 --> 00:00:28,000
+going to map strings to integers.
+
+13
+00:00:28,000 --> 00:00:32,080
+The idea is a given set of lyrics for a song.
+
+14
+00:00:32,080 --> 00:00:35,220
+I'm going to walk down it and for each word-- each string--
+
+15
+00:00:35,220 --> 00:00:39,090
+I'm going to count basically how many times it actually
+
+16
+00:00:39,090 --> 00:00:42,700
+appears inside of that lyric.
+
+17
+00:00:42,700 --> 00:00:46,660
+So the dictionary is going to be that association of a word
+
+18
+00:00:46,660 --> 00:00:48,295
+and number of appearances.
+
+19
+00:00:48,295 --> 00:00:50,270
+And once I've created that dictionary,
+
+20
+00:00:50,270 --> 00:00:53,200
+then I can do things like find the word that
+
+21
+00:00:53,200 --> 00:00:56,790
+occurs the most often and how many times it does that.
+
+22
+00:00:56,790 --> 00:00:58,850
+Here I'm going to use a list in case
+
+23
+00:00:58,850 --> 00:01:00,780
+there's more than one word that occurs
+
+24
+00:01:00,780 --> 00:01:02,340
+the same number of times.
+
+25
+00:01:02,340 --> 00:01:04,930
+And so I'm going to return a tuple-- another data
+
+26
+00:01:04,930 --> 00:01:08,880
+structure-- that has inside of it a list for the set of words
+
+27
+00:01:08,880 --> 00:01:10,810
+and an integer for how often did that set
+
+28
+00:01:10,810 --> 00:01:13,840
+of words, each one of them, appear inside the lyrics.
+
+29
+00:01:13,840 --> 00:01:16,680
+And then finally, I'm going to find the words that occur
+
+30
+00:01:16,680 --> 00:01:19,130
+at least some number of times.
+
+31
+00:01:19,130 --> 00:01:21,740
+I'm going to let the user choose that minimum amount.
+
+32
+00:01:21,740 --> 00:01:23,390
+So it will be a parameter.
+
+33
+00:01:23,390 --> 00:01:26,210
+And then I'm going to return a list of tuples, where
+
+34
+00:01:26,210 --> 00:01:29,820
+each tuple is one of those list int combinations
+
+35
+00:01:29,820 --> 00:01:33,140
+that contains the list of words ordered by their frequency.
+
+36
+00:01:33,140 --> 00:01:34,890
+And one of the things I'm going to do here
+
+37
+00:01:34,890 --> 00:01:37,292
+is take advantage of a property of the dictionaries.
+
+38
+00:01:37,292 --> 00:01:38,750
+From the song dictionary, I'm going
+
+39
+00:01:38,750 --> 00:01:40,720
+to find the most frequent word, and then I'm
+
+40
+00:01:40,720 --> 00:01:41,970
+just going to delete it.
+
+41
+00:01:41,970 --> 00:01:43,260
+And I'm going to repeat.
+
+42
+00:01:43,260 --> 00:01:46,382
+And because I'm mutating the song dictionary as I do it,
+
+43
+00:01:46,382 --> 00:01:48,090
+it's going to actually pull together very
+
+44
+00:01:48,090 --> 00:01:52,370
+nicely an efficient way to solve this problem.
+
+45
+00:01:52,370 --> 00:01:54,270
+So let's start with the first stage.
+
+46
+00:01:54,270 --> 00:01:56,180
+I need to create a dictionary.
+
+47
+00:01:56,180 --> 00:01:58,090
+Here's a function that will do it.
+
+48
+00:01:58,090 --> 00:02:00,080
+I'm going to call it lyrics to frequencies--
+
+49
+00:02:00,080 --> 00:02:01,620
+sounds reasonable.
+
+50
+00:02:01,620 --> 00:02:04,530
+Lyrics will just be a string of words
+
+51
+00:02:04,530 --> 00:02:08,780
+separated by spaces, potentially other kinds of things.
+
+52
+00:02:08,780 --> 00:02:11,880
+I'm going to create an empty dictionary.
+
+53
+00:02:11,880 --> 00:02:14,400
+There are the curly braces that do that.
+
+54
+00:02:14,400 --> 00:02:20,990
+And then I'm going to just iterate over the lyrics,
+
+55
+00:02:20,990 --> 00:02:23,150
+getting each word out as I do it.
+
+56
+00:02:23,150 --> 00:02:25,894
+And what I'm going to do is say, if the word is already
+
+57
+00:02:25,894 --> 00:02:28,060
+in the dictionary-- and oh, there's that nice thing.
+
+58
+00:02:28,060 --> 00:02:30,350
+I'm using the fact that I can treat the dictionary
+
+59
+00:02:30,350 --> 00:02:32,766
+as an iterable. I can just say if the word's already
+
+60
+00:02:32,766 --> 00:02:35,960
+in the dictionary, increase the value associated
+
+61
+00:02:35,960 --> 00:02:37,919
+with it by one.
+
+62
+00:02:37,919 --> 00:02:40,210
+Oh, that says I've already got a value there somewhere.
+
+63
+00:02:40,210 --> 00:02:42,360
+And that's OK, because it says if the word is not
+
+64
+00:02:42,360 --> 00:02:45,680
+in the dictionary, this is the first time I've seen the word.
+
+65
+00:02:45,680 --> 00:02:48,400
+I'm going to set the value in the dictionary corresponding
+
+66
+00:02:48,400 --> 00:02:50,287
+to that word to one.
+
+67
+00:02:50,287 --> 00:02:52,120
+And once I've gone through that entire loop,
+
+68
+00:02:52,120 --> 00:02:55,880
+I'll simply return the dictionary.
+
+69
+00:02:55,880 --> 00:02:59,130
+On my computer I've got a version of that code
+
+70
+00:02:59,130 --> 00:03:01,030
+and I've got a song.
+
+71
+00:03:01,030 --> 00:03:03,450
+Now, even though I used Justin Bieber earlier on,
+
+72
+00:03:03,450 --> 00:03:05,020
+I'm of a different generation.
+
+73
+00:03:05,020 --> 00:03:06,360
+I like The Beatles.
+
+74
+00:03:06,360 --> 00:03:09,464
+So I've got a classic old Beatles song, "She Loves You."
+
+75
+00:03:09,464 --> 00:03:10,880
+It's also a nice song because it's
+
+76
+00:03:10,880 --> 00:03:14,120
+got a lot of repetition of the characters in it.
+
+77
+00:03:14,120 --> 00:03:17,990
+And I've got the entire lyrics to "She Loves You" actually
+
+78
+00:03:17,990 --> 00:03:19,670
+set up over here.
+
+79
+00:03:19,670 --> 00:03:21,090
+And so now what I'm going to do is
+
+80
+00:03:21,090 --> 00:03:24,200
+I'm going to actually load this and run it.
+
+81
+00:03:24,200 --> 00:03:30,090
+And when I do that, I'm going to basically say,
+
+82
+00:03:30,090 --> 00:03:31,840
+what does Beatles look like?
+
+83
+00:03:31,840 --> 00:03:35,420
+And Beatles was set up to be the lyrics to frequencies called on
+
+84
+00:03:35,420 --> 00:03:38,220
+"She Loves You."
+
+85
+00:03:38,220 --> 00:03:40,040
+And there's a piece of it.
+
+86
+00:03:40,040 --> 00:03:41,540
+It's actually much longer than you'd
+
+87
+00:03:41,540 --> 00:03:46,300
+expect because it's got-- just to show you all the pieces
+
+88
+00:03:46,300 --> 00:03:48,350
+there, there are all the words in "She
+
+89
+00:03:48,350 --> 00:03:51,970
+Loves You" as a dictionary associated
+
+90
+00:03:51,970 --> 00:03:55,070
+with their frequency.
+
+91
+00:03:55,070 --> 00:03:56,280
+OK.
+
+92
+00:03:56,280 --> 00:03:59,410
+With that in mind, I've now got a dictionary of frequencies.
+
+93
+00:03:59,410 --> 00:04:00,850
+That's pretty cool.
+
+94
+00:04:00,850 --> 00:04:03,070
+What else do I need to do?
+
+95
+00:04:03,070 --> 00:04:05,840
+Just to remind you, I can iterate over the list.
+
+96
+00:04:05,840 --> 00:04:07,270
+I can iterate over the dictionary.
+
+97
+00:04:07,270 --> 00:04:08,850
+Those are really handy things to do.
+
+98
+00:04:08,850 --> 00:04:11,450
+I can update a value associated with key-- all things that I
+
+99
+00:04:11,450 --> 00:04:14,784
+wanted to be able to do inside of that dictionary.
+
+100
+00:04:14,784 --> 00:04:16,200
+Second thing I want to do now is I
+
+101
+00:04:16,200 --> 00:04:19,410
+want to find the most common words given the dictionary's
+
+102
+00:04:19,410 --> 00:04:20,589
+input.
+
+103
+00:04:20,589 --> 00:04:22,630
+So here's how I will do that.
+
+104
+00:04:22,630 --> 00:04:25,930
+First thing I'm going to do is I'm going to get the values out
+
+105
+00:04:25,930 --> 00:04:27,240
+from that dictionary.
+
+106
+00:04:27,240 --> 00:04:30,160
+Values is a method, so I'm going to call it with the open close
+
+107
+00:04:30,160 --> 00:04:30,960
+paren.
+
+108
+00:04:30,960 --> 00:04:34,950
+And that gives me back a set of values.
+
+109
+00:04:34,950 --> 00:04:36,920
+I know those values are all ints.
+
+110
+00:04:36,920 --> 00:04:40,240
+So I can get the most common number very easily.
+
+111
+00:04:40,240 --> 00:04:43,320
+I just apply max to values.
+
+112
+00:04:43,320 --> 00:04:45,070
+I want to stop here for a second because I
+
+113
+00:04:45,070 --> 00:04:47,130
+want to point out a nice thing.
+
+114
+00:04:47,130 --> 00:04:49,570
+I could have written an iterative loop that
+
+115
+00:04:49,570 --> 00:04:51,640
+walked down this, trying to keep pack
+
+116
+00:04:51,640 --> 00:04:54,014
+of what's the best number I've seen so far updating
+
+117
+00:04:54,014 --> 00:04:54,680
+as I went along.
+
+118
+00:04:54,680 --> 00:04:57,694
+It's a perfectly reasonable way to write the code.
+
+119
+00:04:57,694 --> 00:04:59,360
+But it would've generated a lot of code.
+
+120
+00:04:59,360 --> 00:05:01,250
+It would have made it harder to read.
+
+121
+00:05:01,250 --> 00:05:05,820
+Here, in two lines, I've captured the idea I want.
+
+122
+00:05:05,820 --> 00:05:07,694
+Give me all the values in the dictionary.
+
+123
+00:05:07,694 --> 00:05:11,700
+Ah, it's now a collection of integers.
+
+124
+00:05:11,700 --> 00:05:13,750
+Just give me the maximum value.
+
+125
+00:05:13,750 --> 00:05:15,480
+Really nice.
+
+126
+00:05:15,480 --> 00:05:18,440
+Now that I know the best, I need to find all the words that
+
+127
+00:05:18,440 --> 00:05:20,732
+have that value.
+
+128
+00:05:20,732 --> 00:05:22,440
+And here I will write the iterative loop.
+
+129
+00:05:22,440 --> 00:05:25,790
+I'm going to set words up initially to be an empty list.
+
+130
+00:05:25,790 --> 00:05:30,170
+And then for everything in the dictionary, I'm going to check.
+
+131
+00:05:30,170 --> 00:05:34,820
+Is that entry-- does that entry have the value best?
+
+132
+00:05:34,820 --> 00:05:37,160
+In other words, is it one of the most common words?
+
+133
+00:05:37,160 --> 00:05:40,350
+And if it is, oh, there's that nice mutation of words.
+
+134
+00:05:40,350 --> 00:05:42,220
+Just add it to the end of the list.
+
+135
+00:05:42,220 --> 00:05:48,280
+And when I'm done, I'm just going to return words and best.
+
+136
+00:05:48,280 --> 00:05:52,900
+So over here, I've got my Beatles
+
+137
+00:05:52,900 --> 00:05:54,960
+as that set of frequencies.
+
+138
+00:05:54,960 --> 00:05:58,240
+And so I could say give me WNB.
+
+139
+00:05:58,240 --> 00:05:59,730
+I know it's going to return a tuple
+
+140
+00:05:59,730 --> 00:06:07,510
+to be most common words in what I already did
+
+141
+00:06:07,510 --> 00:06:11,730
+as the analysis of that song.
+
+142
+00:06:11,730 --> 00:06:14,940
+And it says, the most common words that occur in that song--
+
+143
+00:06:14,940 --> 00:06:18,120
+not particularly surprising-- "a," "like," "her," and "with."
+
+144
+00:06:18,120 --> 00:06:20,380
+And how often do they occur?
+
+145
+00:06:20,380 --> 00:06:23,470
+They each occur four times.
+
+146
+00:06:23,470 --> 00:06:24,950
+So I've just found that out.
+
+147
+00:06:24,950 --> 00:06:27,292
+That sounds pretty good.
+
+148
+00:06:27,292 --> 00:06:28,750
+Now what else could I do with this?
+
+149
+00:06:28,750 --> 00:06:35,560
+Well, I said I wanted to find the places in which they occur
+
+150
+00:06:35,560 --> 00:06:38,340
+most often and find all of those that occur
+
+151
+00:06:38,340 --> 00:06:40,270
+more than some amount of time.
+
+152
+00:06:40,270 --> 00:06:42,620
+So the last function I'm going to do here
+
+153
+00:06:42,620 --> 00:06:44,690
+is I'm going to create a function that says, find
+
+154
+00:06:44,690 --> 00:06:46,770
+words that occur often in this.
+
+155
+00:06:46,770 --> 00:06:51,020
+Again, I'm going to set up an empty list initially.
+
+156
+00:06:51,020 --> 00:06:53,790
+And here I'm going to create a little flag.
+
+157
+00:06:53,790 --> 00:06:56,700
+And the flag is initially set default
+
+158
+00:06:56,700 --> 00:06:58,640
+because I'm going to run through a loop here.
+
+159
+00:06:58,640 --> 00:07:02,510
+And the loop says, as long as I've still got something to do,
+
+160
+00:07:02,510 --> 00:07:03,980
+here's what I'm going to do.
+
+161
+00:07:03,980 --> 00:07:05,960
+I'm going to find, as I just did,
+
+162
+00:07:05,960 --> 00:07:09,060
+the most common words in the dictionary.
+
+163
+00:07:09,060 --> 00:07:15,190
+And if they occur more than the minimum number of times
+
+164
+00:07:15,190 --> 00:07:20,660
+that I've set, I'm going to add them into my result.
+
+165
+00:07:20,660 --> 00:07:25,080
+And then for everything in that word,
+
+166
+00:07:25,080 --> 00:07:27,800
+I'm going to remove it from the dictionary.
+
+167
+00:07:27,800 --> 00:07:29,122
+So let me say it again.
+
+168
+00:07:29,122 --> 00:07:31,080
+I'm going to say, given I've done the analysis,
+
+169
+00:07:31,080 --> 00:07:32,080
+find the most common word.
+
+170
+00:07:32,080 --> 00:07:33,400
+I don't know how many times it occurs,
+
+171
+00:07:33,400 --> 00:07:34,650
+but I'm going to find them.
+
+172
+00:07:34,650 --> 00:07:37,310
+As long as they occur more than the minimum
+
+173
+00:07:37,310 --> 00:07:40,150
+I've set, then I'm going to collect those,
+
+174
+00:07:40,150 --> 00:07:41,970
+because that's part of what I want to have.
+
+175
+00:07:41,970 --> 00:07:43,860
+And then I'm going to remove them from the dictionary.
+
+176
+00:07:43,860 --> 00:07:45,820
+So I'm mutating the dictionary right here,
+
+177
+00:07:45,820 --> 00:07:49,050
+which is really nice.
+
+178
+00:07:49,050 --> 00:07:52,680
+Because once I've done that, I could go back around and do it
+
+179
+00:07:52,680 --> 00:07:53,610
+again.
+
+180
+00:07:53,610 --> 00:07:56,450
+And I'm going to keep doing that until when I pull out
+
+181
+00:07:56,450 --> 00:07:59,950
+the most common words, they don't exceed my threshold.
+
+182
+00:07:59,950 --> 00:08:03,170
+In which case I'm going to set that flag to true, which
+
+183
+00:08:03,170 --> 00:08:05,620
+means when I go back around to the loop,
+
+184
+00:08:05,620 --> 00:08:08,230
+it's going to say, oh, I'm done.
+
+185
+00:08:08,230 --> 00:08:10,710
+And I'm going to simply return the result.
+
+186
+00:08:10,710 --> 00:08:13,700
+And if I do that over here, in fact,
+
+187
+00:08:13,700 --> 00:08:20,420
+what I get-- if I do words often of Beatles
+
+188
+00:08:20,420 --> 00:08:23,460
+and I want everything that occurs more than five times
+
+189
+00:08:23,460 --> 00:08:27,535
+in that structure, huh, I get nothing.
+
+190
+00:08:27,535 --> 00:08:28,410
+Now, that's a puzzle.
+
+191
+00:08:28,410 --> 00:08:29,600
+And why is it a puzzle?
+
+192
+00:08:29,600 --> 00:08:33,200
+And the puzzle is because I did something
+
+193
+00:08:33,200 --> 00:08:34,870
+that I should have remembered I did.
+
+194
+00:08:34,870 --> 00:08:39,740
+And that is that I actually processed this multiple times.
+
+195
+00:08:39,740 --> 00:08:44,640
+So let me start again by going back to this file
+
+196
+00:08:44,640 --> 00:08:48,110
+and reloading it, because I actually mutated the structures
+
+197
+00:08:48,110 --> 00:08:49,082
+as I went through them.
+
+198
+00:08:49,082 --> 00:08:51,540
+And that's why when I said what were the most common words,
+
+199
+00:08:51,540 --> 00:08:53,915
+it was just "a," "like," "her," and "with" only occurring
+
+200
+00:08:53,915 --> 00:08:54,510
+four times.
+
+201
+00:08:54,510 --> 00:08:56,360
+I'd already changed the structure.
+
+202
+00:08:56,360 --> 00:09:00,130
+Now if do it the right way, you see, ah, not surprisingly,
+
+203
+00:09:00,130 --> 00:09:02,170
+what occurs most often in "She Loves You"?
+
+204
+00:09:02,170 --> 00:09:03,450
+Yeah, yeah, yeah.
+
+205
+00:09:03,450 --> 00:09:05,810
+The word "you," 36 times.
+
+206
+00:09:05,810 --> 00:09:07,910
+The word "yeah," 28 times.
+
+207
+00:09:07,910 --> 00:09:09,400
+"She," 20 times.
+
+208
+00:09:09,400 --> 00:09:12,290
+"Love," 13, and so on.
+
+209
+00:09:12,290 --> 00:09:13,860
+All right, early Beatles weren't very
+
+210
+00:09:13,860 --> 00:09:15,730
+imaginative with their lyrics.
+
+211
+00:09:15,730 --> 00:09:18,860
+But what you've seen is how I can use a dictionary
+
+212
+00:09:18,860 --> 00:09:22,400
+to in fact do analysis, take advantage
+
+213
+00:09:22,400 --> 00:09:24,320
+of the iterable structure of the dictionary.
+
+214
+00:09:24,320 --> 00:09:26,690
+And if you think about the three functions I wrote here,
+
+215
+00:09:26,690 --> 00:09:27,810
+they're very simple.
+
+216
+00:09:27,810 --> 00:09:29,110
+They're very crisp.
+
+217
+00:09:29,110 --> 00:09:32,000
+And they very nicely capture exactly the computation
+
+218
+00:09:32,000 --> 00:09:34,090
+I wanted to do.
+
+219
+00:09:34,090 --> 00:09:34,737
+
+

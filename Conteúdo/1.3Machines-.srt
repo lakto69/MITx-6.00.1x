@@ -1,0 +1,888 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,480
+We've described a recipe.
+
+2
+00:00:02,480 --> 00:00:04,957
+We said it's a sequence of mechanical steps.
+
+3
+00:00:04,957 --> 00:00:06,790
+It's going to capture the sequence of things
+
+4
+00:00:06,790 --> 00:00:09,990
+I want to do in order to compute something.
+
+5
+00:00:09,990 --> 00:00:11,922
+But now I want to get it inside the computer.
+
+6
+00:00:11,922 --> 00:00:13,630
+I don't want to just give it to my friend
+
+7
+00:00:13,630 --> 00:00:15,500
+and have him do all the work for me.
+
+8
+00:00:15,500 --> 00:00:18,150
+So the next question is how do I capture a recipe
+
+9
+00:00:18,150 --> 00:00:21,214
+inside a mechanical process?
+
+10
+00:00:21,214 --> 00:00:22,630
+Go back to my square root example.
+
+11
+00:00:22,630 --> 00:00:24,213
+I'd like to get a machine that's going
+
+12
+00:00:24,213 --> 00:00:26,040
+to compute square roots for me.
+
+13
+00:00:26,040 --> 00:00:28,530
+Historically, there were two choices here.
+
+14
+00:00:28,530 --> 00:00:31,580
+The first one was to use what was called a fixed program
+
+15
+00:00:31,580 --> 00:00:35,480
+computer, and this would be a computer designed specifically
+
+16
+00:00:35,480 --> 00:00:38,567
+to calculate a particular computation.
+
+17
+00:00:38,567 --> 00:00:39,650
+You've actually seen them.
+
+18
+00:00:39,650 --> 00:00:41,170
+Actually, you may be too young to have seen them,
+
+19
+00:00:41,170 --> 00:00:42,700
+but people my age have seen them.
+
+20
+00:00:42,700 --> 00:00:45,780
+Handheld calculators were a fixed program computer.
+
+21
+00:00:45,780 --> 00:00:48,440
+They did addition, subtraction, multiplication,
+
+22
+00:00:48,440 --> 00:00:50,350
+a simple set of arithmetic operations.
+
+23
+00:00:50,350 --> 00:00:51,450
+That's all they could do.
+
+24
+00:00:51,450 --> 00:00:54,020
+If you wanted it to search the web, good luck.
+
+25
+00:00:54,020 --> 00:00:56,070
+Wasn't going to happen.
+
+26
+00:00:56,070 --> 00:00:59,800
+Very famous historical example was Alan Turing's bombe
+
+27
+00:00:59,800 --> 00:01:02,250
+this was a machine designed during World War II
+
+28
+00:01:02,250 --> 00:01:05,150
+to break German codes for the Enigma machine.
+
+29
+00:01:05,150 --> 00:01:08,431
+And it was designed specifically for that process.
+
+30
+00:01:08,431 --> 00:01:10,680
+It was also built out of devices you don't see anymore
+
+31
+00:01:10,680 --> 00:01:12,552
+like vacuum tubes and relays, and you
+
+32
+00:01:12,552 --> 00:01:14,760
+can imagine the challenge of building such a machine.
+
+33
+00:01:14,760 --> 00:01:19,129
+But it was designed to be a fixed program computer.
+
+34
+00:01:19,129 --> 00:01:20,920
+That'd be boring if that's all we could do.
+
+35
+00:01:20,920 --> 00:01:22,080
+I don't want to have to carry around
+
+36
+00:01:22,080 --> 00:01:24,400
+a computer for square root and a computer for cube root
+
+37
+00:01:24,400 --> 00:01:27,830
+and a computer for quadratic root, you get the idea.
+
+38
+00:01:27,830 --> 00:01:30,740
+The alternative is what's called a stored program computer,
+
+39
+00:01:30,740 --> 00:01:33,630
+and that's what you're used to seeing.
+
+40
+00:01:33,630 --> 00:01:35,350
+Difference with a stored program computer
+
+41
+00:01:35,350 --> 00:01:39,340
+is that you can load into it that description, that sequence
+
+42
+00:01:39,340 --> 00:01:41,490
+of instructions, that recipe.
+
+43
+00:01:41,490 --> 00:01:43,540
+And then inside that computer, there
+
+44
+00:01:43,540 --> 00:01:45,660
+are going to be a set of parts that
+
+45
+00:01:45,660 --> 00:01:47,460
+are going to do those instructions when
+
+46
+00:01:47,460 --> 00:01:48,690
+I ask them to.
+
+47
+00:01:48,690 --> 00:01:51,600
+And in particular, there's going to be a special program
+
+48
+00:01:51,600 --> 00:01:55,970
+inside the computer typically called an interpreter, which
+
+49
+00:01:55,970 --> 00:01:58,770
+when you start it up, is going to walk through each
+
+50
+00:01:58,770 --> 00:02:00,430
+of those sequence of instructions,
+
+51
+00:02:00,430 --> 00:02:03,500
+in turn, doing the computation I want.
+
+52
+00:02:03,500 --> 00:02:05,810
+And the advantage of a stored program computer
+
+53
+00:02:05,810 --> 00:02:08,180
+is I can load in a different program
+
+54
+00:02:08,180 --> 00:02:10,330
+and have it do the same thing.
+
+55
+00:02:10,330 --> 00:02:13,220
+In essence, that stored program computer
+
+56
+00:02:13,220 --> 00:02:16,840
+is emulating or imitating a fixed program
+
+57
+00:02:16,840 --> 00:02:20,090
+computer for each program that I load in.
+
+58
+00:02:20,090 --> 00:02:22,040
+Gives me an infinite range of things that
+
+59
+00:02:22,040 --> 00:02:23,970
+are going to be able to do.
+
+60
+00:02:23,970 --> 00:02:25,750
+So what I want to now think about is,
+
+61
+00:02:25,750 --> 00:02:28,410
+how do I take a description of a process
+
+62
+00:02:28,410 --> 00:02:31,420
+in those mechanical steps and write it in such a way
+
+63
+00:02:31,420 --> 00:02:33,000
+that I can load it into the computer
+
+64
+00:02:33,000 --> 00:02:35,920
+and the computer can do the work for me?
+
+65
+00:02:35,920 --> 00:02:37,910
+Before I do that, I need to think about what's
+
+66
+00:02:37,910 --> 00:02:38,797
+inside the machine.
+
+67
+00:02:38,797 --> 00:02:41,130
+So we're going to take just a second to open up the hood
+
+68
+00:02:41,130 --> 00:02:44,030
+and look inside a typical computer.
+
+69
+00:02:44,030 --> 00:02:46,360
+Basic machine architecture of a computer
+
+70
+00:02:46,360 --> 00:02:48,000
+has some simple pieces.
+
+71
+00:02:48,000 --> 00:02:50,130
+It's obviously got some memory, places in which I'm
+
+72
+00:02:50,130 --> 00:02:51,046
+going to store things.
+
+73
+00:02:51,046 --> 00:02:54,790
+Now, up here in this memory, it could be data,
+
+74
+00:02:54,790 --> 00:02:57,670
+but it also could be a sequence of instructions
+
+75
+00:02:57,670 --> 00:03:00,120
+that are my program.
+
+76
+00:03:00,120 --> 00:03:01,589
+That mechanical set of steps.
+
+77
+00:03:01,589 --> 00:03:03,380
+I haven't said exactly what they look like,
+
+78
+00:03:03,380 --> 00:03:06,005
+but you got a sense of them from what I did in that square root
+
+79
+00:03:06,005 --> 00:03:06,690
+example.
+
+80
+00:03:06,690 --> 00:03:09,190
+I'm also going to have a way to load things into the machine
+
+81
+00:03:09,190 --> 00:03:10,420
+and print things out of the machine.
+
+82
+00:03:10,420 --> 00:03:11,380
+Input and output.
+
+83
+00:03:11,380 --> 00:03:13,670
+We'll come back to those later on.
+
+84
+00:03:13,670 --> 00:03:16,480
+Inside the heart of the machine there are two elements.
+
+85
+00:03:16,480 --> 00:03:21,210
+The first is often called an ALU-- an Arithmetic Logic Unit.
+
+86
+00:03:21,210 --> 00:03:25,640
+And what this unit does is it takes information from memory,
+
+87
+00:03:25,640 --> 00:03:28,720
+reads it in-- often two pieces of information if I'm
+
+88
+00:03:28,720 --> 00:03:31,800
+going to do an operation that takes two inputs-- is going
+
+89
+00:03:31,800 --> 00:03:34,780
+to do a primitive operation could be addition,
+
+90
+00:03:34,780 --> 00:03:36,840
+could be subtraction, could be testing
+
+91
+00:03:36,840 --> 00:03:38,660
+to see if something is true or false,
+
+92
+00:03:38,660 --> 00:03:40,820
+and then typically is going to store stuff
+
+93
+00:03:40,820 --> 00:03:43,390
+back up into memory.
+
+94
+00:03:43,390 --> 00:03:45,730
+To make that happen, we need one more piece,
+
+95
+00:03:45,730 --> 00:03:47,520
+and that's the control unit.
+
+96
+00:03:47,520 --> 00:03:52,020
+And that's going to keep track of what a specific operation
+
+97
+00:03:52,020 --> 00:03:55,072
+I want to do in that ALU at each point in time.
+
+98
+00:03:55,072 --> 00:03:56,530
+And inside the control unit there's
+
+99
+00:03:56,530 --> 00:04:00,030
+an important thing called a program counter.
+
+100
+00:04:00,030 --> 00:04:01,930
+So very simply, when I load a program
+
+101
+00:04:01,930 --> 00:04:04,430
+into the machine- in a second we'll get into how to do that.
+
+102
+00:04:04,430 --> 00:04:06,250
+But I load a program into the machine.
+
+103
+00:04:06,250 --> 00:04:09,050
+It's a sequence of instructions up here.
+
+104
+00:04:09,050 --> 00:04:12,490
+and the program counter points to the location
+
+105
+00:04:12,490 --> 00:04:14,100
+of the first instruction.
+
+106
+00:04:14,100 --> 00:04:16,420
+And when I ask the machine to execute,
+
+107
+00:04:16,420 --> 00:04:18,769
+the program counter reads that first instruction.
+
+108
+00:04:18,769 --> 00:04:22,089
+It's going to cause an operation to take place,
+
+109
+00:04:22,089 --> 00:04:26,100
+and is then going to add one to the program counter, which
+
+110
+00:04:26,100 --> 00:04:29,800
+is going to take it to the next instruction in the sequence.
+
+111
+00:04:29,800 --> 00:04:32,119
+Just as we saw in the square root example.
+
+112
+00:04:32,119 --> 00:04:33,660
+That's going to do another operation.
+
+113
+00:04:33,660 --> 00:04:35,600
+Typically doing some arithmetic operation,
+
+114
+00:04:35,600 --> 00:04:37,490
+move things back into memory, and it's
+
+115
+00:04:37,490 --> 00:04:39,780
+going to increase the program counter.
+
+116
+00:04:39,780 --> 00:04:42,062
+Eventually, we're going to get to a test,
+
+117
+00:04:42,062 --> 00:04:44,020
+and that test is going to say whether something
+
+118
+00:04:44,020 --> 00:04:45,630
+is true or false.
+
+119
+00:04:45,630 --> 00:04:49,400
+And based on that, we're going to change the program counter
+
+120
+00:04:49,400 --> 00:04:53,100
+to go back up, for example, to the beginning of the code.
+
+121
+00:04:53,100 --> 00:04:54,600
+But that's, in essence, what happens
+
+122
+00:04:54,600 --> 00:04:57,230
+inside a modern machine.
+
+123
+00:04:57,230 --> 00:05:00,470
+Control unit tells me where I am in a sequence of instructions.
+
+124
+00:05:00,470 --> 00:05:02,950
+I've read into the machine, that stored program.
+
+125
+00:05:02,950 --> 00:05:06,540
+That causes a simple loop inside the machine of operations.
+
+126
+00:05:06,540 --> 00:05:09,090
+When I get to a test, it's going to potentially change
+
+127
+00:05:09,090 --> 00:05:10,740
+the program counter, and when I get
+
+128
+00:05:10,740 --> 00:05:14,140
+to something that says stop, it will
+
+129
+00:05:14,140 --> 00:05:16,960
+and it'll print something out on the machine.
+
+130
+00:05:16,960 --> 00:05:18,630
+That's the heart of a machine.
+
+131
+00:05:18,630 --> 00:05:20,970
+That's all there is inside a computer.
+
+132
+00:05:20,970 --> 00:05:21,650
+All right.
+
+133
+00:05:21,650 --> 00:05:22,810
+It's a lot of stuff inside there,
+
+134
+00:05:22,810 --> 00:05:25,040
+but that's basically what the machine is going to do,
+
+135
+00:05:25,040 --> 00:05:27,270
+and our goal is now to figure out
+
+136
+00:05:27,270 --> 00:05:29,660
+how do we write that sequence of instructions
+
+137
+00:05:29,660 --> 00:05:34,434
+so that the computer can do the things I want it to.
+
+138
+00:05:34,434 --> 00:05:37,280
+To summarize, a stored program computer, then,
+
+139
+00:05:37,280 --> 00:05:39,460
+is going to be that sequence of instructions.
+
+140
+00:05:39,460 --> 00:05:42,240
+It's going to be built out of simple arithmetic and logic
+
+141
+00:05:42,240 --> 00:05:43,290
+instructions.
+
+142
+00:05:43,290 --> 00:05:45,440
+It's going to be built out of simple tests.
+
+143
+00:05:45,440 --> 00:05:47,940
+And it's going to allow us to move data around.
+
+144
+00:05:47,940 --> 00:05:49,930
+And associated with that is going
+
+145
+00:05:49,930 --> 00:05:52,850
+to be this special program called the interpreter that's
+
+146
+00:05:52,850 --> 00:05:55,420
+going to execute each of those sequences of instructions
+
+147
+00:05:55,420 --> 00:05:58,470
+in order, changing things with the flow of control
+
+148
+00:05:58,470 --> 00:06:01,340
+when a test says, I want to go somewhere else.
+
+149
+00:06:01,340 --> 00:06:04,210
+And then finally, when I'm done, print out the answer.
+
+150
+00:06:04,210 --> 00:06:07,170
+
+
+151
+00:06:07,170 --> 00:06:08,570
+That sounds great.
+
+152
+00:06:08,570 --> 00:06:11,200
+So what are the basic parameters?
+
+153
+00:06:11,200 --> 00:06:12,780
+Most machines will come, as I said,
+
+154
+00:06:12,780 --> 00:06:16,660
+with simple arithmetic and logic operations.
+
+155
+00:06:16,660 --> 00:06:19,810
+But in fact, you can go even simpler than that.
+
+156
+00:06:19,810 --> 00:06:22,330
+And if you go back to that gentleman I mentioned earlier--
+
+157
+00:06:22,330 --> 00:06:24,496
+Alan Turing, one of the greatest computer scientists
+
+158
+00:06:24,496 --> 00:06:26,370
+in the history of the world-- Turing
+
+159
+00:06:26,370 --> 00:06:29,010
+showed that you can compute anything
+
+160
+00:06:29,010 --> 00:06:30,645
+with just six primitives.
+
+161
+00:06:30,645 --> 00:06:32,770
+In fact, there's something called a Turing machine,
+
+162
+00:06:32,770 --> 00:06:35,240
+an old example of which is shown in that little image
+
+163
+00:06:35,240 --> 00:06:36,490
+on the slide.
+
+164
+00:06:36,490 --> 00:06:38,800
+A Turing machine is an infinite tape
+
+165
+00:06:38,800 --> 00:06:40,230
+with a set of squares on it.
+
+166
+00:06:40,230 --> 00:06:42,050
+In each square, there's a symbol,
+
+167
+00:06:42,050 --> 00:06:43,900
+could just be a 0 or a 1.
+
+168
+00:06:43,900 --> 00:06:46,630
+And what Turing showed is if you have six operations.
+
+169
+00:06:46,630 --> 00:06:53,040
+And those are move left, move right, scan, read, write,
+
+170
+00:06:53,040 --> 00:06:54,440
+do nothing.
+
+171
+00:06:54,440 --> 00:06:58,170
+With just those six primitives, you
+
+172
+00:06:58,170 --> 00:07:01,250
+can compute anything that's computable.
+
+173
+00:07:01,250 --> 00:07:03,820
+You're now panicking and looking to find a different class,
+
+174
+00:07:03,820 --> 00:07:05,710
+because if what you had to do was program
+
+175
+00:07:05,710 --> 00:07:09,480
+a computer by saying move left, move right, read, write, scan,
+
+176
+00:07:09,480 --> 00:07:12,270
+stop, you don't want to program.
+
+177
+00:07:12,270 --> 00:07:14,890
+Fortunately, modern programming languages
+
+178
+00:07:14,890 --> 00:07:17,250
+come with a more convenient set of primitives.
+
+179
+00:07:17,250 --> 00:07:19,910
+But the fundamental idea is that with a simple set
+
+180
+00:07:19,910 --> 00:07:23,650
+of primitives, you should be able to compute anything.
+
+181
+00:07:23,650 --> 00:07:26,580
+Equally importantly, you don't want to just write everything
+
+182
+00:07:26,580 --> 00:07:29,740
+in terms of addition, subtraction, logical tests.
+
+183
+00:07:29,740 --> 00:07:32,370
+What you want to do is write descriptions
+
+184
+00:07:32,370 --> 00:07:34,020
+like that square root program that we
+
+185
+00:07:34,020 --> 00:07:36,814
+talked about earlier and then abstract them.
+
+186
+00:07:36,814 --> 00:07:38,230
+And I want to highlight that word,
+
+187
+00:07:38,230 --> 00:07:40,280
+because abstract is going to be really important.
+
+188
+00:07:40,280 --> 00:07:44,680
+You want to treat that square root as if the manufacturer had
+
+189
+00:07:44,680 --> 00:07:47,435
+built a little primitive and installed it in your machine.
+
+190
+00:07:47,435 --> 00:07:49,810
+You want to be able to use it as if it was something that
+
+191
+00:07:49,810 --> 00:07:51,720
+came with the machine, and that's
+
+192
+00:07:51,720 --> 00:07:54,910
+what the power of computational thinking is going to give us.
+
+193
+00:07:54,910 --> 00:07:58,630
+One last thing about computation.
+
+194
+00:07:58,630 --> 00:08:01,290
+Let's go back to the Turing machine idea.
+
+195
+00:08:01,290 --> 00:08:03,050
+I said you could compute anything
+
+196
+00:08:03,050 --> 00:08:04,929
+if you just had the six moves.
+
+197
+00:08:04,929 --> 00:08:06,220
+There are some nuances to this.
+
+198
+00:08:06,220 --> 00:08:07,982
+A more sophisticated computer scientist
+
+199
+00:08:07,982 --> 00:08:09,440
+could debate some of those details,
+
+200
+00:08:09,440 --> 00:08:11,340
+but there's a fundamental property
+
+201
+00:08:11,340 --> 00:08:15,030
+which says anything that's computable in one programming
+
+202
+00:08:15,030 --> 00:08:18,780
+language is, in fact, computable in any other programming
+
+203
+00:08:18,780 --> 00:08:20,530
+language.
+
+204
+00:08:20,530 --> 00:08:22,230
+Wow.
+
+205
+00:08:22,230 --> 00:08:24,470
+That's amazing.
+
+206
+00:08:24,470 --> 00:08:27,330
+Says, well, you may get heated debates between people
+
+207
+00:08:27,330 --> 00:08:30,360
+about whether Python or C or Fortran or LISP
+
+208
+00:08:30,360 --> 00:08:32,520
+is the best computer programming language.
+
+209
+00:08:32,520 --> 00:08:34,111
+They're all the same.
+
+210
+00:08:34,111 --> 00:08:34,610
+OK.
+
+211
+00:08:34,610 --> 00:08:35,445
+Slight misstatement.
+
+212
+00:08:35,445 --> 00:08:40,110
+
+
+213
+00:08:40,110 --> 00:08:41,870
+In some languages, it's going to be easier
+
+214
+00:08:41,870 --> 00:08:44,300
+to do some kinds of things than others.
+
+215
+00:08:44,300 --> 00:08:47,230
+In Matlab, it's easier to manipulate matrices.
+
+216
+00:08:47,230 --> 00:08:50,100
+In C, it's easier to deal with web programming.
+
+217
+00:08:50,100 --> 00:08:53,230
+But nonetheless, anything you can compute in one language,
+
+218
+00:08:53,230 --> 00:08:55,650
+you can compute in any other language,
+
+219
+00:08:55,650 --> 00:08:58,410
+and this is a property called Turing complete.
+
+220
+00:08:58,410 --> 00:09:02,070
+It's one of the fundamentals of computer science.
+
+221
+00:09:02,070 --> 00:09:02,570
+
+

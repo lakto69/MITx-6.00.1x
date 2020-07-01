@@ -1,0 +1,524 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,600
+As we've already seen in our programs,
+
+2
+00:00:02,600 --> 00:00:06,150
+we need to be able to both read input in and print stuff
+
+3
+00:00:06,150 --> 00:00:08,666
+out, or return values.
+
+4
+00:00:08,666 --> 00:00:10,790
+I want to now spend a little bit more time on that.
+
+5
+00:00:10,790 --> 00:00:13,039
+We showed a very quick example of it earlier on.
+
+6
+00:00:13,039 --> 00:00:14,580
+But I want to come back to that to be
+
+7
+00:00:14,580 --> 00:00:17,400
+able to give you a sense of how you can control that.
+
+8
+00:00:17,400 --> 00:00:20,400
+So let's start with output.
+
+9
+00:00:20,400 --> 00:00:22,890
+I want to be able to print something to the monitor
+
+10
+00:00:22,890 --> 00:00:24,750
+as I'm doing computation, not just
+
+11
+00:00:24,750 --> 00:00:27,810
+at the end of a computation, but perhaps partway through that.
+
+12
+00:00:27,810 --> 00:00:30,140
+And here, we have a keyword called print
+
+13
+00:00:30,140 --> 00:00:31,611
+that's going to do that for us.
+
+14
+00:00:31,611 --> 00:00:33,360
+And I've got a simple little example here,
+
+15
+00:00:33,360 --> 00:00:35,950
+which I'm going to run on my machine.
+
+16
+00:00:35,950 --> 00:00:39,270
+I'm going to define x to have the value 1.
+
+17
+00:00:39,270 --> 00:00:40,580
+I could just print x.
+
+18
+00:00:40,580 --> 00:00:44,430
+So the keyword print followed by an open paren followed by,
+
+19
+00:00:44,430 --> 00:00:47,570
+in this case a name, x, followed by closed paren
+
+20
+00:00:47,570 --> 00:00:50,750
+simply prints out that value on the screen,
+
+21
+00:00:50,750 --> 00:00:52,501
+kind of trivial in this case.
+
+22
+00:00:52,501 --> 00:00:54,000
+But I want to show you some examples
+
+23
+00:00:54,000 --> 00:00:56,416
+of how I could control the print a little bit differently.
+
+24
+00:00:56,416 --> 00:01:00,790
+So I'm going to define x string to be the string x.
+
+25
+00:01:00,790 --> 00:01:03,490
+And notice what I'm doing here. x is an int.
+
+26
+00:01:03,490 --> 00:01:07,160
+str is going to actually cast it into, or convert it,
+
+27
+00:01:07,160 --> 00:01:10,532
+into a string, that is, the symbol x.
+
+28
+00:01:10,532 --> 00:01:11,740
+And I'm going to have a name.
+
+29
+00:01:11,740 --> 00:01:15,645
+In this case, I've called it x underscore str.
+
+30
+00:01:15,645 --> 00:01:19,610
+When I do that on my machine, I've now got a binding for x
+
+31
+00:01:19,610 --> 00:01:20,570
+string.
+
+32
+00:01:20,570 --> 00:01:21,890
+Now, I can do printing.
+
+33
+00:01:21,890 --> 00:01:23,930
+And printing here can take multiple arguments.
+
+34
+00:01:23,930 --> 00:01:25,550
+You can see it on my slide.
+
+35
+00:01:25,550 --> 00:01:28,860
+I'm going to print out a combination of this expression,
+
+36
+00:01:28,860 --> 00:01:31,690
+that expression, a sequence of expressions,
+
+37
+00:01:31,690 --> 00:01:34,240
+all separated by commas.
+
+38
+00:01:34,240 --> 00:01:35,740
+Let's see what happens if I do that.
+
+39
+00:01:35,740 --> 00:01:44,520
+So I'm going to print of my favorite number is a comma,
+
+40
+00:01:44,520 --> 00:01:45,760
+to say I've got something.
+
+41
+00:01:45,760 --> 00:01:48,130
+And then I'm going to give it x.
+
+42
+00:01:48,130 --> 00:01:50,170
+And then I'm going to give it a period enclosed
+
+43
+00:01:50,170 --> 00:01:51,950
+in double quotes.
+
+44
+00:01:51,950 --> 00:01:54,370
+And then I'm going to give it something
+
+45
+00:01:54,370 --> 00:01:58,764
+that says what's the actual value of x and x,
+
+46
+00:01:58,764 --> 00:02:01,220
+sequence of things.
+
+47
+00:02:01,220 --> 00:02:05,000
+And if I print it, I get something pretty funky.
+
+48
+00:02:05,000 --> 00:02:06,930
+It says my fav num is 1.
+
+49
+00:02:06,930 --> 00:02:09,800
+Oh, but then there's a space before the period.
+
+50
+00:02:09,800 --> 00:02:12,414
+And then it says x is equal to 1.
+
+51
+00:02:12,414 --> 00:02:14,570
+Hm, what happened there?
+
+52
+00:02:14,570 --> 00:02:17,290
+Well, what happened is that print is literally
+
+53
+00:02:17,290 --> 00:02:20,810
+printing each element followed by a space.
+
+54
+00:02:20,810 --> 00:02:24,430
+And in particular, x has a value that's
+
+55
+00:02:24,430 --> 00:02:27,710
+going to show up separately from the period.
+
+56
+00:02:27,710 --> 00:02:29,690
+On the other hand, if I give x as a string,
+
+57
+00:02:29,690 --> 00:02:31,890
+it's simply going to put the two pieces together.
+
+58
+00:02:31,890 --> 00:02:34,390
+And so I can do a second kind of print, which is, I can say,
+
+59
+00:02:34,390 --> 00:02:40,210
+print my favorite number is.
+
+60
+00:02:40,210 --> 00:02:45,630
+And then I'm going to add to that, or concatenate, x string.
+
+61
+00:02:45,630 --> 00:02:50,900
+And then I'm going to add to that period,
+
+62
+00:02:50,900 --> 00:02:56,690
+add to that the last part of the string, x equals,
+
+63
+00:02:56,690 --> 00:03:01,040
+and add to that x string.
+
+64
+00:03:01,040 --> 00:03:05,559
+And if I print that out, I get something a little better.
+
+65
+00:03:05,559 --> 00:03:06,350
+In fact, I blew it.
+
+66
+00:03:06,350 --> 00:03:08,319
+I wanted to have a space between the period,
+
+67
+00:03:08,319 --> 00:03:10,360
+so that it would actually print it out as saying,
+
+68
+00:03:10,360 --> 00:03:12,699
+my favorite number is 1.
+
+69
+00:03:12,699 --> 00:03:13,990
+So let's do that one more time.
+
+70
+00:03:13,990 --> 00:03:21,130
+Print my favorite number is, and a space,
+
+71
+00:03:21,130 --> 00:03:35,410
+concatenate x string with period, and a space,
+
+72
+00:03:35,410 --> 00:03:41,860
+concatenate that with x equals, with a space at the end.
+
+73
+00:03:41,860 --> 00:03:46,540
+We concatenate all of that with x string.
+
+74
+00:03:46,540 --> 00:03:50,340
+And I finally get what I wanted.
+
+75
+00:03:50,340 --> 00:03:52,160
+What am I showing you here?
+
+76
+00:03:52,160 --> 00:03:55,240
+In the case of print with multiple arguments,
+
+77
+00:03:55,240 --> 00:03:58,610
+it will print each one of them spaced apart.
+
+78
+00:03:58,610 --> 00:04:01,910
+In this case, I am concatenating the entire thing
+
+79
+00:04:01,910 --> 00:04:04,650
+into one long string and then printing it out.
+
+80
+00:04:04,650 --> 00:04:07,160
+And I can control the spacing around it.
+
+81
+00:04:07,160 --> 00:04:10,190
+So this is going to give me a way
+
+82
+00:04:10,190 --> 00:04:12,870
+to give an output to the machine telling me
+
+83
+00:04:12,870 --> 00:04:15,840
+what I've done as I control it.
+
+84
+00:04:15,840 --> 00:04:17,610
+What about the other direction?
+
+85
+00:04:17,610 --> 00:04:19,810
+I want to bring in input.
+
+86
+00:04:19,810 --> 00:04:21,680
+And here, I have another key word
+
+87
+00:04:21,680 --> 00:04:24,140
+called input not surprisingly.
+
+88
+00:04:24,140 --> 00:04:28,750
+And it takes a single argument, which is a string.
+
+89
+00:04:28,750 --> 00:04:31,520
+And its behavior is it's going to print out whatever is inside
+
+90
+00:04:31,520 --> 00:04:33,732
+of those quotes, that string.
+
+91
+00:04:33,732 --> 00:04:35,690
+It's going to wait for me to type something in.
+
+92
+00:04:35,690 --> 00:04:38,960
+When I hit Enter, it's going to evaluate whatever I typed in
+
+93
+00:04:38,960 --> 00:04:43,789
+and return that as the result of the input statement.
+
+94
+00:04:43,789 --> 00:04:46,080
+Typically, I'm going to want to bind that to something.
+
+95
+00:04:46,080 --> 00:04:51,000
+So I can bind it to a variable named, like text.
+
+96
+00:04:51,000 --> 00:04:55,770
+And if I try this, I can say, text equals input.
+
+97
+00:04:55,770 --> 00:04:58,121
+And I'm going to simply say type something.
+
+98
+00:04:58,121 --> 00:05:04,119
+
+
+99
+00:05:04,119 --> 00:05:04,910
+Notice what it did.
+
+100
+00:05:04,910 --> 00:05:06,480
+It just printed out type something.
+
+101
+00:05:06,480 --> 00:05:08,840
+It's waiting for me to do something.
+
+102
+00:05:08,840 --> 00:05:13,580
+And I can say, foo.
+
+103
+00:05:13,580 --> 00:05:14,240
+What did I do?
+
+104
+00:05:14,240 --> 00:05:15,920
+I bound that to the name text.
+
+105
+00:05:15,920 --> 00:05:18,220
+If I look at the text, there it is.
+
+106
+00:05:18,220 --> 00:05:20,300
+So if I wanted to really be annoying about it,
+
+107
+00:05:20,300 --> 00:05:26,950
+I could then say print 5 times text.
+
+108
+00:05:26,950 --> 00:05:28,486
+And there it is.
+
+109
+00:05:28,486 --> 00:05:30,360
+Now, maybe you're looking at that and saying,
+
+110
+00:05:30,360 --> 00:05:32,320
+wait a minute, why are the double quotes there?
+
+111
+00:05:32,320 --> 00:05:34,260
+Because I typed them in.
+
+112
+00:05:34,260 --> 00:05:37,140
+Input simply expects everything to be a string.
+
+113
+00:05:37,140 --> 00:05:38,380
+So I could do the same thing.
+
+114
+00:05:38,380 --> 00:05:43,460
+I could say text equals input type something.
+
+115
+00:05:43,460 --> 00:05:46,986
+
+
+116
+00:05:46,986 --> 00:05:48,110
+Again, it's waiting for it.
+
+117
+00:05:48,110 --> 00:05:52,610
+In this case, I'm simply going to write in the string bar.
+
+118
+00:05:52,610 --> 00:05:53,700
+And what's text?
+
+119
+00:05:53,700 --> 00:05:54,540
+It's just bar.
+
+120
+00:05:54,540 --> 00:05:57,930
+And in fact, if I say, what's the type of text,
+
+121
+00:05:57,930 --> 00:05:59,650
+it says it's a string.
+
+122
+00:05:59,650 --> 00:06:01,200
+So if I'm going to type something in,
+
+123
+00:06:01,200 --> 00:06:04,920
+it's automatically going to read it in as if it's a string.
+
+124
+00:06:04,920 --> 00:06:08,810
+Ah, but that says, if I wanted to get a number in,
+
+125
+00:06:08,810 --> 00:06:10,450
+I need to cast it.
+
+126
+00:06:10,450 --> 00:06:13,700
+And that's what this last example does down here.
+
+127
+00:06:13,700 --> 00:06:16,080
+Input, even if I type in a number,
+
+128
+00:06:16,080 --> 00:06:18,810
+is going to interpret it as a string of the characters
+
+129
+00:06:18,810 --> 00:06:19,950
+of the number.
+
+130
+00:06:19,950 --> 00:06:25,360
+And so I need to turn it into an int before I actually use it.
+

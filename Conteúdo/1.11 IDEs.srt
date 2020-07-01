@@ -1,0 +1,348 @@
+0
+00:00:00,000 --> 00:00:00,770
+...
+
+1
+00:00:00,770 --> 00:00:05,020
+So far we've just been typing things into our Python shell.
+
+2
+00:00:05,020 --> 00:00:07,630
+And for simple expressions, that's OK.
+
+3
+00:00:07,630 --> 00:00:09,450
+But it's even there a little bit painful.
+
+4
+00:00:09,450 --> 00:00:11,450
+And when we want to do things that we might like
+
+5
+00:00:11,450 --> 00:00:14,030
+to run multiple times or when we want to do things
+
+6
+00:00:14,030 --> 00:00:17,140
+with multiple commands, we'd really like a better way
+
+7
+00:00:17,140 --> 00:00:18,530
+to deal with that.
+
+8
+00:00:18,530 --> 00:00:21,250
+And for that, we'd like to have a text editor.
+
+9
+00:00:21,250 --> 00:00:24,010
+Just like an editor you'd use for writing Word documents,
+
+10
+00:00:24,010 --> 00:00:28,440
+we'd like an editor into which we can type Python expressions.
+
+11
+00:00:28,440 --> 00:00:30,530
+And in most cases that comes as part of something
+
+12
+00:00:30,530 --> 00:00:33,950
+called an IDE, an integrated development environment.
+
+13
+00:00:33,950 --> 00:00:35,900
+I happen to be using one from Anaconda.
+
+14
+00:00:35,900 --> 00:00:37,730
+IDLE's another version of it.
+
+15
+00:00:37,730 --> 00:00:40,990
+And that IDE comes both with a text editor into which I
+
+16
+00:00:40,990 --> 00:00:43,100
+can enter things, I can edit them,
+
+17
+00:00:43,100 --> 00:00:46,074
+and I can save them away, a shell, which
+
+18
+00:00:46,074 --> 00:00:48,240
+is that place where I'm going to be able to interact
+
+19
+00:00:48,240 --> 00:00:51,280
+and where I can load that information in before I do
+
+20
+00:00:51,280 --> 00:00:54,010
+that interaction, and as we'll see later on,
+
+21
+00:00:54,010 --> 00:00:55,850
+an integrated debugger.
+
+22
+00:00:55,850 --> 00:00:57,560
+And I want to show you just an example
+
+23
+00:00:57,560 --> 00:01:00,980
+of how I would use that text editor as part of the IDE.
+
+24
+00:01:00,980 --> 00:01:03,517
+
+
+25
+00:01:03,517 --> 00:01:05,850
+Your own computer may have a slightly different version,
+
+26
+00:01:05,850 --> 00:01:07,516
+but you should be able to figure it out.
+
+27
+00:01:07,516 --> 00:01:10,250
+Let me simply show you an interaction on mine.
+
+28
+00:01:10,250 --> 00:01:14,725
+So on my computer, I have both a text file opened up
+
+29
+00:01:14,725 --> 00:01:15,600
+as well as the shell.
+
+30
+00:01:15,600 --> 00:01:17,850
+And here I'm going to type in a couple of expressions.
+
+31
+00:01:17,850 --> 00:01:21,060
+I'm going to set x to the value 5.
+
+32
+00:01:21,060 --> 00:01:23,410
+And then I'm going to create a little conditional.
+
+33
+00:01:23,410 --> 00:01:28,700
+I'm going to see if x is not equal to 5-- and remember,
+
+34
+00:01:28,700 --> 00:01:31,160
+I'm going to close that conditional with a colon
+
+35
+00:01:31,160 --> 00:01:33,300
+to tell me I'm at the end of it.
+
+36
+00:01:33,300 --> 00:01:36,400
+When I hit a carriage return, the editor automatically
+
+37
+00:01:36,400 --> 00:01:37,760
+indents, which is really nice.
+
+38
+00:01:37,760 --> 00:01:40,010
+I know that the next set of things should be indented.
+
+39
+00:01:40,010 --> 00:01:43,737
+So in this case I'm going to say print out I am here.
+
+40
+00:01:43,737 --> 00:01:46,070
+I have no idea, why but it seems like a reasonable thing
+
+41
+00:01:46,070 --> 00:01:47,970
+to print out.
+
+42
+00:01:47,970 --> 00:01:49,014
+I hit a carriage return.
+
+43
+00:01:49,014 --> 00:01:50,180
+I'm still at the same place.
+
+44
+00:01:50,180 --> 00:01:52,350
+But then I'm going to put in an else clause.
+
+45
+00:01:52,350 --> 00:01:54,290
+And notice it nicely indents back
+
+46
+00:01:54,290 --> 00:01:56,850
+because the else should be at the same level as the if.
+
+47
+00:01:56,850 --> 00:02:02,850
+And then I'm going to say print, no I am not.
+
+48
+00:02:02,850 --> 00:02:04,540
+Now I want to run this, meaning I'd
+
+49
+00:02:04,540 --> 00:02:08,520
+like to load this information into my shell.
+
+50
+00:02:08,520 --> 00:02:10,020
+There are a number of ways to do it.
+
+51
+00:02:10,020 --> 00:02:13,510
+But the easiest one is if I go up to my menu item at the top,
+
+52
+00:02:13,510 --> 00:02:14,760
+there is something called Run.
+
+53
+00:02:14,760 --> 00:02:17,480
+And if I click on that, it gives me a set of options,
+
+54
+00:02:17,480 --> 00:02:19,790
+including something called Run.
+
+55
+00:02:19,790 --> 00:02:21,250
+And I hit Run.
+
+56
+00:02:21,250 --> 00:02:23,530
+And it's going to ask me where to store that file.
+
+57
+00:02:23,530 --> 00:02:25,196
+I'm going to give it a name temporarily.
+
+58
+00:02:25,196 --> 00:02:27,480
+
+
+59
+00:02:27,480 --> 00:02:30,600
+And it said I didn't like that.
+
+60
+00:02:30,600 --> 00:02:33,110
+So I'm going to try it again, giving it a place
+
+61
+00:02:33,110 --> 00:02:34,620
+that I know I can store it to.
+
+62
+00:02:34,620 --> 00:02:36,960
+Let me do that.
+
+63
+00:02:36,960 --> 00:02:42,530
+I want to pick a particular place, save it away.
+
+64
+00:02:42,530 --> 00:02:43,650
+Oh nice.
+
+65
+00:02:43,650 --> 00:02:46,130
+If you now look at my shell, it's
+
+66
+00:02:46,130 --> 00:02:49,120
+actually evaluated that code.
+
+67
+00:02:49,120 --> 00:02:51,650
+It turns out that I have other options here.
+
+68
+00:02:51,650 --> 00:02:54,880
+Under that menu I could run the entire file,
+
+69
+00:02:54,880 --> 00:02:57,630
+or I could pick something out and run just a portion of it.
+
+70
+00:02:57,630 --> 00:03:00,760
+I could select a thing using the mouse or run a line.
+
+71
+00:03:00,760 --> 00:03:02,410
+One of the other things I'd like to do
+
+72
+00:03:02,410 --> 00:03:04,300
+is to run that file multiple times.
+
+73
+00:03:04,300 --> 00:03:08,330
+So for example I could say I'm going to change x from 5 to 6.
+
+74
+00:03:08,330 --> 00:03:10,120
+And now it turns out on my machine
+
+75
+00:03:10,120 --> 00:03:12,660
+there's a short cut, which is just function F5.
+
+76
+00:03:12,660 --> 00:03:15,020
+It may be different on your machine.
+
+77
+00:03:15,020 --> 00:03:18,450
+It automatically saves the file away, executes it.
+
+78
+00:03:18,450 --> 00:03:22,250
+And again, on my shell, I've now seen a printout.
+
+79
+00:03:22,250 --> 00:03:23,740
+This is going to be really nice.
+
+80
+00:03:23,740 --> 00:03:26,500
+It's going to let me have easier ways to edit files,
+
+81
+00:03:26,500 --> 00:03:28,770
+edit code before I run them.
+
+82
+00:03:28,770 --> 00:03:31,260
+And so what you have then is that ability
+
+83
+00:03:31,260 --> 00:03:35,660
+to have both a place into which you can type things, save them
+
+84
+00:03:35,660 --> 00:03:39,620
+away, and a place in which you can then evaluate them in order
+
+85
+00:03:39,620 --> 00:03:43,180
+to do the kinds of computations we've been discussing.
+
+86
+00:03:43,180 --> 00:03:43,679
+
+

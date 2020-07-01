@@ -1,0 +1,440 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,225
+Let me show you one other place where
+
+2
+00:00:02,225 --> 00:00:05,529
+a dictionary is an incredibly valuable thing to have.
+
+3
+00:00:05,529 --> 00:00:07,570
+And to do that, I'm to go back to a piece of code
+
+4
+00:00:07,570 --> 00:00:09,160
+that we looked at a while ago.
+
+5
+00:00:09,160 --> 00:00:13,030
+Fibonacci was counting the number of bunnies in a pen.
+
+6
+00:00:13,030 --> 00:00:15,650
+Remember Fibonacci-- it had two base cases,
+
+7
+00:00:15,650 --> 00:00:17,430
+it said if n is equal to 1.
+
+8
+00:00:17,430 --> 00:00:18,370
+The value is 1.
+
+9
+00:00:18,370 --> 00:00:20,770
+If n is equal to 2, the value is 2.
+
+10
+00:00:20,770 --> 00:00:22,980
+Otherwise, the nth Fibonacci number
+
+11
+00:00:22,980 --> 00:00:26,720
+is the sum of the n minus first and n minus second Fibonacci
+
+12
+00:00:26,720 --> 00:00:27,920
+number.
+
+13
+00:00:27,920 --> 00:00:29,942
+It calls itself twice.
+
+14
+00:00:29,942 --> 00:00:32,890
+It has to because it has to do that computation.
+
+15
+00:00:32,890 --> 00:00:34,890
+And it will certainly work, but this code
+
+16
+00:00:34,890 --> 00:00:37,000
+is actually very inefficient.
+
+17
+00:00:37,000 --> 00:00:39,630
+And let me show you why.
+
+18
+00:00:39,630 --> 00:00:42,370
+Think about what happens if I want to compute fib of, say.
+
+19
+00:00:42,370 --> 00:00:43,520
+5.
+
+20
+00:00:43,520 --> 00:00:45,920
+To compute the fifth Fibonacci number,
+
+21
+00:00:45,920 --> 00:00:48,000
+I need to compute the fourth Fibonacci
+
+22
+00:00:48,000 --> 00:00:49,819
+number and the third one.
+
+23
+00:00:49,819 --> 00:00:51,610
+But to compute the fourth Fibonacci number,
+
+24
+00:00:51,610 --> 00:00:53,193
+I need to compute the third one, which
+
+25
+00:00:53,193 --> 00:00:55,940
+needs to get the second one, which then also needs
+
+26
+00:00:55,940 --> 00:00:57,450
+to get the first one.
+
+27
+00:00:57,450 --> 00:00:59,760
+Now those two are the base cases.
+
+28
+00:00:59,760 --> 00:01:02,170
+I've unwrapped it all the way down to that level.
+
+29
+00:01:02,170 --> 00:01:07,000
+Having got fib of 3, fib of 4 also needs fib of 2.
+
+30
+00:01:07,000 --> 00:01:09,180
+And that's also a base case.
+
+31
+00:01:09,180 --> 00:01:13,120
+And then finally, fib of 5 needs fib of 3 as well as fib of 4.
+
+32
+00:01:13,120 --> 00:01:17,120
+And that's got to do another set of computations.
+
+33
+00:01:17,120 --> 00:01:19,120
+So building a tree of computations, if you like.
+
+34
+00:01:19,120 --> 00:01:21,820
+Now why do I say it's inefficient?
+
+35
+00:01:21,820 --> 00:01:24,570
+I don't need to recompute those.
+
+36
+00:01:24,570 --> 00:01:25,880
+I already know them.
+
+37
+00:01:25,880 --> 00:01:27,700
+Well, in the case of fib of 1 and fib of 2,
+
+38
+00:01:27,700 --> 00:01:28,658
+they're just constants.
+
+39
+00:01:28,658 --> 00:01:30,620
+But fib of 3, I'm doing a computation
+
+40
+00:01:30,620 --> 00:01:33,360
+there that I didn't really need to do because I've already
+
+41
+00:01:33,360 --> 00:01:35,630
+figured it out over here.
+
+42
+00:01:35,630 --> 00:01:39,230
+And you can imagine if I was doing fib of 6,
+
+43
+00:01:39,230 --> 00:01:42,560
+it would need fib of 5 and fib of 4.
+
+44
+00:01:42,560 --> 00:01:45,540
+And down here, there would be a whole bunch of other structures
+
+45
+00:01:45,540 --> 00:01:47,920
+that included things that I'd already computed.
+
+46
+00:01:47,920 --> 00:01:49,310
+It's inefficient.
+
+47
+00:01:49,310 --> 00:01:50,770
+And in fact, it really slows down
+
+48
+00:01:50,770 --> 00:01:54,060
+when you start trying to compute large Fibonacci numbers.
+
+49
+00:01:54,060 --> 00:01:57,780
+Here's where the dictionaries can really help us.
+
+50
+00:01:57,780 --> 00:02:01,830
+Rather than recalculating the same value many times,
+
+51
+00:02:01,830 --> 00:02:05,140
+let's just keep track of what I've already done.
+
+52
+00:02:05,140 --> 00:02:10,020
+So here's a nice version of fib that's very efficient.
+
+53
+00:02:10,020 --> 00:02:14,660
+And it basically says I'm going to compute Fibonacci, the NTH
+
+54
+00:02:14,660 --> 00:02:17,550
+Fibonacci number, but I'm going to give it a dictionary.
+
+55
+00:02:17,550 --> 00:02:20,660
+And what I'm going to do is say, if I'm computing this Fibonacci
+
+56
+00:02:20,660 --> 00:02:23,330
+number for the first time, I'll do the work as I normally
+
+57
+00:02:23,330 --> 00:02:26,870
+would, and then I'm going to store it into the dictionary.
+
+58
+00:02:26,870 --> 00:02:28,600
+But if I've already done the work,
+
+59
+00:02:28,600 --> 00:02:31,320
+just look it up and return it.
+
+60
+00:02:31,320 --> 00:02:33,850
+So if n is already in the dictionary,
+
+61
+00:02:33,850 --> 00:02:36,530
+I just look up the value and return it.
+
+62
+00:02:36,530 --> 00:02:39,300
+Otherwise, I do the recursive call as I would
+
+63
+00:02:39,300 --> 00:02:41,840
+have done before, compute it.
+
+64
+00:02:41,840 --> 00:02:45,380
+Having done that, I store that value away in the dictionary,
+
+65
+00:02:45,380 --> 00:02:47,734
+and I return the answer.
+
+66
+00:02:47,734 --> 00:02:49,400
+And I'm saving the answer here because I
+
+67
+00:02:49,400 --> 00:02:52,690
+need to hold onto it in order to be able to return it.
+
+68
+00:02:52,690 --> 00:02:54,620
+To start this up, I need to give the base
+
+69
+00:02:54,620 --> 00:02:57,060
+case in the dictionary, so there I go.
+
+70
+00:02:57,060 --> 00:03:00,240
+I put into the dictionary the first and second Fibonacci
+
+71
+00:03:00,240 --> 00:03:01,190
+numbers.
+
+72
+00:03:01,190 --> 00:03:04,500
+And then I can just go ahead and do the work.
+
+73
+00:03:04,500 --> 00:03:06,780
+This process is sometimes called memoization.
+
+74
+00:03:06,780 --> 00:03:09,490
+It's a way of creating a memo to yourself that remembers
+
+75
+00:03:09,490 --> 00:03:11,030
+what you've already done.
+
+76
+00:03:11,030 --> 00:03:14,290
+And that turns up to be much more efficient.
+
+77
+00:03:14,290 --> 00:03:17,620
+So let's look at a couple of examples of this.
+
+78
+00:03:17,620 --> 00:03:21,950
+And so over here, I've got versions of fib and fib
+
+79
+00:03:21,950 --> 00:03:22,840
+efficient.
+
+80
+00:03:22,840 --> 00:03:24,960
+I'm going to initialize the dictionary.
+
+81
+00:03:24,960 --> 00:03:27,010
+Then I'm going to just set up an argument.
+
+82
+00:03:27,010 --> 00:03:28,490
+Let's say I want to compute for-- let's start
+
+83
+00:03:28,490 --> 00:03:29,230
+with something simple.
+
+84
+00:03:29,230 --> 00:03:31,140
+Let's just compute the fifth Fibonacci number.
+
+85
+00:03:31,140 --> 00:03:32,490
+And I've set up a little print routine
+
+86
+00:03:32,490 --> 00:03:34,031
+that's going to print them out so you
+
+87
+00:03:34,031 --> 00:03:35,580
+can see how well it does this.
+
+88
+00:03:35,580 --> 00:03:38,920
+And if I call this-- oh, I did it really quickly.
+
+89
+00:03:38,920 --> 00:03:40,886
+And it gives the same answer, which is good.
+
+90
+00:03:40,886 --> 00:03:42,760
+Now let's give it a little bit bigger number,
+
+91
+00:03:42,760 --> 00:03:45,015
+and I want to let you watch how long it takes
+
+92
+00:03:45,015 --> 00:03:46,390
+to do the computation because I'm
+
+93
+00:03:46,390 --> 00:03:50,587
+going to do the straightforward one and then the efficient one.
+
+94
+00:03:50,587 --> 00:03:52,170
+There was a little bit of a gap there,
+
+95
+00:03:52,170 --> 00:03:53,720
+but it was almost the same.
+
+96
+00:03:53,720 --> 00:03:58,410
+Now, let's give it an even bigger number, which is 30.
+
+97
+00:03:58,410 --> 00:04:00,270
+Oh, and you notice the pause.
+
+98
+00:04:00,270 --> 00:04:01,880
+And in fact, if I do one more-- I
+
+99
+00:04:01,880 --> 00:04:04,780
+don't want to make it too long, but let's make it 34.
+
+100
+00:04:04,780 --> 00:04:07,000
+And I do this.
+
+101
+00:04:07,000 --> 00:04:08,530
+It's working on fib.
+
+102
+00:04:08,530 --> 00:04:09,475
+It's working-- oh.
+
+103
+00:04:09,475 --> 00:04:13,280
+And fib efficient came about really quickly.
+
+104
+00:04:13,280 --> 00:04:14,900
+So what that's doing is saying, I
+
+105
+00:04:14,900 --> 00:04:18,170
+can use the dictionary to hold onto values that I've already
+
+106
+00:04:18,170 --> 00:04:20,140
+computed that I don't need to recompute.
+
+107
+00:04:20,140 --> 00:04:21,870
+And it gives me a really efficient way
+
+108
+00:04:21,870 --> 00:04:23,647
+of doing this computation.
+
+109
+00:04:23,647 --> 00:04:24,147
+
+

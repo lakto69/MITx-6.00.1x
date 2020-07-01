@@ -1,0 +1,852 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,900
+We've just seen an example of an algorithm that
+
+2
+00:00:02,900 --> 00:00:05,500
+computes floating point numbers as an answer,
+
+3
+00:00:05,500 --> 00:00:07,980
+and we've been playing with floats earlier on.
+
+4
+00:00:07,980 --> 00:00:10,720
+I now want to take a little sidetrack to talk about floats
+
+5
+00:00:10,720 --> 00:00:13,322
+and how they're represented inside the computer.
+
+6
+00:00:13,322 --> 00:00:15,030
+And in particular, to deal with something
+
+7
+00:00:15,030 --> 00:00:17,490
+that you may have experienced earlier on in the course, where
+
+8
+00:00:17,490 --> 00:00:19,031
+you'll get answers that will give you
+
+9
+00:00:19,031 --> 00:00:21,410
+some funny number where you expecting 3.0,
+
+10
+00:00:21,410 --> 00:00:26,420
+and it gives you 3.00000125 or something else.
+
+11
+00:00:26,420 --> 00:00:29,730
+To deal with this, we need to go inside the machine for a second
+
+12
+00:00:29,730 --> 00:00:33,742
+and talk about how floats represent real numbers.
+
+13
+00:00:33,742 --> 00:00:35,450
+They certainly approximate them, but it's
+
+14
+00:00:35,450 --> 00:00:38,830
+useful to get a sense of how the machine actually stores it,
+
+15
+00:00:38,830 --> 00:00:40,740
+because it can't store an infinite number
+
+16
+00:00:40,740 --> 00:00:43,390
+of decimal points or digits after the decimal point
+
+17
+00:00:43,390 --> 00:00:45,150
+inside the machine.
+
+18
+00:00:45,150 --> 00:00:46,644
+Here's the basic idea.
+
+19
+00:00:46,644 --> 00:00:48,560
+Let's start with a decimal number, the numbers
+
+20
+00:00:48,560 --> 00:00:50,280
+you're used to dealing with.
+
+21
+00:00:50,280 --> 00:00:54,350
+The number 302 is really 3 times 10
+
+22
+00:00:54,350 --> 00:00:58,880
+squared plus 0 times 10 to the first power plus 2 times 10
+
+23
+00:00:58,880 --> 00:01:01,330
+to the 0-th power or 1.
+
+24
+00:01:01,330 --> 00:01:05,580
+It's 300 plus zero 10s plus two 1s.
+
+25
+00:01:05,580 --> 00:01:08,140
+Binary numbers, which is how the computer store things,
+
+26
+00:01:08,140 --> 00:01:11,020
+are actually represented the same way, but now
+
+27
+00:01:11,020 --> 00:01:13,080
+in terms of powers of 2.
+
+28
+00:01:13,080 --> 00:01:17,240
+So the number 10011 in binary is 1 times
+
+29
+00:01:17,240 --> 00:01:21,560
+2 to the fourth, plus 0 times 2 cubed, plus 0 times 2 squared,
+
+30
+00:01:21,560 --> 00:01:26,790
+plus 1 times 2 to the 1, plus 1 times 2 to the 0.
+
+31
+00:01:26,790 --> 00:01:32,230
+Which is actually 16 plus 2 plus 1, or 19 in decimal notation.
+
+32
+00:01:32,230 --> 00:01:34,330
+Internally, the computer represents
+
+33
+00:01:34,330 --> 00:01:37,150
+every number in binary, whether it's an integer
+
+34
+00:01:37,150 --> 00:01:38,900
+or it's a float.
+
+35
+00:01:38,900 --> 00:01:41,780
+How would we use that idea to think about how do we represent
+
+36
+00:01:41,780 --> 00:01:44,040
+floating point numbers?
+
+37
+00:01:44,040 --> 00:01:48,750
+Well, let's think about how we could convert a decimal integer
+
+38
+00:01:48,750 --> 00:01:51,550
+into a binary representation, and then we'll
+
+39
+00:01:51,550 --> 00:01:53,170
+do the fraction portion of it.
+
+40
+00:01:53,170 --> 00:01:57,010
+So given a decimal integer, how would we convert it to binary?
+
+41
+00:01:57,010 --> 00:01:58,730
+Well, let's take an example.
+
+42
+00:01:58,730 --> 00:02:00,860
+My example would be the one I just had before.
+
+43
+00:02:00,860 --> 00:02:05,550
+19 in decimal is 10011 in binary.
+
+44
+00:02:05,550 --> 00:02:08,440
+If I had 19, or anything that represents that number,
+
+45
+00:02:08,440 --> 00:02:10,160
+how could I get it out?
+
+46
+00:02:10,160 --> 00:02:12,730
+Well, what I can do is the following little trick.
+
+47
+00:02:12,730 --> 00:02:16,290
+I can take the remainder of that number relative to 2,
+
+48
+00:02:16,290 --> 00:02:20,050
+and that remainder actually gives me the last binary bit.
+
+49
+00:02:20,050 --> 00:02:22,960
+It'll give me this bit right here,
+
+50
+00:02:22,960 --> 00:02:26,270
+because that's the remainder that's left when I divide by 2.
+
+51
+00:02:26,270 --> 00:02:30,750
+If I then take x and divide it by 2 integer-wise using
+
+52
+00:02:30,750 --> 00:02:36,500
+that double slash idea, all of the bits get shifted right.
+
+53
+00:02:36,500 --> 00:02:40,740
+That is x double divide by 2 is now 1 times 2 to the third
+
+54
+00:02:40,740 --> 00:02:43,300
+rather than 2 to the fourth, plus 0 times 2
+
+55
+00:02:43,300 --> 00:02:46,850
+squared rather than 2 to the third, plus 0 times 2 to the 1
+
+56
+00:02:46,850 --> 00:02:48,720
+rather than 2 squared, plus 1 times 2
+
+57
+00:02:48,720 --> 00:02:51,720
+to the zero rather than 2 to the one.
+
+58
+00:02:51,720 --> 00:02:55,180
+Or another way of saying it, and notice I've taken these digits
+
+59
+00:02:55,180 --> 00:02:58,150
+and just shifted them to the right.
+
+60
+00:02:58,150 --> 00:03:01,250
+If I keep doing successive divisions like this,
+
+61
+00:03:01,250 --> 00:03:03,320
+I can keep track of each of the bits
+
+62
+00:03:03,320 --> 00:03:05,830
+that comes out, because the remainder gives me
+
+63
+00:03:05,830 --> 00:03:06,412
+the next bit.
+
+64
+00:03:06,412 --> 00:03:07,870
+And when I'm done with all of that,
+
+65
+00:03:07,870 --> 00:03:10,650
+I've converted to binary form.
+
+66
+00:03:10,650 --> 00:03:14,610
+So basic idea, given an integer, take the remainder with respect
+
+67
+00:03:14,610 --> 00:03:15,210
+to 2.
+
+68
+00:03:15,210 --> 00:03:16,670
+That's the low order bit.
+
+69
+00:03:16,670 --> 00:03:20,060
+Divide integer-wise by 2, shifts right.
+
+70
+00:03:20,060 --> 00:03:24,000
+Do the same thing until I've exhausted the entire integer
+
+71
+00:03:24,000 --> 00:03:26,140
+representation.
+
+72
+00:03:26,140 --> 00:03:30,610
+So here's a little piece of code that would do exactly that.
+
+73
+00:03:30,610 --> 00:03:32,030
+If the number is less than 0, I'm
+
+74
+00:03:32,030 --> 00:03:34,402
+going to put on a flag that says it's negative.
+
+75
+00:03:34,402 --> 00:03:36,360
+And I'm going to use the positive version of it
+
+76
+00:03:36,360 --> 00:03:38,610
+by taking the absolute value of that number.
+
+77
+00:03:38,610 --> 00:03:42,100
+Otherwise I'm going to put in a flag that says it's not.
+
+78
+00:03:42,100 --> 00:03:44,740
+And then I'm going to simply accumulate those results.
+
+79
+00:03:44,740 --> 00:03:47,350
+If the number is equal to 0, it's just 0.
+
+80
+00:03:47,350 --> 00:03:48,700
+That's pretty obvious.
+
+81
+00:03:48,700 --> 00:03:52,570
+Otherwise, as long as the number is greater than 0,
+
+82
+00:03:52,570 --> 00:03:56,500
+I'm going to do remainder, add that in,
+
+83
+00:03:56,500 --> 00:03:59,420
+because that's the next bit into result,
+
+84
+00:03:59,420 --> 00:04:03,530
+do the division to shift it to the right, and keep going.
+
+85
+00:04:03,530 --> 00:04:06,250
+So if I look at that, here's a simple example
+
+86
+00:04:06,250 --> 00:04:08,690
+of doing that conversion, converting decimal to binary.
+
+87
+00:04:08,690 --> 00:04:11,290
+I'll start with a real simple example.
+
+88
+00:04:11,290 --> 00:04:14,695
+If I start off with number as 3 and I do that computation,
+
+89
+00:04:14,695 --> 00:04:18,503
+I didn't print anything, but the result is sitting in result.
+
+90
+00:04:18,503 --> 00:04:19,294
+And there I get it.
+
+91
+00:04:19,294 --> 00:04:23,700
+The binary representation of 3 is, not surprisingly, 1 plus 2.
+
+92
+00:04:23,700 --> 00:04:26,100
+Let's just check to make sure I wasn't misleading you
+
+93
+00:04:26,100 --> 00:04:28,780
+when I said 19 was, in fact, what I claimed it was.
+
+94
+00:04:28,780 --> 00:04:34,935
+So if I make it 19, and I run it, and I look at result,
+
+95
+00:04:34,935 --> 00:04:39,050
+it gives me back 10011, exactly as I said.
+
+96
+00:04:39,050 --> 00:04:42,960
+All right, cool, so I can take integers and convert them
+
+97
+00:04:42,960 --> 00:04:46,400
+into binary, but I started talking about floats.
+
+98
+00:04:46,400 --> 00:04:49,640
+So how do I deal with the fraction part of this?
+
+99
+00:04:49,640 --> 00:04:52,210
+Well, I can do almost the same thing.
+
+100
+00:04:52,210 --> 00:04:53,760
+Let's take an example.
+
+101
+00:04:53,760 --> 00:04:56,060
+3/8 is 0.375.
+
+102
+00:04:56,060 --> 00:05:01,400
+And in binary, that is 3 times 10 to the minus 1 plus 7 times
+
+103
+00:05:01,400 --> 00:05:04,860
+10 to the minus 2 plus 5 times 10 to the minus 3.
+
+104
+00:05:04,860 --> 00:05:08,790
+It's just the digits associated with each of the placeholders.
+
+105
+00:05:08,790 --> 00:05:10,930
+Here's the trick I'm going to play.
+
+106
+00:05:10,930 --> 00:05:15,060
+If I can find a power of 2 big enough to convert all of that
+
+107
+00:05:15,060 --> 00:05:18,100
+into a whole number-- that is, multiply it by something so
+
+108
+00:05:18,100 --> 00:05:20,470
+that it gets converted into a whole number,
+
+109
+00:05:20,470 --> 00:05:22,460
+then I can convert that into binary.
+
+110
+00:05:22,460 --> 00:05:24,690
+I just did that, I know how to do that.
+
+111
+00:05:24,690 --> 00:05:28,810
+And then when I'm done, just divide by that same power of 2,
+
+112
+00:05:28,810 --> 00:05:31,600
+and I've got no representation in binary
+
+113
+00:05:31,600 --> 00:05:34,590
+of the fractional part of this number.
+
+114
+00:05:34,590 --> 00:05:36,600
+In this case, I picked an easy example.
+
+115
+00:05:36,600 --> 00:05:40,180
+0.375, if I multiply it by 2 to the third, or 8,
+
+116
+00:05:40,180 --> 00:05:42,300
+that's going to get me a 3 in decimal.
+
+117
+00:05:42,300 --> 00:05:44,870
+I can then use what I just did as my trick
+
+118
+00:05:44,870 --> 00:05:46,440
+to convert that to binary.
+
+119
+00:05:46,440 --> 00:05:48,170
+That's 11.
+
+120
+00:05:48,170 --> 00:05:51,060
+And then I divide by 2 to the third, which simply says
+
+121
+00:05:51,060 --> 00:05:53,720
+shift it right three points.
+
+122
+00:05:53,720 --> 00:05:57,080
+And there is the binary representation
+
+123
+00:05:57,080 --> 00:05:59,300
+of that decimal fraction.
+
+124
+00:05:59,300 --> 00:06:00,920
+That's cool, right?
+
+125
+00:06:00,920 --> 00:06:02,470
+It's a really neat idea.
+
+126
+00:06:02,470 --> 00:06:03,530
+What am I doing?
+
+127
+00:06:03,530 --> 00:06:06,660
+I'm using something I did for one computation,
+
+128
+00:06:06,660 --> 00:06:09,210
+but converting another problem into the same problem.
+
+129
+00:06:09,210 --> 00:06:11,580
+In this case, given a fraction, I'm
+
+130
+00:06:11,580 --> 00:06:14,880
+saying find a power of 2 that shifts it into an integer,
+
+131
+00:06:14,880 --> 00:06:18,230
+use the same machinery, and then shift it back.
+
+132
+00:06:18,230 --> 00:06:20,450
+And I'm simply taking advantage of powers of 2
+
+133
+00:06:20,450 --> 00:06:23,480
+because that's simply moving the placeholder, if you like,
+
+134
+00:06:23,480 --> 00:06:26,068
+for the decimal point, or I should say the binary point
+
+135
+00:06:26,068 --> 00:06:27,193
+in a binary representation.
+
+136
+00:06:27,193 --> 00:06:30,370
+
+
+137
+00:06:30,370 --> 00:06:31,936
+There's code that'll do it.
+
+138
+00:06:31,936 --> 00:06:33,310
+I'm not going to walk through it.
+
+139
+00:06:33,310 --> 00:06:34,643
+I'm going to let you look at it.
+
+140
+00:06:34,643 --> 00:06:37,380
+I'm simply going to show you that this will actually convert
+
+141
+00:06:37,380 --> 00:06:39,810
+a decimal to a binary fraction.
+
+142
+00:06:39,810 --> 00:06:43,910
+So if I take this and I run it, in this case,
+
+143
+00:06:43,910 --> 00:06:46,540
+it says give me a decimal between 0 and 1.
+
+144
+00:06:46,540 --> 00:06:48,020
+Let's pick out a nice example.
+
+145
+00:06:48,020 --> 00:06:53,350
+Let's start with the one that we had, which was 0.375.
+
+146
+00:06:53,350 --> 00:06:54,850
+Sorry, let me make sure I'm here.
+
+147
+00:06:54,850 --> 00:06:58,367
+
+
+148
+00:06:58,367 --> 00:06:59,950
+And it says, oh, I'm going to tell you
+
+149
+00:06:59,950 --> 00:07:02,074
+when I've gone through it to get it up to something
+
+150
+00:07:02,074 --> 00:07:02,890
+that is big enough.
+
+151
+00:07:02,890 --> 00:07:05,500
+How many times I have to shift it over, what's the remainder,
+
+152
+00:07:05,500 --> 00:07:08,310
+and there's the printed solution.
+
+153
+00:07:08,310 --> 00:07:09,994
+Let's be daring and try another example
+
+154
+00:07:09,994 --> 00:07:11,660
+I haven't tried before just to make sure
+
+155
+00:07:11,660 --> 00:07:13,105
+that it actually works.
+
+156
+00:07:13,105 --> 00:07:14,730
+So again, we're going to call this out.
+
+157
+00:07:14,730 --> 00:07:17,950
+It says give me a number between 0 and 1.
+
+158
+00:07:17,950 --> 00:07:21,010
+And I don't know, let's take 0.333.
+
+159
+00:07:21,010 --> 00:07:23,165
+And what do I get?
+
+160
+00:07:23,165 --> 00:07:25,290
+Well, it goes through a whole lot more computation.
+
+161
+00:07:25,290 --> 00:07:26,920
+It's telling me what the remainders are,
+
+162
+00:07:26,920 --> 00:07:28,670
+but it's running through that computation.
+
+163
+00:07:28,670 --> 00:07:32,410
+And it says the binary representation for 0.333
+
+164
+00:07:32,410 --> 00:07:35,090
+is this horrible-looking mess you see on my computer screen
+
+165
+00:07:35,090 --> 00:07:36,500
+down there.
+
+166
+00:07:36,500 --> 00:07:40,440
+But the point of this is now I can take any floating point
+
+167
+00:07:40,440 --> 00:07:42,360
+number, convert into something that
+
+168
+00:07:42,360 --> 00:07:46,060
+can be represented inside of the machine in binary form,
+
+169
+00:07:46,060 --> 00:07:47,050
+and use it.
+
+170
+00:07:47,050 --> 00:07:49,170
+And that, by the way, is why you will occasionally
+
+171
+00:07:49,170 --> 00:07:52,522
+see these strange things where you're expecting 3.0 back,
+
+172
+00:07:52,522 --> 00:07:54,230
+and it has a little bit of an extra piece
+
+173
+00:07:54,230 --> 00:07:57,170
+on it because in binary it can get close to it,
+
+174
+00:07:57,170 --> 00:07:59,830
+but not quite to the place it would like.
+
+175
+00:07:59,830 --> 00:08:02,070
+But with that, we now have a way of understanding
+
+176
+00:08:02,070 --> 00:08:05,330
+how we can represent floating point numbers inside a machine
+
+177
+00:08:05,330 --> 00:08:10,240
+where everything is stored just in terms of binary bits.
+
+178
+00:08:10,240 --> 00:08:12,930
+What are some of the implications of this?
+
+179
+00:08:12,930 --> 00:08:16,700
+If there is no integer p such that a power of 2
+
+180
+00:08:16,700 --> 00:08:19,440
+multiplied by x gives me a whole number,
+
+181
+00:08:19,440 --> 00:08:22,570
+then the best I'm going to get is an internal representation
+
+182
+00:08:22,570 --> 00:08:23,760
+that's close.
+
+183
+00:08:23,760 --> 00:08:26,020
+Which is why I won't get something exactly right.
+
+184
+00:08:26,020 --> 00:08:28,270
+And obviously, I'm only going to do this so many times
+
+185
+00:08:28,270 --> 00:08:31,120
+before I run out of powers of p to use this.
+
+186
+00:08:31,120 --> 00:08:32,900
+It also suggests that when you want
+
+187
+00:08:32,900 --> 00:08:35,399
+to test equality of floats, you should be careful.
+
+188
+00:08:35,399 --> 00:08:37,940
+
+
+189
+00:08:37,940 --> 00:08:39,730
+Given two floats, x and y, you really
+
+190
+00:08:39,730 --> 00:08:41,284
+don't want to use double equal sign,
+
+191
+00:08:41,284 --> 00:08:42,700
+because it's going to check to see
+
+192
+00:08:42,700 --> 00:08:45,930
+is the binary representation exactly the same.
+
+193
+00:08:45,930 --> 00:08:46,640
+It might not be.
+
+194
+00:08:46,640 --> 00:08:48,260
+It might be really close.
+
+195
+00:08:48,260 --> 00:08:51,210
+So we're always better off using the absolute value
+
+196
+00:08:51,210 --> 00:08:53,450
+of the difference of two floating point numbers.
+
+197
+00:08:53,450 --> 00:08:56,430
+Is it smaller than some small number,
+
+198
+00:08:56,430 --> 00:09:01,320
+rather than using the more exact are they exactly the same.
+
+199
+00:09:01,320 --> 00:09:03,710
+And then finally, as I've already said,
+
+200
+00:09:03,710 --> 00:09:07,170
+we may not always get an exact representation
+
+201
+00:09:07,170 --> 00:09:09,280
+for a float in the way we would like.
+
+202
+00:09:09,280 --> 00:09:12,060
+But if I do print of something, why does
+
+203
+00:09:12,060 --> 00:09:14,580
+it always return what I'd expect,
+
+204
+00:09:14,580 --> 00:09:16,742
+even if the representation isn't different?
+
+205
+00:09:16,742 --> 00:09:18,950
+And the answer is because, wonderfully, the designers
+
+206
+00:09:18,950 --> 00:09:21,240
+of Python designed it so that it would automatically
+
+207
+00:09:21,240 --> 00:09:23,680
+round to the closest representation in terms
+
+208
+00:09:23,680 --> 00:09:26,040
+of that floating point number.
+
+209
+00:09:26,040 --> 00:09:27,220
+There are floats.
+
+210
+00:09:27,220 --> 00:09:30,020
+Now we've got ability to do integers and floats,
+
+211
+00:09:30,020 --> 00:09:32,000
+we're in good shape.
+
+212
+00:09:32,000 --> 00:09:32,628
+
+

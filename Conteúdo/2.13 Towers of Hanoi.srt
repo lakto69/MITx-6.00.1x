@@ -1,0 +1,520 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,440
+We've seen some simple examples of recursion,
+
+2
+00:00:03,440 --> 00:00:06,910
+factorial, doing multiplication by doing recursive addition.
+
+3
+00:00:06,910 --> 00:00:08,880
+These are nice places to start.
+
+4
+00:00:08,880 --> 00:00:11,340
+But recursion is actually really a powerful tool.
+
+5
+00:00:11,340 --> 00:00:13,710
+And I want to show you a very different way of thinking
+
+6
+00:00:13,710 --> 00:00:15,180
+about recursion on a problem that's
+
+7
+00:00:15,180 --> 00:00:17,090
+otherwise hard to solve if you don't
+
+8
+00:00:17,090 --> 00:00:18,860
+think about it recursively.
+
+9
+00:00:18,860 --> 00:00:20,990
+And this is to take a classic problem called
+
+10
+00:00:20,990 --> 00:00:22,800
+the Towers of Hanoi.
+
+11
+00:00:22,800 --> 00:00:25,300
+The story is that somewhere in the temple in Hanoi
+
+12
+00:00:25,300 --> 00:00:28,550
+there are three tall spikes on which there are initially
+
+13
+00:00:28,550 --> 00:00:32,390
+64 disks of different sizes all stacked together
+
+14
+00:00:32,390 --> 00:00:35,270
+in decreasing order with the largest at the bottom
+
+15
+00:00:35,270 --> 00:00:37,970
+going all the way up to having the smallest at the top.
+
+16
+00:00:37,970 --> 00:00:39,960
+And the goal of the priests in this temple
+
+17
+00:00:39,960 --> 00:00:42,930
+is to move the entire stack from one spike
+
+18
+00:00:42,930 --> 00:00:45,900
+to another one, moving one disk at a time,
+
+19
+00:00:45,900 --> 00:00:47,860
+but with the property that they can never
+
+20
+00:00:47,860 --> 00:00:51,334
+have a larger disk covering up a smaller disk.
+
+21
+00:00:51,334 --> 00:00:52,750
+And there's a little animation you
+
+22
+00:00:52,750 --> 00:00:53,940
+may be watching at the bottom here
+
+23
+00:00:53,940 --> 00:00:55,410
+that's showing an example of that
+
+24
+00:00:55,410 --> 00:00:58,020
+with a stack of size three.
+
+25
+00:00:58,020 --> 00:01:00,230
+We want to figure out how would I write a program
+
+26
+00:01:00,230 --> 00:01:04,090
+to tell the priests exactly how to move those disks so they
+
+27
+00:01:04,090 --> 00:01:07,380
+can move all 64 from one spike to the other.
+
+28
+00:01:07,380 --> 00:01:11,310
+And I'm going to do a little demo to show that to you.
+
+29
+00:01:11,310 --> 00:01:14,490
+So I want to demonstrate for you how to solve Towers of Hanoi
+
+30
+00:01:14,490 --> 00:01:17,296
+and especially how to use recursive thinking to do that.
+
+31
+00:01:17,296 --> 00:01:19,670
+But to begin with, I'm simply going to show you solutions
+
+32
+00:01:19,670 --> 00:01:21,810
+to Towers of Hanoi and see if you can figure out
+
+33
+00:01:21,810 --> 00:01:24,290
+how to write code to describe the set of moves
+
+34
+00:01:24,290 --> 00:01:25,624
+that would solve it.
+
+35
+00:01:25,624 --> 00:01:27,040
+Let's start with the easiest case.
+
+36
+00:01:27,040 --> 00:01:28,570
+I have a stack of size one.
+
+37
+00:01:28,570 --> 00:01:29,500
+Moving it is easy.
+
+38
+00:01:29,500 --> 00:01:31,500
+I just move the disk.
+
+39
+00:01:31,500 --> 00:01:34,190
+If I have a stack of size two, I know
+
+40
+00:01:34,190 --> 00:01:36,250
+I've got to move the higher to the smaller
+
+41
+00:01:36,250 --> 00:01:38,980
+disk to the spare place while I move the bottom one,
+
+42
+00:01:38,980 --> 00:01:42,640
+and then move it over-- pretty straightforward.
+
+43
+00:01:42,640 --> 00:01:44,890
+If I want to move a stack of size three,
+
+44
+00:01:44,890 --> 00:01:47,620
+takes a little more work because I got to move the top disk.
+
+45
+00:01:47,620 --> 00:01:50,350
+I got to be careful not to cover up a smaller disk with a larger
+
+46
+00:01:50,350 --> 00:01:50,850
+one.
+
+47
+00:01:50,850 --> 00:01:52,670
+But once I've cleared the bottom disk,
+
+48
+00:01:52,670 --> 00:01:56,370
+I can move it, and, again, move the top disk to the spare one
+
+49
+00:01:56,370 --> 00:01:59,690
+so that I move the entire thing without covering up a smaller
+
+50
+00:01:59,690 --> 00:02:03,150
+disk with a larger disk-- also pretty easy.
+
+51
+00:02:03,150 --> 00:02:05,080
+But what about a stack of size four.
+
+52
+00:02:05,080 --> 00:02:06,890
+It takes a little more thinking because I
+
+53
+00:02:06,890 --> 00:02:09,570
+have to really be careful here that I'm not accidentally
+
+54
+00:02:09,570 --> 00:02:11,070
+covering things off.
+
+55
+00:02:11,070 --> 00:02:13,220
+And it takes a lot more work to, in fact,
+
+56
+00:02:13,220 --> 00:02:16,164
+expose that bottom disk, which I'm now ready to move.
+
+57
+00:02:16,164 --> 00:02:18,330
+And now I've got to get all of those back over again
+
+58
+00:02:18,330 --> 00:02:20,720
+without covering a smaller disk with a larger one.
+
+59
+00:02:20,720 --> 00:02:23,610
+And so that allows me, basically,
+
+60
+00:02:23,610 --> 00:02:27,180
+to make that set of moves to get to that point.
+
+61
+00:02:27,180 --> 00:02:29,550
+Great-- easy to write code to do this.
+
+62
+00:02:29,550 --> 00:02:31,020
+Right?
+
+63
+00:02:31,020 --> 00:02:32,840
+Probably not.
+
+64
+00:02:32,840 --> 00:02:37,490
+But if I think about it recursively, it's really easy.
+
+65
+00:02:37,490 --> 00:02:39,200
+So what does that mean?
+
+66
+00:02:39,200 --> 00:02:41,760
+I want to move a stack of N disks.
+
+67
+00:02:41,760 --> 00:02:43,820
+And recursively, I would say if I already
+
+68
+00:02:43,820 --> 00:02:47,730
+knew how to move a smaller stack, what's my solution?
+
+69
+00:02:47,730 --> 00:02:49,490
+Oh, that's easy.
+
+70
+00:02:49,490 --> 00:02:53,090
+Move a slightly smaller stack to the spare disk.
+
+71
+00:02:53,090 --> 00:02:55,700
+Now I can move the bottom disk and move
+
+72
+00:02:55,700 --> 00:02:58,630
+that stack to the target.
+
+73
+00:02:58,630 --> 00:03:01,090
+And what does it mean to move that stack to the target?
+
+74
+00:03:01,090 --> 00:03:04,310
+Move a slightly smaller stack to the spare disk,
+
+75
+00:03:04,310 --> 00:03:06,460
+move the bottom one, and move that stack.
+
+76
+00:03:06,460 --> 00:03:09,020
+And I'll just keep on winding that until I'm just
+
+77
+00:03:09,020 --> 00:03:10,880
+moving single disks.
+
+78
+00:03:10,880 --> 00:03:13,740
+Recursively, this is easy to see.
+
+79
+00:03:13,740 --> 00:03:17,470
+And that leads to a very natural implementation.
+
+80
+00:03:17,470 --> 00:03:17,970
+OK.
+
+81
+00:03:17,970 --> 00:03:21,090
+What you saw in that demo is that it's
+
+82
+00:03:21,090 --> 00:03:23,164
+going to be hard, even if you watch things
+
+83
+00:03:23,164 --> 00:03:25,080
+like moving a stack of three or stack of four.
+
+84
+00:03:25,080 --> 00:03:27,580
+How would you write the code to do it?
+
+85
+00:03:27,580 --> 00:03:30,420
+And then what you saw is if I think about it recursively,
+
+86
+00:03:30,420 --> 00:03:32,830
+it's actually really easy.
+
+87
+00:03:32,830 --> 00:03:35,550
+Because recursively, what do I do?
+
+88
+00:03:35,550 --> 00:03:37,390
+I solve a smaller problem.
+
+89
+00:03:37,390 --> 00:03:40,840
+Move a stack of size N minus 1 onto the spare disk.
+
+90
+00:03:40,840 --> 00:03:43,470
+Then I've got just one disk left on the bottom of it.
+
+91
+00:03:43,470 --> 00:03:45,960
+I move that one, which is a simpler problem.
+
+92
+00:03:45,960 --> 00:03:49,260
+And then I move that stack that I just temporarily
+
+93
+00:03:49,260 --> 00:03:52,630
+moved to the other side back on to the place I'm going to.
+
+94
+00:03:52,630 --> 00:03:55,270
+Recursively, this is really easy to see.
+
+95
+00:03:55,270 --> 00:03:57,900
+And so even though this looked like a very hard problem,
+
+96
+00:03:57,900 --> 00:04:00,530
+it's very easy to write code to do it.
+
+97
+00:04:00,530 --> 00:04:03,640
+And so there is, in fact, a little set of code
+
+98
+00:04:03,640 --> 00:04:05,770
+that says-- I got a function that simply
+
+99
+00:04:05,770 --> 00:04:09,380
+says print an individual move from the from stack
+
+100
+00:04:09,380 --> 00:04:10,900
+to the to stack.
+
+101
+00:04:10,900 --> 00:04:13,680
+And then here, notice what I've got I've got.
+
+102
+00:04:13,680 --> 00:04:15,780
+I've got a test for a base case.
+
+103
+00:04:15,780 --> 00:04:17,500
+If I've got just a stack of size one,
+
+104
+00:04:17,500 --> 00:04:20,920
+I'm just going to print the move to take it from from to to.
+
+105
+00:04:20,920 --> 00:04:23,100
+Otherwise, I actually now have to solve
+
+106
+00:04:23,100 --> 00:04:24,319
+two recursive problems.
+
+107
+00:04:24,319 --> 00:04:25,610
+So it's a little bit different.
+
+108
+00:04:25,610 --> 00:04:28,780
+I'm going to move a smaller stack from to
+
+109
+00:04:28,780 --> 00:04:30,490
+from to the spare swap.
+
+110
+00:04:30,490 --> 00:04:33,050
+Having done that, I'm going to move
+
+111
+00:04:33,050 --> 00:04:36,340
+the simple case to the place I'm trying to go to.
+
+112
+00:04:36,340 --> 00:04:40,290
+And then I got to move another smaller size
+
+113
+00:04:40,290 --> 00:04:43,830
+stack from the spare over to the to spot.
+
+114
+00:04:43,830 --> 00:04:47,120
+But the code itself is really straightforward.
+
+115
+00:04:47,120 --> 00:04:52,190
+And if in fact I go and run this on a stack of size four,
+
+116
+00:04:52,190 --> 00:04:54,740
+it gives me very nicely all of the moves
+
+117
+00:04:54,740 --> 00:04:58,090
+I want to do to move that stack over.
+
+118
+00:04:58,090 --> 00:05:00,200
+What I want you to see here are two things.
+
+119
+00:05:00,200 --> 00:05:02,950
+One, I can have multiple recursive calls
+
+120
+00:05:02,950 --> 00:05:04,290
+inside of a function body.
+
+121
+00:05:04,290 --> 00:05:05,770
+It's perfectly fine.
+
+122
+00:05:05,770 --> 00:05:08,680
+And two, this is a problem that I suggest
+
+123
+00:05:08,680 --> 00:05:11,270
+is really hard to solve iteratively,
+
+124
+00:05:11,270 --> 00:05:14,270
+but elegantly easy to solve recursively.
+
+125
+00:05:14,270 --> 00:05:16,770
+And I want you to think about the notion of break it down
+
+126
+00:05:16,770 --> 00:05:18,970
+into a smaller version of the same problem,
+
+127
+00:05:18,970 --> 00:05:22,240
+assume that can be solved, build your solution with that
+
+128
+00:05:22,240 --> 00:05:25,140
+and other simple operations, and let the recursion then
+
+129
+00:05:25,140 --> 00:05:28,470
+unwind it to get to the solution that you want.
+

@@ -1,0 +1,164 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,170
+We've now begun to look at functions.
+
+2
+00:00:02,170 --> 00:00:04,100
+We're going to do more of those in a second,
+
+3
+00:00:04,100 --> 00:00:06,016
+but it's important to take a little break here
+
+4
+00:00:06,016 --> 00:00:08,119
+to talk about one other piece of a function
+
+5
+00:00:08,119 --> 00:00:10,790
+and that was the idea of a specification.
+
+6
+00:00:10,790 --> 00:00:12,290
+This is something we're going to use
+
+7
+00:00:12,290 --> 00:00:15,150
+to be able to decide how we want to use a function.
+
+8
+00:00:15,150 --> 00:00:18,490
+And think of a specification therefore, as a contract.
+
+9
+00:00:18,490 --> 00:00:20,200
+We don't enforce it necessarily, but it's
+
+10
+00:00:20,200 --> 00:00:21,980
+a contract between the implementer
+
+11
+00:00:21,980 --> 00:00:24,820
+of the function and the people who are going to use it.
+
+12
+00:00:24,820 --> 00:00:28,920
+That specification ideally will say here are the assumptions.
+
+13
+00:00:28,920 --> 00:00:31,390
+Here's what the implementer of this function assumed
+
+14
+00:00:31,390 --> 00:00:35,634
+was going to be true, especially about the values of parameters.
+
+15
+00:00:35,634 --> 00:00:37,550
+If you like, it's the conditions that a client
+
+16
+00:00:37,550 --> 00:00:40,880
+needs to guarantee are true before they use it.
+
+17
+00:00:40,880 --> 00:00:44,010
+And then if those assumptions are in fact
+
+18
+00:00:44,010 --> 00:00:46,950
+met the second part of the specification
+
+19
+00:00:46,950 --> 00:00:47,790
+are the guarantees.
+
+20
+00:00:47,790 --> 00:00:49,760
+It says, here's what the function
+
+21
+00:00:49,760 --> 00:00:52,130
+will do provided it's been called in a manner
+
+22
+00:00:52,130 --> 00:00:54,680
+consistent with the assumptions.
+
+23
+00:00:54,680 --> 00:00:59,090
+The way we do it in Python is to use this idea of a docstring,
+
+24
+00:00:59,090 --> 00:01:02,230
+and there's my earlier definition of is even.
+
+25
+00:01:02,230 --> 00:01:05,770
+It has a condition on the input, it says,
+
+26
+00:01:05,770 --> 00:01:08,350
+if you give me an integer which I'm calling I,
+
+27
+00:01:08,350 --> 00:01:10,400
+in particular a positive integer,
+
+28
+00:01:10,400 --> 00:01:14,610
+then here's what I guarantee-- that it will return true
+
+29
+00:01:14,610 --> 00:01:18,610
+if I is even, otherwise it's going to return false.
+
+30
+00:01:18,610 --> 00:01:23,090
+Now, you're not required to put in a doc string or a spec,
+
+31
+00:01:23,090 --> 00:01:25,040
+but good programmers always do.
+
+32
+00:01:25,040 --> 00:01:27,854
+In part because somebody else might use this
+
+33
+00:01:27,854 --> 00:01:29,520
+and you want to tell them how you expect
+
+34
+00:01:29,520 --> 00:01:33,344
+it to be used or because a year from now, two years from now,
+
+35
+00:01:33,344 --> 00:01:34,760
+you may come back to this function
+
+36
+00:01:34,760 --> 00:01:37,437
+and you'd like to know what was I thinking when I built it.
+
+37
+00:01:37,437 --> 00:01:40,020
+So I encourage you to build your own docstrings even though it
+
+38
+00:01:40,020 --> 00:01:42,140
+takes a little more time because it helps
+
+39
+00:01:42,140 --> 00:01:45,220
+you understand what's expected of a piece of code
+
+40
+00:01:45,220 --> 00:01:47,570
+and where can I use it.
+

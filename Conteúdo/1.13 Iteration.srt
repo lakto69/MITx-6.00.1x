@@ -1,0 +1,548 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,110
+The notion of a for loop or a while loop
+
+2
+00:00:03,110 --> 00:00:07,330
+extends the ability to write programs considerably for us.
+
+3
+00:00:07,330 --> 00:00:09,960
+That generalization of a concept of iteration
+
+4
+00:00:09,960 --> 00:00:11,360
+goes much beyond what we could do
+
+5
+00:00:11,360 --> 00:00:13,560
+with simple branching programs.
+
+6
+00:00:13,560 --> 00:00:16,309
+Remember with a branching program, based on a test
+
+7
+00:00:16,309 --> 00:00:18,330
+we could either execute one piece of code
+
+8
+00:00:18,330 --> 00:00:20,120
+or a second piece of code, but we
+
+9
+00:00:20,120 --> 00:00:22,190
+would then proceed below that and would not
+
+10
+00:00:22,190 --> 00:00:26,130
+be able to repeat that code in any significant way.
+
+11
+00:00:26,130 --> 00:00:28,570
+With an iteration, we can now do more.
+
+12
+00:00:28,570 --> 00:00:31,540
+We can use the same code multiple times.
+
+13
+00:00:31,540 --> 00:00:34,250
+As with a branch, we start with a test.
+
+14
+00:00:34,250 --> 00:00:38,470
+If that test is true, then we're going to execute the loop body,
+
+15
+00:00:38,470 --> 00:00:41,850
+loop once, go back and check the test again.
+
+16
+00:00:41,850 --> 00:00:45,710
+And we'll keep doing that until the test evaluates to false,
+
+17
+00:00:45,710 --> 00:00:48,540
+at which point we go to the code following the iteration
+
+18
+00:00:48,540 --> 00:00:50,630
+statement and execute that.
+
+19
+00:00:50,630 --> 00:00:53,170
+So this says we can go through this loop
+
+20
+00:00:53,170 --> 00:00:55,970
+multiple times before we come out.
+
+21
+00:00:55,970 --> 00:00:57,520
+Whereas in the branching program,
+
+22
+00:00:57,520 --> 00:01:00,936
+we only went through the code once before we exited.
+
+23
+00:01:00,936 --> 00:01:02,310
+That's a powerful tool, and we're
+
+24
+00:01:02,310 --> 00:01:06,080
+going to capture that a lot as we move forward.
+
+25
+00:01:06,080 --> 00:01:08,440
+Here's an example that will give you a sense of this.
+
+26
+00:01:08,440 --> 00:01:10,780
+And the example here is to do squaring
+
+27
+00:01:10,780 --> 00:01:12,060
+by repetitive addition.
+
+28
+00:01:12,060 --> 00:01:13,730
+So another way of saying it is if I
+
+29
+00:01:13,730 --> 00:01:15,920
+wanted to compute n squared, that's
+
+30
+00:01:15,920 --> 00:01:21,145
+n plus n plus n all n times.
+
+31
+00:01:21,145 --> 00:01:23,864
+
+
+32
+00:01:23,864 --> 00:01:25,780
+I could write a little piece of code to do it.
+
+33
+00:01:25,780 --> 00:01:26,488
+I've got it here.
+
+34
+00:01:26,488 --> 00:01:27,919
+I'm going to run it in a second.
+
+35
+00:01:27,919 --> 00:01:29,460
+I'm going to start off with something
+
+36
+00:01:29,460 --> 00:01:30,376
+that I want to square.
+
+37
+00:01:30,376 --> 00:01:32,040
+In this case x is equal to 3.
+
+38
+00:01:32,040 --> 00:01:34,500
+I'm going to start off with an initial value for answer.
+
+39
+00:01:34,500 --> 00:01:36,400
+That's going to be where my answer goes.
+
+40
+00:01:36,400 --> 00:01:39,280
+And I'm going to keep track of how many times
+
+41
+00:01:39,280 --> 00:01:41,766
+I need to go through the process.
+
+42
+00:01:41,766 --> 00:01:44,140
+Remember I said that before about loops like while loops.
+
+43
+00:01:44,140 --> 00:01:46,810
+I need to set a variable outside.
+
+44
+00:01:46,810 --> 00:01:50,130
+Then I'm going to see, do I have anything left to do?
+
+45
+00:01:50,130 --> 00:01:52,230
+And if I do, if I'm not down to 0,
+
+46
+00:01:52,230 --> 00:01:55,640
+I'm going to increase ans by x.
+
+47
+00:01:55,640 --> 00:01:58,730
+I'm going to decrease the number of steps by 1.
+
+48
+00:01:58,730 --> 00:02:01,330
+And I'm going to go back around the loop.
+
+49
+00:02:01,330 --> 00:02:04,260
+And I'll do that until I'm done.
+
+50
+00:02:04,260 --> 00:02:08,442
+So if I look at a version of that over here now in my IDE,
+
+51
+00:02:08,442 --> 00:02:09,900
+I've got a little file I've written
+
+52
+00:02:09,900 --> 00:02:10,941
+that is going to do that.
+
+53
+00:02:10,941 --> 00:02:12,520
+It's exactly that same code.
+
+54
+00:02:12,520 --> 00:02:16,450
+And I'm going to load it into my environment.
+
+55
+00:02:16,450 --> 00:02:17,390
+And wow, there it is.
+
+56
+00:02:17,390 --> 00:02:20,230
+It printed out, as you can see on my little computer screen,
+
+57
+00:02:20,230 --> 00:02:22,190
+3 times 3 is 9.
+
+58
+00:02:22,190 --> 00:02:23,544
+It ran through that loop.
+
+59
+00:02:23,544 --> 00:02:24,960
+Just to check it again, let's make
+
+60
+00:02:24,960 --> 00:02:26,210
+something a little bit bigger.
+
+61
+00:02:26,210 --> 00:02:28,380
+I'll change x to 5.
+
+62
+00:02:28,380 --> 00:02:30,620
+Again I'm going to load it and run it.
+
+63
+00:02:30,620 --> 00:02:34,240
+And it computes the computation as we'd expect and returns
+
+64
+00:02:34,240 --> 00:02:37,410
+5 times 5 equals 25.
+
+65
+00:02:37,410 --> 00:02:39,440
+OK, big deal, I can square things.
+
+66
+00:02:39,440 --> 00:02:41,720
+But what I want you to see here is that idea
+
+67
+00:02:41,720 --> 00:02:43,770
+that I've now got a loop that lets
+
+68
+00:02:43,770 --> 00:02:47,450
+me use the same code arbitrary numbers of times.
+
+69
+00:02:47,450 --> 00:02:49,890
+When x was equal to 3, I ran through this portion
+
+70
+00:02:49,890 --> 00:02:51,420
+of the code three times.
+
+71
+00:02:51,420 --> 00:02:54,150
+When x was equal to 5, I went through it five times.
+
+72
+00:02:54,150 --> 00:02:59,600
+That notion of iteration, that's really useful.
+
+73
+00:02:59,600 --> 00:03:01,840
+Let's make sure it really did what I thought it would
+
+74
+00:03:01,840 --> 00:03:03,610
+by actually stepping through this.
+
+75
+00:03:03,610 --> 00:03:05,532
+Again I've got a copy of the code there.
+
+76
+00:03:05,532 --> 00:03:07,740
+And on the side I've got a little table that gives me
+
+77
+00:03:07,740 --> 00:03:08,906
+the values I'm going to use.
+
+78
+00:03:08,906 --> 00:03:10,494
+I'm going to start off with x equal 3.
+
+79
+00:03:10,494 --> 00:03:11,785
+That comes from that statement.
+
+80
+00:03:11,785 --> 00:03:13,789
+I'm going to start off with answer equals 0.
+
+81
+00:03:13,789 --> 00:03:15,080
+That comes from that statement.
+
+82
+00:03:15,080 --> 00:03:17,710
+And I'm going to start off with the number of iterations left
+
+83
+00:03:17,710 --> 00:03:20,220
+equal to 3, the value of x.
+
+84
+00:03:20,220 --> 00:03:22,000
+Here's what the code does.
+
+85
+00:03:22,000 --> 00:03:23,870
+First thing it does is it checks to see
+
+86
+00:03:23,870 --> 00:03:26,360
+is iters_left equal to 0.
+
+87
+00:03:26,360 --> 00:03:28,020
+So it does that test.
+
+88
+00:03:28,020 --> 00:03:29,140
+Answer is no.
+
+89
+00:03:29,140 --> 00:03:30,640
+So what does it do?
+
+90
+00:03:30,640 --> 00:03:33,450
+It takes answer and x, adds them together,
+
+91
+00:03:33,450 --> 00:03:35,880
+gives us a new value to store in answer.
+
+92
+00:03:35,880 --> 00:03:40,870
+It takes iters and reduces it by 1 and stores a new value.
+
+93
+00:03:40,870 --> 00:03:43,390
+Now I've got another version of the computation.
+
+94
+00:03:43,390 --> 00:03:45,350
+The while loop says go back around.
+
+95
+00:03:45,350 --> 00:03:48,770
+I check, is iters_left equal to 0?
+
+96
+00:03:48,770 --> 00:03:49,780
+It's not.
+
+97
+00:03:49,780 --> 00:03:52,040
+So same process, the current value
+
+98
+00:03:52,040 --> 00:03:55,920
+of answer or ans, which is 3, is added to x to give me 6.
+
+99
+00:03:55,920 --> 00:03:58,120
+iters_left is reduced by 1.
+
+100
+00:03:58,120 --> 00:04:00,150
+Go back around the while loop.
+
+101
+00:04:00,150 --> 00:04:01,460
+Is 1 equal to 0?
+
+102
+00:04:01,460 --> 00:04:04,930
+No, one more time, change answer by incrementing it
+
+103
+00:04:04,930 --> 00:04:06,660
+by 3, the value of x.
+
+104
+00:04:06,660 --> 00:04:10,800
+Changes iters_left by 1 to get it down to 0.
+
+105
+00:04:10,800 --> 00:04:13,740
+Now check, is itersLeft equal to 0?
+
+106
+00:04:13,740 --> 00:04:15,900
+It is, and I return 9.
+
+107
+00:04:15,900 --> 00:04:18,130
+And aren't you glad I didn't pick 27 to do this
+
+108
+00:04:18,130 --> 00:04:20,390
+on but something simple like 3?
+
+109
+00:04:20,390 --> 00:04:22,430
+My point is you can see how the while
+
+110
+00:04:22,430 --> 00:04:24,570
+loop executes appropriately.
+
+111
+00:04:24,570 --> 00:04:26,681
+It keeps reducing one variable, the thing that's
+
+112
+00:04:26,681 --> 00:04:28,180
+counting how many steps I want to go
+
+113
+00:04:28,180 --> 00:04:31,420
+through here, while accumulating an answer in ans
+
+114
+00:04:31,420 --> 00:04:33,060
+as it goes through.
+
+115
+00:04:33,060 --> 00:04:35,780
+And you see the properties we need for this kind of a loop.
+
+116
+00:04:35,780 --> 00:04:38,170
+I need to set the variable outside the loop.
+
+117
+00:04:38,170 --> 00:04:40,650
+I need to test it to determine when it's done.
+
+118
+00:04:40,650 --> 00:04:42,090
+And I need to change the variable
+
+119
+00:04:42,090 --> 00:04:44,950
+inside the loop in addition to whatever other work I want
+
+120
+00:04:44,950 --> 00:04:47,640
+to do as I go through this.
+
+121
+00:04:47,640 --> 00:04:50,510
+And in fact what we see then is that we've now
+
+122
+00:04:50,510 --> 00:04:53,830
+got a greater capability.
+
+123
+00:04:53,830 --> 00:04:56,600
+Branching structures, things like ifs,
+
+124
+00:04:56,600 --> 00:04:58,600
+only let us go through a different piece of code
+
+125
+00:04:58,600 --> 00:05:00,350
+based on a test once.
+
+126
+00:05:00,350 --> 00:05:01,650
+They run in constant time.
+
+127
+00:05:01,650 --> 00:05:03,870
+They're only going to go through the code once.
+
+128
+00:05:03,870 --> 00:05:05,700
+Looping structures like whiles let
+
+129
+00:05:05,700 --> 00:05:08,400
+us repeat code until a particular condition is
+
+130
+00:05:08,400 --> 00:05:09,490
+satisfied.
+
+131
+00:05:09,490 --> 00:05:11,160
+But now the amount of time that it takes
+
+132
+00:05:11,160 --> 00:05:13,350
+is going to depend on the values of the variables
+
+133
+00:05:13,350 --> 00:05:15,165
+as well as the length of the program.
+
+134
+00:05:15,165 --> 00:05:17,290
+And later on in the course we're going to come back
+
+135
+00:05:17,290 --> 00:05:19,478
+to look at that in more detail.
+
+136
+00:05:19,478 --> 00:05:19,978
+
+

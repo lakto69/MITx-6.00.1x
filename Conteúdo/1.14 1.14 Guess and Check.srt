@@ -1,0 +1,1196 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,780
+This notion of an iterative algorithm is really valuable.
+
+2
+00:00:03,780 --> 00:00:05,830
+It broadens dramatically the class
+
+3
+00:00:05,830 --> 00:00:07,660
+of things that we can compute.
+
+4
+00:00:07,660 --> 00:00:09,561
+Again, if I just have branching things,
+
+5
+00:00:09,561 --> 00:00:11,060
+I can only go through the code once.
+
+6
+00:00:11,060 --> 00:00:13,390
+Now, I can start generalizing.
+
+7
+00:00:13,390 --> 00:00:15,260
+And so we've got things that do much more
+
+8
+00:00:15,260 --> 00:00:17,920
+than just the simple arithmetic we were doing earlier.
+
+9
+00:00:17,920 --> 00:00:19,820
+We can repeat a sequence of steps
+
+10
+00:00:19,820 --> 00:00:22,630
+multiple times based on the decision.
+
+11
+00:00:22,630 --> 00:00:24,380
+One of the things that comes out naturally
+
+12
+00:00:24,380 --> 00:00:26,890
+once we have this idea of repeating things
+
+13
+00:00:26,890 --> 00:00:28,560
+is a set of methods that are sometimes
+
+14
+00:00:28,560 --> 00:00:30,726
+called guess-and-check methods.
+
+15
+00:00:30,726 --> 00:00:32,850
+They're very useful, even though they're not always
+
+16
+00:00:32,850 --> 00:00:34,397
+the most efficient technique.
+
+17
+00:00:34,397 --> 00:00:36,730
+And I want to extend that notion of iterative algorithms
+
+18
+00:00:36,730 --> 00:00:41,320
+to capture examples of guess-and-check methods.
+
+19
+00:00:41,320 --> 00:00:44,190
+Go back to what we talked about in an earlier lecture.
+
+20
+00:00:44,190 --> 00:00:47,210
+Remember we had that declarative definition of square root.
+
+21
+00:00:47,210 --> 00:00:50,990
+Square root of x was that y such that y squared was equal to x.
+
+22
+00:00:50,990 --> 00:00:53,780
+And I said, if we were lucky, somebody gave us a guess.
+
+23
+00:00:53,780 --> 00:00:56,370
+We could at least use it to check whether we were right.
+
+24
+00:00:56,370 --> 00:00:57,860
+Now, we went and looked a different direction.
+
+25
+00:00:57,860 --> 00:00:59,910
+We looked at an algorithm to actually compute it,
+
+26
+00:00:59,910 --> 00:01:03,470
+but we can go back to that idea, because if we had a good way
+
+27
+00:01:03,470 --> 00:01:07,020
+to generate guesses, we could use that declarative definition
+
+28
+00:01:07,020 --> 00:01:08,540
+to check.
+
+29
+00:01:08,540 --> 00:01:10,396
+That's the basis of guess-and-check.
+
+30
+00:01:10,396 --> 00:01:12,770
+I'm going to have to come up with a way of systematically
+
+31
+00:01:12,770 --> 00:01:15,800
+making guesses for the possible answer,
+
+32
+00:01:15,800 --> 00:01:18,690
+check them, and keep doing that in an iterative algorithm
+
+33
+00:01:18,690 --> 00:01:21,370
+until I find a good solution.
+
+34
+00:01:21,370 --> 00:01:24,077
+Let's see how we might do that.
+
+35
+00:01:24,077 --> 00:01:26,160
+I'm going to use cube root rather than square root
+
+36
+00:01:26,160 --> 00:01:27,650
+just to change it up a little bit,
+
+37
+00:01:27,650 --> 00:01:29,420
+but the same idea would work.
+
+38
+00:01:29,420 --> 00:01:32,260
+One way to use this idea would be to try and find,
+
+39
+00:01:32,260 --> 00:01:34,940
+for example, starting at 0, try 0 cubed,
+
+40
+00:01:34,940 --> 00:01:38,730
+then 1 cubed, then 2 cubed, and so on, until I get to a point
+
+41
+00:01:38,730 --> 00:01:43,082
+where I find a k such that k cubed is greater than x.
+
+42
+00:01:43,082 --> 00:01:44,540
+If I found the square root-- sorry,
+
+43
+00:01:44,540 --> 00:01:46,000
+the cube root before then, I stop,
+
+44
+00:01:46,000 --> 00:01:47,900
+but once I've got something greater than x,
+
+45
+00:01:47,900 --> 00:01:49,662
+I know I can stop.
+
+46
+00:01:49,662 --> 00:01:51,870
+Now, clearly this is only going to work for integers.
+
+47
+00:01:51,870 --> 00:01:53,609
+I can't do it for all possible numbers.
+
+48
+00:01:53,609 --> 00:01:55,900
+But in this case there's only a finite number of things
+
+49
+00:01:55,900 --> 00:01:57,580
+that I need to try.
+
+50
+00:01:57,580 --> 00:01:59,880
+So let's see what that would do.
+
+51
+00:01:59,880 --> 00:02:03,160
+Here's some code that would actually make it happen.
+
+52
+00:02:03,160 --> 00:02:05,160
+I'm going to start by inputting an integer.
+
+53
+00:02:05,160 --> 00:02:06,299
+Notice my use of input.
+
+54
+00:02:06,299 --> 00:02:08,340
+I'll remind you that says it's going to print out
+
+55
+00:02:08,340 --> 00:02:11,400
+that message, then read in whatever I type
+
+56
+00:02:11,400 --> 00:02:14,890
+in into the environment inside Python.
+
+57
+00:02:14,890 --> 00:02:17,750
+Remember that input returns something as a string,
+
+58
+00:02:17,750 --> 00:02:19,709
+so I'm going to convert it into an integer.
+
+59
+00:02:19,709 --> 00:02:21,500
+It's going to assume I typed in an integer.
+
+60
+00:02:21,500 --> 00:02:23,704
+If I give it something else, it's not going to work.
+
+61
+00:02:23,704 --> 00:02:25,620
+And then I'm just going to have a little loop.
+
+62
+00:02:25,620 --> 00:02:27,950
+I'm going to set up answer to be 0,
+
+63
+00:02:27,950 --> 00:02:31,360
+and then as long as I have something that's
+
+64
+00:02:31,360 --> 00:02:33,680
+less than the thing I'm trying to find the cube of,
+
+65
+00:02:33,680 --> 00:02:36,712
+I'm just going to increment-- add 1 to it.
+
+66
+00:02:36,712 --> 00:02:39,170
+And I'm going to keep doing that until I get something that
+
+67
+00:02:39,170 --> 00:02:42,650
+is equal to-- sorry, something where the cube is either
+
+68
+00:02:42,650 --> 00:02:44,890
+equal to x or greater than x.
+
+69
+00:02:44,890 --> 00:02:47,320
+And once I get there, I'll simply check to see,
+
+70
+00:02:47,320 --> 00:02:50,670
+did I actually get the cube, by doing a test.
+
+71
+00:02:50,670 --> 00:02:51,930
+Let's try this out.
+
+72
+00:02:51,930 --> 00:02:54,530
+Again, I've got a little piece-- same piece of code over here.
+
+73
+00:02:54,530 --> 00:02:57,530
+I'm going to load it into my system.
+
+74
+00:02:57,530 --> 00:02:59,160
+It says "enter an integer."
+
+75
+00:02:59,160 --> 00:03:03,050
+Let's give it something reasonable, like 27.
+
+76
+00:03:03,050 --> 00:03:05,780
+So in my environment, I give it 27.
+
+77
+00:03:05,780 --> 00:03:07,250
+Ah, good.
+
+78
+00:03:07,250 --> 00:03:09,400
+Cube root is in fact 3.
+
+79
+00:03:09,400 --> 00:03:10,850
+Let's try something else.
+
+80
+00:03:10,850 --> 00:03:14,200
+Again, I'm going to load this into my system,
+
+81
+00:03:14,200 --> 00:03:18,520
+and I don't know, let's pick 38.
+
+82
+00:03:18,520 --> 00:03:19,780
+And it says, doesn't work.
+
+83
+00:03:19,780 --> 00:03:21,741
+It's not a perfect cube.
+
+84
+00:03:21,741 --> 00:03:22,240
+All right.
+
+85
+00:03:22,240 --> 00:03:23,370
+My code runs.
+
+86
+00:03:23,370 --> 00:03:24,820
+What was this doing?
+
+87
+00:03:24,820 --> 00:03:30,880
+It's simply using a loop, right here, to generate guesses.
+
+88
+00:03:30,880 --> 00:03:37,152
+
+
+89
+00:03:37,152 --> 00:03:39,110
+And it's going to keep doing that until it gets
+
+90
+00:03:39,110 --> 00:03:41,050
+either to something that is the right thing,
+
+91
+00:03:41,050 --> 00:03:43,350
+or has gone too far, in which case,
+
+92
+00:03:43,350 --> 00:03:47,340
+I'm simply going to do a check to see which case I'm in.
+
+93
+00:03:47,340 --> 00:03:49,380
+Here, I'm using that declarative knowledge,
+
+94
+00:03:49,380 --> 00:03:50,992
+because there's the test.
+
+95
+00:03:50,992 --> 00:03:52,950
+Test is right there to see, do I have something
+
+96
+00:03:52,950 --> 00:03:55,210
+that is in fact the cube root?
+
+97
+00:03:55,210 --> 00:03:56,120
+That's nice.
+
+98
+00:03:56,120 --> 00:03:58,360
+That's what I'd like.
+
+99
+00:03:58,360 --> 00:04:00,232
+What could I say about this piece of code?
+
+100
+00:04:00,232 --> 00:04:01,690
+Well, first of all, it's only going
+
+101
+00:04:01,690 --> 00:04:03,510
+to work for positive integers.
+
+102
+00:04:03,510 --> 00:04:04,350
+OK.
+
+103
+00:04:04,350 --> 00:04:07,600
+I could easily fix that by just keeping track of the sign
+
+104
+00:04:07,600 --> 00:04:10,600
+and then [INAUDIBLE] the solution to the positive case.
+
+105
+00:04:10,600 --> 00:04:13,350
+And I do this because one of the things we want to do with code
+
+106
+00:04:13,350 --> 00:04:15,782
+is think about how well does it run?
+
+107
+00:04:15,782 --> 00:04:17,490
+Does it run on all the things I expected?
+
+108
+00:04:17,490 --> 00:04:19,510
+And how might I modify it?
+
+109
+00:04:19,510 --> 00:04:22,110
+And here the modification is actually
+
+110
+00:04:22,110 --> 00:04:23,845
+pretty straightforward.
+
+111
+00:04:23,845 --> 00:04:25,470
+I'm going to do the same kind of thing.
+
+112
+00:04:25,470 --> 00:04:27,920
+I'm going to run the code, but I'm
+
+113
+00:04:27,920 --> 00:04:31,350
+going to use "abs," which is a built in function,
+
+114
+00:04:31,350 --> 00:04:33,510
+to take the absolute value of x.
+
+115
+00:04:33,510 --> 00:04:36,540
+I'm going to check the cube root against the absolute value
+
+116
+00:04:36,540 --> 00:04:37,460
+of x.
+
+117
+00:04:37,460 --> 00:04:40,750
+And then when I'm done, I can just decide down here
+
+118
+00:04:40,750 --> 00:04:43,820
+whether in fact I want the negative or positive version
+
+119
+00:04:43,820 --> 00:04:45,620
+of that.
+
+120
+00:04:45,620 --> 00:04:47,192
+I could make that change and run it.
+
+121
+00:04:47,192 --> 00:04:48,150
+I'm not going to do it.
+
+122
+00:04:48,150 --> 00:04:49,980
+It'll work for me, but it simply shows you
+
+123
+00:04:49,980 --> 00:04:54,320
+that I can easily extend my code to build new versions of things
+
+124
+00:04:54,320 --> 00:04:56,710
+to handle cases that I didn't think about when I wrote
+
+125
+00:04:56,710 --> 00:04:59,170
+the first version of the code.
+
+126
+00:04:59,170 --> 00:05:02,200
+There's the first version of a guess-and-check method.
+
+127
+00:05:02,200 --> 00:05:05,580
+A little slow, but it does the right kind of thing.
+
+128
+00:05:05,580 --> 00:05:07,590
+Now, one of the things that we've talked about
+
+129
+00:05:07,590 --> 00:05:10,470
+is that we know when we do a loop that we
+
+130
+00:05:10,470 --> 00:05:11,900
+need some characteristics.
+
+131
+00:05:11,900 --> 00:05:14,660
+In particular, we need a loop variable
+
+132
+00:05:14,660 --> 00:05:17,730
+that's initialized outside the loop, that
+
+133
+00:05:17,730 --> 00:05:19,680
+changes within the loop, and that's
+
+134
+00:05:19,680 --> 00:05:22,610
+used to test when I'm done.
+
+135
+00:05:22,610 --> 00:05:25,120
+That notion we can also capture in a little bit
+
+136
+00:05:25,120 --> 00:05:28,850
+more general form, because it's useful to think about what's
+
+137
+00:05:28,850 --> 00:05:30,610
+happening inside the loop.
+
+138
+00:05:30,610 --> 00:05:32,920
+How do I know the loop's actually going to stop?
+
+139
+00:05:32,920 --> 00:05:34,420
+And for that, we often want to think
+
+140
+00:05:34,420 --> 00:05:37,780
+about something we call a decrementing function.
+
+141
+00:05:37,780 --> 00:05:40,100
+The idea is that we're going to map all of the program
+
+142
+00:05:40,100 --> 00:05:43,270
+variables into an integer, and when the loop is entered,
+
+143
+00:05:43,270 --> 00:05:46,450
+that value is going to be something that's non-negative.
+
+144
+00:05:46,450 --> 00:05:49,020
+When I go through the loop, it's going to keep decreasing,
+
+145
+00:05:49,020 --> 00:05:51,550
+and when that value gets less than or equal to 0,
+
+146
+00:05:51,550 --> 00:05:53,410
+I know I want to terminate.
+
+147
+00:05:53,410 --> 00:05:56,060
+So this is a capturing of this idea of the loop variable
+
+148
+00:05:56,060 --> 00:05:59,860
+in terms of looking at what's being done inside the loop.
+
+149
+00:05:59,860 --> 00:06:01,970
+And in my case here, I was simply
+
+150
+00:06:01,970 --> 00:06:05,540
+using the absolute value of x minus answer cubed
+
+151
+00:06:05,540 --> 00:06:07,770
+as my decrementing function.
+
+152
+00:06:07,770 --> 00:06:10,420
+If you think about it, every time through the loop,
+
+153
+00:06:10,420 --> 00:06:11,790
+that is decreasing.
+
+154
+00:06:11,790 --> 00:06:13,340
+And once it gets to a stage where
+
+155
+00:06:13,340 --> 00:06:16,316
+it's either less than or equal to 0, I'm ready to stop,
+
+156
+00:06:16,316 --> 00:06:17,690
+and I'm going to be able to go on
+
+157
+00:06:17,690 --> 00:06:20,670
+to see whether I've actually computed-- sorry,
+
+158
+00:06:20,670 --> 00:06:24,500
+a perfect cube or not.
+
+159
+00:06:24,500 --> 00:06:26,480
+What could go wrong?
+
+160
+00:06:26,480 --> 00:06:30,340
+Well, these are the standard problems with a loop.
+
+161
+00:06:30,340 --> 00:06:32,997
+Suppose I don't initialize the variable.
+
+162
+00:06:32,997 --> 00:06:35,080
+Most likely thing is I get something called a name
+
+163
+00:06:35,080 --> 00:06:36,800
+error, which is I'm going to try and refer
+
+164
+00:06:36,800 --> 00:06:38,910
+inside the loop to something that I haven't defined
+
+165
+00:06:38,910 --> 00:06:39,510
+outside the loop.
+
+166
+00:06:39,510 --> 00:06:40,260
+There is no value.
+
+167
+00:06:40,260 --> 00:06:42,010
+I can't look it up.
+
+168
+00:06:42,010 --> 00:06:42,840
+That's at least OK.
+
+169
+00:06:42,840 --> 00:06:44,050
+I'm going to stop.
+
+170
+00:06:44,050 --> 00:06:47,110
+What's worse is if I've used that loop variable somewhere
+
+171
+00:06:47,110 --> 00:06:49,600
+else in my code before this, I'm actually
+
+172
+00:06:49,600 --> 00:06:51,340
+going to get something that starts off
+
+173
+00:06:51,340 --> 00:06:53,640
+the computation in a place I don't expect,
+
+174
+00:06:53,640 --> 00:06:55,667
+and that's a harder problem to find.
+
+175
+00:06:55,667 --> 00:06:57,250
+So this is one of the things we always
+
+176
+00:06:57,250 --> 00:06:59,070
+want to remember with loops-- make
+
+177
+00:06:59,070 --> 00:07:02,290
+sure we initialize the variable before we start it.
+
+178
+00:07:02,290 --> 00:07:05,460
+What if I forget to change the variable inside the loop?
+
+179
+00:07:05,460 --> 00:07:08,430
+I'm in trouble, because I'm going to go through that loop
+
+180
+00:07:08,430 --> 00:07:10,450
+until I get really tired of the machine running.
+
+181
+00:07:10,450 --> 00:07:13,033
+It's going to simply go through what we call an infinite loop,
+
+182
+00:07:13,033 --> 00:07:16,120
+doing exactly the same code over and over and over again,
+
+183
+00:07:16,120 --> 00:07:19,510
+because it will never reach a terminating condition.
+
+184
+00:07:19,510 --> 00:07:22,660
+And those are two standard problems with using a loop.
+
+185
+00:07:22,660 --> 00:07:24,770
+A while-loop, in particular, is I've
+
+186
+00:07:24,770 --> 00:07:27,250
+gotta make sure I set up the variable ahead of time.
+
+187
+00:07:27,250 --> 00:07:29,740
+I've gotta make sure I'm changing it inside the loop.
+
+188
+00:07:29,740 --> 00:07:32,550
+And I need to make sure that the termination test is actually
+
+189
+00:07:32,550 --> 00:07:34,990
+using that variable appropriately.
+
+190
+00:07:34,990 --> 00:07:37,100
+But as long as I get into the discipline of that
+
+191
+00:07:37,100 --> 00:07:39,460
+set the variable, write the loop,
+
+192
+00:07:39,460 --> 00:07:42,320
+decrement the variable inside the loop, and check for it,
+
+193
+00:07:42,320 --> 00:07:44,820
+I should be OK.
+
+194
+00:07:44,820 --> 00:07:48,280
+So that gives us actually a broad class of algorithms.
+
+195
+00:07:48,280 --> 00:07:51,270
+Not the most efficient, not going to work in every case,
+
+196
+00:07:51,270 --> 00:07:52,860
+but a good guess-and-check algorithm
+
+197
+00:07:52,860 --> 00:07:55,250
+is something where you guess a value,
+
+198
+00:07:55,250 --> 00:07:58,417
+you check to see if it's right, you change the conditions
+
+199
+00:07:58,417 --> 00:08:00,000
+inside the loop, and you keep guessing
+
+200
+00:08:00,000 --> 00:08:02,020
+until you find a solution or you've used up
+
+201
+00:08:02,020 --> 00:08:04,040
+all the possible values.
+
+202
+00:08:04,040 --> 00:08:06,250
+This is an example of a set of algorithms
+
+203
+00:08:06,250 --> 00:08:08,240
+called exhaustive enumeration, and you
+
+204
+00:08:08,240 --> 00:08:09,700
+can see why "exhaustive."
+
+205
+00:08:09,700 --> 00:08:10,880
+Two reasons.
+
+206
+00:08:10,880 --> 00:08:14,115
+One, you're going to exhaust all possible options to use.
+
+207
+00:08:14,115 --> 00:08:15,990
+And two is it's going to take a while to run,
+
+208
+00:08:15,990 --> 00:08:18,410
+so you get tired waiting for it to finish.
+
+209
+00:08:18,410 --> 00:08:21,140
+But as computers get faster, surprisingly,
+
+210
+00:08:21,140 --> 00:08:26,140
+many of these algorithms can actually work quite well.
+
+211
+00:08:26,140 --> 00:08:28,250
+On the other hand, I might not want
+
+212
+00:08:28,250 --> 00:08:33,140
+to always think about making sure I initialize a loop
+
+213
+00:08:33,140 --> 00:08:36,169
+variable, do a while-loop and then change it inside.
+
+214
+00:08:36,169 --> 00:08:38,442
+So I could clean this code up by using
+
+215
+00:08:38,442 --> 00:08:39,900
+the other kind of variable-- sorry,
+
+216
+00:08:39,900 --> 00:08:43,990
+the other kind of iteration structure, a for-loop.
+
+217
+00:08:43,990 --> 00:08:46,270
+So here's a nice variation of that.
+
+218
+00:08:46,270 --> 00:08:47,670
+I could set up a value for cube.
+
+219
+00:08:47,670 --> 00:08:49,040
+I could have read it in, but I could set up
+
+220
+00:08:49,040 --> 00:08:51,081
+a value for the thing I'm trying to find the cube
+
+221
+00:08:51,081 --> 00:08:55,060
+root of, and then just run a for-loop, because I know
+
+222
+00:08:55,060 --> 00:08:58,240
+that the cube root has to be less than cube itself,
+
+223
+00:08:58,240 --> 00:09:01,050
+at least for positive integers, things greater than 1.
+
+224
+00:09:01,050 --> 00:09:04,850
+So I can simply use "range" to generate all possible things
+
+225
+00:09:04,850 --> 00:09:06,600
+I want to use as a guess, and then
+
+226
+00:09:06,600 --> 00:09:10,090
+run a for-loop, where I'll run this and simply say, again,
+
+227
+00:09:10,090 --> 00:09:12,030
+check to see, is guess cube equal to cube?
+
+228
+00:09:12,030 --> 00:09:14,120
+If it is, I'm done.
+
+229
+00:09:14,120 --> 00:09:16,790
+Let's see what happens if we find-- if we try that one out.
+
+230
+00:09:16,790 --> 00:09:19,810
+So I've got a little simple version of that over here.
+
+231
+00:09:19,810 --> 00:09:22,470
+I'm going to start off with cube equal to 8.
+
+232
+00:09:22,470 --> 00:09:26,100
+And if I run it, does the right thing.
+
+233
+00:09:26,100 --> 00:09:28,260
+It says cube root of 8 is 2.
+
+234
+00:09:28,260 --> 00:09:31,500
+Let's try 27.
+
+235
+00:09:31,500 --> 00:09:34,610
+And if I run that, wow, it's great.
+
+236
+00:09:34,610 --> 00:09:36,320
+Cube root of 27 is 3.
+
+237
+00:09:36,320 --> 00:09:37,670
+This is working really well.
+
+238
+00:09:37,670 --> 00:09:39,110
+OK.
+
+239
+00:09:39,110 --> 00:09:43,340
+But suppose I now give it something different, like 28,
+
+240
+00:09:43,340 --> 00:09:45,700
+and I run it.
+
+241
+00:09:45,700 --> 00:09:46,910
+Hm.
+
+242
+00:09:46,910 --> 00:09:48,620
+What happened?
+
+243
+00:09:48,620 --> 00:09:49,700
+Well, it completed.
+
+244
+00:09:49,700 --> 00:09:54,080
+I can check that over here, if I go back to my process.
+
+245
+00:09:54,080 --> 00:09:56,864
+I've got things here, but it didn't print anything out.
+
+246
+00:09:56,864 --> 00:10:00,470
+Ah, because I made a slip when I wrote the code.
+
+247
+00:10:00,470 --> 00:10:02,890
+That code is going to run through all possible options
+
+248
+00:10:02,890 --> 00:10:05,760
+for guess, but it's only going to print something out
+
+249
+00:10:05,760 --> 00:10:08,980
+if in fact I find something that is the cube root-- if there
+
+250
+00:10:08,980 --> 00:10:11,009
+is a perfect cube.
+
+251
+00:10:11,009 --> 00:10:12,300
+28, that's not going to happen.
+
+252
+00:10:12,300 --> 00:10:14,280
+It didn't give me anything informative.
+
+253
+00:10:14,280 --> 00:10:18,960
+So I ought to clean that up, and I can, by simply saying,
+
+254
+00:10:18,960 --> 00:10:20,034
+do the same thing.
+
+255
+00:10:20,034 --> 00:10:21,450
+I've actually cleaned it up to add
+
+256
+00:10:21,450 --> 00:10:23,075
+an "abs" here so that I'm going to deal
+
+257
+00:10:23,075 --> 00:10:24,170
+with the negative cases.
+
+258
+00:10:24,170 --> 00:10:27,060
+But do the check here, and if I get to a place
+
+259
+00:10:27,060 --> 00:10:30,851
+where I've gone too far, simply break.
+
+260
+00:10:30,851 --> 00:10:32,976
+Break out of it.
+
+261
+00:10:32,976 --> 00:10:33,930
+OK?
+
+262
+00:10:33,930 --> 00:10:38,720
+Otherwise, run through the loop, but now, when I do the check,
+
+263
+00:10:38,720 --> 00:10:39,370
+do the print.
+
+264
+00:10:39,370 --> 00:10:43,872
+Otherwise, do the check with the second piece.
+
+265
+00:10:43,872 --> 00:10:45,830
+And actually, I've done that in an inverse way.
+
+266
+00:10:45,830 --> 00:10:47,710
+Here I'm checking to see it's not a perfect cube,
+
+267
+00:10:47,710 --> 00:10:49,043
+and I'm going to print that out.
+
+268
+00:10:49,043 --> 00:10:50,560
+If it is a perfect cube, I'm going
+
+269
+00:10:50,560 --> 00:10:53,750
+to basically determine whether I want the positive or negative
+
+270
+00:10:53,750 --> 00:10:54,980
+version of it.
+
+271
+00:10:54,980 --> 00:10:56,650
+So I'm cleaning up two things here.
+
+272
+00:10:56,650 --> 00:10:58,284
+I'm allowing for negative integers,
+
+273
+00:10:58,284 --> 00:11:00,700
+but I'm also allowing for it to print out something that's
+
+274
+00:11:00,700 --> 00:11:02,170
+going to do the right thing.
+
+275
+00:11:02,170 --> 00:11:05,630
+And let me show you what would happen if I run that version.
+
+276
+00:11:05,630 --> 00:11:12,380
+So now when I run this, cube root of minus 27 is minus 3.
+
+277
+00:11:12,380 --> 00:11:17,870
+And if I give it a minus 28, it says it's not a perfect cube.
+
+278
+00:11:17,870 --> 00:11:19,820
+And I'm all set.
+
+279
+00:11:19,820 --> 00:11:21,560
+What was my point?
+
+280
+00:11:21,560 --> 00:11:23,290
+When I run the code, I shouldn't just
+
+281
+00:11:23,290 --> 00:11:25,837
+run it on things I'm expecting, like perfect cubes.
+
+282
+00:11:25,837 --> 00:11:27,420
+I should run it on other things to see
+
+283
+00:11:27,420 --> 00:11:28,920
+if it does the right thing.
+
+284
+00:11:28,920 --> 00:11:31,814
+When it didn't, I wanted to add in a different check,
+
+285
+00:11:31,814 --> 00:11:33,480
+and I added in a second thing here which
+
+286
+00:11:33,480 --> 00:11:34,760
+I had done earlier, which is to make
+
+287
+00:11:34,760 --> 00:11:37,260
+sure I can deal with negative integers and not just positive
+
+288
+00:11:37,260 --> 00:11:39,460
+integers.
+
+289
+00:11:39,460 --> 00:11:42,270
+But that now gives us a nice tool.
+
+290
+00:11:42,270 --> 00:11:44,994
+I've got exhaustive enumeration, guess-and-check methods that
+
+291
+00:11:44,994 --> 00:11:46,410
+can work on problems where there's
+
+292
+00:11:46,410 --> 00:11:48,670
+a finite number of choices.
+
+293
+00:11:48,670 --> 00:11:50,820
+I can come up with a way of exhaustively testing
+
+294
+00:11:50,820 --> 00:11:52,420
+all of those, and it's a good way
+
+295
+00:11:52,420 --> 00:11:55,060
+to generate guesses in an organized manner using
+
+296
+00:11:55,060 --> 00:11:58,650
+those iterative loops as a technique to tell when I'm done
+
+297
+00:11:58,650 --> 00:12:00,840
+and to return a great answer.
+
+298
+00:12:00,840 --> 00:12:04,390
+And we're going to build on that idea as we move on.
+

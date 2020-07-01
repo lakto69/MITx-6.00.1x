@@ -1,0 +1,584 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,130
+So how do we create this notion of abstraction
+
+2
+00:00:03,130 --> 00:00:05,630
+and decomposition in Python, or actually
+
+3
+00:00:05,630 --> 00:00:07,370
+in any programming language?
+
+4
+00:00:07,370 --> 00:00:10,030
+And the answer is, we introduced the idea
+
+5
+00:00:10,030 --> 00:00:12,620
+of a reusable piece of code, or a chunk of code,
+
+6
+00:00:12,620 --> 00:00:14,360
+called a function.
+
+7
+00:00:14,360 --> 00:00:17,770
+Functions are not going to be run in a program
+
+8
+00:00:17,770 --> 00:00:20,360
+until we actually ask them to do that.
+
+9
+00:00:20,360 --> 00:00:23,030
+So as opposed to things I was typing into my shell--
+
+10
+00:00:23,030 --> 00:00:24,610
+every time I typed in an expression,
+
+11
+00:00:24,610 --> 00:00:26,770
+it was invoked or evaluated-- I'm
+
+12
+00:00:26,770 --> 00:00:29,010
+going to create a definition of a function.
+
+13
+00:00:29,010 --> 00:00:30,690
+And when I read that in, it's simply
+
+14
+00:00:30,690 --> 00:00:34,520
+going to create the ability to do that computation,
+
+15
+00:00:34,520 --> 00:00:35,830
+but not actually call it.
+
+16
+00:00:35,830 --> 00:00:38,790
+And we'll see an example of that in a second.
+
+17
+00:00:38,790 --> 00:00:40,730
+What are the characteristics of a function?
+
+18
+00:00:40,730 --> 00:00:41,710
+Several.
+
+19
+00:00:41,710 --> 00:00:43,680
+First, it has a name.
+
+20
+00:00:43,680 --> 00:00:44,400
+That makes sense.
+
+21
+00:00:44,400 --> 00:00:45,640
+I've got to be able to refer to it.
+
+22
+00:00:45,640 --> 00:00:48,180
+In the same way that I had a variable as a name for a value,
+
+23
+00:00:48,180 --> 00:00:50,170
+a function will have a name.
+
+24
+00:00:50,170 --> 00:00:52,360
+It will also take a set of parameters.
+
+25
+00:00:52,360 --> 00:00:54,500
+These are arguments or values that I'm
+
+26
+00:00:54,500 --> 00:00:57,700
+going to use inside the function when I do a computation.
+
+27
+00:00:57,700 --> 00:00:59,200
+It's going to make sense in a second
+
+28
+00:00:59,200 --> 00:01:01,610
+when we look at an example.
+
+29
+00:01:01,610 --> 00:01:03,790
+Every function has to have parameters.
+
+30
+00:01:03,790 --> 00:01:05,680
+But the number of parameters could be zero.
+
+31
+00:01:05,680 --> 00:01:07,040
+Or it's a funny way of saying, it's
+
+32
+00:01:07,040 --> 00:01:08,456
+going to take in a parameter list,
+
+33
+00:01:08,456 --> 00:01:10,290
+but in fact, it may need no parameters.
+
+34
+00:01:10,290 --> 00:01:12,560
+And I'm going to decide when I create a function how
+
+35
+00:01:12,560 --> 00:01:14,440
+many parameters I need.
+
+36
+00:01:14,440 --> 00:01:16,780
+We'd like every function to have a doc string.
+
+37
+00:01:16,780 --> 00:01:18,990
+That is a documentation that tells me
+
+38
+00:01:18,990 --> 00:01:20,620
+what the function does.
+
+39
+00:01:20,620 --> 00:01:22,960
+We'll see an example of that in a second.
+
+40
+00:01:22,960 --> 00:01:25,220
+And finally, a function has a body.
+
+41
+00:01:25,220 --> 00:01:29,250
+And the body is the sequence of commands or instructions
+
+42
+00:01:29,250 --> 00:01:31,520
+that we want to actually have happen
+
+43
+00:01:31,520 --> 00:01:34,330
+when we use the function.
+
+44
+00:01:34,330 --> 00:01:35,450
+Those are a lot of words.
+
+45
+00:01:35,450 --> 00:01:38,600
+Let's look at an example to get a sense of this.
+
+46
+00:01:38,600 --> 00:01:41,350
+Here's a definition of a function.
+
+47
+00:01:41,350 --> 00:01:43,910
+And I'm going to walk through each of these pieces.
+
+48
+00:01:43,910 --> 00:01:47,970
+So the first part of it is I've got a keyword, in this case
+
+49
+00:01:47,970 --> 00:01:49,120
+def.
+
+50
+00:01:49,120 --> 00:01:50,590
+And it is a key word, meaning it's
+
+51
+00:01:50,590 --> 00:01:53,000
+a special symbol to Python that tells me
+
+52
+00:01:53,000 --> 00:01:55,250
+I'm about to define something.
+
+53
+00:01:55,250 --> 00:01:57,780
+In this case, I'm about to define a function.
+
+54
+00:01:57,780 --> 00:02:00,510
+That is followed by a string that
+
+55
+00:02:00,510 --> 00:02:02,050
+is the name of the function.
+
+56
+00:02:02,050 --> 00:02:05,080
+In this case, it's is even, or is underscore even.
+
+57
+00:02:05,080 --> 00:02:09,150
+That's the name I'm going to give to this function.
+
+58
+00:02:09,150 --> 00:02:11,990
+That is followed in parentheses, in those parens,
+
+59
+00:02:11,990 --> 00:02:15,280
+by zero, one, or more parameters.
+
+60
+00:02:15,280 --> 00:02:17,010
+In this case, I've got one.
+
+61
+00:02:17,010 --> 00:02:18,670
+And I'm giving it a name.
+
+62
+00:02:18,670 --> 00:02:20,180
+Think of it like a variable name.
+
+63
+00:02:20,180 --> 00:02:22,340
+Well, I'm saying, I'm going to use the name
+
+64
+00:02:22,340 --> 00:02:26,630
+i as the name for a parameter inside this function.
+
+65
+00:02:26,630 --> 00:02:28,200
+And that's then followed by a colon
+
+66
+00:02:28,200 --> 00:02:31,260
+to tell me I'm done with the top line of the definition,
+
+67
+00:02:31,260 --> 00:02:33,970
+I'm about to follow it with other information.
+
+68
+00:02:33,970 --> 00:02:37,170
+So keyword def, a name, and in parens
+
+69
+00:02:37,170 --> 00:02:39,380
+some number of parameters.
+
+70
+00:02:39,380 --> 00:02:42,990
+Immediately below that in triple double quotes--
+
+71
+00:02:42,990 --> 00:02:46,820
+which is a wonderful expression-- is a docstring.
+
+72
+00:02:46,820 --> 00:02:48,400
+It's up to you how to use this.
+
+73
+00:02:48,400 --> 00:02:50,360
+But traditionally, you would specify
+
+74
+00:02:50,360 --> 00:02:52,800
+what's the input to this function
+
+75
+00:02:52,800 --> 00:02:55,604
+and what's the output of this function.
+
+76
+00:02:55,604 --> 00:02:57,020
+It's a little bit like a contract.
+
+77
+00:02:57,020 --> 00:02:59,680
+In this case, I'm saying I'm expecting one input.
+
+78
+00:02:59,680 --> 00:03:01,000
+I'm calling it i.
+
+79
+00:03:01,000 --> 00:03:02,860
+And it's a positive integer.
+
+80
+00:03:02,860 --> 00:03:06,770
+And what I'm going to return is true if i is even.
+
+81
+00:03:06,770 --> 00:03:09,284
+Otherwise, I'm going to return false.
+
+82
+00:03:09,284 --> 00:03:10,700
+As you'll see in a little bit, one
+
+83
+00:03:10,700 --> 00:03:12,200
+of the nice things about a docstring
+
+84
+00:03:12,200 --> 00:03:16,230
+is, once I've defined this function, if I go to call it,
+
+85
+00:03:16,230 --> 00:03:19,300
+which I'm going to get to in a second, Python will
+
+86
+00:03:19,300 --> 00:03:22,250
+automatically bring up a little window that tells me
+
+87
+00:03:22,250 --> 00:03:24,010
+the docstring that's remind me what
+
+88
+00:03:24,010 --> 00:03:27,060
+the conditions for this function are, which is great.
+
+89
+00:03:27,060 --> 00:03:31,550
+So keyword, name, parameters, I've got a docstring.
+
+90
+00:03:31,550 --> 00:03:34,940
+Immediately below that is the body of the function.
+
+91
+00:03:34,940 --> 00:03:37,360
+This is the sequence of commands or expressions
+
+92
+00:03:37,360 --> 00:03:41,040
+I want to evaluate when I'm ready to use this.
+
+93
+00:03:41,040 --> 00:03:45,040
+Notice the indentation-- all of this is indented here.
+
+94
+00:03:45,040 --> 00:03:48,394
+This is telling me where the body of the function is.
+
+95
+00:03:48,394 --> 00:03:49,810
+And in fact, it will be everything
+
+96
+00:03:49,810 --> 00:03:51,680
+until I get back to something that
+
+97
+00:03:51,680 --> 00:03:56,850
+returns to the left hand side of the editor or of the shell.
+
+98
+00:03:56,850 --> 00:03:59,020
+In this case, I've got two expressions in my body.
+
+99
+00:03:59,020 --> 00:04:00,950
+It's going to print out simply the string hi.
+
+100
+00:04:00,950 --> 00:04:03,300
+And then it's going to return a value.
+
+101
+00:04:03,300 --> 00:04:05,810
+We'll come back to the return in a second.
+
+102
+00:04:05,810 --> 00:04:08,610
+There is how I write a function.
+
+103
+00:04:08,610 --> 00:04:11,320
+Now, how do I use it?
+
+104
+00:04:11,320 --> 00:04:12,430
+The function has a name.
+
+105
+00:04:12,430 --> 00:04:14,080
+The same way I could use a variable
+
+106
+00:04:14,080 --> 00:04:16,160
+as a name inside of an expression,
+
+107
+00:04:16,160 --> 00:04:18,510
+I can use the function name.
+
+108
+00:04:18,510 --> 00:04:21,000
+And in particular, later on in the code,
+
+109
+00:04:21,000 --> 00:04:25,290
+I can say an expression like, is underscore even,
+
+110
+00:04:25,290 --> 00:04:29,350
+and then an open paren, followed by an expression whose value
+
+111
+00:04:29,350 --> 00:04:32,094
+I'm going to use inside of that procedure
+
+112
+00:04:32,094 --> 00:04:34,510
+followed, in this case, by a closed paren, because there's
+
+113
+00:04:34,510 --> 00:04:36,550
+only one parameter.
+
+114
+00:04:36,550 --> 00:04:39,370
+I call this invoking or calling the function.
+
+115
+00:04:39,370 --> 00:04:41,449
+I'm using the function.
+
+116
+00:04:41,449 --> 00:04:43,490
+We're going to look at some examples in a second.
+
+117
+00:04:43,490 --> 00:04:48,070
+But the basic idea here is that, when I call this function,
+
+118
+00:04:48,070 --> 00:04:51,120
+I'm going to take the value 3, in this case,
+
+119
+00:04:51,120 --> 00:04:54,030
+and everywhere I see an i in the body of the function,
+
+120
+00:04:54,030 --> 00:04:57,520
+I'm going to use that value in place of i.
+
+121
+00:04:57,520 --> 00:04:59,380
+And in fact, if I look at it then,
+
+122
+00:04:59,380 --> 00:05:02,740
+inside of this particular expression,
+
+123
+00:05:02,740 --> 00:05:06,510
+I'm going to print out simple the string hi.
+
+124
+00:05:06,510 --> 00:05:10,500
+And then I'm going to evaluate this particular expression.
+
+125
+00:05:10,500 --> 00:05:16,830
+And it has the keyword return followed by an actual value.
+
+126
+00:05:16,830 --> 00:05:18,860
+Now, I just said, in this case, if I've
+
+127
+00:05:18,860 --> 00:05:21,490
+called is_even with the parameter 3,
+
+128
+00:05:21,490 --> 00:05:24,120
+i now holds the value 3.
+
+129
+00:05:24,120 --> 00:05:26,590
+So I'm going to evaluate 3 remainder 2 and say,
+
+130
+00:05:26,590 --> 00:05:28,150
+is that equal to 0?
+
+131
+00:05:28,150 --> 00:05:30,500
+In this case, it's not, because the remainder is 1.
+
+132
+00:05:30,500 --> 00:05:34,840
+And I'm going to then return that value to whoever
+
+133
+00:05:34,840 --> 00:05:36,360
+called this function.
+
+134
+00:05:36,360 --> 00:05:39,100
+So that's the expression I want to evaluate and actually
+
+135
+00:05:39,100 --> 00:05:40,470
+return.
+
+136
+00:05:40,470 --> 00:05:42,270
+So return is a keyword that tells me
+
+137
+00:05:42,270 --> 00:05:44,490
+I'm ready to stop the computation.
+
+138
+00:05:44,490 --> 00:05:46,390
+And whatever the following expression is,
+
+139
+00:05:46,390 --> 00:05:48,080
+that is the value I'm going to give back
+
+140
+00:05:48,080 --> 00:05:50,140
+to the person who asked for it.
+
+141
+00:05:50,140 --> 00:05:52,900
+In this case, it was simply at my shell.
+
+142
+00:05:52,900 --> 00:05:54,380
+But we'll see in a second, it could
+
+143
+00:05:54,380 --> 00:05:56,005
+be somebody else that's going to use it
+
+144
+00:05:56,005 --> 00:05:58,040
+as part of another computation.
+
+145
+00:05:58,040 --> 00:05:58,719
+
+

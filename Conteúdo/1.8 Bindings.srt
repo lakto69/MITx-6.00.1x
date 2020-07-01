@@ -1,0 +1,432 @@
+0
+00:00:00,000 --> 00:00:00,840
+...
+
+1
+00:00:00,840 --> 00:00:03,930
+Welcome back to 600 part 1.
+
+2
+00:00:03,930 --> 00:00:05,960
+In the first lecture, we started talking
+
+3
+00:00:05,960 --> 00:00:08,510
+about computation, computational thinking.
+
+4
+00:00:08,510 --> 00:00:10,830
+And we began to introduce simple expressions
+
+5
+00:00:10,830 --> 00:00:12,880
+and very simple programs.
+
+6
+00:00:12,880 --> 00:00:15,240
+In this lecture, we're going to add a new type.
+
+7
+00:00:15,240 --> 00:00:18,240
+We're going to go back and look at branching as a key element
+
+8
+00:00:18,240 --> 00:00:20,472
+in order to make decisions in algorithms.
+
+9
+00:00:20,472 --> 00:00:22,180
+And then we're going to start introducing
+
+10
+00:00:22,180 --> 00:00:24,040
+the first class of algorithms that
+
+11
+00:00:24,040 --> 00:00:25,700
+are going to be really valuable, things
+
+12
+00:00:25,700 --> 00:00:29,130
+called iteration or iterative algorithms.
+
+13
+00:00:29,130 --> 00:00:31,720
+To do that, I want to just quickly remind you of things
+
+14
+00:00:31,720 --> 00:00:35,080
+that you saw last time and that you need to keep in mind.
+
+15
+00:00:35,080 --> 00:00:37,350
+First of all, variables, often called
+
+16
+00:00:37,350 --> 00:00:39,950
+bindings-- these were names that we had to which we
+
+17
+00:00:39,950 --> 00:00:41,630
+could associate values.
+
+18
+00:00:41,630 --> 00:00:44,700
+And we saw they were created by using a name followed
+
+19
+00:00:44,700 --> 00:00:48,570
+by an equal sign followed by an expression that had a value.
+
+20
+00:00:48,570 --> 00:00:50,020
+Why did we want the name?
+
+21
+00:00:50,020 --> 00:00:51,180
+It could be descriptive.
+
+22
+00:00:51,180 --> 00:00:52,472
+It tells us what that value is.
+
+23
+00:00:52,472 --> 00:00:54,596
+It gives us something that helps us think about how
+
+24
+00:00:54,596 --> 00:00:55,615
+we're going to use that.
+
+25
+00:00:55,615 --> 00:00:57,954
+It let's us reread code more easily,
+
+26
+00:00:57,954 --> 00:00:59,370
+and it certainly can be meaningful
+
+27
+00:00:59,370 --> 00:01:02,630
+because it gives us a sense of how we want to use computations
+
+28
+00:01:02,630 --> 00:01:04,526
+in more complicated ways.
+
+29
+00:01:04,526 --> 00:01:07,150
+One of the things to remind you is there are certain words that
+
+30
+00:01:07,150 --> 00:01:08,840
+cannot be used as variables.
+
+31
+00:01:08,840 --> 00:01:10,710
+These are things called keywords,
+
+32
+00:01:10,710 --> 00:01:13,070
+things like int or float.
+
+33
+00:01:13,070 --> 00:01:15,660
+They describe a type that cannot be used as a name
+
+34
+00:01:15,660 --> 00:01:16,556
+for a variable.
+
+35
+00:01:16,556 --> 00:01:17,930
+There's a set of these that we'll
+
+36
+00:01:17,930 --> 00:01:19,170
+talk about as we go through.
+
+37
+00:01:19,170 --> 00:01:22,080
+And you'll notice in Python when you type one of these keywords
+
+38
+00:01:22,080 --> 00:01:24,190
+in, it will show up in a different color, which
+
+39
+00:01:24,190 --> 00:01:26,640
+is a hint that it's a keyword and not something you should
+
+40
+00:01:26,640 --> 00:01:30,180
+be trying to bind as a name for a value.
+
+41
+00:01:30,180 --> 00:01:32,420
+The value could be any legal expression
+
+42
+00:01:32,420 --> 00:01:33,610
+that returns a value.
+
+43
+00:01:33,610 --> 00:01:35,410
+And that's going to store information
+
+44
+00:01:35,410 --> 00:01:36,520
+that we're going to use.
+
+45
+00:01:36,520 --> 00:01:39,850
+And finally we saw that we could update the value associated
+
+46
+00:01:39,850 --> 00:01:42,820
+with a name by reassigning it using another assignment
+
+47
+00:01:42,820 --> 00:01:45,080
+statement.
+
+48
+00:01:45,080 --> 00:01:46,940
+The way we did it, just to remind you,
+
+49
+00:01:46,940 --> 00:01:49,820
+was we compute the right hand side of the expression.
+
+50
+00:01:49,820 --> 00:01:52,950
+For example here, the value associated with two
+
+51
+00:01:52,950 --> 00:01:54,410
+is just the int 2.
+
+52
+00:01:54,410 --> 00:01:56,960
+We then store it-- sometimes we refer
+
+53
+00:01:56,960 --> 00:01:59,570
+to that as bind it-- to the left hand side, which
+
+54
+00:01:59,570 --> 00:02:00,570
+is the variable name.
+
+55
+00:02:00,570 --> 00:02:02,920
+That creates a binding off in the machine
+
+56
+00:02:02,920 --> 00:02:05,380
+of x associated with 2.
+
+57
+00:02:05,380 --> 00:02:08,440
+But of course we can also replace it with a new value.
+
+58
+00:02:08,440 --> 00:02:11,200
+And here, again, if you look at the second expression,
+
+59
+00:02:11,200 --> 00:02:14,550
+remember we first evaluate that expression.
+
+60
+00:02:14,550 --> 00:02:17,970
+The value of x right now is 2, so 2 times 2 is 4.
+
+61
+00:02:17,970 --> 00:02:22,530
+That associates the value 4 with the variable x,
+
+62
+00:02:22,530 --> 00:02:25,920
+which says when I get around to then evaluating x plus 1,
+
+63
+00:02:25,920 --> 00:02:30,740
+this is going to be 5, which is the value associated with y.
+
+64
+00:02:30,740 --> 00:02:32,230
+Equals sign does the assignment.
+
+65
+00:02:32,230 --> 00:02:34,312
+It creates those bindings for us.
+
+66
+00:02:34,312 --> 00:02:36,770
+And as I just said, we're going to always compute the value
+
+67
+00:02:36,770 --> 00:02:40,540
+first and then override the name if that value is actually used,
+
+68
+00:02:40,540 --> 00:02:42,930
+or rather if that name is used as part of the expression
+
+69
+00:02:42,930 --> 00:02:45,922
+to get the value.
+
+70
+00:02:45,922 --> 00:02:47,880
+You might think this is pretty straightforward,
+
+71
+00:02:47,880 --> 00:02:50,255
+but we need to be careful about the order in which things
+
+72
+00:02:50,255 --> 00:02:50,960
+are done.
+
+73
+00:02:50,960 --> 00:02:53,330
+Suppose I got two variables named x and y,
+
+74
+00:02:53,330 --> 00:02:55,414
+and I want to swap their values.
+
+75
+00:02:55,414 --> 00:02:56,830
+The little sequence of expressions
+
+76
+00:02:56,830 --> 00:02:59,990
+here looks like it should do the right thing, right?
+
+77
+00:02:59,990 --> 00:03:01,090
+Wrong.
+
+78
+00:03:01,090 --> 00:03:02,950
+Let's think about it.
+
+79
+00:03:02,950 --> 00:03:06,950
+The first expression assigns x to the value 1.
+
+80
+00:03:06,950 --> 00:03:11,260
+The second expression assigns y to the value 2.
+
+81
+00:03:11,260 --> 00:03:14,390
+The third expression gets the value of x, which is 1,
+
+82
+00:03:14,390 --> 00:03:15,852
+and assigns it to y.
+
+83
+00:03:15,852 --> 00:03:17,780
+So I have x is 1.
+
+84
+00:03:17,780 --> 00:03:19,350
+I have y is 2.
+
+85
+00:03:19,350 --> 00:03:20,660
+I look up the value of x.
+
+86
+00:03:20,660 --> 00:03:22,210
+I now assign it to y.
+
+87
+00:03:22,210 --> 00:03:26,560
+So the 2 was replaced by 1.
+
+88
+00:03:26,560 --> 00:03:30,070
+Now when I do this expression, it says what's the value of y?
+
+89
+00:03:30,070 --> 00:03:30,730
+It's 1.
+
+90
+00:03:30,730 --> 00:03:32,250
+Assign it to x.
+
+91
+00:03:32,250 --> 00:03:35,350
+And I replace the 1 with a 1.
+
+92
+00:03:35,350 --> 00:03:37,250
+So it didn't swap them because there's
+
+93
+00:03:37,250 --> 00:03:40,370
+a sequence to this operation.
+
+94
+00:03:40,370 --> 00:03:43,037
+It doesn't do what you think it was going to do.
+
+95
+00:03:43,037 --> 00:03:45,620
+There's a better way to do it in fact, the right way to do it,
+
+96
+00:03:45,620 --> 00:03:50,680
+which is to temporarily assign the value of y
+
+97
+00:03:50,680 --> 00:03:55,210
+to the variable temp so that I can overwrite the value of y,
+
+98
+00:03:55,210 --> 00:03:59,820
+and I still got that value around to restore into x.
+
+99
+00:03:59,820 --> 00:04:02,500
+So we need to think carefully about not only what
+
+100
+00:04:02,500 --> 00:04:05,259
+do I compute as a value and what do I give as a name,
+
+101
+00:04:05,259 --> 00:04:06,550
+but the order in which I do it.
+
+102
+00:04:06,550 --> 00:04:10,830
+Because if I lose a binding for a name, I can't get it back.
+
+103
+00:04:10,830 --> 00:04:13,320
+But that reminds us then of how to do assignments,
+
+104
+00:04:13,320 --> 00:04:15,220
+how to do bindings, and how to do
+
+105
+00:04:15,220 --> 00:04:16,750
+the actual sequence of operations
+
+106
+00:04:16,750 --> 00:04:20,069
+to create bindings associated with variables.
+
+107
+00:04:20,069 --> 00:04:20,798
+
+

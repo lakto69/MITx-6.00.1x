@@ -1,0 +1,1188 @@
+0
+00:00:00,000 --> 00:00:00,770
+...
+
+1
+00:00:00,770 --> 00:00:03,440
+So we've now seen the beginning of programming.
+
+2
+00:00:03,440 --> 00:00:06,510
+Simple expressions, ways of putting them together
+
+3
+00:00:06,510 --> 00:00:09,370
+into more complex things of means a combination,
+
+4
+00:00:09,370 --> 00:00:11,340
+and the very first version of abstraction,
+
+5
+00:00:11,340 --> 00:00:13,260
+giving names to things.
+
+6
+00:00:13,260 --> 00:00:15,830
+But so far, all we've been able to do with these pieces
+
+7
+00:00:15,830 --> 00:00:18,900
+is just behave like we're a simple calculator.
+
+8
+00:00:18,900 --> 00:00:20,680
+We can do arithmetic.
+
+9
+00:00:20,680 --> 00:00:22,600
+Let's add one more piece in, which
+
+10
+00:00:22,600 --> 00:00:26,220
+is the ability to make decisions based on tests.
+
+11
+00:00:26,220 --> 00:00:28,370
+And for that, we have to compare things.
+
+12
+00:00:28,370 --> 00:00:30,900
+We have to decide, am I close enough to square root
+
+13
+00:00:30,900 --> 00:00:31,690
+that I'm done?
+
+14
+00:00:31,690 --> 00:00:33,994
+Am I close enough to something else that I'm done?
+
+15
+00:00:33,994 --> 00:00:35,660
+So we have to be able to compare things.
+
+16
+00:00:35,660 --> 00:00:38,000
+And since so far we've just talked about numbers,
+
+17
+00:00:38,000 --> 00:00:39,800
+what are the comparison operators
+
+18
+00:00:39,800 --> 00:00:42,180
+for integers and for floats?
+
+19
+00:00:42,180 --> 00:00:45,120
+They're the things that you might expect from arithmetic.
+
+20
+00:00:45,120 --> 00:00:47,360
+If i and j are any names of variables,
+
+21
+00:00:47,360 --> 00:00:49,730
+they have values as numbers, then
+
+22
+00:00:49,730 --> 00:00:52,450
+we have ways of testing if something is greater
+
+23
+00:00:52,450 --> 00:00:54,580
+than something else, if something
+
+24
+00:00:54,580 --> 00:00:57,680
+is greater than or equal to something else,
+
+25
+00:00:57,680 --> 00:01:01,090
+less than, less than or equal.
+
+26
+00:01:01,090 --> 00:01:03,050
+So is 2 less than 3?
+
+27
+00:01:03,050 --> 00:01:05,770
+And if I do a simple example over here.
+
+28
+00:01:05,770 --> 00:01:10,640
+2 Less than 3, returns true, that's good.
+
+29
+00:01:10,640 --> 00:01:14,350
+2.0 greater than 3.0?
+
+30
+00:01:14,350 --> 00:01:15,410
+Returns false.
+
+31
+00:01:15,410 --> 00:01:16,740
+Also good.
+
+32
+00:01:16,740 --> 00:01:21,100
+Is 2 less than or equal to 2?
+
+33
+00:01:21,100 --> 00:01:22,950
+Returns true.
+
+34
+00:01:22,950 --> 00:01:25,880
+On the other hand, is 2 less than 2?
+
+35
+00:01:25,880 --> 00:01:27,010
+Returns false.
+
+36
+00:01:27,010 --> 00:01:29,150
+Simple comparisons.
+
+37
+00:01:29,150 --> 00:01:32,075
+I also want to be able to tell when something's equal.
+
+38
+00:01:32,075 --> 00:01:33,700
+And you might think, well, that's easy.
+
+39
+00:01:33,700 --> 00:01:36,450
+Is 2 equal to 2?
+
+40
+00:01:36,450 --> 00:01:37,820
+Wait.
+
+41
+00:01:37,820 --> 00:01:40,940
+We already used equal as an assignment statement,
+
+42
+00:01:40,940 --> 00:01:42,170
+so that won't work.
+
+43
+00:01:42,170 --> 00:01:46,910
+And as a consequence, equality is done with double equal.
+
+44
+00:01:46,910 --> 00:01:49,870
+Is 2 equal equal to 2?
+
+45
+00:01:49,870 --> 00:01:53,840
+So for example 2 equal-- try that again.
+
+46
+00:01:53,840 --> 00:01:57,370
+
+
+47
+00:01:57,370 --> 00:01:59,140
+Returns true.
+
+48
+00:01:59,140 --> 00:02:02,290
+And then finally, if we want to know is something not equal,
+
+49
+00:02:02,290 --> 00:02:07,130
+we use the exclamation point followed by the equal sign.
+
+50
+00:02:07,130 --> 00:02:11,140
+Often referred to or pronounced as bang equal or not equal.
+
+51
+00:02:11,140 --> 00:02:15,570
+That will return true if i is not equal to j.
+
+52
+00:02:15,570 --> 00:02:17,010
+Simple comparisons.
+
+53
+00:02:17,010 --> 00:02:19,190
+They're going to let us build the very first kinds
+
+54
+00:02:19,190 --> 00:02:21,490
+of programs that are going to let us make decisions.
+
+55
+00:02:21,490 --> 00:02:24,050
+Because based on whether something is true or false,
+
+56
+00:02:24,050 --> 00:02:27,220
+I'm going to be able to decide which operation I
+
+57
+00:02:27,220 --> 00:02:28,682
+want to do next.
+
+58
+00:02:28,682 --> 00:02:30,890
+You're going to get a chance to explore all of these,
+
+59
+00:02:30,890 --> 00:02:33,139
+but these make sense because they're simple arithmetic
+
+60
+00:02:33,139 --> 00:02:35,700
+things other than that double equal sign-- which
+
+61
+00:02:35,700 --> 00:02:40,230
+as I said, is there because equal is already reserved.
+
+62
+00:02:40,230 --> 00:02:42,520
+Once we have logical expressions,
+
+63
+00:02:42,520 --> 00:02:44,460
+we also need to be able to combine them.
+
+64
+00:02:44,460 --> 00:02:46,490
+I might want to say, is something less than this
+
+65
+00:02:46,490 --> 00:02:48,687
+and greater than something else?
+
+66
+00:02:48,687 --> 00:02:50,770
+And so if I have two expressions that are Booleans
+
+67
+00:02:50,770 --> 00:02:54,560
+I can also combine them using either and, which
+
+68
+00:02:54,560 --> 00:02:56,740
+is true if both are true.
+
+69
+00:02:56,740 --> 00:03:00,360
+Or, which is true if either of them are true.
+
+70
+00:03:00,360 --> 00:03:03,300
+And of course, not, which will be the opposite.
+
+71
+00:03:03,300 --> 00:03:05,330
+Not a is true if a is false.
+
+72
+00:03:05,330 --> 00:03:08,390
+It's false if a is true.
+
+73
+00:03:08,390 --> 00:03:10,080
+Once I've got those pieces, I can
+
+74
+00:03:10,080 --> 00:03:14,330
+put together more complicated expressions to decide tests.
+
+75
+00:03:14,330 --> 00:03:16,180
+How might we use these?
+
+76
+00:03:16,180 --> 00:03:18,570
+Well, here's a simple little example.
+
+77
+00:03:18,570 --> 00:03:21,170
+This is actually a map of MIT.
+
+78
+00:03:21,170 --> 00:03:23,970
+MIT students are always looking for free food.
+
+79
+00:03:23,970 --> 00:03:26,890
+So imagine there's some food stored away somewhere at MIT.
+
+80
+00:03:26,890 --> 00:03:30,150
+And I want to give instructions to a student to find them.
+
+81
+00:03:30,150 --> 00:03:30,650
+All right.
+
+82
+00:03:30,650 --> 00:03:32,330
+This is a complicated map, but we could
+
+83
+00:03:32,330 --> 00:03:34,140
+use a simpler version of it.
+
+84
+00:03:34,140 --> 00:03:35,560
+I've got my student.
+
+85
+00:03:35,560 --> 00:03:38,120
+So over here with his backpack ready to
+
+86
+00:03:38,120 --> 00:03:40,410
+find that free food, which is a way over here.
+
+87
+00:03:40,410 --> 00:03:42,680
+And I want to think about how would I
+
+88
+00:03:42,680 --> 00:03:44,000
+instruct him to get there.
+
+89
+00:03:44,000 --> 00:03:47,010
+What would the test be that I might want to use?
+
+90
+00:03:47,010 --> 00:03:50,610
+Well, I might say, if you can go to the right,
+
+91
+00:03:50,610 --> 00:03:52,800
+keep going to the right.
+
+92
+00:03:52,800 --> 00:03:55,520
+On the other hand, if you get to the right and it's blocked,
+
+93
+00:03:55,520 --> 00:03:57,442
+change and go forward.
+
+94
+00:03:57,442 --> 00:03:58,900
+Unless both the right and the front
+
+95
+00:03:58,900 --> 00:04:01,940
+are blocked, in which case go to the left.
+
+96
+00:04:01,940 --> 00:04:05,200
+Unless all of them are blocked, in which case backtrack.
+
+97
+00:04:05,200 --> 00:04:06,950
+Won't be perfect, I could still get stuck.
+
+98
+00:04:06,950 --> 00:04:10,190
+But this will work pretty well to get my way through a maze.
+
+99
+00:04:10,190 --> 00:04:13,230
+What I've just described are four simple tests
+
+100
+00:04:13,230 --> 00:04:16,430
+to let me think about how I would instruct somebody
+
+101
+00:04:16,430 --> 00:04:17,490
+to solve a problem.
+
+102
+00:04:17,490 --> 00:04:19,557
+In this case, trying to find the free food.
+
+103
+00:04:19,557 --> 00:04:21,140
+Oh, yeah, I need one more thing, which
+
+104
+00:04:21,140 --> 00:04:24,580
+is to test when I found the food to know when to stop.
+
+105
+00:04:24,580 --> 00:04:26,700
+Simple tests.
+
+106
+00:04:26,700 --> 00:04:29,040
+With those ideas, I can put together
+
+107
+00:04:29,040 --> 00:04:31,070
+the first kind of actually more reasonable
+
+108
+00:04:31,070 --> 00:04:36,190
+or interesting rather program called a branching program.
+
+109
+00:04:36,190 --> 00:04:38,750
+And it would say, in that case of the maze,
+
+110
+00:04:38,750 --> 00:04:41,900
+move forward unless a test's true.
+
+111
+00:04:41,900 --> 00:04:45,260
+That test might be moving to the right is blocked.
+
+112
+00:04:45,260 --> 00:04:46,820
+If it's not blocked to the right,
+
+113
+00:04:46,820 --> 00:04:48,930
+I'm going to do one thing-- keep moving forward.
+
+114
+00:04:48,930 --> 00:04:52,350
+If it is a block to the right, I'm going to move ahead.
+
+115
+00:04:52,350 --> 00:04:54,760
+And a branching program then simply consists
+
+116
+00:04:54,760 --> 00:04:57,770
+of a test, something that's going to return
+
+117
+00:04:57,770 --> 00:04:59,580
+a Boolean true or false.
+
+118
+00:04:59,580 --> 00:05:03,350
+If the test is true, it's going to have some code that tells
+
+119
+00:05:03,350 --> 00:05:05,350
+me what to do in that case.
+
+120
+00:05:05,350 --> 00:05:07,670
+On the other hand, if the test is false
+
+121
+00:05:07,670 --> 00:05:10,040
+it's going to have some code to tell me
+
+122
+00:05:10,040 --> 00:05:11,890
+what to do in that case.
+
+123
+00:05:11,890 --> 00:05:14,910
+And in either case, once I'm done with those pieces of code
+
+124
+00:05:14,910 --> 00:05:18,300
+I can pick up the rest of the computation.
+
+125
+00:05:18,300 --> 00:05:20,300
+You can see why it's called a branching program,
+
+126
+00:05:20,300 --> 00:05:23,810
+it takes one of two branches based on that test.
+
+127
+00:05:23,810 --> 00:05:29,019
+In Python, we don't necessarily have to have the false block.
+
+128
+00:05:29,019 --> 00:05:30,310
+We have to have the true block.
+
+129
+00:05:30,310 --> 00:05:32,560
+If this is true, there should be something I would do.
+
+130
+00:05:32,560 --> 00:05:34,940
+But if it's not always the case that I
+
+131
+00:05:34,940 --> 00:05:39,440
+want to do something even when it's not true, I can skip that.
+
+132
+00:05:39,440 --> 00:05:41,370
+With that in mind, I can start now
+
+133
+00:05:41,370 --> 00:05:44,540
+building a little bit more interesting programs.
+
+134
+00:05:44,540 --> 00:05:46,079
+And so here's a simple example.
+
+135
+00:05:46,079 --> 00:05:48,370
+There are some pieces here we're going to come back to.
+
+136
+00:05:48,370 --> 00:05:49,150
+Don't worry about them.
+
+137
+00:05:49,150 --> 00:05:50,983
+Pieces like input, which is going to give me
+
+138
+00:05:50,983 --> 00:05:52,610
+a way to read something in.
+
+139
+00:05:52,610 --> 00:05:54,530
+But what I want you to see here are the tests.
+
+140
+00:05:54,530 --> 00:05:57,450
+And the first case of a branching program
+
+141
+00:05:57,450 --> 00:06:00,890
+is an if-statement, that's a special symbol.
+
+142
+00:06:00,890 --> 00:06:04,260
+It is treated differently and when the Python evaluator
+
+143
+00:06:04,260 --> 00:06:07,070
+sees this it says, given that's an if,
+
+144
+00:06:07,070 --> 00:06:09,720
+I'm going to evaluate this expression, which
+
+145
+00:06:09,720 --> 00:06:12,060
+should return a Boolean.
+
+146
+00:06:12,060 --> 00:06:15,790
+It says, if the remainder of x divided by 2 is equal to 0--
+
+147
+00:06:15,790 --> 00:06:18,740
+notice the double equal sign there, if it's equal to 0,
+
+148
+00:06:18,740 --> 00:06:24,780
+if that is true, then I want to execute this set of code.
+
+149
+00:06:24,780 --> 00:06:26,360
+It's going to print out a blank line
+
+150
+00:06:26,360 --> 00:06:28,900
+and then print out the word even.
+
+151
+00:06:28,900 --> 00:06:31,280
+If it's not true, I need to tell it what to do.
+
+152
+00:06:31,280 --> 00:06:35,220
+And I use the special symbol else for that.
+
+153
+00:06:35,220 --> 00:06:38,750
+These are often called if-else expressions.
+
+154
+00:06:38,750 --> 00:06:40,990
+If this is true, do this.
+
+155
+00:06:40,990 --> 00:06:42,480
+Otherwise, do that.
+
+156
+00:06:42,480 --> 00:06:45,460
+And here again, I've got a block of code.
+
+157
+00:06:45,460 --> 00:06:48,410
+In this case, it's going to print out a blank line and then
+
+158
+00:06:48,410 --> 00:06:49,890
+the word odd.
+
+159
+00:06:49,890 --> 00:06:52,350
+In either case, when I'm done with all of that
+
+160
+00:06:52,350 --> 00:06:54,724
+I'm going to go down to the rest of the code.
+
+161
+00:06:54,724 --> 00:06:57,140
+Which is just going to print out a simple thing that says,
+
+162
+00:06:57,140 --> 00:06:59,670
+I'm done with this conditional.
+
+163
+00:06:59,670 --> 00:07:02,680
+You could type this in and run it, I invite you to do that.
+
+164
+00:07:02,680 --> 00:07:06,170
+But what I want you to see here is a couple of things.
+
+165
+00:07:06,170 --> 00:07:09,610
+This if-else structure.
+
+166
+00:07:09,610 --> 00:07:11,790
+And I said in a branch there should be three pieces.
+
+167
+00:07:11,790 --> 00:07:14,286
+And you can see them, there's the test.
+
+168
+00:07:14,286 --> 00:07:17,450
+
+
+169
+00:07:17,450 --> 00:07:21,140
+There's the first block, that's the true block.
+
+170
+00:07:21,140 --> 00:07:24,535
+And there's the false block.
+
+171
+00:07:24,535 --> 00:07:27,297
+
+
+172
+00:07:27,297 --> 00:07:28,130
+Now, how did I know?
+
+173
+00:07:28,130 --> 00:07:30,760
+Or rather, how did Python know those are the blocks?
+
+174
+00:07:30,760 --> 00:07:33,380
+Because of this indentation right here.
+
+175
+00:07:33,380 --> 00:07:36,280
+The fact that those lines of code are inset
+
+176
+00:07:36,280 --> 00:07:37,790
+are important, because it tells us
+
+177
+00:07:37,790 --> 00:07:41,690
+that's an entire block of code and when I get done here,
+
+178
+00:07:41,690 --> 00:07:43,820
+I'm going to pick back up the rest of the else.
+
+179
+00:07:43,820 --> 00:07:46,510
+And more importantly, when I get done there
+
+180
+00:07:46,510 --> 00:07:49,010
+it tells me where the rest of the code picks up.
+
+181
+00:07:49,010 --> 00:07:54,420
+A simple example of a branching program.
+
+182
+00:07:54,420 --> 00:07:56,950
+I've already said this, but I want to recap it.
+
+183
+00:07:56,950 --> 00:08:00,890
+I've got a test, it evaluates to true--
+
+184
+00:08:00,890 --> 00:08:02,850
+when in fact, in this case x divided by 2
+
+185
+00:08:02,850 --> 00:08:04,530
+has a remainder of zero.
+
+186
+00:08:04,530 --> 00:08:07,420
+As I've already said, notice the double equals sign rather than
+
+187
+00:08:07,420 --> 00:08:09,990
+a single equal sign to do the comparison.
+
+188
+00:08:09,990 --> 00:08:11,590
+As I've also said, the indentation
+
+189
+00:08:11,590 --> 00:08:13,940
+is really important, it tells us what
+
+190
+00:08:13,940 --> 00:08:16,050
+pieces are associated together.
+
+191
+00:08:16,050 --> 00:08:17,850
+And notice how that indentation gives us
+
+192
+00:08:17,850 --> 00:08:20,980
+a nice visual structure for seeing where the code is.
+
+193
+00:08:20,980 --> 00:08:23,150
+To see the semantic structure of the code.
+
+194
+00:08:23,150 --> 00:08:24,530
+What's the true block?
+
+195
+00:08:24,530 --> 00:08:26,830
+What's the false block?
+
+196
+00:08:26,830 --> 00:08:29,940
+Now, it turns out that you can have nested conditionals.
+
+197
+00:08:29,940 --> 00:08:35,200
+Inside of a block I could also have a conditional.
+
+198
+00:08:35,200 --> 00:08:36,880
+And that's perfectly fine.
+
+199
+00:08:36,880 --> 00:08:38,774
+It says, if this is true, then I'm
+
+200
+00:08:38,774 --> 00:08:40,440
+going to go in and look at this portion.
+
+201
+00:08:40,440 --> 00:08:43,720
+And if this is also true, I'm going to do that.
+
+202
+00:08:43,720 --> 00:08:48,300
+On the other hand, if this is true, but this is false
+
+203
+00:08:48,300 --> 00:08:51,910
+I'm going to jump down here and run that piece.
+
+204
+00:08:51,910 --> 00:08:53,852
+Again, I invite you to type this and try it.
+
+205
+00:08:53,852 --> 00:08:55,310
+But it's going to do something that
+
+206
+00:08:55,310 --> 00:08:58,590
+based on what the value of x is, it prints out whether it's
+
+207
+00:08:58,590 --> 00:09:03,090
+divisible by 2 and 3, by 2 and not 3, or by 3 and not 2
+
+208
+00:09:03,090 --> 00:09:08,050
+as it runs through that sequence of branches appropriately.
+
+209
+00:09:08,050 --> 00:09:10,960
+And finally, we can have compound Booleans.
+
+210
+00:09:10,960 --> 00:09:13,330
+As I said, I have things that can be combined.
+
+211
+00:09:13,330 --> 00:09:14,630
+This is a Boolean.
+
+212
+00:09:14,630 --> 00:09:15,930
+That's a Boolean.
+
+213
+00:09:15,930 --> 00:09:19,140
+And the combination with the end also gives me a Boolean.
+
+214
+00:09:19,140 --> 00:09:23,060
+So in this case, if x is less than y
+
+215
+00:09:23,060 --> 00:09:27,070
+and x is also less than z, then the combination is true
+
+216
+00:09:27,070 --> 00:09:29,969
+and I'm going to print out a particular thing.
+
+217
+00:09:29,969 --> 00:09:32,010
+Again, don't worry about what this actually does.
+
+218
+00:09:32,010 --> 00:09:33,676
+What I want you to see is the structure,
+
+219
+00:09:33,676 --> 00:09:39,080
+including one last piece, which is elif also shorthand
+
+220
+00:09:39,080 --> 00:09:40,820
+for else-if.
+
+221
+00:09:40,820 --> 00:09:45,930
+This says, if this test is true, do that.
+
+222
+00:09:45,930 --> 00:09:52,070
+But if this test is false, then see if this is true.
+
+223
+00:09:52,070 --> 00:09:54,180
+If that's true, do that.
+
+224
+00:09:54,180 --> 00:09:56,820
+But if it's false, then skip down.
+
+225
+00:09:56,820 --> 00:10:00,560
+In this case, there's an else and it will always do this.
+
+226
+00:10:00,560 --> 00:10:02,290
+I could have multiple elif statements.
+
+227
+00:10:02,290 --> 00:10:06,000
+It's a way of giving me a sequence of tests in order.
+
+228
+00:10:06,000 --> 00:10:07,250
+If this is true, do something.
+
+229
+00:10:07,250 --> 00:10:09,125
+If it's false, but this is true do something.
+
+230
+00:10:09,125 --> 00:10:12,130
+If that's also false, but this is true do something.
+
+231
+00:10:12,130 --> 00:10:14,820
+And so on.
+
+232
+00:10:14,820 --> 00:10:17,190
+This just then pulls them together.
+
+233
+00:10:17,190 --> 00:10:19,400
+I've got a basic conditional.
+
+234
+00:10:19,400 --> 00:10:22,990
+If this condition is true, do a sequence of expressions.
+
+235
+00:10:22,990 --> 00:10:25,480
+You can also have an if and an else.
+
+236
+00:10:25,480 --> 00:10:29,840
+Or I can have an if, a sequence of elifs, and an else.
+
+237
+00:10:29,840 --> 00:10:32,060
+And again, notice how the indentation
+
+238
+00:10:32,060 --> 00:10:35,350
+tells us which things to do associated
+
+239
+00:10:35,350 --> 00:10:39,000
+with which block of code.
+
+240
+00:10:39,000 --> 00:10:42,850
+That indentation is how we are going to capture
+
+241
+00:10:42,850 --> 00:10:43,980
+other pieces as well.
+
+242
+00:10:43,980 --> 00:10:47,050
+And it doesn't have to just be conditionals.
+
+243
+00:10:47,050 --> 00:10:49,390
+I could have something that has other statements inside
+
+244
+00:10:49,390 --> 00:10:52,020
+of it, such as the print statement here.
+
+245
+00:10:52,020 --> 00:10:53,770
+Again, don't worry what this code does,
+
+246
+00:10:53,770 --> 00:10:57,270
+it's a simple piece of code to execute some simple comparisons
+
+247
+00:10:57,270 --> 00:10:58,060
+on numbers.
+
+248
+00:10:58,060 --> 00:11:01,570
+What I want you to see is how we walk through the branches.
+
+249
+00:11:01,570 --> 00:11:05,460
+And with that, we now have the first kind of code.
+
+250
+00:11:05,460 --> 00:11:09,750
+There is one set of blocks inside of which,
+
+251
+00:11:09,750 --> 00:11:12,220
+I've got another set of blocks.
+
+252
+00:11:12,220 --> 00:11:16,390
+And again, if this is true and that's true,
+
+253
+00:11:16,390 --> 00:11:18,060
+I'll get to that point.
+
+254
+00:11:18,060 --> 00:11:21,520
+But if this is true and this is false-- so true
+
+255
+00:11:21,520 --> 00:11:25,100
+here, but false here what happens?
+
+256
+00:11:25,100 --> 00:11:29,640
+Oh, there is no code here, so nothing happens.
+
+257
+00:11:29,640 --> 00:11:33,970
+It simply skips out to the end and jumps past it.
+
+258
+00:11:33,970 --> 00:11:36,270
+Again, I invite you to try this to see if it works
+
+259
+00:11:36,270 --> 00:11:37,460
+the way I've described it.
+
+260
+00:11:37,460 --> 00:11:41,830
+What I want you to see is the form of it.
+
+261
+00:11:41,830 --> 00:11:44,070
+One other piece I want to remind you of
+
+262
+00:11:44,070 --> 00:11:47,030
+is the fact that when we do comparisons
+
+263
+00:11:47,030 --> 00:11:50,700
+we need to use the double equal.
+
+264
+00:11:50,700 --> 00:11:53,720
+Equal sign binds a value to a variable.
+
+265
+00:11:53,720 --> 00:11:55,520
+Here I, want to compare two things.
+
+266
+00:11:55,520 --> 00:11:58,210
+And this is a standard place I make it all the time
+
+267
+00:11:58,210 --> 00:11:59,660
+where you'll get a bug.
+
+268
+00:11:59,660 --> 00:12:01,952
+Don't worry when you do it, Python is going to complain
+
+269
+00:12:01,952 --> 00:12:04,409
+at you saying you're trying to do a binding in a place that
+
+270
+00:12:04,409 --> 00:12:04,940
+you can't.
+
+271
+00:12:04,940 --> 00:12:06,430
+But remember, this is a place where
+
+272
+00:12:06,430 --> 00:12:08,090
+when I'm doing a comparison I want
+
+273
+00:12:08,090 --> 00:12:10,000
+to use the double equal sign in order
+
+274
+00:12:10,000 --> 00:12:13,575
+to make the comparison of two values and return a Boolean.
+
+275
+00:12:13,575 --> 00:12:17,070
+
+
+276
+00:12:17,070 --> 00:12:18,700
+OK.
+
+277
+00:12:18,700 --> 00:12:20,370
+What have we added?
+
+278
+00:12:20,370 --> 00:12:22,560
+First, simple kind of program.
+
+279
+00:12:22,560 --> 00:12:24,960
+Branching programs allow us to make choices
+
+280
+00:12:24,960 --> 00:12:26,860
+and do different things.
+
+281
+00:12:26,860 --> 00:12:29,830
+But it's still the case that at most each statement
+
+282
+00:12:29,830 --> 00:12:31,870
+gets executed once.
+
+283
+00:12:31,870 --> 00:12:34,510
+I might skip a set of statements if I skip over that branch,
+
+284
+00:12:34,510 --> 00:12:36,150
+because I don't get there.
+
+285
+00:12:36,150 --> 00:12:37,970
+But as a consequence of this, these
+
+286
+00:12:37,970 --> 00:12:40,730
+are what we would call linear programs.
+
+287
+00:12:40,730 --> 00:12:42,870
+They run in constant time because I execute
+
+288
+00:12:42,870 --> 00:12:44,970
+each instruction at most once.
+
+289
+00:12:44,970 --> 00:12:46,762
+And the maximum time to run the program
+
+290
+00:12:46,762 --> 00:12:48,970
+is going to depend only on the number of instructions
+
+291
+00:12:48,970 --> 00:12:50,370
+that I have there.
+
+292
+00:12:50,370 --> 00:12:52,342
+Still valuable to make some decisions,
+
+293
+00:12:52,342 --> 00:12:54,300
+but it's not going to give us the power that we
+
+294
+00:12:54,300 --> 00:12:56,620
+want to really build interesting algorithms.
+
+295
+00:12:56,620 --> 00:12:59,820
+And that, we're going to get to next time.
+
+296
+00:12:59,820 --> 00:13:00,372
+
+

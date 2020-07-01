@@ -1,0 +1,808 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,450
+Now that we've introduced functions into our language,
+
+2
+00:00:03,450 --> 00:00:06,460
+we have a lot of power for doing computation.
+
+3
+00:00:06,460 --> 00:00:08,610
+But so far, all we can do is do computation
+
+4
+00:00:08,610 --> 00:00:11,020
+on strings and on numbers.
+
+5
+00:00:11,020 --> 00:00:13,290
+Still a lot of things we can do, but we'd
+
+6
+00:00:13,290 --> 00:00:15,070
+like to not only have the ability
+
+7
+00:00:15,070 --> 00:00:16,600
+to do strings and numbers, we'd like
+
+8
+00:00:16,600 --> 00:00:20,220
+to be able to look at bigger collections of data.
+
+9
+00:00:20,220 --> 00:00:23,020
+And the same way that functions let us group things together,
+
+10
+00:00:23,020 --> 00:00:26,100
+common computations, ways of grouping data together
+
+11
+00:00:26,100 --> 00:00:29,060
+into things we can treat as primitives, as simple things,
+
+12
+00:00:29,060 --> 00:00:30,990
+is going to be equally powerful.
+
+13
+00:00:30,990 --> 00:00:34,270
+That's what we're going to talk about today.
+
+14
+00:00:34,270 --> 00:00:37,240
+We're going to produce two new kinds of data structures,
+
+15
+00:00:37,240 --> 00:00:40,450
+things called "tuples," and things called "lists."
+
+16
+00:00:40,450 --> 00:00:42,380
+Let's start with the tuple.
+
+17
+00:00:42,380 --> 00:00:45,220
+A "tuple" is an ordered sequence of elements
+
+18
+00:00:45,220 --> 00:00:48,900
+which can include any different kind of element within them.
+
+19
+00:00:48,900 --> 00:00:50,400
+Now, when I say an ordered sequence,
+
+20
+00:00:50,400 --> 00:00:52,420
+I don't mean that the elements in the sequence
+
+21
+00:00:52,420 --> 00:00:54,690
+are ordered, meaning smallest to largest.
+
+22
+00:00:54,690 --> 00:00:57,590
+I mean that the sequence itself has an order so that I
+
+23
+00:00:57,590 --> 00:00:59,520
+can get to different parts of the sequence
+
+24
+00:00:59,520 --> 00:01:04,319
+by simply indexing, much like we did with strings.
+
+25
+00:01:04,319 --> 00:01:07,290
+One of the issues about tuples is that they're immutable,
+
+26
+00:01:07,290 --> 00:01:10,450
+meaning I cannot change values inside of them.
+
+27
+00:01:10,450 --> 00:01:12,480
+And in fact, that's just like strings.
+
+28
+00:01:12,480 --> 00:01:14,450
+Remember, we could take out parts of a string,
+
+29
+00:01:14,450 --> 00:01:19,400
+but we couldn't change we couldn't change
+
+30
+00:01:19,400 --> 00:01:22,160
+the inner pieces of a string.
+
+31
+00:01:22,160 --> 00:01:23,120
+How do we build tuples?
+
+32
+00:01:23,120 --> 00:01:24,911
+Well, I've got examples here in this slide.
+
+33
+00:01:24,911 --> 00:01:27,490
+I'm going to show you some of these inside of a Python
+
+34
+00:01:27,490 --> 00:01:27,990
+environment.
+
+35
+00:01:27,990 --> 00:01:34,370
+I can create an empty tuple by simply giving it
+
+36
+00:01:34,370 --> 00:01:35,820
+an open and close paren.
+
+37
+00:01:35,820 --> 00:01:37,970
+The parens designate that this is a tuple.
+
+38
+00:01:37,970 --> 00:01:40,310
+We'll see why that's important in a second.
+
+39
+00:01:40,310 --> 00:01:41,700
+So te is an empty tuple.
+
+40
+00:01:41,700 --> 00:01:44,190
+I could make another tuple by giving it
+
+41
+00:01:44,190 --> 00:01:48,360
+a sequence of elements, the integer 2, the string 1,
+
+42
+00:01:48,360 --> 00:01:51,160
+the integer 3, for example.
+
+43
+00:01:51,160 --> 00:01:52,310
+I could print it out.
+
+44
+00:01:52,310 --> 00:01:54,280
+It's going to give me back the same thing.
+
+45
+00:01:54,280 --> 00:01:56,610
+And like with strings, I can index into them.
+
+46
+00:01:56,610 --> 00:01:58,590
+So I can say, starting again at zero,
+
+47
+00:01:58,590 --> 00:02:02,200
+what is the zeroth element of the tuple?
+
+48
+00:02:02,200 --> 00:02:05,930
+Because I'm indexing, I'm using square brackets or braces
+
+49
+00:02:05,930 --> 00:02:07,110
+to get to it.
+
+50
+00:02:07,110 --> 00:02:10,449
+And that gives me the first element.
+
+51
+00:02:10,449 --> 00:02:12,500
+As with strings, I can concatenate,
+
+52
+00:02:12,500 --> 00:02:15,490
+using basically the same kind of structure.
+
+53
+00:02:15,490 --> 00:02:20,720
+I could take t and add to it another tuple, say 5 and 6.
+
+54
+00:02:20,720 --> 00:02:23,640
+
+
+55
+00:02:23,640 --> 00:02:25,905
+And that gives me back the longer tuple,
+
+56
+00:02:25,905 --> 00:02:28,030
+all concatenated together.
+
+57
+00:02:28,030 --> 00:02:30,180
+And just like with strings, I can slice
+
+58
+00:02:30,180 --> 00:02:32,190
+to get out portions of a tuple.
+
+59
+00:02:32,190 --> 00:02:35,817
+However, I can't, as with strings, try and change them.
+
+60
+00:02:35,817 --> 00:02:36,900
+Because they're immutable.
+
+61
+00:02:36,900 --> 00:02:40,650
+If I try and change the first element of t,
+
+62
+00:02:40,650 --> 00:02:42,840
+say I want it to be 4.
+
+63
+00:02:42,840 --> 00:02:43,910
+It's going to complain.
+
+64
+00:02:43,910 --> 00:02:45,951
+It gives me a type error, saying that this is not
+
+65
+00:02:45,951 --> 00:02:49,030
+something that supports that kind of an operation.
+
+66
+00:02:49,030 --> 00:02:50,260
+There are tuples.
+
+67
+00:02:50,260 --> 00:02:51,520
+Really good.
+
+68
+00:02:51,520 --> 00:02:52,830
+OK.
+
+69
+00:02:52,830 --> 00:02:56,120
+With those, I can now start adding up
+
+70
+00:02:56,120 --> 00:02:57,446
+other kinds of pieces.
+
+71
+00:02:57,446 --> 00:02:59,070
+Before I do it though, let me point out
+
+72
+00:02:59,070 --> 00:03:03,060
+one last thing, which is the funny thing about the example I
+
+73
+00:03:03,060 --> 00:03:04,040
+just highlighted here.
+
+74
+00:03:04,040 --> 00:03:07,430
+If I go to t, there it is, and I say, give
+
+75
+00:03:07,430 --> 00:03:11,420
+me, basically, the first element, so t from 1
+
+76
+00:03:11,420 --> 00:03:12,060
+but up to 2.
+
+77
+00:03:12,060 --> 00:03:13,970
+So give me the tuple, I should say,
+
+78
+00:03:13,970 --> 00:03:15,400
+rather than the first element.
+
+79
+00:03:15,400 --> 00:03:19,230
+Give me the tuple that basically goes from 1 but not including
+
+80
+00:03:19,230 --> 00:03:22,170
+the second element.
+
+81
+00:03:22,170 --> 00:03:24,910
+It gives me back a slightly funky looking thing.
+
+82
+00:03:24,910 --> 00:03:27,511
+It gives me back an open paren saying, this is a tuple.
+
+83
+00:03:27,511 --> 00:03:28,510
+It gives me the element.
+
+84
+00:03:28,510 --> 00:03:31,750
+But then, it gives me a comma before the close paren.
+
+85
+00:03:31,750 --> 00:03:36,440
+That extra comma is telling me that this is, in fact, a tuple.
+
+86
+00:03:36,440 --> 00:03:38,190
+To see that, let's look at the difference.
+
+87
+00:03:38,190 --> 00:03:42,372
+I could create a tuple by saying 1 and a comma.
+
+88
+00:03:42,372 --> 00:03:43,580
+And it gives me back a tuple.
+
+89
+00:03:43,580 --> 00:03:47,250
+What would happen if I did open paren and the string
+
+90
+00:03:47,250 --> 00:03:49,940
+1, close paren?
+
+91
+00:03:49,940 --> 00:03:50,940
+Oh.
+
+92
+00:03:50,940 --> 00:03:52,780
+It just treats the parens in this case
+
+93
+00:03:52,780 --> 00:03:54,170
+as if they're scoping things.
+
+94
+00:03:54,170 --> 00:03:56,000
+And it just gives me back the element.
+
+95
+00:03:56,000 --> 00:03:58,110
+So for tuples, we have to give that extra comma
+
+96
+00:03:58,110 --> 00:04:01,780
+to tell us that, in fact, this is a tuple, and not just
+
+97
+00:04:01,780 --> 00:04:05,600
+an expression that's going to reduce to a single element.
+
+98
+00:04:05,600 --> 00:04:07,720
+So there are tuples.
+
+99
+00:04:07,720 --> 00:04:09,220
+One of the nice things about tuples,
+
+100
+00:04:09,220 --> 00:04:13,050
+they're really convenient for things like swapping variables.
+
+101
+00:04:13,050 --> 00:04:14,860
+Again, imagine I've got x and y.
+
+102
+00:04:14,860 --> 00:04:16,769
+And I want to flip the values.
+
+103
+00:04:16,769 --> 00:04:18,269
+We saw this before.
+
+104
+00:04:18,269 --> 00:04:20,980
+The first version won't work because I'm
+
+105
+00:04:20,980 --> 00:04:22,990
+going to take x and give it the value of y.
+
+106
+00:04:22,990 --> 00:04:25,990
+And then, when I want to bind y, the value of x is lost.
+
+107
+00:04:25,990 --> 00:04:28,544
+I could do it by creating a temporary variable.
+
+108
+00:04:28,544 --> 00:04:29,460
+I've done that before.
+
+109
+00:04:29,460 --> 00:04:32,780
+Hold the value of x so that I can move y's value into x
+
+110
+00:04:32,780 --> 00:04:35,770
+and then take that temporary value and put it back into y.
+
+111
+00:04:35,770 --> 00:04:37,930
+But tuples do it directly.
+
+112
+00:04:37,930 --> 00:04:40,550
+This is a perfectly legal command in Python
+
+113
+00:04:40,550 --> 00:04:45,110
+that says, create the tuple with bindings for x and y
+
+114
+00:04:45,110 --> 00:04:48,950
+by simply taking the opposite versions in that tuple.
+
+115
+00:04:48,950 --> 00:04:51,080
+That gives me a nice way, for example, not only
+
+116
+00:04:51,080 --> 00:04:53,550
+to swap variables, it also allows
+
+117
+00:04:53,550 --> 00:04:58,250
+me to nicely return more than one value from a function.
+
+118
+00:04:58,250 --> 00:05:00,730
+So if I wanted to give back, for example, the quotient
+
+119
+00:05:00,730 --> 00:05:02,540
+and remainder of dividing x by y,
+
+120
+00:05:02,540 --> 00:05:04,410
+I could compute the quotient.
+
+121
+00:05:04,410 --> 00:05:06,830
+I could compute the remainder.
+
+122
+00:05:06,830 --> 00:05:08,600
+Return's only going to return one thing.
+
+123
+00:05:08,600 --> 00:05:11,640
+But if I return the tuple of q and r,
+
+124
+00:05:11,640 --> 00:05:15,420
+then I can bind it using an expression that has,
+
+125
+00:05:15,420 --> 00:05:18,180
+on the left-hand side, a tuple of names.
+
+126
+00:05:18,180 --> 00:05:21,170
+That will give Quot the value that q holds.
+
+127
+00:05:21,170 --> 00:05:23,290
+It will give Rem the value that r holds.
+
+128
+00:05:23,290 --> 00:05:25,510
+So tuples have some really nice properties.
+
+129
+00:05:25,510 --> 00:05:28,590
+In particular, it's letting us think about a tuple
+
+130
+00:05:28,590 --> 00:05:31,290
+as a single construct out of which I can pull out
+
+131
+00:05:31,290 --> 00:05:32,530
+the pieces.
+
+132
+00:05:32,530 --> 00:05:33,030
+Great.
+
+133
+00:05:33,030 --> 00:05:35,550
+
+
+134
+00:05:35,550 --> 00:05:38,740
+Another nice thing about tuples, they're iterable.
+
+135
+00:05:38,740 --> 00:05:40,920
+Just like with strings, where I can walk down them,
+
+136
+00:05:40,920 --> 00:05:43,230
+I could do the same thing with a tuple.
+
+137
+00:05:43,230 --> 00:05:44,615
+Here's a little procedure.
+
+138
+00:05:44,615 --> 00:05:45,990
+I'm going to walk you through it.
+
+139
+00:05:45,990 --> 00:05:47,300
+It's kind of a funky procedure.
+
+140
+00:05:47,300 --> 00:05:51,500
+The idea is that I'm going to give GetData a tuple.
+
+141
+00:05:51,500 --> 00:05:55,890
+And that tuple is going to itself consist of tuples.
+
+142
+00:05:55,890 --> 00:05:56,700
+Weird.
+
+143
+00:05:56,700 --> 00:05:59,070
+But it says each element inside that tuple
+
+144
+00:05:59,070 --> 00:06:00,960
+is itself a collection of things.
+
+145
+00:06:00,960 --> 00:06:03,526
+In particular, it's going to be a collection of ints
+
+146
+00:06:03,526 --> 00:06:05,400
+and strings.
+
+147
+00:06:05,400 --> 00:06:09,327
+And what I want to GetData to do is to create two outputs.
+
+148
+00:06:09,327 --> 00:06:10,160
+So let's look at it.
+
+149
+00:06:10,160 --> 00:06:12,710
+First, I'm going to set up Nums to be an empty tuple.
+
+150
+00:06:12,710 --> 00:06:13,810
+And that's how I do it.
+
+151
+00:06:13,810 --> 00:06:15,270
+Open close paren.
+
+152
+00:06:15,270 --> 00:06:18,260
+Words is also going to be an empty tuple.
+
+153
+00:06:18,260 --> 00:06:21,010
+And I'm going to take all of the numbers
+
+154
+00:06:21,010 --> 00:06:24,180
+and gather them together into a new tuple.
+
+155
+00:06:24,180 --> 00:06:26,800
+I'm going to take that in the following way.
+
+156
+00:06:26,800 --> 00:06:28,640
+Here's my little loop.
+
+157
+00:06:28,640 --> 00:06:31,010
+Notice, I'm iterating over the tuple.
+
+158
+00:06:31,010 --> 00:06:32,870
+I'm saying "for t in the tuple."
+
+159
+00:06:32,870 --> 00:06:34,850
+That says the first time through t
+
+160
+00:06:34,850 --> 00:06:36,890
+is going to be pointing to that.
+
+161
+00:06:36,890 --> 00:06:38,480
+Second time through, that.
+
+162
+00:06:38,480 --> 00:06:40,259
+Third time through, that.
+
+163
+00:06:40,259 --> 00:06:41,300
+And what do I want to do?
+
+164
+00:06:41,300 --> 00:06:42,880
+I want to get the number out.
+
+165
+00:06:42,880 --> 00:06:45,790
+So I'm going to index in the first, or in this case,
+
+166
+00:06:45,790 --> 00:06:48,370
+I should say it better, the zeroth element of t
+
+167
+00:06:48,370 --> 00:06:52,030
+gives me that thing right there.
+
+168
+00:06:52,030 --> 00:06:55,396
+And then, the paren would just treat it
+
+169
+00:06:55,396 --> 00:06:56,770
+as if it was a single expression.
+
+170
+00:06:56,770 --> 00:06:58,960
+So the comma, as we've already seen,
+
+171
+00:06:58,960 --> 00:07:02,230
+is important because it's going to give me that singleton
+
+172
+00:07:02,230 --> 00:07:03,340
+tuple.
+
+173
+00:07:03,340 --> 00:07:05,160
+I'm going to add it into Nums.
+
+174
+00:07:05,160 --> 00:07:08,400
+And add here says, concatenate.
+
+175
+00:07:08,400 --> 00:07:11,370
+So Nums is now a little longer tuple.
+
+176
+00:07:11,370 --> 00:07:14,840
+Then, I'm going to for Words say, if the word part,
+
+177
+00:07:14,840 --> 00:07:18,000
+this part, if it's not inside things
+
+178
+00:07:18,000 --> 00:07:21,480
+I've already gathered together, I'm going to do the same thing.
+
+179
+00:07:21,480 --> 00:07:24,340
+I'm basically gathering up the unique words, as well as
+
+180
+00:07:24,340 --> 00:07:25,894
+all of the integers.
+
+181
+00:07:25,894 --> 00:07:27,310
+And so they'll get put into there.
+
+182
+00:07:27,310 --> 00:07:29,620
+And when I'm done, I'm going to return the smallest
+
+183
+00:07:29,620 --> 00:07:32,540
+number, the largest number, and the number of unique words
+
+184
+00:07:32,540 --> 00:07:33,340
+that I've found.
+
+185
+00:07:33,340 --> 00:07:35,430
+That's what the bottom part does.
+
+186
+00:07:35,430 --> 00:07:38,940
+And if I were to run it, I've got a little example over here,
+
+187
+00:07:38,940 --> 00:07:42,430
+I simply load that into my environment.
+
+188
+00:07:42,430 --> 00:07:43,890
+And it didn't print anything out.
+
+189
+00:07:43,890 --> 00:07:45,840
+But that's OK because my binding is,
+
+190
+00:07:45,840 --> 00:07:49,420
+I've now bound Small to be the first part of what
+
+191
+00:07:49,420 --> 00:07:51,200
+was returned.
+
+192
+00:07:51,200 --> 00:07:54,240
+And that is number 1, which was the smallest number.
+
+193
+00:07:54,240 --> 00:07:57,730
+Large is the largest number, 7.
+
+194
+00:07:57,730 --> 00:07:59,650
+And Words should be the unique words,
+
+195
+00:07:59,650 --> 00:08:03,100
+or the number of unique words, and there were three of them.
+
+196
+00:08:03,100 --> 00:08:04,859
+So I simply ran that on a set of data.
+
+197
+00:08:04,859 --> 00:08:06,400
+And what I wanted for you to see here
+
+198
+00:08:06,400 --> 00:08:09,240
+is how I can iterate over the tuples, treating them
+
+199
+00:08:09,240 --> 00:08:11,050
+as if they're just a single construct,
+
+200
+00:08:11,050 --> 00:08:12,970
+just the same I would with a range,
+
+201
+00:08:12,970 --> 00:08:15,490
+or I would with a string.
+

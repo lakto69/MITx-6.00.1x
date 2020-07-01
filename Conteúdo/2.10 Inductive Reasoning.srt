@@ -1,0 +1,444 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,750
+We just saw an example where we walked through carefully
+
+2
+00:00:03,750 --> 00:00:06,140
+the execution or the invocation of a function
+
+3
+00:00:06,140 --> 00:00:08,109
+called a factorial in order to see
+
+4
+00:00:08,109 --> 00:00:10,610
+how the different scoped frames were created
+
+5
+00:00:10,610 --> 00:00:12,940
+and to help us sort of decide that, in fact, it
+
+6
+00:00:12,940 --> 00:00:16,640
+will stop when it reaches a base case and return a value.
+
+7
+00:00:16,640 --> 00:00:19,197
+But when I start trying to design code,
+
+8
+00:00:19,197 --> 00:00:20,780
+I have to think about the same thing--
+
+9
+00:00:20,780 --> 00:00:22,170
+how do I set it up so that I know
+
+10
+00:00:22,170 --> 00:00:23,720
+it's actually going to stop?
+
+11
+00:00:23,720 --> 00:00:26,590
+How do we know a recursive code is going to work?
+
+12
+00:00:26,590 --> 00:00:29,180
+In the case of an iteration, we know that
+
+13
+00:00:29,180 --> 00:00:32,100
+by making sure that we've got a loop invariant that
+
+14
+00:00:32,100 --> 00:00:34,375
+changes as we go through it in order to make sure
+
+15
+00:00:34,375 --> 00:00:36,750
+that we actually get down to a place where we hit the end
+
+16
+00:00:36,750 --> 00:00:37,910
+test.
+
+17
+00:00:37,910 --> 00:00:42,610
+So mult inter terminates because b is initially positive,
+
+18
+00:00:42,610 --> 00:00:44,750
+and it decreases by 1 each time through.
+
+19
+00:00:44,750 --> 00:00:47,090
+I've set that up by making sure I change it by 1.
+
+20
+00:00:47,090 --> 00:00:49,630
+And so I know eventually it's got to get down to a place
+
+21
+00:00:49,630 --> 00:00:52,997
+where it's less than 1, which is going to trigger that n clause.
+
+22
+00:00:52,997 --> 00:00:54,580
+And I can use that to deduce that I've
+
+23
+00:00:54,580 --> 00:00:57,290
+written code that is, in fact, going to terminate if I give it
+
+24
+00:00:57,290 --> 00:00:59,790
+an appropriate set of values.
+
+25
+00:00:59,790 --> 00:01:02,450
+What about the recursive version?
+
+26
+00:01:02,450 --> 00:01:04,720
+Sorry, as I said, mult is called with b1,
+
+27
+00:01:04,720 --> 00:01:08,550
+in that it has no recursive call, and it stops.
+
+28
+00:01:08,550 --> 00:01:10,760
+But how do I know that it stops in general?
+
+29
+00:01:10,760 --> 00:01:14,010
+Well, if I call mult where b is greater than 1,
+
+30
+00:01:14,010 --> 00:01:18,680
+it makes a recursive call with a smaller version of b.
+
+31
+00:01:18,680 --> 00:01:20,420
+And so, again, I know that eventually it
+
+32
+00:01:20,420 --> 00:01:23,320
+must reach a call where b is equal to 1.
+
+33
+00:01:23,320 --> 00:01:25,530
+This tells me that when I write a recursive version
+
+34
+00:01:25,530 --> 00:01:27,480
+of a function, I need to make sure that I'm
+
+35
+00:01:27,480 --> 00:01:29,809
+changing the parameter.
+
+36
+00:01:29,809 --> 00:01:31,350
+In this case, this value, so that I'm
+
+37
+00:01:31,350 --> 00:01:34,800
+going to get down to that test case.
+
+38
+00:01:34,800 --> 00:01:37,510
+That's nice, but there's another way in which, in fact, I
+
+39
+00:01:37,510 --> 00:01:39,420
+could reason about my code to decide,
+
+40
+00:01:39,420 --> 00:01:40,837
+is it going to, in fact, terminate
+
+41
+00:01:40,837 --> 00:01:42,670
+or is it going to get into an infinite loop,
+
+42
+00:01:42,670 --> 00:01:44,550
+because it's going to recursively call itself
+
+43
+00:01:44,550 --> 00:01:46,310
+over and over again?
+
+44
+00:01:46,310 --> 00:01:48,700
+And to do that, we can use, as a little sidebar,
+
+45
+00:01:48,700 --> 00:01:52,610
+a nice little mathematical tool called mathematical induction.
+
+46
+00:01:52,610 --> 00:01:54,670
+Here's the idea behind induction.
+
+47
+00:01:54,670 --> 00:01:56,800
+If I want to prove a statement that
+
+48
+00:01:56,800 --> 00:01:58,750
+is indexed on integers, that is, it's
+
+49
+00:01:58,750 --> 00:02:01,376
+a statement that is applied to a set of integers.
+
+50
+00:02:01,376 --> 00:02:02,750
+If I want to prove that statement
+
+51
+00:02:02,750 --> 00:02:06,540
+is true for all values of some parameter n,
+
+52
+00:02:06,540 --> 00:02:08,020
+I just need to prove that it's true
+
+53
+00:02:08,020 --> 00:02:10,020
+when n has it's smallest value.
+
+54
+00:02:10,020 --> 00:02:12,660
+For example, n is equal to 0 or 1.
+
+55
+00:02:12,660 --> 00:02:16,450
+And then I need to prove that if it is true on an arbitrary
+
+56
+00:02:16,450 --> 00:02:19,270
+value of n, I can also then show that it
+
+57
+00:02:19,270 --> 00:02:21,910
+must be true for n plus 1.
+
+58
+00:02:21,910 --> 00:02:24,290
+And with that, I can then essentially
+
+59
+00:02:24,290 --> 00:02:28,180
+deduce mathematically, that it's true for all values of n.
+
+60
+00:02:28,180 --> 00:02:31,170
+Let me show you a little mathematical example of this.
+
+61
+00:02:31,170 --> 00:02:33,240
+The sum of the integers for 0 up to n,
+
+62
+00:02:33,240 --> 00:02:37,340
+I claim as n times n plus 1 divided by 2.
+
+63
+00:02:37,340 --> 00:02:41,220
+If n is 1, it says 1 times 2 over 2 is 1.
+
+64
+00:02:41,220 --> 00:02:46,130
+If it's 2, 1 plus 2 is 3, and 2 times 3 divided by 2 is 3.
+
+65
+00:02:46,130 --> 00:02:47,690
+You get the idea.
+
+66
+00:02:47,690 --> 00:02:50,910
+How would I prove this is actually a true statement?
+
+67
+00:02:50,910 --> 00:02:55,030
+Well, the proof says take the simplest case.
+
+68
+00:02:55,030 --> 00:02:56,510
+If n is equal to 0, what do I have?
+
+69
+00:02:56,510 --> 00:02:58,880
+Then the left-hand side is just 0,
+
+70
+00:02:58,880 --> 00:03:03,710
+and the right-hand side is 0 times 1 divided by 2,
+
+71
+00:03:03,710 --> 00:03:04,970
+which is just 0.
+
+72
+00:03:04,970 --> 00:03:06,740
+So it's true.
+
+73
+00:03:06,740 --> 00:03:09,400
+To prove it in general, I simply assume
+
+74
+00:03:09,400 --> 00:03:12,830
+it's true for some value-- let's call it k.
+
+75
+00:03:12,830 --> 00:03:16,990
+And then I need to show that it's true for k plus 1.
+
+76
+00:03:16,990 --> 00:03:21,260
+So I need to show that this statement is true.
+
+77
+00:03:21,260 --> 00:03:23,890
+Well, but that's nice, because the left-hand side,
+
+78
+00:03:23,890 --> 00:03:26,260
+I know that it's true for that.
+
+79
+00:03:26,260 --> 00:03:27,606
+I just assume that.
+
+80
+00:03:27,606 --> 00:03:29,140
+I know that in that case, that is
+
+81
+00:03:29,140 --> 00:03:32,320
+k times k plus 1 divided by 2.
+
+82
+00:03:32,320 --> 00:03:36,120
+So the left-hand side is simply that, by that assumption.
+
+83
+00:03:36,120 --> 00:03:37,840
+And if I do just a little bit of algebra,
+
+84
+00:03:37,840 --> 00:03:41,670
+I can show that that is, in fact, the same as this,
+
+85
+00:03:41,670 --> 00:03:43,960
+and I'm done, having proved it.
+
+86
+00:03:43,960 --> 00:03:45,870
+Assuming k, therefore it's true for k plus 1,
+
+87
+00:03:45,870 --> 00:03:48,120
+I can now say it's true for all values of n.
+
+88
+00:03:48,120 --> 00:03:51,060
+So this formula is always true.
+
+89
+00:03:51,060 --> 00:03:53,490
+What does that have to do with code?
+
+90
+00:03:53,490 --> 00:03:56,910
+Well, I can do the same thing.
+
+91
+00:03:56,910 --> 00:03:59,770
+Here, with my case of a recursive call to mult,
+
+92
+00:03:59,770 --> 00:04:02,120
+I need to do the following-- I need
+
+93
+00:04:02,120 --> 00:04:05,020
+to show the base case is true.
+
+94
+00:04:05,020 --> 00:04:08,980
+Will this true return the right answer when b is equal to 1?
+
+95
+00:04:08,980 --> 00:04:10,400
+Yep.
+
+96
+00:04:10,400 --> 00:04:14,080
+Now, what about in the recursive case?
+
+97
+00:04:14,080 --> 00:04:16,250
+I'm going to assume that my code does
+
+98
+00:04:16,250 --> 00:04:19,620
+the right thing for smaller versions of the problem,
+
+99
+00:04:19,620 --> 00:04:22,530
+meaning that I'm going to assume that mult returns
+
+100
+00:04:22,530 --> 00:04:23,777
+the right answer.
+
+101
+00:04:23,777 --> 00:04:26,110
+And, in that case, I can then say on this piece of code,
+
+102
+00:04:26,110 --> 00:04:29,340
+if it does the right thing, then this return does
+
+103
+00:04:29,340 --> 00:04:31,846
+the right thing, because it's simply an addition.
+
+104
+00:04:31,846 --> 00:04:33,970
+So in that case, I know it returns the right answer
+
+105
+00:04:33,970 --> 00:04:36,070
+for a problem of size b.
+
+106
+00:04:36,070 --> 00:04:38,450
+And by mathematical induction, my code
+
+107
+00:04:38,450 --> 00:04:41,100
+will always do the right thing for appropriate values
+
+108
+00:04:41,100 --> 00:04:44,380
+of a and b.
+
+109
+00:04:44,380 --> 00:04:47,863
+Thus induction tells me I've got code that works.
+
+110
+00:04:47,863 --> 00:04:48,362
+
+

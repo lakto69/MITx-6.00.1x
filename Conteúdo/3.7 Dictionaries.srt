@@ -1,0 +1,1232 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:01,580
+We've introduced lists.
+
+2
+00:00:01,580 --> 00:00:03,288
+We've introduced tuples-- we said they're
+
+3
+00:00:03,288 --> 00:00:04,559
+ordered sequences of elements.
+
+4
+00:00:04,559 --> 00:00:05,850
+They have different properties.
+
+5
+00:00:05,850 --> 00:00:09,340
+The primary difference being mutable versus immutable.
+
+6
+00:00:09,340 --> 00:00:12,080
+We want to introduce one more kind of data structure--
+
+7
+00:00:12,080 --> 00:00:15,220
+a generalization that has some really nice properties.
+
+8
+00:00:15,220 --> 00:00:18,090
+And that data structure is a dictionary.
+
+9
+00:00:18,090 --> 00:00:20,551
+You've already seen dictionaries in your everyday life.
+
+10
+00:00:20,551 --> 00:00:22,300
+We're going to have a programming language
+
+11
+00:00:22,300 --> 00:00:24,600
+version of it that behaves the same way.
+
+12
+00:00:24,600 --> 00:00:27,510
+And let me show you how that works.
+
+13
+00:00:27,510 --> 00:00:29,840
+Let's start by using an example.
+
+14
+00:00:29,840 --> 00:00:33,690
+Imagine I'm trying to store data about students in a database.
+
+15
+00:00:33,690 --> 00:00:36,040
+So far I can do that just using lists.
+
+16
+00:00:36,040 --> 00:00:40,310
+And I might have a separate list for each kind of data entry.
+
+17
+00:00:40,310 --> 00:00:42,202
+So I might have a list of names, the names
+
+18
+00:00:42,202 --> 00:00:43,410
+of the students in the class.
+
+19
+00:00:43,410 --> 00:00:47,520
+I might have a list of grades for each of the students.
+
+20
+00:00:47,520 --> 00:00:49,630
+I might have a list of the courses
+
+21
+00:00:49,630 --> 00:00:51,380
+that they're taking-- what's the grade in?
+
+22
+00:00:51,380 --> 00:00:52,900
+So one grade might be in one class.
+
+23
+00:00:52,900 --> 00:00:55,230
+One grade may be in a different class.
+
+24
+00:00:55,230 --> 00:00:57,510
+I have a separate list for each item.
+
+25
+00:00:57,510 --> 00:00:59,010
+One of the things I'd need is I want
+
+26
+00:00:59,010 --> 00:01:00,926
+each list to be of the same length, of course,
+
+27
+00:01:00,926 --> 00:01:03,350
+because I need to be able to associate all of those pieces
+
+28
+00:01:03,350 --> 00:01:04,629
+together.
+
+29
+00:01:04,629 --> 00:01:07,540
+But the problem I've got is that the association isn't
+
+30
+00:01:07,540 --> 00:01:09,630
+captured in a common place.
+
+31
+00:01:09,630 --> 00:01:14,540
+Here the information is stored across lists at the same index.
+
+32
+00:01:14,540 --> 00:01:16,660
+So if I want to get information about Anna,
+
+33
+00:01:16,660 --> 00:01:18,202
+I have to go into index 0 and get out
+
+34
+00:01:18,202 --> 00:01:20,201
+the name, the grade, and the course in which she
+
+35
+00:01:20,201 --> 00:01:20,860
+got that grade.
+
+36
+00:01:20,860 --> 00:01:23,230
+If I want to get the similar thing for Katie,
+
+37
+00:01:23,230 --> 00:01:26,300
+I have to go to the third element of each of those lists.
+
+38
+00:01:26,300 --> 00:01:28,350
+So each index refers to information
+
+39
+00:01:28,350 --> 00:01:30,030
+for a different person.
+
+40
+00:01:30,030 --> 00:01:32,080
+And I don't have an easy way to capture
+
+41
+00:01:32,080 --> 00:01:35,030
+that kind of information.
+
+42
+00:01:35,030 --> 00:01:38,270
+As a consequence, if I wanted to write a function
+
+43
+00:01:38,270 --> 00:01:40,910
+to get out information, I'd have to write something
+
+44
+00:01:40,910 --> 00:01:42,910
+like the thing shown here.
+
+45
+00:01:42,910 --> 00:01:44,680
+I've got a function called Get Great.
+
+46
+00:01:44,680 --> 00:01:47,660
+It takes in a student and then the list--
+
+47
+00:01:47,660 --> 00:01:50,030
+a name list, a grade list, and a course list.
+
+48
+00:01:50,030 --> 00:01:51,470
+And what I have to do is to say--
+
+49
+00:01:51,470 --> 00:01:53,560
+given that index for that student-- I'd
+
+50
+00:01:53,560 --> 00:01:58,130
+have to go and find where that is by basically going
+
+51
+00:01:58,130 --> 00:02:01,830
+into the name list and finding the thing associated
+
+52
+00:02:01,830 --> 00:02:02,970
+with student.
+
+53
+00:02:02,970 --> 00:02:04,900
+What spot is Anna at?
+
+54
+00:02:04,900 --> 00:02:07,120
+And having done that, I now know the right index.
+
+55
+00:02:07,120 --> 00:02:09,900
+And I can use that to get the grades list element
+
+56
+00:02:09,900 --> 00:02:11,820
+and the coarse list element.
+
+57
+00:02:11,820 --> 00:02:14,080
+Or said another way, I have to walk down
+
+58
+00:02:14,080 --> 00:02:17,920
+somehow the first list to find where is that student located.
+
+59
+00:02:17,920 --> 00:02:19,690
+And then use that to go in and find
+
+60
+00:02:19,690 --> 00:02:21,470
+the right spot or the corresponding spot
+
+61
+00:02:21,470 --> 00:02:24,900
+in the other list to get back the grade in the course.
+
+62
+00:02:24,900 --> 00:02:26,440
+Clearly, this is messy if I've got
+
+63
+00:02:26,440 --> 00:02:29,120
+a lot of different information I'm trying to track.
+
+64
+00:02:29,120 --> 00:02:30,620
+I've got to maintain multiple lists.
+
+65
+00:02:30,620 --> 00:02:31,950
+I've got to pass them in.
+
+66
+00:02:31,950 --> 00:02:33,540
+And especially-- I've got to remember
+
+67
+00:02:33,540 --> 00:02:35,140
+to change multiple lists.
+
+68
+00:02:35,140 --> 00:02:36,660
+If I add something to one list, I've
+
+69
+00:02:36,660 --> 00:02:38,785
+got to go make sure I add the right elements in all
+
+70
+00:02:38,785 --> 00:02:40,260
+of the other lists.
+
+71
+00:02:40,260 --> 00:02:42,310
+I could do it, but it's not handy.
+
+72
+00:02:42,310 --> 00:02:44,230
+It's really inconvenient.
+
+73
+00:02:44,230 --> 00:02:47,930
+I'd like another way of being able to do that idea of finding
+
+74
+00:02:47,930 --> 00:02:51,240
+things associated with a particular entry
+
+75
+00:02:51,240 --> 00:02:52,710
+in a structure.
+
+76
+00:02:52,710 --> 00:02:56,290
+And that's where a dictionary is going to come in.
+
+77
+00:02:56,290 --> 00:02:58,000
+What I'd like is to have a way to be
+
+78
+00:02:58,000 --> 00:03:01,737
+able to index to an item of interest directly.
+
+79
+00:03:01,737 --> 00:03:03,320
+And it might not always be an integer.
+
+80
+00:03:03,320 --> 00:03:04,680
+It might be something else.
+
+81
+00:03:04,680 --> 00:03:07,870
+And I'd like to be able to use it using one data structure
+
+82
+00:03:07,870 --> 00:03:09,740
+and not separate lists.
+
+83
+00:03:09,740 --> 00:03:12,610
+So if you think about it, what's a list?
+
+84
+00:03:12,610 --> 00:03:14,980
+It's a sequence of elements where
+
+85
+00:03:14,980 --> 00:03:19,700
+the index is a set of integers starting at 0.
+
+86
+00:03:19,700 --> 00:03:24,687
+And associated with each indice, I have a different element.
+
+87
+00:03:24,687 --> 00:03:26,270
+A dictionary is going to be different.
+
+88
+00:03:26,270 --> 00:03:29,420
+It's again going to be a collection of things,
+
+89
+00:03:29,420 --> 00:03:34,130
+but now I'm going to customize how I index to it.
+
+90
+00:03:34,130 --> 00:03:36,190
+Rather than saying giving me the zeroth element,
+
+91
+00:03:36,190 --> 00:03:38,220
+I'm going to say, give me the element associated
+
+92
+00:03:38,220 --> 00:03:40,080
+with this key.
+
+93
+00:03:40,080 --> 00:03:42,789
+And so we're going to call the indices keys,
+
+94
+00:03:42,789 --> 00:03:44,330
+and we're going to use them as labels
+
+95
+00:03:44,330 --> 00:03:46,190
+that tell me where to find the element
+
+96
+00:03:46,190 --> 00:03:48,270
+inside of the dictionary.
+
+97
+00:03:48,270 --> 00:03:51,550
+So I won't have this nice linear structure I had with the list.
+
+98
+00:03:51,550 --> 00:03:53,500
+It will have a structure to it, but it's
+
+99
+00:03:53,500 --> 00:03:55,250
+going to give me a lot more power in terms
+
+100
+00:03:55,250 --> 00:03:58,740
+of how I retrieve elements out of the dictionary.
+
+101
+00:03:58,740 --> 00:04:01,130
+And I say dictionary because it behaves much like it
+
+102
+00:04:01,130 --> 00:04:03,030
+would in a dictionary of words.
+
+103
+00:04:03,030 --> 00:04:06,570
+I can look up a word, and retrieve from that dictionary
+
+104
+00:04:06,570 --> 00:04:09,060
+all the information associated with that word.
+
+105
+00:04:09,060 --> 00:04:14,610
+Not having to know that the word the word "factorial"
+
+106
+00:04:14,610 --> 00:04:18,240
+is associated with entry 2745 inside of the dictionary.
+
+107
+00:04:18,240 --> 00:04:20,570
+I simply look up factorial and find
+
+108
+00:04:20,570 --> 00:04:23,450
+the entry associated with it.
+
+109
+00:04:23,450 --> 00:04:25,514
+So we can build that in Python.
+
+110
+00:04:25,514 --> 00:04:26,680
+And here's the way we do it.
+
+111
+00:04:26,680 --> 00:04:28,110
+First of all, a Python dictionary
+
+112
+00:04:28,110 --> 00:04:32,930
+stores pairs of data together-- a key and a value-- the key
+
+113
+00:04:32,930 --> 00:04:34,930
+telling me the thing to look up.
+
+114
+00:04:34,930 --> 00:04:37,300
+I'd want to create it, initially,
+
+115
+00:04:37,300 --> 00:04:38,940
+with an empty dictionary.
+
+116
+00:04:38,940 --> 00:04:43,920
+And you can see we're using the same basic type of structure.
+
+117
+00:04:43,920 --> 00:04:48,170
+I've now used curly braces, or brackets if you like,
+
+118
+00:04:48,170 --> 00:04:50,470
+in order to represent a dictionary-- as opposed
+
+119
+00:04:50,470 --> 00:04:53,360
+to parentheses or square brackets.
+
+120
+00:04:53,360 --> 00:04:56,910
+An empty dictionary starts off with just these curly braces.
+
+121
+00:04:56,910 --> 00:04:59,310
+And then I could create a dictionary of grades.
+
+122
+00:04:59,310 --> 00:05:01,750
+I could give Anna the grade B. I could give John
+
+123
+00:05:01,750 --> 00:05:04,220
+the grade A plus, Denise an A, and Katie an A.
+
+124
+00:05:04,220 --> 00:05:07,240
+And I'm going to index into the dictionary
+
+125
+00:05:07,240 --> 00:05:15,530
+by the key element of the entry inside of a dictionary.
+
+126
+00:05:15,530 --> 00:05:18,000
+So each one of these is association or a pairing
+
+127
+00:05:18,000 --> 00:05:20,650
+of a key and a value.
+
+128
+00:05:20,650 --> 00:05:23,270
+And that's going to allow me now to build arbitrary structures
+
+129
+00:05:23,270 --> 00:05:25,410
+very nicely.
+
+130
+00:05:25,410 --> 00:05:27,850
+So now I'm going to build up this dictionary.
+
+131
+00:05:27,850 --> 00:05:29,090
+There it is.
+
+132
+00:05:29,090 --> 00:05:30,882
+I happen to have stored them in that order.
+
+133
+00:05:30,882 --> 00:05:33,090
+One of the things I'm going to say about dictionaries
+
+134
+00:05:33,090 --> 00:05:34,410
+is-- I don't rely on the order.
+
+135
+00:05:34,410 --> 00:05:36,410
+They're not going to be in any particular order,
+
+136
+00:05:36,410 --> 00:05:39,220
+other than how I happen to put them into the dictionary.
+
+137
+00:05:39,220 --> 00:05:44,280
+And there's an example dictionary of my dictionary.
+
+138
+00:05:44,280 --> 00:05:46,060
+What could I do with that?
+
+139
+00:05:46,060 --> 00:05:48,446
+Well, given I've got a little grades dictionary,
+
+140
+00:05:48,446 --> 00:05:50,820
+I'm going to be able to look up things in the dictionary.
+
+141
+00:05:50,820 --> 00:05:53,420
+It's going to be similar to indexing into a list,
+
+142
+00:05:53,420 --> 00:05:56,590
+but I'm going to use it based on the key.
+
+143
+00:05:56,590 --> 00:05:59,970
+So for example, I've got an example of grades over here.
+
+144
+00:05:59,970 --> 00:06:02,900
+I'm going to load it into my environment.
+
+145
+00:06:02,900 --> 00:06:07,900
+Grades I could print out-- it's just an arbitrary collection.
+
+146
+00:06:07,900 --> 00:06:10,780
+But I can now say, I'd like to get
+
+147
+00:06:10,780 --> 00:06:13,990
+the grade associated with John.
+
+148
+00:06:13,990 --> 00:06:16,040
+Now in a list I would have needed
+
+149
+00:06:16,040 --> 00:06:18,410
+to know what's the index at which John is stored.
+
+150
+00:06:18,410 --> 00:06:22,130
+I can only index into a list based on an integer.
+
+151
+00:06:22,130 --> 00:06:24,330
+But with grades as a dictionary, I
+
+152
+00:06:24,330 --> 00:06:28,580
+can say give me back the value associated with that key--
+
+153
+00:06:28,580 --> 00:06:30,500
+and there it is.
+
+154
+00:06:30,500 --> 00:06:35,390
+If I want to get the grades associated with Sylvan,
+
+155
+00:06:35,390 --> 00:06:38,490
+I can type that in.
+
+156
+00:06:38,490 --> 00:06:40,590
+Sorry, I'm going to type grades properly here.
+
+157
+00:06:40,590 --> 00:06:41,730
+And I can type in Sylvan.
+
+158
+00:06:41,730 --> 00:06:45,530
+
+
+159
+00:06:45,530 --> 00:06:47,870
+And it complains-- as it should--
+
+160
+00:06:47,870 --> 00:06:51,630
+because there is no key in the dictionary for Sylvan.
+
+161
+00:06:51,630 --> 00:06:54,770
+There is no association of Sylvan with a value.
+
+162
+00:06:54,770 --> 00:06:56,690
+But now the retrieval-- the lookup--
+
+163
+00:06:56,690 --> 00:06:58,520
+is simply, give me the key.
+
+164
+00:06:58,520 --> 00:07:01,630
+I'll find that entry in the dictionary, return the value--
+
+165
+00:07:01,630 --> 00:07:03,344
+sounds really good.
+
+166
+00:07:03,344 --> 00:07:04,760
+So what are some of the operations
+
+167
+00:07:04,760 --> 00:07:05,920
+I could do on a dictionary?
+
+168
+00:07:05,920 --> 00:07:07,503
+Just as we had with lists, we're going
+
+169
+00:07:07,503 --> 00:07:09,160
+to have operations on dictionaries.
+
+170
+00:07:09,160 --> 00:07:11,520
+I could add an entry for Sylvan.
+
+171
+00:07:11,520 --> 00:07:19,420
+So I could say, into the dictionary grades for Sylvan,
+
+172
+00:07:19,420 --> 00:07:21,410
+add in an entry.
+
+173
+00:07:21,410 --> 00:07:23,350
+Sylvan is doing well in this class.
+
+174
+00:07:23,350 --> 00:07:24,680
+There it is.
+
+175
+00:07:24,680 --> 00:07:27,130
+And as a consequence, if I now say
+
+176
+00:07:27,130 --> 00:07:31,190
+what is the value associated with Sylvan?
+
+177
+00:07:31,190 --> 00:07:33,470
+It's going to give me back that value.
+
+178
+00:07:33,470 --> 00:07:35,090
+I can add an entry.
+
+179
+00:07:35,090 --> 00:07:35,810
+It's mutable.
+
+180
+00:07:35,810 --> 00:07:38,270
+I can change things inside the dictionary.
+
+181
+00:07:38,270 --> 00:07:41,320
+And I've, in fact, just made that change to the dictionary.
+
+182
+00:07:41,320 --> 00:07:44,320
+I can test to see if a key is in the dictionary.
+
+183
+00:07:44,320 --> 00:07:49,310
+And literally I do that by simply invoking, for example,
+
+184
+00:07:49,310 --> 00:07:53,640
+is John in grades?
+
+185
+00:07:53,640 --> 00:07:54,770
+He is.
+
+186
+00:07:54,770 --> 00:07:58,350
+Is Daniel in grades?
+
+187
+00:07:58,350 --> 00:08:00,590
+He is not.
+
+188
+00:08:00,590 --> 00:08:03,420
+Python is automatically walking through that structure to see--
+
+189
+00:08:03,420 --> 00:08:06,180
+is that key in the collection of keys associated
+
+190
+00:08:06,180 --> 00:08:07,440
+with this dictionary.
+
+191
+00:08:07,440 --> 00:08:09,550
+We'll worry later on about exactly how he does it.
+
+192
+00:08:09,550 --> 00:08:11,940
+But the nice thing from a programming perspective
+
+193
+00:08:11,940 --> 00:08:15,430
+is I can test very simply to see if the key is in a dictionary
+
+194
+00:08:15,430 --> 00:08:18,490
+I can remove an entry, as we've done with other things.
+
+195
+00:08:18,490 --> 00:08:21,140
+Del for delete will remove an entry.
+
+196
+00:08:21,140 --> 00:08:30,150
+So if I give Del-- say I want to remove the entry for Anna--
+
+197
+00:08:30,150 --> 00:08:32,900
+in grades, I can do that.
+
+198
+00:08:32,900 --> 00:08:36,140
+If I look at grades, Anna is gone.
+
+199
+00:08:36,140 --> 00:08:39,950
+And, in fact, what I just did was change that dictionary.
+
+200
+00:08:39,950 --> 00:08:41,030
+I can add entries.
+
+201
+00:08:41,030 --> 00:08:42,230
+I can test about entries.
+
+202
+00:08:42,230 --> 00:08:44,080
+I can delete an entry.
+
+203
+00:08:44,080 --> 00:08:46,170
+Here are a couple of other things I can do.
+
+204
+00:08:46,170 --> 00:08:48,690
+I can actually get out the set of keys.
+
+205
+00:08:48,690 --> 00:08:50,130
+So let me go back to grades.
+
+206
+00:08:50,130 --> 00:08:52,020
+I've got grades.
+
+207
+00:08:52,020 --> 00:08:54,110
+And I can say, keys, which is a method.
+
+208
+00:08:54,110 --> 00:08:56,955
+And since it's a method, I need to type an open and close paren
+
+209
+00:08:56,955 --> 00:08:59,010
+to say call the method.
+
+210
+00:08:59,010 --> 00:09:02,190
+And it gives me back an iterable.
+
+211
+00:09:02,190 --> 00:09:06,069
+Again, I can think of that like a list or a tuple.
+
+212
+00:09:06,069 --> 00:09:08,110
+It's not quite, because it doesn't generate them.
+
+213
+00:09:08,110 --> 00:09:10,526
+It's going to give me a way to find them when I want them.
+
+214
+00:09:10,526 --> 00:09:12,440
+But it's going to act as if I got back
+
+215
+00:09:12,440 --> 00:09:16,780
+that collection of pieces inside of a structure.
+
+216
+00:09:16,780 --> 00:09:19,930
+And similarly, I could get the values out.
+
+217
+00:09:19,930 --> 00:09:26,010
+Grades values will give me back an iterable of the values
+
+218
+00:09:26,010 --> 00:09:28,190
+associated with that structure.
+
+219
+00:09:28,190 --> 00:09:30,680
+And if you're wondering why what I typed on my computer
+
+220
+00:09:30,680 --> 00:09:32,888
+is a little different than what you see on the slide,
+
+221
+00:09:32,888 --> 00:09:34,740
+it's because I did not reload the grades in.
+
+222
+00:09:34,740 --> 00:09:36,800
+I'm using the version of the grades that's here.
+
+223
+00:09:36,800 --> 00:09:39,430
+But the behavior is exactly what I want you to see.
+
+224
+00:09:39,430 --> 00:09:41,930
+I get back things so that I could then iterate over--
+
+225
+00:09:41,930 --> 00:09:44,200
+like I could walk down all the collections of keys,
+
+226
+00:09:44,200 --> 00:09:46,490
+or I could walk down all the collections of values
+
+227
+00:09:46,490 --> 00:09:49,410
+doing something to them.
+
+228
+00:09:49,410 --> 00:09:52,000
+One of the things to notice about both of these is I cannot
+
+229
+00:09:52,000 --> 00:09:54,189
+guarantee that there's a particular order to them.
+
+230
+00:09:54,189 --> 00:09:55,980
+So it's not like the traditional dictionary
+
+231
+00:09:55,980 --> 00:09:58,690
+that you get everything in lexicographic order.
+
+232
+00:09:58,690 --> 00:10:00,720
+It's going to depend on how I put them in there.
+
+233
+00:10:00,720 --> 00:10:02,970
+I just simply need to know that I want to do something
+
+234
+00:10:02,970 --> 00:10:04,830
+with the dictionary and not rely on the order
+
+235
+00:10:04,830 --> 00:10:06,050
+in which things are returned.
+
+236
+00:10:06,050 --> 00:10:08,600
+
+
+237
+00:10:08,600 --> 00:10:11,680
+What else can I say about dictionaries?
+
+238
+00:10:11,680 --> 00:10:15,120
+A couple of things-- the values that go into the dictionary
+
+239
+00:10:15,120 --> 00:10:16,800
+can be anything.
+
+240
+00:10:16,800 --> 00:10:17,970
+It could be any type.
+
+241
+00:10:17,970 --> 00:10:20,770
+It could be immutable types like ints or strings.
+
+242
+00:10:20,770 --> 00:10:23,530
+It could be mutable things like lists.
+
+243
+00:10:23,530 --> 00:10:24,570
+It could be functions.
+
+244
+00:10:24,570 --> 00:10:26,420
+It could be-- absolutely anything
+
+245
+00:10:26,420 --> 00:10:29,210
+can be used as a value.
+
+246
+00:10:29,210 --> 00:10:30,640
+They could also be duplicates.
+
+247
+00:10:30,640 --> 00:10:33,100
+That is, I could put the same value
+
+248
+00:10:33,100 --> 00:10:35,460
+to be associated with different keys.
+
+249
+00:10:35,460 --> 00:10:37,290
+As we also can see here, dictionary values
+
+250
+00:10:37,290 --> 00:10:38,280
+could be lists.
+
+251
+00:10:38,280 --> 00:10:40,710
+I could even have dictionary values be other dictionaries.
+
+252
+00:10:40,710 --> 00:10:43,980
+It can be anything your heart desires.
+
+253
+00:10:43,980 --> 00:10:47,120
+Keys have a little bit more constraint on them.
+
+254
+00:10:47,120 --> 00:10:49,612
+The first one is they need to be unique.
+
+255
+00:10:49,612 --> 00:10:50,570
+Well, that makes sense.
+
+256
+00:10:50,570 --> 00:10:52,790
+If I'm going to look up something in the dictionary,
+
+257
+00:10:52,790 --> 00:10:55,177
+I can't have multiple keys or the same key
+
+258
+00:10:55,177 --> 00:10:56,760
+in different places in the dictionary.
+
+259
+00:10:56,760 --> 00:11:00,510
+It has to be a unique entry.
+
+260
+00:11:00,510 --> 00:11:02,830
+The second key point is that the key
+
+261
+00:11:02,830 --> 00:11:05,290
+must be of an immutable type.
+
+262
+00:11:05,290 --> 00:11:11,144
+So that means an int, a float, a string, a tuple, a bool.
+
+263
+00:11:11,144 --> 00:11:13,060
+Actually, I'd need something a little stronger
+
+264
+00:11:13,060 --> 00:11:14,870
+which we're going to come back to later on in the term.
+
+265
+00:11:14,870 --> 00:11:16,510
+They need to be what we call hashable.
+
+266
+00:11:16,510 --> 00:11:17,890
+But right now think of it as immutable,
+
+267
+00:11:17,890 --> 00:11:20,098
+because basically everything we're going to deal with
+
+268
+00:11:20,098 --> 00:11:21,670
+has that property.
+
+269
+00:11:21,670 --> 00:11:23,340
+I'd need to be really careful if I'm
+
+270
+00:11:23,340 --> 00:11:25,360
+going to use a float type as a key,
+
+271
+00:11:25,360 --> 00:11:27,730
+because if the float has an accuracy issue,
+
+272
+00:11:27,730 --> 00:11:30,640
+I may not find the thing I wanted to associate with it.
+
+273
+00:11:30,640 --> 00:11:32,230
+The reason they need to be immutable
+
+274
+00:11:32,230 --> 00:11:35,380
+is I can't store something in the dictionary under one key--
+
+275
+00:11:35,380 --> 00:11:37,740
+and then change the key-- and expect
+
+276
+00:11:37,740 --> 00:11:40,240
+to be able to find it, still, in the dictionary.
+
+277
+00:11:40,240 --> 00:11:42,830
+It just doesn't make any sense.
+
+278
+00:11:42,830 --> 00:11:44,360
+As I've already said I'll remind you
+
+279
+00:11:44,360 --> 00:11:47,950
+there is no order to either the keys or the values.
+
+280
+00:11:47,950 --> 00:11:51,280
+And so I've given you an example of a dictionary here where one
+
+281
+00:11:51,280 --> 00:11:56,430
+index-- one key is an int, another key is a tuple,
+
+282
+00:11:56,430 --> 00:11:58,414
+the third key is a string.
+
+283
+00:11:58,414 --> 00:12:00,580
+How they're ordered in the dictionary, I don't care.
+
+284
+00:12:00,580 --> 00:12:02,640
+But I can have all of those in one dictionary
+
+285
+00:12:02,640 --> 00:12:06,550
+and retrieve from them appropriately.
+
+286
+00:12:06,550 --> 00:12:09,390
+So just to compare the two pieces-- differences
+
+287
+00:12:09,390 --> 00:12:12,330
+between a list and a dictionary--
+
+288
+00:12:12,330 --> 00:12:15,090
+a list is an ordered sequence of elements.
+
+289
+00:12:15,090 --> 00:12:18,420
+And in fact, I index it by using an integer index because
+
+290
+00:12:18,420 --> 00:12:20,250
+in fact I know it's ordered.
+
+291
+00:12:20,250 --> 00:12:24,490
+A dictionary is simply a collection of entries.
+
+292
+00:12:24,490 --> 00:12:26,410
+I'm going to match keys to values.
+
+293
+00:12:26,410 --> 00:12:28,270
+There's no particular order to them.
+
+294
+00:12:28,270 --> 00:12:33,112
+And I can look up one item by simply using that index to try,
+
+295
+00:12:33,112 --> 00:12:35,570
+or that key to try and pull out the piece that I want here.
+
+296
+00:12:35,570 --> 00:12:38,260
+So in this case, I look up elements by an integer index.
+
+297
+00:12:38,260 --> 00:12:40,600
+In this case, I look up elements by whatever the key is,
+
+298
+00:12:40,600 --> 00:12:44,440
+which could itself be some arbitrary expression.
+
+299
+00:12:44,440 --> 00:12:48,260
+Indices and lists have an order, no order with dictionaries.
+
+300
+00:12:48,260 --> 00:12:50,470
+And the index has to be an integer with the list.
+
+301
+00:12:50,470 --> 00:12:52,820
+The key can be any immutable type.
+
+302
+00:12:52,820 --> 00:12:54,320
+So you can see the dictionaries have
+
+303
+00:12:54,320 --> 00:12:56,490
+a lot more capability in terms of what
+
+304
+00:12:56,490 --> 00:12:58,289
+we can store inside of them.
+
+305
+00:12:58,289 --> 00:12:59,830
+And we're going to look at an example
+
+306
+00:12:59,830 --> 00:13:02,130
+to see how you can use dictionaries and iterate over
+
+307
+00:13:02,130 --> 00:13:05,030
+dictionaries to do interesting things.
+

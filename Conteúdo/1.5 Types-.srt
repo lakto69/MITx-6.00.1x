@@ -1,0 +1,1040 @@
+0
+00:00:00,000 --> 00:00:00,650
+...
+
+1
+00:00:00,650 --> 00:00:03,710
+Now that we have the idea that we want to put together
+
+2
+00:00:03,710 --> 00:00:08,039
+expressions, by putting together primitives in legal ways,
+
+3
+00:00:08,039 --> 00:00:09,970
+we can take up that idea of how to use
+
+4
+00:00:09,970 --> 00:00:14,590
+that to start capturing recipes, start capturing algorithms.
+
+5
+00:00:14,590 --> 00:00:16,519
+So let's talk about a Python program.
+
+6
+00:00:16,519 --> 00:00:18,060
+Python being the language we're going
+
+7
+00:00:18,060 --> 00:00:20,350
+to use in this class to do programming.
+
+8
+00:00:20,350 --> 00:00:22,860
+And the program, just as you saw with the recipe,
+
+9
+00:00:22,860 --> 00:00:27,010
+is going to be a sequence of definitions and commands.
+
+10
+00:00:27,010 --> 00:00:29,080
+Definitions as we'll see a little bit later on,
+
+11
+00:00:29,080 --> 00:00:32,240
+are ways of either assigning names to values,
+
+12
+00:00:32,240 --> 00:00:34,590
+or more importantly, creating procedures
+
+13
+00:00:34,590 --> 00:00:36,920
+that we're going to treat as if they're primitives.
+
+14
+00:00:36,920 --> 00:00:39,690
+Those we refer to as being evaluated.
+
+15
+00:00:39,690 --> 00:00:41,910
+Commands, are simpler expressions
+
+16
+00:00:41,910 --> 00:00:44,490
+that we can execute directly within Python.
+
+17
+00:00:44,490 --> 00:00:47,180
+And we do that in something called a shell.
+
+18
+00:00:47,180 --> 00:00:49,280
+In a moment I'm going to use a shell.
+
+19
+00:00:49,280 --> 00:00:53,710
+A shell is simply a window into which I can type expressions.
+
+20
+00:00:53,710 --> 00:00:56,060
+They get passed into the Python interpreter,
+
+21
+00:00:56,060 --> 00:00:58,150
+it follows the set of instructions to figure out
+
+22
+00:00:58,150 --> 00:01:00,690
+what's the semantics -- what's the meaning associated with
+
+23
+00:01:00,690 --> 00:01:01,710
+that expression?
+
+24
+00:01:01,710 --> 00:01:03,940
+And then it prints out the result.
+
+25
+00:01:03,940 --> 00:01:07,840
+Commands are statements that instruct the interpreter to do
+
+26
+00:01:07,840 --> 00:01:08,920
+something.
+
+27
+00:01:08,920 --> 00:01:12,460
+So the commands could be simply, do this arithmetic operation.
+
+28
+00:01:12,460 --> 00:01:15,450
+Or commands could be apply a primitive that I
+
+29
+00:01:15,450 --> 00:01:17,734
+created to do some work for us.
+
+30
+00:01:17,734 --> 00:01:19,900
+The last piece, and we're going to see both of these
+
+31
+00:01:19,900 --> 00:01:22,730
+as we go through the course, is that we can either type things
+
+32
+00:01:22,730 --> 00:01:24,352
+directly into the shell.
+
+33
+00:01:24,352 --> 00:01:26,560
+That's a window that the interpreter is listening to.
+
+34
+00:01:26,560 --> 00:01:28,740
+That's something where we type something in
+
+35
+00:01:28,740 --> 00:01:30,480
+and the machine does something with it.
+
+36
+00:01:30,480 --> 00:01:33,936
+Or, we can store it in a file that gets read into the shell
+
+37
+00:01:33,936 --> 00:01:35,060
+when we're ready to use it.
+
+38
+00:01:35,060 --> 00:01:37,180
+But otherwise, can be saved away.
+
+39
+00:01:37,180 --> 00:01:40,260
+To start with, we're just gonna type directly into the shell,
+
+40
+00:01:40,260 --> 00:01:44,590
+but we'll see examples of files in a little bit.
+
+41
+00:01:44,590 --> 00:01:47,660
+OK, we're almost ready to start programming.
+
+42
+00:01:47,660 --> 00:01:49,240
+We know the pieces we need.
+
+43
+00:01:49,240 --> 00:01:52,110
+Let's start with what are the fundamental primitives that
+
+44
+00:01:52,110 --> 00:01:53,740
+represent data?
+
+45
+00:01:53,740 --> 00:01:55,460
+Those, we call objects.
+
+46
+00:01:55,460 --> 00:01:57,560
+And programs manipulate data objects
+
+47
+00:01:57,560 --> 00:01:59,640
+in order to get out parts of those objects
+
+48
+00:01:59,640 --> 00:02:01,970
+or to do something with those objects.
+
+49
+00:02:01,970 --> 00:02:05,180
+Every object has a type associated with it
+
+50
+00:02:05,180 --> 00:02:07,720
+that tells us what kind of thing it is.
+
+51
+00:02:07,720 --> 00:02:11,570
+And more importantly, that type is really important.
+
+52
+00:02:11,570 --> 00:02:16,620
+That type tells programs whether they can act on it or not.
+
+53
+00:02:16,620 --> 00:02:19,692
+If a program is expecting a number and I give it a string,
+
+54
+00:02:19,692 --> 00:02:21,650
+it's not going to try and do something with it.
+
+55
+00:02:21,650 --> 00:02:25,040
+So the type of the object is really valuable.
+
+56
+00:02:25,040 --> 00:02:29,070
+Finally, objects come either as scalars, which
+
+57
+00:02:29,070 --> 00:02:31,000
+says they can't be subdivided.
+
+58
+00:02:31,000 --> 00:02:32,860
+Or, if they're scalars, obviously
+
+59
+00:02:32,860 --> 00:02:34,510
+non-scalars which are things that
+
+60
+00:02:34,510 --> 00:02:39,710
+have internal structure into which we can pull out parts.
+
+61
+00:02:39,710 --> 00:02:42,630
+Let's start with the simplest version of these,
+
+62
+00:02:42,630 --> 00:02:45,530
+scalar objects in Python.
+
+63
+00:02:45,530 --> 00:02:47,070
+There are very few of them.
+
+64
+00:02:47,070 --> 00:02:48,620
+We have ints.
+
+65
+00:02:48,620 --> 00:02:50,160
+These are integers.
+
+66
+00:02:50,160 --> 00:02:52,018
+Standard numbers that you recognize, 5.
+
+67
+00:02:52,018 --> 00:02:52,518
+17.
+
+68
+00:02:52,518 --> 00:02:53,790
+27.
+
+69
+00:02:53,790 --> 00:02:55,400
+Minus 6.
+
+70
+00:02:55,400 --> 00:02:57,220
+We have floats.
+
+71
+00:02:57,220 --> 00:02:59,950
+These are real numbers, things with numbers
+
+72
+00:02:59,950 --> 00:03:01,162
+after the decimal point.
+
+73
+00:03:01,162 --> 00:03:02,638
+3.27.
+
+74
+00:03:02,638 --> 00:03:05,890
+3.14159, my favorite.
+
+75
+00:03:05,890 --> 00:03:08,760
+You have something called a bool, short for Boolean.
+
+76
+00:03:08,760 --> 00:03:11,560
+And that represents true or false.
+
+77
+00:03:11,560 --> 00:03:13,060
+Those are going to be important when
+
+78
+00:03:13,060 --> 00:03:16,490
+we get to tests, because we want to know if a test is true,
+
+79
+00:03:16,490 --> 00:03:17,400
+do something.
+
+80
+00:03:17,400 --> 00:03:19,890
+If it's not, do something else.
+
+81
+00:03:19,890 --> 00:03:21,120
+There's one weird one.
+
+82
+00:03:21,120 --> 00:03:22,880
+It's called NoneType.
+
+83
+00:03:22,880 --> 00:03:23,940
+It's a very special one.
+
+84
+00:03:23,940 --> 00:03:25,709
+It has only one value, which is none.
+
+85
+00:03:25,709 --> 00:03:27,750
+We're going to see why that's important later on,
+
+86
+00:03:27,750 --> 00:03:31,400
+but just to be careful, NoneType is a scalar object.
+
+87
+00:03:31,400 --> 00:03:34,210
+Those are four fundamental scalars.
+
+88
+00:03:34,210 --> 00:03:36,710
+There are only a couple of more, which we'll get to a little
+
+89
+00:03:36,710 --> 00:03:38,320
+later on.
+
+90
+00:03:38,320 --> 00:03:42,440
+Once I have knowledge of those different types,
+
+91
+00:03:42,440 --> 00:03:44,510
+I can also find out the type of an object,
+
+92
+00:03:44,510 --> 00:03:47,499
+by using a built-in procedure called type.
+
+93
+00:03:47,499 --> 00:03:49,040
+And I want to show you some examples.
+
+94
+00:03:49,040 --> 00:03:54,850
+So I'm going to go over to my little machine over here,
+
+95
+00:03:54,850 --> 00:03:58,250
+and I'm going to skip down.
+
+96
+00:03:58,250 --> 00:04:01,457
+I'm now talking to a shell.
+
+97
+00:04:01,457 --> 00:04:03,790
+And you'll notice it's got a little prompt that says in,
+
+98
+00:04:03,790 --> 00:04:05,950
+saying what's the input you want to give?
+
+99
+00:04:05,950 --> 00:04:07,682
+The fact it's got 30 on the machine
+
+100
+00:04:07,682 --> 00:04:09,640
+is because I was doing some other work earlier.
+
+101
+00:04:09,640 --> 00:04:12,020
+So this is going to be the 30th expression typed in.
+
+102
+00:04:12,020 --> 00:04:15,630
+And I'm simply going to type in a number.
+
+103
+00:04:15,630 --> 00:04:18,550
+And the output is the number itself.
+
+104
+00:04:18,550 --> 00:04:20,240
+Well duh, you say.
+
+105
+00:04:20,240 --> 00:04:22,690
+But it's actually important, because what the machine did
+
+106
+00:04:22,690 --> 00:04:27,730
+was it read in that sequence of characters, understood
+
+107
+00:04:27,730 --> 00:04:29,600
+that it was a number, and the value
+
+108
+00:04:29,600 --> 00:04:32,330
+associated with the number is simply the number.
+
+109
+00:04:32,330 --> 00:04:34,090
+And in fact, I can check it because I
+
+110
+00:04:34,090 --> 00:04:36,940
+can say what's the type of 3.5?
+
+111
+00:04:36,940 --> 00:04:40,150
+Notice the open and close parentheses around it.
+
+112
+00:04:40,150 --> 00:04:42,700
+And it says, it's a float.
+
+113
+00:04:42,700 --> 00:04:44,410
+And I can have integers.
+
+114
+00:04:44,410 --> 00:04:47,050
+And if I say what's the type of that,
+
+115
+00:04:47,050 --> 00:04:50,180
+it's going to give me back an int.
+
+116
+00:04:50,180 --> 00:04:51,610
+Simple things.
+
+117
+00:04:51,610 --> 00:04:54,510
+OK.
+
+118
+00:04:54,510 --> 00:04:56,810
+Again, just to recap what this says is here's
+
+119
+00:04:56,810 --> 00:05:00,160
+what I'm going to type into this Python shell.
+
+120
+00:05:00,160 --> 00:05:05,835
+And here's what shows up after I hit Enter as you just saw.
+
+121
+00:05:05,835 --> 00:05:08,985
+And in and out are simply going to identify what I typed in,
+
+122
+00:05:08,985 --> 00:05:12,720
+in the output that you've recovered.
+
+123
+00:05:12,720 --> 00:05:16,500
+Sometimes I want to change types, especially with numbers.
+
+124
+00:05:16,500 --> 00:05:17,680
+This is called casting.
+
+125
+00:05:17,680 --> 00:05:19,980
+And I can cast types of different forms,
+
+126
+00:05:19,980 --> 00:05:21,280
+and you can see the example.
+
+127
+00:05:21,280 --> 00:05:24,600
+If I say, I want to take an int, such as 5,
+
+128
+00:05:24,600 --> 00:05:28,460
+and turn it into a float I can ask it to do so, by giving it
+
+129
+00:05:28,460 --> 00:05:31,720
+the special command float -- the thing contained within
+
+130
+00:05:31,720 --> 00:05:34,090
+parentheses -- and it converts it.
+
+131
+00:05:34,090 --> 00:05:36,170
+The other direction also works.
+
+132
+00:05:36,170 --> 00:05:38,710
+If I want to take a float, such as 3.9,
+
+133
+00:05:38,710 --> 00:05:40,630
+and convert it into an int.
+
+134
+00:05:40,630 --> 00:05:42,980
+Here you say, boy there might be some choices.
+
+135
+00:05:42,980 --> 00:05:46,990
+Python simply gives the whole number part of it.
+
+136
+00:05:46,990 --> 00:05:48,850
+It doesn't round it to the nearest integer,
+
+137
+00:05:48,850 --> 00:05:49,706
+as you might expect.
+
+138
+00:05:49,706 --> 00:05:51,830
+If you want to build your own programming language,
+
+139
+00:05:51,830 --> 00:05:52,621
+knock yourself out.
+
+140
+00:05:52,621 --> 00:05:53,640
+You could do that.
+
+141
+00:05:53,640 --> 00:05:57,030
+But it simply will truncate it down to that int.
+
+142
+00:05:57,030 --> 00:06:00,810
+So I can convert back and forth.
+
+143
+00:06:00,810 --> 00:06:03,910
+Now, once I've got these things, I
+
+144
+00:06:03,910 --> 00:06:05,610
+can start putting things together.
+
+145
+00:06:05,610 --> 00:06:09,060
+And in particular, here's a legal expression.
+
+146
+00:06:09,060 --> 00:06:11,490
+3 plus 2.
+
+147
+00:06:11,490 --> 00:06:13,130
+That has a value associated with it.
+
+148
+00:06:13,130 --> 00:06:16,200
+In fact, that expression is to take the 3 and the 2
+
+149
+00:06:16,200 --> 00:06:19,920
+and apply the arithmetic operation of addition to them.
+
+150
+00:06:19,920 --> 00:06:24,460
+And when I evaluate it, it simply returns out 5.
+
+151
+00:06:24,460 --> 00:06:26,160
+Makes sense.
+
+152
+00:06:26,160 --> 00:06:27,884
+Sometimes I might want to use something
+
+153
+00:06:27,884 --> 00:06:28,800
+that's going to print.
+
+154
+00:06:28,800 --> 00:06:30,670
+And I can type, for example, print
+
+155
+00:06:30,670 --> 00:06:32,510
+which controls output to the console
+
+156
+00:06:32,510 --> 00:06:34,560
+by saying print 3 plus 2.
+
+157
+00:06:34,560 --> 00:06:37,200
+
+
+158
+00:06:37,200 --> 00:06:38,630
+Huh.
+
+159
+00:06:38,630 --> 00:06:40,970
+Little bit of a difference.
+
+160
+00:06:40,970 --> 00:06:45,580
+And in fact, there's no out here because no value is returned.
+
+161
+00:06:45,580 --> 00:06:49,140
+Print returns that NoneType and doesn't print anything out.
+
+162
+00:06:49,140 --> 00:06:51,286
+It just printed something.
+
+163
+00:06:51,286 --> 00:06:53,410
+At this stage, you may be saying, well why do this?
+
+164
+00:06:53,410 --> 00:06:54,670
+Why the difference?
+
+165
+00:06:54,670 --> 00:06:56,650
+What we're going to see is, when we're
+
+166
+00:06:56,650 --> 00:06:59,800
+in the middle of a computation and we want to print something
+
+167
+00:06:59,800 --> 00:07:04,310
+out to the shell, we can use a print command to do that.
+
+168
+00:07:04,310 --> 00:07:06,110
+If we just return the value, that
+
+169
+00:07:06,110 --> 00:07:09,470
+goes back into the computation to be used for the next step.
+
+170
+00:07:09,470 --> 00:07:12,700
+And so in the simple first case, the whole value
+
+171
+00:07:12,700 --> 00:07:15,210
+of the computation was 3 plus 2 equals 5.
+
+172
+00:07:15,210 --> 00:07:16,640
+It was printing all 5.
+
+173
+00:07:16,640 --> 00:07:20,760
+In the second case, the side effect is to print something.
+
+174
+00:07:20,760 --> 00:07:22,620
+The value returned is nothing.
+
+175
+00:07:22,620 --> 00:07:24,100
+There is no value.
+
+176
+00:07:24,100 --> 00:07:27,465
+We'll come back to that as we go along.
+
+177
+00:07:27,465 --> 00:07:29,090
+I've already hinted at this, but now we
+
+178
+00:07:29,090 --> 00:07:30,870
+can start putting things together.
+
+179
+00:07:30,870 --> 00:07:33,940
+To combine objects and operators into expressions,
+
+180
+00:07:33,940 --> 00:07:35,740
+we use a standard form.
+
+181
+00:07:35,740 --> 00:07:40,300
+And the syntax is simply an object, an operator,
+
+182
+00:07:40,300 --> 00:07:42,170
+and another object.
+
+183
+00:07:42,170 --> 00:07:45,540
+Any expression like this that is syntactically valid,
+
+184
+00:07:45,540 --> 00:07:48,830
+has a value, which is itself a type.
+
+185
+00:07:48,830 --> 00:07:51,000
+So we talk about the types of scalar objects,
+
+186
+00:07:51,000 --> 00:07:55,650
+we talk about the types of more complicated expressions.
+
+187
+00:07:55,650 --> 00:07:57,830
+What would those expressions look like?
+
+188
+00:07:57,830 --> 00:07:59,706
+Well, here's the first set of them.
+
+189
+00:07:59,706 --> 00:08:01,330
+There's a lot on this slide, but you're
+
+190
+00:08:01,330 --> 00:08:02,413
+going to get used to them.
+
+191
+00:08:02,413 --> 00:08:03,790
+And most of them make sense.
+
+192
+00:08:03,790 --> 00:08:07,320
+If I want to add together either two ints or two floats,
+
+193
+00:08:07,320 --> 00:08:09,820
+my expression is to have two numbers
+
+194
+00:08:09,820 --> 00:08:12,620
+as I just did, 3 plus 2.
+
+195
+00:08:12,620 --> 00:08:15,530
+The value associated with that is the combination
+
+196
+00:08:15,530 --> 00:08:17,640
+of adding the two things together.
+
+197
+00:08:17,640 --> 00:08:21,470
+I can subtract, I can multiply.
+
+198
+00:08:21,470 --> 00:08:26,450
+And for these examples, if both I and J are ints,
+
+199
+00:08:26,450 --> 00:08:28,280
+the result is an int.
+
+200
+00:08:28,280 --> 00:08:30,940
+If either of them or both of them are floats,
+
+201
+00:08:30,940 --> 00:08:32,669
+the result is a float.
+
+202
+00:08:32,669 --> 00:08:33,909
+And let's look at an example.
+
+203
+00:08:33,909 --> 00:08:37,630
+If I do 3 plus 2, I get 5.
+
+204
+00:08:37,630 --> 00:08:43,130
+If I do 3.0 plus 2, I get the float 5.
+
+205
+00:08:43,130 --> 00:08:46,240
+So Python is always using, if you like,
+
+206
+00:08:46,240 --> 00:08:49,690
+the higher level representation when it
+
+207
+00:08:49,690 --> 00:08:52,190
+does those kinds of operations.
+
+208
+00:08:52,190 --> 00:08:55,060
+Divisions, a little trickier, because I
+
+209
+00:08:55,060 --> 00:08:59,420
+have both standard division, which will be a float,
+
+210
+00:08:59,420 --> 00:09:02,810
+and I have integer division, which
+
+211
+00:09:02,810 --> 00:09:05,690
+will be the quotient without the remainder.
+
+212
+00:09:05,690 --> 00:09:07,020
+And let's look at two examples.
+
+213
+00:09:07,020 --> 00:09:11,220
+If I do 5 divided by 2, I get 2 and 1/2.
+
+214
+00:09:11,220 --> 00:09:15,920
+If I do 5 with two slashes divided by 2,
+
+215
+00:09:15,920 --> 00:09:18,510
+I get the integer part, which is 2.
+
+216
+00:09:18,510 --> 00:09:20,810
+The .5 is thrown away.
+
+217
+00:09:20,810 --> 00:09:22,910
+And if I wanted to get the .5 I could
+
+218
+00:09:22,910 --> 00:09:26,910
+do 5 remainder 2, which is the percent sign,
+
+219
+00:09:26,910 --> 00:09:30,822
+and that gives me the piece left over when I divide those two
+
+220
+00:09:30,822 --> 00:09:33,690
+pieces together.
+
+221
+00:09:33,690 --> 00:09:36,730
+Finally, I can raise something to a power.
+
+222
+00:09:36,730 --> 00:09:41,000
+And that is done right here with I. Two stars, J. So one star
+
+223
+00:09:41,000 --> 00:09:42,480
+is multiplication.
+
+224
+00:09:42,480 --> 00:09:44,900
+Two stars, gives me power.
+
+225
+00:09:44,900 --> 00:09:48,060
+
+
+226
+00:09:48,060 --> 00:09:52,640
+Once I've got that, I'm ready to start putting together pieces.
+
+227
+00:09:52,640 --> 00:09:54,800
+In particular, I've got different operations.
+
+228
+00:09:54,800 --> 00:09:57,470
+So I have to think about how do I put together pieces in ways
+
+229
+00:09:57,470 --> 00:09:59,480
+that control what I want to do?
+
+230
+00:09:59,480 --> 00:10:01,710
+And here, we're going to use parentheses
+
+231
+00:10:01,710 --> 00:10:05,960
+to tell Python in what order to do the operations.
+
+232
+00:10:05,960 --> 00:10:08,020
+There's a precedence to those operations.
+
+233
+00:10:08,020 --> 00:10:12,200
+And those are shown right down here, going in this order.
+
+234
+00:10:12,200 --> 00:10:16,060
+Exponentiation, powers are always done first.
+
+235
+00:10:16,060 --> 00:10:18,730
+Then multiplications, then divisions.
+
+236
+00:10:18,730 --> 00:10:21,710
+And then finally, additions or subtractions.
+
+237
+00:10:21,710 --> 00:10:24,120
+And overall it's done in a left to right order, as it
+
+238
+00:10:24,120 --> 00:10:25,940
+appears inside the expression.
+
+239
+00:10:25,940 --> 00:10:29,710
+And that means that as I change where the parentheses are,
+
+240
+00:10:29,710 --> 00:10:32,110
+I'm changing the order in which I'm doing things.
+
+241
+00:10:32,110 --> 00:10:37,490
+So to do an example, if I take 3 times 5 plus 1.
+
+242
+00:10:37,490 --> 00:10:39,510
+That's going to give me 16.
+
+243
+00:10:39,510 --> 00:10:42,650
+And that's because the multiplication is done first,
+
+244
+00:10:42,650 --> 00:10:44,480
+3 times 5 gives me 15.
+
+245
+00:10:44,480 --> 00:10:48,030
+And then the addition is done, to give me 16.
+
+246
+00:10:48,030 --> 00:10:50,340
+On the other hand, if I say 3 times,
+
+247
+00:10:50,340 --> 00:10:54,080
+and then in parentheses 5 plus 1,
+
+248
+00:10:54,080 --> 00:10:57,680
+the parentheses say reduce this expression first.
+
+249
+00:10:57,680 --> 00:10:58,680
+Add 5 and 1.
+
+250
+00:10:58,680 --> 00:11:00,340
+That gives me 6.
+
+251
+00:11:00,340 --> 00:11:04,022
+And then do the multiplication, which gives me the 18.
+
+252
+00:11:04,022 --> 00:11:06,680
+
+
+253
+00:11:06,680 --> 00:11:07,530
+As a consequence.
+
+254
+00:11:07,530 --> 00:11:09,830
+I can create very complicated expressions.
+
+255
+00:11:09,830 --> 00:11:12,190
+And I will simply use parens open
+
+256
+00:11:12,190 --> 00:11:15,340
+and close-- to define what operations to do first.
+
+257
+00:11:15,340 --> 00:11:19,870
+Always simplifying inside out, before then using the operator
+
+258
+00:11:19,870 --> 00:11:22,250
+precedence order, in order to decide what
+
+259
+00:11:22,250 --> 00:11:24,690
+the expression actually means.
+

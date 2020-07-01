@@ -1,0 +1,488 @@
+0
+00:00:00,000 --> 00:00:00,550
+...
+
+1
+00:00:00,550 --> 00:00:03,370
+Now that we've got an understanding of floating point
+
+2
+00:00:03,370 --> 00:00:07,130
+numbers, now that we've got the idea of generalizing guess
+
+3
+00:00:07,130 --> 00:00:08,690
+and check methods to do things, it
+
+4
+00:00:08,690 --> 00:00:11,460
+can do approximations to find solutions to things,
+
+5
+00:00:11,460 --> 00:00:14,505
+we can really start building some pretty powerful programs.
+
+6
+00:00:14,505 --> 00:00:15,880
+We've already seen something that
+
+7
+00:00:15,880 --> 00:00:17,960
+searches for cube roots of numbers,
+
+8
+00:00:17,960 --> 00:00:20,600
+even if they're not a perfect cube, square roots of numbers
+
+9
+00:00:20,600 --> 00:00:22,310
+even if they're not a perfect square.
+
+10
+00:00:22,310 --> 00:00:24,560
+And we've seen how we can get to quick solutions
+
+11
+00:00:24,560 --> 00:00:27,270
+very nicely using things like bisection search,
+
+12
+00:00:27,270 --> 00:00:30,360
+have great accuracy and still find good answers.
+
+13
+00:00:30,360 --> 00:00:32,150
+I want to show you one last example just
+
+14
+00:00:32,150 --> 00:00:35,472
+to give you a sense of the power of computation we can now do.
+
+15
+00:00:35,472 --> 00:00:37,930
+I'm going to stick with the idea of finding roots of things
+
+16
+00:00:37,930 --> 00:00:40,260
+but show you how you can actually capture things
+
+17
+00:00:40,260 --> 00:00:41,580
+very dramatically.
+
+18
+00:00:41,580 --> 00:00:44,130
+And that's to use a technique called Newton-Raphson.
+
+19
+00:00:44,130 --> 00:00:47,150
+It was discovered by Sir Isaac Newton three or four centuries
+
+20
+00:00:47,150 --> 00:00:50,350
+ago, also discovered by Raphson at about the same time.
+
+21
+00:00:50,350 --> 00:00:53,590
+And here's the basic idea behind Newton-Raphson.
+
+22
+00:00:53,590 --> 00:00:55,710
+It's a general approximation algorithm
+
+23
+00:00:55,710 --> 00:00:59,750
+that's going to let us find roots of any polynomial in one
+
+24
+00:00:59,750 --> 00:01:00,930
+variable.
+
+25
+00:01:00,930 --> 00:01:04,430
+So that could be, for example, the polynomial like this-- I've
+
+26
+00:01:04,430 --> 00:01:07,880
+got p of x is some coefficient times x to the n
+
+27
+00:01:07,880 --> 00:01:10,630
+plus some other coefficient times x to the n minus 1
+
+28
+00:01:10,630 --> 00:01:11,860
+and so on.
+
+29
+00:01:11,860 --> 00:01:16,260
+And what I want to do is find the value r such that p of r
+
+30
+00:01:16,260 --> 00:01:17,630
+is equal to 0.
+
+31
+00:01:17,630 --> 00:01:18,800
+It's called a root.
+
+32
+00:01:18,800 --> 00:01:21,670
+It basically is the root of this equation.
+
+33
+00:01:21,670 --> 00:01:23,822
+Newton-Raphson will apply to any polynomial.
+
+34
+00:01:23,822 --> 00:01:25,530
+I'm going to show you an example of using
+
+35
+00:01:25,530 --> 00:01:27,330
+it to find square roots, and you can say,
+
+36
+00:01:27,330 --> 00:01:29,410
+well, I already did that with bisection search.
+
+37
+00:01:29,410 --> 00:01:31,160
+You're right, but it's a nice way
+
+38
+00:01:31,160 --> 00:01:34,440
+of looking at how we can generalize the computation.
+
+39
+00:01:34,440 --> 00:01:37,750
+So in particular, if I want to find the square root of 24,
+
+40
+00:01:37,750 --> 00:01:41,860
+I'm going to use the polynomial x squared equals 24.
+
+41
+00:01:41,860 --> 00:01:45,350
+Because if I can find the value of x for which this is 0,
+
+42
+00:01:45,350 --> 00:01:48,760
+then x is in fact the square root of 24.
+
+43
+00:01:48,760 --> 00:01:53,640
+What Newton showed was that if g is a good guess to that root,
+
+44
+00:01:53,640 --> 00:01:57,480
+then you can get an even better guess by taking g
+
+45
+00:01:57,480 --> 00:02:00,910
+and subtracting from it the polynomial evaluated
+
+46
+00:02:00,910 --> 00:02:07,090
+at g divided by the derivative of the polynomial evaluated
+
+47
+00:02:07,090 --> 00:02:08,095
+at g.
+
+48
+00:02:08,095 --> 00:02:09,470
+And if you haven't done calculus,
+
+49
+00:02:09,470 --> 00:02:11,280
+and you don't know what a derivative is, don't worry.
+
+50
+00:02:11,280 --> 00:02:12,280
+We're going to show you what it is
+
+51
+00:02:12,280 --> 00:02:14,150
+in this simple case of a square root.
+
+52
+00:02:14,150 --> 00:02:19,280
+But I want to let you see the power of doing Newton-Raphson.
+
+53
+00:02:19,280 --> 00:02:21,450
+So Newton showed, if I got a good guess,
+
+54
+00:02:21,450 --> 00:02:23,340
+I can make it better by taking p of g
+
+55
+00:02:23,340 --> 00:02:25,580
+divided by the derivative of p of g
+
+56
+00:02:25,580 --> 00:02:28,110
+and subtracting it off of g.
+
+57
+00:02:28,110 --> 00:02:31,000
+So in the simple case, if I've got an equation that
+
+58
+00:02:31,000 --> 00:02:34,980
+is some constant times x squared plus another constant,
+
+59
+00:02:34,980 --> 00:02:40,020
+then the first derivative of c times x squared is just 2cx.
+
+60
+00:02:40,020 --> 00:02:42,430
+So in my case of looking for square roots--
+
+61
+00:02:42,430 --> 00:02:44,130
+x squared plus k is the thing I'm
+
+62
+00:02:44,130 --> 00:02:48,140
+trying to find a solution of-- the derivative is just 2x.
+
+63
+00:02:48,140 --> 00:02:51,690
+And so Newton-Raphson says, given a guess for the root,
+
+64
+00:02:51,690 --> 00:02:54,720
+take the polynomial at that point, which
+
+65
+00:02:54,720 --> 00:02:58,540
+is g squared minus k, take the derivative of that point, which
+
+66
+00:02:58,540 --> 00:03:03,790
+is just 2g, take that ratio and subtract it off from g.
+
+67
+00:03:03,790 --> 00:03:04,720
+Cool.
+
+68
+00:03:04,720 --> 00:03:07,390
+We ought to be able to build that, and we can.
+
+69
+00:03:07,390 --> 00:03:11,670
+It's a nice tight little iterative loop.
+
+70
+00:03:11,670 --> 00:03:13,710
+So here's a nice way of generating the guesses.
+
+71
+00:03:13,710 --> 00:03:16,126
+OK, and I'm going to have some epsilon that's going to let
+
+72
+00:03:16,126 --> 00:03:17,905
+me decide how close I am to an answer.
+
+73
+00:03:17,905 --> 00:03:20,530
+I've got the thing I'm going to look for, and my initial guess,
+
+74
+00:03:20,530 --> 00:03:23,950
+I'm just going to pick as that value divided by 2.
+
+75
+00:03:23,950 --> 00:03:26,450
+And then here's the loop.
+
+76
+00:03:26,450 --> 00:03:30,800
+As long as guess squared minus y, the absolute value of that
+
+77
+00:03:30,800 --> 00:03:32,622
+is too big, I'm going to keep going.
+
+78
+00:03:32,622 --> 00:03:35,080
+And as before, I'm going to count the number guesses to see
+
+79
+00:03:35,080 --> 00:03:37,160
+how long it takes.
+
+80
+00:03:37,160 --> 00:03:40,300
+Each time around, I'm going to use that little equation
+
+81
+00:03:40,300 --> 00:03:41,610
+from Newton-Raphson.
+
+82
+00:03:41,610 --> 00:03:45,620
+I'm going to take g squared minus y divided by 2 times g
+
+83
+00:03:45,620 --> 00:03:48,780
+or guess, subtract that off of guess, and go back around.
+
+84
+00:03:48,780 --> 00:03:50,467
+That's just the thing I did before.
+
+85
+00:03:50,467 --> 00:03:52,050
+And I'm going to run through that loop
+
+86
+00:03:52,050 --> 00:03:53,600
+until I get something close enough,
+
+87
+00:03:53,600 --> 00:03:55,170
+and then I'm going to jump out.
+
+88
+00:03:55,170 --> 00:03:57,310
+So let's see what happens if we do it.
+
+89
+00:03:57,310 --> 00:03:58,520
+I've got the code over here.
+
+90
+00:03:58,520 --> 00:04:01,020
+I'm going to load it in and run it.
+
+91
+00:04:01,020 --> 00:04:06,370
+And in four guesses, it got a good solution-- four.
+
+92
+00:04:06,370 --> 00:04:06,870
+OK.
+
+93
+00:04:06,870 --> 00:04:08,560
+It's a whole lot better than 30,000,
+
+94
+00:04:08,560 --> 00:04:10,010
+which is where we started.
+
+95
+00:04:10,010 --> 00:04:13,230
+With the bisection search, it was about 15 or 20.
+
+96
+00:04:13,230 --> 00:04:15,260
+Now I've got it down to four.
+
+97
+00:04:15,260 --> 00:04:17,040
+Let's pick another example.
+
+98
+00:04:17,040 --> 00:04:19,880
+Let's take my favorite example here of 54.
+
+99
+00:04:19,880 --> 00:04:21,670
+Same thing, and I run it.
+
+100
+00:04:21,670 --> 00:04:26,470
+And in five guesses, it gives me a good solution out.
+
+101
+00:04:26,470 --> 00:04:27,550
+This is really cool.
+
+102
+00:04:27,550 --> 00:04:29,300
+I know you don't believe it, but it really
+
+103
+00:04:29,300 --> 00:04:31,730
+is cool, because it lets me not only find
+
+104
+00:04:31,730 --> 00:04:34,740
+cube roots and square roots, it lets me find the solution
+
+105
+00:04:34,740 --> 00:04:38,230
+to any equation very quickly.
+
+106
+00:04:38,230 --> 00:04:42,120
+So what we've now seen is that this idea of a guess and check
+
+107
+00:04:42,120 --> 00:04:46,520
+method builds on reusing the same code over and over again.
+
+108
+00:04:46,520 --> 00:04:48,470
+It takes the idea of a looping mechanism
+
+109
+00:04:48,470 --> 00:04:52,010
+and adds to it, building into it different ways
+
+110
+00:04:52,010 --> 00:04:53,950
+to generate the guesses and then checking
+
+111
+00:04:53,950 --> 00:04:56,690
+to see whether I'm close enough or I want to keep going.
+
+112
+00:04:56,690 --> 00:05:00,280
+And we've already seen now simple exhaustive enumeration,
+
+113
+00:05:00,280 --> 00:05:02,140
+bisection search, which cuts down
+
+114
+00:05:02,140 --> 00:05:04,790
+the amount of expense dramatically and now,
+
+115
+00:05:04,790 --> 00:05:07,000
+at least for root finding, Newton-Raphson, which
+
+116
+00:05:07,000 --> 00:05:09,220
+improves it even more formally.
+
+117
+00:05:09,220 --> 00:05:11,670
+So you've already seen three different classes
+
+118
+00:05:11,670 --> 00:05:13,690
+of algorithms, and you've got a lot of tools
+
+119
+00:05:13,690 --> 00:05:15,684
+for doing numerical computation.
+
+120
+00:05:15,684 --> 00:05:17,600
+We're going to come back to that as we move on
+
+121
+00:05:17,600 --> 00:05:19,450
+through the course.
+

@@ -1,0 +1,708 @@
+0
+00:00:00,000 --> 00:00:00,640
+...
+
+1
+00:00:00,640 --> 00:00:03,660
+Let's think about what we've been doing so far.
+
+2
+00:00:03,660 --> 00:00:06,320
+We started introducing elements to our language.
+
+3
+00:00:06,320 --> 00:00:09,790
+We started off with simple things-- basic objects, ways
+
+4
+00:00:09,790 --> 00:00:14,870
+to do arithmetic operations on them, ways to compare them.
+
+5
+00:00:14,870 --> 00:00:17,840
+We introduced conditionals as a consequence of that.
+
+6
+00:00:17,840 --> 00:00:21,180
+And we started looking at the first version of ways
+
+7
+00:00:21,180 --> 00:00:24,500
+to actually put things together into pieces of code.
+
+8
+00:00:24,500 --> 00:00:27,390
+So we've covered language mechanisms.
+
+9
+00:00:27,390 --> 00:00:31,010
+We've also covered the first notion of for and while loops
+
+10
+00:00:31,010 --> 00:00:33,030
+and, therefore, of iteration.
+
+11
+00:00:33,030 --> 00:00:34,410
+And we've also seen that we could
+
+12
+00:00:34,410 --> 00:00:36,660
+write different kinds of computations,
+
+13
+00:00:36,660 --> 00:00:39,600
+each one in a different file that I save away on my machine,
+
+14
+00:00:39,600 --> 00:00:42,130
+so I can use when I want to do something with it.
+
+15
+00:00:42,130 --> 00:00:44,580
+Each file contains a piece of code.
+
+16
+00:00:44,580 --> 00:00:46,460
+And each piece of code is some sequence
+
+17
+00:00:46,460 --> 00:00:49,990
+of operations-- could be a simple branching program.
+
+18
+00:00:49,990 --> 00:00:53,110
+It could be an iteration like a for loop or a while loop,
+
+19
+00:00:53,110 --> 00:00:55,270
+could be something else.
+
+20
+00:00:55,270 --> 00:00:59,490
+This is fine when our code consists of a few lines.
+
+21
+00:00:59,490 --> 00:01:02,590
+This is fine when our problems are very small.
+
+22
+00:01:02,590 --> 00:01:05,239
+But it doesn't really scale very nicely.
+
+23
+00:01:05,239 --> 00:01:07,820
+As I start thinking about pieces of code that
+
+24
+00:01:07,820 --> 00:01:11,490
+might be hundreds or thousands of lines long, simply doing it
+
+25
+00:01:11,490 --> 00:01:13,510
+this way is a real challenge.
+
+26
+00:01:13,510 --> 00:01:15,150
+It's hard to keep track of the details.
+
+27
+00:01:15,150 --> 00:01:16,870
+It's hard to make sure that I've got
+
+28
+00:01:16,870 --> 00:01:19,710
+the right information in the right place in that code.
+
+29
+00:01:19,710 --> 00:01:23,950
+Does this go at line 95, or at line 296?
+
+30
+00:01:23,950 --> 00:01:26,300
+I need a way to really capture this better.
+
+31
+00:01:26,300 --> 00:01:29,370
+I need a way of structuring my code,
+
+32
+00:01:29,370 --> 00:01:32,150
+structuring my computation, so that I can think about it
+
+33
+00:01:32,150 --> 00:01:33,740
+much more efficiently.
+
+34
+00:01:33,740 --> 00:01:36,735
+And that's what we're going to introduce now.
+
+35
+00:01:36,735 --> 00:01:38,110
+One of the things to keep in mind
+
+36
+00:01:38,110 --> 00:01:42,820
+is, in fact, good programming is more than just adding
+
+37
+00:01:42,820 --> 00:01:44,086
+more code.
+
+38
+00:01:44,086 --> 00:01:46,460
+In fact, I would argue that a good programmer is measured
+
+39
+00:01:46,460 --> 00:01:49,190
+not by the number of lines of code she's written,
+
+40
+00:01:49,190 --> 00:01:51,400
+but by the amount of functionality that she's
+
+41
+00:01:51,400 --> 00:01:54,530
+provided-- the ability to do computations easily.
+
+42
+00:01:54,530 --> 00:01:56,060
+And so to make that happen, we're
+
+43
+00:01:56,060 --> 00:01:58,450
+going to take a really nice pivot, introduce
+
+44
+00:01:58,450 --> 00:02:02,055
+a major new thing, and that's the idea of a function.
+
+45
+00:02:02,055 --> 00:02:03,680
+We're going to describe it in a second.
+
+46
+00:02:03,680 --> 00:02:05,096
+But the idea of a function is it's
+
+47
+00:02:05,096 --> 00:02:07,270
+going to give me a way to encapsulate
+
+48
+00:02:07,270 --> 00:02:08,979
+pieces of computation.
+
+49
+00:02:08,979 --> 00:02:10,840
+And in fact, a function is intended
+
+50
+00:02:10,840 --> 00:02:13,870
+to give me two really important aspects
+
+51
+00:02:13,870 --> 00:02:17,080
+of computational thinking-- decomposition,
+
+52
+00:02:17,080 --> 00:02:20,780
+sometimes also called modularity, and abstraction.
+
+53
+00:02:20,780 --> 00:02:23,110
+So what do those mean?
+
+54
+00:02:23,110 --> 00:02:24,820
+Let me give you an analogy-- something
+
+55
+00:02:24,820 --> 00:02:26,660
+a little bit different.
+
+56
+00:02:26,660 --> 00:02:29,350
+I'm sure you've all seen a projector.
+
+57
+00:02:29,350 --> 00:02:31,939
+I think of a projector as a black box.
+
+58
+00:02:31,939 --> 00:02:33,480
+Now, the one I'm showing here happens
+
+59
+00:02:33,480 --> 00:02:35,740
+to have a black box around it, but my black box,
+
+60
+00:02:35,740 --> 00:02:39,360
+I literally mean a construct whose details
+
+61
+00:02:39,360 --> 00:02:40,480
+I don't understand.
+
+62
+00:02:40,480 --> 00:02:42,480
+In fact, most of us don't know what's inside it,
+
+63
+00:02:42,480 --> 00:02:43,420
+how it actually works.
+
+64
+00:02:43,420 --> 00:02:45,860
+If you open it up, you see a bunch of electronics.
+
+65
+00:02:45,860 --> 00:02:48,140
+And unless you're a really good electrical engineer,
+
+66
+00:02:48,140 --> 00:02:50,420
+you probably don't understand how it works.
+
+67
+00:02:50,420 --> 00:02:54,110
+It doesn't matter, because you know the interface,
+
+68
+00:02:54,110 --> 00:02:56,790
+you know the input-output behavior.
+
+69
+00:02:56,790 --> 00:02:58,610
+And in fact, that black box comes
+
+70
+00:02:58,610 --> 00:03:01,130
+with a standard interface, that says,
+
+71
+00:03:01,130 --> 00:03:04,530
+if I plug an appropriate piece of electronics
+
+72
+00:03:04,530 --> 00:03:07,411
+into it, that box can communicate with it.
+
+73
+00:03:07,411 --> 00:03:08,910
+And it's going to produce an output.
+
+74
+00:03:08,910 --> 00:03:12,000
+It's going to show slides on the wall.
+
+75
+00:03:12,000 --> 00:03:13,740
+That's the notion of abstraction.
+
+76
+00:03:13,740 --> 00:03:17,020
+It's the idea that once I've built something-- in this case
+
+77
+00:03:17,020 --> 00:03:19,530
+a projector, might be a piece of code--
+
+78
+00:03:19,530 --> 00:03:21,190
+once I've built something, I don't
+
+79
+00:03:21,190 --> 00:03:25,530
+need to know what's inside it as long as I know how it works.
+
+80
+00:03:25,530 --> 00:03:27,180
+So abstraction, in some sense, comes
+
+81
+00:03:27,180 --> 00:03:30,610
+with a contract that says, if you give me appropriate inputs,
+
+82
+00:03:30,610 --> 00:03:32,950
+I'm going to behave in an appropriate way.
+
+83
+00:03:32,950 --> 00:03:34,230
+That's a really nice idea.
+
+84
+00:03:34,230 --> 00:03:36,271
+That's something that we're going to want to use.
+
+85
+00:03:36,271 --> 00:03:38,300
+And we're going to use it with code.
+
+86
+00:03:38,300 --> 00:03:39,580
+There's a second piece to it.
+
+87
+00:03:39,580 --> 00:03:42,034
+And we'll stick with the projector idea.
+
+88
+00:03:42,034 --> 00:03:43,450
+If you happened to see the opening
+
+89
+00:03:43,450 --> 00:03:45,660
+ceremonies for the Vancouver, Olympics,
+
+90
+00:03:45,660 --> 00:03:47,310
+there was a wonderful display in which
+
+91
+00:03:47,310 --> 00:03:50,940
+there was a huge multi-story-high structure
+
+92
+00:03:50,940 --> 00:03:55,732
+in the middle of the rink onto which images were projected.
+
+93
+00:03:55,732 --> 00:03:56,940
+Now, it wasn't one projector.
+
+94
+00:03:56,940 --> 00:03:57,980
+It was way too big.
+
+95
+00:03:57,980 --> 00:03:59,840
+It was a sequence of projectors.
+
+96
+00:03:59,840 --> 00:04:01,450
+Each of them took an input.
+
+97
+00:04:01,450 --> 00:04:03,350
+Each of them produced an output.
+
+98
+00:04:03,350 --> 00:04:05,560
+And they all worked together in synchrony
+
+99
+00:04:05,560 --> 00:04:08,610
+to produce that wonderful larger image.
+
+100
+00:04:08,610 --> 00:04:11,960
+That's the second big idea, decomposition,
+
+101
+00:04:11,960 --> 00:04:14,270
+that I can, in this case, take different devices,
+
+102
+00:04:14,270 --> 00:04:16,829
+have them synchronize, so that they work together
+
+103
+00:04:16,829 --> 00:04:19,100
+to achieve an end goal.
+
+104
+00:04:19,100 --> 00:04:22,200
+I want to use the same thing with code.
+
+105
+00:04:22,200 --> 00:04:25,600
+So we're going to apply those ideas to programming.
+
+106
+00:04:25,600 --> 00:04:28,500
+Decomposition-- I'm going to break a problem up
+
+107
+00:04:28,500 --> 00:04:31,370
+into different self-contained pieces.
+
+108
+00:04:31,370 --> 00:04:33,980
+And once I've built them-- or even better, once somebody else
+
+109
+00:04:33,980 --> 00:04:36,310
+has built one of them for me, all I need to know
+
+110
+00:04:36,310 --> 00:04:38,460
+is, what does it expect as input,
+
+111
+00:04:38,460 --> 00:04:41,770
+and what will the behavior be when it gives me an output?
+
+112
+00:04:41,770 --> 00:04:44,320
+And the second big idea, abstraction,
+
+113
+00:04:44,320 --> 00:04:46,680
+that I want to be able to suppress
+
+114
+00:04:46,680 --> 00:04:50,250
+the details inside that method in order
+
+115
+00:04:50,250 --> 00:04:53,072
+to be able to compute something using that computation.
+
+116
+00:04:53,072 --> 00:04:55,030
+And in fact, I just said them in the wrong way.
+
+117
+00:04:55,030 --> 00:04:57,350
+What I first described was really abstraction.
+
+118
+00:04:57,350 --> 00:04:59,360
+Decomposition is that idea of breaking it up
+
+119
+00:04:59,360 --> 00:05:00,900
+into smaller pieces.
+
+120
+00:05:00,900 --> 00:05:03,610
+With those two things together, we're going to now look at,
+
+121
+00:05:03,610 --> 00:05:09,980
+how do we make programs have those two properties
+
+122
+00:05:09,980 --> 00:05:13,350
+Inside of code with decomposition,
+
+123
+00:05:13,350 --> 00:05:15,420
+we're going to do the same thing we
+
+124
+00:05:15,420 --> 00:05:18,040
+did when we talked about having multiple projectors working
+
+125
+00:05:18,040 --> 00:05:19,431
+together.
+
+126
+00:05:19,431 --> 00:05:21,430
+When I'm going to structure a big piece of code,
+
+127
+00:05:21,430 --> 00:05:23,560
+I'm going to divide it up into modules.
+
+128
+00:05:23,560 --> 00:05:26,930
+And those have the property that they're self-contained.
+
+129
+00:05:26,930 --> 00:05:29,430
+That means, they have everything they need inside of them.
+
+130
+00:05:29,430 --> 00:05:31,930
+I'm going to use it to break the code up into pieces that I
+
+131
+00:05:31,930 --> 00:05:33,870
+can separate apart.
+
+132
+00:05:33,870 --> 00:05:35,850
+And they're intended to be re-usable.
+
+133
+00:05:35,850 --> 00:05:38,260
+I can use them multiple places.
+
+134
+00:05:38,260 --> 00:05:42,160
+If you think about it, so far, even if I have a little file,
+
+135
+00:05:42,160 --> 00:05:44,954
+I can only use it once.
+
+136
+00:05:44,954 --> 00:05:46,370
+Or if I want to reuse it, I've got
+
+137
+00:05:46,370 --> 00:05:47,789
+to go back and recall the file.
+
+138
+00:05:47,789 --> 00:05:49,580
+Here, I'm going to structure code so that I
+
+139
+00:05:49,580 --> 00:05:51,310
+can use it in multiple places.
+
+140
+00:05:51,310 --> 00:05:53,560
+And we're going to see that this idea of dividing code
+
+141
+00:05:53,560 --> 00:05:56,450
+into modules is both going to keep the code organized
+
+142
+00:05:56,450 --> 00:05:57,210
+and coherent.
+
+143
+00:05:57,210 --> 00:05:59,460
+It's going to be easier to structure.
+
+144
+00:05:59,460 --> 00:06:02,300
+Today, we're going to do decomposition with functions.
+
+145
+00:06:02,300 --> 00:06:03,800
+And in a few weeks time, we're going
+
+146
+00:06:03,800 --> 00:06:06,610
+to see how to do decomposition with classes,
+
+147
+00:06:06,610 --> 00:06:09,810
+an equally powerful idea.
+
+148
+00:06:09,810 --> 00:06:13,240
+We're going to suppress details with abstraction.
+
+149
+00:06:13,240 --> 00:06:14,622
+Again, I said with the projector,
+
+150
+00:06:14,622 --> 00:06:16,080
+I don't need to know what's inside.
+
+151
+00:06:16,080 --> 00:06:18,180
+I just need to know what it does.
+
+152
+00:06:18,180 --> 00:06:21,080
+In programming, we're also going to think of a piece of code
+
+153
+00:06:21,080 --> 00:06:22,631
+as a black box.
+
+154
+00:06:22,631 --> 00:06:25,130
+I don't need to see the details inside once I've written it,
+
+155
+00:06:25,130 --> 00:06:27,510
+or especially if somebody else has written it for me.
+
+156
+00:06:27,510 --> 00:06:30,220
+I, in fact, don't want to see the details inside.
+
+157
+00:06:30,220 --> 00:06:32,030
+What I simply want to know is that it's
+
+158
+00:06:32,030 --> 00:06:34,630
+going to work the way it was advertised.
+
+159
+00:06:34,630 --> 00:06:36,250
+And we're going to achieve abstraction
+
+160
+00:06:36,250 --> 00:06:39,990
+with something called a function specification or a doc string.
+
+161
+00:06:39,990 --> 00:06:43,240
+And in a second, we're going to see examples of both of those.
+
+162
+00:06:43,240 --> 00:06:46,840
+But there is the idea-- abstraction, decomposition,
+
+163
+00:06:46,840 --> 00:06:48,880
+two powerful ideas that we want to capture
+
+164
+00:06:48,880 --> 00:06:51,464
+inside a computation.
+
+165
+00:06:51,464 --> 00:06:53,130
+One of the things that comes out of this
+
+166
+00:06:53,130 --> 00:06:55,490
+is, not only do they work well together,
+
+167
+00:06:55,490 --> 00:06:58,530
+but that can then be used many times.
+
+168
+00:06:58,530 --> 00:07:00,650
+And in fact, not only can they be used many times,
+
+169
+00:07:00,650 --> 00:07:02,590
+I only have to debug it once.
+
+170
+00:07:02,590 --> 00:07:03,835
+It's one piece of code.
+
+171
+00:07:03,835 --> 00:07:05,210
+If I want to make a change to it,
+
+172
+00:07:05,210 --> 00:07:06,900
+I change that piece of code.
+
+173
+00:07:06,900 --> 00:07:08,760
+Anything else that depends on that code
+
+174
+00:07:08,760 --> 00:07:11,390
+will inherit that behavior, because they simply
+
+175
+00:07:11,390 --> 00:07:13,675
+depend on that code.
+
+176
+00:07:13,675 --> 00:07:14,175
+
+

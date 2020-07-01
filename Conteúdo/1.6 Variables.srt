@@ -1,0 +1,516 @@
+0
+00:00:00,000 --> 00:00:00,880
+...
+
+1
+00:00:00,880 --> 00:00:03,520
+So we've now seen primitives.
+
+2
+00:00:03,520 --> 00:00:06,610
+We've also seen means of combination, simple arithmetic
+
+3
+00:00:06,610 --> 00:00:09,530
+things, expressions that we can use to compute values.
+
+4
+00:00:09,530 --> 00:00:13,480
+I said earlier there was one last piece, abstraction,
+
+5
+00:00:13,480 --> 00:00:15,750
+ways of giving names to things.
+
+6
+00:00:15,750 --> 00:00:19,204
+So I can refer to a value just by its name and reuse it.
+
+7
+00:00:19,204 --> 00:00:21,120
+We're going to see other kinds of abstractions
+
+8
+00:00:21,120 --> 00:00:22,619
+as you go along, but that's probably
+
+9
+00:00:22,619 --> 00:00:24,040
+the most important first one.
+
+10
+00:00:24,040 --> 00:00:28,190
+And so we can now introduce that into our programming language.
+
+11
+00:00:28,190 --> 00:00:32,549
+In Python, we do an assignment using an equal sign.
+
+12
+00:00:32,549 --> 00:00:35,710
+And you see an example of it right here.
+
+13
+00:00:35,710 --> 00:00:39,730
+There is an assignment of a name to a value.
+
+14
+00:00:39,730 --> 00:00:41,886
+And in particular, the value will just
+
+15
+00:00:41,886 --> 00:00:43,010
+be computed the normal way.
+
+16
+00:00:43,010 --> 00:00:45,810
+In this case it's simply that float.
+
+17
+00:00:45,810 --> 00:00:47,440
+That's what we call a variable.
+
+18
+00:00:47,440 --> 00:00:48,760
+It's a name.
+
+19
+00:00:48,760 --> 00:00:50,760
+And the equal sign gives us an expression
+
+20
+00:00:50,760 --> 00:00:53,210
+called an assignment that says bind to
+
+21
+00:00:53,210 --> 00:00:59,040
+or associated with the name pi the value 3.14159.
+
+22
+00:00:59,040 --> 00:01:02,740
+Once we have that, we can use pi wherever we would like.
+
+23
+00:01:02,740 --> 00:01:04,670
+So in fact if I go over to my machine
+
+24
+00:01:04,670 --> 00:01:10,810
+and I do the same thing, I say pi is equal to 3.14159.
+
+25
+00:01:10,810 --> 00:01:16,020
+If I now ask for the value of pi, it prints it back out.
+
+26
+00:01:16,020 --> 00:01:18,681
+I've bound pi to a number.
+
+27
+00:01:18,681 --> 00:01:19,680
+I could do other things.
+
+28
+00:01:19,680 --> 00:01:21,180
+I could give an approximation to pi.
+
+29
+00:01:21,180 --> 00:01:24,180
+And I want to put this one up because I want to remind you
+
+30
+00:01:24,180 --> 00:01:26,253
+that if I were to use double slash,
+
+31
+00:01:26,253 --> 00:01:28,340
+I would get just the expression 3.
+
+32
+00:01:28,340 --> 00:01:31,410
+But here it's going to give me something a little different.
+
+33
+00:01:31,410 --> 00:01:37,680
+And if I do pi approx, I say 22 divided by 7,
+
+34
+00:01:37,680 --> 00:01:42,930
+and I ask for that value, I get a little bit better,
+
+35
+00:01:42,930 --> 00:01:46,230
+or maybe not better representation of pi.
+
+36
+00:01:46,230 --> 00:01:48,700
+That value is stored away in computer memory.
+
+37
+00:01:48,700 --> 00:01:53,050
+It's in something we call a name table where the variable pi has
+
+38
+00:01:53,050 --> 00:01:55,310
+associated with it a value.
+
+39
+00:01:55,310 --> 00:01:57,310
+And as we said, we can just retrieve it
+
+40
+00:01:57,310 --> 00:02:01,140
+by asking what's the value associated with that name.
+
+41
+00:02:01,140 --> 00:02:03,850
+Once we have that, we can start putting together
+
+42
+00:02:03,850 --> 00:02:05,930
+more complicated expressions.
+
+43
+00:02:05,930 --> 00:02:09,460
+So why will we give names to values of expressions?
+
+44
+00:02:09,460 --> 00:02:13,360
+Couple of reasons-- one is I want to just reuse the name
+
+45
+00:02:13,360 --> 00:02:16,120
+and not redo the computation to get the value.
+
+46
+00:02:16,120 --> 00:02:18,640
+If I actually had some very complicated arithmetic
+
+47
+00:02:18,640 --> 00:02:20,422
+expression that reduced to a simple value,
+
+48
+00:02:20,422 --> 00:02:21,880
+I don't want to redo it every time.
+
+49
+00:02:21,880 --> 00:02:23,800
+I just want to give it the name.
+
+50
+00:02:23,800 --> 00:02:25,780
+The second one is it can give me code that's
+
+51
+00:02:25,780 --> 00:02:27,760
+much easier to understand.
+
+52
+00:02:27,760 --> 00:02:29,740
+The name ought to be informative.
+
+53
+00:02:29,740 --> 00:02:32,020
+It lets me think about what it's telling me
+
+54
+00:02:32,020 --> 00:02:33,730
+about what this represents.
+
+55
+00:02:33,730 --> 00:02:36,230
+And finally it's going to be easier to change the code later
+
+56
+00:02:36,230 --> 00:02:37,820
+if I've just got a name and I want
+
+57
+00:02:37,820 --> 00:02:41,080
+to change the binding of the name and reuse it.
+
+58
+00:02:41,080 --> 00:02:43,130
+So here's a simple example.
+
+59
+00:02:43,130 --> 00:02:45,000
+I can bind pi to a value.
+
+60
+00:02:45,000 --> 00:02:47,450
+I can give a radius, say 2.2.
+
+61
+00:02:47,450 --> 00:02:50,510
+And then I can compute the area, pi r squared.
+
+62
+00:02:50,510 --> 00:02:53,380
+And that'll give me a simple little computation.
+
+63
+00:02:53,380 --> 00:02:55,680
+Those expressions also tell me something about what
+
+64
+00:02:55,680 --> 00:02:56,750
+I'm trying to capture.
+
+65
+00:02:56,750 --> 00:03:00,790
+And so those names turn out to be really valuable.
+
+66
+00:03:00,790 --> 00:03:02,290
+One of the things to keep in mind
+
+67
+00:03:02,290 --> 00:03:05,560
+is that this is simply following the sequence of steps
+
+68
+00:03:05,560 --> 00:03:07,140
+we talked about.
+
+69
+00:03:07,140 --> 00:03:08,570
+It's not like doing math.
+
+70
+00:03:08,570 --> 00:03:11,520
+In programming, you do not solve for x.
+
+71
+00:03:11,520 --> 00:03:14,250
+So for example in this little example,
+
+72
+00:03:14,250 --> 00:03:18,100
+I define pi to be 3.14159.
+
+73
+00:03:18,100 --> 00:03:19,820
+I set up a radius.
+
+74
+00:03:19,820 --> 00:03:21,086
+This is just a comment.
+
+75
+00:03:21,086 --> 00:03:22,460
+We're going to come back to that.
+
+76
+00:03:22,460 --> 00:03:24,730
+That hash sign says it's just something
+
+77
+00:03:24,730 --> 00:03:26,540
+that's going to be there for me to read.
+
+78
+00:03:26,540 --> 00:03:29,180
+The computer doesn't do anything with it.
+
+79
+00:03:29,180 --> 00:03:32,030
+I can now compute the area.
+
+80
+00:03:32,030 --> 00:03:34,682
+And then I can decide I want a different radius.
+
+81
+00:03:34,682 --> 00:03:36,140
+And in fact look at this expression
+
+82
+00:03:36,140 --> 00:03:38,240
+here, because what it says is get
+
+83
+00:03:38,240 --> 00:03:42,100
+the value of this expression, which is what's
+
+84
+00:03:42,100 --> 00:03:44,565
+the value of radius, 2.2.
+
+85
+00:03:44,565 --> 00:03:46,010
+What's the value of one-- 1.
+
+86
+00:03:46,010 --> 00:03:48,430
+Add them together, that gives me 3.2.
+
+87
+00:03:48,430 --> 00:03:53,100
+And change the binding so that radius is now 3.2.
+
+88
+00:03:53,100 --> 00:03:56,450
+This does not change area.
+
+89
+00:03:56,450 --> 00:03:59,590
+It's not like a set of mathematical expressions.
+
+90
+00:03:59,590 --> 00:04:01,220
+It's simply following the sequence
+
+91
+00:04:01,220 --> 00:04:03,030
+of instructions we gave it.
+
+92
+00:04:03,030 --> 00:04:05,480
+And that means that if we want to do something different,
+
+93
+00:04:05,480 --> 00:04:09,261
+we would need to recompute area.
+
+94
+00:04:09,261 --> 00:04:10,760
+Again, I just want to repeat what we
+
+95
+00:04:10,760 --> 00:04:12,360
+said, because it's important.
+
+96
+00:04:12,360 --> 00:04:14,790
+An assignment statement says, find the value
+
+97
+00:04:14,790 --> 00:04:17,170
+on the right hand side of the expression.
+
+98
+00:04:17,170 --> 00:04:21,930
+Take the name on the left and assign that name to that value.
+
+99
+00:04:21,930 --> 00:04:24,990
+One last thing-- we're going to see a lot of shorthand here.
+
+100
+00:04:24,990 --> 00:04:27,315
+That expression, adding 1 to something,
+
+101
+00:04:27,315 --> 00:04:28,940
+it's something we're going to do a lot.
+
+102
+00:04:28,940 --> 00:04:29,981
+It's called incrementing.
+
+103
+00:04:29,981 --> 00:04:33,680
+And so there's a shorthand which is you could write this instead
+
+104
+00:04:33,680 --> 00:04:35,720
+as just +=.
+
+105
+00:04:35,720 --> 00:04:39,990
+And that is simply short for saying radius += 1 is radius
+
+106
+00:04:39,990 --> 00:04:42,950
+equals radius incremented by 1.
+
+107
+00:04:42,950 --> 00:04:45,530
+
+
+108
+00:04:45,530 --> 00:04:48,110
+The last piece here is you saw we could change the bindings.
+
+109
+00:04:48,110 --> 00:04:51,920
+I can rebind a variable name in a new assignment statement.
+
+110
+00:04:51,920 --> 00:04:54,880
+The previous value may still be around in memory,
+
+111
+00:04:54,880 --> 00:04:56,100
+but it's lost.
+
+112
+00:04:56,100 --> 00:04:58,490
+There's no handle, no way to get to it.
+
+113
+00:04:58,490 --> 00:05:00,350
+And as we just saw, the value for area
+
+114
+00:05:00,350 --> 00:05:03,380
+doesn't change until you tell the computer
+
+115
+00:05:03,380 --> 00:05:05,890
+to do the calculation again.
+
+116
+00:05:05,890 --> 00:05:09,910
+Another way of thinking about it is, if this cloud is my memory,
+
+117
+00:05:09,910 --> 00:05:15,060
+when I do a binding for pi, it associates the name pi
+
+118
+00:05:15,060 --> 00:05:17,690
+with a value off in memory.
+
+119
+00:05:17,690 --> 00:05:20,350
+When I do radius, I get the same thing.
+
+120
+00:05:20,350 --> 00:05:25,670
+When I compute area, it looks up radius, squares it,
+
+121
+00:05:25,670 --> 00:05:30,520
+multiplies it by pi, and then associates the name area
+
+122
+00:05:30,520 --> 00:05:33,300
+with that value in memory.
+
+123
+00:05:33,300 --> 00:05:40,110
+And now if I change radius, it loses that first association
+
+124
+00:05:40,110 --> 00:05:41,820
+and creates a new one.
+
+125
+00:05:41,820 --> 00:05:43,160
+But area hasn't changed.
+
+126
+00:05:43,160 --> 00:05:45,560
+If I wanted to recompute the area for this circle,
+
+127
+00:05:45,560 --> 00:05:49,942
+I would need to do another call to area to make it happen.
+
+128
+00:05:49,942 --> 00:05:50,442
+
+

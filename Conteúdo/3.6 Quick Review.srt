@@ -1,0 +1,312 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,060
+We've seen now four different ways
+
+2
+00:00:03,060 --> 00:00:05,920
+to collect things together into compound data structures,
+
+3
+00:00:05,920 --> 00:00:07,540
+non-scalar data structures.
+
+4
+00:00:07,540 --> 00:00:11,570
+We've seen strings, we've seen tuples, we've seen ranges,
+
+5
+00:00:11,570 --> 00:00:13,350
+and we've seen lists.
+
+6
+00:00:13,350 --> 00:00:15,380
+And I want to take a little bit of time
+
+7
+00:00:15,380 --> 00:00:17,690
+to talk about the common operations that
+
+8
+00:00:17,690 --> 00:00:19,320
+apply to all of them.
+
+9
+00:00:19,320 --> 00:00:21,946
+They're all ordered collections of elements.
+
+10
+00:00:21,946 --> 00:00:23,320
+They all have certain properties,
+
+11
+00:00:23,320 --> 00:00:25,520
+and then they have a few differences.
+
+12
+00:00:25,520 --> 00:00:28,226
+So I'm going to let seq, sequence, be
+
+13
+00:00:28,226 --> 00:00:30,290
+a name-- a variable, if you like--
+
+14
+00:00:30,290 --> 00:00:33,340
+but a name that describes any one of these.
+
+15
+00:00:33,340 --> 00:00:36,550
+And what do we know about all four of these data types?
+
+16
+00:00:36,550 --> 00:00:39,450
+I can get the ith element out by simply saying give me
+
+17
+00:00:39,450 --> 00:00:42,730
+the ith element of sequence by using the square braces right
+
+18
+00:00:42,730 --> 00:00:43,750
+there.
+
+19
+00:00:43,750 --> 00:00:45,560
+I can ask for the length of them.
+
+20
+00:00:45,560 --> 00:00:46,810
+I will get it back.
+
+21
+00:00:46,810 --> 00:00:49,630
+I can concatenate them using pluses
+
+22
+00:00:49,630 --> 00:00:51,880
+with one exception, which is ranges.
+
+23
+00:00:51,880 --> 00:00:53,510
+I cannot concatenate ranges.
+
+24
+00:00:53,510 --> 00:00:57,340
+But I can concatenate strings, tuples, lists.
+
+25
+00:00:57,340 --> 00:01:02,710
+I can actually repeat a sequence n times by using the star.
+
+26
+00:01:02,710 --> 00:01:04,086
+We saw that earlier with strings.
+
+27
+00:01:04,086 --> 00:01:05,626
+I haven't shown it to you with lists,
+
+28
+00:01:05,626 --> 00:01:07,050
+but it works exactly the same way.
+
+29
+00:01:07,050 --> 00:01:10,580
+If my sequence is a list and I say 3 times a sequence,
+
+30
+00:01:10,580 --> 00:01:12,450
+I'll get three versions of that sequence
+
+31
+00:01:12,450 --> 00:01:15,430
+all concatenated together-- again, not with ranges.
+
+32
+00:01:15,430 --> 00:01:17,420
+It's the one exception here.
+
+33
+00:01:17,420 --> 00:01:20,200
+I can slice into any of these things using
+
+34
+00:01:20,200 --> 00:01:24,210
+exactly the same format, especially that colon there.
+
+35
+00:01:24,210 --> 00:01:26,300
+I can test if something is in a sequence.
+
+36
+00:01:26,300 --> 00:01:29,450
+By simply asking is this element in the sequence,
+
+37
+00:01:29,450 --> 00:01:31,350
+we'll return true.
+
+38
+00:01:31,350 --> 00:01:34,990
+Same common form-- I can say is it not in the sequence.
+
+39
+00:01:34,990 --> 00:01:36,560
+And I can iterate over the sequence
+
+40
+00:01:36,560 --> 00:01:41,540
+by simply using for and in and walk down the sequence.
+
+41
+00:01:41,540 --> 00:01:43,491
+Why am I showing you this?
+
+42
+00:01:43,491 --> 00:01:46,700
+This is a nice property of this programming language,
+
+43
+00:01:46,700 --> 00:01:49,580
+that given these collections of elements,
+
+44
+00:01:49,580 --> 00:01:53,840
+exactly the same operation applies-- again,
+
+45
+00:01:53,840 --> 00:01:57,050
+with just the two exceptions here of concatenation where
+
+46
+00:01:57,050 --> 00:01:58,939
+ranges cannot be concatenated.
+
+47
+00:01:58,939 --> 00:02:00,480
+But it's really nice, because I don't
+
+48
+00:02:00,480 --> 00:02:02,260
+have to think about what operation am I
+
+49
+00:02:02,260 --> 00:02:03,415
+doing based on what type.
+
+50
+00:02:03,415 --> 00:02:05,530
+I'm overloading these operations so
+
+51
+00:02:05,530 --> 00:02:07,980
+that I let the type of the data help
+
+52
+00:02:07,980 --> 00:02:11,600
+Python decide which version to use to collect them off.
+
+53
+00:02:11,600 --> 00:02:13,280
+More importantly, intellectually, I
+
+54
+00:02:13,280 --> 00:02:15,610
+can think about the operation itself
+
+55
+00:02:15,610 --> 00:02:18,550
+without worrying about the details of which version of it
+
+56
+00:02:18,550 --> 00:02:19,425
+do I want to use.
+
+57
+00:02:19,425 --> 00:02:21,840
+I can say I want to concatenate these things together.
+
+58
+00:02:21,840 --> 00:02:24,390
+It doesn't matter if they're tuples, if they're lists,
+
+59
+00:02:24,390 --> 00:02:25,590
+if they're strings.
+
+60
+00:02:25,590 --> 00:02:27,850
+I can just go ahead and do them.
+
+61
+00:02:27,850 --> 00:02:32,154
+And so I could pull all of those together in a very nice way.
+
+62
+00:02:32,154 --> 00:02:34,570
+I've got one other piece of it that I want to think about,
+
+63
+00:02:34,570 --> 00:02:36,940
+which is which of these are mutable and which are not.
+
+64
+00:02:36,940 --> 00:02:41,330
+And as we've seen, only the list is mutable.
+
+65
+00:02:41,330 --> 00:02:42,800
+So how do I think about this?
+
+66
+00:02:42,800 --> 00:02:46,600
+Strings-- it's a concatenation of characters.
+
+67
+00:02:46,600 --> 00:02:49,730
+A tuple-- a concatenation of any kind of object.
+
+68
+00:02:49,730 --> 00:02:52,540
+A range-- a concatenation or sequence,
+
+69
+00:02:52,540 --> 00:02:54,280
+I should be saying, of integers and list
+
+70
+00:02:54,280 --> 00:02:56,660
+a sequence of any kind of object.
+
+71
+00:02:56,660 --> 00:02:58,410
+We've seen the examples of them, and we've
+
+72
+00:02:58,410 --> 00:03:01,550
+seen while three of them are immutable, one of them
+
+73
+00:03:01,550 --> 00:03:04,920
+has this nice property of being mutable.
+
+74
+00:03:04,920 --> 00:03:06,750
+But all of these behave the same way.
+
+75
+00:03:06,750 --> 00:03:10,320
+And that idea of collecting data together into a structure
+
+76
+00:03:10,320 --> 00:03:13,140
+is something we really want to be able to use.
+
+77
+00:03:13,140 --> 00:03:16,310
+And I'm going to show you an example of that next.
+

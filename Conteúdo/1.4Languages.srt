@@ -1,0 +1,836 @@
+0
+00:00:00,000 --> 00:00:00,680
+...
+
+1
+00:00:00,680 --> 00:00:03,070
+So now that we've had the idea of creating
+
+2
+00:00:03,070 --> 00:00:05,640
+a recipe as a generic idea.
+
+3
+00:00:05,640 --> 00:00:08,170
+We know a little bit about what's inside the machine.
+
+4
+00:00:08,170 --> 00:00:11,020
+What we need to do is put those two things together.
+
+5
+00:00:11,020 --> 00:00:12,920
+We want to now go from a description
+
+6
+00:00:12,920 --> 00:00:16,640
+of a process to a specific set of statements
+
+7
+00:00:16,640 --> 00:00:18,400
+that we can store in the machine so
+
+8
+00:00:18,400 --> 00:00:20,420
+that that interpreter, that evaluator,
+
+9
+00:00:20,420 --> 00:00:22,500
+can then run those operations to use
+
+10
+00:00:22,500 --> 00:00:26,140
+the primitives inside the machine to do the work for us.
+
+11
+00:00:26,140 --> 00:00:27,930
+As we said, the programming language
+
+12
+00:00:27,930 --> 00:00:31,120
+is going to provide us with a set of primitive operations.
+
+13
+00:00:31,120 --> 00:00:33,120
+And the next step is to start talking about how
+
+14
+00:00:33,120 --> 00:00:35,430
+do we put them together.
+
+15
+00:00:35,430 --> 00:00:38,230
+To do that, we use something that we call an expression.
+
+16
+00:00:38,230 --> 00:00:39,910
+And the expressions in a language
+
+17
+00:00:39,910 --> 00:00:42,990
+are simply more complex but legal combinations
+
+18
+00:00:42,990 --> 00:00:45,170
+of primitives that the programming language
+
+19
+00:00:45,170 --> 00:00:45,796
+will recognize.
+
+20
+00:00:45,796 --> 00:00:47,586
+And we're going to start building those up.
+
+21
+00:00:47,586 --> 00:00:49,420
+So you're finally getting to the stage,
+
+22
+00:00:49,420 --> 00:00:51,410
+after all of this high level discussion,
+
+23
+00:00:51,410 --> 00:00:52,868
+of getting to the place where we're
+
+24
+00:00:52,868 --> 00:00:55,050
+going to begin to get the computer to do something.
+
+25
+00:00:55,050 --> 00:00:57,133
+One of the things we're going to talk about though
+
+26
+00:00:57,133 --> 00:00:59,430
+is that any legal expression in a programming
+
+27
+00:00:59,430 --> 00:01:03,690
+language, any computation, has associated with it a value.
+
+28
+00:01:03,690 --> 00:01:06,000
+That value is the meaning of the expression.
+
+29
+00:01:06,000 --> 00:01:08,310
+And that's going to be important, in part
+
+30
+00:01:08,310 --> 00:01:09,980
+because if we know we want to get
+
+31
+00:01:09,980 --> 00:01:12,060
+to a particular computation, we want
+
+32
+00:01:12,060 --> 00:01:14,050
+to understand how do we get to that value,
+
+33
+00:01:14,050 --> 00:01:16,930
+well how do we back out of that the sequence of steps,
+
+34
+00:01:16,930 --> 00:01:21,250
+the expressions that are going to compute it for us.
+
+35
+00:01:21,250 --> 00:01:23,934
+So let's look at how we put this together.
+
+36
+00:01:23,934 --> 00:01:25,850
+Every programming language could be thought of
+
+37
+00:01:25,850 --> 00:01:28,800
+as consisting of a set of primitives,
+
+38
+00:01:28,800 --> 00:01:31,390
+a means of combination, a way of putting those primitives
+
+39
+00:01:31,390 --> 00:01:33,540
+together to create new expressions,
+
+40
+00:01:33,540 --> 00:01:35,380
+and a means of abstraction, a way
+
+41
+00:01:35,380 --> 00:01:37,990
+of taking some complex expression
+
+42
+00:01:37,990 --> 00:01:40,900
+and treating it as it's a primitive.
+
+43
+00:01:40,900 --> 00:01:43,210
+To talk about this in a programming language,
+
+44
+00:01:43,210 --> 00:01:45,480
+I'm going to give you an analogy to a natural language
+
+45
+00:01:45,480 --> 00:01:46,810
+like English.
+
+46
+00:01:46,810 --> 00:01:49,160
+In English, what are the primitive constructs?
+
+47
+00:01:49,160 --> 00:01:52,040
+They're words, lots of them, some of them
+
+48
+00:01:52,040 --> 00:01:53,860
+more common than others.
+
+49
+00:01:53,860 --> 00:01:57,255
+In a programming language, we also have primitive constructs.
+
+50
+00:01:57,255 --> 00:01:59,630
+These are the atoms on which we're going to build things.
+
+51
+00:01:59,630 --> 00:02:01,600
+And in a programming language those
+
+52
+00:02:01,600 --> 00:02:05,130
+are typically numbers, strings, or just sequences
+
+53
+00:02:05,130 --> 00:02:08,110
+of characters, and simple operations, the things that
+
+54
+00:02:08,110 --> 00:02:10,970
+were provided to us by the manufacturer-- addition,
+
+55
+00:02:10,970 --> 00:02:13,540
+subtraction, comparison.
+
+56
+00:02:13,540 --> 00:02:18,364
+Given those primitives, we want to put them together.
+
+57
+00:02:18,364 --> 00:02:19,780
+When we put them together, we have
+
+58
+00:02:19,780 --> 00:02:21,930
+to think about two different parts.
+
+59
+00:02:21,930 --> 00:02:24,560
+This is taking you back to an English class,
+
+60
+00:02:24,560 --> 00:02:28,570
+because we have both the syntax and the semantics.
+
+61
+00:02:28,570 --> 00:02:31,710
+The syntax is that parsing of a sentence to know,
+
+62
+00:02:31,710 --> 00:02:33,890
+is this a legal sentence or not.
+
+63
+00:02:33,890 --> 00:02:37,020
+And some combinations of expressions are legal.
+
+64
+00:02:37,020 --> 00:02:38,280
+Some are not.
+
+65
+00:02:38,280 --> 00:02:41,680
+For example in English, cat dog or boy
+
+66
+00:02:41,680 --> 00:02:43,680
+is not syntactically valid.
+
+67
+00:02:43,680 --> 00:02:45,030
+It does not make sense.
+
+68
+00:02:45,030 --> 00:02:46,440
+There is no verb in there.
+
+69
+00:02:46,440 --> 00:02:50,810
+On the other hand, cat hugs boy is syntactically valid.
+
+70
+00:02:50,810 --> 00:02:53,460
+It is a noun, a verb, a noun.
+
+71
+00:02:53,460 --> 00:02:55,650
+That's something that makes sense.
+
+72
+00:02:55,650 --> 00:02:58,300
+The same thing's going to happen in programming languages.
+
+73
+00:02:58,300 --> 00:03:01,780
+Some combinations of primitives are not legal.
+
+74
+00:03:01,780 --> 00:03:03,810
+They're not syntactically valid.
+
+75
+00:03:03,810 --> 00:03:06,020
+For example this expression right
+
+76
+00:03:06,020 --> 00:03:08,090
+here, the first part-- we're going
+
+77
+00:03:08,090 --> 00:03:09,840
+to come to this in a second-- is a string.
+
+78
+00:03:09,840 --> 00:03:12,920
+It's a sequence of characters enclosed in double quotes
+
+79
+00:03:12,920 --> 00:03:14,460
+followed by a number.
+
+80
+00:03:14,460 --> 00:03:16,320
+It's not a legal expression.
+
+81
+00:03:16,320 --> 00:03:18,210
+On the other hand, as we'll see in a second,
+
+82
+00:03:18,210 --> 00:03:20,920
+this is a syntactically valid expression.
+
+83
+00:03:20,920 --> 00:03:25,867
+It consists of a number, an operator, and a number.
+
+84
+00:03:25,867 --> 00:03:27,450
+So we're going to talk about how do we
+
+85
+00:03:27,450 --> 00:03:28,810
+put together legal expressions.
+
+86
+00:03:28,810 --> 00:03:30,610
+What is the syntax of those, both
+
+87
+00:03:30,610 --> 00:03:33,310
+in terms of simple combinations like this and how
+
+88
+00:03:33,310 --> 00:03:35,580
+we do it when we get to more complex aspects
+
+89
+00:03:35,580 --> 00:03:38,040
+of the language?
+
+90
+00:03:38,040 --> 00:03:41,120
+Associated with every expression that is syntactically valid
+
+91
+00:03:41,120 --> 00:03:43,320
+is potentially a meaning, the semantics.
+
+92
+00:03:43,320 --> 00:03:47,010
+What does this expression evaluate to?
+
+93
+00:03:47,010 --> 00:03:50,180
+And here we're going to separate out both static semantics
+
+94
+00:03:50,180 --> 00:03:53,080
+and full semantics.
+
+95
+00:03:53,080 --> 00:03:57,030
+Static semantics tells us which syntactically valid strings
+
+96
+00:03:57,030 --> 00:03:58,990
+actually have a meaning.
+
+97
+00:03:58,990 --> 00:04:04,250
+In English, in bad English, the sentence I are hungry
+
+98
+00:04:04,250 --> 00:04:06,880
+is not actually meaningful.
+
+99
+00:04:06,880 --> 00:04:08,710
+It's syntactically valid, meaning
+
+100
+00:04:08,710 --> 00:04:10,090
+it's put together properly.
+
+101
+00:04:10,090 --> 00:04:14,410
+It's in this case a pronoun, a verb, and then an adjective.
+
+102
+00:04:14,410 --> 00:04:17,430
+A perfectly legal combination, but semantically
+
+103
+00:04:17,430 --> 00:04:19,570
+it doesn't make sense.
+
+104
+00:04:19,570 --> 00:04:21,890
+Same thing happens in a programming language.
+
+105
+00:04:21,890 --> 00:04:28,070
+The first expression, 3.2 times 5, is syntactically valid.
+
+106
+00:04:28,070 --> 00:04:32,390
+The second one, 3 plus the string hi,
+
+107
+00:04:32,390 --> 00:04:33,940
+is syntactically valid.
+
+108
+00:04:33,940 --> 00:04:37,650
+It is a primitive, an operator, and a primitive,
+
+109
+00:04:37,650 --> 00:04:39,540
+but semantically it doesn't make sense.
+
+110
+00:04:39,540 --> 00:04:42,790
+I can't add a number and a string together.
+
+111
+00:04:42,790 --> 00:04:46,910
+So we have to distinguish things that are not
+
+112
+00:04:46,910 --> 00:04:49,410
+statically semantically valid because they're not
+
+113
+00:04:49,410 --> 00:04:53,580
+going to be expressions we want to try and assign a meaning to.
+
+114
+00:04:53,580 --> 00:04:57,290
+Once we have both syntactically correct and static semantically
+
+115
+00:04:57,290 --> 00:04:59,414
+correct expressions, we want to then know
+
+116
+00:04:59,414 --> 00:05:01,080
+what's the meaning associated with them.
+
+117
+00:05:01,080 --> 00:05:02,990
+And I'm going to start building this up.
+
+118
+00:05:02,990 --> 00:05:05,160
+Semantics then is the meaning associated
+
+119
+00:05:05,160 --> 00:05:07,850
+with that syntactically correct string of symbols
+
+120
+00:05:07,850 --> 00:05:10,150
+with no semantic errors.
+
+121
+00:05:10,150 --> 00:05:13,650
+Even here there can be some wonderful nuances.
+
+122
+00:05:13,650 --> 00:05:15,630
+In English, we can have a sentence
+
+123
+00:05:15,630 --> 00:05:18,450
+that's both statically semantically
+
+124
+00:05:18,450 --> 00:05:20,360
+correct and syntactically correct,
+
+125
+00:05:20,360 --> 00:05:22,870
+but can have multiple meanings.
+
+126
+00:05:22,870 --> 00:05:25,250
+Flying planes can be dangerous.
+
+127
+00:05:25,250 --> 00:05:27,570
+Does that mean if I'm flying that it's dangerous?
+
+128
+00:05:27,570 --> 00:05:29,520
+Does it mean if they come out of the air and crash on you
+
+129
+00:05:29,520 --> 00:05:30,270
+they're dangerous?
+
+130
+00:05:30,270 --> 00:05:32,440
+There are multiple interpretations to it.
+
+131
+00:05:32,440 --> 00:05:34,770
+Or from an old joke, this reading lamp
+
+132
+00:05:34,770 --> 00:05:37,350
+hasn't uttered a word since I bought it,
+
+133
+00:05:37,350 --> 00:05:39,250
+obviously playing on the word reading
+
+134
+00:05:39,250 --> 00:05:42,650
+lamp in a different way-- different meanings associated
+
+135
+00:05:42,650 --> 00:05:43,920
+with it.
+
+136
+00:05:43,920 --> 00:05:45,620
+In a programming language, there's
+
+137
+00:05:45,620 --> 00:05:47,280
+both good news and bad news.
+
+138
+00:05:47,280 --> 00:05:50,060
+The good news is any syntactically correct
+
+139
+00:05:50,060 --> 00:05:53,090
+and static semantically correct expression in a programming
+
+140
+00:05:53,090 --> 00:05:56,260
+language will only have one meaning.
+
+141
+00:05:56,260 --> 00:05:57,830
+But the challenge is it might not
+
+142
+00:05:57,830 --> 00:05:59,669
+be the meaning you intended.
+
+143
+00:05:59,669 --> 00:06:01,460
+And that's where bugs are going to show up.
+
+144
+00:06:01,460 --> 00:06:03,690
+And we're going to come to that as we go through the term.
+
+145
+00:06:03,690 --> 00:06:05,356
+But these pieces now are how we're going
+
+146
+00:06:05,356 --> 00:06:06,910
+to talk about the language.
+
+147
+00:06:06,910 --> 00:06:09,040
+What's the syntax of putting things together,
+
+148
+00:06:09,040 --> 00:06:13,180
+and what's the semantics, the meanings associated with them?
+
+149
+00:06:13,180 --> 00:06:15,030
+With those three things in mind, you
+
+150
+00:06:15,030 --> 00:06:16,930
+can ask what could go wrong.
+
+151
+00:06:16,930 --> 00:06:20,160
+And these are also things we're going to see in the course.
+
+152
+00:06:20,160 --> 00:06:22,340
+First of all I could have a syntactic error.
+
+153
+00:06:22,340 --> 00:06:25,020
+I've not written down a legal expression.
+
+154
+00:06:25,020 --> 00:06:26,820
+These are common and easily caught.
+
+155
+00:06:26,820 --> 00:06:29,230
+And in fact most good programming languages
+
+156
+00:06:29,230 --> 00:06:31,310
+or the environments that interpret them
+
+157
+00:06:31,310 --> 00:06:33,049
+will catch those directly.
+
+158
+00:06:33,049 --> 00:06:34,590
+As you'll see as we go along, and I'm
+
+159
+00:06:34,590 --> 00:06:36,298
+sure I'm going to make some mistakes as I
+
+160
+00:06:36,298 --> 00:06:38,710
+do some work here, Python will catch those right away.
+
+161
+00:06:38,710 --> 00:06:41,130
+So you won't try and do anything with them.
+
+162
+00:06:41,130 --> 00:06:43,930
+Once you've got something that's syntactically correct,
+
+163
+00:06:43,930 --> 00:06:45,960
+what about static semantic errors,
+
+164
+00:06:45,960 --> 00:06:48,360
+things where things are in the right order but they
+
+165
+00:06:48,360 --> 00:06:50,110
+don't make sense?
+
+166
+00:06:50,110 --> 00:06:53,210
+Some languages are very strict about catching these.
+
+167
+00:06:53,210 --> 00:06:55,530
+They'll actually check before you ever run
+
+168
+00:06:55,530 --> 00:06:57,430
+a sequence of operations to make sure there
+
+169
+00:06:57,430 --> 00:06:59,780
+are no static semantic errors.
+
+170
+00:06:59,780 --> 00:07:02,060
+Other languages-- and Python is one of them--
+
+171
+00:07:02,060 --> 00:07:03,720
+will do it on the fly.
+
+172
+00:07:03,720 --> 00:07:06,190
+As you're going through a sequence of instructions, when
+
+173
+00:07:06,190 --> 00:07:09,660
+it comes to one that is not statically semantically
+
+174
+00:07:09,660 --> 00:07:12,340
+correct, it will stop.
+
+175
+00:07:12,340 --> 00:07:14,199
+That's good news, but it can lead
+
+176
+00:07:14,199 --> 00:07:15,490
+to some unpredictable behavior.
+
+177
+00:07:15,490 --> 00:07:18,560
+And we're going to see that as we go along.
+
+178
+00:07:18,560 --> 00:07:22,411
+The bigger problem is one where there are no semantic errors,
+
+179
+00:07:22,411 --> 00:07:24,660
+but you get a different meaning than what you actually
+
+180
+00:07:24,660 --> 00:07:25,802
+intended.
+
+181
+00:07:25,802 --> 00:07:27,760
+These are the bugs that are challenging and are
+
+182
+00:07:27,760 --> 00:07:29,926
+going to be difficult to find, but you need to find.
+
+183
+00:07:29,926 --> 00:07:31,860
+Now what are some of the consequences?
+
+184
+00:07:31,860 --> 00:07:35,140
+The program could crash, simply stop running.
+
+185
+00:07:35,140 --> 00:07:37,939
+Even worse the program could run forever or until you get really
+
+186
+00:07:37,939 --> 00:07:39,730
+tired and stop the machine because it's not
+
+187
+00:07:39,730 --> 00:07:41,540
+coming back with an answer.
+
+188
+00:07:41,540 --> 00:07:45,000
+And even worse yet, the program gives you an answer,
+
+189
+00:07:45,000 --> 00:07:48,520
+but it's different than what you had expected,
+
+190
+00:07:48,520 --> 00:07:50,370
+and you're going to use that to now do
+
+191
+00:07:50,370 --> 00:07:53,238
+incorrect conclusions based on that error in computation.
+
+192
+00:07:53,238 --> 00:07:55,571
+
+
+193
+00:07:55,571 --> 00:07:58,070
+So what we're going to do now is start talking about Python.
+
+194
+00:07:58,070 --> 00:08:01,880
+And our goal is to learn the syntax and the semantics
+
+195
+00:08:01,880 --> 00:08:04,150
+of this particular programming language,
+
+196
+00:08:04,150 --> 00:08:06,990
+and then to use that to learn how we can translate
+
+197
+00:08:06,990 --> 00:08:10,470
+our recipes for solving a problem into a form that
+
+198
+00:08:10,470 --> 00:08:13,450
+can go into the computer so it can run through that very
+
+199
+00:08:13,450 --> 00:08:16,620
+mechanical sequence of steps to compute things
+
+200
+00:08:16,620 --> 00:08:18,340
+that we want to do.
+
+201
+00:08:18,340 --> 00:08:20,010
+And finally as we do all of this,
+
+202
+00:08:20,010 --> 00:08:22,470
+we're going to start seeing patterns of computation.
+
+203
+00:08:22,470 --> 00:08:25,300
+We're going to build up computational modes of thought,
+
+204
+00:08:25,300 --> 00:08:27,810
+different styles of solving problems,
+
+205
+00:08:27,810 --> 00:08:30,300
+because those styles are going to be common
+
+206
+00:08:30,300 --> 00:08:33,289
+and can be easily reused when we see a new problem that
+
+207
+00:08:33,289 --> 00:08:35,940
+fits into the same category.
+
+208
+00:08:35,940 --> 00:08:36,522
+
+
