@@ -1,0 +1,476 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,380
+We've been showing you a lot of great tools in computation.
+
+2
+00:00:03,380 --> 00:00:05,620
+We've introduced simple data objects.
+
+3
+00:00:05,620 --> 00:00:07,790
+We've introduced compound data objects.
+
+4
+00:00:07,790 --> 00:00:09,060
+We've introduced iteration.
+
+5
+00:00:09,060 --> 00:00:10,550
+We've introduced recursion.
+
+6
+00:00:10,550 --> 00:00:13,660
+We've talked about using functions in a variety of ways.
+
+7
+00:00:13,660 --> 00:00:16,040
+You now have a lot of the tools you need to have in order
+
+8
+00:00:16,040 --> 00:00:17,770
+to build interesting code.
+
+9
+00:00:17,770 --> 00:00:20,420
+And in fact, we've been asking to do that in the problem sets
+
+10
+00:00:20,420 --> 00:00:22,044
+that you have been working on as you've
+
+11
+00:00:22,044 --> 00:00:23,500
+gone through this course.
+
+12
+00:00:23,500 --> 00:00:25,920
+But we now come to a place where we have
+
+13
+00:00:25,920 --> 00:00:27,530
+to be a little more clever.
+
+14
+00:00:27,530 --> 00:00:30,870
+Because you've probably already experienced problems
+
+15
+00:00:30,870 --> 00:00:31,980
+with your code.
+
+16
+00:00:31,980 --> 00:00:34,260
+Bugs have wandered in that you weren't expecting.
+
+17
+00:00:34,260 --> 00:00:35,801
+They have done things that you didn't
+
+18
+00:00:35,801 --> 00:00:37,730
+want to have happen inside of the code.
+
+19
+00:00:37,730 --> 00:00:40,250
+And so we're going to now turn to a question
+
+20
+00:00:40,250 --> 00:00:42,120
+that every computer programmer faces which
+
+21
+00:00:42,120 --> 00:00:44,280
+is, how do I test my code?
+
+22
+00:00:44,280 --> 00:00:46,680
+And when it doesn't work the way I expected it to,
+
+23
+00:00:46,680 --> 00:00:48,480
+how do I go about debugging it?
+
+24
+00:00:48,480 --> 00:00:51,490
+And that's what this lecture's going to be all about.
+
+25
+00:00:51,490 --> 00:00:53,860
+Now one of the things that happens with debugging
+
+26
+00:00:53,860 --> 00:00:56,170
+is that ideally you write code that's
+
+27
+00:00:56,170 --> 00:00:59,440
+going to do exactly what you want to do the first time.
+
+28
+00:00:59,440 --> 00:01:01,760
+But that doesn't tend to happen.
+
+29
+00:01:01,760 --> 00:01:03,500
+So here's the challenge.
+
+30
+00:01:03,500 --> 00:01:04,940
+You write a piece of code.
+
+31
+00:01:04,940 --> 00:01:07,170
+You wanted to just nail it the first time.
+
+32
+00:01:07,170 --> 00:01:08,730
+And here's a little visual of how you
+
+33
+00:01:08,730 --> 00:01:11,734
+like to expect it to happen.
+
+34
+00:01:11,734 --> 00:01:14,150
+Wouldn't you like to be able to park like this young girl?
+
+35
+00:01:14,150 --> 00:01:16,430
+You'd just nail it exactly right as you zero in
+
+36
+00:01:16,430 --> 00:01:17,180
+on the right spot.
+
+37
+00:01:17,180 --> 00:01:20,610
+You'd like your code to do it exactly right the first time.
+
+38
+00:01:20,610 --> 00:01:23,790
+But the reality is, you set up a very complex piece of code,
+
+39
+00:01:23,790 --> 00:01:26,150
+and you start it up, and it doesn't quite
+
+40
+00:01:26,150 --> 00:01:28,060
+do what you want it.
+
+41
+00:01:28,060 --> 00:01:31,670
+So there's expectation and there's reality.
+
+42
+00:01:31,670 --> 00:01:34,005
+How do we get away from the thing on the right,
+
+43
+00:01:34,005 --> 00:01:36,380
+and get to the thing on the left, which is what we really
+
+44
+00:01:36,380 --> 00:01:39,080
+want to have happen here?
+
+45
+00:01:39,080 --> 00:01:40,640
+So we aim for high quality.
+
+46
+00:01:40,640 --> 00:01:42,250
+How do we get it there?
+
+47
+00:01:42,250 --> 00:01:44,730
+Well, I'm going to give you an analogy with making soup.
+
+48
+00:01:44,730 --> 00:01:47,950
+I'm going to acknowledge it's a little bit of a queasy analogy,
+
+49
+00:01:47,950 --> 00:01:49,540
+but bear with me here.
+
+50
+00:01:49,540 --> 00:01:51,420
+You're making soup in the kitchen,
+
+51
+00:01:51,420 --> 00:01:54,000
+but bugs keep falling in from the ceiling.
+
+52
+00:01:54,000 --> 00:01:56,240
+So what do you do to make sure you have good soup?
+
+53
+00:01:56,240 --> 00:01:58,470
+I don't want to eat soup with bugs in it.
+
+54
+00:01:58,470 --> 00:02:02,790
+Well, you could check the soup for bugs.
+
+55
+00:02:02,790 --> 00:02:07,530
+You could keep the lid closed, or you could clean the kitchen.
+
+56
+00:02:07,530 --> 00:02:09,320
+All good things to do.
+
+57
+00:02:09,320 --> 00:02:11,670
+And all of them have nice components in fact,
+
+58
+00:02:11,670 --> 00:02:12,750
+of testing and debugging.
+
+59
+00:02:12,750 --> 00:02:16,680
+Checking for soup is the discipline of testing.
+
+60
+00:02:16,680 --> 00:02:18,990
+How do I test my code to see whether it in fact
+
+61
+00:02:18,990 --> 00:02:21,070
+does what I expect it to do?
+
+62
+00:02:21,070 --> 00:02:24,169
+Keeping the lid closed is what we call defensive programming.
+
+63
+00:02:24,169 --> 00:02:25,460
+We're going to talk about that.
+
+64
+00:02:25,460 --> 00:02:27,150
+It is, how do you structure your code?
+
+65
+00:02:27,150 --> 00:02:30,370
+How do you write code in a way that plans ahead,
+
+66
+00:02:30,370 --> 00:02:32,610
+to try and make sure that you avoid the bugs,
+
+67
+00:02:32,610 --> 00:02:36,020
+or at least detect them before you actually run the code?
+
+68
+00:02:36,020 --> 00:02:39,760
+And cleaning the kitchen, just eliminate the source of bugs.
+
+69
+00:02:39,760 --> 00:02:42,470
+Do the debugging to get it done.
+
+70
+00:02:42,470 --> 00:02:46,100
+That's what we're going to talk about in this lecture.
+
+71
+00:02:46,100 --> 00:02:48,180
+So defensive programming, at a high level,
+
+72
+00:02:48,180 --> 00:02:50,170
+basically has three parts.
+
+73
+00:02:50,170 --> 00:02:52,360
+The first one is to write specifications
+
+74
+00:02:52,360 --> 00:02:54,420
+for the functions you're writing.
+
+75
+00:02:54,420 --> 00:02:56,180
+Write out those doc strings that says,
+
+76
+00:02:56,180 --> 00:02:58,900
+here is what I expect coming in, and here's
+
+77
+00:02:58,900 --> 00:03:00,540
+what I will deliver if I get things
+
+78
+00:03:00,540 --> 00:03:02,640
+that are of the right form.
+
+79
+00:03:02,640 --> 00:03:04,390
+Second nice piece of defensive programming
+
+80
+00:03:04,390 --> 00:03:06,890
+is to write modular programs.
+
+81
+00:03:06,890 --> 00:03:10,540
+Don't write one really long huge single function.
+
+82
+00:03:10,540 --> 00:03:12,650
+Break it up into obvious pieces.
+
+83
+00:03:12,650 --> 00:03:14,886
+Those pieces are going to be valuable to us
+
+84
+00:03:14,886 --> 00:03:16,510
+when we get around to actually testing,
+
+85
+00:03:16,510 --> 00:03:19,344
+because I can test each piece in turn.
+
+86
+00:03:19,344 --> 00:03:21,260
+And then finally, under defensive programming,
+
+87
+00:03:21,260 --> 00:03:24,296
+I want to check the conditions on those inputs and outputs.
+
+88
+00:03:24,296 --> 00:03:26,920
+We're going to see an example of that in a later lecture, where
+
+89
+00:03:26,920 --> 00:03:29,640
+we use assertions to actually formally do that.
+
+90
+00:03:29,640 --> 00:03:31,600
+But defensive programming basically
+
+91
+00:03:31,600 --> 00:03:33,380
+comes down to defining what I expect
+
+92
+00:03:33,380 --> 00:03:35,570
+to come in what I'll deliver, and then ensuring
+
+93
+00:03:35,570 --> 00:03:37,780
+that I actually do that.
+
+94
+00:03:37,780 --> 00:03:40,100
+Testing, or validation, really comes down
+
+95
+00:03:40,100 --> 00:03:42,560
+to comparing inputs and outputs.
+
+96
+00:03:42,560 --> 00:03:44,710
+Given a set of functions I want to test,
+
+97
+00:03:44,710 --> 00:03:48,080
+I should write a list of a set of example inputs,
+
+98
+00:03:48,080 --> 00:03:51,710
+and what I expect in each case as an output.
+
+99
+00:03:51,710 --> 00:03:54,120
+And then when I discover it's not working,
+
+100
+00:03:54,120 --> 00:03:55,960
+figure out how to debug it.
+
+101
+00:03:55,960 --> 00:03:58,520
+I also want to ask a different kind of question which
+
+102
+00:03:58,520 --> 00:04:00,670
+is, how can I break my program?
+
+103
+00:04:00,670 --> 00:04:02,580
+What are the right kinds of inputs
+
+104
+00:04:02,580 --> 00:04:05,530
+to use to make sure I test all of the different cases that
+
+105
+00:04:05,530 --> 00:04:08,050
+are going to be important, ensuring that my program is
+
+106
+00:04:08,050 --> 00:04:09,790
+doing the right thing?
+
+107
+00:04:09,790 --> 00:04:12,890
+And finally with debugging, once I have a bug,
+
+108
+00:04:12,890 --> 00:04:14,440
+what do I want to do?
+
+109
+00:04:14,440 --> 00:04:16,269
+Mostly I want to look at the events that
+
+110
+00:04:16,269 --> 00:04:18,100
+led up to the error.
+
+111
+00:04:18,100 --> 00:04:21,380
+What was going on before this error occurred?
+
+112
+00:04:21,380 --> 00:04:23,770
+And then ask two different kinds of questions.
+
+113
+00:04:23,770 --> 00:04:26,050
+One, why is it not working?
+
+114
+00:04:26,050 --> 00:04:27,040
+What's causing that?
+
+115
+00:04:27,040 --> 00:04:29,650
+And then having found that, how do I go ahead and fix it
+
+116
+00:04:29,650 --> 00:04:31,684
+so it will work properly?
+
+117
+00:04:31,684 --> 00:04:33,350
+Those are the tools that we want to have
+
+118
+00:04:33,350 --> 00:04:36,960
+as we think about testing and debugging our code.
+
