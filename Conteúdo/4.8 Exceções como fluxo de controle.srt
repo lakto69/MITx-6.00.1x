@@ -1,0 +1,1008 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,590
+So far, we've been talking about how to handle exceptions.
+
+2
+00:00:03,590 --> 00:00:05,175
+We've seen some nice power to that.
+
+3
+00:00:05,175 --> 00:00:08,820
+That when Python throws an exception rather than bumping
+
+4
+00:00:08,820 --> 00:00:11,629
+us up to top level, we can actually say, in this case,
+
+5
+00:00:11,629 --> 00:00:12,670
+I know what I want to do.
+
+6
+00:00:12,670 --> 00:00:14,961
+And I can actually write code to handle that exception.
+
+7
+00:00:14,961 --> 00:00:17,370
+And we saw examples of using that to build little data
+
+8
+00:00:17,370 --> 00:00:18,410
+structures.
+
+9
+00:00:18,410 --> 00:00:19,829
+Very nice.
+
+10
+00:00:19,829 --> 00:00:22,120
+We can actually go the other direction as well, though,
+
+11
+00:00:22,120 --> 00:00:26,770
+which is we could decide when to raise an exception ourselves.
+
+12
+00:00:26,770 --> 00:00:29,760
+So rather than returning special values when an error occurs
+
+13
+00:00:29,760 --> 00:00:32,630
+and then checking to see if that error value was returned,
+
+14
+00:00:32,630 --> 00:00:35,030
+we could instead say, you know what?
+
+15
+00:00:35,030 --> 00:00:36,920
+I want to raise an exception when
+
+16
+00:00:36,920 --> 00:00:39,380
+I'm unable to produce a result consistent with the
+
+17
+00:00:39,380 --> 00:00:41,610
+specifications of the function.
+
+18
+00:00:41,610 --> 00:00:45,190
+And for that, we have, not surprisingly, another keyword
+
+19
+00:00:45,190 --> 00:00:46,400
+called raise.
+
+20
+00:00:46,400 --> 00:00:48,410
+And the idea is inside of the code,
+
+21
+00:00:48,410 --> 00:00:52,749
+I can say I want to raise using that keyword an exception.
+
+22
+00:00:52,749 --> 00:00:54,540
+And I'm going to give the name of the error
+
+23
+00:00:54,540 --> 00:00:56,250
+that I want to raise in doing that.
+
+24
+00:00:56,250 --> 00:00:58,872
+It could be an error that's an existing error exception.
+
+25
+00:00:58,872 --> 00:01:01,080
+It could be one that we're going to create ourselves.
+
+26
+00:01:01,080 --> 00:01:03,579
+But typically, it's going to be an existing error exception.
+
+27
+00:01:03,579 --> 00:01:05,340
+So in this case, a value error.
+
+28
+00:01:05,340 --> 00:01:07,892
+And then, a message that I want to print out.
+
+29
+00:01:07,892 --> 00:01:09,350
+And typically, that's just a string
+
+30
+00:01:09,350 --> 00:01:11,850
+that I want to have that tells me what was going on.
+
+31
+00:01:11,850 --> 00:01:14,100
+Hopefully, something more valuable than just something
+
+32
+00:01:14,100 --> 00:01:14,599
+is wrong.
+
+33
+00:01:14,599 --> 00:01:15,990
+It may tell me the specifics that
+
+34
+00:01:15,990 --> 00:01:19,640
+were happening when I raised this particular exception.
+
+35
+00:01:19,640 --> 00:01:21,390
+This is now putting me in control
+
+36
+00:01:21,390 --> 00:01:24,480
+of deciding when to raise an exception
+
+37
+00:01:24,480 --> 00:01:26,090
+as well as now allowing me to do what
+
+38
+00:01:26,090 --> 00:01:29,030
+I did in the earlier part of how to handle that exception when
+
+39
+00:01:29,030 --> 00:01:30,250
+I get there.
+
+40
+00:01:30,250 --> 00:01:33,730
+Let's look at some examples.
+
+41
+00:01:33,730 --> 00:01:37,870
+Imagine I want to take a list of two numbers.
+
+42
+00:01:37,870 --> 00:01:40,260
+And I want to get a ratio of those two lists.
+
+43
+00:01:40,260 --> 00:01:42,775
+That is, each list I'm going to assume is equal length.
+
+44
+00:01:42,775 --> 00:01:44,900
+And I'm going to get the ratio of the first element
+
+45
+00:01:44,900 --> 00:01:47,233
+of the first list, the first element of the second list,
+
+46
+00:01:47,233 --> 00:01:48,034
+and so on.
+
+47
+00:01:48,034 --> 00:01:49,950
+And I've got a nice little piece of code here.
+
+48
+00:01:49,950 --> 00:01:51,570
+It has a form you might expect.
+
+49
+00:01:51,570 --> 00:01:53,680
+I'm going to set up a list of which I'm
+
+50
+00:01:53,680 --> 00:01:56,800
+going to record the results.
+
+51
+00:01:56,800 --> 00:01:59,500
+I'm going to then run down the length of the first list
+
+52
+00:01:59,500 --> 00:02:02,020
+with a little index going from 0 up to 1
+
+53
+00:02:02,020 --> 00:02:03,610
+minus the length of the list.
+
+54
+00:02:03,610 --> 00:02:05,860
+And I'm simply going to try and get
+
+55
+00:02:05,860 --> 00:02:09,940
+the ratio of those two things and put it
+
+56
+00:02:09,940 --> 00:02:12,370
+into the thing I'm trying to accumulate.
+
+57
+00:02:12,370 --> 00:02:14,780
+So I'm running try here.
+
+58
+00:02:14,780 --> 00:02:17,430
+What I want to do though is deal with a couple
+
+59
+00:02:17,430 --> 00:02:18,400
+of different cases.
+
+60
+00:02:18,400 --> 00:02:20,750
+One is, what do I want to have happen
+
+61
+00:02:20,750 --> 00:02:23,466
+if I get a division by 0?
+
+62
+00:02:23,466 --> 00:02:26,997
+And in that case, I'm just going to put something in here that's
+
+63
+00:02:26,997 --> 00:02:27,830
+called not a number.
+
+64
+00:02:27,830 --> 00:02:30,099
+It's a special thing inside of Python
+
+65
+00:02:30,099 --> 00:02:32,640
+that I'm going to insert saying, I can't return a number here
+
+66
+00:02:32,640 --> 00:02:34,220
+because it's infinite.
+
+67
+00:02:34,220 --> 00:02:36,880
+That's just a standard exception handler.
+
+68
+00:02:36,880 --> 00:02:39,050
+But when I get anything else, I'm
+
+69
+00:02:39,050 --> 00:02:41,480
+going to raise a different exception that
+
+70
+00:02:41,480 --> 00:02:44,920
+tells me I called get ratios with a bad argument.
+
+71
+00:02:44,920 --> 00:02:47,680
+And then finally, I'm going to try and return the ratios.
+
+72
+00:02:47,680 --> 00:02:50,790
+Let's see what happens if we actually run this.
+
+73
+00:02:50,790 --> 00:02:53,290
+So here's an example of get ratios.
+
+74
+00:02:53,290 --> 00:02:54,910
+I've loaded in.
+
+75
+00:02:54,910 --> 00:02:58,570
+And let's give it a couple of lists, l1 I'm going to say
+
+76
+00:02:58,570 --> 00:03:01,990
+is the list 1, 2, 3, 4.
+
+77
+00:03:01,990 --> 00:03:07,960
+l2 is the list 5, 6, 7, 8.
+
+78
+00:03:07,960 --> 00:03:10,200
+And my apologies.
+
+79
+00:03:10,200 --> 00:03:17,120
+I'll do that again. l2 is the list 5, 6, 7, 8.
+
+80
+00:03:17,120 --> 00:03:25,040
+And if I call get ratios on l1 and l2, it does what I expect.
+
+81
+00:03:25,040 --> 00:03:28,077
+It gives me those ratios and it ran correctly.
+
+82
+00:03:28,077 --> 00:03:29,160
+Let's define another list.
+
+83
+00:03:29,160 --> 00:03:36,820
+Let's make l3 be the list just 5, 6, 7.
+
+84
+00:03:36,820 --> 00:03:47,940
+If I call get ratios on that with, for example, l1 and l3--
+
+85
+00:03:47,940 --> 00:03:49,180
+oh, good.
+
+86
+00:03:49,180 --> 00:03:52,250
+It did what I wanted it to do.
+
+87
+00:03:52,250 --> 00:03:56,210
+In particular, it threw an error because I'm trying to index
+
+88
+00:03:56,210 --> 00:03:57,770
+beyond the length of l2.
+
+89
+00:03:57,770 --> 00:03:59,260
+It's one short of the length of l1.
+
+90
+00:03:59,260 --> 00:04:02,520
+And notice up here, I'm indexing over the size of l1.
+
+91
+00:04:02,520 --> 00:04:04,390
+And it did exactly what I wanted.
+
+92
+00:04:04,390 --> 00:04:05,980
+It raised a value error.
+
+93
+00:04:05,980 --> 00:04:07,526
+So it did throw me up to top level
+
+94
+00:04:07,526 --> 00:04:08,900
+because I don't have an exception
+
+95
+00:04:08,900 --> 00:04:10,200
+handler to deal with that.
+
+96
+00:04:10,200 --> 00:04:11,925
+But it printed out my information,
+
+97
+00:04:11,925 --> 00:04:13,300
+not the standard thing that would
+
+98
+00:04:13,300 --> 00:04:17,399
+have happened if I didn't have a particular handler there.
+
+99
+00:04:17,399 --> 00:04:23,620
+The last one I want to do is to say, let's let l4 be the list
+
+100
+00:04:23,620 --> 00:04:27,240
+5, 6, 7, and 0.
+
+101
+00:04:27,240 --> 00:04:34,150
+And if I do get ratios of l1 and l4, nice.
+
+102
+00:04:34,150 --> 00:04:36,990
+In this case, the exception handler kicked in.
+
+103
+00:04:36,990 --> 00:04:39,834
+Because in this case, I have a 0 division error.
+
+104
+00:04:39,834 --> 00:04:41,250
+And rather than throwing in error,
+
+105
+00:04:41,250 --> 00:04:44,600
+I said, just substitute in that special symbol, not a number,
+
+106
+00:04:44,600 --> 00:04:49,320
+in place of the spot where I would have otherwise put it in.
+
+107
+00:04:49,320 --> 00:04:51,380
+Again, step away from the code for a second.
+
+108
+00:04:51,380 --> 00:04:54,800
+What we're now showing you is I can certainly handle exceptions
+
+109
+00:04:54,800 --> 00:04:57,260
+as they come up, but I can also raise
+
+110
+00:04:57,260 --> 00:05:02,140
+my own kind of error message for different kinds of errors
+
+111
+00:05:02,140 --> 00:05:02,740
+as they occur.
+
+112
+00:05:02,740 --> 00:05:05,890
+In this case, when I got a value error giving me out something
+
+113
+00:05:05,890 --> 00:05:09,000
+specific telling me where I was when this happened.
+
+114
+00:05:09,000 --> 00:05:11,880
+I can use that to control the flow.
+
+115
+00:05:11,880 --> 00:05:15,330
+Let's build on that idea and let's look at a second example.
+
+116
+00:05:15,330 --> 00:05:18,160
+So as I said, we're managing the flow of the program
+
+117
+00:05:18,160 --> 00:05:20,920
+by raising our own error here.
+
+118
+00:05:20,920 --> 00:05:23,560
+Let's look at an example where we extend that.
+
+119
+00:05:23,560 --> 00:05:26,420
+Let's assume we're given a class list for a subject.
+
+120
+00:05:26,420 --> 00:05:28,560
+And each entry is-- as we did in the earlier part,
+
+121
+00:05:28,560 --> 00:05:30,530
+it's a list of two things.
+
+122
+00:05:30,530 --> 00:05:32,700
+A list of the name of the student and a list
+
+123
+00:05:32,700 --> 00:05:34,430
+of grades on an assignment.
+
+124
+00:05:34,430 --> 00:05:36,370
+Multiple grades for an assignment.
+
+125
+00:05:36,370 --> 00:05:39,040
+So I might have a little example here of test grades for Peter
+
+126
+00:05:39,040 --> 00:05:40,270
+Parker and Bruce Wayne.
+
+127
+00:05:40,270 --> 00:05:43,180
+And they are both doing pretty well in this class.
+
+128
+00:05:43,180 --> 00:05:46,420
+What I'd like to do is create a new class list
+
+129
+00:05:46,420 --> 00:05:50,632
+with a name, grades, and an average.
+
+130
+00:05:50,632 --> 00:05:52,840
+What's the average that they're doing so far in that?
+
+131
+00:05:52,840 --> 00:05:54,000
+And you could see the kind of output
+
+132
+00:05:54,000 --> 00:05:56,624
+I'd like to get here, that Bruce Wayne is doing a little better
+
+133
+00:05:56,624 --> 00:05:57,530
+than Peter Parker.
+
+134
+00:05:57,530 --> 00:05:58,160
+OK.
+
+135
+00:05:58,160 --> 00:05:59,743
+Pick your favorite superhero and which
+
+136
+00:05:59,743 --> 00:06:01,910
+you want to have do better than somebody else.
+
+137
+00:06:01,910 --> 00:06:04,020
+How would I do that?
+
+138
+00:06:04,020 --> 00:06:06,196
+Again, trying to use the idea, which
+
+139
+00:06:06,196 --> 00:06:07,820
+we're going to do in a second, of using
+
+140
+00:06:07,820 --> 00:06:12,950
+the exceptions to handle the way we flow through the program.
+
+141
+00:06:12,950 --> 00:06:15,100
+Here's some code that would do the straightforward
+
+142
+00:06:15,100 --> 00:06:17,150
+way of doing it.
+
+143
+00:06:17,150 --> 00:06:19,285
+A little function called get stats.
+
+144
+00:06:19,285 --> 00:06:20,910
+It takes in a list and what does it do?
+
+145
+00:06:20,910 --> 00:06:22,230
+It's going to build a new list.
+
+146
+00:06:22,230 --> 00:06:24,740
+And for each element in that original list,
+
+147
+00:06:24,740 --> 00:06:28,190
+I'm going to take a list of the first element,
+
+148
+00:06:28,190 --> 00:06:31,610
+the second element, and an average of the second element.
+
+149
+00:06:31,610 --> 00:06:33,480
+And I'm assuming I'm inputting things
+
+150
+00:06:33,480 --> 00:06:37,700
+that have a list of names and a list of grades.
+
+151
+00:06:37,700 --> 00:06:39,300
+And it's going to compute that out.
+
+152
+00:06:39,300 --> 00:06:42,940
+An average, of course, just takes that last element,
+
+153
+00:06:42,940 --> 00:06:45,820
+it adds them up using sum, and divides it
+
+154
+00:06:45,820 --> 00:06:48,050
+by the length of grades.
+
+155
+00:06:48,050 --> 00:06:52,200
+And so if I were to do that with a simple, little example,
+
+156
+00:06:52,200 --> 00:06:56,830
+here I've got an implementation of that.
+
+157
+00:06:56,830 --> 00:07:05,240
+And I'm going to initially zero out some examples of this
+
+158
+00:07:05,240 --> 00:07:06,990
+to do a simple version, and then I'm
+
+159
+00:07:06,990 --> 00:07:08,990
+going to do a slightly more complicated version.
+
+160
+00:07:08,990 --> 00:07:12,520
+So the simple version is the one that we already have.
+
+161
+00:07:12,520 --> 00:07:18,620
+And if I run this, and then I look at test grades, which
+
+162
+00:07:18,620 --> 00:07:23,130
+is where I asked to put the result,
+
+163
+00:07:23,130 --> 00:07:25,980
+I get what I wanted initially.
+
+164
+00:07:25,980 --> 00:07:27,090
+Sorry, that's test grades.
+
+165
+00:07:27,090 --> 00:07:28,370
+And now let's actually run it.
+
+166
+00:07:28,370 --> 00:07:32,040
+I'm going to do get stats on test grades.
+
+167
+00:07:32,040 --> 00:07:36,360
+
+
+168
+00:07:36,360 --> 00:07:39,170
+And I get the kind of performance I wanted to get.
+
+169
+00:07:39,170 --> 00:07:40,230
+Looks good.
+
+170
+00:07:40,230 --> 00:07:41,580
+OK.
+
+171
+00:07:41,580 --> 00:07:45,380
+Now, what I want to do, however, is I want to look at a case
+
+172
+00:07:45,380 --> 00:07:52,236
+where I've got some other entries in here.
+
+173
+00:07:52,236 --> 00:07:53,360
+So I'm going to rerun this.
+
+174
+00:07:53,360 --> 00:07:54,610
+I'm going to reload this file.
+
+175
+00:07:54,610 --> 00:07:57,230
+I've got test grades in.
+
+176
+00:07:57,230 --> 00:08:00,472
+Here's what test grades looks like.
+
+177
+00:08:00,472 --> 00:08:02,180
+It's got Captain America with some grades
+
+178
+00:08:02,180 --> 00:08:05,490
+and it's got Deadpool without any grades entered yet.
+
+179
+00:08:05,490 --> 00:08:16,410
+And if I do get stats on the test grades-- ah,
+
+180
+00:08:16,410 --> 00:08:18,630
+I get a division by 0 error.
+
+181
+00:08:18,630 --> 00:08:24,030
+And that makes sense because in that last entry, length is 0.
+
+182
+00:08:24,030 --> 00:08:26,300
+I'm trying to divide by 0.
+
+183
+00:08:26,300 --> 00:08:28,660
+What could I do to deal with that?
+
+184
+00:08:28,660 --> 00:08:30,390
+Well, as we just said, if I got somebody
+
+185
+00:08:30,390 --> 00:08:32,150
+where they don't have any grades,
+
+186
+00:08:32,150 --> 00:08:35,330
+I get that error because I tried to do that division.
+
+187
+00:08:35,330 --> 00:08:37,730
+Why don't I think about handling it
+
+188
+00:08:37,730 --> 00:08:40,110
+using this idea of exceptions?
+
+189
+00:08:40,110 --> 00:08:43,940
+And so in particular, I want to deal with this case.
+
+190
+00:08:43,940 --> 00:08:46,200
+And here's what I could do.
+
+191
+00:08:46,200 --> 00:08:49,220
+The first one is I could decide to just notify
+
+192
+00:08:49,220 --> 00:08:52,760
+the user that something went wrong by putting out a message.
+
+193
+00:08:52,760 --> 00:08:58,290
+So I'm going to change now average to try to return this.
+
+194
+00:08:58,290 --> 00:09:01,150
+But if I get a 0 division error, I'm
+
+195
+00:09:01,150 --> 00:09:04,870
+going to handle it by printing up some data.
+
+196
+00:09:04,870 --> 00:09:06,870
+And if I go and do that, I'm going to change now
+
+197
+00:09:06,870 --> 00:09:09,820
+my definition of grades.
+
+198
+00:09:09,820 --> 00:09:10,840
+Of average, rather.
+
+199
+00:09:10,840 --> 00:09:14,830
+I'm going to get rid of this version of average.
+
+200
+00:09:14,830 --> 00:09:18,080
+And I'm going to load that file in.
+
+201
+00:09:18,080 --> 00:09:19,980
+Now, just make sure I've got the right thing.
+
+202
+00:09:19,980 --> 00:09:22,450
+There is test grades.
+
+203
+00:09:22,450 --> 00:09:23,430
+And it's my list.
+
+204
+00:09:23,430 --> 00:09:36,200
+And if I know say get stats for test grades-- great.
+
+205
+00:09:36,200 --> 00:09:37,766
+It ran.
+
+206
+00:09:37,766 --> 00:09:38,890
+Notice what it did, though.
+
+207
+00:09:38,890 --> 00:09:39,940
+It made a decision.
+
+208
+00:09:39,940 --> 00:09:41,700
+So first of all, notice on the printout
+
+209
+00:09:41,700 --> 00:09:43,350
+it printed out no grades data.
+
+210
+00:09:43,350 --> 00:09:45,040
+So it gave me the warning.
+
+211
+00:09:45,040 --> 00:09:48,030
+I handled that error by saying that's what I want to do.
+
+212
+00:09:48,030 --> 00:09:51,080
+But in this case, notice what also happened.
+
+213
+00:09:51,080 --> 00:09:56,530
+There's the flag for the error, but it substituted in a value.
+
+214
+00:09:56,530 --> 00:10:00,480
+And the reason it did is because average didn't return anything.
+
+215
+00:10:00,480 --> 00:10:05,400
+My definition of average doesn't have a return in this case.
+
+216
+00:10:05,400 --> 00:10:08,430
+And as a consequence, the call to average
+
+217
+00:10:08,430 --> 00:10:11,560
+gives back that special thing, the none type.
+
+218
+00:10:11,560 --> 00:10:15,986
+And it inserted none in that spot in the pool.
+
+219
+00:10:15,986 --> 00:10:17,360
+Maybe I'd like to say that that's
+
+220
+00:10:17,360 --> 00:10:18,776
+the average for Deadpool, but that
+
+221
+00:10:18,776 --> 00:10:20,750
+doesn't make a lot of sense.
+
+222
+00:10:20,750 --> 00:10:22,450
+How could I handle that?
+
+223
+00:10:22,450 --> 00:10:25,130
+Well, I could decide I'm just going to give
+
+224
+00:10:25,130 --> 00:10:27,560
+a student with no grades a 0.
+
+225
+00:10:27,560 --> 00:10:29,550
+Seems like a reasonable thing to do.
+
+226
+00:10:29,550 --> 00:10:31,530
+And now I can change my handler.
+
+227
+00:10:31,530 --> 00:10:34,320
+Again, catching that 0 division error idea,
+
+228
+00:10:34,320 --> 00:10:36,800
+but putting in an explicit return.
+
+229
+00:10:36,800 --> 00:10:38,600
+This says not only do I want to print out
+
+230
+00:10:38,600 --> 00:10:41,016
+a note that says something didn't go the way I expected it
+
+231
+00:10:41,016 --> 00:10:44,910
+to, but let me give me back a value that I can run on it.
+
+232
+00:10:44,910 --> 00:10:47,300
+So now, let's go and see what happens when we do that.
+
+233
+00:10:47,300 --> 00:10:51,980
+So I'm going to remove this version of average
+
+234
+00:10:51,980 --> 00:10:55,980
+and replace it with one that has that return inside of it.
+
+235
+00:10:55,980 --> 00:10:59,490
+And when I call this, again, let's check and see
+
+236
+00:10:59,490 --> 00:11:00,990
+we're in the right place.
+
+237
+00:11:00,990 --> 00:11:04,350
+Let's make sure that test grades was loaded properly.
+
+238
+00:11:04,350 --> 00:11:05,550
+And it was.
+
+239
+00:11:05,550 --> 00:11:12,450
+And if I now do get stats on test grades-- oh, good.
+
+240
+00:11:12,450 --> 00:11:14,864
+Deadpool now has a 0.
+
+241
+00:11:14,864 --> 00:11:16,530
+Doesn't say how bad or good Deadpool is,
+
+242
+00:11:16,530 --> 00:11:20,260
+he just didn't turn any quizzes and he has no grades.
+
+243
+00:11:20,260 --> 00:11:24,150
+And so now what we see here is we still flag the error,
+
+244
+00:11:24,150 --> 00:11:26,780
+but we've changed what gets returned to insert something
+
+245
+00:11:26,780 --> 00:11:28,640
+that makes more sense for the data structure
+
+246
+00:11:28,640 --> 00:11:30,290
+I'm trying to build.
+
+247
+00:11:30,290 --> 00:11:33,840
+And so we can see we can use our own ability to raise errors,
+
+248
+00:11:33,840 --> 00:11:36,730
+But to handle errors, to deal with things in a manner
+
+249
+00:11:36,730 --> 00:11:40,680
+that we want, rather than simply stopping execution and pumping
+
+250
+00:11:40,680 --> 00:11:42,560
+it back up to the user to try and decide
+
+251
+00:11:42,560 --> 00:11:45,010
+how to handle all of that.
+

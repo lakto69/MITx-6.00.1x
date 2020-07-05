@@ -1,0 +1,692 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,060
+So once you're ready to start debugging,
+
+2
+00:00:03,060 --> 00:00:05,342
+here's some advice that can help you out.
+
+3
+00:00:05,342 --> 00:00:07,800
+The first one is, I want to start by pointing out that this
+
+4
+00:00:07,800 --> 00:00:09,570
+is a steep learning curve.
+
+5
+00:00:09,570 --> 00:00:11,420
+It often takes a lot of experience
+
+6
+00:00:11,420 --> 00:00:14,380
+to really become very skilled at debugging,
+
+7
+00:00:14,380 --> 00:00:16,850
+which is why a very practiced programmer has
+
+8
+00:00:16,850 --> 00:00:19,970
+a great deal of advantage over an inexperienced programmer.
+
+9
+00:00:19,970 --> 00:00:22,800
+They know the kinds of things to look for, the kinds of tools
+
+10
+00:00:22,800 --> 00:00:23,800
+to use.
+
+11
+00:00:23,800 --> 00:00:25,560
+So this is my way of saying, be patient
+
+12
+00:00:25,560 --> 00:00:28,220
+as you learn the techniques try and figure out
+
+13
+00:00:28,220 --> 00:00:31,110
+how to debug efficiently.
+
+14
+00:00:31,110 --> 00:00:33,350
+There are some tools that are provided to you.
+
+15
+00:00:33,350 --> 00:00:35,920
+First of all, there are some built in tools into the IDEs,
+
+16
+00:00:35,920 --> 00:00:38,290
+ease into Idle or into Anaconda.
+
+17
+00:00:38,290 --> 00:00:39,997
+And I encourage you to use them.
+
+18
+00:00:39,997 --> 00:00:42,080
+You'll see examples of this as you go through some
+
+19
+00:00:42,080 --> 00:00:42,913
+of the problem sets.
+
+20
+00:00:42,913 --> 00:00:45,410
+As you hit a bug, you can use the things
+
+21
+00:00:45,410 --> 00:00:48,010
+that are printed out by the environment
+
+22
+00:00:48,010 --> 00:00:51,310
+to help you isolate where the error actually occurred.
+
+23
+00:00:51,310 --> 00:00:54,910
+I know an obvious instinct is, you run a piece of code,
+
+24
+00:00:54,910 --> 00:00:56,580
+it crashes in the environment.
+
+25
+00:00:56,580 --> 00:00:58,930
+You instantly go to the code.
+
+26
+00:00:58,930 --> 00:01:01,950
+Stop, take a look at what was printed out on the screen,
+
+27
+00:01:01,950 --> 00:01:04,500
+it will tell you something about where it was in the code
+
+28
+00:01:04,500 --> 00:01:05,680
+when it hit the problem.
+
+29
+00:01:05,680 --> 00:01:07,970
+It will tell you something about the kind of error
+
+30
+00:01:07,970 --> 00:01:10,520
+that occurred, and that's valuable to you.
+
+31
+00:01:10,520 --> 00:01:13,150
+Obviously, use the tutor to help you understand this.
+
+32
+00:01:13,150 --> 00:01:15,880
+But the third one is again, one of those very simple things,
+
+33
+00:01:15,880 --> 00:01:17,920
+but something that really practiced programmers
+
+34
+00:01:17,920 --> 00:01:20,910
+use all the time, and that's the print statement.
+
+35
+00:01:20,910 --> 00:01:24,340
+Insert statements at different points in your code
+
+36
+00:01:24,340 --> 00:01:27,170
+that will print out, here's what I'm expecting,
+
+37
+00:01:27,170 --> 00:01:28,380
+here's what I'm seeing.
+
+38
+00:01:28,380 --> 00:01:30,350
+That's going to help you isolate where
+
+39
+00:01:30,350 --> 00:01:32,130
+the code may be going wrong.
+
+40
+00:01:32,130 --> 00:01:34,520
+It's going to help you narrow into the particular place
+
+41
+00:01:34,520 --> 00:01:37,400
+in the code that you want to search to find the bug.
+
+42
+00:01:37,400 --> 00:01:40,670
+And finally, be systematic in your search for a bug.
+
+43
+00:01:40,670 --> 00:01:42,320
+Treat it like a scientific experiment.
+
+44
+00:01:42,320 --> 00:01:44,440
+Formulate a hypothesis as to where
+
+45
+00:01:44,440 --> 00:01:47,320
+you think the bug is occurring, what an experiment would
+
+46
+00:01:47,320 --> 00:01:49,540
+be to test that, and then run the experiment
+
+47
+00:01:49,540 --> 00:01:52,930
+to see if it validates or invalidates your hypothesis,
+
+48
+00:01:52,930 --> 00:01:55,900
+and then move on.
+
+49
+00:01:55,900 --> 00:01:58,440
+The print statement, as I said, is a great way
+
+50
+00:01:58,440 --> 00:01:59,530
+to test hypotheses.
+
+51
+00:01:59,530 --> 00:02:01,740
+And here are some suggestions.
+
+52
+00:02:01,740 --> 00:02:03,129
+Print when you enter a function.
+
+53
+00:02:03,129 --> 00:02:04,920
+Print out what the values of the parameters
+
+54
+00:02:04,920 --> 00:02:07,420
+are to make sure that they are what you expect.
+
+55
+00:02:07,420 --> 00:02:09,389
+Print the parameters themselves.
+
+56
+00:02:09,389 --> 00:02:11,254
+At the end, print out the result.
+
+57
+00:02:11,254 --> 00:02:13,670
+Even if you're going to pass it on to some other function,
+
+58
+00:02:13,670 --> 00:02:15,930
+print it out so you can see what was
+
+59
+00:02:15,930 --> 00:02:19,332
+returned to check whether it was what you expect it or not.
+
+60
+00:02:19,332 --> 00:02:20,790
+Another way to use print statements
+
+61
+00:02:20,790 --> 00:02:22,289
+we're going to do in a second, which
+
+62
+00:02:22,289 --> 00:02:25,480
+is to use the bisection method, that is put it print statement
+
+63
+00:02:25,480 --> 00:02:29,580
+halfway through the code saying, here's what I expected
+
+64
+00:02:29,580 --> 00:02:32,410
+the state of the computation to be at this point, and here's
+
+65
+00:02:32,410 --> 00:02:34,060
+what it actually is.
+
+66
+00:02:34,060 --> 00:02:35,960
+Given that, it's going to help you
+
+67
+00:02:35,960 --> 00:02:38,950
+narrow into where the bug may occur,
+
+68
+00:02:38,950 --> 00:02:40,810
+because if you get halfway through the code,
+
+69
+00:02:40,810 --> 00:02:43,950
+and it's correct, the bug must happen after that.
+
+70
+00:02:43,950 --> 00:02:46,670
+And you can put in another print statement and keep doing that.
+
+71
+00:02:46,670 --> 00:02:48,520
+And so that lets you very quickly
+
+72
+00:02:48,520 --> 00:02:50,850
+isolate which procedure, which function
+
+73
+00:02:50,850 --> 00:02:54,870
+may be causing the bug to occur.
+
+74
+00:02:54,870 --> 00:02:58,520
+Those error messages are often really easy to use.
+
+75
+00:02:58,520 --> 00:03:01,750
+If I get an index error, it tells me
+
+76
+00:03:01,750 --> 00:03:03,440
+that I'm trying to access something
+
+77
+00:03:03,440 --> 00:03:07,655
+in a structure that's outside of the length of that structure.
+
+78
+00:03:07,655 --> 00:03:09,530
+So here's an example that could lead to that,
+
+79
+00:03:09,530 --> 00:03:11,029
+but more importantly, an index error
+
+80
+00:03:11,029 --> 00:03:13,940
+tells me, check the bounds of what
+
+81
+00:03:13,940 --> 00:03:16,680
+I'm using as indices to look at structures.
+
+82
+00:03:16,680 --> 00:03:19,840
+If I get a type error, it suggests things like,
+
+83
+00:03:19,840 --> 00:03:22,010
+I'm trying to convert something to a type
+
+84
+00:03:22,010 --> 00:03:26,330
+that I can't, or I'm trying to use a function on something
+
+85
+00:03:26,330 --> 00:03:30,180
+whose type does not support that kind of usage.
+
+86
+00:03:30,180 --> 00:03:32,510
+If I get a name error, it's likely
+
+87
+00:03:32,510 --> 00:03:35,380
+that I'm trying to reference a nonexistent variable.
+
+88
+00:03:35,380 --> 00:03:37,990
+I haven't defined or bound the variable initially.
+
+89
+00:03:37,990 --> 00:03:41,385
+I'm trying to use this value before I've ever created it.
+
+90
+00:03:41,385 --> 00:03:43,510
+Here's another kind of type error that I might see.
+
+91
+00:03:43,510 --> 00:03:46,820
+I'm mixing data types together without appropriate coercion.
+
+92
+00:03:46,820 --> 00:03:48,750
+I'm trying to divide a string by an integer,
+
+93
+00:03:48,750 --> 00:03:51,110
+rather than casting that string into an int
+
+94
+00:03:51,110 --> 00:03:53,280
+before I deal with that.
+
+95
+00:03:53,280 --> 00:03:55,610
+A syntax error, that's something that will often
+
+96
+00:03:55,610 --> 00:03:57,800
+occur when I do things like forget
+
+97
+00:03:57,800 --> 00:04:00,000
+to close a parentheses or a quotation.
+
+98
+00:04:00,000 --> 00:04:02,400
+Here, I'm missing a close paren right there.
+
+99
+00:04:02,400 --> 00:04:05,150
+And so this is not a well-formed expression,
+
+100
+00:04:05,150 --> 00:04:07,920
+because I'm trying to combine a print statement with doing
+
+101
+00:04:07,920 --> 00:04:09,960
+a length call on a structure.
+
+102
+00:04:09,960 --> 00:04:12,110
+So let the error messages actually
+
+103
+00:04:12,110 --> 00:04:14,690
+guide what you're looking for in terms of the bug.
+
+104
+00:04:14,690 --> 00:04:17,420
+
+
+105
+00:04:17,420 --> 00:04:19,790
+Logic errors are harder.
+
+106
+00:04:19,790 --> 00:04:21,820
+This is where I actually get a value out,
+
+107
+00:04:21,820 --> 00:04:24,400
+but it's not what I was expecting.
+
+108
+00:04:24,400 --> 00:04:26,740
+And so what I would suggest here is a couple of things.
+
+109
+00:04:26,740 --> 00:04:28,980
+First, think before you start writing new code.
+
+110
+00:04:28,980 --> 00:04:32,050
+An obvious statement, but a valuable thing to do.
+
+111
+00:04:32,050 --> 00:04:33,610
+Draw some pictures.
+
+112
+00:04:33,610 --> 00:04:36,330
+Sketch out what you were asking the code to do.
+
+113
+00:04:36,330 --> 00:04:38,720
+And then take a break, walk away from it, come back
+
+114
+00:04:38,720 --> 00:04:41,480
+and look at the pictures to say, does my code actually
+
+115
+00:04:41,480 --> 00:04:43,650
+do what I was thinking it did?
+
+116
+00:04:43,650 --> 00:04:46,490
+And then one of the best ones, explain your code.
+
+117
+00:04:46,490 --> 00:04:48,450
+Explain what you were trying to do.
+
+118
+00:04:48,450 --> 00:04:51,140
+Now, you could explain it to somebody else,
+
+119
+00:04:51,140 --> 00:04:53,750
+It doesn't matter whether they actually understand it or not,
+
+120
+00:04:53,750 --> 00:04:56,780
+just explaining it as a process will help you out.
+
+121
+00:04:56,780 --> 00:04:59,640
+And there's a classic version of this in computer science,
+
+122
+00:04:59,640 --> 00:05:01,880
+explain it to a rubber ducky.
+
+123
+00:05:01,880 --> 00:05:03,650
+Walking through the explanation, it
+
+124
+00:05:03,650 --> 00:05:07,140
+will often help you go, oh, why was I doing that?
+
+125
+00:05:07,140 --> 00:05:09,130
+I was trying to do this different thing.
+
+126
+00:05:09,130 --> 00:05:12,160
+But don't just read the code to see if I can find it,
+
+127
+00:05:12,160 --> 00:05:13,931
+walk through the explanation.
+
+128
+00:05:13,931 --> 00:05:16,430
+So I advise you all to go out and buy your own rubber ducky,
+
+129
+00:05:16,430 --> 00:05:18,650
+and have it handy when you try to debug your code.
+
+130
+00:05:18,650 --> 00:05:21,550
+A great way to drive yourself into doing the explanation
+
+131
+00:05:21,550 --> 00:05:26,030
+and helping spot where those errors may be occurring.
+
+132
+00:05:26,030 --> 00:05:28,780
+When you're ready to do the debugging steps,
+
+133
+00:05:28,780 --> 00:05:31,480
+here are the two obvious things to do.
+
+134
+00:05:31,480 --> 00:05:33,100
+First, do look at the code.
+
+135
+00:05:33,100 --> 00:05:36,290
+But ask things like, how did I get the unexpected result?
+
+136
+00:05:36,290 --> 00:05:39,180
+Don't ask what's wrong, ask, how did I get there?
+
+137
+00:05:39,180 --> 00:05:41,850
+And is it part of a family of problems
+
+138
+00:05:41,850 --> 00:05:43,770
+that I might be able to see?
+
+139
+00:05:43,770 --> 00:05:46,110
+And then finally, do what I suggested earlier.
+
+140
+00:05:46,110 --> 00:05:49,430
+Use the scientific method.
+
+141
+00:05:49,430 --> 00:05:52,660
+Study the available data, form a hypothesis
+
+142
+00:05:52,660 --> 00:05:56,420
+as to what might be causing that particular error to occur.
+
+143
+00:05:56,420 --> 00:06:00,740
+Come up with an experiment that I can use to test a hypothesis.
+
+144
+00:06:00,740 --> 00:06:03,120
+And then pick some cases that will actually deal with it
+
+145
+00:06:03,120 --> 00:06:04,610
+and walk through that cycle.
+
+146
+00:06:04,610 --> 00:06:08,460
+And do it until you end up with bug-free code.
+
+147
+00:06:08,460 --> 00:06:13,020
+So don't just write the entire program, test the whole thing,
+
+148
+00:06:13,020 --> 00:06:17,530
+and then try and debug the whole thing, instead, write a module,
+
+149
+00:06:17,530 --> 00:06:18,910
+test it, debug it.
+
+150
+00:06:18,910 --> 00:06:21,320
+Write another module, test it, debug it.
+
+151
+00:06:21,320 --> 00:06:24,130
+Then test the entire structure, then go back
+
+152
+00:06:24,130 --> 00:06:26,980
+and do the same cycle here of, test each of the modulus
+
+153
+00:06:26,980 --> 00:06:30,900
+before you go through the entire integration testing routine.
+
+154
+00:06:30,900 --> 00:06:34,580
+And similarly, don't change the code,
+
+155
+00:06:34,580 --> 00:06:36,340
+figure I'll remember where the bug was,
+
+156
+00:06:36,340 --> 00:06:38,750
+test it, and then either forget where the bug was
+
+157
+00:06:38,750 --> 00:06:41,880
+or what change you made and go into panic mode.
+
+158
+00:06:41,880 --> 00:06:45,990
+Instead, back up the code, change it, write down
+
+159
+00:06:45,990 --> 00:06:48,590
+the potential bug in a comment, test it,
+
+160
+00:06:48,590 --> 00:06:50,740
+and compare the new version with the old version
+
+161
+00:06:50,740 --> 00:06:52,320
+to see what was the actual change
+
+162
+00:06:52,320 --> 00:06:55,740
+and did it catch the piece that I wanted to find.
+
+163
+00:06:55,740 --> 00:06:58,280
+This latter one I stress, because I see too many people
+
+164
+00:06:58,280 --> 00:07:00,155
+just go in and start messing with the code,
+
+165
+00:07:00,155 --> 00:07:02,030
+trying to debug it, and end up with something
+
+166
+00:07:02,030 --> 00:07:04,904
+even worse than what they had and not able to recover
+
+167
+00:07:04,904 --> 00:07:05,570
+where they were.
+
+168
+00:07:05,570 --> 00:07:08,570
+So when you've got code that's buggy,
+
+169
+00:07:08,570 --> 00:07:11,382
+save away a version of it, take a clean version,
+
+170
+00:07:11,382 --> 00:07:12,840
+and start modifying it, so that you
+
+171
+00:07:12,840 --> 00:07:16,180
+can see what were the changes I made that got me to the place
+
+172
+00:07:16,180 --> 00:07:18,410
+I wanted to get to.
+

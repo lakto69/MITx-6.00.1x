@@ -1,0 +1,1096 @@
+0 0
+00:00:00,000 --> 00:00:00.590
+...
+
+1
+00:00:00,590 --> 00:00:02.560
+Até agora neste curso, você aprendeu
+
+2
+00:00:02,560 --> 00:00:04.750
+muito sobre como programar.
+
+3
+00:00:04,750 --> 00:00:06.230
+Você aprendeu sobre estruturas de dados.
+
+4
+00:00:06,230 --> 00:00:08.150
+Você aprendeu sobre procedimentos de escrita
+
+5
+00:00:08,150 --> 00:00:09.870
+que realizam coisas, incluindo
+
+6
+00:00:09,870 --> 00:00:11.290
+fazê-los de maneiras diferentes.
+
+7
+00:00:11,290 --> 00:00:12.790
+E você começou a ter a capacidade
+
+8
+00:00:12,790 --> 00:00:15.150
+escrever código bastante complicado.
+
+9
+00:00:15,150 --> 00:00:17.920
+E você também, sem dúvida, experimentou
+
+10
+00:00:17,920 --> 00:00:19.930
+isso que leva a erros.
+
+11
+00:00:19,930 --> 00:00:21.680
+E então nós conversamos um pouco sobre como
+
+12
+00:00:21,680 --> 00:00:23.790
+pensar em testar e depurar,
+
+13
+00:00:23,790 --> 00:00:26.790
+para obter seu código para fazer o que você queria.
+
+14
+00:00:26,790 --> 00:00:29.040
+E nessa discussão, conversamos sobre coisas
+
+15
+00:00:29,040 --> 00:00:31.110
+como programação defensiva, definindo coisas
+
+16
+00:00:31,110 --> 00:00:34.470
+para que você planeje com antecedência tentar impedir o código ou pelo menos
+
+17
+00:00:34,470 --> 00:00:36.500
+evitar bugs, ou pelo menos ter
+
+18
+00:00:36,500 --> 00:00:39.720
+eles surgem de uma maneira em que você pode lidar bem com eles.
+
+19
+00:00:39,720 --> 00:00:41.740
+E nós conversamos sobre os tipos de mensagens
+
+20
+00:00:41,740 --> 00:00:43.410
+que o computador fornece quando as coisas
+
+21
+00:00:43,410 --> 00:00:45.381
+não siga o caminho que você espera.
+
+22
+00:00:45,381 --> 00:00:47.630
+Hoje, vamos abordar esses dois tópicos,
+
+23
+00:00:47,630 --> 00:00:49.600
+para falar sobre o uso de exceções
+
+24
+00:00:49,600 --> 00:00:51.870
+eo uso de asserções, tanto para realizar
+
+25
+00:00:51,870 --> 00:00:54.310
+programação defensiva e deixá-lo realmente
+
+26
+00:00:54,310 --> 00:00:57.470
+controlar como o computador reage quando algo
+
+27
+00:00:57,470 --> 00:00:59.530
+vai de uma maneira inesperada.
+
+28.
+00:00:59,530 --> 00:01:02.820
+Então, vamos olhar para isso.
+
+29
+00:01:02,820 --> 00:01:05.760
+Exceções realmente lidam com essa pergunta
+
+30
+00:01:05,760 --> 00:01:09.000
+do que acontece quando estou executando um procedimento e algo
+
+31
+00:01:09,000 --> 00:01:10.300
+acontece que eu não esperava.
+
+32.
+00:01:10,300 --> 00:01:12.680
+Eu atingi uma condição inesperada.
+
+33
+00:01:12,680 --> 00:01:14.730
+É uma exceção ao que planejamos,
+
+34
+00:01:14,730 --> 00:01:16.420
+o que queríamos que acontecesse.
+
+35
+00:01:16,420 --> 00:01:19.010
+E o que já vimos é que você receberá uma exceção
+
+36.
+00:01:19,010 --> 00:01:21.580
+para o que era esperado e que levará tipicamente
+
+37.
+00:01:21,580 --> 00:01:24.580
+para uma mensagem do Python.
+
+38.
+00:01:24,580 --> 00:01:26.974
+Alguns exemplos:você tem uma lista
+
+39.
+00:01:26,974 --> 00:01:29.640
+e você tenta acessar algo além do comprimento dessa lista.
+
+40.
+00:01:29,640 --> 00:01:31.600
+Um pequeno exemplo aqui.
+
+41.
+00:01:31,600 --> 00:01:33.770
+Eu tenho uma lista de comprimento 3.
+
+42.
+00:01:33,770 --> 00:01:35.807
+Eu tento acessar o quarto ponto,
+
+43
+00:01:35,807 --> 00:01:38.140
+e recebo uma pequena mensagem dizendo que tenho um erro de índice.
+
+44
+00:01:38,140 --> 00:01:40.654
+Está me dizendo que tentei ir longe demais.
+
+45
+00:01:40,654 --> 00:01:42.570
+Eu poderia ter algo em que tento converter
+
+46.
+00:01:42,570 --> 00:01:43.800
+um tipo inadequado.
+
+47
+00:01:43,800 --> 00:01:45.230
+Eu recebo um erro de tipo.
+
+48.
+00:01:45,230 --> 00:01:47.340
+Eu tento referenciar uma variável.
+
+49.
+00:01:47,340 --> 00:01:50.020
+Obtenha o valor para uma variável, mas ainda não o defini.
+
+50.
+00:01:50,020 --> 00:01:51.520
+Eu tenho um erro de nome.
+
+51
+00:01:51,520 --> 00:01:54.470
+Eu tento misturar tipos sem forçar
+
+52
+00:01:54,470 --> 00:01:57.170
+um ou coagindo um a ser do tipo apropriado.
+
+53
+00:01:57,170 --> 00:01:58.510
+E eu recebo um erro de tipo.
+
+54
+00:01:58,510 --> 00:02:02.980
+Estes são exemplos de uma exceção ao que era esperado.
+
+55
+00:02:02,980 --> 00:02:05.210
+Estes são da perspectiva do Python.
+
+56.
+00:02:05,210 --> 00:02:07.750
+Então, o que faremos com essas coisas?
+
+57
+00:02:07,750 --> 00:02:11.020
+Bem, antes de falarmos sobre isso, vamos pensar em alguns
+
+58
+00:02:11,020 --> 00:02:12.600
+dos outros tipos de erros comuns
+
+59.
+00:02:12,600 --> 00:02:14.760
+você provavelmente já viu aqui.
+
+60
+00:02:14,760 --> 00:02:16.240
+Erro de sintaxe.
+
+61
+00:02:16,240 --> 00:02:17.730
+Python não pode analisar o programa.
+
+62
+00:02:17,730 --> 00:02:21.340
+Não satisfaz as regras de escrever expressões legais.
+
+63.
+00:02:21,340 --> 00:02:22.540
+Um erro de nome.
+
+64
+00:02:22,540 --> 00:02:26.290
+Um nome local ou global não foi encontrado pelo Python.
+
+65
+00:02:26,290 --> 00:02:27.300
+Um erro de atributo.
+
+66.
+00:02:27,300 --> 00:02:30.540
+Quando eu apresentar uma aula, que faremos em breve,
+
+67
+00:02:30,540 --> 00:02:33.850
+ou quando eu realmente tento acessar um Python existente
+
+68
+00:02:33,850 --> 00:02:36.420
+
+classe, uma referência falha.
+
+69
+00:02:36,420 --> 00:02:38.660
+Erro de tipo sobre o qual já falamos.
+
+70
+00:02:38,660 --> 00:02:42.820
+Um erro de valor é aquele em que eu dou uma expressão, um operando
+
+71
+00:02:42,820 --> 00:02:45.150
+isso é feito legalmente em termos do tipo,
+
+72
+00:02:45,150 --> 00:02:47.150
+mas o valor não faz sentido.
+
+73
+00:02:47,150 --> 00:02:48.700
+E Python vai reclamar.
+
+74
+00:02:48,700 --> 00:02:51.540
+E, finalmente, um erro de entrada / saída ou um erro de E / S.
+
+75
+00:02:51,540 --> 00:02:55.170
+Normalmente, tento obter um arquivo e ele não existe.
+
+76
+00:02:55,170 --> 00:02:57.390
+Portanto, esses são tipos comuns de erros.
+
+77
+00:02:57,390 --> 00:02:59.810
+E, novamente, parte da nossa pergunta é:o que devemos
+
+78
+00:02:59,810 --> 00:03:03.010
+acontece quando essas coisas acontecem?
+
+79
+00:03:03,010 --> 00:03:05.720
+Já vimos algumas das opções.
+
+80
+00:03:05,720 --> 00:03:08.750
+Então, o que fazemos quando encontramos um erro?
+
+81
+00:03:08,750 --> 00:03:11.200
+Uma opção é apenas falhar silenciosamente.
+
+82
+00:03:11,200 --> 00:03:15.610
+Ou seja, substitua por um valor padrão ou apenas continue.
+
+83
+00:03:15,610 --> 00:03:16.880
+Péssima ideia.
+
+84
+00:03:16,880 --> 00:03:18.320
+Realmente má ideia.
+
+85
+00:03:18,320 --> 00:03:21.990
+De fato, deixe-me circular porque é uma péssima ideia.
+
+86
+00:03:21,990 --> 00:03:24.390
+O usuário não recebe nenhum aviso neste caso
+
+87
+00:03:24,390 --> 00:03:26.427
+que algo aconteceu de forma inadequada.
+
+88
+00:03:26,427 --> 00:03:28.760
+E enquanto é tentador pensar, bem, vamos apenas
+
+89
+00:03:28,760 --> 00:03:31.604
+substitua por um valor padrão e continue,
+
+90
+00:03:31,604 --> 00:03:33.270
+que poderia levar a todos os tipos de problemas
+
+91
+00:03:33,270 --> 00:03:36.110
+quando você tenta usar esse valor mais tarde.
+
+92
+00:03:36,110 --> 00:03:38.540
+A segunda opção é o que já estamos fazendo,
+
+93
+00:03:38,540 --> 00:03:40.332
+retornar um valor de erro.
+
+94
+00:03:40,332 --> 00:03:41.790
+Lá temos perguntas como, bem,
+
+95
+00:03:41,790 --> 00:03:44.050
+que valor devo escolher retornar?
+
+96
+00:03:44,050 --> 00:03:46.810
+E se eu vou retornar um valor de erro explícito
+
+97
+00:03:46,810 --> 00:03:48.620
+do que imprimir uma mensagem de erro,
+
+98
+00:03:48,620 --> 00:03:50.740
+então eu tenho que decidir, como eu tenho código que
+
+99
+00:03:50,740 --> 00:03:52.470
+pode receber essa mensagem de erro?
+
+100
+00:03:52,470 --> 00:03:53.200
+Lide com isso.
+
+101
+00:03:53,200 --> 00:03:55.540
+Vou ter que verificar um valor especial.
+
+102
+00:03:55,540 --> 00:03:57.120
+Mas ainda é uma opção.
+
+103
+00:03:57,120 --> 00:03:59.160
+E a terceira opção é a que nós
+
+104
+00:03:59,160 --> 00:04:02.580
+fazer agora, que é quando temos uma condição inesperada,
+
+105
+00:04:02,580 --> 00:04:04.530
+paramos a execução.
+
+106
+00:04:04,530 --> 00:04:07.320
+E em Python, dizemos que isso gera uma exceção.
+
+107
+00:04:07,320 --> 00:04:09.970
+Ele literalmente tem um pedaço de código embutido nele
+
+108
+00:04:09,970 --> 00:04:12.650
+com uma palavra especial raise que gera
+
+109
+00:04:12,650 --> 00:04:15.810
+uma exceção com uma sequência que descreve o que foi
+
+110
+00:04:15,810 --> 00:04:17.319
+acontecendo quando isso aconteceu.
+
+111
+00:04:17,319 --> 00:04:18.860
+Na verdade, você está vendo que quando
+
+112
+00:04:18,860 --> 00:04:21.790
+você executa um código que não é executado conforme o esperado.
+
+113
+00:04:21,790 --> 00:04:23.900
+Python está lançando uma mensagem de erro,
+
+114
+00:04:23,900 --> 00:04:26.780
+gerando uma exceção dizendo, eu tenho um erro de tipo.
+
+115
+00:04:26,780 --> 00:04:29.089
+E aqui é onde você estava quando isso aconteceu.
+
+116
+00:04:29,089 --> 00:04:31.380
+Eu sei que muitos de vocês simplesmente ignoraram isso e voltaram
+
+117
+00:04:31,380 --> 00:04:33.540
+no código, mas essa descrição do erro realmente
+
+118
+00:04:33,540 --> 00:04:34.210
+é valioso.
+
+119
+00:04:34,210 --> 00:04:35.760
+Diz algo sobre o que
+
+120
+00:04:35,760 --> 00:04:39.430
+estava acontecendo quando surgiram circunstâncias inesperadas.
+
+121
+00:04:39,430 --> 00:04:42.330
+E isso ajuda você a fazer a depuração.
+
+122
+00:04:42,330 --> 00:04:43.450
+ESTÁ BEM.
+
+123
+00:04:43,450 --> 00:04:45.610
+Com isso em mente, agora podemos pensar
+
+124
+00:04:45,610 --> 00:04:48.030
+sobre fazer as coisas um pouco diferente.
+
+125
+00:04:48,030 --> 00:04:51.170
+E, em particular, podemos dar-lhe
+
+126
+00:04:51,170 --> 00:04:54.650
+como programador ou Python no sistema interno,
+
+127
+00:04:54,650 --> 00:04:57.090
+a oportunidade de realmente lidar
+
+128
+00:04:57,090 --> 00:04:59.560
+uma exceção quando isso acontece.
+
+129
+00:04:59,560 --> 00:05:00.980
+Então, aqui está um pequeno pedaço de código.
+
+130
+00:05:00,980 --> 00:05:02.438
+E eu quero levá-lo através disso
+
+131
+00:05:02,438 --> 00:05:04.230
+para ver o que acontece aqui.
+
+132
+00:05:04,230 --> 00:05:07.560
+Try é uma palavra-chave especial.
+
+133
+00:05:07,560 --> 00:05:10.160
+E o que diz é, com o recuo,
+
+134
+00:05:10,160 --> 00:05:11.980
+aqui está um bloco de código.
+
+135
+00:05:11,980 --> 00:05:14.940
+E o que eu vou pedir ao sistema para fazer
+
+136
+00:05:14,940 --> 00:05:18.490
+é tentar executar esse código.
+
+137
+00:05:18,490 --> 00:05:21.280
+Então, é como se eu estivesse tendo esse código sendo manipulado por dentro
+
+138
+00:05:21,280 --> 00:05:22.890
+de um shell Python.
+
+139
+00:05:22,890 --> 00:05:25.910
+Vai pedir alguma contribuição.
+
+140
+00:05:25,910 --> 00:05:27.510
+Vai pedir mais informações.
+
+141
+00:05:27,510 --> 00:05:30.190
+Em seguida, imprimirá a proporção.
+
+142
+00:05:30,190 --> 00:05:32.810
+E vai imprimir uma mensagem.
+
+143
+00:05:32,810 --> 00:05:36.410
+Mas a diferença aqui é a seguinte.
+
+144
+00:05:36,410 --> 00:05:40.420
+Se tentar executar esse bloco de código e tudo
+
+145
+00:05:40,420 --> 00:05:42.220
+funciona bem, ótimo.
+
+146
+00:05:42,220 --> 00:05:47.290
+Eu pulo para cá e simplesmente imprimo o que tinha.
+
+147
+00:05:47,290 --> 00:05:51.250
+Por outro lado, se uma exceção for gerada,
+
+148
+00:05:51,250 --> 00:05:54.106
+o mais provável é que eu estou tentando dividir por 0.
+
+149
+00:05:54,106 --> 00:05:56,480
+Mas eu também poderia ceder uma string em vez do número.
+
+150
+00:05:56,480 --> 00:05:59.960
+Se uma exceção for levantada, particularmente aqui nesta impressão
+
+151
+00:05:59,960 --> 00:06:04.240
+declaração, então eu vou pular para o caso de exceção.
+
+152
+00:06:04,240 --> 00:06:06.890
+Novamente, uma palavra-chave que destaca um bloco de código.
+
+153
+00:06:06,890 --> 00:06:12.240
+E nesse caso, eu vou executar esta informação
+
+154
+00:06:12,240 --> 00:06:15.250
+e pule para fora do circuito.
+
+155
+00:06:15,250 --> 00:06:16.610
+Então diga mais uma vez.
+
+156
+00:06:16,610 --> 00:06:21.030
+Tente diz tente executar cada uma dessas instruções por vez.
+
+157
+00:06:21,030 --> 00:06:24.580
+Mas se uma exceção for gerada, pare esse processamento,
+
+158
+00:06:24,580 --> 00:06:28.950
+pule para a cláusula exceto e execute essas instruções.
+
+159
+00:06:28,950 --> 00:06:33.570
+E então, continue fora de todo o loop.
+
+160
+00:06:33,570 --> 00:06:36.420
+Isso me permite definir coisas que eu
+
+161
+00:06:36,420 --> 00:06:40.079
+gostaria de fazer no caso de surgir uma exceção.
+
+162
+00:06:40,079 --> 00:06:42.120
+E agora, é simplesmente imprimir uma mensagem
+
+163
+00:06:42,120 --> 00:06:43.820
+e parando o processamento adicional.
+
+164
+00:06:43,820 --> 00:06:46.550
+Mas em um segundo, vamos usar isso um pouco
+
+165
+00:06:46,550 --> 00:06:48.460
+diferentemente.
+
+166
+00:06:48,460 --> 00:06:51.340
+Então, agora eu vou fazer uma versão desse código no meu computador.
+
+167
+00:06:51,340 --> 00:06:53.470
+E eu já o digitei previamente,
+
+168
+00:06:53,470 --> 00:06:57.310
+então eu tenho um exemplo desse pequeno loop de tentativa.
+
+169
+00:06:57,310 --> 00:06:59.870
+E, na verdade, eu percebi que disse algo um pouco diferente
+
+170
+00:06:59,870 --> 00:07:00.370
+aqui.
+
+171
+00:07:00,370 --> 00:07:04.860
+Então eu vou mudar para dizer OK naquele lugar.
+
+172
+00:07:04,860 --> 00:07:08.480
+E vou adicionar mais uma peça a isso,
+
+173
+00:07:08,480 --> 00:07:11.370
+para torná-lo consistente com o que tínhamos lá, o que
+
+174
+00:07:11,370 --> 00:07:14.820
+é que eu vou colocar aqui uma declaração impressa que
+
+175
+00:07:14,820 --> 00:07:16.910
+diz que estamos do lado de fora.
+
+176
+00:07:16,910 --> 00:07:19.032
+E com isso em mente, vamos executá-lo.
+
+177
+00:07:19,032 --> 00:07:20.240
+Então diz, me dê um número.
+
+178
+00:07:20,240 --> 00:07:21.109
+Eu dou 1.
+
+179
+00:07:21,109 --> 00:07:22.400
+Diz me dê outro número.
+
+180
+00:07:22,400 --> 00:07:23.910
+Eu dou 2.
+
+181
+00:07:23,910 --> 00:07:25.490
+E observe o que ele fez.
+
+182
+00:07:25,490 --> 00:07:27.730
+Ele imprimiu a proporção como um flutuador.
+
+183
+00:07:27,730 --> 00:07:30.480
+E foi capaz de ir para a próxima linha, que diz:
+
+184
+00:07:30,480 --> 00:07:31.780
+imprima OK.
+
+185
+00:07:31,780 --> 00:07:33.350
+E pulou a cláusula exceto
+
+186
+00:07:33,350 --> 00:07:35.599
+porque não há erro aqui e é simplesmente impresso,
+
+187
+00:07:35,599 --> 00:07:37.150
+Estou fora do circuito.
+
+188
+00:07:37,150 --> 00:07:39.300
+Vamos tentar novamente, mas desta vez estou
+
+189
+00:07:39,300 --> 00:07:45.190
+dando a ele um conjunto incorreto de entradas.
+
+190
+00:07:45,190 --> 00:07:47.190
+Eu dou um número.
+
+191
+00:07:47,190 --> 00:07:50.570
+E eu dou um 0.
+
+192
+00:07:50,570 --> 00:07:53.410
+E nesse caso, recebi um erro porque tentar
+
+193
+00:07:53,410 --> 00:07:56.150
+tomar a proporção vai me dar uma divisão por 0 erro.
+
+194
+00:07:56,150 --> 00:07:58.810
+Não diz isso aqui porque estou lidando com a exceção.
+
+195
+00:07:58,810 --> 00:08:00.560
+Mas observe o que aconteceu.
+
+196
+00:08:00,560 --> 00:08:03.750
+Não imprimiu OK porque essa divisão
+
+197
+00:08:03,750 --> 00:08:06.530
+de a por b levou a uma exceção.
+
+198
+00:08:06,530 --> 00:08:08.240
+Ele foi direto para a cláusula de exceção.
+
+199
+00:08:08,240 --> 00:08:10.510
+E, nesse caso, imprimiu minha mensagem de erro,
+
+200
+00:08:10,510 --> 00:08:13.060
+que diz que há um erro na entrada do usuário.
+
+201
+00:08:13,060 --> 00:08:14.980
+E então vai para a declaração
+
+202
+00:08:14,980 --> 00:08:18.500
+fora do loop geral e imprime fora.
+
+203
+00:08:18,500 --> 00:08:21.380
+A diferença aqui é que, se eu não tivesse uma exceção,
+
+204
+00:08:21,380 --> 00:08:24.000
+teria imprimido uma divisão por 0 erro.
+
+205
+00:08:24,000 --> 00:08:26.280
+Agora, eu vou poder controlar.
+
+206
+00:08:26,280 --> 00:08:28.440
+O que faço quando vejo uma exceção?
+
+207
+00:08:28,440 --> 00:08:31.710
+Mas você também pode ver que para a operação,
+
+208
+00:08:31,710 --> 00:08:34.270
+pula para a cláusula exceto, lida com isso,
+
+209
+00:08:34,270 --> 00:08:36.630
+e depois sai do loop.
+
+210.
+00:08:36,630 --> 00:08:37.130
+Tudo certo.
+
+211
+00:08:37,130 --> 00:08:40.250
+Com isso em mente, agora posso amplificar isso.
+
+212
+00:08:40,250 --> 00:08:42.744
+Vamos dar o mesmo tipo de exemplo, mas agora digamos:
+
+213
+00:08:42,744 --> 00:08:44.660
+pode haver diferentes tipos de erros.
+
+214
+00:08:44,660 --> 00:08:47.430
+Talvez eu queira fazer algo diferente em cada caso.
+
+215
+00:08:47,430 --> 00:08:52.659
+Por exemplo, se eu digitar algo que seja uma string,
+
+216
+00:08:52,659 --> 00:08:55.200
+não será capaz de fazer a divisão porque não pode
+
+217
+00:08:55,200 --> 00:08:56.790
+divida as strings por números.
+
+218
+00:08:56,790 --> 00:08:58.680
+Isso gera um erro de valor.
+
+219
+00:08:58,680 --> 00:08:59.580
+É uma exceção.
+
+220
+00:08:59,580 --> 00:09:02.301
+E, nesse caso, eu poderia imprimir algo útil dizendo:
+
+221
+00:09:02,301 --> 00:09:02.800
+Tudo certo.
+
+222
+00:09:02,800 --> 00:09:07.030
+Nesse caso, eu não tinha um número.
+
+223
+00:09:07,030 --> 00:09:09.030
+Eu quero pensar sobre isso de forma diferente.
+
+224
+00:09:09,030 --> 00:09:11.190
+Se eu desse como fiz no meu exemplo, uma divisão
+
+225
+00:09:11,190 --> 00:09:14.480
+por 0 problema, ele imprimirá algo mais informativo
+
+226
+00:09:14,480 --> 00:09:17.500
+lá me dizendo o que aconteceu quando eu tive que acontecer.
+
+227
+00:09:17,500 --> 00:09:20.510
+E no caso final, se nenhuma dessas exceções
+
+228
+00:09:20,510 --> 00:09:22.780
+surgir, mas alguma outra exceção,
+
+229
+00:09:22,780 --> 00:09:24.930
+Eu ainda vou ter um caso padrão que eu vou
+
+230
+00:09:24,930 --> 00:09:27.387
+use para lidar com essa exceção.
+
+231
+00:09:27,387 --> 00:09:28.470
+Eu poderia executar o mesmo código.
+
+232
+00:09:28,470 --> 00:09:30.350
+Eu não vou fazer isso aqui, mas eu poderia executar o mesmo código
+
+233
+00:09:30,350 --> 00:09:32.680
+e você veria o mesmo tipo de comportamento.
+
+234
+00:09:32,680 --> 00:09:35.070
+Se o código funcionar corretamente, nunca será
+
+235
+00:09:35,070 --> 00:09:37.010
+chegar a qualquer um desses casos.
+
+236
+00:09:37,010 --> 00:09:39.470
+Mas se eu abrir uma exceção, se for uma
+
+237
+00:09:39,470 --> 00:09:41.620
+que eu sei lidar, como um erro de valor,
+
+238
+00:09:41,620 --> 00:09:42.740
+Eu vou lidar com isso.
+
+239
+00:09:42,740 --> 00:09:44.840
+Uma divisão por 0 erro, eu vou lidar com isso.
+
+240
+00:09:44,840 --> 00:09:49.980
+Caso contrário, vou lidar com a ideia geral geral.
+
+241
+00:09:49,980 --> 00:09:53.270
+O que mais eu posso ter quando quero lidar com exceções?
+
+242
+00:09:53,270 --> 00:09:55.030
+Bem, outras duas peças.
+
+243
+00:09:55,030 --> 00:09:57.220
+Uma é que pode haver algum código que eu
+
+244
+00:09:57,220 --> 00:10:02.150
+deseja fazer mesmo que seja executado sem exceções.
+
+245
+00:10:02,150 --> 00:10:04.880
+E para que eu possa colocar a palavra-chave else
+
+246
+00:10:04,880 --> 00:10:06.540
+seguido por um corpo de código.
+
+247
+00:10:06,540 --> 00:10:10.780
+E isso será executado quando a execução do corpo try
+
+248
+00:10:10,780 --> 00:10:12.299
+funciona corretamente.
+
+249
+00:10:12,299 --> 00:10:14.340
+Isso me permite extrair as coisas do corpo da tentativa.
+
+250
+00:10:14,340 --> 00:10:15.750
+Eu poderia deixá-los lá se eu quisesse,
+
+251
+00:10:15,750 --> 00:10:17.970
+mas permite que eu puxe as coisas para fora do corpo da tentativa
+
+252
+00:10:17,970 --> 00:10:19.910
+para isolá-los como sendo coisas que eu sempre quero
+
+253
+00:10:19,910 --> 00:10:22.690
+para fazer se funcionar corretamente.
+
+254
+00:10:22,690 --> 00:10:26.350
+E, finalmente, posso ter a palavra-chave finalmente.
+
+255
+00:10:26,350 --> 00:10:29.480
+E isso identifica um corpo de código
+
+256
+00:10:29,480 --> 00:10:31.030
+com a seguinte propriedade.
+
+257
+00:10:31,030 --> 00:10:36.360
+Isso sempre é executado após try, else e exceto cláusulas,
+
+258
+00:10:36,360 --> 00:10:39.530
+mesmo que eles gerem outro erro ou executem uma pausa,
+
+259
+00:10:39,530 --> 00:10:41.480
+uma continuação ou um retorno.
+
+260
+00:10:41,480 --> 00:10:43.800
+E isso é útil quando eu quero limpar algum código,
+
+261
+00:10:43,800 --> 00:10:45.754
+não importa o que aconteceu no código anterior.
+
+262
+00:10:45,754 --> 00:10:47.170
+Normalmente, isso seria algo
+
+263
+00:10:47,170 --> 00:10:50.490
+como fechar um arquivo para não deixá-lo aberto.
+
+264
+00:10:50,490 --> 00:10:52.720
+Mas me permite especificar conjuntos de coisas
+
+265
+00:10:52,720 --> 00:10:55.490
+Farei independentemente do que acontece no loop try.
+
+266
+00:10:55,490 --> 00:10:58.530
+Se funciona corretamente, atinge uma exceção,
+
+267
+00:10:58,530 --> 00:11:00.530
+e lida com uma cláusula else ou except,
+
+268
+00:11:00,530 --> 00:11:04.250
+ou mesmo se interromper essa execução e continuar.
+
+269
+00:11:04,250 --> 00:11:07.299
+Portanto, existem as partes de lidar com exceções.
+
+270
+00:11:07,299 --> 00:11:09.340
+E vamos ver alguns exemplos de uso
+
+271
+00:11:09,340 --> 00:11:13.170
+realmente pensar em como lidar com código usando maneiras
+
+272
+00:11:13,170 --> 00:11:15.600
+para lidar com exceções de maneiras que queremos
+
+273
+00:11:15,600 --> 00:11:19.410
+e não apenas lançando um erro como o Python atualmente faz.

@@ -88,3 +88,35 @@ def recurPower(base, exp):
 #         return ''
 # print(string_bits(''))
 
+WORDLIST_FILENAME = "words.txt"
+
+
+# def loadWords():
+#     """
+#     Returns a list of valid words. Words are strings of lowercase letters.
+#
+#     Depending on the size of the word list, this function may
+#     take a while to finish.
+#     """
+#     print("Loading word list from file...")
+#     # inFile: file
+#     inFile = open(WORDLIST_FILENAME, 'r')
+#     # wordList: list of strings
+#     wordList = []
+#     for line in inFile:
+#         wordList.append(line.strip().lower())
+#     print("  ", len(wordList), "words loaded.")
+#
+#     print(wordList[:5][0])
+#
+#     inFile.close()
+#     return wordList
+#
+# loadWords()
+
+
+
+
+# print(
+# normalize([0, 0, 3])
+# )

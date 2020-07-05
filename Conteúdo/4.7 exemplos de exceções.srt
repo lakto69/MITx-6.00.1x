@@ -1,0 +1,1092 @@
+0
+00:00:00,000 --> 00:00:00,510
+...
+
+1
+00:00:00,510 --> 00:00:04,019
+So let's use that idea of being able to handle exceptions
+
+2
+00:00:04,019 --> 00:00:07,314
+in manners that we decide to look at some standard places
+
+3
+00:00:07,314 --> 00:00:08,480
+and where we might use that.
+
+4
+00:00:08,480 --> 00:00:10,710
+Some examples of how that ability lets us,
+
+5
+00:00:10,710 --> 00:00:14,680
+for example, control the input into a procedure.
+
+6
+00:00:14,680 --> 00:00:17,230
+Here is a simple little example.
+
+7
+00:00:17,230 --> 00:00:19,636
+I want to have the user type in an integer.
+
+8
+00:00:19,636 --> 00:00:21,760
+And if I'm lucky, they do it the first time around.
+
+9
+00:00:21,760 --> 00:00:22,710
+But they might not.
+
+10
+00:00:22,710 --> 00:00:26,339
+And so rather than having to rerun the code from top level,
+
+11
+00:00:26,339 --> 00:00:28,130
+I'd like to create a little loop in which I
+
+12
+00:00:28,130 --> 00:00:32,189
+keep asking for that input until it's done correctly.
+
+13
+00:00:32,189 --> 00:00:34,410
+So I've got a while loop up here.
+
+14
+00:00:34,410 --> 00:00:37,095
+And notice that the condition is true,
+
+15
+00:00:37,095 --> 00:00:39,220
+so it's always going to run through this while loop
+
+16
+00:00:39,220 --> 00:00:40,830
+unless I break out of it.
+
+17
+00:00:40,830 --> 00:00:42,710
+And inside of the while loop, I've
+
+18
+00:00:42,710 --> 00:00:44,950
+got one of those try expressions.
+
+19
+00:00:44,950 --> 00:00:47,810
+So I'm going to try and execute this code,
+
+20
+00:00:47,810 --> 00:00:50,830
+and the code basically says-- asks for an input.
+
+21
+00:00:50,830 --> 00:00:52,750
+It says please enter an integer, and then it
+
+22
+00:00:52,750 --> 00:00:54,790
+tries to make sure that it really
+
+23
+00:00:54,790 --> 00:00:58,020
+is an integer by saying whatever was entered here, which comes
+
+24
+00:00:58,020 --> 00:01:01,220
+in as a string, I'm going to cast it into an integer
+
+25
+00:01:01,220 --> 00:01:02,920
+right there.
+
+26
+00:01:02,920 --> 00:01:07,570
+Now, if that works correctly, the next thing will be a break.
+
+27
+00:01:07,570 --> 00:01:09,540
+And I'll remind you, that break will throw us
+
+28
+00:01:09,540 --> 00:01:11,760
+out of the try expression and out
+
+29
+00:01:11,760 --> 00:01:14,260
+of the while loop because the while loop is the thing that's
+
+30
+00:01:14,260 --> 00:01:15,079
+actually running.
+
+31
+00:01:15,079 --> 00:01:16,870
+And I'll be able to say I've got an integer
+
+32
+00:01:16,870 --> 00:01:19,150
+and I'm going to do that correctly.
+
+33
+00:01:19,150 --> 00:01:21,990
+But if there's an error here, if, in fact,
+
+34
+00:01:21,990 --> 00:01:23,990
+I type in a string or something else
+
+35
+00:01:23,990 --> 00:01:26,680
+and that casting creates an error,
+
+36
+00:01:26,680 --> 00:01:29,510
+I'm going to jump down to the except clause handling
+
+37
+00:01:29,510 --> 00:01:32,260
+the value error case and I'm going
+
+38
+00:01:32,260 --> 00:01:34,370
+to say you didn't input an integer.
+
+39
+00:01:34,370 --> 00:01:35,770
+Try again.
+
+40
+00:01:35,770 --> 00:01:38,030
+And because I'm inside the while loop,
+
+41
+00:01:38,030 --> 00:01:41,440
+I'll go back around and do that.
+
+42
+00:01:41,440 --> 00:01:45,200
+So what I've done here is I'm going to execute-- exit,
+
+43
+00:01:45,200 --> 00:01:48,390
+rather, the loop only when the correct type of input
+
+44
+00:01:48,390 --> 00:01:49,272
+is provided.
+
+45
+00:01:49,272 --> 00:01:51,480
+Otherwise, I'm going to cycle through this while loop
+
+46
+00:01:51,480 --> 00:01:53,480
+forever until you finally break down and give me
+
+47
+00:01:53,480 --> 00:01:55,730
+an integer like I asked for, but that's
+
+48
+00:01:55,730 --> 00:01:58,610
+a nice way to control ensuring that the input comes
+
+49
+00:01:58,610 --> 00:02:00,930
+in the right way.
+
+50
+00:02:00,930 --> 00:02:03,140
+And the other nice thing here is that I'm only
+
+51
+00:02:03,140 --> 00:02:07,025
+going to get a message if, in fact, the exception is raised.
+
+52
+00:02:07,025 --> 00:02:09,150
+So if you give me the right thing, I just carry on.
+
+53
+00:02:09,150 --> 00:02:10,858
+But if you don't, I'm going to remind you
+
+54
+00:02:10,858 --> 00:02:12,870
+and I'm going to keep asking about it.
+
+55
+00:02:12,870 --> 00:02:16,780
+This only handles value errors.
+
+56
+00:02:16,780 --> 00:02:19,357
+So if I, for some reason, had a different kind of error here,
+
+57
+00:02:19,357 --> 00:02:21,440
+it would throw an exception that would toss me out
+
+58
+00:02:21,440 --> 00:02:23,210
+of the execution completely and back up
+
+59
+00:02:23,210 --> 00:02:25,300
+to the top level of the Python Shell.
+
+60
+00:02:25,300 --> 00:02:27,260
+But since I'm expecting things to be
+
+61
+00:02:27,260 --> 00:02:29,800
+typed in that I can cast in some manner, in general,
+
+62
+00:02:29,800 --> 00:02:31,702
+this is going to work just fine.
+
+63
+00:02:31,702 --> 00:02:34,520
+A nice example of me controlling the exception
+
+64
+00:02:34,520 --> 00:02:37,520
+so that I don't stop computation when an incorrect input is
+
+65
+00:02:37,520 --> 00:02:40,447
+provided, but I remind the user of what I want
+
+66
+00:02:40,447 --> 00:02:42,280
+and keep doing that until he or she gives me
+
+67
+00:02:42,280 --> 00:02:45,070
+something that's valid.
+
+68
+00:02:45,070 --> 00:02:47,640
+We can add to that by thinking about-- how do we
+
+69
+00:02:47,640 --> 00:02:49,540
+get things out of files?
+
+70
+00:02:49,540 --> 00:02:53,020
+So here is a nice example of controlling the input.
+
+71
+00:02:53,020 --> 00:02:53,850
+Here are the ideas.
+
+72
+00:02:53,850 --> 00:02:55,710
+I am going to open up a file, and I'm
+
+73
+00:02:55,710 --> 00:02:57,240
+going to read data in from it.
+
+74
+00:02:57,240 --> 00:02:59,820
+So the initial idea is our setup,
+
+75
+00:02:59,820 --> 00:03:01,780
+a variable called "data."
+
+76
+00:03:01,780 --> 00:03:04,860
+I get a file name by asking for input from the user saying
+
+77
+00:03:04,860 --> 00:03:06,630
+give me the name of a file, and I'm
+
+78
+00:03:06,630 --> 00:03:09,780
+going to try to open the file.
+
+79
+00:03:09,780 --> 00:03:12,584
+Again, if that works well, I'm going to open up the file
+
+80
+00:03:12,584 --> 00:03:14,250
+and I'm going to be able to execute out.
+
+81
+00:03:14,250 --> 00:03:17,510
+And notice, in that case, I've got a nice example down here
+
+82
+00:03:17,510 --> 00:03:20,560
+of going down and, in fact, saying
+
+83
+00:03:20,560 --> 00:03:23,100
+close up the file when you're done with all of this.
+
+84
+00:03:23,100 --> 00:03:23,860
+OK.
+
+85
+00:03:23,860 --> 00:03:26,570
+If, on the other hand, opening the file doesn't work
+
+86
+00:03:26,570 --> 00:03:29,160
+and I get an I/O error, I am going
+
+87
+00:03:29,160 --> 00:03:34,080
+to catch that and say I couldn't open up that file.
+
+88
+00:03:34,080 --> 00:03:36,079
+On the other hand, if I do open it up, fine.
+
+89
+00:03:36,079 --> 00:03:37,620
+Then I go to the else clause, and I'm
+
+90
+00:03:37,620 --> 00:03:39,640
+going to walk through the file doing some work.
+
+91
+00:03:39,640 --> 00:03:42,470
+I'm going to basically process that data
+
+92
+00:03:42,470 --> 00:03:46,710
+to add new elements in from the data into this variable data
+
+93
+00:03:46,710 --> 00:03:48,450
+so that I can control it.
+
+94
+00:03:48,450 --> 00:03:50,840
+And the details here are basically--
+
+95
+00:03:50,840 --> 00:03:52,970
+I'm reading in a new line.
+
+96
+00:03:52,970 --> 00:03:55,410
+As long as it isn't just a carriage return,
+
+97
+00:03:55,410 --> 00:03:58,430
+I'm going to take the line, split it by the commas
+
+98
+00:03:58,430 --> 00:04:00,800
+to separate out the pieces to create a list,
+
+99
+00:04:00,800 --> 00:04:03,980
+and then remove using this little thing of taking
+
+100
+00:04:03,980 --> 00:04:05,580
+everything but the last element.
+
+101
+00:04:05,580 --> 00:04:07,610
+Remove the trailing carriage return,
+
+102
+00:04:07,610 --> 00:04:09,930
+and add it into the file.
+
+103
+00:04:09,930 --> 00:04:12,720
+Let's look at an example of that to see what it might do.
+
+104
+00:04:12,720 --> 00:04:16,760
+So in my computer here, I have loaded in that file
+
+105
+00:04:16,760 --> 00:04:19,630
+and I'm going to now run it.
+
+106
+00:04:19,630 --> 00:04:24,010
+And it says, on my machine, give me the name of a data file.
+
+107
+00:04:24,010 --> 00:04:27,070
+And I've got a set of test data points
+
+108
+00:04:27,070 --> 00:04:29,850
+that I'm going to now do, so let me just type that in.
+
+109
+00:04:29,850 --> 00:04:34,300
+Test grades data py.
+
+110
+00:04:34,300 --> 00:04:34,840
+Ah, great.
+
+111
+00:04:34,840 --> 00:04:36,200
+It looks like it ran properly.
+
+112
+00:04:36,200 --> 00:04:37,840
+And so I could actually look at it.
+
+113
+00:04:37,840 --> 00:04:40,690
+I can see-- what does data now look like?
+
+114
+00:04:40,690 --> 00:04:41,940
+Oh, neat.
+
+115
+00:04:41,940 --> 00:04:46,100
+It's a set of grades for some people taking the class.
+
+116
+00:04:46,100 --> 00:04:48,584
+This ran well in the sense that I gave it a file
+
+117
+00:04:48,584 --> 00:04:49,750
+that it could actually open.
+
+118
+00:04:49,750 --> 00:04:53,620
+If I run it again-- and I'm going to do that.
+
+119
+00:04:53,620 --> 00:04:57,690
+Let me rerun it and I give it the name of a file that doesn't
+
+120
+00:04:57,690 --> 00:05:03,950
+exist, it catches it, says I've got an I/O error,
+
+121
+00:05:03,950 --> 00:05:06,610
+and it prints out that message saying I couldn't open the file
+
+122
+00:05:06,610 --> 00:05:09,460
+and it does not try to, in fact, process the data.
+
+123
+00:05:09,460 --> 00:05:13,420
+And, in fact, if I look at data, it's still just the empty list.
+
+124
+00:05:13,420 --> 00:05:15,770
+I didn't do anything around it.
+
+125
+00:05:15,770 --> 00:05:18,500
+Again, it's a nice way of controlling input here in that,
+
+126
+00:05:18,500 --> 00:05:21,070
+if I get an error, I'm going to close out of it.
+
+127
+00:05:21,070 --> 00:05:23,550
+And in that case where I typed in the wrong thing,
+
+128
+00:05:23,550 --> 00:05:27,220
+this finally clause here was important because it closed up
+
+129
+00:05:27,220 --> 00:05:29,020
+that attempt to open up the file name
+
+130
+00:05:29,020 --> 00:05:30,820
+so it's not hanging around.
+
+131
+00:05:30,820 --> 00:05:31,320
+All right.
+
+132
+00:05:31,320 --> 00:05:33,090
+So I can now load in data.
+
+133
+00:05:33,090 --> 00:05:35,610
+Let's look at how I could use exceptions to do other things
+
+134
+00:05:35,610 --> 00:05:37,820
+around using this data.
+
+135
+00:05:37,820 --> 00:05:41,500
+So as we said, I'm going to jump out if the filename--
+
+136
+00:05:41,500 --> 00:05:43,380
+or if there is no file of that name.
+
+137
+00:05:43,380 --> 00:05:45,900
+Otherwise, I'm going to execute the rest of the pieces.
+
+138
+00:05:45,900 --> 00:05:48,794
+And in either case, whether I get a correct file name or not,
+
+139
+00:05:48,794 --> 00:05:49,960
+I'm going to close the file.
+
+140
+00:05:49,960 --> 00:05:52,450
+Important things to do.
+
+141
+00:05:52,450 --> 00:05:55,500
+So good news here is it appears to read the data in correctly
+
+142
+00:05:55,500 --> 00:05:57,632
+and it converted it into a list of lists,
+
+143
+00:05:57,632 --> 00:05:58,590
+which is what I wanted.
+
+144
+00:05:58,590 --> 00:06:00,920
+I've got a list of elements, each one of which
+
+145
+00:06:00,920 --> 00:06:03,340
+is a list with the name of a student and the grade
+
+146
+00:06:03,340 --> 00:06:05,620
+that they're getting in that course.
+
+147
+00:06:05,620 --> 00:06:07,730
+Now, suppose I want to restructure this
+
+148
+00:06:07,730 --> 00:06:10,410
+into a list of names and a list of greats
+
+149
+00:06:10,410 --> 00:06:12,980
+for each entry in the overall list.
+
+150
+00:06:12,980 --> 00:06:14,480
+I could write code to do that, but I
+
+151
+00:06:14,480 --> 00:06:18,870
+can use the exception idea very nicely to make this happen.
+
+152
+00:06:18,870 --> 00:06:20,780
+Same basic structure.
+
+153
+00:06:20,780 --> 00:06:22,030
+Again, I've got my try.
+
+154
+00:06:22,030 --> 00:06:22,960
+I've got the except.
+
+155
+00:06:22,960 --> 00:06:25,440
+I've got the else around all of there.
+
+156
+00:06:25,440 --> 00:06:28,780
+Now, look at what I could do once I've got that information.
+
+157
+00:06:28,780 --> 00:06:31,030
+I could actually create a new data structure,
+
+158
+00:06:31,030 --> 00:06:33,130
+a list called "Grades Data."
+
+159
+00:06:33,130 --> 00:06:35,850
+And what I want to do is walk through that data
+
+160
+00:06:35,850 --> 00:06:38,094
+and gather up information for it.
+
+161
+00:06:38,094 --> 00:06:39,510
+So the first thing I'm going to do
+
+162
+00:06:39,510 --> 00:06:43,161
+is say, as long as I've got some data--
+
+163
+00:06:43,161 --> 00:06:44,660
+because I read that inappropriately,
+
+164
+00:06:44,660 --> 00:06:47,609
+which I wanted to check-- then I could loop through it.
+
+165
+00:06:47,609 --> 00:06:49,400
+I could say, for each student in that data,
+
+166
+00:06:49,400 --> 00:06:50,420
+I want to do something.
+
+167
+00:06:50,420 --> 00:06:52,366
+But here, I'm going to use try again.
+
+168
+00:06:52,366 --> 00:06:56,675
+And in particular, I'm going to try and take the data
+
+169
+00:06:56,675 --> 00:06:58,800
+and take out the first two elements-- the student's
+
+170
+00:06:58,800 --> 00:07:02,870
+first and last name-- and the grades
+
+171
+00:07:02,870 --> 00:07:07,050
+and convert that into two lists, a list of the students' name
+
+172
+00:07:07,050 --> 00:07:08,910
+and a list of the actual grades.
+
+173
+00:07:08,910 --> 00:07:11,260
+I'm going to do that unless I get an error.
+
+174
+00:07:11,260 --> 00:07:14,640
+And the error will be, if, in fact, I get an index error.
+
+175
+00:07:14,640 --> 00:07:15,170
+Right here.
+
+176
+00:07:15,170 --> 00:07:17,880
+Meaning I try to access something
+
+177
+00:07:17,880 --> 00:07:20,520
+that isn't available-- typically meaning
+
+178
+00:07:20,520 --> 00:07:22,310
+that are no grades for this student--
+
+179
+00:07:22,310 --> 00:07:26,830
+I'm going to instead get a list of the students' names
+
+180
+00:07:26,830 --> 00:07:29,370
+and just insert an empty list because I have
+
+181
+00:07:29,370 --> 00:07:31,200
+no grades for that student.
+
+182
+00:07:31,200 --> 00:07:32,730
+I'm giving you a lot of code.
+
+183
+00:07:32,730 --> 00:07:34,610
+Let me simply summarize this.
+
+184
+00:07:34,610 --> 00:07:37,020
+First part just like before.
+
+185
+00:07:37,020 --> 00:07:40,410
+But now, for the second part, as I process each of those data
+
+186
+00:07:40,410 --> 00:07:42,510
+points, I'm going to try and make sure
+
+187
+00:07:42,510 --> 00:07:44,210
+that, if there aren't any grades there,
+
+188
+00:07:44,210 --> 00:07:47,160
+I catch that error and substitute in an empty list
+
+189
+00:07:47,160 --> 00:07:49,410
+to deal with the case of a student that didn't show up
+
+190
+00:07:49,410 --> 00:07:50,940
+for the exam.
+
+191
+00:07:50,940 --> 00:07:53,170
+Let's see what happens.
+
+192
+00:07:53,170 --> 00:07:56,580
+So I've got now a version of that code.
+
+193
+00:07:56,580 --> 00:07:59,000
+Let me run it.
+
+194
+00:07:59,000 --> 00:08:03,680
+And again, I'm going to give it the same data, the same file
+
+195
+00:08:03,680 --> 00:08:13,475
+name, which is "Test Grades Data."
+
+196
+00:08:13,475 --> 00:08:16,140
+It seems to have run correctly, and let's see
+
+197
+00:08:16,140 --> 00:08:17,450
+what we have inside of there.
+
+198
+00:08:17,450 --> 00:08:20,425
+So first of all, let's see what data looks like.
+
+199
+00:08:20,425 --> 00:08:21,126
+Ah, that's good.
+
+200
+00:08:21,126 --> 00:08:22,750
+That's that same list that I loaded in.
+
+201
+00:08:22,750 --> 00:08:24,333
+And now, I will set up this new thing.
+
+202
+00:08:24,333 --> 00:08:28,580
+Let's look at what Grades Data looks like.
+
+203
+00:08:28,580 --> 00:08:29,670
+And that's nice.
+
+204
+00:08:29,670 --> 00:08:31,350
+And why is it nice?
+
+205
+00:08:31,350 --> 00:08:34,390
+Because Bill Gates didn't take the quiz.
+
+206
+00:08:34,390 --> 00:08:36,500
+I guess he was too busy doing something else,
+
+207
+00:08:36,500 --> 00:08:40,460
+and there's an empty list there showing that he has no grades.
+
+208
+00:08:40,460 --> 00:08:41,870
+Oh, but wait a minute.
+
+209
+00:08:41,870 --> 00:08:47,200
+Deadpool now has a last name, 25.
+
+210
+00:08:47,200 --> 00:08:50,160
+And Baron Von Richthofen has lost his grades,
+
+211
+00:08:50,160 --> 00:08:52,390
+but he now has a Grade of Richthofen.
+
+212
+00:08:52,390 --> 00:08:53,940
+What happened?
+
+213
+00:08:53,940 --> 00:08:56,430
+I was making an assumption.
+
+214
+00:08:56,430 --> 00:08:59,590
+And while I handle the case of no grades fine,
+
+215
+00:08:59,590 --> 00:09:03,260
+I'm assuming that everybody has two names.
+
+216
+00:09:03,260 --> 00:09:04,260
+OK.
+
+217
+00:09:04,260 --> 00:09:08,470
+The good news here is that I didn't throw an error.
+
+218
+00:09:08,470 --> 00:09:10,250
+The bad news is that what I produced
+
+219
+00:09:10,250 --> 00:09:13,030
+doesn't satisfy the properties I wanted,
+
+220
+00:09:13,030 --> 00:09:15,290
+so I need to go back and fix this.
+
+221
+00:09:15,290 --> 00:09:17,870
+So it works OK if it's in standard form including
+
+222
+00:09:17,870 --> 00:09:19,270
+now the case of no grades, but it
+
+223
+00:09:19,270 --> 00:09:22,660
+fails if the names aren't two parts long.
+
+224
+00:09:22,660 --> 00:09:24,840
+How would I fix that?
+
+225
+00:09:24,840 --> 00:09:28,140
+Well, just by adding in another way
+
+226
+00:09:28,140 --> 00:09:30,020
+of dealing with that try case.
+
+227
+00:09:30,020 --> 00:09:32,350
+So same structure with the code.
+
+228
+00:09:32,350 --> 00:09:34,410
+This is the same as before.
+
+229
+00:09:34,410 --> 00:09:36,360
+As before, I'm going to loop over the data.
+
+230
+00:09:36,360 --> 00:09:38,460
+But now, what I'm going to do is deal
+
+231
+00:09:38,460 --> 00:09:40,910
+with catching the error in a different way.
+
+232
+00:09:40,910 --> 00:09:44,040
+I'm going to pull out the name for the student,
+
+233
+00:09:44,040 --> 00:09:45,790
+and I'm going to treat it as everything
+
+234
+00:09:45,790 --> 00:09:50,350
+but the grade-- so everything but the last element.
+
+235
+00:09:50,350 --> 00:09:54,070
+I'm going to have the grades be that last element,
+
+236
+00:09:54,070 --> 00:09:56,990
+and I'm going to try and convert it into an integer.
+
+237
+00:09:56,990 --> 00:10:00,420
+But in the case that it can't-- because I don't have something
+
+238
+00:10:00,420 --> 00:10:04,850
+there-- I'm going to catch the value error and simply insert
+
+239
+00:10:04,850 --> 00:10:09,450
+an empty list in that case together with all
+
+240
+00:10:09,450 --> 00:10:13,370
+of the elements of the student.
+
+241
+00:10:13,370 --> 00:10:15,494
+So now, I'm going to handle the case of no grades,
+
+242
+00:10:15,494 --> 00:10:16,910
+but it's going to allow me to deal
+
+243
+00:10:16,910 --> 00:10:19,980
+with the case of having multiple names-- either one name or more
+
+244
+00:10:19,980 --> 00:10:21,610
+than two names.
+
+245
+00:10:21,610 --> 00:10:23,010
+Key thing to see here is I'm just
+
+246
+00:10:23,010 --> 00:10:26,640
+letting the exception handle the special case.
+
+247
+00:10:26,640 --> 00:10:29,150
+And if we go try this one, what we
+
+248
+00:10:29,150 --> 00:10:41,120
+will see-- as I run it and I type in the name of the file--
+
+249
+00:10:41,120 --> 00:10:44,670
+it ran correctly or it ran to completion, there is data.
+
+250
+00:10:44,670 --> 00:10:47,550
+And now, Grades Data.
+
+251
+00:10:47,550 --> 00:10:49,470
+Ah, very nice.
+
+252
+00:10:49,470 --> 00:10:52,000
+It has each entry being two lists
+
+253
+00:10:52,000 --> 00:10:54,640
+or a list of two lists, a list of the names,
+
+254
+00:10:54,640 --> 00:10:56,050
+a list of the grades.
+
+255
+00:10:56,050 --> 00:10:58,050
+And notice that it's done Bill Gates correctly,
+
+256
+00:10:58,050 --> 00:10:59,180
+having no grades.
+
+257
+00:10:59,180 --> 00:11:00,970
+It's done Deadpool correctly knowing
+
+258
+00:11:00,970 --> 00:11:04,460
+that that now is only a list of one element with a grade.
+
+259
+00:11:04,460 --> 00:11:06,730
+And it's done Baron Von Richthofen correctly,
+
+260
+00:11:06,730 --> 00:11:09,720
+a list now of three names and a grade.
+
+261
+00:11:09,720 --> 00:11:12,270
+The fact they did the grades right is really irrelevant.
+
+262
+00:11:12,270 --> 00:11:13,930
+What's more important is notice how
+
+263
+00:11:13,930 --> 00:11:18,140
+I used the exception handling to deal with this.
+
+264
+00:11:18,140 --> 00:11:22,560
+In this case, using the fact that, when I try and do a cast,
+
+265
+00:11:22,560 --> 00:11:25,780
+it will throw a value error if, in fact, the last element
+
+266
+00:11:25,780 --> 00:11:27,090
+is not a number.
+
+267
+00:11:27,090 --> 00:11:29,080
+And in that case, it changes what
+
+268
+00:11:29,080 --> 00:11:31,870
+I'd use to pull up the name now knowing that everything
+
+269
+00:11:31,870 --> 00:11:34,210
+in the student was a name, which is why I used
+
+270
+00:11:34,210 --> 00:11:37,250
+a copy of the list here to get all of the names
+
+271
+00:11:37,250 --> 00:11:40,310
+and why I inserted an empty list there
+
+272
+00:11:40,310 --> 00:11:43,500
+to represent the fact that I had no grades.
+

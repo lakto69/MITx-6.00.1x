@@ -1,0 +1,1228 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,970
+I want to show you one somewhat more explicit example
+
+2
+00:00:03,970 --> 00:00:05,510
+of doing debugging.
+
+3
+00:00:05,510 --> 00:00:08,500
+And I want to do this to highlight this idea of treating
+
+4
+00:00:08,500 --> 00:00:10,402
+debugging as a search problem.
+
+5
+00:00:10,402 --> 00:00:12,360
+We've already talked about it, but basically, I
+
+6
+00:00:12,360 --> 00:00:15,391
+want to look for an explanation for the incorrect behavior.
+
+7
+00:00:15,391 --> 00:00:16,890
+And I'm going to do that, as I said,
+
+8
+00:00:16,890 --> 00:00:20,330
+by looking at the available data, both the correct cases
+
+9
+00:00:20,330 --> 00:00:22,120
+and the incorrect ones, and trying
+
+10
+00:00:22,120 --> 00:00:24,700
+to come up with a hypothesis about why
+
+11
+00:00:24,700 --> 00:00:26,200
+I'm seeing that behavior-- something
+
+12
+00:00:26,200 --> 00:00:27,900
+consistent with the data.
+
+13
+00:00:27,900 --> 00:00:30,550
+Then design and run a repeatable experiment
+
+14
+00:00:30,550 --> 00:00:32,910
+that has the potential to refute the hypothesis.
+
+15
+00:00:32,910 --> 00:00:35,030
+This is really just a scientific method.
+
+16
+00:00:35,030 --> 00:00:37,500
+And keep track of that until I narrow down
+
+17
+00:00:37,500 --> 00:00:39,430
+the range of hypotheses and I find
+
+18
+00:00:39,430 --> 00:00:41,890
+where the bug or bugs, cause maybe more than one
+
+19
+00:00:41,890 --> 00:00:44,300
+actually exists.
+
+20
+00:00:44,300 --> 00:00:48,400
+One of the ways to do this is to do it literally by search.
+
+21
+00:00:48,400 --> 00:00:52,010
+And binary search is a really powerful tool for doing that.
+
+22
+00:00:52,010 --> 00:00:54,757
+So what I'm going to do is give you a piece of buggy code.
+
+23
+00:00:54,757 --> 00:00:56,090
+So when you see it, don't panic.
+
+24
+00:00:56,090 --> 00:00:57,381
+I know there are bugs in there.
+
+25
+00:00:57,381 --> 00:00:59,110
+I put them in there deliberately.
+
+26
+00:00:59,110 --> 00:01:02,060
+And what I want to do is insert a set of print statements
+
+27
+00:01:02,060 --> 00:01:05,200
+to help me narrow down by bisection search
+
+28
+00:01:05,200 --> 00:01:07,520
+where are the bugs or bugs that may be
+
+29
+00:01:07,520 --> 00:01:09,419
+causing this kind of behavior.
+
+30
+00:01:09,419 --> 00:01:11,460
+And that's going to give you a way of seeing both
+
+31
+00:01:11,460 --> 00:01:14,530
+how print statements help as well as how search is going
+
+32
+00:01:14,530 --> 00:01:17,360
+to help me find those bugs.
+
+33
+00:01:17,360 --> 00:01:19,595
+So here's two functions.
+
+34
+00:01:19,595 --> 00:01:22,940
+They're attempting to tell me whether something
+
+35
+00:01:22,940 --> 00:01:24,680
+is a palindrome or not.
+
+36
+00:01:24,680 --> 00:01:27,037
+Similar to what I did earlier, but here I'm
+
+37
+00:01:27,037 --> 00:01:28,745
+going to actually have a little function,
+
+38
+00:01:28,745 --> 00:01:30,820
+it's called Silly, deliberately, that's
+
+39
+00:01:30,820 --> 00:01:32,070
+going to take in a number.
+
+40
+00:01:32,070 --> 00:01:34,780
+And I'm going to type in a set of characters
+
+41
+00:01:34,780 --> 00:01:36,660
+up to that number of characters.
+
+42
+00:01:36,660 --> 00:01:39,940
+Use that to pull together a list, as you can see,
+
+43
+00:01:39,940 --> 00:01:42,890
+because I'm going to build a list here in result.
+
+44
+00:01:42,890 --> 00:01:46,560
+And then I'm going to run that through isPal which
+
+45
+00:01:46,560 --> 00:01:49,660
+is going to basically take the list,
+
+46
+00:01:49,660 --> 00:01:53,180
+take a reversed version of the list, and then compare them.
+
+47
+00:01:53,180 --> 00:01:54,835
+Because if they're the same, that's
+
+48
+00:01:54,835 --> 00:01:56,960
+another way of testing if it's a palindrome or not.
+
+49
+00:01:56,960 --> 00:01:58,668
+That's different than what we did before,
+
+50
+00:01:58,668 --> 00:02:00,570
+but it's a nice way to test a palindrome.
+
+51
+00:02:00,570 --> 00:02:03,028
+Whether this is the best way to do it or not, I don't care.
+
+52
+00:02:03,028 --> 00:02:05,550
+What I want to do is use this as a debugging tool.
+
+53
+00:02:05,550 --> 00:02:08,259
+So with that in mind, I've got a version of my buggy code
+
+54
+00:02:08,259 --> 00:02:08,789
+over here.
+
+55
+00:02:08,789 --> 00:02:11,550
+I'm going to load it into my machine.
+
+56
+00:02:11,550 --> 00:02:13,570
+And I'm going to run Silly a couple of times
+
+57
+00:02:13,570 --> 00:02:15,670
+just to test it out.
+
+58
+00:02:15,670 --> 00:02:21,830
+So I'm going to run Silly with 5 and I'm
+
+59
+00:02:21,830 --> 00:02:25,792
+going to enter a, b, c, b, a.
+
+60
+00:02:25,792 --> 00:02:27,490
+And it says it's a palindrome.
+
+61
+00:02:27,490 --> 00:02:28,160
+That's good.
+
+62
+00:02:28,160 --> 00:02:29,060
+It was.
+
+63
+00:02:29,060 --> 00:02:30,710
+That's great.
+
+64
+00:02:30,710 --> 00:02:34,950
+Let me do Silly again with 10 and I'm
+
+65
+00:02:34,950 --> 00:02:43,910
+going to enter p, a, l, i, n, n, i, l, a, p.
+
+66
+00:02:43,910 --> 00:02:46,620
+And correctly, it says it's a palindrome.
+
+67
+00:02:46,620 --> 00:02:49,446
+Now if I'm in a hurry, I say great, this works,
+
+68
+00:02:49,446 --> 00:02:50,820
+but I've only tested it on things
+
+69
+00:02:50,820 --> 00:02:52,360
+that actually are palindromes.
+
+70
+00:02:52,360 --> 00:02:55,000
+So let's try it on something that isn't a palindrome just
+
+71
+00:02:55,000 --> 00:02:57,670
+to make sure that I haven't missed something here.
+
+72
+00:02:57,670 --> 00:03:01,072
+So I'm going to do a really simple case Silly of 2.
+
+73
+00:03:01,072 --> 00:03:03,580
+And I give it a and b.
+
+74
+00:03:03,580 --> 00:03:05,880
+And it tells me it's a palindrome.
+
+75
+00:03:05,880 --> 00:03:07,170
+Oh crap.
+
+76
+00:03:07,170 --> 00:03:08,610
+I got a buck.
+
+77
+00:03:08,610 --> 00:03:09,650
+OK?
+
+78
+00:03:09,650 --> 00:03:12,480
+Now I want to get into debugging mode.
+
+79
+00:03:12,480 --> 00:03:16,660
+So I need to try and figure out where is this error occurring.
+
+80
+00:03:16,660 --> 00:03:18,720
+So I've run it as I said here.
+
+81
+00:03:18,720 --> 00:03:20,410
+It worked on this case.
+
+82
+00:03:20,410 --> 00:03:22,050
+It worked on this case.
+
+83
+00:03:22,050 --> 00:03:26,810
+But it says that it was in fact a palindrome which is wrong.
+
+84
+00:03:26,810 --> 00:03:29,750
+So I'm going to pick a spot halfway through the code
+
+85
+00:03:29,750 --> 00:03:33,110
+and simply look at the intermediate values.
+
+86
+00:03:33,110 --> 00:03:37,220
+And so in particular, I'm going to insert a print statement
+
+87
+00:03:37,220 --> 00:03:40,106
+right here, right at that spot.
+
+88
+00:03:40,106 --> 00:03:41,480
+And that print statement is going
+
+89
+00:03:41,480 --> 00:03:44,720
+to look at the value of result before I ever actually
+
+90
+00:03:44,720 --> 00:03:45,520
+called isPal.
+
+91
+00:03:45,520 --> 00:03:47,200
+I want to check to see am I handing
+
+92
+00:03:47,200 --> 00:03:50,010
+into the thing testing for palindromes something
+
+93
+00:03:50,010 --> 00:03:51,530
+of the right form.
+
+94
+00:03:51,530 --> 00:03:54,510
+So I have a version of the code like that over here.
+
+95
+00:03:54,510 --> 00:03:56,720
+And I'm going to call it.
+
+96
+00:03:56,720 --> 00:03:58,730
+And I'm going to run Silly again.
+
+97
+00:03:58,730 --> 00:04:01,370
+And I want to see what happens when I print out
+
+98
+00:04:01,370 --> 00:04:03,030
+intermediate results.
+
+99
+00:04:03,030 --> 00:04:08,720
+And I give it a and b and I have a problem.
+
+100
+00:04:08,720 --> 00:04:09,890
+What's the problem?
+
+101
+00:04:09,890 --> 00:04:12,560
+Well, I would have expected at this point
+
+102
+00:04:12,560 --> 00:04:14,950
+that I should have had the list of a and b,
+
+103
+00:04:14,950 --> 00:04:18,541
+but when I ran the code, I just got b.
+
+104
+00:04:18,541 --> 00:04:23,140
+Now, because of binary search, I know that at least one bug must
+
+105
+00:04:23,140 --> 00:04:25,770
+be present earlier in the code.
+
+106
+00:04:25,770 --> 00:04:30,012
+So I want to add a second print in, this time, inside the loop
+
+107
+00:04:30,012 --> 00:04:30,970
+to see what's going on.
+
+108
+00:04:30,970 --> 00:04:33,447
+And when I say inside the loop, I
+
+109
+00:04:33,447 --> 00:04:35,280
+was looking after I'd gone through this loop
+
+110
+00:04:35,280 --> 00:04:38,690
+and I know that the error here says that I'm not
+
+111
+00:04:38,690 --> 00:04:40,177
+getting the right kind of list.
+
+112
+00:04:40,177 --> 00:04:41,760
+I want to do something inside the loop
+
+113
+00:04:41,760 --> 00:04:44,960
+to see if I can figure out what's happening there.
+
+114
+00:04:44,960 --> 00:04:49,390
+So let me now put a print statement inside the loop
+
+115
+00:04:49,390 --> 00:04:53,100
+and let's see what happens if we run it.
+
+116
+00:04:53,100 --> 00:04:55,070
+So now I've got a new version of the code.
+
+117
+00:04:55,070 --> 00:04:56,980
+I'm going to print out the result each time
+
+118
+00:04:56,980 --> 00:04:59,190
+through as I do it.
+
+119
+00:04:59,190 --> 00:05:00,360
+And I'm going to run that.
+
+120
+00:05:00,360 --> 00:05:05,380
+I'm going to go over and call Silly again, 2 and I give it a
+
+121
+00:05:05,380 --> 00:05:08,010
+and it prints out the list a, and I give it b
+
+122
+00:05:08,010 --> 00:05:10,876
+and it prints out the list b.
+
+123
+00:05:10,876 --> 00:05:12,170
+Ah!
+
+124
+00:05:12,170 --> 00:05:14,240
+That's telling me something valuable.
+
+125
+00:05:14,240 --> 00:05:16,170
+It's telling me that each time through, I'm
+
+126
+00:05:16,170 --> 00:05:20,010
+just putting into result just a single element.
+
+127
+00:05:20,010 --> 00:05:25,010
+So append, somehow, was not doing what I expected it to do.
+
+128
+00:05:25,010 --> 00:05:27,330
+And that suggests that the result is not
+
+129
+00:05:27,330 --> 00:05:29,904
+keeping all of the elements.
+
+130
+00:05:29,904 --> 00:05:31,820
+And in fact, I can probably already figure out
+
+131
+00:05:31,820 --> 00:05:32,850
+what the problem is.
+
+132
+00:05:32,850 --> 00:05:35,810
+The problem is that I'm initializing result
+
+133
+00:05:35,810 --> 00:05:38,710
+inside the loop and I really want to initialize it
+
+134
+00:05:38,710 --> 00:05:40,170
+outside the loop.
+
+135
+00:05:40,170 --> 00:05:45,430
+If I go back to my code, you can see right here every time
+
+136
+00:05:45,430 --> 00:05:47,960
+through the loop, I'm setting result back to an empty list
+
+137
+00:05:47,960 --> 00:05:50,460
+and then just putting the next element into it.
+
+138
+00:05:50,460 --> 00:05:53,750
+I really want to set up result outside the list
+
+139
+00:05:53,750 --> 00:05:55,820
+and then see if I can append.
+
+140
+00:05:55,820 --> 00:05:57,980
+I use this as an example because you've probably
+
+141
+00:05:57,980 --> 00:05:58,850
+made this mistake.
+
+142
+00:05:58,850 --> 00:06:00,660
+It's an easy one to do.
+
+143
+00:06:00,660 --> 00:06:08,670
+So let's now move result, as I said, from this position
+
+144
+00:06:08,670 --> 00:06:13,415
+and put it at that position.
+
+145
+00:06:13,415 --> 00:06:17,100
+And with that in mind, here's a version
+
+146
+00:06:17,100 --> 00:06:19,910
+of that where I've moved that initialisation.
+
+147
+00:06:19,910 --> 00:06:22,010
+I've still got the print on the inside.
+
+148
+00:06:22,010 --> 00:06:23,950
+Let's run it.
+
+149
+00:06:23,950 --> 00:06:28,550
+And when I test Silly with 2 and I give it a,
+
+150
+00:06:28,550 --> 00:06:31,130
+it says I got the list a, rather,
+
+151
+00:06:31,130 --> 00:06:33,700
+and I give it b-- oh good.
+
+152
+00:06:33,700 --> 00:06:37,120
+I'm now at least getting the list in the right form.
+
+153
+00:06:37,120 --> 00:06:37,760
+That's good.
+
+154
+00:06:37,760 --> 00:06:38,560
+That's encouraging.
+
+155
+00:06:38,560 --> 00:06:41,010
+It now tells me that the list is being delivered
+
+156
+00:06:41,010 --> 00:06:44,820
+in the right form, but I'm still getting an incorrect answer.
+
+157
+00:06:44,820 --> 00:06:48,100
+And that tells me that I still have another bug.
+
+158
+00:06:48,100 --> 00:06:50,651
+So the data structure is being properly set up,
+
+159
+00:06:50,651 --> 00:06:51,650
+but there's another bug.
+
+160
+00:06:51,650 --> 00:06:54,730
+And that's really important.
+
+161
+00:06:54,730 --> 00:06:57,330
+It would have been really easy to say, I'm done, but I'm not.
+
+162
+00:06:57,330 --> 00:06:59,240
+There may be more than one problem.
+
+163
+00:06:59,240 --> 00:07:02,090
+And this suggests that the second or maybe third bug
+
+164
+00:07:02,090 --> 00:07:04,780
+must lie somewhere below the print statement.
+
+165
+00:07:04,780 --> 00:07:06,700
+So let's go look at isPal.
+
+166
+00:07:06,700 --> 00:07:09,280
+As before, let's pick a point in the middle of the code,
+
+167
+00:07:09,280 --> 00:07:11,640
+add a print statement, and see what we can do
+
+168
+00:07:11,640 --> 00:07:13,140
+in terms of trying to find it.
+
+169
+00:07:13,140 --> 00:07:15,306
+And I'm going to remove that earlier print statement
+
+170
+00:07:15,306 --> 00:07:16,410
+because I don't need it.
+
+171
+00:07:16,410 --> 00:07:19,740
+So now, up inside of isPal, I'm going to add a print statement.
+
+172
+00:07:19,740 --> 00:07:23,410
+And I'll remind you, I need to decide what do I want to test.
+
+173
+00:07:23,410 --> 00:07:26,350
+So here, what I'm trying to do, as you know,
+
+174
+00:07:26,350 --> 00:07:31,070
+is take x which should be a list of these characters.
+
+175
+00:07:31,070 --> 00:07:32,970
+I'm creating a temporary version of that
+
+176
+00:07:32,970 --> 00:07:34,700
+and I'm trying to reverse it.
+
+177
+00:07:34,700 --> 00:07:39,790
+So I'd like to check at this point is temp different from x?
+
+178
+00:07:39,790 --> 00:07:42,400
+It should be a reversed version of that.
+
+179
+00:07:42,400 --> 00:07:42,900
+All right.
+
+180
+00:07:42,900 --> 00:07:44,770
+I have a version of that on my machine.
+
+181
+00:07:44,770 --> 00:07:49,240
+Let's just load it and run it and see what happens.
+
+182
+00:07:49,240 --> 00:07:54,060
+And as before, I'm going to do Silly with 2 and I give it a
+
+183
+00:07:54,060 --> 00:07:56,970
+and I give it b.
+
+184
+00:07:56,970 --> 00:07:58,800
+Oh!
+
+185
+00:07:58,800 --> 00:08:00,470
+That's interesting.
+
+186
+00:08:00,470 --> 00:08:02,484
+I was trying to reverse the list.
+
+187
+00:08:02,484 --> 00:08:03,650
+And what was I testing here?
+
+188
+00:08:03,650 --> 00:08:05,790
+I was saying what is the structure of temp
+
+189
+00:08:05,790 --> 00:08:07,610
+and what is the structure of x?
+
+190
+00:08:07,610 --> 00:08:10,770
+I would have expected them to be reversed one from the other,
+
+191
+00:08:10,770 --> 00:08:12,390
+and they're not.
+
+192
+00:08:12,390 --> 00:08:15,090
+So it should have been that x was a b
+
+193
+00:08:15,090 --> 00:08:18,370
+and temp should have been b a, but they both have a b.
+
+194
+00:08:18,370 --> 00:08:21,100
+So I've got a problem and it must be happening
+
+195
+00:08:21,100 --> 00:08:23,440
+before this point in the code.
+
+196
+00:08:23,440 --> 00:08:26,120
+Because of when I get here, I have the incorrect structure.
+
+197
+00:08:26,120 --> 00:08:27,750
+So let's add another print statement
+
+198
+00:08:27,750 --> 00:08:29,930
+a little earlier in the code.
+
+199
+00:08:29,930 --> 00:08:31,430
+And now I'll put a label on it so I
+
+200
+00:08:31,430 --> 00:08:34,070
+can see where I am because I got multiple print statements.
+
+201
+00:08:34,070 --> 00:08:37,300
+So I'm going to now have the one I had before,
+
+202
+00:08:37,300 --> 00:08:38,425
+which is after the reverse.
+
+203
+00:08:38,425 --> 00:08:40,450
+And I'm going to have the one that
+
+204
+00:08:40,450 --> 00:08:45,030
+was going to do it before the reverse to see what's going on.
+
+205
+00:08:45,030 --> 00:08:45,530
+OK?
+
+206
+00:08:45,530 --> 00:08:48,540
+With that in mind, I'm going to come over and try this.
+
+207
+00:08:48,540 --> 00:08:50,720
+I've got now a piece of code with those two print
+
+208
+00:08:50,720 --> 00:08:51,546
+statements.
+
+209
+00:08:51,546 --> 00:08:59,886
+And when I run it and I run my Silly example a and b.
+
+210
+00:08:59,886 --> 00:09:01,630
+Hm.
+
+211
+00:09:01,630 --> 00:09:03,830
+So it wasn't reversing.
+
+212
+00:09:03,830 --> 00:09:07,570
+Even if temp started off as the list x, I printed it out,
+
+213
+00:09:07,570 --> 00:09:08,720
+it was in the right form.
+
+214
+00:09:08,720 --> 00:09:11,560
+After the reverse, it's not.
+
+215
+00:09:11,560 --> 00:09:13,870
+So temp has the same value before
+
+216
+00:09:13,870 --> 00:09:15,840
+and after the call to reverse.
+
+217
+00:09:15,840 --> 00:09:18,470
+And if I look at the code, I can see the bug.
+
+218
+00:09:18,470 --> 00:09:20,060
+And it's a standard one.
+
+219
+00:09:20,060 --> 00:09:23,830
+I forgot to actually call the procedure.
+
+220
+00:09:23,830 --> 00:09:26,630
+I just need an open and close paren.
+
+221
+00:09:26,630 --> 00:09:27,830
+OK.
+
+222
+00:09:27,830 --> 00:09:30,740
+Let's try that and see if that helps
+
+223
+00:09:30,740 --> 00:09:32,450
+what we were trying to do.
+
+224
+00:09:32,450 --> 00:09:35,600
+So now I've got a version of that and I call it.
+
+225
+00:09:35,600 --> 00:09:43,340
+And I run my Silly example with 2 and I give it a
+
+226
+00:09:43,340 --> 00:09:45,420
+and I give it b.
+
+227
+00:09:45,420 --> 00:09:46,280
+Ah!
+
+228
+00:09:46,280 --> 00:09:49,470
+Some progress, but not quite what I wanted.
+
+229
+00:09:49,470 --> 00:09:53,580
+Because now temp and x were the same before hand, now
+
+230
+00:09:53,580 --> 00:09:56,770
+both of them are reversed.
+
+231
+00:09:56,770 --> 00:09:57,700
+Crap.
+
+232
+00:09:57,700 --> 00:09:58,530
+What happened?
+
+233
+00:09:58,530 --> 00:10:02,350
+I got a reversal, but I got both of them reversed.
+
+234
+00:10:02,350 --> 00:10:08,250
+So putting that in lead to having both of them reversed.
+
+235
+00:10:08,250 --> 00:10:12,300
+And now, we've simply narrowed it down to a single line.
+
+236
+00:10:12,300 --> 00:10:17,980
+The error must be in that line where I did the call.
+
+237
+00:10:17,980 --> 00:10:20,250
+And I can actually figure out what it is.
+
+238
+00:10:20,250 --> 00:10:23,810
+The problem is we've got an aliasing bug.
+
+239
+00:10:23,810 --> 00:10:27,540
+Reversing temp has caused x to also be reversed
+
+240
+00:10:27,540 --> 00:10:31,420
+and that's because they're referring to the same object.
+
+241
+00:10:31,420 --> 00:10:33,500
+And I can see that in the code.
+
+242
+00:10:33,500 --> 00:10:34,120
+What did I do?
+
+243
+00:10:34,120 --> 00:10:36,410
+I said let temp equal x.
+
+244
+00:10:36,410 --> 00:10:37,470
+Oh, yeah.
+
+245
+00:10:37,470 --> 00:10:40,640
+That's pointing back to exactly the same structure as x.
+
+246
+00:10:40,640 --> 00:10:43,750
+So when I reverse temp, I reverse x.
+
+247
+00:10:43,750 --> 00:10:45,380
+I've got an aliasing problem.
+
+248
+00:10:45,380 --> 00:10:46,970
+There's an easy fix.
+
+249
+00:10:46,970 --> 00:10:49,800
+And that easy fix is to make a copy
+
+250
+00:10:49,800 --> 00:10:53,060
+to clone x before I do temp.
+
+251
+00:10:53,060 --> 00:10:57,440
+And with that last change, hopefully I'm finally done.
+
+252
+00:10:57,440 --> 00:11:05,070
+And if I do that, now I run it and I run Silly with 2
+
+253
+00:11:05,070 --> 00:11:08,120
+and I give it a and I give it b.
+
+254
+00:11:08,120 --> 00:11:08,940
+Ah!
+
+255
+00:11:08,940 --> 00:11:10,090
+Finally!
+
+256
+00:11:10,090 --> 00:11:13,440
+Now I can see that after the reverse temp is reversed,
+
+257
+00:11:13,440 --> 00:11:14,540
+x is not.
+
+258
+00:11:14,540 --> 00:11:17,350
+And it says in this case, it's not a palindrome.
+
+259
+00:11:17,350 --> 00:11:18,860
+So it took me a while.
+
+260
+00:11:18,860 --> 00:11:21,044
+I had multiple bugs, but I found them.
+
+261
+00:11:21,044 --> 00:11:22,960
+And the message I want you to take out of this
+
+262
+00:11:22,960 --> 00:11:25,430
+is that using that binary search really
+
+263
+00:11:25,430 --> 00:11:27,820
+helped me isolate where those bugs were
+
+264
+00:11:27,820 --> 00:11:30,720
+by thinking about what should I expect at this point, what
+
+265
+00:11:30,720 --> 00:11:32,930
+do I actually see at this point, and what does it
+
+266
+00:11:32,930 --> 00:11:37,390
+tell me about that hidden bug that I wasn't able to spot.
+
+267
+00:11:37,390 --> 00:11:40,520
+So at this point, I should actually
+
+268
+00:11:40,520 --> 00:11:42,800
+go back and check that all our other test cases still
+
+269
+00:11:42,800 --> 00:11:43,930
+work properly.
+
+270
+00:11:43,930 --> 00:11:46,090
+I'm not going to do that, but that is actually
+
+271
+00:11:46,090 --> 00:11:48,660
+part of the good testing pattern just
+
+272
+00:11:48,660 --> 00:11:51,460
+to make sure that having fixed this set of bugs,
+
+273
+00:11:51,460 --> 00:11:54,280
+I don't still have some hidden bug still showing up somewhere
+
+274
+00:11:54,280 --> 00:11:57,690
+or that I haven't accidentally introduced a new bug into some
+
+275
+00:11:57,690 --> 00:12:00,950
+of those other test cases.
+
+276
+00:12:00,950 --> 00:12:04,460
+So a last set of just pragmatic hits.
+
+277
+00:12:04,460 --> 00:12:07,070
+Look for the usual suspects.
+
+278
+00:12:07,070 --> 00:12:09,950
+What are the standard places where you might make an error?
+
+279
+00:12:09,950 --> 00:12:12,434
+Aliasing being an obvious one.
+
+280
+00:12:12,434 --> 00:12:14,600
+I found out by looking at when I reversed something,
+
+281
+00:12:14,600 --> 00:12:16,260
+does it reverse everything or just
+
+282
+00:12:16,260 --> 00:12:18,790
+the thing I was trying to reverse?
+
+283
+00:12:18,790 --> 00:12:21,360
+Secondly, ask why the code is doing what it is,
+
+284
+00:12:21,360 --> 00:12:24,530
+not why it's not doing what you want.
+
+285
+00:12:24,530 --> 00:12:26,230
+The latter is because you've got a bug.
+
+286
+00:12:26,230 --> 00:12:27,964
+Asking why the code is doing it is
+
+287
+00:12:27,964 --> 00:12:29,380
+going to be helpful in helping you
+
+288
+00:12:29,380 --> 00:12:31,870
+isolate where the bug might be.
+
+289
+00:12:31,870 --> 00:12:33,620
+Third, the bug is probably not where
+
+290
+00:12:33,620 --> 00:12:35,950
+you think it is so try and eliminate locations.
+
+291
+00:12:35,950 --> 00:12:38,130
+That's where the binary search, the bisection search
+
+292
+00:12:38,130 --> 00:12:39,650
+really helps.
+
+293
+00:12:39,650 --> 00:12:42,210
+As we've already said, try and explain the problem to someone
+
+294
+00:12:42,210 --> 00:12:44,650
+else, including a rubber duckie.
+
+295
+00:12:44,650 --> 00:12:47,120
+Don't always believe the documentation.
+
+296
+00:12:47,120 --> 00:12:48,940
+It may say, here is what I'm expecting,
+
+297
+00:12:48,940 --> 00:12:50,870
+but it may not actually explain it.
+
+298
+00:12:50,870 --> 00:12:53,620
+So if I'm still having a hard time finding the bug,
+
+299
+00:12:53,620 --> 00:12:56,840
+ignore the documentation for a second and try and isolate in.
+
+300
+00:12:56,840 --> 00:12:59,180
+And finally, if you've been at it for a while
+
+301
+00:12:59,180 --> 00:13:01,190
+and you're not getting there, take a break
+
+302
+00:13:01,190 --> 00:13:02,820
+and come back later.
+
+303
+00:13:02,820 --> 00:13:04,727
+A fresh look can often help you suddenly
+
+304
+00:13:04,727 --> 00:13:06,310
+spot a problem that you weren't seeing
+
+305
+00:13:06,310 --> 00:13:08,410
+because you had hidden assumptions about what
+
+306
+00:13:08,410 --> 00:13:10,520
+you were looking for.
+
