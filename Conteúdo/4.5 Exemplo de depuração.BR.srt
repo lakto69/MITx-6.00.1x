@@ -1,0 +1,1227 @@
+0 0
+00:00:00,000 --> 00:00:00.500
+...
+
+1
+00:00:00,500 --> 00:00:03.970
+Eu quero mostrar um exemplo um pouco mais explícito
+
+2
+00:00:03,970 --> 00:00:05.510
+de fazer depuração.
+
+3
+00:00:05,510 --> 00:00:08.500
+E eu quero fazer isso para destacar essa ideia de tratar
+
+4
+00:00:08,500 --> 00:00:10.402
+depuração como um problema de pesquisa.
+
+5
+00:00:10.402 --> 00:00:12.360
+Já falamos sobre isso, mas basicamente, eu
+
+6
+00:00:12,360 --> 00:00:15.391
+deseja procurar uma explicação para o comportamento incorreto.
+
+7
+00:00:15,391 --> 00:00:16.890
+E eu vou fazer isso, como eu disse,
+
+8
+00:00:16,890 --> 00:00:20.330
+olhando os dados disponíveis, os casos corretos
+
+9
+00:00:20,330 --> 00:00:22.120
+e os incorretos, e tentando
+
+10
+00:00:22,120 --> 00:00:24.700
+para chegar a uma hipótese sobre o porquê
+
+11
+00:00:24,700 --> 00:00:26.200
+Estou vendo esse comportamento - algo
+
+12
+00:00:26,200 --> 00:00:27.900
+consistente com os dados.
+
+13
+00:00:27,900 --> 00:00:30.550
+Em seguida, projete e execute um experimento repetível
+
+14
+00:00:30,550 --> 00:00:32.910
+que tem o potencial de refutar a hipótese.
+
+15
+00:00:32,910 --> 00:00:35.030
+Este é realmente apenas um método científico.
+
+16
+00:00:35,030 --> 00:00:37.500
+E acompanhe isso até eu diminuir
+
+17
+00:00:37,500 --> 00:00:39.430
+o leque de hipóteses e acho
+
+18
+00:00:39,430 --> 00:00:41.890
+onde o bug ou bugs, talvez causem mais de um
+
+19
+00:00:41,890 --> 00:00:44.300
+realmente existe.
+
+20
+00:00:44,300 --> 00:00:48.400
+Uma das maneiras de fazer isso é fazê-lo literalmente por pesquisa.
+
+21
+00:00:48,400 --> 00:00:52.010
+E a pesquisa binária é uma ferramenta realmente poderosa para fazer isso.
+
+22
+00:00:52,010 --> 00:00:54.757
+Então, o que vou fazer é fornecer um código de buggy.
+
+23
+00:00:54,757 --> 00:00:56.090
+Então, quando você vir, não entre em pânico.
+
+24
+00:00:56,090 --> 00:00:57.381
+Eu sei que há erros lá.
+
+25
+00:00:57,381 --> 00:00:59.110
+Coloquei-os lá deliberadamente.
+
+26
+00:00:59,110 --> 00:01:02.060
+E o que eu quero fazer é inserir um conjunto de instruções de impressão
+
+27
+00:01:02,060 --> 00:01:05.200
+para me ajudar a restringir por pesquisa de bissecção
+
+28.
+00:01:05,200 --> 00:01:07.520
+onde estão os bugs ou bugs que podem estar
+
+29
+00:01:07,520 --> 00:01:09.419
+causando esse tipo de comportamento.
+
+30
+00:01:09,419 --> 00:01:11.460
+E isso lhe dará uma maneira de ver os dois
+
+31
+00:01:11,460 --> 00:01:14.530
+como as instruções de impressão ajudam, bem como o andamento da pesquisa
+
+32.
+00:01:14,530 --> 00:01:17.360
+para me ajudar a encontrar esses bugs.
+
+33
+00:01:17,360 --> 00:01:19.595
+Então, aqui estão duas funções.
+
+34
+00:01:19,595 --> 00:01:22.940
+Eles estão tentando me dizer se algo
+
+35
+00:01:22,940 --> 00:01:24.680
+é um palíndromo ou não.
+
+36.
+00:01:24,680 --> 00:01:27.037
+Semelhante ao que fiz anteriormente, mas aqui estou
+
+37.
+00:01:27,037 --> 00:01:28.745
+vai realmente ter uma pequena função,
+
+38.
+00:01:28,745 --> 00:01:30.820
+é chamado de bobo, deliberadamente, isso é
+
+39.
+00:01:30,820 --> 00:01:32.070
+vai receber um número.
+
+40.
+00:01:32,070 --> 00:01:34.780
+E eu vou digitar um conjunto de caracteres
+
+41.
+00:01:34,780 --> 00:01:36.660
+até esse número de caracteres.
+
+42.
+00:01:36,660 --> 00:01:39.940
+Use isso para reunir uma lista, como você pode ver,
+
+43
+00:01:39,940 --> 00:01:42.890
+porque eu vou construir uma lista aqui no resultado.
+
+44
+00:01:42,890 --> 00:01:46.560
+E então eu vou passar por isPal que
+
+45
+00:01:46,560 --> 00:01:49.660
+vai basicamente pegar a lista,
+
+46.
+00:01:49,660 --> 00:01:53.180
+pegue uma versão invertida da lista e compare-a.
+
+47
+00:01:53,180 --> 00:01:54.835
+Porque se eles são iguais, isso é
+
+48.
+00:01:54,835 --> 00:01:56.960
+outra maneira de testar se é um palíndromo ou não.
+
+49.
+00:01:56,960 --> 00:01:58.668
+Isso é diferente do que fizemos antes,
+
+50.
+00:01:58,668 --> 00:02:00.570
+mas é uma boa maneira de testar um palíndromo.
+
+51
+00:02:00,570 --> 00:02:03.028
+Se é a melhor maneira de fazê-lo ou não, não me importo.
+
+52
+00:02:03,028 --> 00:02:05.550
+O que eu quero fazer é usar isso como uma ferramenta de depuração.
+
+53
+00:02:05,550 --> 00:02:08.259
+Então, com isso em mente, eu tenho uma versão do meu código de buggy
+
+54
+00:02:08,259 --> 00:02:08.789
+por aqui.
+
+55
+00:02:08,789 --> 00:02:11.550
+Vou carregá-lo na minha máquina.
+
+56.
+00:02:11,550 --> 00:02:13.570
+E eu vou correr Silly algumas vezes
+
+57
+00:02:13,570 --> 00:02:15.670
+apenas para testá-lo.
+
+58
+00:02:15,670 --> 00:02:21.830
+Então, eu vou correr bobo com 5 e eu sou
+
+59.
+00:02:21,830 --> 00:02:25.792
+vai inserir a, b, c, b, a.
+
+60
+00:02:25,792 --> 00:02:27.490
+E diz que é um palíndromo.
+
+61
+00:02:27,490 --> 00:02:28.160
+Isso é bom.
+
+62
+00:02:28,160 --> 00:02:29.060
+Isso foi.
+
+63.
+00:02:29,060 --> 00:02:30.710
+Isso é ótimo.
+
+64
+00:02:30,710 --> 00:02:34.950
+Deixe-me fazer bobo novamente com 10 e eu sou
+
+65
+00:02:34,950 --> 00:02:43.910
+entrando p, a, l, i, n, n, i, l, a, p.
+
+66.
+00:02:43,910 --> 00:02:46.620
+E corretamente, diz que é um palíndromo.
+
+67
+00:02:46,620 --> 00:02:49.446
+Agora, se estou com pressa, digo ótimo, thé obras,
+
+68
+00:02:49,446 --> 00:02:50.820
+mas eu só testei em coisas
+
+69
+00:02:50,820 --> 00:02:52.360
+que na verdade são palíndromos.
+
+70
+00:02:52,360 --> 00:02:55.000
+Então, vamos tentar algo que não é um palíndromo apenas
+
+71
+00:02:55,000 --> 00:02:57.670
+para ter certeza de que não perdi nada aqui.
+
+72
+00:02:57,670 --> 00:03:01.072
+Então, eu vou fazer um caso realmente simples, o Silly of 2.
+
+73
+00:03:01,072 --> 00:03:03.580
+E eu dou a e b.
+
+74
+00:03:03,580 --> 00:03:05.880
+E isso me diz que é um palíndromo.
+
+75
+00:03:05,880 --> 00:03:07.170
+Oh droga.
+
+76
+00:03:07,170 --> 00:03:08.610
+Eu tenho um dinheirinho.
+
+77
+00:03:08,610 --> 00:03:09.650
+OK?
+
+78
+00:03:09,650 --> 00:03:12.480
+Agora eu quero entrar no modo de depuração.
+
+79
+00:03:12,480 --> 00:03:16.660
+Então, eu preciso tentar descobrir onde esse erro está ocorrendo.
+
+80
+00:03:16,660 --> 00:03:18.720
+Então, eu executei como eu disse aqui.
+
+81
+00:03:18,720 --> 00:03:20.410
+Funcionou neste caso.
+
+82
+00:03:20,410 --> 00:03:22.050
+Funcionou neste caso.
+
+83
+00:03:22,050 --> 00:03:26.810
+Mas diz que era de fato um palíndromo que está errado.
+
+84
+00:03:26,810 --> 00:03:29.750
+Então, eu vou escolher um ponto no meio do código
+
+85
+00:03:29,750 --> 00:03:33.110
+e simplesmente observe os valores intermediários.
+
+86
+00:03:33,110 --> 00:03:37.220
+E assim, em particular, vou inserir uma declaração de impressão
+
+87
+00:03:37,220 --> 00:03:40.106
+bem aqui, bem naquele local.
+
+88
+00:03:40,106 --> 00:03:41.480
+E essa declaração de impressão está indo
+
+89
+00:03:41,480 --> 00:03:44.720
+para olhar o valor do resultado antes que eu realmente
+
+90
+00:03:44,720 --> 00:03:45.520
+chamado isPal.
+
+91
+00:03:45,520 --> 00:03:47.200
+Quero verificar para ver se estou entregando
+
+92
+00:03:47,200 --> 00:03:50.010
+na coisa testando para algo palíndromos
+
+93
+00:03:50,010 --> 00:03:51.530
+da forma correta.
+
+94
+00:03:51,530 --> 00:03:54.510
+Então, eu tenho uma versão do código assim aqui.
+
+95
+00:03:54,510 --> 00:03:56.720
+E eu vou ligar.
+
+96
+00:03:56,720 --> 00:03:58.730
+E eu vou correr Silly novamente.
+
+97
+00:03:58,730 --> 00:04:01.370
+E quero ver o que acontece quando imprimo
+
+98
+00:04:01,370 --> 00:04:03.030
+resultados intermediários.
+
+99
+00:04:03,030 --> 00:04:08.720
+E eu dou aeb, e tenho um problema.
+
+100
+00:04:08,720 --> 00:04:09.890
+Qual é o problema?
+
+101
+00:04:09,890 --> 00:04:12.560
+Bem, eu teria esperado neste momento
+
+102
+00:04:12,560 --> 00:04:14.950
+que eu deveria ter a lista de aeb,
+
+103
+00:04:14,950 --> 00:04:18.541
+mas quando corri o código, obtive b.
+
+104
+00:04:18,541 --> 00:04:23.140
+Agora, por causa da pesquisa binária, eu sei que pelo menos um bug deve
+
+105
+00:04:23,140 --> 00:04:25.770
+estar presente anteriormente no código.
+
+106
+00:04:25,770 --> 00:04:30.012
+Então, eu quero adicionar uma segunda impressão, desta vez, dentro do loop
+
+107
+00:04:30,012 --> 00:04:30.970
+para ver o que está acontecendo.
+
+108
+00:04:30,970 --> 00:04:33.447
+E quando eu digo dentro do loop, eu
+
+109
+00:04:33,447 --> 00:04:35.280
+estava cuidando de eu ter passado por esse loop
+
+110
+00:04:35,280 --> 00:04:38.690
+e eu sei que o erro aqui diz que eu não sou
+
+111
+00:04:38,690 --> 00:04:40.177
+obtendo o tipo certo de lista.
+
+112
+00:04:40,177 --> 00:04:41.760
+Eu quero fazer algo dentro do loop
+
+113
+00:04:41,760 --> 00:04:44.960
+para ver se consigo descobrir o que está acontecendo lá.
+
+114
+00:04:44,960 --> 00:04:49.390
+Agora, deixe-me colocar uma declaração de impressão dentro do loop
+
+115
+00:04:49,390 --> 00:04:53.100
+e vamos ver o que acontece se o executarmos.
+
+116
+00:04:53,100 --> 00:04:55.070
+Então agora eu tenho uma nova versão do código.
+
+117
+00:04:55,070 --> 00:04:56.980
+Vou imprimir o resultado toda vez
+
+118
+00:04:56,980 --> 00:04:59.190
+através como eu faço.
+
+119
+00:04:59,190 --> 00:05:00.360
+E eu vou fazer isso.
+
+120
+00:05:00,360 --> 00:05:05.380
+Vou telefonar para Silly novamente, 2 e dou uma
+
+121
+00:05:05,380 --> 00:05:08.010
+e imprime a lista a, e eu dou b
+
+122
+00:05:08,010 --> 00:05:10.876
+e imprime a lista b.
+
+123
+00:05:10,876 --> 00:05:12.170
+Ah!
+
+124
+00:05:12,170 --> 00:05:14.240
+Isso está me dizendo algo valioso.
+
+125
+00:05:14,240 --> 00:05:16.170
+Está me dizendo que toda vez que estou
+
+126
+00:05:16,170 --> 00:05:20.010
+apenas colocando em resultado apenas um único elemento.
+
+127
+00:05:20,010 --> 00:05:25.010
+Então, de alguma forma, acrescentar, não estava fazendo o que eu esperava.
+
+128
+00:05:25,010 --> 00:05:27.330
+E isso sugere que o resultado não é
+
+129
+00:05:27,330 --> 00:05:29.904
+mantendo todos os elementos.
+
+130
+00:05:29,904 --> 00:05:31.820
+E, de fato, eu provavelmente já posso descobrir
+
+131
+00:05:31,820 --> 00:05:32.850
+qual é o problema
+
+132
+00:05:32,850 --> 00:05:35.810
+O problema é que estou inicializando resultado
+
+133
+00:05:35,810 --> 00:05:38.710
+dentro do loop e eu realmente quero inicializá-lo
+
+134
+00:05:38,710 --> 00:05:40.170
+fora do loop.
+
+135
+00:05:40,170 --> 00:05:45.430
+Se eu voltar ao meu código, você pode ver aqui sempre
+
+136
+00:05:45,430 --> 00:05:47.960
+através do loop, estou definindo o resultado de volta para uma lista vazia
+
+137
+00:05:47,960 --> 00:05:50.460
+e então apenas colocando o próximo elemento nele.
+
+138
+00:05:50,460 --> 00:05:53.750
+Eu realmente quero configurar resultados fora da lista
+
+139
+00:05:53,750 --> 00:05:55.820
+e depois ver se posso acrescentar.
+
+140
+00:05:55,820 --> 00:05:57.980
+Eu uso isso como um exemplo, porque você provavelmente
+
+141
+00:05:57,980 --> 00:05:58.850
+cometi esse erro.
+
+142
+00:05:58,850 --> 00:06:00.660
+É fácil de fazer.
+
+143
+00:06:00,660 --> 00:06:08.670
+Então vamos agora mover o resultado, como eu disse, desta posição
+
+144
+00:06:08,670 --> 00:06:13.415
+e colocá-lo nessa posição.
+
+145
+00:06:13,415 --> 00:06:17.100
+E com isso em mente, aqui está uma versão
+
+146
+00:06:17,100 --> 00:06:19.910
+disso para onde eu mudei essa inicialização.
+
+147
+00:06:19,910 --> 00:06:22.010
+Ainda tenho a impressão por dentro.
+
+148
+00:06:22,010 --> 00:06:23.950
+Vamos correr.
+
+149
+00:06:23,950 --> 00:06:28.550
+E quando eu testei o Silly com 2 e dou um,
+
+150
+00:06:28,550 --> 00:06:31.130
+diz que recebi a lista e sim
+
+151
+00:06:31,130 --> 00:06:33.700
+e eu dou b-- oh bom.
+
+152
+00:06:33,700 --> 00:06:37.120
+Agora, pelo menos, estou recebendo a lista da forma correta.
+
+153
+00:06:37,120 --> 00:06:37.760
+Isso é bom.
+
+154
+00:06:37,760 --> 00:06:38.560
+Isso é encorajador.
+
+155
+00:06:38,560 --> 00:06:41.010
+Agora ele me diz que a lista está sendo entregue
+
+156
+00:06:41,010 --> 00:06:44.820
+na forma correta, mas ainda estou recebendo uma resposta incorreta.
+
+157
+00:06:44,820 --> 00:06:48.100
+E isso me diz que ainda tenho outro bug.
+
+158
+00:06:48,100 --> 00:06:50.651
+Portanto, a estrutura de dados está sendo configurada corretamente,
+
+159
+00:06:50,651 --> 00:06:51.650
+mas há outro bug.
+
+160
+00:06:51,650 --> 00:06:54.730
+E isso é realmente importante.
+
+161
+00:06:54,730 --> 00:06:57.330
+Teria sido muito fácil dizer, eu terminei, mas não estou.
+
+162
+00:06:57,330 --> 00:06:59.240
+Pode haver mais de um problema.
+
+163
+00:06:59,240 --> 00:07:02.090
+E isso sugere que o segundo ou talvez terceiro bug
+
+164
+00:07:02,090 --> 00:07:04.780
+deve estar em algum lugar abaixo da declaração de impressão.
+
+165
+00:07:04,780 --> 00:07:06.700
+Então, vamos dar uma olhada no isPal.
+
+166
+00:07:06,700 --> 00:07:09.280
+Como antes, vamos escolher um ponto no meio do código,
+
+167
+00:07:09,280 --> 00:07:11.640
+adicione uma declaração impressa e veja o que podemos fazer
+
+168
+00:07:11,640 --> 00:07:13.140
+em termos de tentar encontrá-lo.
+
+169
+00:07:13,140 --> 00:07:15.306
+E eu vou remover essa declaração de impressão anterior
+
+170
+00:07:15,306 --> 00:07:16.410
+porque eu não preciso disso.
+
+171
+00:07:16,410 --> 00:07:19.740
+Então agora, dentro do isPal, vou adicionar uma declaração de impressão.
+
+172
+00:07:19,740 --> 00:07:23.410
+E vou lembrá-lo, preciso decidir o que quero testar.
+
+173
+00:07:23,410 --> 00:07:26.350
+Então aqui, o que estou tentando fazer, como você sabe,
+
+174
+00:07:26,350 --> 00:07:31.070
+é pegar x, que deve ser uma lista desses caracteres.
+
+175
+00:07:31,070 --> 00:07:32.970
+Estou criando uma versão temporária disso
+
+176
+00:07:32,970 --> 00:07:34.700
+e estou tentando reverter isso.
+
+177
+00:07:34,700 --> 00:07:39.790
+Então, eu gostaria de verificar neste momento a temperatura é diferente de x?
+
+178
+00:07:39,790 --> 00:07:42.400
+Deve ser uma versão invertida disso.
+
+179
+00:07:42,400 --> 00:07:42.900
+Tudo certo.
+
+180
+00:07:42,900 --> 00:07:44.770
+Eu tenho uma versão disso na minha máquina.
+
+181
+00:07:44,770 --> 00:07:49.240
+Vamos carregá-lo, executá-lo e ver o que acontece.
+
+182
+00:07:49,240 --> 00:07:54.060
+E como antes, eu vou fazer bobagem com 2 e dou uma
+
+183
+00:07:54,060 --> 00:07:56.970
+e eu dou b.
+
+184
+00:07:56,970 --> 00:07:58.800
+Oh!
+
+185
+00:07:58,800 --> 00:08:00.470
+Isso é interessante.
+
+186
+00:08:00,470 --> 00:08:02.484
+Eu estava tentando reverter a lista.
+
+187
+00:08:02,484 --> 00:08:03.650
+E o que eu estava testando aqui?
+
+188
+00:08:03,650 --> 00:08:05.790
+Eu estava dizendo o que é a estrutura de temperatura
+
+189
+00:08:05,790 --> 00:08:07.610
+e qual é a estrutura de x?
+
+190
+00:08:07,610 --> 00:08:10.770
+Eu esperava que eles fossem revertidos um do outro,
+
+191
+00:08:10,770 --> 00:08:12.390
+e eles não são.
+
+192
+00:08:12,390 --> 00:08:15.090
+Então deveria ter sido que x era a b
+
+193
+00:08:15,090 --> 00:08:18.370
+e temperatura deveria ter sido b a, mas ambos têm a b.
+
+194
+00:08:18,370 --> 00:08:21.100
+Então, eu tenho um problema e deve estar acontecendo
+
+195
+00:08:21,100 --> 00:08:23.440
+antes deste ponto no código.
+
+196
+00:08:23,440 --> 00:08:26.120
+Por causa de quando chego aqui, tenho a estrutura incorreta.
+
+197
+00:08:26,120 --> 00:08:27.750
+Então, vamos adicionar outra declaração de impressão
+
+198
+00:08:27,750 --> 00:08:29.930
+um pouco mais cedo no código.
+
+199
+00:08:29,930 --> 00:08:31.430
+E agora eu vou colocar um rótulo nele, então eu
+
+200
+00:08:31,430 --> 00:08:34.070
+posso ver onde estou porque recebi várias instruções de impressão.
+
+201
+00:08:34,070 --> 00:08:37.300
+Então agora eu vou ter o que eu tinha antes,
+
+202
+00:08:37,300 --> 00:08:38.425
+que é depois do reverse.
+
+203
+00:08:38,425 --> 00:08:40.450
+E eu vou ter o que
+
+204
+00:08:40,450 --> 00:08:45.030
+ia fazer isso antes do reverso para ver o que estava acontecendo.
+
+205
+00:08:45,030 --> 00:08:45.530
+OK?
+
+206
+00:08:45,530 --> 00:08:48.540
+Com isso em mente, vou tentar e fazer isso.
+
+207
+00:08:48,540 --> 00:08:50.720
+Eu tenho agora um pedaço de código com essas duas letras
+
+208
+00:08:50,720 --> 00:08:51.546
+afirmações.
+
+209
+00:08:51,546 --> 00:08:59.886
+E quando eu executo e executo meu exemplo bobo a e b.
+
+210.
+00:08:59,886 --> 00:09:01.630
+Hum.
+
+211
+00:09:01,630 --> 00:09:03.830
+Portanto, não estava revertendo.
+
+212
+00:09:03,830 --> 00:09:07.570
+Mesmo que o temp tenha começado como a lista x, imprimi-o,
+
+213
+00:09:07,570 --> 00:09:08.720
+estava na forma correta.
+
+214
+00:09:08,720 --> 00:09:11.560
+Depois do contrário, não é.
+
+215
+00:09:11,560 --> 00:09:13.870
+Então temp tem o mesmo valor antes
+
+216
+00:09:13,870 --> 00:09:15.840
+e após a chamada para reverter.
+
+217
+00:09:15,840 --> 00:09:18.470
+E se eu olhar o código, posso ver o bug.
+
+218
+00:09:18,470 --> 00:09:20.060
+E é um padrão.
+
+219
+00:09:20,060 --> 00:09:23.830
+Eu esqueci de chamar o procedimento.
+
+220
+00:09:23,830 --> 00:09:26.630
+Eu só preciso de um ponto aberto e fechado.
+
+221
+00:09:26,630 --> 00:09:27.830
+ESTÁ BEM.
+
+222
+00:09:27,830 --> 00:09:30.740
+Vamos tentar isso e ver se isso ajuda
+
+223
+00:09:30,740 --> 00:09:32.450
+o que estávamos tentando fazer.
+
+224
+00:09:32,450 --> 00:09:35.600
+Então agora eu tenho uma versão disso e eu chamo.
+
+225
+00:09:35,600 --> 00:09:43.340
+E eu corro meu exemplo bobo com 2 e dou um
+
+226
+00:09:43,340 --> 00:09:45.420
+e eu dou b.
+
+227
+00:09:45,420 --> 00:09:46.280
+Ah!
+
+228
+00:09:46,280 --> 00:09:49.470
+Algum progresso, mas não exatamente o que eu queria.
+
+229
+00:09:49,470 --> 00:09:53.580
+Porque agora temp e x eram os mesmos antes da mão, agora
+
+230
+00:09:53,580 --> 00:09:56.770
+ambos são invertidos.
+
+231
+00:09:56,770 --> 00:09:57.700
+Porcaria.
+
+232
+00:09:57.700 --> 00:09:58.530
+O que aconteceu?
+
+233
+00:09:58,530 --> 00:10:02.350
+Fiz uma reversão, mas revirei os dois.
+
+234
+00:10:02,350 --> 00:10:08.250
+Então, colocando isso em causa, os dois foram revertidos.
+
+235
+00:10:08,250 --> 00:10:12.300
+E agora, simplesmente reduzimos para uma única linha.
+
+236
+00:10:12,300 --> 00:10:17.980
+O erro deve estar nessa linha em que fiz a ligação.
+
+237
+00:10:17,980 --> 00:10:20.250
+E eu posso realmente descobrir o que é.
+
+238
+00:10:20,250 --> 00:10:23.810
+O problema é que temos um bug de alias.
+
+239
+00:10:23,810 --> 00:10:27.540
+A temperatura de reversão fez com que x também fosse revertido
+
+240
+00:10:27,540 --> 00:10:31.420
+e isso é porque eles estão se referindo ao mesmo objeto.
+
+241
+00:10:31,420 --> 00:10:33.500
+E eu posso ver isso no código.
+
+242
+00:10:33,500 --> 00:10:34.120
+O que eu fiz?
+
+243
+00:10:34,120 --> 00:10:36.410
+Eu disse para deixar a temperatura igual a x.
+
+244
+00:10:36,410 --> 00:10:37.470
+Oh sim.
+
+245
+00:10:37,470 --> 00:10:40.640
+Isso está voltando exatamente para a mesma estrutura que x.
+
+246
+00:10:40,640 --> 00:10:43.750
+Então, quando eu inverter a temperatura, eu inverto x.
+
+247
+00:10:43,750 --> 00:10:45.380
+Eu tenho um problema de apelido.
+
+248
+00:10:45,380 --> 00:10:46.970
+Existe uma solução fácil.
+
+249
+00:10:46,970 --> 00:10:49.800
+E essa solução fácil é fazer uma cópia
+
+250
+00:10:49,800 --> 00:10:53.060
+clonar x antes que eu faça temp.
+
+251
+00:10:53,060 --> 00:10:57.440
+E com essa última mudança, espero que finalmente termine.
+
+252
+00:10:57,440 --> 00:11:05.070
+E se eu fizer isso, agora eu corro e corro Silly com 2
+
+253
+00:11:05,070 --> 00:11:08.120
+e eu dou a e dou b.
+
+254
+00:11:08,120 --> 00:11:08.940
+Ah!
+
+255
+00:11:08,940 --> 00:11:10.090
+Finalmente!
+
+256
+00:11:10,090 --> 00:11:13.440
+Agora eu posso ver que depois que a temperatura reversa é revertida,
+
+257
+00:11:13,440 --> 00:11:14.540
+x não é.
+
+258
+00:11:14,540 --> 00:11:17.350
+E diz que neste caso, não é um palíndromo.
+
+259
+00:11:17,350 --> 00:11:18.860
+Então demorei um pouco.
+
+260
+00:11:18,860 --> 00:11:21.044
+Eu tinha vários bugs, mas os encontrei.
+
+261
+00:11:21,044 --> 00:11:22.960
+E a mensagem que eu quero que você tire disso
+
+262
+00:11:22,960 --> 00:11:25.430
+é que usando essa pesquisa binária realmente
+
+263
+00:11:25,430 --> 00:11:27.820
+me ajudou a isolar onde esses bugs estavam
+
+264
+00:11:27,820 --> 00:11:30.720
+pensando sobre o que devo esperar neste momento, o que
+
+265
+00:11:30,720 --> 00:11:32.930
+eu realmente vejo neste momento, e o que isso faz
+
+266
+00:11:32,930 --> 00:11:37.390
+conte-me sobre esse bug oculto que não consegui detectar.
+
+267
+00:11:37,390 --> 00:11:40.520
+Então, neste momento, eu deveria
+
+268
+00:11:40,520 --> 00:11:42.800
+volte e verifique se todos os nossos outros casos de teste ainda
+
+269
+00:11:42,800 --> 00:11:43.930
+trabalhe corretamente.
+
+270
+00:11:43,930 --> 00:11:46.090
+Eu não vou fazer isso, mas isso é realmente
+
+271
+00:11:46,090 --> 00:11:48.660
+parte do bom padrão de teste apenas
+
+272
+00:11:48,660 --> 00:11:51.460
+para garantir que, após corrigir esse conjunto de bugs,
+
+273
+00:11:51,460 --> 00:11:54.280
+Eu ainda não tenho algum bug escondido aparecendo em algum lugar
+
+274
+00:11:54,280 --> 00:11:57.690
+ou que não introduzi acidentalmente um novo bug em alguns
+
+275
+00:11:57,690 --> 00:12:00.950
+desses outros casos de teste.
+
+276
+00:12:00,950 --> 00:12:04.460
+Portanto, um último conjunto de hits apenas pragmáticos.
+
+277
+00:12:04,460 --> 00:12:07.070
+Procure os suspeitos do costume.
+
+278
+00:12:07,070 --> 00:12:09.950
+Quais são os locais padrão em que você pode cometer um erro?
+
+279
+00:12:09,950 --> 00:12:12.434
+Aliasing sendo óbvio.
+
+280
+00:12:12,434 --> 00:12:14.600
+Descobri olhando quando inverti algo,
+
+281
+00:12:14,600 --> 00:12:16.260
+reverte tudo ou apenas
+
+282
+00:12:16,260 --> 00:12:18.790
+a coisa que eu estava tentando reverter?
+
+283
+00:12:18,790 --> 00:12:21.360
+Em segundo lugar, pergunte por que o código está fazendo o que é,
+
+284
+00:12:21,360 --> 00:12:24.530
+não é por que não está fazendo o que você quer.
+
+285
+00:12:24,530 --> 00:12:26.230
+O último é porque você tem um bug.
+
+286
+00:12:26,230 --> 00:12:27.964
+Perguntar por que o código está fazendo isso é
+
+287
+00:12:27,964 --> 00:12:29.380
+vai ser útil para ajudá-lo
+
+288
+00:12:29,380 --> 00:12:31.870
+isole onde o bug pode estar.
+
+289
+00:12:31,870 --> 00:12:33.620
+Terceiro, o bug provavelmente não está onde
+
+290.
+00:12:33,620 --> 00:12:35.950
+você acha que é assim, tente e elimine locais.
+
+291
+00:12:35,950 --> 00:12:38.130
+É aí que a pesquisa binária, a pesquisa de bissecção
+
+292
+00:12:38,130 --> 00:12:39.650
+realmente ajuda.
+
+293
+00:12:39,650 --> 00:12:42.210
+Como já dissemos, tente explicar o problema a alguém
+
+294
+00:12:42,210 --> 00:12:44.650
+mais, incluindo um patinho de borracha.
+
+295
+00:12:44,650 --> 00:12:47.120
+Nem sempre acredite na documentação.
+
+296
+00:12:47,120 --> 00:12:48.940
+Pode-se dizer, aqui está o que estou esperando,
+
+297
+00:12:48,940 --> 00:12:50.870
+mas pode não explicar de verdade.
+
+298
+00:12:50,870 --> 00:12:53.620
+Então, se ainda estou com dificuldade para encontrar o bug,
+
+299
+00:12:53,620 --> 00:12:56.840
+ignore a documentação por um segundo e tente isolar.
+
+300
+00:12:56,840 --> 00:12:59.180
+E, finalmente, se você está nisso há um tempo
+
+301
+00:12:59,180 --> 00:13:01.190
+e você não está chegando lá, faça uma pausa
+
+302
+00:13:01,190 --> 00:13:02.820
+e volte mais tarde.
+
+303
+00:13:02,820 --> 00:13:04.727
+Um novo visual pode ajudá-lo de repente
+
+304
+00:13:04,727 --> 00:13:06.310
+detectar um problema que você não estava vendo
+
+305
+00:13:06,310 --> 00:13:08.410
+porque você tinha suposições ocultas sobre o que
+
+306
+00:13:08,410 --> 00:13:10.520
+você estava procurando.

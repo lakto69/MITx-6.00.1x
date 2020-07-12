@@ -1,0 +1,1186 @@
+0 0
+00:00:00,000 --> 00:00:00.770
+...
+
+1
+00:00:00,770 --> 00:00:03.440
+Então, agora vimos o início da programação.
+
+2
+00:00:03,440 --> 00:00:06.510
+Expressões simples, maneiras de juntá-las
+
+3
+00:00:06,510 --> 00:00:09.370
+em coisas mais complexas significa uma combinação,
+
+4
+00:00:09,370 --> 00:00:11.340
+e a primeira versão da abstração,
+
+5
+00:00:11,340 --> 00:00:13.260
+dando nomes às coisas.
+
+6
+00:00:13,260 --> 00:00:15.830
+Mas até agora, tudo o que conseguimos fazer com essas peças
+
+7
+00:00:15,830 --> 00:00:18.900
+é apenas se comportar como se fossemos uma calculadora simples.
+
+8
+00:00:18,900 --> 00:00:20.680
+Nós podemos fazer aritmética.
+
+9
+00:00:20,680 --> 00:00:22.600
+Vamos adicionar mais uma peça, que
+
+10
+00:00:22,600 --> 00:00:26.220
+é a capacidade de tomar decisões com base em testes.
+
+11
+00:00:26,220 --> 00:00:28.370
+E para isso, temos que comparar as coisas.
+
+12
+00:00:28,370 --> 00:00:30.900
+Temos que decidir, estou perto o suficiente para raiz quadrada
+
+13
+00:00:30,900 --> 00:00:31.690
+que eu terminei?
+
+14
+00:00:31,690 --> 00:00:33.994
+Estou perto o suficiente de outra coisa que acabei?
+
+15
+00:00:33,994 --> 00:00:35.660
+Então, temos que ser capazes de comparar as coisas.
+
+16
+00:00:35,660 --> 00:00:38.000
+E já que até agora falamos sobre números,
+
+17
+00:00:38,000 --> 00:00:39.800
+quais são os operadores de comparação
+
+18
+00:00:39,800 --> 00:00:42.180
+para números inteiros e para carros alegóricos?
+
+19
+00:00:42,180 --> 00:00:45.120
+São as coisas que você pode esperar da aritmética.
+
+20
+00:00:45,120 --> 00:00:47.360
+Se iej são quaisquer nomes de variáveis,
+
+21
+00:00:47,360 --> 00:00:49.730
+eles têm valores como números, então
+
+22
+00:00:49,730 --> 00:00:52.450
+temos maneiras de testar se algo é maior
+
+23
+00:00:52,450 --> 00:00:54.580
+do que qualquer outra coisa, se algo
+
+24
+00:00:54,580 --> 00:00:57.680
+é maior ou igual a outra coisa,
+
+25
+00:00:57,680 --> 00:01:01.090
+menor que, menor que ou igual.
+
+26
+00:01:01,090 --> 00:01:03.050
+Então 2 é menor que 3?
+
+27
+00:01:03,050 --> 00:01:05.770
+E se eu fizer um exemplo simples aqui.
+
+28.
+00:01:05,770 --> 00:01:10.640
+2 Menos que 3, retorna verdadeiro, isso é bom.
+
+29
+00:01:10,640 --> 00:01:14.350
+2,0 maior que 3,0?
+
+30
+00:01:14,350 --> 00:01:15.410
+Retorna false.
+
+31
+00:01:15,410 --> 00:01:16.740
+Também é bom.
+
+32.
+00:01:16,740 --> 00:01:21.100
+2 é menor ou igual a 2?
+
+33
+00:01:21,100 --> 00:01:22.950
+Retorna verdadeiro.
+
+34
+00:01:22,950 --> 00:01:25.880
+Por outro lado, 2 é menor que 2?
+
+35
+00:01:25,880 --> 00:01:27.010
+Retorna false.
+
+36.
+00:01:27,010 --> 00:01:29.150
+Comparações simples.
+
+37.
+00:01:29,150 --> 00:01:32.075
+Eu também quero saber quando algo é igual.
+
+38.
+00:01:32,075 --> 00:01:33.700
+E você pode pensar, bem, isso é fácil.
+
+39.
+00:01:33,700 --> 00:01:36.450
+2 é igual a 2?
+
+40.
+00:01:36,450 --> 00:01:37.820
+Esperar.
+
+41.
+00:01:37,820 --> 00:01:40.940
+Já usamos igual como uma declaração de atribuição,
+
+42.
+00:01:40,940 --> 00:01:42.170
+para que não funcione.
+
+43
+00:01:42,170 --> 00:01:46.910
+E, como conseqüência, a igualdade é feita com o dobro da igualdade.
+
+44
+00:01:46,910 --> 00:01:49.870
+2 é igual a 2?
+
+45
+00:01:49,870 --> 00:01:53.840
+Por exemplo, 2 iguais - tente novamente.
+
+46.
+00:01:53,840 --> 00:01:57.370
+
+
+47
+00:01:57,370 --> 00:01:59.140
+Retorna verdadeiro.
+
+48.
+00:01:59,140 --> 00:02:02.290
+E finalmente, se queremos saber se algo não é igual,
+
+49.
+00:02:02,290 --> 00:02:07.130
+usamos o ponto de exclamação seguido pelo sinal de igual.
+
+50.
+00:02:07,130 --> 00:02:11.140
+Frequentemente referido ou pronunciado como bang igual ou diferente.
+
+51
+00:02:11,140 --> 00:02:15.570
+Isso retornará true se i não for igual a j.
+
+52
+00:02:15,570 --> 00:02:17.010
+Comparações simples.
+
+53
+00:02:17,010 --> 00:02:19.190
+Eles vão nos deixar construir os primeiros tipos
+
+54
+00:02:19,190 --> 00:02:21.490
+de programas que nos permitem tomar decisões.
+
+55
+00:02:21,490 --> 00:02:24.050
+Porque com base se algo é verdadeiro ou falso,
+
+56.
+00:02:24,050 --> 00:02:27.220
+Eu vou poder decidir qual operação eu
+
+57
+00:02:27,220 --> 00:02:28.682
+quer fazer a seguir.
+
+58
+00:02:28,682 --> 00:02:30.890
+Você terá a chance de explorar tudo isso,
+
+59.
+00:02:30,890 --> 00:02:33.139
+mas isso faz sentido porque é simples aritmética
+
+60
+00:02:33,139 --> 00:02:35.700
+outras coisas além desse duplo sinal de igual-- que
+
+61
+00:02:35,700 --> 00:02:40.230
+como eu disse, existe porque igual já está reservado.
+
+62
+00:02:40,230 --> 00:02:42.520
+Depois de termos expressões lógicas,
+
+63.
+00:02:42,520 --> 00:02:44.460
+também precisamos ser capazes de combiná-las.
+
+64
+00:02:44,460 --> 00:02:46.490
+Eu poderia querer dizer, é algo menos que isso
+
+65
+00:02:46,490 --> 00:02:48.687
+e maior que outra coisa?
+
+66.
+00:02:48,687 --> 00:02:50.770
+E então, se eu tiver duas expressões que são booleanas
+
+67
+00:02:50,770 --> 00:02:54.560
+Também posso combiná-los usando e, que
+
+68
+00:02:54,560 --> 00:02:56.740
+é verdadeiro se ambos são verdadeiros.
+
+69
+00:02:56,740 --> 00:03:00.360
+Ou, o que é verdade se um deles é verdadeiro.
+
+70
+00:03:00,360 --> 00:03:03.300
+E, claro, não, o que será o oposto.
+
+71
+00:03:03,300 --> 00:03:05.330
+Não é verdade se a é falso.
+
+72
+00:03:05,330 --> 00:03:08.390
+É falso se a é verdade.
+
+73
+00:03:08,390 --> 00:03:10.080
+Depois de pegar essas peças, posso
+
+74
+00:03:10,080 --> 00:03:14.330
+reunir expressões mais complicadas para decidir os testes.
+
+75
+00:03:14,330 --> 00:03:16.180
+Como podemos usá-los?
+
+76
+00:03:16,180 --> 00:03:18.570
+Bem, aqui está um pequeno exemplo simples.
+
+77
+00:03:18,570 --> 00:03:21.170
+Este é realmente um mapa do MIT.
+
+78
+00:03:21,170 --> 00:03:23.970
+Os alunos do MIT estão sempre procurando comida de graça.
+
+79
+00:03:23,970 --> 00:03:26.890
+Imagine que haja comida guardada em algum lugar do MIT.
+
+80
+00:03:26,890 --> 00:03:30.150
+E quero dar instruções a um aluno para encontrá-los.
+
+81
+00:03:30,150 --> 00:03:30.650
+Tudo certo.
+
+82
+00:03:30,650 --> 00:03:32.330
+Este é um mapa complicado, mas poderíamos
+
+83
+00:03:32,330 --> 00:03:34.140
+use uma versão mais simples dele.
+
+84
+00:03:34,140 --> 00:03:35.560
+Eu tenho meu aluno.
+
+85
+00:03:35,560 --> 00:03:38.120
+Então aqui com sua mochila pronta para
+
+86
+00:03:38,120 --> 00:03:40.410
+encontre essa comida de graça, que é um caminho por aqui.
+
+87
+00:03:40,410 --> 00:03:42.680
+E eu quero pensar em como eu
+
+88
+00:03:42,680 --> 00:03:44.000
+instrua-o a chegar lá.
+
+89
+00:03:44,000 --> 00:03:47.010
+Qual seria o teste que eu poderia querer usar?
+
+90
+00:03:47,010 --> 00:03:50.610
+Bem, eu poderia dizer, se você pode ir para a direita,
+
+91
+00:03:50,610 --> 00:03:52.800
+continue indo para a direita.
+
+92
+00:03:52,800 --> 00:03:55.520
+Por outro lado, se você chegar à direita e ela estiver bloqueada,
+
+93
+00:03:55,520 --> 00:03:57.442
+mudar e seguir em frente.
+
+94
+00:03:57,442 --> 00:03:58.900
+A menos que a direita e a frente
+
+95
+00:03:58,900 --> 00:04:01.940
+estão bloqueados; nesse caso, vá para a esquerda.
+
+96
+00:04:01,940 --> 00:04:05.200
+A menos que todos eles estejam bloqueados, nesse caso, volte atrás.
+
+97
+00:04:05,200 --> 00:04:06.950
+Não vai ser perfeito, eu ainda poderia ficar preso.
+
+98
+00:04:06,950 --> 00:04:10.190
+Mas isso funcionará muito bem para passar por um labirinto.
+
+99
+00:04:10,190 --> 00:04:13.230
+O que acabei de descrever são quatro testes simples
+
+100
+00:04:13,230 --> 00:04:16.430
+para me deixar pensar em como eu instruiria alguém
+
+101
+00:04:16,430 --> 00:04:17.490
+para resolver um problema.
+
+102
+00:04:17,490 --> 00:04:19.557
+Nesse caso, tentando encontrar a comida de graça.
+
+103
+00:04:19,557 --> 00:04:21.140
+Ah, sim, preciso de mais uma coisa, que
+
+104
+00:04:21,140 --> 00:04:24.580
+é testar quando encontrei a comida para saber quando parar.
+
+105
+00:04:24,580 --> 00:04:26.700
+Testes simples.
+
+106
+00:04:26,700 --> 00:04:29.040
+Com essas idéias, eu posso montar
+
+107
+00:04:29,040 --> 00:04:31.070
+o primeiro tipo de realmente mais razoável
+
+108
+00:04:31,070 --> 00:04:36.190
+ou um programa interessante, chamado de programa de ramificação.
+
+109
+00:04:36,190 --> 00:04:38.750
+E diria, nesse caso do labirinto,
+
+110
+00:04:38,750 --> 00:04:41.900
+avançar a menos que um teste seja verdadeiro.
+
+111
+00:04:41,900 --> 00:04:45.260
+Esse teste pode estar se movendo para a direita está bloqueado.
+
+112
+00:04:45,260 --> 00:04:46.820
+Se não estiver bloqueado à direita,
+
+113
+00:04:46,820 --> 00:04:48.930
+Eu vou fazer uma coisa-- seguir em frente.
+
+114
+00:04:48,930 --> 00:04:52.350
+Se for um quarteirão à direita, vou seguir em frente.
+
+115
+00:04:52,350 --> 00:04:54.760
+E um programa de ramificação simplesmente consiste
+
+116
+00:04:54,760 --> 00:04:57.770
+de um teste, algo que vai retornar
+
+117
+00:04:57,770 --> 00:04:59.580
+um booleano verdadeiro ou falso.
+
+118
+00:04:59,580 --> 00:05:03.350
+Se o teste for verdadeiro, ele terá algum código que informa
+
+119
+00:05:03,350 --> 00:05:05.350
+me o que fazer nesse caso.
+
+120
+00:05:05,350 --> 00:05:07.670
+Por outro lado, se o teste for falso
+
+121
+00:05:07,670 --> 00:05:10.040
+vai ter algum código para me dizer
+
+122
+00:05:10,040 --> 00:05:11.890
+o que fazer nesse caso.
+
+123
+00:05:11,890 --> 00:05:14.910
+E em ambos os casos, assim que terminar com esses trechos de código
+
+124
+00:05:14,910 --> 00:05:18.300
+Eu posso pegar o resto do cálculo.
+
+125
+00:05:18,300 --> 00:05:20.300
+Você pode ver por que é chamado de programa de ramificação,
+
+126
+00:05:20,300 --> 00:05:23.810
+é preciso um dos dois ramos com base nesse teste.
+
+127
+00:05:23,810 --> 00:05:29.019
+No Python, não precisamos necessariamente ter o bloco falso.
+
+128
+00:05:29,019 --> 00:05:30.310
+Temos que ter o verdadeiro bloco.
+
+129
+00:05:30,310 --> 00:05:32.560
+Se isso for verdade, deveria haver algo que eu faria.
+
+130
+00:05:32,560 --> 00:05:34.940
+Mas se não é sempre o caso que eu
+
+131
+00:05:34,940 --> 00:05:39.440
+quer fazer algo mesmo quando não é verdade, posso pular isso.
+
+132
+00:05:39,440 --> 00:05:41.370
+Com isso em mente, posso começar agora
+
+133
+00:05:41,370 --> 00:05:44.540
+construindo programas um pouco mais interessantes.
+
+134
+00:05:44,540 --> 00:05:46.079
+E então aqui está um exemplo simples.
+
+135
+00:05:46,079 --> 00:05:48.370
+Tem alguma torta aqui vamos voltar.
+
+136
+00:05:48,370 --> 00:05:49.150
+Não se preocupe com eles.
+
+137
+00:05:49,150 --> 00:05:50.983
+Peças como entrada, o que me dará
+
+138
+00:05:50,983 --> 00:05:52.610
+uma maneira de ler algo.
+
+139
+00:05:52,610 --> 00:05:54.530
+Mas o que eu quero que você veja aqui são os testes.
+
+140
+00:05:54,530 --> 00:05:57.450
+E o primeiro caso de um programa de ramificação
+
+141
+00:05:57,450 --> 00:06:00.890
+é uma declaração if, é um símbolo especial.
+
+142
+00:06:00,890 --> 00:06:04.260
+É tratado de forma diferente e quando o avaliador Python
+
+143
+00:06:04,260 --> 00:06:07.070
+vê isso, diz que, dado que é um se,
+
+144
+00:06:07,070 --> 00:06:09.720
+Vou avaliar essa expressão, que
+
+145
+00:06:09,720 --> 00:06:12.060
+deve retornar um booleano.
+
+146
+00:06:12,060 --> 00:06:15.790
+Ele diz que, se o restante de x dividido por 2 for igual a 0--
+
+147
+00:06:15,790 --> 00:06:18.740
+observe o duplo sinal de igual ali, se for igual a 0,
+
+148
+00:06:18,740 --> 00:06:24.780
+se isso for verdade, quero executar esse conjunto de códigos.
+
+149
+00:06:24,780 --> 00:06:26.360
+Vai imprimir uma linha em branco
+
+150
+00:06:26,360 --> 00:06:28.900
+e depois imprima a palavra par.
+
+151
+00:06:28,900 --> 00:06:31.280
+Se não for verdade, preciso dizer o que fazer.
+
+152
+00:06:31,280 --> 00:06:35.220
+E eu uso o símbolo especial para isso.
+
+153
+00:06:35,220 --> 00:06:38.750
+Isso geralmente é chamado de expressões if-else.
+
+154
+00:06:38,750 --> 00:06:40.990
+Se isso for verdade, faça isso.
+
+155
+00:06:40,990 --> 00:06:42.480
+Caso contrário, faça isso.
+
+156
+00:06:42,480 --> 00:06:45.460
+E aqui novamente, eu tenho um bloco de código.
+
+157
+00:06:45,460 --> 00:06:48.410
+Nesse caso, imprimirá uma linha em branco e depois
+
+158
+00:06:48,410 --> 00:06:49.890
+a palavra estranha.
+
+159
+00:06:49,890 --> 00:06:52.350
+Em ambos os casos, quando eu terminar com tudo isso
+
+160
+00:06:52,350 --> 00:06:54.724
+Vou passar para o resto do código.
+
+161
+00:06:54,724 --> 00:06:57.140
+O que só vai imprimir uma coisa simples que diz:
+
+162
+00:06:57,140 --> 00:06:59.670
+Eu terminei com isso condicional.
+
+163
+00:06:59,670 --> 00:07:02.680
+Você pode digitar isso e executá-lo. Convido você a fazer isso.
+
+164
+00:07:02,680 --> 00:07:06.170
+Mas o que eu quero que você veja aqui são algumas coisas.
+
+165
+00:07:06,170 --> 00:07:09.610
+Essa estrutura if-else.
+
+166
+00:07:09,610 --> 00:07:11.790
+E eu disse em um galho que deveria haver três pedaços.
+
+167
+00:07:11,790 --> 00:07:14.286
+E você pode vê-los, há o teste.
+
+168
+00:07:14,286 --> 00:07:17.450
+
+
+169
+00:07:17,450 --> 00:07:21.140
+Há o primeiro bloco, esse é o verdadeiro bloco.
+
+170
+00:07:21,140 --> 00:07:24.535
+E há o bloco falso.
+
+171
+00:07:24,535 --> 00:07:27.297
+
+
+172
+00:07:27,297 --> 00:07:28.130
+Agora, como eu sabia?
+
+173
+00:07:28,130 --> 00:07:30.760
+Ou melhor, como o Python sabia que esses são os blocos?
+
+174
+00:07:30,760 --> 00:07:33.380
+Por causa desse recuo aqui.
+
+175
+00:07:33,380 --> 00:07:36.280
+O fato de essas linhas de código estarem inseridas
+
+176
+00:07:36,280 --> 00:07:37.790
+são importantes, porque nos diz
+
+177
+00:07:37,790 --> 00:07:41.690
+isso é um bloco inteiro de código e quando eu terminar aqui,
+
+178
+00:07:41,690 --> 00:07:43.820
+Eu vou pegar o resto do resto.
+
+179
+00:07:43,820 --> 00:07:46.510
+E mais importante, quando eu terminar lá
+
+180
+00:07:46,510 --> 00:07:49.010
+ele me diz onde o resto do código pega.
+
+181
+00:07:49,010 --> 00:07:54.420
+Um exemplo simples de um programa de ramificação.
+
+182
+00:07:54,420 --> 00:07:56.950
+Eu já disse isso, mas quero recapitular.
+
+183
+00:07:56,950 --> 00:08:00.890
+Eu tenho um teste, ele avalia como true--
+
+184
+00:08:00,890 --> 00:08:02.850
+quando, de fato, neste caso x dividido por 2
+
+185
+00:08:02,850 --> 00:08:04.530
+tem um restante de zero.
+
+186
+00:08:04,530 --> 00:08:07.420
+Como eu já disse, observe o sinal de igual duplo em vez de
+
+187
+00:08:07,420 --> 00:08:09.990
+um único sinal de igual para fazer a comparação.
+
+188
+00:08:09,990 --> 00:08:11.590
+Como eu também disse, o recuo
+
+189
+00:08:11,590 --> 00:08:13.940
+é realmente importante, nos diz o que
+
+190
+00:08:13,940 --> 00:08:16.050
+peças são associadas juntas.
+
+191
+00:08:16,050 --> 00:08:17.850
+E observe como esse recuo nos dá
+
+192
+00:08:17,850 --> 00:08:20.980
+uma boa estrutura visual para ver onde está o código.
+
+193
+00:08:20,980 --> 00:08:23.150
+Para ver a estrutura semântica do código.
+
+194
+00:08:23,150 --> 00:08:24.530
+Qual é o verdadeiro bloco?
+
+195
+00:08:24,530 --> 00:08:26.830
+Qual é o bloco falso?
+
+196
+00:08:26,830 --> 00:08:29.940
+Agora, você pode ter condicionais aninhados.
+
+197
+00:08:29,940 --> 00:08:35.200
+Dentro de um bloco eu também poderia ter uma condicional.
+
+198
+00:08:35,200 --> 00:08:36.880
+E isso está perfeitamente bem.
+
+199
+00:08:36,880 --> 00:08:38.774
+Diz, se isso é verdade, então eu sou
+
+200
+00:08:38,774 --> 00:08:40.440
+vai entrar e olhar para esta parte.
+
+201
+00:08:40,440 --> 00:08:43.720
+E se isso também é verdade, Eu vou fazer isso.
+
+202
+00:08:43,720 --> 00:08:48.300
+Por outro lado, se isso é verdade, mas isso é falso
+
+203
+00:08:48,300 --> 00:08:51.910
+Eu vou pular aqui e rodar aquele pedaço.
+
+204
+00:08:51,910 --> 00:08:53.852
+Mais uma vez, convido você a digitar e experimentar.
+
+205
+00:08:53,852 --> 00:08:55.310
+Mas vai fazer algo que
+
+206
+00:08:55,310 --> 00:08:58.590
+com base no valor de x, ele imprime se é
+
+207
+00:08:58,590 --> 00:09:03.090
+divisível por 2 e 3, por 2 e não 3, ou por 3 e não 2
+
+208
+00:09:03,090 --> 00:09:08.050
+conforme ele percorre essa sequência de ramificações adequadamente.
+
+209
+00:09:08,050 --> 00:09:10.960
+E, finalmente, podemos ter booleanos compostos.
+
+210.
+00:09:10,960 --> 00:09:13.330
+Como eu disse, tenho coisas que podem ser combinadas.
+
+211
+00:09:13,330 --> 00:09:14.630
+Este é um booleano.
+
+212
+00:09:14,630 --> 00:09:15.930
+Isso é um booleano.
+
+213
+00:09:15,930 --> 00:09:19.140
+E a combinação com o final também me dá um booleano.
+
+214
+00:09:19,140 --> 00:09:23.060
+Portanto, neste caso, se x for menor que y
+
+215
+00:09:23,060 --> 00:09:27.070
+e x também é menor que z, então a combinação é verdadeira
+
+216
+00:09:27,070 --> 00:09:29.969
+e eu vou imprimir uma coisa em particular.
+
+217
+00:09:29,969 --> 00:09:32.010
+Novamente, não se preocupe com o que isso realmente faz.
+
+218
+00:09:32,010 --> 00:09:33.676
+O que eu quero que você veja é a estrutura,
+
+219
+00:09:33,676 --> 00:09:39.080
+incluindo uma última peça, que também é uma abreviação
+
+220
+00:09:39,080 --> 00:09:40.820
+para mais se.
+
+221
+00:09:40,820 --> 00:09:45.930
+Isso diz que, se esse teste for verdadeiro, faça isso.
+
+222
+00:09:45,930 --> 00:09:52.070
+Mas se esse teste for falso, verifique se isso é verdade.
+
+223
+00:09:52,070 --> 00:09:54.180
+Se isso é verdade, faça isso.
+
+224
+00:09:54,180 --> 00:09:56.820
+Mas se for falso, pule para baixo.
+
+225
+00:09:56,820 --> 00:10:00.560
+Nesse caso, há um outro e sempre fará isso.
+
+226
+00:10:00,560 --> 00:10:02.290
+Eu poderia ter várias declarações elif.
+
+227
+00:10:02,290 --> 00:10:06.000
+É uma maneira de me dar uma sequência de testes em ordem.
+
+228
+00:10:06,000 --> 00:10:07.250
+Se isso for verdade, faça alguma coisa.
+
+229
+00:10:07,250 --> 00:10:09.125
+Se for falso, mas isso é verdade, faça alguma coisa.
+
+230
+00:10:09,125 --> 00:10:12.130
+Se isso também é falso, mas isso é verdade, faça alguma coisa.
+
+231
+00:10:12,130 --> 00:10:14.820
+E assim por diante.
+
+232
+00:10:14,820 --> 00:10:17.190
+Isso só então os une.
+
+233
+00:10:17,190 --> 00:10:19.400
+Eu tenho uma condicional básica.
+
+234
+00:10:19,400 --> 00:10:22.990
+Se essa condição for verdadeira, faça uma sequência de expressões.
+
+235
+00:10:22,990 --> 00:10:25.480
+Você também pode ter um if e um else.
+
+236
+00:10:25,480 --> 00:10:29.840
+Ou eu posso ter um if, uma sequência de elifs e outro.
+
+237
+00:10:29,840 --> 00:10:32.060
+E, novamente, observe como o recuo
+
+238
+00:10:32,060 --> 00:10:35.350
+nos diz quais coisas a fazer associadas
+
+239
+00:10:35,350 --> 00:10:39.000
+com qual bloco de código.
+
+240
+00:10:39,000 --> 00:10:42.850
+Esse recuo é como vamos capturar
+
+241
+00:10:42,850 --> 00:10:43.980
+outras peças também.
+
+242
+00:10:43,980 --> 00:10:47.050
+E não precisa ser apenas condicional.
+
+243
+00:10:47,050 --> 00:10:49.390
+Eu poderia ter algo que tem outras declarações dentro
+
+244
+00:10:49,390 --> 00:10:52.020
+, como a declaração impressa aqui.
+
+245
+00:10:52,020 --> 00:10:53.770
+Novamente, não se preocupe com o que esse código faz,
+
+246
+00:10:53,770 --> 00:10:57.270
+é um código simples para executar algumas comparações simples
+
+247
+00:10:57,270 --> 00:10:58.060
+em números.
+
+248
+00:10:58,060 --> 00:11:01.570
+O que eu quero que você veja é como andamos pelos galhos.
+
+249
+00:11:01,570 --> 00:11:05.460
+E com isso, agora temos o primeiro tipo de código.
+
+250
+00:11:05,460 --> 00:11:09.750
+Há um conjunto de blocos dentro do qual,
+
+251
+00:11:09,750 --> 00:11:12.220
+Eu tenho outro conjunto de blocos.
+
+252
+00:11:12,220 --> 00:11:16.390
+E, novamente, se isso é verdade e é verdade,
+
+253
+00:11:16,390 --> 00:11:18.060
+Eu vou chegar a esse ponto.
+
+254
+00:11:18,060 --> 00:11:21.520
+Mas se isso é verdade e isso é falso-- tão verdade
+
+255
+00:11:21,520 --> 00:11:25.100
+aqui, mas falso aqui o que acontece?
+
+256
+00:11:25,100 --> 00:11:29.640
+Oh, não há código aqui, então nada acontece.
+
+257
+00:11:29,640 --> 00:11:33.970
+Simplesmente pula para o final e passa por ele.
+
+258
+00:11:33,970 --> 00:11:36.270
+Mais uma vez, convido você a tentar isso para ver se funciona
+
+259
+00:11:36,270 --> 00:11:37.460
+do jeito que eu descrevi.
+
+260
+00:11:37,460 --> 00:11:41.830
+O que eu quero que você veja é a forma disso.
+
+261
+00:11:41,830 --> 00:11:44.070
+Mais uma peça que quero lembrá-lo
+
+262
+00:11:44,070 --> 00:11:47.030
+é o fato de que quando fazemos comparações
+
+263
+00:11:47,030 --> 00:11:50.700
+precisamos usar o duplo igual.
+
+264
+00:11:50,700 --> 00:11:53.720
+Sinal de igual liga um valor a uma variável.
+
+265
+00:11:53,720 --> 00:11:55.520
+Aqui eu, quero comparar duas coisas.
+
+266
+00:11:55,520 --> 00:11:58.210
+E isso é um lugar comum eu faço isso o tempo todo
+
+267
+00:11:58,210 --> 00:11:59.660
+onde você receberá um bug.
+
+268
+00:11:59,660 --> 00:12:01.952
+Não se preocupe quando você fizer isso, o Python vai reclamar
+
+269
+00:12:01,952 --> 00:12:04.409
+para você dizendo que você está tentando fazer uma ligação em um lugar que
+
+270
+00:12:04,409 --> 00:12:04.940
+você não pode.
+
+271
+00:12:04,940 --> 00:12:06.430
+Mas lembre-se, este é um lugar onde
+
+272
+00:12:06,430 --> 00:12:08.090
+quando estou fazendo uma comparação eu quero
+
+273
+00:12:08,090 --> 00:12:10.000
+para usar o sinal de igual duplo em ordem
+
+274
+00:12:10.000 --> 00:12:13.575
+para fazer a comparação de dois valores e retornar um booleano.
+
+275
+00:12:13,575 --> 00:12:17.070
+
+
+276
+00:12:17,070 --> 00:12:18.700
+ESTÁ BEM.
+
+277
+00:12:18,700 --> 00:12:20.370
+O que nós adicionamos?
+
+278
+00:12:20,370 --> 00:12:22.560
+Primeiro, tipo simples de programa.
+
+279
+00:12:22,560 --> 00:12:24.960
+Os programas de ramificação nos permitem fazer escolhas
+
+280
+00:12:24,960 --> 00:12:26.860
+e fazer coisas diferentes.
+
+281
+00:12:26,860 --> 00:12:29.830
+Mas ainda é o caso de, no máximo, cada afirmação
+
+282
+00:12:29,830 --> 00:12:31.870
+é executado uma vez.
+
+283
+00:12:31,870 --> 00:12:34.510
+Eu posso pular um conjunto de instruções se pular esse ramo,
+
+284
+00:12:34,510 --> 00:12:36.150
+porque eu não chego lá.
+
+285
+00:12:36,150 --> 00:12:37.970
+Mas como conseqüência disso, esses
+
+286
+00:12:37,970 --> 00:12:40.730
+são o que chamaríamos de programas lineares.
+
+287
+00:12:40,730 --> 00:12:42.870
+Eles correm em tempo constante porque eu executo
+
+288
+00:12:42,870 --> 00:12:44.970
+cada instrução no máximo uma vez.
+
+289
+00:12:44,970 --> 00:12:46.762
+E o tempo máximo para executar o programa
+
+290.
+00:12:46,762 --> 00:12:48.970
+vai depender apenas do número de instruções
+
+291
+00:12:48,970 --> 00:12:50.370
+que eu tenho lá.
+
+292
+00:12:50,370 --> 00:12:52.342
+Ainda valioso para tomar algumas decisões,
+
+293
+00:12:52,342 --> 00:12:54.300
+mas não vai nos dar o poder que nós
+
+294
+00:12:54,300 --> 00:12:56.620
+quer realmente construir algoritmos interessantes.
+
+295
+00:12:56,620 --> 00:12:59.820
+E isso, vamos chegar na próxima vez.
+
+296
+00:12:59,820 --> 00:13:00.372

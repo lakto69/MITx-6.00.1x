@@ -1,0 +1,983 @@
+0 0
+00:00:00,000 --> 00:00:00.500
+...
+
+1
+00:00:00,500 --> 00:00:04.044
+Quando introduzimos definições em nossa linguagem,
+
+2
+00:00:04,044 --> 00:00:05.460
+em essência, o que estávamos fazendo era
+
+3
+00:00:05,460 --> 00:00:07.500
+dando a você, como programador, a capacidade
+
+4
+00:00:07,500 --> 00:00:11.340
+para criar procedimentos que você poderia abstrair e tratar
+
+5
+00:00:11,340 --> 00:00:14.610
+como se fossem fornecidos pelo fabricante do computador.
+
+6
+00:00:14,610 --> 00:00:16.840
+Da mesma forma que você tem adição e subtração,
+
+7
+00:00:16,840 --> 00:00:19.530
+você pode criar novas variações de procedimentos
+
+8
+00:00:19,530 --> 00:00:22.630
+e tratá-los como se estivessem se comportando exatamente da mesma maneira
+
+9
+00:00:22,630 --> 00:00:25.900
+que esses procedimentos primitivos fizeram.
+
+10
+00:00:25,900 --> 00:00:28.410
+Queremos fazer a mesma coisa com dados.
+
+11
+00:00:28,410 --> 00:00:31.410
+Vamos falar agora sobre a criação de objetos, classes
+
+12
+00:00:31,410 --> 00:00:34.050
+de objetos, que você pode definir como usuário,
+
+13
+00:00:34,050 --> 00:00:37.830
+e essa opção adicionará uma quantidade enorme de energia,
+
+14
+00:00:37,830 --> 00:00:40.760
+flexibilidade, capacidade para o nosso idioma
+
+15
+00:00:40,760 --> 00:00:43.370
+e à nossa capacidade de criar novos sistemas.
+
+16
+00:00:43,370 --> 00:00:45.810
+Então, vamos ver o que isso significa.
+
+17
+00:00:45,810 --> 00:00:49.770
+Vamos começar falando sobre os objetos que você já conhece.
+
+18
+00:00:49,770 --> 00:00:51.450
+Como você sabe, o Python suporta vários
+
+19
+00:00:51,450 --> 00:00:53.100
+de diferentes tipos de dados.
+
+20
+00:00:53,100 --> 00:00:54.440
+Temos números inteiros.
+
+21
+00:00:54,440 --> 00:00:55.860
+Temos números de ponto flutuante.
+
+22
+00:00:55,860 --> 00:00:57.400
+Temos cordas.
+
+23
+00:00:57,400 --> 00:00:58.220
+Temos listas.
+
+24
+00:00:58,220 --> 00:00:59.560
+Temos dicionários.
+
+25
+00:00:59,560 --> 00:01:01.720
+Alguns outros gostam de tuplas, mas basicamente, nós
+
+26
+00:01:01,720 --> 00:01:05.440
+tem um conjunto primitivo de objetos de dados.
+
+27
+00:01:05,440 --> 00:01:08.160
+Cada um desses exemplos que tenho na minha tela
+
+28.
+00:01:08,160 --> 00:01:13.000
+é uma instância de um objeto, e todo objeto tem três partes.
+
+29
+00:01:13,000 --> 00:01:16.770
+Tem um tipo, int, float, dicionário.
+
+30
+00:01:16,770 --> 00:01:18.810
+Tem uma representação interna.
+
+31
+00:01:18,810 --> 00:01:21.930
+É uma maneira de colar as peças que
+
+32.
+00:01:21,930 --> 00:01:23.350
+componha o objeto.
+
+33
+00:01:23,350 --> 00:01:24.816
+Para coisas primitivas como números,
+
+34
+00:01:24,816 --> 00:01:27.190
+realmente não faz sentido falar sobre isso como qualquer coisa
+
+35
+00:01:27,190 --> 00:01:30.090
+diferente de um escalar, mas para uma lista,
+
+36.
+00:01:30,090 --> 00:01:32.470
+diria, como faço para obter as diferentes peças--
+
+37.
+00:01:32,470 --> 00:01:35.060
+elementos, se você gosta-- de uma lista e colá-los juntos?
+
+38.
+00:01:35,060 --> 00:01:36.810
+Portanto, todo objeto tem um tipo.
+
+39.
+00:01:36,810 --> 00:01:39.060
+Possui uma representação de dados interna.
+
+40.
+00:01:39,060 --> 00:01:41.040
+E associado a ele, ele tem um conjunto
+
+41.
+00:01:41,040 --> 00:01:43.030
+de procedimentos que permitem interagir
+
+42.
+00:01:43,030 --> 00:01:45.389
+com uma instância desse objeto.
+
+43
+00:01:45,389 --> 00:01:47.430
+Vamos ver alguns exemplos em um segundo.
+
+44
+00:01:47,430 --> 00:01:50.710
+Mas essas três peças são fundamentais para definir um objeto.
+
+45
+00:01:50,710 --> 00:01:53.120
+E, de fato, todas as instâncias que criamos
+
+46.
+00:01:53,120 --> 00:01:55.340
+é um tipo específico de objeto.
+
+47
+00:01:55,340 --> 00:01:58.510
+Um, dois, três, quatro é uma instância de um int.
+
+48.
+00:01:58,510 --> 00:02:01.895
+Se eu definir A como citação, "olá", citação final,
+
+49.
+00:02:01,895 --> 00:02:04.850
+A agora é uma instância de uma sequência.
+
+50.
+00:02:04,850 --> 00:02:07.260
+Então, falamos sobre objetos como tendo
+
+51
+00:02:07,260 --> 00:02:09.110
+Tipos porque isso traz com eles
+
+52
+00:02:09,110 --> 00:02:12.420
+a capacidade de manipulá-los.
+
+53
+00:02:12,420 --> 00:02:13.920
+ESTÁ BEM.
+
+54
+00:02:13,920 --> 00:02:16.575
+Se tudo no Python é um objeto e tem um tipo,
+
+55
+00:02:16,575 --> 00:02:17.950
+o que isso nos diz sobre como
+
+56.
+00:02:17,950 --> 00:02:20.040
+pode pensar em usá-los?
+
+57
+00:02:20,040 --> 00:02:22.820
+E o primeiro é que queremos pensar em cada objeto
+
+58.
+00:02:22,820 --> 00:02:25.000
+como sendo uma abstração de dados.
+
+59.
+00:02:25,000 --> 00:02:28.320
+Captura uma representação interna dos dados
+
+60
+00:02:28,320 --> 00:02:29.130
+atributos.
+
+61
+00:02:29,130 ​​-> 00:02:30.850
+Vamos dizer o que são esses em um segundo.
+
+62
+00:02:30,850 --> 00:02:34.050
+E define uma interface para interagir com o objeto
+
+63.
+00:02:34,050 --> 00:02:35.140
+através de métodos.
+
+64
+00:02:35,140 --> 00:02:36.970
+Pense neles como procedimentos.
+
+65
+00:02:36,970 --> 00:02:39.640
+E esses métodos definem um comportamento
+
+66.
+00:02:39,640 --> 00:02:41.636
+mas oculte a implementação.
+
+67
+00:02:41,636 --> 00:02:43.510
+Novamente, em um segundo, veremos um exemplo,
+
+68
+00:02:43,510 --> 00:02:47.330
+mas toda abstração de dados é uma representação interna
+
+69
+00:02:47,330 --> 00:02:50.330
+e uma interface para acessar essa representação interna,
+
+70
+00:02:50,330 --> 00:02:54.550
+fazendo algo com ele e retornando uma resposta.
+
+71
+00:02:54,550 --> 00:02:56.710
+Associado a cada objeto, temos a capacidade
+
+72
+00:02:56,710 --> 00:02:59.780
+para criar novas instâncias desse tipo de objeto,
+
+73
+00:02:59,780 --> 00:03:02.580
+e temos a capacidade de nos livrar dele, de destruir objetos,
+
+74
+00:03:02,580 --> 00:03:05.150
+usando explicitamente Del, que sabemos
+
+75
+00:03:05,150 --> 00:03:08.030
+é uma maneira universal de remover algo do nosso ambiente,
+
+76
+00:03:08,030 --> 00:03:10.330
+ou apenas esquecê-los e deixar o sistema
+
+77
+00:03:10,330 --> 00:03:12.440
+eventualmente, coleta ou recuperação de lixo
+
+78
+00:03:12,440 --> 00:03:15.000
+objetos inacessíveis ou destruídos.
+
+79
+00:03:15,000 --> 00:03:16.780
+Mas essa ideia de um objeto tendo
+
+80
+00:03:16,780 --> 00:03:19.537
+um tipo, uma representação interna, uma interface
+
+81
+00:03:19,537 --> 00:03:21.620
+será realmente importante como pensamos,
+
+82
+00:03:21,620 --> 00:03:24.390
+como queremos criar nossos próprios objetos?
+
+83
+00:03:24,390 --> 00:03:26.970
+Queremos conversar, então, sobre objetos de dados e essa ideia
+
+84
+00:03:26,970 --> 00:03:31.320
+de representações internas e maneiras de manipulá-las.
+
+85
+00:03:31,320 --> 00:03:33.582
+Temos alguns objetos de dados integrados - listas, tuplas,
+
+86
+00:03:33,582 --> 00:03:35.290
+strings-- e vamos ver exemplos
+
+87
+00:03:35,290 --> 00:03:37.560
+de como eles têm uma representação interna
+
+88
+00:03:37,560 --> 00:03:39.156
+e procedimentos associados.
+
+89
+00:03:39,156 --> 00:03:40.530
+E nós vamos pegar essa ideia
+
+90
+00:03:40,530 --> 00:03:44.330
+e generalizá-lo para analisar a capacidade de criar nossos próprios dados
+
+91
+00:03:44,330 --> 00:03:45.590
+tipos de objetos.
+
+92
+00:03:45,590 --> 00:03:47.870
+E isso remete ao que eu disse quando comecei.
+
+93
+00:03:47,870 --> 00:03:51.560
+Depois que podemos fazer isso, queremos tratar esses objetos de dados
+
+94
+00:03:51,560 --> 00:03:53.860
+tipos como se tivessem sido fornecidos a nós
+
+95
+00:03:53,860 --> 00:03:56.960
+e tratá-los da mesma maneira que trataríamos qualquer dado incorporado
+
+96
+00:03:56,960 --> 00:03:59.120
+tipo.
+
+97
+00:03:59,120 --> 00:04:02.770
+Vejamos um exemplo para tornar isso um pouco mais concreto.
+
+98
+00:04:02,770 --> 00:04:05.540
+Este é um objeto da lista de tipos.
+
+99
+00:04:05,540 --> 00:04:07.836
+É uma instância de uma lista.
+
+100
+00:04:07,836 --> 00:04:09.210
+Uma das perguntas que poderíamos fazer
+
+101
+00:04:09,210 --> 00:04:11.880
+é, como é representado internamente?
+
+102
+00:04:11,880 --> 00:04:12.790
+Você sabe?
+
+103
+00:04:12,790 --> 00:04:14.922
+Você não deveria, porque não conversamos sobre isso.
+
+104
+00:04:14,922 --> 00:04:16.630
+E você não deveria se preocupar com isso.
+
+105
+00:04:16,630 --> 00:04:19.890
+Você só quer usar esse objeto de dados através de um conjunto definido
+
+106
+00:04:19,890 --> 00:04:21.209
+de procedimentos.
+
+107
+00:04:21,209 --> 00:04:23.120
+É possível dentro da sua máquina
+
+108
+00:04:23,120 --> 00:04:25.770
+que uma lista é representada alocando uma sequência
+
+109
+00:04:25,770 --> 00:04:28.584
+de slots consecutivos na memória.
+
+110
+00:04:28,584 --> 00:04:30.250
+A lista apontaria para o primeiro slot--
+
+111
+00:04:30,250 --> 00:04:31.887
+esse seria o primeiro índice.
+
+112
+00:04:31,887 --> 00:04:33.470
+Incrementalmente, o próximo slot de memória
+
+113
+00:04:33,470 --> 00:04:35.214
+poderia ser o segundo índice.
+
+114
+00:04:35,214 --> 00:04:37.380
+Acontece que essa não é uma ótima maneira de representar listas,
+
+115
+00:04:37,380 --> 00:04:40.230
+porque é limitado na capacidade de alterá-los,
+
+116
+00:04:40,230 --> 00:04:42.980
+modificá-los ou ter elementos de tamanho arbitrário
+
+117
+00:04:42,980 --> 00:04:44.327
+dentro deles.
+
+118
+00:04:44,327 --> 00:04:46.410
+Então, de fato, uma maneira mais comum de representar uma lista
+
+119
+00:04:46,410 --> 00:04:48.890
+está usando algo chamado lista vinculada,
+
+120
+00:04:48,890 --> 00:04:52.810
+onde a lista aponta para uma célula na memória--
+
+121
+00:04:52,810 --> 00:04:54.980
+na verdade, para um par de células na memória--
+
+122
+00:04:54,980 --> 00:04:57.990
+o primeiro dos quais contém o objeto ou talvez
+
+123
+00:04:57,990 --> 00:05:00.570
+até um ponteiro para um objeto em outro lugar,
+
+124
+00:05:00,570 --> 00:05:05.050
+e o segundo que aponta para ou vincula ao próximo local
+
+125
+00:05:05,050 --> 00:05:06.060
+na lista.
+
+126
+00:05:06,060 --> 00:05:07.860
+Pode ser o próximo local na memória.
+
+127
+00:05:07,860 --> 00:05:09.790
+Pode estar em outro lugar da memória.
+
+128
+00:05:09,790 --> 00:05:11.530
+E quando eu quero indexar em uma lista,
+
+129
+00:05:11,530 --> 00:05:14.930
+Estou literalmente andando pela lista e encontrando o lugar certo
+
+130
+00:05:14,930 --> 00:05:17.490
+e recuperando o elemento a partir dele.
+
+131
+00:05:17,490 --> 00:05:20.630
+Essa é uma boa maneira de pensar em criar listas.
+
+132
+00:05:20,630 --> 00:05:21.960
+É assim que você faz?
+
+133
+00:05:21,960 --> 00:05:24.640
+Não importa, porque o que você usa com as listas
+
+134
+00:05:24,640 --> 00:05:27.720
+é uma maneira, um conjunto de procedimentos, um conjunto de métodos,
+
+135
+00:05:27,720 --> 00:05:30.260
+para realmente manipular os elementos da lista.
+
+136
+00:05:30,260 --> 00:05:31.840
+E você já viu muitos deles.
+
+137
+00:05:31,840 --> 00:05:33.590
+Eu posso pegar um elemento específico.
+
+138
+00:05:33,590 --> 00:05:35.440
+Eu posso cortar nele.
+
+139
+00:05:35,440 --> 00:05:38.330
+Eu posso fazer isso com um conjunto específico de saltos.
+
+140
+00:05:38,330 --> 00:05:42.410
+Eu posso ter procedimentos que realmente calculam as coisas
+
+141
+00:05:42,410 --> 00:05:44.750
+de uma lista ou se livrar de um elemento de uma lista.
+
+142
+00:05:44,750 --> 00:05:47.772
+Associei a listas um conjunto de métodos,
+
+143
+00:05:47,772 --> 00:05:50.230
+e há aquela notação de ponto que falamos anteriormente,
+
+144
+00:05:50,230 --> 00:05:53.170
+e falaremos muito mais em alguns minutos.
+
+145
+00:05:53,170 --> 00:05:55.830
+O ponto chave aqui é que eu tenho um conjunto de maneiras
+
+146
+00:05:55,830 --> 00:05:59.610
+em que eu interajo e manipulo listas de maneira padrão.
+
+147
+00:05:59,610 --> 00:06:02.990
+E da sua perspectiva, você pensa sobre isso.
+
+148
+00:06:02,990 --> 00:06:06.390
+Você não se preocupa com o que é a representação interna,
+
+149
+00:06:06,390 --> 00:06:10.510
+porque esses procedimentos cuidam disso para você.
+
+150
+00:06:10,510 --> 00:06:13.140
+Como conseqüência, essa representação interna
+
+151
+00:06:13,140 --> 00:06:14.850
+realmente deve ser privado, ou seja, você
+
+152
+00:06:14,850 --> 00:06:17.074
+não sei o que há dentro disso.
+
+153
+00:06:17,074 --> 00:06:18.490
+E o comportamento correto, de fato,
+
+154
+00:06:18,490 --> 00:06:20.870
+pode ser comprometida se você tentar manipular
+
+155
+00:06:20,870 --> 00:06:23.110
+a representação interna diretamente.
+
+156
+00:06:23,110 --> 00:06:26.070
+Idealmente, você deve sempre usar as interfaces definidas
+
+157
+00:06:26,070 --> 00:06:28.360
+para obter partes ou elementos
+
+158
+00:06:28,360 --> 00:06:31.380
+de uma lista ou qualquer outro objeto de dados que você criou.
+
+159
+00:06:31,380 --> 00:06:33.964
+
+
+160
+00:06:33,964 --> 00:06:35.380
+Nós vamos pegar essa ideia agora,
+
+161
+00:06:35,380 --> 00:06:36.190
+e vamos falar sobre como
+
+162
+00:06:36,190 --> 00:06:38.106
+você cria seus próprios objetos e como você
+
+163
+00:06:38,106 --> 00:06:39.340
+usa seus próprios objetos?
+
+164
+00:06:39,340 --> 00:06:40.756
+E já vimos que vamos
+
+165
+00:06:40,756 --> 00:06:42.280
+precisar de uma representação interna,
+
+166
+00:06:42,280 --> 00:06:44.010
+e vamos precisar de métodos para ativar
+
+167
+00:06:44,010 --> 00:06:45.980
+nos falar sobre como queremos manipular
+
+168
+00:06:45,980 --> 00:06:47.940
+essa representação interna.
+
+169
+00:06:47,940 --> 00:06:49.440
+Para fazer isso, no entanto, também vamos
+
+170
+00:06:49,440 --> 00:06:51.280
+para fazer mais uma distinção, e isso é
+
+171
+00:06:51,280 --> 00:06:56.010
+entre criar uma classe e usar uma instância de uma classe.
+
+172
+00:06:56,010 --> 00:06:59.300
+Para resumir a termos anteriores, a ideia de uma lista
+
+173
+00:06:59,300 --> 00:07:00.559
+é uma classe.
+
+174
+00:07:00,559 --> 00:07:02.850
+Mas o exemplo que eu tive da lista um, dois, três, quatro
+
+175
+00:07:02,850 --> 00:07:05.170
+é uma instância específica de uma classe.
+
+176
+00:07:05,170 --> 00:07:07.200
+E como você sabe, eu poderia ter muitas instâncias.
+
+177
+00:07:07,200 --> 00:07:08.815
+Eu posso usá-los de maneiras diferentes.
+
+178
+00:07:08,815 --> 00:07:10.440
+Quando queremos criar nossos próprios objetos,
+
+179
+00:07:10,440 --> 00:07:11.830
+precisamos fazer a mesma coisa.
+
+180
+00:07:11,830 --> 00:07:13.100
+Como criamos uma classe?
+
+181
+00:07:13,100 --> 00:07:16.080
+Como criamos uma instância de uma classe?
+
+182
+00:07:16,080 --> 00:07:18.680
+Criar a turma envolverá
+
+183
+00:07:18,680 --> 00:07:21.580
+definindo o nome da classe para que eu possa fazer referência a ela.
+
+184
+00:07:21,580 --> 00:07:24.332
+Isso envolverá a definição dos atributos da classe.
+
+185
+00:07:24,332 --> 00:07:25.915
+Eu vou chegar a isso em um segundo.
+
+186
+00:07:25,915 --> 00:07:28.420
+E um exemplo disso é, no caso de lista,
+
+187
+00:07:28,420 --> 00:07:31.280
+alguém escreveu código para implementar a classe list,
+
+188
+00:07:31,280 --> 00:07:33.900
+fornecendo a lista de nomes e definindo os atributos
+
+189
+00:07:33,900 --> 00:07:37.670
+associado a uma classe de lista.
+
+190
+00:07:37,670 --> 00:07:39.330
+Quando eu quero usar a classe, isso
+
+191
+00:07:39,330 --> 00:07:42.900
+envolve a criação de novas instâncias desse objeto, tipos diferentes
+
+192
+00:07:42,900 --> 00:07:46.720
+de listas e, em seguida, executando operações nessas instâncias.
+
+193
+00:07:46,720 --> 00:07:49.290
+Então, por exemplo, se eu tiver a lista simples L é igual a
+
+194
+00:07:49,290 --> 00:07:52.270
+a lista de um, dois, então há uma operação nele,
+
+195
+00:07:52,270 --> 00:07:54.720
+e que está operando nessa instância específica,
+
+196
+00:07:54,720 --> 00:07:56.694
+não no todo clbunda.
+
+197
+00:07:56,694 --> 00:07:58.610
+Vou pegar essas mesmas idéias agora e tentar
+
+198
+00:07:58,610 --> 00:08:00.070
+para torná-los mais concretos em termos
+
+199
+00:08:00,070 --> 00:08:02.840
+de, como definimos uma classe e como realmente
+
+200
+00:08:02,840 --> 00:08:05.100
+usar instâncias da classe?
+
+201
+00:08:05,100 --> 00:08:08.070
+Mas antes de fazer isso, vamos falar sobre o porquê.
+
+202
+00:08:08,070 --> 00:08:11.260
+O que estou tentando fazer agora é agrupar dados
+
+203
+00:08:11,260 --> 00:08:12.920
+em pacotes.
+
+204
+00:08:12,920 --> 00:08:15.250
+Esse pacote inclui vincular
+
+205
+00:08:15,250 --> 00:08:19.350
+diferentes dados que estão associados em um único local,
+
+206
+00:08:19,350 --> 00:08:20.940
+mas também está associado
+
+207
+00:08:20,940 --> 00:08:23.990
+os métodos que irão manipular esse objeto de dados.
+
+208
+00:08:23,990 --> 00:08:26.270
+E essa é realmente uma ideia sobre a qual falamos muito,
+
+209
+00:08:26,270 --> 00:08:31.650
+porque isso é simplesmente uma versão da abstração.
+
+210.
+00:08:31,650 --> 00:08:34.400
+Ao fazer essa ideia de agrupar as coisas,
+
+211
+00:08:34,400 --> 00:08:38.059
+Agora posso tratar esse pacote como um resumo de dados
+
+212
+00:08:38,059 --> 00:08:40.390
+representação.
+
+213
+00:08:40,390 --> 00:08:42.339
+Para entrar, eu preciso ter métodos definidos
+
+214
+00:08:42,339 --> 00:08:44.380
+que pode retirar pedaços e fazer coisas com eles,
+
+215
+00:08:44,380 --> 00:08:47.940
+mas posso tratar a coisa toda simplesmente como um elemento.
+
+216
+00:08:47,940 --> 00:08:50.320
+E isso também será realmente importante, como pensamos
+
+217
+00:08:50,320 --> 00:08:52.280
+sobre a construção de nossas aulas.
+
+218
+00:08:52,280 --> 00:08:55.300
+Segunda vantagem principal da programação orientada a objetos
+
+219
+00:08:55,300 --> 00:08:57.340
+é que nos dá uma divisão e conquista
+
+220
+00:08:57,340 --> 00:08:58.990
+abordagem ao desenvolvimento.
+
+221
+00:08:58,990 --> 00:09:00.850
+Eu posso implementar e testar o comportamento
+
+222
+00:09:00,850 --> 00:09:02.900
+de cada classe separadamente.
+
+223
+00:09:02,900 --> 00:09:04.730
+E uma vez feito isso, então eu
+
+224
+00:09:04,730 --> 00:09:07.720
+pode começar a executar todo o sistema como uma entidade maior.
+
+225
+00:09:07,720 --> 00:09:09.940
+E esse aumento da modularidade reduz
+
+226
+00:09:09,940 --> 00:09:11.520
+a complexidade do código que escrevo
+
+227
+00:09:11,520 --> 00:09:13.630
+associado a qualquer classe.
+
+228
+00:09:13,630 --> 00:09:17.400
+Como conseqüência, facilita muito a reutilização do código.
+
+229
+00:09:17,400 --> 00:09:21.230
+De fato, muitos módulos Python definindo novas classes
+
+230
+00:09:21,230 --> 00:09:23.800
+inerentemente, e cada classe, portanto,
+
+231
+00:09:23,800 --> 00:09:25.621
+possui um ambiente separado.
+
+232
+00:09:25,621 --> 00:09:27.870
+Isso significa que não tenho colisões sobre os nomes.
+
+233
+00:09:27,870 --> 00:09:30.780
+Se eu quiser usar um método com um nome específico em uma classe,
+
+234
+00:09:30,780 --> 00:09:33.480
+Eu posso usar um método com o mesmo nome em outra classe,
+
+235
+00:09:33,480 --> 00:09:36.190
+porque eles são capturados dentro de um módulo.
+
+236
+00:09:36,190 --> 00:09:37.717
+E como veremos um pouco mais adiante,
+
+237
+00:09:37,717 --> 00:09:40.300
+nós vamos ter a noção de herança, na qual podemos
+
+238
+00:09:40,300 --> 00:09:44.450
+definir subclasses de classes que capturarão ou herdarão
+
+239
+00:09:44,450 --> 00:09:48.100
+comportamento de sua classe pai e potencialmente modificá-lo.
+
+240
+00:09:48,100 --> 00:09:50.190
+Mas torna mais fácil escrever código,
+
+241
+00:09:50,190 --> 00:09:52.190
+porque não precisamos escrever o mesmo comportamento
+
+242
+00:09:52,190 --> 00:09:54.030
+para todas as aulas se, de fato, podemos ter
+
+243
+00:09:54,030 --> 00:09:56.250
+capturado em uma única classe.
+
+244
+00:09:56,250 --> 00:09:58.070
+Nós vamos pegar essas idéias e agora
+
+245
+00:09:58,070 --> 00:10:00.820
+comece a torná-los muito mais concretos.

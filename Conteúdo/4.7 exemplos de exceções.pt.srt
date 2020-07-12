@@ -1,0 +1,1088 @@
+1
+00:00:00,510 --> 00:00:04,019
+Então, vamos usar a ideia de poder lidar com exceções
+
+2
+00:00:04,019 --> 00:00:07,314
+de maneiras que decidimos olhar para alguns lugares padrão
+
+3
+00:00:07,314 --> 00:00:08,480
+e onde podemos usar isso.
+
+4
+00:00:08,480 --> 00:00:10,710
+Alguns exemplos de como essa capacidade nos permite,
+
+5
+00:00:10,710 --> 00:00:14,680
+por exemplo, controle a entrada em um procedimento.
+
+6
+00:00:14,680 --> 00:00:17,230
+Aqui está um pequeno exemplo simples.
+
+7
+00:00:17,230 --> 00:00:19,636
+Eu quero ter o tipo de usuário em um número inteiro.
+
+8
+00:00:19,636 --> 00:00:21,760
+E se eu tiver sorte, eles fazem isso da primeira vez.
+
+9
+00:00:21,760 --> 00:00:22,710
+Mas eles podem não.
+
+10
+00:00:22,710 --> 00:00:26,339
+E, em vez de precisar executar novamente o código do nível superior,
+
+11
+00:00:26,339 --> 00:00:28,130
+Eu gostaria de criar um pequeno loop no qual eu
+
+12
+00:00:28,130 --> 00:00:32,189
+continue pedindo essa entrada até que seja feita corretamente.
+
+13
+00:00:32,189 --> 00:00:34,410
+Então, eu tenho um tempo aqui em cima.
+
+14
+00:00:34,410 --> 00:00:37,095
+E observe que a condição é verdadeira,
+
+15
+00:00:37,095 --> 00:00:39,220
+então sempre vai passar por esse loop while
+
+16
+00:00:39,220 --> 00:00:40,830
+a menos que eu saia disso.
+
+17
+00:00:40,830 --> 00:00:42,710
+E dentro do loop while, eu tenho
+
+18
+00:00:42,710 --> 00:00:44,950
+tem uma dessas expressões de tentativa.
+
+19
+00:00:44,950 --> 00:00:47,810
+Então, eu vou tentar executar este código,
+
+20
+00:00:47,810 --> 00:00:50,830
+e o código basicamente diz-- pede uma entrada.
+
+21
+00:00:50,830 --> 00:00:52,750
+Diz digitar um número inteiro e depois
+
+22
+00:00:52,750 --> 00:00:54,790
+tenta se certificar de que realmente
+
+23
+00:00:54,790 --> 00:00:58,020
+é um número inteiro dizendo o que foi inserido aqui, que vem
+
+24
+00:00:58,020 --> 00:01:01,220
+como uma string, vou convertê-lo em um número inteiro
+
+25
+00:01:01,220 --> 00:01:02,920
+ali.
+
+26
+00:01:02,920 --> 00:01:07,570
+Agora, se isso funcionar corretamente, a próxima coisa será uma pausa.
+
+27
+00:01:07,570 --> 00:01:09,540
+E eu vou lembrá-lo, que o intervalo vai nos jogar
+
+28
+00:01:09,540 --> 00:01:11,760
+fora da expressão tentativa e fora
+
+29
+00:01:11,760 --> 00:01:14,260
+do loop while porque o loop while é a coisa que
+
+30
+00:01:14,260 --> 00:01:15,079
+realmente em execução.
+
+31
+00:01:15,079 --> 00:01:16,870
+E poderei dizer que tenho um número inteiro
+
+32
+00:01:16,870 --> 00:01:19,150
+e eu vou fazer isso corretamente.
+
+33
+00:01:19,150 --> 00:01:21,990
+Mas se houver um erro aqui, se, de fato,
+
+34
+00:01:21,990 --> 00:01:23,990
+Eu digito uma string ou outra coisa
+
+35
+00:01:23,990 --> 00:01:26,680
+e essa transmissão cria um erro,
+
+36
+00:01:26,680 --> 00:01:29,510
+Vou pular para a manipulação de cláusulas exceto
+
+37
+00:01:29,510 --> 00:01:32,260
+o caso de erro de valor e eu vou
+
+38
+00:01:32,260 --> 00:01:34,370
+para dizer que você não inseriu um número inteiro.
+
+39
+00:01:34,370 --> 00:01:35,770
+Tente novamente.
+
+40
+00:01:35,770 --> 00:01:38,030
+E porque eu estou dentro do loop while,
+
+41
+00:01:38,030 --> 00:01:41,440
+Vou voltar e fazer isso.
+
+42
+00:01:41,440 --> 00:01:45,200
+Então, o que eu fiz aqui é que vou executar-- exit,
+
+43
+00:01:45,200 --> 00:01:48,390
+em vez disso, o loop somente quando o tipo correto de entrada
+
+44
+00:01:48,390 --> 00:01:49,272
+é fornecido.
+
+45
+00:01:49,272 --> 00:01:51,480
+Caso contrário, eu vou percorrer esse loop while
+
+46
+00:01:51,480 --> 00:01:53,480
+para sempre até que você finalmente desmorone e me dê
+
+47
+00:01:53,480 --> 00:01:55,730
+um número inteiro como eu pedi, mas isso é
+
+48
+00:01:55,730 --> 00:01:58,610
+uma boa maneira de controlar, garantindo que a entrada seja fornecida
+
+49
+00:01:58,610 --> 00:02:00,930
+no caminho certo.
+
+50
+00:02:00,930 --> 00:02:03,140
+E a outra coisa legal aqui é que eu sou apenas
+
+51
+00:02:03,140 --> 00:02:07,025
+receberá uma mensagem se, de fato, a exceção for levantada.
+
+52
+00:02:07,025 --> 00:02:09,150
+Então, se você me der a coisa certa, eu continuarei.
+
+53
+00:02:09,150 --> 00:02:10,858
+Mas se não, vou lembrá-lo
+
+54
+00:02:10,858 --> 00:02:12,870
+e eu vou continuar perguntando sobre isso.
+
+55
+00:02:12,870 --> 00:02:16,780
+Isso lida apenas com erros de valor.
+
+56
+00:02:16,780 --> 00:02:19,357
+Então, se eu, por algum motivo, tivesse um tipo diferente de erro aqui,
+
+57
+00:02:19,357 --> 00:02:21,440
+isso lançaria uma exceção que me jogaria fora
+
+58
+00:02:21,440 --> 00:02:23,210
+da execução completamente e faça backup
+
+59
+00:02:23,210 --> 00:02:25,300
+para o nível superior do Python Shell.
+
+60
+00:02:25,300 --> 00:02:27,260
+Mas desde que eu estou esperando que as coisas sejam
+
+61
+00:02:27,260 --> 00:02:29,800
+digitado em que eu possa transmitir de alguma maneira, em geral,
+
+62
+00:02:29,800 --> 00:02:31,702
+isso vai funcionar muito bem.
+
+63
+00:02:31,702 --> 00:02:34,520
+Um bom exemplo de mim controlando a exceção
+
+64
+00:02:34,520 --> 00:02:37,520
+para que eu não pare a computação quando uma entrada incorreta é
+
+65
+00:02:37,520 --> 00:02:40,447
+fornecida, mas lembro ao usuário o que quero
+
+66
+00:02:40,447 --> 00:02:42,280
+e continue fazendo isso até que ele ou ela me dê
+
+67
+00:02:42,280 --> 00:02:45,070
+algo que é válido.
+
+68
+00:02:45,070 --> 00:02:47,640
+Podemos acrescentar isso pensando em-- como podemos
+
+69
+00:02:47,640 --> 00:02:49,540
+tirar as coisas dos arquivos?
+
+70
+00:02:49,540 --> 00:02:53,020
+Então, aqui está um bom exemplo de controle da entrada.
+
+71
+00:02:53,020 --> 00:02:53,850
+Aqui estão as idéias.
+
+72
+00:02:53,850 --> 00:02:55,710
+Vou abrir um arquivo e estou
+
+73
+00:02:55,710 --> 00:02:57,240
+lendo os dados dele.
+
+74
+00:02:57,240 --> 00:02:59,820
+Portanto, a ideia inicial é a nossa configuração,
+
+75
+00:02:59,820 --> 00:03:01,780
+uma variável chamada "data".
+
+76
+00:03:01,780 --> 00:03:04,860
+Eu recebo um nome de arquivo solicitando informações do usuário dizendo
+
+77
+00:03:04,860 --> 00:03:06,630
+me dê o nome de um arquivo e eu
+
+78
+00:03:06,630 --> 00:03:09,780
+vou tentar abrir o arquivo.
+
+79
+00:03:09,780 --> 00:03:12,584
+Novamente, se isso funcionar, eu vou abrir o arquivo
+
+80
+00:03:12,584 --> 00:03:14,250
+e serei capaz de executá-lo.
+
+81
+00:03:14,250 --> 00:03:17,510
+E observe que, nesse caso, eu tenho um bom exemplo aqui
+
+82
+00:03:17,510 --> 00:03:20,560
+de descer e, de fato, dizer
+
+83
+00:03:20,560 --> 00:03:23,100
+feche o arquivo quando terminar tudo isso.
+
+84
+00:03:23,100 --> 00:03:23,860
+Ok.
+
+85
+00:03:23,860 --> 00:03:26,570
+Se, por outro lado, abrir o arquivo não funcionar
+
+86
+00:03:26,570 --> 00:03:29,160
+e receber um erro de E / S, vou
+
+87
+00:03:29,160 --> 00:03:34,080
+entender isso e dizer que não consegui abrir esse arquivo.
+
+88
+00:03:34,080 --> 00:03:36,079
+Por outro lado, se eu abrir, tudo bem.
+
+89
+00:03:36,079 --> 00:03:37,620
+Então eu vou para a cláusula else e
+
+90
+00:03:37,620 --> 00:03:39,640
+vou percorrer o arquivo fazendo algum trabalho.
+
+91
+00:03:39,640 --> 00:03:42,470
+Basicamente vou processar esses dados
+
+92
+00:03:42,470 --> 00:03:46,710
+para adicionar novos elementos dos dados nesses dados variáveis
+
+93
+00:03:46,710 --> 00:03:48,450
+para que eu possa controlá-lo.
+
+94
+00:03:48,450 --> 00:03:50,840
+E os detalhes aqui são basicamente--
+
+95
+00:03:50,840 --> 00:03:52,970
+Estou lendo em uma nova linha.
+
+96
+00:03:52,970 --> 00:03:55,410
+Contanto que não seja apenas um sinal de nova linha,
+
+97
+00:03:55,410 --> 00:03:58,430
+Vou pegar a linha, dividi-la pelas vírgulas
+
+98
+00:03:58,430 --> 00:04:00,800
+separar as peças para criar uma lista,
+
+99
+00:04:00,800 --> 00:04:03,980
+e remover usando essa coisinha de tirar
+
+100
+00:04:03,980 --> 00:04:05,580
+tudo, menos o último elemento.
+
+101
+00:04:05,580 --> 00:04:07,610
+Remova o sinal de nova linha à direita,
+
+102
+00:04:07,610 --> 00:04:09,930
+e adicione-o ao arquivo.
+
+103
+00:04:09,930 --> 00:04:12,720
+Vejamos um exemplo disso para ver o que isso pode fazer.
+
+104
+00:04:12,720 --> 00:04:16,760
+Então, no meu computador aqui, eu carreguei esse arquivo
+
+105
+00:04:16,760 --> 00:04:19,630
+e agora vou executá-lo.
+
+106
+00:04:19,630 --> 00:04:24,010
+E ele diz, na minha máquina, me dê o nome de um arquivo de dados.
+
+107
+00:04:24,010 --> 00:04:27,070
+E eu tenho um conjunto de pontos de dados de teste
+
+108
+00:04:27,070 --> 00:04:29,850
+que eu vou fazer agora, então deixe-me digitar isso.
+
+109
+00:04:29,850 --> 00:04:34,300
+Dados de notas de teste py.
+
+110
+00:04:34,300 --> 00:04:34,840
+Ah, ótimo.
+
+111
+00:04:34,840 --> 00:04:36,200
+Parece que funcionou corretamente.
+
+112
+00:04:36,200 --> 00:04:37,840
+E assim eu poderia realmente olhar para isso.
+
+113
+00:04:37,840 --> 00:04:40,690
+Eu posso ver - como são os dados agora?
+
+114
+00:04:40,690 --> 00:04:41,940
+Ah, legal.
+
+115
+00:04:41,940 --> 00:04:46,100
+É um conjunto de notas para algumas pessoas que participam da aula.
+
+116
+00:04:46,100 --> 00:04:48,584
+Isso funcionou bem no sentido em que eu dei um arquivo
+
+117
+00:04:48,584 --> 00:04:49,750
+que poderia realmente abrir.
+
+118
+00:04:49,750 --> 00:04:53,620
+Se eu rodar novamente - e eu vou fazer isso.
+
+119
+00:04:53,620 --> 00:04:57,690
+Deixe-me executá-lo novamente e dou o nome de um arquivo que não
+
+120
+00:04:57,690 --> 00:05:03,950
+existe, ele pega, diz que eu tenho um erro de E/S,
+
+121
+00:05:03,950 --> 00:05:06,610
+e imprime a mensagem dizendo que não foi possível abrir o arquivo
+
+122
+00:05:06,610 --> 00:05:09,460
+e não tenta, de fato, processar os dados.
+
+123
+00:05:09,460 --> 00:05:13,420
+E, de fato, se eu olhar dados, ainda é apenas a lista vazia.
+
+124
+00:05:13,420 --> 00:05:15,770
+Eu não fiz nada em torno disso.
+
+125
+00:05:15,770 --> 00:05:18,500
+Novamente, é uma boa maneira de controlar a entrada aqui,
+
+126
+00:05:18,500 --> 00:05:21,070
+se eu receber um erro, vou encerrá-lo.
+
+127
+00:05:21,070 --> 00:05:23,550
+E nesse caso em que digitei a coisa errada,
+
+128
+00:05:23,550 --> 00:05:27,220
+esta cláusula finalmente aqui foi importante porque fechou
+
+129
+00:05:27,220 --> 00:05:29,020
+que tentam abrir o nome do arquivo
+
+130
+00:05:29,020 --> 00:05:30,820
+então não está por aí.
+
+131
+00:05:30,820 --> 00:05:31,320
+Tudo certo.
+
+132
+00:05:31,320 --> 00:05:33,090
+Agora eu posso carregar dados.
+
+133
+00:05:33,090 --> 00:05:35,610
+Vejamos como eu poderia usar exceções para fazer outras coisas
+
+134
+00:05:35,610 --> 00:05:37,820
+usando esses dados.
+
+135
+00:05:37,820 --> 00:05:41,500
+Então, como dissemos, vou pular se o nome do arquivo
+
+136
+00:05:41,500 --> 00:05:43,380
+ou se não houver arquivo com esse nome.
+
+137
+00:05:43,380 --> 00:05:45,900
+Caso contrário, eu vou executar o resto das peças.
+
+138
+00:05:45,900 --> 00:05:48,794
+Em ambos os casos, se eu recebo um nome de arquivo correto ou não,
+
+139
+00:05:48,794 --> 00:05:49,960
+Vou fechar o arquivo.
+
+140
+00:05:49,960 --> 00:05:52,450
+Coisas importantes a fazer.
+
+141
+00:05:52,450 --> 00:05:55,500
+Tão boas notícias aqui é que parece ler os dados corretamente
+
+142
+00:05:55,500 --> 00:05:57,632
+e o converteu em uma lista de listas,
+
+143
+00:05:57,632 --> 00:05:58,590
+o que eu queria.
+
+144
+00:05:58,590 --> 00:06:00,920
+Eu tenho uma lista de elementos, cada um dos quais
+
+145
+00:06:00,920 --> 00:06:03,340
+é uma lista com o nome de um aluno e a nota
+
+146
+00:06:03,340 --> 00:06:05,620
+que eles estão entrando nesse curso.
+
+147
+00:06:05,620 --> 00:06:07,730
+Agora, suponha que eu queira reestruturar isso
+
+148
+00:06:07,730 --> 00:06:10,410
+em uma lista de nomes e uma lista de grandes nomes
+
+149
+00:06:10,410 --> 00:06:12,980
+para cada entrada na lista geral.
+
+150
+00:06:12,980 --> 00:06:14,480
+Eu poderia escrever código para fazer isso, mas eu
+
+151
+00:06:14,480 --> 00:06:18,870
+pode usar a idéia de exceção muito bem para fazer isso acontecer.
+
+152
+00:06:18,870 --> 00:06:20,780
+Mesma estrutura básica.
+
+153
+00:06:20,780 --> 00:06:22,030
+Mais uma vez, eu tenho a minha tentativa.
+
+154
+00:06:22,030 --> 00:06:22,960
+Eu tenho a exceção.
+
+155
+00:06:22,960 --> 00:06:25,440
+Eu tenho o resto por aí.
+
+156
+00:06:25,440 --> 00:06:28,780
+Agora, veja o que eu poderia fazer depois de obter essas informações.
+
+157
+00:06:28,780 --> 00:06:31,030
+Na verdade, eu poderia criar uma nova estrutura de dados,
+
+158
+00:06:31,030 --> 00:06:33,130
+uma lista chamada "Dados de notas".
+
+159
+00:06:33,130 --> 00:06:35,850
+E o que eu quero fazer é percorrer esses dados
+
+160
+00:06:35,850 --> 00:06:38,094
+e reunir informações para isso.
+
+161
+00:06:38,094 --> 00:06:39,510
+Então a primeira coisa que vou fazer
+
+162
+00:06:39,510 --> 00:06:43,161
+é dizer, desde que eu tenha alguns dados ...
+
+163
+00:06:43,161 --> 00:06:44,660
+porque eu li isso de forma inadequada,
+
+164
+00:06:44,660 --> 00:06:47,609
+que eu queria verificar - então eu poderia fazer um loop.
+
+165
+00:06:47,609 --> 00:06:49,400
+Eu poderia dizer, para cada aluno nesses dados,
+
+166
+00:06:49,400 --> 00:06:50,420
+Eu quero fazer algo.
+
+167
+00:06:50,420 --> 00:06:52,366
+Mas aqui, vou usar tente novamente.
+
+168
+00:06:52,366 --> 00:06:56,675
+E, em particular, vou tentar pegar os dados
+
+169
+00:06:56,675 --> 00:06:58,800
+e retire os dois primeiros elementos - o aluno
+
+170
+00:06:58,800 --> 00:07:02,870
+nome e sobrenome - e as notas
+
+171
+00:07:02,870 --> 00:07:07,050
+e converta isso em duas listas, uma lista do nome dos alunos
+
+172
+00:07:07,050 --> 00:07:08,910
+e uma lista das notas reais.
+
+173
+00:07:08,910 --> 00:07:11,260
+Eu vou fazer isso, a menos que eu receba um erro.
+
+174
+00:07:11,260 --> 00:07:14,640
+E o erro será se, de fato, eu receber um erro de índice.
+
+175
+00:07:14,640 --> 00:07:15,170
+Bem aqui.
+
+176
+00:07:15,170 --> 00:07:17,880
+Ou seja, eu tento acessar algo
+
+177
+00:07:17,880 --> 00:07:20,520
+que não está disponível-- normalmente significa
+
+178
+00:07:20,520 --> 00:07:22,310
+que não são notas para este aluno--
+
+179
+00:07:22,310 --> 00:07:26,830
+Vou obter uma lista dos nomes dos alunos
+
+180
+00:07:26,830 --> 00:07:29,370
+e apenas insira uma lista vazia porque eu tenho
+
+181
+00:07:29,370 --> 00:07:31,200
+sem notas para esse aluno.
+
+182
+00:07:31,200 --> 00:07:32,730
+Estou lhe dando muito código.
+
+183
+00:07:32,730 --> 00:07:34,610
+Deixe-me simplesmente resumir isso.
+
+184
+00:07:34,610 --> 00:07:37,020
+Primeira parte como antes.
+
+185
+00:07:37,020 --> 00:07:40,410
+Mas agora, para a segunda parte, enquanto eu processo cada um desses dados
+
+186
+00:07:40,410 --> 00:07:42,510
+pontos, vou tentar ter certeza
+
+187
+00:07:42,510 --> 00:07:44,210
+que, se não houver notas lá,
+
+188
+00:07:44,210 --> 00:07:47,160
+Eu pego esse erro e o substituo em uma lista vazia
+
+189
+00:07:47,160 --> 00:07:49,410
+para lidar com o caso de um aluno que não apareceu
+
+190
+00:07:49,410 --> 00:07:50,940
+para o exame.
+
+191
+00:07:50,940 --> 00:07:53,170
+Vamos ver o que acontece.
+
+192
+00:07:53,170 --> 00:07:56,580
+Então, eu tenho agora uma versão desse código.
+
+193
+00:07:56,580 --> 00:07:59,000
+Deixe-me executá-lo.
+
+194
+00:07:59,000 --> 00:08:03,680
+E, novamente, vou fornecer os mesmos dados, o mesmo arquivo
+
+195
+00:08:03,680 --> 00:08:13,475
+nome, que é "Test Grades Data".
+
+196
+00:08:13,475 --> 00:08:16,140
+Parece ter funcionado corretamente, e vamos ver
+
+197
+00:08:16,140 --> 00:08:17,450
+o que temos lá dentro.
+
+198
+00:08:17,450 --> 00:08:20,425
+Então, primeiro de tudo, vamos ver como são os dados.
+
+199
+00:08:20,425 --> 00:08:21,126
+Ah isso é bom.
+
+200
+00:08:21,126 --> 00:08:22,750
+Essa é a mesma lista que eu carreguei.
+
+201
+00:08:22,750 --> 00:08:24,333
+E agora, vou configurar essa coisa nova.
+
+202
+00:08:24,333 --> 00:08:28,580
+Vejamos como é o Grades Data.
+
+203
+00:08:28,580 --> 00:08:29,670
+E isso é legal.
+
+204
+00:08:29,670 --> 00:08:31,350
+E porque é legal?
+
+205
+00:08:31,350 --> 00:08:34,390
+Porque Bill Gates não fez o teste.
+
+206
+00:08:34,390 --> 00:08:36,500
+Eu acho que ele estava muito ocupado fazendo outra coisa,
+
+207
+00:08:36,500 --> 00:08:40,460
+e há uma lista vazia mostrando que ele não tem notas.
+
+208
+00:08:40,460 --> 00:08:41,870
+Oh, mas espere um minuto.
+
+209
+00:08:41,870 --> 00:08:47,200
+Deadpool agora tem um sobrenome, 25.
+
+210
+00:08:47,200 --> 00:08:50,160
+E o barão Von Richthofen perdeu suas notas,
+
+211
+00:08:50,160 --> 00:08:52,390
+mas ele agora tem um grau de Richthofen.
+
+212
+00:08:52,390 --> 00:08:53,940
+O que aconteceu?
+
+213
+00:08:53,940 --> 00:08:56,430
+Eu estava fazendo uma suposição.
+
+214
+00:08:56,430 --> 00:08:59,590
+E enquanto eu lido bem com o caso de sem notas,
+
+215
+00:08:59,590 --> 00:09:03,260
+Estou assumindo que todo mundo tem dois nomes.
+
+216
+00:09:03,260 --> 00:09:04,260
+OK.
+
+217
+00:09:04,260 --> 00:09:08,470
+A boa notícia aqui é que não cometi um erro.
+
+218
+00:09:08,470 --> 00:09:10,250
+A má notícia é que o que eu produzi
+
+219
+00:09:10,250 --> 00:09:13,030
+não satisfaz as propriedades que eu queria,
+
+220
+00:09:13,030 --> 00:09:15,290
+então eu preciso voltar e consertar isso.
+
+221
+00:09:15,290 --> 00:09:17,870
+Por isso, funciona bem se estiver no formato padrão, incluindo
+
+222
+00:09:17,870 --> 00:09:19,270
+agora o caso de sem notas, mas
+
+223
+00:09:19,270 --> 00:09:22,660
+falha se os nomes não tiverem duas partes.
+
+224
+00:09:22,660 --> 00:09:24,840
+Como eu consertaria isso?
+
+225
+00:09:24,840 --> 00:09:28,140
+Bem, apenas adicionando de outra maneira
+
+226
+00:09:28,140 --> 00:09:30,020
+de lidar com esse caso de tentativa.
+
+227
+00:09:30,020 --> 00:09:32,350
+Então, a mesma estrutura com o código.
+
+228
+00:09:32,350 --> 00:09:34,410
+É o mesmo de antes.
+
+229
+00:09:34,410 --> 00:09:36,360
+Como antes, vou fazer um loop sobre os dados.
+
+230
+00:09:36,360 --> 00:09:38,460
+Mas agora, o que vou fazer é lidar
+
+231
+00:09:38,460 --> 00:09:40,910
+com a captura do erro de uma maneira diferente.
+
+232
+00:09:40,910 --> 00:09:44,040
+Vou pegar o nome do aluno,
+
+233
+00:09:44,040 --> 00:09:45,790
+e eu vou tratá-lo como tudo
+
+234
+00:09:45,790 --> 00:09:50,350
+mas a nota-- então tudo, menos o último elemento.
+
+235
+00:09:50,350 --> 00:09:54,070
+Vou ter as notas como esse último elemento,
+
+236
+00:09:54,070 --> 00:09:56,990
+e vou tentar convertê-lo em um número inteiro.
+
+237
+00:09:56,990 --> 00:10:00,420
+Mas no caso em que não pode-- porque eu não tenho algo
+
+238
+00:10:00,420 --> 00:10:04,850
+ali-- eu vou pegar o erro de valor e simplesmente inserir
+
+239
+00:10:04,850 --> 00:10:09,450
+uma lista vazia nesse caso, juntamente com todos
+
+240
+00:10:09,450 --> 00:10:13,370
+dos elementos do aluno.
+
+241
+00:10:13,370 --> 00:10:15,494
+Então agora, eu vou lidar com o caso de sem notas,
+
+242
+00:10:15,494 --> 00:10:16,910
+mas vai me permitir lidar
+
+243
+00:10:16,910 --> 00:10:19,980
+no caso de ter vários nomes - um ou mais nomes
+
+244
+00:10:19,980 --> 00:10:21,610
+de dois nomes.
+
+245
+00:10:21,610 --> 00:10:23,010
+A principal coisa a ver aqui é que eu sou apenas
+
+246
+00:10:23,010 --> 00:10:26,640
+deixando a exceção lidar com o caso especial.
+
+247
+00:10:26,640 --> 00:10:29,150
+E se formos tentar este, o que nós
+
+248
+00:10:29,150 --> 00:10:41,120
+vai ver-- enquanto eu rodo ele e digito o nome do arquivo--
+
+249
+00:10:41,120 --> 00:10:44,670
+funcionou corretamente ou foi concluído, existem dados.
+
+250
+00:10:44,670 --> 00:10:47,550
+E agora, Grades Data.
+
+251
+00:10:47,550 --> 00:10:49,470
+Ah, muito legal.
+
+252
+00:10:49,470 --> 00:10:52,000
+Cada entrada tem duas listas
+
+253
+00:10:52,000 --> 00:10:54,640
+ou uma lista de duas listas, uma lista dos nomes,
+
+254
+00:10:54,640 --> 00:10:56,050
+uma lista das notas.
+
+255
+00:10:56,050 --> 00:10:58,050
+E observe que foi feito Bill Gates corretamente,
+
+256
+00:10:58,050 --> 00:10:59,180
+sem notas.
+
+257
+00:10:59,180 --> 00:11:00,970
+Foi feito Deadpool sabendo corretamente
+
+258
+00:11:00,970 --> 00:11:04,460
+que agora é apenas uma lista de um elemento com uma nota.
+
+259
+00:11:04,460 --> 00:11:06,730
+E foi feito o Barão Von Richthofen corretamente,
+
+260
+00:11:06,730 --> 00:11:09,720
+uma lista agora de três nomes e uma série.
+
+261
+00:11:09,720 --> 00:11:12,270
+O fato de terem feito as notas corretamente é realmente irrelevante.
+
+262
+00:11:12,270 --> 00:11:13,930
+O mais importante é perceber como
+
+263
+00:11:13,930 --> 00:11:18,140
+Eu usei o tratamento de exceções para lidar com isso.
+
+264
+00:11:18,140 --> 00:11:22,560
+Nesse caso, usando o fato de que, quando eu tento fazer um elenco,
+
+265
+00:11:22,560 --> 00:11:25,780
+lançará um erro de valor se, de fato, o último elemento
+
+266
+00:11:25,780 --> 00:11:27,090
+não é um número.
+
+267
+00:11:27,090 --> 00:11:29,080
+E nesse caso, muda o que
+
+268
+00:11:29,080 --> 00:11:31,870
+Eu usaria para puxar o nome agora sabendo que tudo
+
+269
+00:11:31,870 --> 00:11:34,210
+no aluno havia um nome, por isso eu usei
+
+270
+00:11:34,210 --> 00:11:37,250
+uma cópia da lista aqui para obter todos os nomes
+
+271
+00:11:37,250 --> 00:11:40,310
+e por que eu inseri uma lista vazia lá
+
+272
+00:11:40,310 --> 00:11:43,500
+para representar o fato de eu não ter notas.
+

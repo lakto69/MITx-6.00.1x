@@ -1,0 +1,968 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:03,550
+I want to do one last example with this little hierarchy
+
+2
+00:00:03,550 --> 00:00:06,960
+that we're building of animals and rabbits and cats and people
+
+3
+00:00:06,960 --> 00:00:08,220
+and students.
+
+4
+00:00:08,220 --> 00:00:10,320
+I want to do this to introduce one more idea that
+
+5
+00:00:10,320 --> 00:00:11,430
+can be really valuable.
+
+6
+00:00:11,430 --> 00:00:14,250
+And to set the stage for this, with instances,
+
+7
+00:00:14,250 --> 00:00:16,430
+we've already seen the idea of an instance variable.
+
+8
+00:00:16,430 --> 00:00:17,960
+In fact those are the things we've been using,
+
+9
+00:00:17,960 --> 00:00:19,000
+those data attributes.
+
+10
+00:00:19,000 --> 00:00:21,740
+Those variables are stored inside of each instance.
+
+11
+00:00:21,740 --> 00:00:23,450
+They're specific to that instance.
+
+12
+00:00:23,450 --> 00:00:26,480
+And so when I create an instance, they belong to them.
+
+13
+00:00:26,480 --> 00:00:30,040
+I can use generic variable names within the class definition
+
+14
+00:00:30,040 --> 00:00:31,800
+to get at them, but they're all things
+
+15
+00:00:31,800 --> 00:00:33,830
+that belong to the instance.
+
+16
+00:00:33,830 --> 00:00:36,870
+I'm not going to introduce the idea of a class variable,
+
+17
+00:00:36,870 --> 00:00:38,700
+similar to an instance variable.
+
+18
+00:00:38,700 --> 00:00:41,460
+This is going to be a variable defined inside the class
+
+19
+00:00:41,460 --> 00:00:44,340
+definition, but outside of any of the methods,
+
+20
+00:00:44,340 --> 00:00:46,012
+so outside of init.
+
+21
+00:00:46,012 --> 00:00:46,720
+That's important.
+
+22
+00:00:46,720 --> 00:00:48,136
+If it was inside init, it would be
+
+23
+00:00:48,136 --> 00:00:50,380
+something that would be created within the instance.
+
+24
+00:00:50,380 --> 00:00:53,760
+Here it's going to be something that belongs to the class
+
+25
+00:00:53,760 --> 00:00:56,180
+and therefore is shared among all objects
+
+26
+00:00:56,180 --> 00:00:58,240
+or instances of that class.
+
+27
+00:00:58,240 --> 00:01:00,260
+That means any instance of a class
+
+28
+00:01:00,260 --> 00:01:03,526
+that I create can get access to that variable.
+
+29
+00:01:03,526 --> 00:01:04,900
+And we'll see why with an example
+
+30
+00:01:04,900 --> 00:01:08,500
+that shows why this is going to be valuable to use.
+
+31
+00:01:08,500 --> 00:01:11,610
+So just to remind you, there is the Animal class,
+
+32
+00:01:11,610 --> 00:01:13,091
+the kinds of methods we had.
+
+33
+00:01:13,091 --> 00:01:14,590
+And I'll just simply remind you here
+
+34
+00:01:14,590 --> 00:01:16,370
+that these are instance variables.
+
+35
+00:01:16,370 --> 00:01:18,460
+age and name are things that are created
+
+36
+00:01:18,460 --> 00:01:20,120
+whenever I call init, which means
+
+37
+00:01:20,120 --> 00:01:21,930
+whenever I create an instance.
+
+38
+00:01:21,930 --> 00:01:25,490
+They can only be accessed from within an instance.
+
+39
+00:01:25,490 --> 00:01:27,020
+I want to see what happens and why
+
+40
+00:01:27,020 --> 00:01:30,730
+I want to have the value of having a class variable.
+
+41
+00:01:30,730 --> 00:01:35,030
+So subclasses, as we know, inherit all the data attributes
+
+42
+00:01:35,030 --> 00:01:37,480
+and methods of a parent class.
+
+43
+00:01:37,480 --> 00:01:39,770
+And so I'm going to change the definition of Rabbit
+
+44
+00:01:39,770 --> 00:01:41,700
+in an interesting way.
+
+45
+00:01:41,700 --> 00:01:44,286
+I'm going to put a tag on a rabbit.
+
+46
+00:01:44,286 --> 00:01:46,410
+Could be a little ear tag that I'm tagging onto it.
+
+47
+00:01:46,410 --> 00:01:47,880
+But I want to tag every rabbit.
+
+48
+00:01:47,880 --> 00:01:50,020
+So notice what I want to do here.
+
+49
+00:01:50,020 --> 00:01:52,890
+Rabbit is still going to inherit from the Animal class.
+
+50
+00:01:52,890 --> 00:01:55,090
+But I'm going to create a class variable.
+
+51
+00:01:55,090 --> 00:01:59,527
+And notice in particular, it is outside of the init definition.
+
+52
+00:01:59,527 --> 00:02:01,360
+It's at the same level as those things.
+
+53
+00:02:01,360 --> 00:02:04,510
+So when I create the class of Rabbit,
+
+54
+00:02:04,510 --> 00:02:06,880
+it is going to create within that frame associated
+
+55
+00:02:06,880 --> 00:02:11,366
+with Rabbit a binding for tag, initially set to 1.
+
+56
+00:02:11,366 --> 00:02:12,740
+And that tag is going to allow me
+
+57
+00:02:12,740 --> 00:02:17,040
+to give a unique ID to every new rabbit that I create.
+
+58
+00:02:17,040 --> 00:02:19,270
+So now my initialization method for Rabbit
+
+59
+00:02:19,270 --> 00:02:21,090
+is a little bit different.
+
+60
+00:02:21,090 --> 00:02:25,250
+In particular I'm going to ask to pass in, potentially,
+
+61
+00:02:25,250 --> 00:02:26,710
+two other arguments.
+
+62
+00:02:26,710 --> 00:02:30,080
+You have size, age, two parents, two other rabbits,
+
+63
+00:02:30,080 --> 00:02:31,580
+because rabbits breed rabbits, as we
+
+64
+00:02:31,580 --> 00:02:33,640
+saw when we did Fibonacci.
+
+65
+00:02:33,640 --> 00:02:36,040
+I'm still going to initialize an instance using
+
+66
+00:02:36,040 --> 00:02:39,330
+the underlying animal init method, as I did before.
+
+67
+00:02:39,330 --> 00:02:43,670
+But now I'm also going to set, within that instance,
+
+68
+00:02:43,670 --> 00:02:47,190
+parameters or bindings for parent1 and parent2.
+
+69
+00:02:47,190 --> 00:02:48,840
+And those get set by simply taking
+
+70
+00:02:48,840 --> 00:02:50,360
+the values passed in, which default
+
+71
+00:02:50,360 --> 00:02:52,440
+to none if I don't pass one in.
+
+72
+00:02:52,440 --> 00:02:54,180
+And I'm going to do one last thing.
+
+73
+00:02:54,180 --> 00:02:56,560
+I'm going to create a local rabbit ID
+
+74
+00:02:56,560 --> 00:03:02,560
+tag or an rid for this rabbit by accessing rabbit.tag.
+
+75
+00:03:02,560 --> 00:03:05,370
+And that's going to get me to this point.
+
+76
+00:03:05,370 --> 00:03:07,670
+It means the first time I call this instance,
+
+77
+00:03:07,670 --> 00:03:11,020
+that instance is going to have, as a local variable, rid.
+
+78
+00:03:11,020 --> 00:03:13,710
+And it's going to be the value 1, because that's
+
+79
+00:03:13,710 --> 00:03:15,335
+the current value of the tag.
+
+80
+00:03:15,335 --> 00:03:16,960
+And then the last thing I'm going to do
+
+81
+00:03:16,960 --> 00:03:18,660
+is having called that instance, I'm
+
+82
+00:03:18,660 --> 00:03:23,180
+going to increase it by 1 to 2.
+
+83
+00:03:23,180 --> 00:03:26,350
+And that means that the class is keeping track of the tag.
+
+84
+00:03:26,350 --> 00:03:28,300
+And every time I call init again,
+
+85
+00:03:28,300 --> 00:03:30,390
+I create a new instance of this Rabbit,
+
+86
+00:03:30,390 --> 00:03:33,700
+that instance is going to get a unique ID, the latest value.
+
+87
+00:03:33,700 --> 00:03:36,320
+And the tag is going to increment by 1.
+
+88
+00:03:36,320 --> 00:03:36,920
+That's cool.
+
+89
+00:03:36,920 --> 00:03:39,830
+And this is a place where I've got data attributes associated
+
+90
+00:03:39,830 --> 00:03:42,130
+with the class, not with the instance.
+
+91
+00:03:42,130 --> 00:03:44,800
+
+
+92
+00:03:44,800 --> 00:03:47,557
+Let's see what happens if we do that.
+
+93
+00:03:47,557 --> 00:03:49,890
+And that's simply reminding of those pieces, an instance
+
+94
+00:03:49,890 --> 00:03:51,770
+variable, how I access it, and the fact
+
+95
+00:03:51,770 --> 00:03:55,640
+that I want to increment it every time I call this piece.
+
+96
+00:03:55,640 --> 00:03:58,420
+So having done that, there's a couple of other things
+
+97
+00:03:58,420 --> 00:03:59,690
+I can do with the rabbit.
+
+98
+00:03:59,690 --> 00:04:01,720
+And in particular, the getter methods
+
+99
+00:04:01,720 --> 00:04:05,370
+will include now getting out the ID
+
+100
+00:04:05,370 --> 00:04:08,720
+and getting out the names of the parents.
+
+101
+00:04:08,720 --> 00:04:12,140
+The one other thing I have here is that I've got also
+
+102
+00:04:12,140 --> 00:04:14,070
+getters, I know, for get_name get_age
+
+103
+00:04:14,070 --> 00:04:15,450
+that are inherited from Animal.
+
+104
+00:04:15,450 --> 00:04:17,000
+I can use those as well.
+
+105
+00:04:17,000 --> 00:04:19,760
+But these are now things specific to the rabbit.
+
+106
+00:04:19,760 --> 00:04:25,200
+And the one last piece here is, since this is actually
+
+107
+00:04:25,200 --> 00:04:29,430
+a particular string, because I set it to be string,
+
+108
+00:04:29,430 --> 00:04:32,090
+I can fill it out with zeros to pad it so that they all
+
+109
+00:04:32,090 --> 00:04:33,450
+print out at the same size.
+
+110
+00:04:33,450 --> 00:04:35,200
+You'll see that in a second when I use it,
+
+111
+00:04:35,200 --> 00:04:37,470
+but it's a little technique to basically make sure
+
+112
+00:04:37,470 --> 00:04:39,560
+that everything prints out to the same size.
+
+113
+00:04:39,560 --> 00:04:43,300
+In this case, it will be 001 rather than 1 so that things
+
+114
+00:04:43,300 --> 00:04:46,110
+look and print similarly.
+
+115
+00:04:46,110 --> 00:04:47,920
+OK, let's use it.
+
+116
+00:04:47,920 --> 00:04:50,800
+I create peter, rabbit of age two.
+
+117
+00:04:50,800 --> 00:04:52,337
+I set his name to actually be Peter.
+
+118
+00:04:52,337 --> 00:04:53,170
+That's kind of nice.
+
+119
+00:04:53,170 --> 00:04:55,550
+That's his name after all.
+
+120
+00:04:55,550 --> 00:04:58,790
+I'm going to create another rabbit, Hopsy, is of age three.
+
+121
+00:04:58,790 --> 00:05:01,740
+And I set her name to be Hopsy.
+
+122
+00:05:01,740 --> 00:05:05,490
+And I'm going to now create another rabbit, Cotton,
+
+123
+00:05:05,490 --> 00:05:06,820
+that has two parents.
+
+124
+00:05:06,820 --> 00:05:08,580
+Peter and Hopsy got together.
+
+125
+00:05:08,580 --> 00:05:10,560
+Cotton's one-year-old.
+
+126
+00:05:10,560 --> 00:05:13,850
+And if I set Cotton's name to Cottontail, that's fine.
+
+127
+00:05:13,850 --> 00:05:15,740
+But if I want to look at things about Cotton,
+
+128
+00:05:15,740 --> 00:05:17,010
+I can print it out.
+
+129
+00:05:17,010 --> 00:05:21,030
+And again, Cotton is now an animal with the link--
+
+130
+00:05:21,030 --> 00:05:25,222
+sorry, with the name Cottontail inside of it and the age one.
+
+131
+00:05:25,222 --> 00:05:26,680
+So I've inherited all the behaviors
+
+132
+00:05:26,680 --> 00:05:28,500
+I would have wanted before.
+
+133
+00:05:28,500 --> 00:05:32,490
+If I ask Cotton to get the first parent, I can print that out.
+
+134
+00:05:32,490 --> 00:05:33,900
+And notice what I'm doing here is
+
+135
+00:05:33,900 --> 00:05:37,150
+getting a method associated with it and invoking it.
+
+136
+00:05:37,150 --> 00:05:40,440
+And it prints out, ah, exactly what I wanted.
+
+137
+00:05:40,440 --> 00:05:42,810
+Cotton's first parent was Peter, age two.
+
+138
+00:05:42,810 --> 00:05:45,930
+
+
+139
+00:05:45,930 --> 00:05:48,660
+Once I've got that, I can add some other pieces
+
+140
+00:05:48,660 --> 00:05:51,160
+to my behavior for rabbits.
+
+141
+00:05:51,160 --> 00:05:54,350
+In particular, I can define, as I said earlier with classes,
+
+142
+00:05:54,350 --> 00:05:56,500
+there's an inherent add method here.
+
+143
+00:05:56,500 --> 00:05:59,030
+And what I want to do is define a method for rabbits.
+
+144
+00:05:59,030 --> 00:06:02,410
+What does it mean to add a rabbit?
+
+145
+00:06:02,410 --> 00:06:03,750
+So I got an initial method here.
+
+146
+00:06:03,750 --> 00:06:07,880
+It initially is simply going to return a new rabbit.
+
+147
+00:06:07,880 --> 00:06:10,980
+And that new rabbit has two parents,
+
+148
+00:06:10,980 --> 00:06:15,280
+this particular rabbit, and whoever that other rabbit is.
+
+149
+00:06:15,280 --> 00:06:18,550
+It's another way of saying I'm going to let the rabbits mate.
+
+150
+00:06:18,550 --> 00:06:20,520
+And I'm going to create a new rabbit
+
+151
+00:06:20,520 --> 00:06:25,970
+with that call to Rabbit right here, with parent1 and parent2.
+
+152
+00:06:25,970 --> 00:06:29,270
+Let's look at an example of that.
+
+153
+00:06:29,270 --> 00:06:32,010
+Before I do it, let's simply remind you what this is doing.
+
+154
+00:06:32,010 --> 00:06:34,680
+The add operator is between two Rabbit instances.
+
+155
+00:06:34,680 --> 00:06:37,820
+It defines what it means to take rabbit1, rabbit2,
+
+156
+00:06:37,820 --> 00:06:40,460
+and add them together to create rabbit4.
+
+157
+00:06:40,460 --> 00:06:41,720
+Initially it's a new rabbit.
+
+158
+00:06:41,720 --> 00:06:44,100
+I'm going to have it be a new rabbit with age zero,
+
+159
+00:06:44,100 --> 00:06:45,610
+coming from right there.
+
+160
+00:06:45,610 --> 00:06:49,160
+It has self as one parent and other as the other parent.
+
+161
+00:06:49,160 --> 00:06:52,480
+And ideally inside of init I should check that in fact they
+
+162
+00:06:52,480 --> 00:06:53,780
+are of type Rabbit.
+
+163
+00:06:53,780 --> 00:06:56,030
+I haven't done that here, but it would be a nice thing
+
+164
+00:06:56,030 --> 00:06:58,610
+to do to make sure I'm enforcing the invariant
+
+165
+00:06:58,610 --> 00:07:02,050
+that these are rabbits that are getting together.
+
+166
+00:07:02,050 --> 00:07:05,140
+I go back to Peter and Hopsy, and I can now
+
+167
+00:07:05,140 --> 00:07:09,770
+say let Mopsy be what I get when Peter and Hopsy get together.
+
+168
+00:07:09,770 --> 00:07:11,730
+I'm using rabbit addition.
+
+169
+00:07:11,730 --> 00:07:14,200
+I'm creating a new instance of a Rabbit.
+
+170
+00:07:14,200 --> 00:07:17,280
+I'm giving it a binding of Mopsy on the outside.
+
+171
+00:07:17,280 --> 00:07:18,930
+I can set its name.
+
+172
+00:07:18,930 --> 00:07:21,600
+And now I can say what's the parrot of Mopsy?
+
+173
+00:07:21,600 --> 00:07:22,870
+It's Peter.
+
+174
+00:07:22,870 --> 00:07:25,150
+And I can say what's the other parrot of Mopsy?
+
+175
+00:07:25,150 --> 00:07:27,180
+And I get out Hopsy.
+
+176
+00:07:27,180 --> 00:07:28,560
+I know it's a silly example.
+
+177
+00:07:28,560 --> 00:07:30,590
+What I've done though here is take the idea of,
+
+178
+00:07:30,590 --> 00:07:33,190
+given instances, I can now define
+
+179
+00:07:33,190 --> 00:07:35,690
+what it means to do addition on those instances.
+
+180
+00:07:35,690 --> 00:07:37,150
+It's up to me to decide them.
+
+181
+00:07:37,150 --> 00:07:41,810
+And I use it here to create new instances of a rabbit.
+
+182
+00:07:41,810 --> 00:07:43,220
+The last thing I want to show you
+
+183
+00:07:43,220 --> 00:07:45,800
+is how I can use that idea of those tags
+
+184
+00:07:45,800 --> 00:07:49,200
+to actually define what it means to compare two rabbits.
+
+185
+00:07:49,200 --> 00:07:51,670
+What does it mean to do equal or what
+
+186
+00:07:51,670 --> 00:07:57,680
+does it mean to say R double equal P, for example.
+
+187
+00:07:57,680 --> 00:08:00,160
+I'm going to define an override of the eq
+
+188
+00:08:00,160 --> 00:08:02,150
+method, a built in method.
+
+189
+00:08:02,150 --> 00:08:03,720
+And here what I'm going to do is say,
+
+190
+00:08:03,720 --> 00:08:05,970
+I'm going to decide that two rabbits are equal if they
+
+191
+00:08:05,970 --> 00:08:07,882
+have the same parents.
+
+192
+00:08:07,882 --> 00:08:09,090
+I could do it some other way.
+
+193
+00:08:09,090 --> 00:08:11,191
+I could do it to say two instances of Rabbit
+
+194
+00:08:11,191 --> 00:08:13,190
+are the same thing if they have the same ID tag.
+
+195
+00:08:13,190 --> 00:08:14,981
+But here I'm going to say they're the same,
+
+196
+00:08:14,981 --> 00:08:17,930
+they're equal, if they actually have the same parent.
+
+197
+00:08:17,930 --> 00:08:19,190
+How do I do that?
+
+198
+00:08:19,190 --> 00:08:21,710
+Well I'm simply going to look at the tag associated
+
+199
+00:08:21,710 --> 00:08:25,000
+with the instance for each parent,
+
+200
+00:08:25,000 --> 00:08:29,100
+both for parent1 and parent2 of self and other.
+
+201
+00:08:29,100 --> 00:08:31,740
+They could be they're the same parent1 and parent1, parent2
+
+202
+00:08:31,740 --> 00:08:34,500
+and parent2, or they could be the other direction.
+
+203
+00:08:34,500 --> 00:08:39,820
+And I'm going to return true if one of those cases is true.
+
+204
+00:08:39,820 --> 00:08:41,490
+So I'm setting up booleans here.
+
+205
+00:08:41,490 --> 00:08:43,450
+And what I'm doing is relying on the fact
+
+206
+00:08:43,450 --> 00:08:47,980
+that I built a unique tag with each instance of a Rabbit.
+
+207
+00:08:47,980 --> 00:08:51,847
+And if I do that, I'm simply comparing those tags.
+
+208
+00:08:51,847 --> 00:08:54,180
+I know they're unique because of the way I defined them.
+
+209
+00:08:54,180 --> 00:08:56,580
+And if I didn't do this, if I just
+
+210
+00:08:56,580 --> 00:08:59,110
+said are the instances the same, I'm
+
+211
+00:08:59,110 --> 00:09:00,840
+actually going to get into a problem
+
+212
+00:09:00,840 --> 00:09:02,881
+where I'm going to get down to an attribute error
+
+213
+00:09:02,881 --> 00:09:05,270
+because I can't compare the instances directly.
+
+214
+00:09:05,270 --> 00:09:07,480
+So this is a nice way of doing that comparison.
+
+215
+00:09:07,480 --> 00:09:11,520
+And if I try that, I create Cotton.
+
+216
+00:09:11,520 --> 00:09:13,070
+I create Mopsy.
+
+217
+00:09:13,070 --> 00:09:15,500
+And I say, is Mopsy equal to Cotton?
+
+218
+00:09:15,500 --> 00:09:18,820
+Notice Cotton had parents of Peter and Hopsy.
+
+219
+00:09:18,820 --> 00:09:20,570
+I created that directly.
+
+220
+00:09:20,570 --> 00:09:23,150
+Mopsy has parents of Peter and Hopsy.
+
+221
+00:09:23,150 --> 00:09:24,310
+I created that using add.
+
+222
+00:09:24,310 --> 00:09:26,840
+And when I do the print, it says yes,
+
+223
+00:09:26,840 --> 00:09:29,090
+in fact these are the same.
+
+224
+00:09:29,090 --> 00:09:32,650
+So now I've got an example of using a class variable
+
+225
+00:09:32,650 --> 00:09:35,777
+to gather information that I can associate with instances
+
+226
+00:09:35,777 --> 00:09:38,110
+in a way that lets me keep track of the information that
+
+227
+00:09:38,110 --> 00:09:42,740
+belongs to each instance but is defined within the class.
+
+228
+00:09:42,740 --> 00:09:46,250
+And so to pull it all together, what are we doing?
+
+229
+00:09:46,250 --> 00:09:48,860
+We're bundling together objects that
+
+230
+00:09:48,860 --> 00:09:52,060
+share common attributes and common procedures
+
+231
+00:09:52,060 --> 00:09:53,540
+to apply to those attributes, even
+
+232
+00:09:53,540 --> 00:09:55,210
+though the values of the attributes
+
+233
+00:09:55,210 --> 00:09:57,460
+are different across each instance.
+
+234
+00:09:57,460 --> 00:09:59,690
+I'm using abstraction to distinguish
+
+235
+00:09:59,690 --> 00:10:03,100
+between how I implement something and how I use it.
+
+236
+00:10:03,100 --> 00:10:06,240
+And now we've seen an example of building layers of abstractions
+
+237
+00:10:06,240 --> 00:10:08,650
+with inheritance associated with them.
+
+238
+00:10:08,650 --> 00:10:11,480
+And that lets us create hierarchies of behaviors
+
+239
+00:10:11,480 --> 00:10:14,540
+while preserving clean code and efficient code
+
+240
+00:10:14,540 --> 00:10:17,750
+by associating methods with each instance of a class that
+
+241
+00:10:17,750 --> 00:10:20,450
+implement that common behavior.
+

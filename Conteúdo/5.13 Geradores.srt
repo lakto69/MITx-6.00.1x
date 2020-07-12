@@ -1,0 +1,684 @@
+0
+00:00:00,000 --> 00:00:00,550
+...
+
+1
+00:00:00,550 --> 00:00:02,220
+To solve that problem I raised, I'm
+
+2
+00:00:02,220 --> 00:00:04,260
+going to introduce one more kind of object
+
+3
+00:00:04,260 --> 00:00:07,550
+into Python-- something called a generator.
+
+4
+00:00:07,550 --> 00:00:10,000
+And any procedure and method with a yield statement
+
+5
+00:00:10,000 --> 00:00:12,040
+inside it is a generator.
+
+6
+00:00:12,040 --> 00:00:16,050
+So yield is the new keyword that I'm going to create here.
+
+7
+00:00:16,050 --> 00:00:17,560
+And the idea behind a generator is
+
+8
+00:00:17,560 --> 00:00:20,110
+I'm going to be able to control the behavior.
+
+9
+00:00:20,110 --> 00:00:22,680
+So if I do genTest(), which is a procedure here,
+
+10
+00:00:22,680 --> 00:00:26,330
+it returns for me, as you can see, a generator object.
+
+11
+00:00:26,330 --> 00:00:28,820
+And once I've done that, the behavior I'm going to get
+
+12
+00:00:28,820 --> 00:00:30,490
+is the following.
+
+13
+00:00:30,490 --> 00:00:33,590
+Generators have associated with them a next() method.
+
+14
+00:00:33,590 --> 00:00:36,760
+It's built into the Python implementation of that.
+
+15
+00:00:36,760 --> 00:00:40,290
+And that next() method starts or resumes the execution
+
+16
+00:00:40,290 --> 00:00:41,770
+of a procedure.
+
+17
+00:00:41,770 --> 00:00:45,170
+So inside of a generator, yield suspends the execution
+
+18
+00:00:45,170 --> 00:00:46,770
+and returns a value.
+
+19
+00:00:46,770 --> 00:00:49,430
+The next time I call for the next() method,
+
+20
+00:00:49,430 --> 00:00:51,660
+it will go until I get to the next yield() method,
+
+21
+00:00:51,660 --> 00:00:54,410
+in which case it will stop or suspend execution and return
+
+22
+00:00:54,410 --> 00:00:55,230
+a value.
+
+23
+00:00:55,230 --> 00:00:57,650
+And it will keep doing that until we run out of yield()
+
+24
+00:00:57,650 --> 00:01:00,420
+methods, in which case it will raise a StopIteration
+
+25
+00:01:00,420 --> 00:01:01,860
+exception.
+
+26
+00:01:01,860 --> 00:01:05,790
+So if I actually create this, I can go over to my Python system
+
+27
+00:01:05,790 --> 00:01:06,330
+and try it.
+
+28
+00:01:06,330 --> 00:01:13,230
+And so if I define genTest() to be a procedure with a yield
+
+29
+00:01:13,230 --> 00:01:19,830
+of 1 and then a yield of 2, and I call it--
+
+30
+00:01:19,830 --> 00:01:21,880
+let's say I'm going to give foo is genTest().
+
+31
+00:01:21,880 --> 00:01:25,230
+
+
+32
+00:01:25,230 --> 00:01:33,400
+If I say foo of next(), it prints out 1.
+
+33
+00:01:33,400 --> 00:01:35,640
+It has gone until it found the first yield statement,
+
+34
+00:01:35,640 --> 00:01:38,380
+it's returned that value, and it's stopped operation.
+
+35
+00:01:38,380 --> 00:01:42,220
+And if I call that again, it prints out 2.
+
+36
+00:01:42,220 --> 00:01:45,460
+And if I call it again, it says I
+
+37
+00:01:45,460 --> 00:01:48,210
+have a StopIteration exception raised.
+
+38
+00:01:48,210 --> 00:01:51,330
+So it's letting me control how far I go in the computation
+
+39
+00:01:51,330 --> 00:01:54,550
+before I stop and return a value.
+
+40
+00:01:54,550 --> 00:01:59,070
+So this just summarizes what I just did-- in this case,
+
+41
+00:01:59,070 --> 00:02:02,320
+executing in the body of foo, which was something created
+
+42
+00:02:02,320 --> 00:02:05,030
+by genTest() until it reaches the first yield,
+
+43
+00:02:05,030 --> 00:02:09,340
+and similarly to the second one, and then similarly until I get
+
+44
+00:02:09,340 --> 00:02:12,740
+to something that raises a StopIteration exception.
+
+45
+00:02:12,740 --> 00:02:14,660
+So why might I want this?
+
+46
+00:02:14,660 --> 00:02:17,470
+Well, notice how I could use this.
+
+47
+00:02:17,470 --> 00:02:20,150
+I could use it inside of a looping structure.
+
+48
+00:02:20,150 --> 00:02:23,010
+Now this is a simple example, but it will do the same kind
+
+49
+00:02:23,010 --> 00:02:26,090
+of idea, because the genTest(), that generator,
+
+50
+00:02:26,090 --> 00:02:29,120
+is going to create something that will execute until I get
+
+51
+00:02:29,120 --> 00:02:32,910
+to the first yield point and then return a value.
+
+52
+00:02:32,910 --> 00:02:34,820
+And the looping construct, in fact,
+
+53
+00:02:34,820 --> 00:02:39,400
+knows to ask that thing returned by genTest(), that generator,
+
+54
+00:02:39,400 --> 00:02:41,560
+to do that execution and then stop.
+
+55
+00:02:41,560 --> 00:02:44,047
+And so if I were to run this particular example,
+
+56
+00:02:44,047 --> 00:02:45,630
+it would print out each of the objects
+
+57
+00:02:45,630 --> 00:02:48,130
+in turn, because inside the for loop,
+
+58
+00:02:48,130 --> 00:02:50,780
+it's executing until it gets a value returned,
+
+59
+00:02:50,780 --> 00:02:53,400
+yielding, and printing it out.
+
+60
+00:02:53,400 --> 00:02:54,760
+Great.
+
+61
+00:02:54,760 --> 00:02:56,940
+Here's how this could be really nice.
+
+62
+00:02:56,940 --> 00:02:58,990
+Here's a fancy operation.
+
+63
+00:02:58,990 --> 00:03:00,900
+Let's go back to Fibonacci.
+
+64
+00:03:00,900 --> 00:03:03,280
+But rather than writing recursive code for it,
+
+65
+00:03:03,280 --> 00:03:06,130
+I'm going to write it in a somewhat unusual way.
+
+66
+00:03:06,130 --> 00:03:08,580
+This is going to generate, if I wanted to do it,
+
+67
+00:03:08,580 --> 00:03:10,590
+all of the Fibonacci numbers for me.
+
+68
+00:03:10,590 --> 00:03:12,120
+And how might I do it?
+
+69
+00:03:12,120 --> 00:03:14,120
+I'm going to internal variables--
+
+70
+00:03:14,120 --> 00:03:17,020
+one that is initially bound to 0, one
+
+71
+00:03:17,020 --> 00:03:18,210
+that's initially bound to 1.
+
+72
+00:03:18,210 --> 00:03:21,040
+Those are, if you like, the 0-th or m minus second and m
+
+73
+00:03:21,040 --> 00:03:23,530
+minus first Fibonacci numbers.
+
+74
+00:03:23,530 --> 00:03:25,210
+And then I know that the nth Fibonacci
+
+75
+00:03:25,210 --> 00:03:26,840
+number is the sum of those.
+
+76
+00:03:26,840 --> 00:03:29,010
+So I'm going to run through a loop that says,
+
+77
+00:03:29,010 --> 00:03:32,460
+I'm going to set next() to be the sum of those two,
+
+78
+00:03:32,460 --> 00:03:34,370
+and I'm going to yield that value,
+
+79
+00:03:34,370 --> 00:03:37,110
+which will halt execution until I ask it to continue,
+
+80
+00:03:37,110 --> 00:03:38,630
+returning that value.
+
+81
+00:03:38,630 --> 00:03:43,440
+And when it returns, I'm going to move up one step.
+
+82
+00:03:43,440 --> 00:03:46,930
+What was the previous Fibonacci number
+
+83
+00:03:46,930 --> 00:03:48,620
+is now the second previous one.
+
+84
+00:03:48,620 --> 00:03:51,120
+Next is the previous Fibonacci number.
+
+85
+00:03:51,120 --> 00:03:53,870
+And I'm going to go back around the loop.
+
+86
+00:03:53,870 --> 00:03:56,960
+And notice, there's no way to exit out of this while loop.
+
+87
+00:03:56,960 --> 00:03:59,070
+So it will simply, if I were to call it,
+
+88
+00:03:59,070 --> 00:04:03,160
+generate all of the Fibonacci numbers in turn.
+
+89
+00:04:03,160 --> 00:04:05,390
+So let's try it over on my machine.
+
+90
+00:04:05,390 --> 00:04:07,150
+I'm going to say fib() is genFib().
+
+91
+00:04:07,150 --> 00:04:12,580
+
+
+92
+00:04:12,580 --> 00:04:13,980
+Let me just make sure I call it.
+
+93
+00:04:13,980 --> 00:04:15,860
+I'm going to set that up.
+
+94
+00:04:15,860 --> 00:04:20,010
+And so I'm going to use that generator to create something.
+
+95
+00:04:20,010 --> 00:04:23,902
+So fib() is what I get by using genFib() to create a generator.
+
+96
+00:04:23,902 --> 00:04:29,664
+And if I print out fib(), you'll say it is a genFib() operation.
+
+97
+00:04:29,664 --> 00:04:31,080
+And then I could start calling it.
+
+98
+00:04:31,080 --> 00:04:36,460
+I say, give me the next Fibonacci numbers.
+
+99
+00:04:36,460 --> 00:04:37,780
+It's 1.
+
+100
+00:04:37,780 --> 00:04:39,380
+I call it again, it's 2.
+
+101
+00:04:39,380 --> 00:04:43,250
+I call it again, it's 3, and then 5, and then 8, and then
+
+102
+00:04:43,250 --> 00:04:46,510
+13, and you get the idea.
+
+103
+00:04:46,510 --> 00:04:49,370
+It runs until it gets to the next stopping point, yields
+
+104
+00:04:49,370 --> 00:04:50,440
+up a value.
+
+105
+00:04:50,440 --> 00:04:52,230
+And it's set up in that while loop
+
+106
+00:04:52,230 --> 00:04:55,420
+to be ready to compute the next one when I need it.
+
+107
+00:04:55,420 --> 00:04:57,225
+Funky way of dealing with it.
+
+108
+00:04:57,225 --> 00:04:59,600
+And in fact, if I were to create this loop, which I'm not
+
+109
+00:04:59,600 --> 00:05:02,490
+going to, it would produce all of the Fibonacci numbers
+
+110
+00:05:02,490 --> 00:05:06,080
+until I ask it to stop-- an infinite sequence of them.
+
+111
+00:05:06,080 --> 00:05:08,290
+I don't recommend you necessarily program this way,
+
+112
+00:05:08,290 --> 00:05:10,220
+but you can see the power of the generator,
+
+113
+00:05:10,220 --> 00:05:12,820
+because I'm separating where I stop
+
+114
+00:05:12,820 --> 00:05:14,840
+in the operation from the overall operation
+
+115
+00:05:14,840 --> 00:05:17,100
+I'm trying to encode.
+
+116
+00:05:17,100 --> 00:05:18,980
+Why is that valuable?
+
+117
+00:05:18,980 --> 00:05:22,620
+Well, generators nicely separate out the apparent computation
+
+118
+00:05:22,620 --> 00:05:23,920
+from the actual one.
+
+119
+00:05:23,920 --> 00:05:26,860
+It separates the concept of computing a very long sequence
+
+120
+00:05:26,860 --> 00:05:29,410
+of objects from the actual process of getting them
+
+121
+00:05:29,410 --> 00:05:30,660
+explicitly.
+
+122
+00:05:30,660 --> 00:05:32,320
+And it allows you as a consequence
+
+123
+00:05:32,320 --> 00:05:34,250
+to generate new objects as needed
+
+124
+00:05:34,250 --> 00:05:36,240
+as part of another computation.
+
+125
+00:05:36,240 --> 00:05:39,280
+So rather than, for example, generating the entire list
+
+126
+00:05:39,280 --> 00:05:42,740
+of Fibonacci numbers and then asking for the 12th one,
+
+127
+00:05:42,740 --> 00:05:45,440
+you could simply step through it until you get to the 12th one
+
+128
+00:05:45,440 --> 00:05:47,705
+and then return that value.
+
+129
+00:05:47,705 --> 00:05:49,080
+This is going to be valuable when
+
+130
+00:05:49,080 --> 00:05:51,920
+you want to think about a way of creating things as needed.
+
+131
+00:05:51,920 --> 00:05:54,140
+And in fact, you've seen this idea.
+
+132
+00:05:54,140 --> 00:05:56,170
+You saw it in range().
+
+133
+00:05:56,170 --> 00:05:58,920
+Literally what range() is doing is creating something like
+
+134
+00:05:58,920 --> 00:05:59,810
+a generator.
+
+135
+00:05:59,810 --> 00:06:04,670
+When I say for n in range(), range() is returning something
+
+136
+00:06:04,670 --> 00:06:07,280
+that gives me the first value and essentially a promise
+
+137
+00:06:07,280 --> 00:06:09,380
+to give me the rest of it when I ask for it.
+
+138
+00:06:09,380 --> 00:06:11,960
+I can do something with the first value inside that loop.
+
+139
+00:06:11,960 --> 00:06:14,820
+And then when I come back around the loop again, range(),
+
+140
+00:06:14,820 --> 00:06:18,030
+that generator, will give me the next value, and so on.
+
+141
+00:06:18,030 --> 00:06:20,400
+And this is nice because it gives us better efficiency
+
+142
+00:06:20,400 --> 00:06:22,000
+without changing the way we think
+
+143
+00:06:22,000 --> 00:06:23,680
+about doing the computation.
+
+144
+00:06:23,680 --> 00:06:27,250
+I can program as if that entire sequence is available to me.
+
+145
+00:06:27,250 --> 00:06:30,460
+The computer is going to generate it as I need it.
+
+146
+00:06:30,460 --> 00:06:33,060
+Now if I go back to what started this,
+
+147
+00:06:33,060 --> 00:06:35,900
+that says that, for example, in all students,
+
+148
+00:06:35,900 --> 00:06:37,500
+I could change the behavior.
+
+149
+00:06:37,500 --> 00:06:42,520
+Right now, I'm returning a copy of the entire list of students.
+
+150
+00:06:42,520 --> 00:06:43,880
+I only have 100.
+
+151
+00:06:43,880 --> 00:06:44,480
+No big deal.
+
+152
+00:06:44,480 --> 00:06:47,306
+But with 100,000 or a million, I don't necessarily
+
+153
+00:06:47,306 --> 00:06:49,680
+want to generate them if I want to do something with them
+
+154
+00:06:49,680 --> 00:06:51,680
+on the fly or in turn.
+
+155
+00:06:51,680 --> 00:06:54,460
+Whereas in the new version, what I could do
+
+156
+00:06:54,460 --> 00:06:59,120
+is simply create a loop here that says, for all students
+
+157
+00:06:59,120 --> 00:07:01,940
+in that list, just yield them up.
+
+158
+00:07:01,940 --> 00:07:04,050
+So one at a time, as I ask for them,
+
+159
+00:07:04,050 --> 00:07:06,340
+it will give me the next one without generating
+
+160
+00:07:06,340 --> 00:07:08,950
+the entire list as I go through them.
+
+161
+00:07:08,950 --> 00:07:11,550
+So from this, I can move to that.
+
+162
+00:07:11,550 --> 00:07:13,530
+And that gives me a much more efficient way
+
+163
+00:07:13,530 --> 00:07:15,160
+of dealing with things.
+
+164
+00:07:15,160 --> 00:07:16,930
+So what you've seen here now is how
+
+165
+00:07:16,930 --> 00:07:20,500
+to build a hierarchy of classes with inherited behaviors,
+
+166
+00:07:20,500 --> 00:07:23,880
+modularity to isolate changes and behaviors, classes that
+
+167
+00:07:23,880 --> 00:07:26,410
+can have classes within their instances,
+
+168
+00:07:26,410 --> 00:07:28,630
+and the ability to think about how I control
+
+169
+00:07:28,630 --> 00:07:30,400
+the efficiency of all of those.
+
+170
+00:07:30,400 --> 00:07:33,670
+And that's the power of object-oriented programming.
+

@@ -1,0 +1,1276 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,600
+We're going to look at one more extended example
+
+2
+00:00:02,600 --> 00:00:05,690
+in the last part of this lecture to introduce, again,
+
+3
+00:00:05,690 --> 00:00:08,330
+some new ideas around using classes.
+
+4
+00:00:08,330 --> 00:00:10,920
+But before we do, let's take a second to step back
+
+5
+00:00:10,920 --> 00:00:12,660
+and talk about why.
+
+6
+00:00:12,660 --> 00:00:14,760
+What's the power of object-oriented programming?
+
+7
+00:00:14,760 --> 00:00:16,355
+Why would we like to do this?
+
+8
+00:00:16,355 --> 00:00:17,980
+I've already said some of this earlier,
+
+9
+00:00:17,980 --> 00:00:19,820
+but it's useful to remind you of this.
+
+10
+00:00:19,820 --> 00:00:22,970
+The first idea is that we want to bundle
+
+11
+00:00:22,970 --> 00:00:26,160
+together objects that share some common properties.
+
+12
+00:00:26,160 --> 00:00:29,520
+They share common attributes, and they share procedures that
+
+13
+00:00:29,520 --> 00:00:31,380
+operate on those attributes.
+
+14
+00:00:31,380 --> 00:00:33,310
+That's an abstraction.
+
+15
+00:00:33,310 --> 00:00:34,800
+And it's a really nice abstraction
+
+16
+00:00:34,800 --> 00:00:37,000
+because it lets us make a distinction between how
+
+17
+00:00:37,000 --> 00:00:40,920
+to implement the object and how to use it.
+
+18
+00:00:40,920 --> 00:00:44,470
+Defining the class lets me define the methods.
+
+19
+00:00:44,470 --> 00:00:47,030
+That tells me how I want to use that object.
+
+20
+00:00:47,030 --> 00:00:48,670
+When I actually go to use it, though, I
+
+21
+00:00:48,670 --> 00:00:50,680
+can simply use the instances and use
+
+22
+00:00:50,680 --> 00:00:54,190
+that associated or inherited methods, along with them.
+
+23
+00:00:54,190 --> 00:00:56,230
+Second thing that object-oriented programming
+
+24
+00:00:56,230 --> 00:00:58,650
+gives us, this idea of bundling things together,
+
+25
+00:00:58,650 --> 00:01:00,600
+is another idea of abstraction, which is I
+
+26
+00:01:00,600 --> 00:01:03,410
+can treat each instance of that kind
+
+27
+00:01:03,410 --> 00:01:06,257
+of class, that kind of object, as if it's a primitive.
+
+28
+00:01:06,257 --> 00:01:08,590
+I don't have to think about the internal representation.
+
+29
+00:01:08,590 --> 00:01:11,670
+I don't have to think about the details of how to get at it.
+
+30
+00:01:11,670 --> 00:01:13,170
+I simply know that there are a set
+
+31
+00:01:13,170 --> 00:01:14,820
+of methods associated with it.
+
+32
+00:01:14,820 --> 00:01:17,610
+And that lets us, then, build on top of that idea.
+
+33
+00:01:17,610 --> 00:01:19,600
+And in particular, it lets us build
+
+34
+00:01:19,600 --> 00:01:22,320
+layers of abstractions that are going to inherit
+
+35
+00:01:22,320 --> 00:01:24,250
+from other classes of objects.
+
+36
+00:01:24,250 --> 00:01:26,680
+We're going to come to that idea in a second when
+
+37
+00:01:26,680 --> 00:01:30,250
+we talk about not only having classes, but having inherited
+
+38
+00:01:30,250 --> 00:01:32,620
+classes, classes and super classes
+
+39
+00:01:32,620 --> 00:01:34,970
+and other super classes, or a better way of saying it--
+
+40
+00:01:34,970 --> 00:01:37,780
+some base level of class and sets of subclasses
+
+41
+00:01:37,780 --> 00:01:40,800
+underneath it that inherit behaviors from classes
+
+42
+00:01:40,800 --> 00:01:42,224
+above them in the hierarchy.
+
+43
+00:01:42,224 --> 00:01:43,890
+And that's what we've been doing already
+
+44
+00:01:43,890 --> 00:01:45,690
+when we build our own class of objects
+
+45
+00:01:45,690 --> 00:01:47,190
+on top of Python objects.
+
+46
+00:01:47,190 --> 00:01:50,400
+We're inheriting the base methods for printing,
+
+47
+00:01:50,400 --> 00:01:54,239
+for accessing elements of lists on top of those Python objects,
+
+48
+00:01:54,239 --> 00:01:56,030
+and we're building on top of that directly.
+
+49
+00:01:56,030 --> 00:01:58,779
+
+
+50
+00:01:58,779 --> 00:02:00,320
+We've already talked about this idea,
+
+51
+00:02:00,320 --> 00:02:01,903
+but I want to remind you again that we
+
+52
+00:02:01,903 --> 00:02:04,210
+want to distinguish between implementing the class
+
+53
+00:02:04,210 --> 00:02:05,486
+and using the class.
+
+54
+00:02:05,486 --> 00:02:07,110
+And when you think about it, I'm really
+
+55
+00:02:07,110 --> 00:02:09,720
+writing code from two different perspectives.
+
+56
+00:02:09,720 --> 00:02:12,530
+I'm thinking about how do I implement a new object type.
+
+57
+00:02:12,530 --> 00:02:14,510
+There, I define the class.
+
+58
+00:02:14,510 --> 00:02:16,170
+I define the data attributes.
+
+59
+00:02:16,170 --> 00:02:17,390
+What is the object?
+
+60
+00:02:17,390 --> 00:02:19,010
+And I define the methods.
+
+61
+00:02:19,010 --> 00:02:20,940
+How do I want to use the object?
+
+62
+00:02:20,940 --> 00:02:23,610
+And I do that before I ever have a particular version of it
+
+63
+00:02:23,610 --> 00:02:26,010
+around so that when I use the class,
+
+64
+00:02:26,010 --> 00:02:28,410
+I can simply create instances and just
+
+65
+00:02:28,410 --> 00:02:30,530
+use the operations, again, without thinking
+
+66
+00:02:30,530 --> 00:02:34,160
+about what's inside of them.
+
+67
+00:02:34,160 --> 00:02:36,370
+One last way of thinking about this-- I've
+
+68
+00:02:36,370 --> 00:02:38,470
+got a class definition of an object type.
+
+69
+00:02:38,470 --> 00:02:41,310
+I want to distinguish that from the instance of it.
+
+70
+00:02:41,310 --> 00:02:43,740
+So a class is the type itself.
+
+71
+00:02:43,740 --> 00:02:47,080
+When I create a coordinate, it was a class type.
+
+72
+00:02:47,080 --> 00:02:49,860
+And the class is defined generically.
+
+73
+00:02:49,860 --> 00:02:52,320
+I use self to refer to any instance
+
+74
+00:02:52,320 --> 00:02:54,740
+while defining the actual class.
+
+75
+00:02:54,740 --> 00:02:57,110
+And that class defines the data and methods
+
+76
+00:02:57,110 --> 00:03:01,160
+that are common to all instances of the class.
+
+77
+00:03:01,160 --> 00:03:02,760
+Separate from that is when I actually
+
+78
+00:03:02,760 --> 00:03:04,330
+create instances of the object, I
+
+79
+00:03:04,330 --> 00:03:06,850
+have a particular version of the object.
+
+80
+00:03:06,850 --> 00:03:09,950
+My coordinate, for example, is a particular coordinate.
+
+81
+00:03:09,950 --> 00:03:11,470
+The nice thing here is that I can
+
+82
+00:03:11,470 --> 00:03:12,920
+have many different instances.
+
+83
+00:03:12,920 --> 00:03:14,300
+They have different values.
+
+84
+00:03:14,300 --> 00:03:16,600
+They are different because they have different values.
+
+85
+00:03:16,600 --> 00:03:19,050
+But they all have the same structure of the class.
+
+86
+00:03:19,050 --> 00:03:22,320
+They all use the same common methods.
+
+87
+00:03:22,320 --> 00:03:24,400
+And so I'm going to keep flipping back and forth
+
+88
+00:03:24,400 --> 00:03:26,490
+between defining the class and the behaviors
+
+89
+00:03:26,490 --> 00:03:28,880
+associated with all instances of the class
+
+90
+00:03:28,880 --> 00:03:32,930
+from particular uses of that on unique and specific instances.
+
+91
+00:03:32,930 --> 00:03:36,020
+
+
+92
+00:03:36,020 --> 00:03:39,550
+With that in mind, let's do one last slightly larger example.
+
+93
+00:03:39,550 --> 00:03:42,050
+And this is going to try and get us at the idea of why would
+
+94
+00:03:42,050 --> 00:03:43,790
+we want to have classes of objects,
+
+95
+00:03:43,790 --> 00:03:47,070
+anyway, other than this notion of bundling things together.
+
+96
+00:03:47,070 --> 00:03:49,890
+And part of it is we might want to mimic actual systems.
+
+97
+00:03:49,890 --> 00:03:54,550
+So different kinds of objects are all parts of the same type.
+
+98
+00:03:54,550 --> 00:03:58,200
+So I might have different cats-- Jelly,
+
+99
+00:03:58,200 --> 00:04:02,040
+a one-year-old brown cat; Tiger, a two-year-old brown cat;
+
+100
+00:04:02,040 --> 00:04:04,890
+Bean, who's very young and is black.
+
+101
+00:04:04,890 --> 00:04:08,250
+And I might have different instances of rabbits.
+
+102
+00:04:08,250 --> 00:04:10,250
+But I've already said that both of these
+
+103
+00:04:10,250 --> 00:04:12,770
+can be clustered together because there are behaviors
+
+104
+00:04:12,770 --> 00:04:15,440
+that belong to cats, and there are behaviors
+
+105
+00:04:15,440 --> 00:04:17,120
+that belong to rabbits.
+
+106
+00:04:17,120 --> 00:04:20,810
+And I'd like to have classes capture those common behaviors
+
+107
+00:04:20,810 --> 00:04:23,150
+so that I can build instances of them that
+
+108
+00:04:23,150 --> 00:04:24,680
+can have those behaviors, but also
+
+109
+00:04:24,680 --> 00:04:27,280
+have other kinds of attributes.
+
+110
+00:04:27,280 --> 00:04:29,960
+Let's see what happens if we wanted to build that out.
+
+111
+00:04:29,960 --> 00:04:33,535
+So I'd need to think about what are the data attributes,
+
+112
+00:04:33,535 --> 00:04:35,160
+and what are the procedural attributes.
+
+113
+00:04:35,160 --> 00:04:37,860
+And this is just recapping what we've done before.
+
+114
+00:04:37,860 --> 00:04:41,340
+The data attributes-- how do I represent our object with data?
+
+115
+00:04:41,340 --> 00:04:44,159
+And while as everything so far we've done has been numerical,
+
+116
+00:04:44,159 --> 00:04:46,200
+I can start thinking about other kinds of things.
+
+117
+00:04:46,200 --> 00:04:48,710
+For an animal, it might be an age, which
+
+118
+00:04:48,710 --> 00:04:51,020
+is a number, but also a name.
+
+119
+00:04:51,020 --> 00:04:53,690
+What are the procedural attributes I want to have?
+
+120
+00:04:53,690 --> 00:04:55,160
+Again, I did numerical things when
+
+121
+00:04:55,160 --> 00:04:57,330
+I was talking about things like coordinates.
+
+122
+00:04:57,330 --> 00:04:58,840
+But for things like animals, I might
+
+123
+00:04:58,840 --> 00:05:00,590
+want to have methods that do other things,
+
+124
+00:05:00,590 --> 00:05:03,350
+like have it make a sound.
+
+125
+00:05:03,350 --> 00:05:05,480
+This is letting me generalize what
+
+126
+00:05:05,480 --> 00:05:07,505
+attributes, procedural attributes, could do.
+
+127
+00:05:07,505 --> 00:05:09,380
+And that's going to make sense as we actually
+
+128
+00:05:09,380 --> 00:05:10,570
+start building the animal.
+
+129
+00:05:10,570 --> 00:05:12,210
+So let's do that.
+
+130
+00:05:12,210 --> 00:05:15,010
+I'm going to start with the notion of an animal.
+
+131
+00:05:15,010 --> 00:05:19,290
+It's going to inherit from object, as we've done
+
+132
+00:05:19,290 --> 00:05:20,910
+in every other case so far.
+
+133
+00:05:20,910 --> 00:05:23,770
+We're going to do a variation of that in just a second.
+
+134
+00:05:23,770 --> 00:05:25,690
+As I've also done in every case so far,
+
+135
+00:05:25,690 --> 00:05:27,830
+I need to define an init method that's
+
+136
+00:05:27,830 --> 00:05:31,650
+going to create instances of the animal class.
+
+137
+00:05:31,650 --> 00:05:33,170
+So there's the class definition.
+
+138
+00:05:33,170 --> 00:05:34,160
+There's the name.
+
+139
+00:05:34,160 --> 00:05:35,960
+There's the parent.
+
+140
+00:05:35,960 --> 00:05:38,480
+There's the special method to call the instance.
+
+141
+00:05:38,480 --> 00:05:41,110
+And there's, again, as before, the variable
+
+142
+00:05:41,110 --> 00:05:44,140
+that's going to refer to the instance of the class.
+
+143
+00:05:44,140 --> 00:05:47,044
+And there's the other information I want to pass in.
+
+144
+00:05:47,044 --> 00:05:48,710
+In my case, every animal's going to have
+
+145
+00:05:48,710 --> 00:05:51,690
+an age, even if it starts at 0.
+
+146
+00:05:51,690 --> 00:05:53,360
+The other thing I can do here is that I
+
+147
+00:05:53,360 --> 00:05:57,400
+can define not only bindings for data attributes that
+
+148
+00:05:57,400 --> 00:06:00,210
+are passed in-- in this case, age--
+
+149
+00:06:00,210 --> 00:06:02,532
+but I can also define data attributes
+
+150
+00:06:02,532 --> 00:06:04,240
+that I'm just going to set up internally,
+
+151
+00:06:04,240 --> 00:06:05,810
+that I'm going to set separately.
+
+152
+00:06:05,810 --> 00:06:08,960
+And in this case, name is not something I pass in.
+
+153
+00:06:08,960 --> 00:06:12,000
+But this init is going to create a binding for both age
+
+154
+00:06:12,000 --> 00:06:14,160
+and name inside every instance.
+
+155
+00:06:14,160 --> 00:06:17,677
+And initially, name is simply set to none.
+
+156
+00:06:17,677 --> 00:06:19,510
+Newborn animal-- it doesn't have a name yet.
+
+157
+00:06:19,510 --> 00:06:21,002
+I get to name it.
+
+158
+00:06:21,002 --> 00:06:22,460
+Point I want to make here is that I
+
+159
+00:06:22,460 --> 00:06:25,090
+can define other data attributes that I want to use,
+
+160
+00:06:25,090 --> 00:06:28,560
+even if I don't pass them in as an initial parameters when I
+
+161
+00:06:28,560 --> 00:06:31,140
+create instances of that class.
+
+162
+00:06:31,140 --> 00:06:34,200
+There's the first start on animal.
+
+163
+00:06:34,200 --> 00:06:35,750
+So I could make one of these things
+
+164
+00:06:35,750 --> 00:06:38,340
+like, say, my animal is an instance of animal,
+
+165
+00:06:38,340 --> 00:06:39,980
+and I need to give it an age.
+
+166
+00:06:39,980 --> 00:06:43,110
+And that lets me now use animal in ways
+
+167
+00:06:43,110 --> 00:06:45,820
+like saying what's, for example, the binding for age
+
+168
+00:06:45,820 --> 00:06:48,680
+or the binding for name?
+
+169
+00:06:48,680 --> 00:06:52,030
+Particular instance-- particular parameter passed in that's
+
+170
+00:06:52,030 --> 00:06:54,240
+mapped in that particular instance
+
+171
+00:06:54,240 --> 00:06:55,775
+to that class definition variable.
+
+172
+00:06:55,775 --> 00:06:58,512
+
+
+173
+00:06:58,512 --> 00:07:00,220
+Let's start doing some interesting things
+
+174
+00:07:00,220 --> 00:07:02,080
+with animals.
+
+175
+00:07:02,080 --> 00:07:03,540
+I did this a little bit earlier.
+
+176
+00:07:03,540 --> 00:07:07,059
+I said I need methods to get out values.
+
+177
+00:07:07,059 --> 00:07:08,600
+And here, I'm going to have something
+
+178
+00:07:08,600 --> 00:07:11,630
+that gets out the age, something that gets out the name.
+
+179
+00:07:11,630 --> 00:07:13,880
+That makes sense because those were the two attributes
+
+180
+00:07:13,880 --> 00:07:15,713
+I defined up here, even though I didn't pass
+
+181
+00:07:15,713 --> 00:07:17,860
+in an initial value for name.
+
+182
+00:07:17,860 --> 00:07:20,630
+But I also want to have another kind of method here,
+
+183
+00:07:20,630 --> 00:07:23,000
+and we call those setters.
+
+184
+00:07:23,000 --> 00:07:25,100
+And those are methods that can change
+
+185
+00:07:25,100 --> 00:07:29,360
+the binding for internal data attributes.
+
+186
+00:07:29,360 --> 00:07:31,190
+So if I want to change the age-- I
+
+187
+00:07:31,190 --> 00:07:33,680
+want to run a simulation of the animals getting older--
+
+188
+00:07:33,680 --> 00:07:35,760
+I can change the binding for age.
+
+189
+00:07:35,760 --> 00:07:38,500
+I can rebind it to a new value.
+
+190
+00:07:38,500 --> 00:07:40,190
+I could also change the name.
+
+191
+00:07:40,190 --> 00:07:41,700
+It starts out as none.
+
+192
+00:07:41,700 --> 00:07:45,470
+And I could change the name by having a rebinding here.
+
+193
+00:07:45,470 --> 00:07:47,400
+And my version of setting the name
+
+194
+00:07:47,400 --> 00:07:51,026
+is going to use something we've seen before, which is not only
+
+195
+00:07:51,026 --> 00:07:52,400
+the name of the variable, but I'm
+
+196
+00:07:52,400 --> 00:07:55,490
+going to have a default binding, which is the empty string so
+
+197
+00:07:55,490 --> 00:07:58,402
+that if I call setName on an instance,
+
+198
+00:07:58,402 --> 00:07:59,860
+if I don't give it an argument, I'm
+
+199
+00:07:59,860 --> 00:08:02,690
+just going to redefine it to be the empty string, or a string
+
+200
+00:08:02,690 --> 00:08:05,820
+of nothing, as opposed to that separate symbol, none.
+
+201
+00:08:05,820 --> 00:08:08,760
+And of course, I could pass it in as a particular name, which
+
+202
+00:08:08,760 --> 00:08:10,410
+I'm going to do in a second.
+
+203
+00:08:10,410 --> 00:08:11,785
+And finally, as I've done before,
+
+204
+00:08:11,785 --> 00:08:13,743
+I'm going to want to have a way of printing out
+
+205
+00:08:13,743 --> 00:08:14,530
+what an animal is.
+
+206
+00:08:14,530 --> 00:08:18,320
+And here, my choice is going to be the string of animal
+
+207
+00:08:18,320 --> 00:08:21,440
+with a colon, followed by the actual name of the animal,
+
+208
+00:08:21,440 --> 00:08:23,440
+followed by its age so that I can
+
+209
+00:08:23,440 --> 00:08:27,160
+tell some information about that particular instance-- just
+
+210
+00:08:27,160 --> 00:08:30,470
+added some more methods to an animal.
+
+211
+00:08:30,470 --> 00:08:33,260
+I want to remind you, again, that those getters and setters
+
+212
+00:08:33,260 --> 00:08:35,840
+should always be used outside of the class
+
+213
+00:08:35,840 --> 00:08:38,640
+to access the data attributes.
+
+214
+00:08:38,640 --> 00:08:39,809
+So let's try this out.
+
+215
+00:08:39,809 --> 00:08:43,429
+Let's go over and load up animal.
+
+216
+00:08:43,429 --> 00:08:44,140
+I've done that.
+
+217
+00:08:44,140 --> 00:08:47,930
+And let's see if we can give a particular example of that.
+
+218
+00:08:47,930 --> 00:08:51,700
+So my animal is an animal.
+
+219
+00:08:51,700 --> 00:08:54,270
+
+
+220
+00:08:54,270 --> 00:08:55,750
+And it takes in an age.
+
+221
+00:08:55,750 --> 00:08:58,620
+And I'm going to say it's three years old.
+
+222
+00:08:58,620 --> 00:09:04,590
+And if I print my animal, it does what I asked it to do.
+
+223
+00:09:04,590 --> 00:09:07,760
+It gives me a string that says it's a version of an animal,
+
+224
+00:09:07,760 --> 00:09:11,524
+it has no name-- none-- and its age is three.
+
+225
+00:09:11,524 --> 00:09:13,190
+Well, I'd really like to give it a name.
+
+226
+00:09:13,190 --> 00:09:18,320
+So I could say my animal, and I want to set the name.
+
+227
+00:09:18,320 --> 00:09:21,150
+
+
+228
+00:09:21,150 --> 00:09:25,630
+And I'm going to-- I don't know, pick a particular name--
+
+229
+00:09:25,630 --> 00:09:29,040
+the standard computer science name, Foobar.
+
+230
+00:09:29,040 --> 00:09:34,240
+And now if I print my animal, it says it's an animal,
+
+231
+00:09:34,240 --> 00:09:37,560
+it's got the name Foobar, and it's three years old.
+
+232
+00:09:37,560 --> 00:09:39,810
+Now I want to come back to this idea of always using
+
+233
+00:09:39,810 --> 00:09:41,160
+the getters and setters outside.
+
+234
+00:09:41,160 --> 00:09:42,576
+Again, I could use getter on this.
+
+235
+00:09:42,576 --> 00:09:48,508
+I could say my animal, and I want to get its age.
+
+236
+00:09:48,508 --> 00:09:51,220
+And it says it's three, which makes sense.
+
+237
+00:09:51,220 --> 00:09:52,980
+That's what I put in there.
+
+238
+00:09:52,980 --> 00:09:55,900
+But let's go back to this idea.
+
+239
+00:09:55,900 --> 00:09:56,400
+Sorry.
+
+240
+00:09:56,400 --> 00:09:59,066
+This is just going to remind us, again, of what we already know.
+
+241
+00:09:59,066 --> 00:10:02,380
+I can create an instance by using the class definition.
+
+242
+00:10:02,380 --> 00:10:05,520
+The dot notation lets me get out the pieces inside of it.
+
+243
+00:10:05,520 --> 00:10:09,530
+And I could, in principle, get my animal's age, again,
+
+244
+00:10:09,530 --> 00:10:15,570
+if I type that in here-- my animal age.
+
+245
+00:10:15,570 --> 00:10:17,420
+But in fact, I really don't want to do that.
+
+246
+00:10:17,420 --> 00:10:19,130
+I'd really rather use the getter.
+
+247
+00:10:19,130 --> 00:10:21,360
+And that's because I want to separate
+
+248
+00:10:21,360 --> 00:10:25,530
+the internal representation from access to that representation.
+
+249
+00:10:25,530 --> 00:10:28,690
+And so here, I'm directly accessing the data attribute.
+
+250
+00:10:28,690 --> 00:10:31,360
+Here, I'm using the method and calling it
+
+251
+00:10:31,360 --> 00:10:32,490
+in order to get it out.
+
+252
+00:10:32,490 --> 00:10:34,170
+And this is much better because it's
+
+253
+00:10:34,170 --> 00:10:37,030
+going to separate out things outside of the attribute
+
+254
+00:10:37,030 --> 00:10:39,500
+from things inside of the attribute.
+
+255
+00:10:39,500 --> 00:10:43,260
+And in fact, that's what we call information hiding.
+
+256
+00:10:43,260 --> 00:10:44,950
+We can actually use it in other ways.
+
+257
+00:10:44,950 --> 00:10:47,090
+I could define a definition and change
+
+258
+00:10:47,090 --> 00:10:48,640
+the name of a data attribute.
+
+259
+00:10:48,640 --> 00:10:53,770
+Here, I've decided to have init define
+
+260
+00:10:53,770 --> 00:10:56,280
+years to hold the value of age.
+
+261
+00:10:56,280 --> 00:10:59,760
+I'm replacing the age data with a use of the name years.
+
+262
+00:10:59,760 --> 00:11:03,240
+And I can make that be OK by simply changing--
+
+263
+00:11:03,240 --> 00:11:06,520
+sorry about that-- simply changing the getter so that it
+
+264
+00:11:06,520 --> 00:11:09,410
+refers to that piece.
+
+265
+00:11:09,410 --> 00:11:11,690
+This leads to this important high-level issue, which
+
+266
+00:11:11,690 --> 00:11:14,230
+is when you're accessing data attributes outside
+
+267
+00:11:14,230 --> 00:11:17,540
+of the classes, you should always use the getters.
+
+268
+00:11:17,540 --> 00:11:19,840
+If you're doing that access directly
+
+269
+00:11:19,840 --> 00:11:22,800
+outside of the class and the class definition changes,
+
+270
+00:11:22,800 --> 00:11:24,240
+I can get errors.
+
+271
+00:11:24,240 --> 00:11:27,140
+In this case, I changed my class definition
+
+272
+00:11:27,140 --> 00:11:29,580
+to use years as the name for age.
+
+273
+00:11:29,580 --> 00:11:32,830
+And so if I try and get a.age and I've made that change,
+
+274
+00:11:32,830 --> 00:11:35,130
+I'll get an error, whereas if I use the getter
+
+275
+00:11:35,130 --> 00:11:38,090
+and I've changed it, this will always work well.
+
+276
+00:11:38,090 --> 00:11:41,310
+So I really encourage you to be clean and crisp about using
+
+277
+00:11:41,310 --> 00:11:43,910
+getters outside of instances to get out
+
+278
+00:11:43,910 --> 00:11:47,490
+the pieces internal to them.
+
+279
+00:11:47,490 --> 00:11:50,100
+Unfortunately, Python doesn't enforce this.
+
+280
+00:11:50,100 --> 00:11:52,590
+Python's not great at information hiding.
+
+281
+00:11:52,590 --> 00:11:55,070
+It lets you, as we just saw, go in and directly get
+
+282
+00:11:55,070 --> 00:11:56,660
+access to those pieces.
+
+283
+00:11:56,660 --> 00:11:59,010
+I could also write into an instance something
+
+284
+00:11:59,010 --> 00:12:02,430
+like its age is infinite, or its size is tiny.
+
+285
+00:12:02,430 --> 00:12:04,880
+While I could do it, please don't.
+
+286
+00:12:04,880 --> 00:12:06,070
+It's not good style.
+
+287
+00:12:06,070 --> 00:12:09,370
+Always write a method to store new attributes inside of it
+
+288
+00:12:09,370 --> 00:12:12,230
+to access using getters the attribute values
+
+289
+00:12:12,230 --> 00:12:13,520
+that you want out there.
+
+290
+00:12:13,520 --> 00:12:15,710
+Even though Python will let you shortcut it,
+
+291
+00:12:15,710 --> 00:12:18,180
+you're much better off writing code that always is clearly
+
+292
+00:12:18,180 --> 00:12:21,160
+using specific methods to get to attribute values.
+
+293
+00:12:21,160 --> 00:12:24,750
+
+
+294
+00:12:24,750 --> 00:12:26,740
+This is just repeating what we already knew.
+
+295
+00:12:26,740 --> 00:12:29,190
+And I'm simply going to do it one more time.
+
+296
+00:12:29,190 --> 00:12:32,310
+Self is always determined from the instance.
+
+297
+00:12:32,310 --> 00:12:33,740
+We pass it in as an argument.
+
+298
+00:12:33,740 --> 00:12:36,990
+We did that, for example, with our initialization method.
+
+299
+00:12:36,990 --> 00:12:39,800
+But when we call a particular instance,
+
+300
+00:12:39,800 --> 00:12:41,210
+that's provided automatically.
+
+301
+00:12:41,210 --> 00:12:43,950
+And that's why when I use animal, I simply give the age.
+
+302
+00:12:43,950 --> 00:12:47,340
+I don't use a specific call to the instance.
+
+303
+00:12:47,340 --> 00:12:49,780
+I do have another way, as we've seen, of getting to it.
+
+304
+00:12:49,780 --> 00:12:53,770
+So there's using the method associated with an instance.
+
+305
+00:12:53,770 --> 00:12:56,680
+But I could also, say, take the class,
+
+306
+00:12:56,680 --> 00:12:59,000
+get the method out, and apply it.
+
+307
+00:12:59,000 --> 00:13:01,730
+And we saw that earlier on when we used other versions
+
+308
+00:13:01,730 --> 00:13:04,270
+of classes to make that happen.
+
+309
+00:13:04,270 --> 00:13:07,410
+We also saw, as we saw here, the idea of using a default
+
+310
+00:13:07,410 --> 00:13:09,560
+value for a formal parameter.
+
+311
+00:13:09,560 --> 00:13:12,320
+That equal sign says start off with having
+
+312
+00:13:12,320 --> 00:13:14,040
+a default value for that name.
+
+313
+00:13:14,040 --> 00:13:17,430
+And so for example, in my animal case, I did that.
+
+314
+00:13:17,430 --> 00:13:19,340
+I set the name to be something different.
+
+315
+00:13:19,340 --> 00:13:22,060
+And that allows me to do that overwriting of the default
+
+316
+00:13:22,060 --> 00:13:24,611
+value here.
+
+317
+00:13:24,611 --> 00:13:26,360
+Let's see what we can do with those pieces
+
+318
+00:13:26,360 --> 00:13:28,720
+when we get to the next section.
+

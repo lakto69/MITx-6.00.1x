@@ -1,0 +1,552 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,407
+Now that I've started building a hierarchy,
+
+2
+00:00:02,407 --> 00:00:03,990
+one of the things I'd like to show you
+
+3
+00:00:03,990 --> 00:00:07,010
+is how that modularity, that associating methods
+
+4
+00:00:07,010 --> 00:00:10,490
+with different data attributes around a particular class,
+
+5
+00:00:10,490 --> 00:00:14,120
+makes it easy for me to change behaviors for one class
+
+6
+00:00:14,120 --> 00:00:16,239
+without changing behaviors elsewhere.
+
+7
+00:00:16,239 --> 00:00:18,930
+And to do that, I'm going to add in one more kind of object
+
+8
+00:00:18,930 --> 00:00:22,210
+to my hierarchy-- a Professor, also a kind of MIT
+
+9
+00:00:22,210 --> 00:00:24,760
+Person, but behaves differently, as you've probably
+
+10
+00:00:24,760 --> 00:00:25,819
+already seen.
+
+11
+00:00:25,819 --> 00:00:27,360
+And I'm going to use this, as I said,
+
+12
+00:00:27,360 --> 00:00:29,800
+as an example to see how one can leverage methods
+
+13
+00:00:29,800 --> 00:00:31,730
+from other classes in the hierarchy
+
+14
+00:00:31,730 --> 00:00:34,950
+but use that modularity to isolate changes to methods when
+
+15
+00:00:34,950 --> 00:00:36,110
+I want to.
+
+16
+00:00:36,110 --> 00:00:38,600
+Let's start by defining a Professor.
+
+17
+00:00:38,600 --> 00:00:41,320
+Again, it inherits, as a kind of MIT Person,
+
+18
+00:00:41,320 --> 00:00:43,290
+I'm going to have an initialization method,
+
+19
+00:00:43,290 --> 00:00:44,590
+as before.
+
+20
+00:00:44,590 --> 00:00:46,660
+And as I did with students, I'm going
+
+21
+00:00:46,660 --> 00:00:50,640
+to inherit or use the inherited MIT Person initialization
+
+22
+00:00:50,640 --> 00:00:52,195
+method to set it up.
+
+23
+00:00:52,195 --> 00:00:54,320
+But I'll add in one more attribute-- the department
+
+24
+00:00:54,320 --> 00:00:57,120
+in which this Person is a Professor.
+
+25
+00:00:57,120 --> 00:00:58,880
+This Professor can speak.
+
+26
+00:00:58,880 --> 00:01:02,060
+Again, I'm going to use the underlying MIT Person speak()
+
+27
+00:01:02,060 --> 00:01:02,770
+method.
+
+28
+00:01:02,770 --> 00:01:05,756
+But I'm going to add in a few other things to the utterance.
+
+29
+00:01:05,756 --> 00:01:07,130
+And you can see the example here.
+
+30
+00:01:07,130 --> 00:01:09,730
+I'm going to, in fact, say what department the Person is in
+
+31
+00:01:09,730 --> 00:01:10,920
+and how they say things.
+
+32
+00:01:10,920 --> 00:01:13,660
+And we'll see an example in a second.
+
+33
+00:01:13,660 --> 00:01:16,860
+Professors not only speak, they lecture.
+
+34
+00:01:16,860 --> 00:01:19,880
+And so I'll give the Professor the ability to lecture.
+
+35
+00:01:19,880 --> 00:01:23,210
+And notice here I'm going to use my own speak() method,
+
+36
+00:01:23,210 --> 00:01:26,550
+or the Professor speak() method, to the lecture() by adding some
+
+37
+00:01:26,550 --> 00:01:28,340
+other pieces in.
+
+38
+00:01:28,340 --> 00:01:32,620
+So this method will shadow the MIT Person speak() method
+
+39
+00:01:32,620 --> 00:01:35,560
+for professors, although it will use that inherited speak()
+
+40
+00:01:35,560 --> 00:01:36,840
+method.
+
+41
+00:01:36,840 --> 00:01:40,600
+And lecture() will use the base speak() method associated with
+
+42
+00:01:40,600 --> 00:01:46,120
+the Professor but add other things in as we do it.
+
+43
+00:01:46,120 --> 00:01:48,480
+Let's see what happens if we were to do this.
+
+44
+00:01:48,480 --> 00:01:51,329
+So I'm going to go back to the things I've already built,
+
+45
+00:01:51,329 --> 00:01:53,870
+some of my early examples, and just look at how the different
+
+46
+00:01:53,870 --> 00:01:55,250
+speak() methods work.
+
+47
+00:01:55,250 --> 00:01:57,346
+So I've got an MIT Person, and I can do that.
+
+48
+00:01:57,346 --> 00:01:58,720
+I can say, I'm going to print out
+
+49
+00:01:58,720 --> 00:02:06,070
+asking M1 to speak and just say a very simple "Hi there."
+
+50
+00:02:06,070 --> 00:02:09,280
+And it prints out, as we saw before, "Gates says,
+
+51
+00:02:09,280 --> 00:02:12,000
+'Hi there,'" because that's the speak() method for an MIT
+
+52
+00:02:12,000 --> 00:02:13,620
+Person.
+
+53
+00:02:13,620 --> 00:02:16,430
+Now I know that that uses that base method.
+
+54
+00:02:16,430 --> 00:02:18,140
+Let's look at another example.
+
+55
+00:02:18,140 --> 00:02:20,360
+I'm going to print out for a Student.
+
+56
+00:02:20,360 --> 00:02:27,510
+And if I do print s1 speak-- again, just saying "Hi there,"
+
+57
+00:02:27,510 --> 00:02:32,724
+it prints out, "Damon says, 'Dude, hi there.'" It's using
+
+58
+00:02:32,724 --> 00:02:35,140
+the Undergraduate speak() method because that was the kind
+
+59
+00:02:35,140 --> 00:02:38,630
+of Student we had created, which uses the MIT Person method
+
+60
+00:02:38,630 --> 00:02:42,310
+but simply adds "Dude" to the front of the utterance.
+
+61
+00:02:42,310 --> 00:02:43,214
+What else might I do?
+
+62
+00:02:43,214 --> 00:02:44,630
+Well, let's have a Faculty Member.
+
+63
+00:02:44,630 --> 00:02:46,254
+And I've created a Faculty Member here.
+
+64
+00:02:46,254 --> 00:02:48,488
+Let's just have a Faculty Member speak.
+
+65
+00:02:48,488 --> 00:02:51,120
+
+
+66
+00:02:51,120 --> 00:02:56,350
+And if we ask that Faculty Member to say "Hi there"-- I
+
+67
+00:02:56,350 --> 00:02:58,600
+should have said earlier, the Faculty Member I created
+
+68
+00:02:58,600 --> 00:03:02,280
+was a Professor named Dr. Arrogant in Course 6.
+
+69
+00:03:02,280 --> 00:03:05,560
+And he prints out, "In Course 6, we say,
+
+70
+00:03:05,560 --> 00:03:09,940
+'Hi there.'" And this is coming from the change I made to that
+
+71
+00:03:09,940 --> 00:03:12,720
+speak() method for a Faculty Member.
+
+72
+00:03:12,720 --> 00:03:18,830
+And finally, if I were to have a Faculty Member lecture--
+
+73
+00:03:18,830 --> 00:03:21,990
+so I asked this Faculty Member that I created to lecture
+
+74
+00:03:21,990 --> 00:03:27,190
+on the topic of "Hi there"-- he says-- or rather,
+
+75
+00:03:27,190 --> 00:03:30,540
+it prints out, "Arrogant says, 'In Course 6, we say,
+
+76
+00:03:30,540 --> 00:03:35,030
+"It is obvious that-- Hi there."'" So notice what
+
+77
+00:03:35,030 --> 00:03:36,180
+the lecture() method does.
+
+78
+00:03:36,180 --> 00:03:38,520
+It uses the Professor speak() method,
+
+79
+00:03:38,520 --> 00:03:41,080
+which incorporated that "In Course 6, we say,"
+
+80
+00:03:41,080 --> 00:03:44,170
+but it added into it as part of the utterance this little
+
+81
+00:03:44,170 --> 00:03:47,280
+annoying phrase, "It is obvious that."
+
+82
+00:03:47,280 --> 00:03:50,780
+Key point-- each class has a speak() method.
+
+83
+00:03:50,780 --> 00:03:53,810
+And in the hierarchy, we start with the class instance
+
+84
+00:03:53,810 --> 00:03:56,430
+or the class of which we have an instance,
+
+85
+00:03:56,430 --> 00:03:58,140
+use that speak() method.
+
+86
+00:03:58,140 --> 00:04:00,610
+We may inherit from higher up in the hierarchy.
+
+87
+00:04:00,610 --> 00:04:02,380
+But we have all of those pieces nicely
+
+88
+00:04:02,380 --> 00:04:04,480
+contained to the instances, so speaking
+
+89
+00:04:04,480 --> 00:04:07,870
+different kinds of objects do in a different way.
+
+90
+00:04:07,870 --> 00:04:11,070
+With that in mind, we could make some changes.
+
+91
+00:04:11,070 --> 00:04:14,350
+So in particular, because I've got that isolation,
+
+92
+00:04:14,350 --> 00:04:18,540
+I could go into the MIT Person speak() method and change how
+
+93
+00:04:18,540 --> 00:04:21,019
+we have this actually print out.
+
+94
+00:04:21,019 --> 00:04:23,790
+In particular, I'm going to have it return the name rather than
+
+95
+00:04:23,790 --> 00:04:27,270
+just the last name as part of that says() method.
+
+96
+00:04:27,270 --> 00:04:30,120
+Let's see what would happen if I did that.
+
+97
+00:04:30,120 --> 00:04:34,900
+So I have a version of my file over here that does that.
+
+98
+00:04:34,900 --> 00:04:39,820
+And if I now change that in the Person method--
+
+99
+00:04:39,820 --> 00:04:45,440
+I'm going to reload that file-- and in particular,
+
+100
+00:04:45,440 --> 00:04:48,790
+if I were to go through the same instances,
+
+101
+00:04:48,790 --> 00:04:54,690
+now the print() methods, notice, all at in front the full name.
+
+102
+00:04:54,690 --> 00:04:55,900
+Why?
+
+103
+00:04:55,900 --> 00:04:59,430
+Because all of these methods use the underlying MIT Person
+
+104
+00:04:59,430 --> 00:05:00,320
+speak() method.
+
+105
+00:05:00,320 --> 00:05:02,310
+They just added other pieces into it.
+
+106
+00:05:02,310 --> 00:05:05,420
+In the case of a Student, it added in "Dude."
+
+107
+00:05:05,420 --> 00:05:09,260
+In the case of a Faculty Member, it added in "In Course 6,
+
+108
+00:05:09,260 --> 00:05:10,050
+we say."
+
+109
+00:05:10,050 --> 00:05:12,440
+In the case of lecturing, it added in other pieces.
+
+110
+00:05:12,440 --> 00:05:16,340
+But in all cases, ultimately, it calls the underlying MIT Person
+
+111
+00:05:16,340 --> 00:05:17,020
+method.
+
+112
+00:05:17,020 --> 00:05:20,650
+So all of these classes inherit that.
+
+113
+00:05:20,650 --> 00:05:23,000
+But I could make a different kind of change.
+
+114
+00:05:23,000 --> 00:05:26,070
+For example, I could decide that I'm going to change
+
+115
+00:05:26,070 --> 00:05:30,090
+the Undergraduate Student's speak() method to, rather than
+
+116
+00:05:30,090 --> 00:05:32,630
+saying "Dude," say "Yo, bro."
+
+117
+00:05:32,630 --> 00:05:35,100
+And if I were to make that change
+
+118
+00:05:35,100 --> 00:05:40,470
+and come back and try it, I load it into my machine,
+
+119
+00:05:40,470 --> 00:05:43,170
+and I were to print those things out,
+
+120
+00:05:43,170 --> 00:05:45,790
+I would get the following behavior.
+
+121
+00:05:45,790 --> 00:05:48,200
+It looks exactly like the previous case.
+
+122
+00:05:48,200 --> 00:05:50,760
+The only difference is right there,
+
+123
+00:05:50,760 --> 00:05:54,520
+that the Undergraduate speak() method uses "Yo, bro."
+
+124
+00:05:54,520 --> 00:05:57,550
+Notice it doesn't change Faculty Member either speaking
+
+125
+00:05:57,550 --> 00:06:00,110
+or lecturing, it doesn't change the MIT Person,
+
+126
+00:06:00,110 --> 00:06:01,590
+and for two different reasons.
+
+127
+00:06:01,590 --> 00:06:04,370
+For the MIT Person case, Undergraduate
+
+128
+00:06:04,370 --> 00:06:06,410
+is lower in the hierarchy, so in fact it
+
+129
+00:06:06,410 --> 00:06:07,950
+would not have a change there.
+
+130
+00:06:07,950 --> 00:06:10,200
+In the case of a Faculty Member, it's
+
+131
+00:06:10,200 --> 00:06:12,050
+in another place in the hierarchy,
+
+132
+00:06:12,050 --> 00:06:14,470
+and it does not use the Student's method,
+
+133
+00:06:14,470 --> 00:06:17,170
+it uses the MIT Person's method.
+
+134
+00:06:17,170 --> 00:06:18,350
+I've modularized it.
+
+135
+00:06:18,350 --> 00:06:20,440
+I've captured a behavior locally.
+
+136
+00:06:20,440 --> 00:06:22,278
+And that's really nice.
+
+137
+00:06:22,278 --> 00:06:22,778
+
+

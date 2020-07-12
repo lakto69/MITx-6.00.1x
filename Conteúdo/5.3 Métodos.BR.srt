@@ -1,0 +1,1051 @@
+0 0
+00:00:00,000 --> 00:00:00.499
+...
+
+1
+00:00:00,499 --> 00:00:03.080
+Portanto, a primeira parte da criação de uma nova classe é dizer:
+
+2
+00:00:03,080 --> 00:00:04.930
+como vou criar instâncias dele?
+
+3
+00:00:04,930 --> 00:00:07.840
+E como eu disse, isso também tende a capturar inerentemente
+
+4
+00:00:07,840 --> 00:00:09.960
+quais são os atributos de dados associados
+
+5
+00:00:09,960 --> 00:00:11.770
+com uma instância de uma classe?
+
+6
+00:00:11,770 --> 00:00:12.800
+Mas agora, preciso de métodos.
+
+7
+00:00:12,800 --> 00:00:15.510
+Eu preciso de maneiras de manipular esses atributos,
+
+8
+00:00:15,510 --> 00:00:16.900
+esses atributos de dados.
+
+9
+00:00:16,900 --> 00:00:19.020
+E então, primeiro de tudo, o que é um método?
+
+10
+00:00:19,020 --> 00:00:20.600
+É um atributo processual.
+
+11
+00:00:20,600 --> 00:00:23.380
+Pense nisso como uma função, mas uma função ou procedimento que
+
+12
+00:00:23,380 --> 00:00:25.310
+funciona apenas com esta classe.
+
+13
+00:00:25,310 --> 00:00:27.330
+Ele foi projetado para essa classe.
+
+14
+00:00:27,330 --> 00:00:30.610
+Como um aparte, como eu disse anteriormente, isso é legal, porque diz:
+
+15
+00:00:30,610 --> 00:00:32.890
+Eu posso usar o mesmo nome várias vezes
+
+16
+00:00:32,890 --> 00:00:34.880
+fazendo coisas semelhantes para diferentes classes
+
+17
+00:00:34,880 --> 00:00:37.670
+sem se preocupar com a confusão do nome.
+
+18
+00:00:37,670 --> 00:00:40.700
+Agora, quando eu defino um método, o Python sempre
+
+19
+00:00:40,700 --> 00:00:43.250
+passa o objeto real, a instância,
+
+20
+00:00:43,250 --> 00:00:44.930
+como o primeiro argumento.
+
+21
+00:00:44,930 --> 00:00:46.430
+E assim a convenção será
+
+22
+00:00:46,430 --> 00:00:49.890
+usar self como o nome do primeiro argumento de todos os métodos
+
+23
+00:00:49,890 --> 00:00:51.332
+não apenas init.
+
+24
+00:00:51,332 --> 00:00:52.790
+Como também vimos, e vamos
+
+25
+00:00:52,790 --> 00:00:55.000
+para ver agora um exemplo disso, o operador de ponto
+
+26
+00:00:55,000 --> 00:00:58.220
+será usado para acessar qualquer atributo, certamente
+
+27
+00:00:58,220 --> 00:01:00.300
+os atributos de dados, os nomes das variáveis,
+
+28.
+00:01:00,300 --> 00:01:01.640
+mas também o método
+
+29
+00:01:01,640 --> 00:01:04.120
+E vamos ver um exemplo disso em um segundo.
+
+30
+00:01:04,120 --> 00:01:07.420
+Mas primeiro, vamos olhar para realmente fazer um desses.
+
+31
+00:01:07,420 --> 00:01:10.114
+Então, vamos voltar à minha definição de coordenadas.
+
+32.
+00:01:10,114 --> 00:01:12.280
+Eu já disse, talvez eu queira calcular a distância
+
+33
+00:01:12,280 --> 00:01:13.400
+entre duas coordenadas.
+
+34
+00:01:13,400 --> 00:01:16.960
+Então eu posso adicionar um novo método, e aqui está.
+
+35
+00:01:16,960 --> 00:01:18.410
+Eu vou definir a distância.
+
+36.
+00:01:18,410 --> 00:01:19.680
+E observe, com os dois-- e eu
+
+37.
+00:01:19,680 --> 00:01:21.471
+deveria ter dito isso antes - agora são
+
+38.
+00:01:21,471 --> 00:01:23.350
+apenas definições padrão de procedimentos.
+
+39.
+00:01:23,350 --> 00:01:26.220
+Eles são inventados dentro desta definição de classe,
+
+40.
+00:01:26,220 --> 00:01:28.310
+porque eles pertencem à classe.
+
+41.
+00:01:28,310 --> 00:01:29.910
+Então, eu vou definir a distância.
+
+42.
+00:01:29,910 --> 00:01:32.280
+Como eu disse anteriormente, precisamos
+
+43
+00:01:32,280 --> 00:01:34.260
+para que o primeiro argumento seja auto,
+
+44
+00:01:34,260 --> 00:01:37.420
+porque vai se referir a uma instância específica.
+
+45
+00:01:37,420 --> 00:01:40.140
+Diz, aqui está o método que eu quero fazer nesta instância.
+
+46.
+00:01:40,140 --> 00:01:42.577
+Nesse caso, eu também tenho outro parâmetro,
+
+47
+00:01:42,577 --> 00:01:44.160
+porque eu quero medir a distância
+
+48.
+00:01:44,160 --> 00:01:47.059
+entre uma determinada coordenada e outra coordenada.
+
+49.
+00:01:47,059 --> 00:01:48.350
+Então, eu vou dar um nome.
+
+50.
+00:01:48,350 --> 00:01:49.780
+Vou chamar de outro.
+
+51
+00:01:49,780 --> 00:01:51.980
+Dentro do corpo desse método, eu apenas
+
+52
+00:01:51,980 --> 00:01:53.410
+faça o trabalho padrão que eu faria.
+
+53
+00:01:53,410 --> 00:01:55.076
+Vou calcular algumas coisas.
+
+54
+00:01:55,076 --> 00:01:56.800
+Eu vou retornar um valor que
+
+55
+00:01:56,800 --> 00:01:59.470
+é apenas a soma dos quadrados - a raiz quadrada
+
+56.
+00:01:59,470 --> 00:02:01.180
+da soma dos quadrados.
+
+57
+00:02:01,180 --> 00:02:05.950
+A única outra nuance aqui é que estou usando notação de ponto
+
+58.
+00:02:05,950 --> 00:02:08.280
+para acessar os dados.
+
+59.
+00:02:08,280 --> 00:02:10.210
+Além dessa notação de ponto, tudo o mais
+
+60
+00:02:10,210 --> 00:02:12.620
+se comporta exatamente como você esperaria.
+
+61
+00:02:12,620 --> 00:02:14.190
+O que a notação de ponto está fazendo?
+
+62
+00:02:14,190 --> 00:02:16.900
+Bem, como já vimos quando queríamos obter valores,
+
+63.
+00:02:16,900 --> 00:02:19.060
+Eu preciso fazer isso para obter os valores associados
+
+64
+00:02:19,060 --> 00:02:22.850
+com instâncias, não apenas para si, mas também
+
+65
+00:02:22,850 --> 00:02:24.470
+para essa outra coordenada.
+
+66.
+00:02:24,470 --> 00:02:26.250
+E, como fiz no exemplo anterior,
+
+67
+00:02:26,250 --> 00:02:29.760
+pense em outro.x como dizer, obtenha o valor de outro,
+
+68
+00:02:29,760 --> 00:02:31.460
+aponta para um quadro, porque é
+
+69
+00:02:31,460 --> 00:02:33.860
+uma instância de uma coordenada e nesse quadro,
+
+70
+00:02:33,860 --> 00:02:37.860
+quando o criei, defini associações de variáveis ​​para x e y,
+
+71
+00:02:37,860 --> 00:02:40.450
+recuperar essas ligações variáveis.
+
+72
+00:02:40,450 --> 00:02:44.090
+Mas agora existe um método pequeno e agradável para calcular a distância.
+
+73
+00:02:44,090 --> 00:02:45.870
+E assim eu poderia realmente usá-lo.
+
+74
+00:02:45,870 --> 00:02:47.110
+E, de fato, deixe-me fazê-lo.
+
+75
+00:02:47,110 --> 00:02:48.690
+Eu vou para a minha máquina,
+
+76
+00:02:48,690 --> 00:02:54.160
+e eu vou ter certeza de que tenho essa definição,
+
+77
+00:02:54,160 --> 00:02:55.610
+e eu faço.
+
+78
+00:02:55,610 --> 00:02:58.650
+E eu tenho C, e eu tenho origem.
+
+79
+00:02:58,650 --> 00:02:59.740
+Então, vamos fazer o seguinte.
+
+80
+00:02:59,740 --> 00:03:01.510
+Eu defini C e origem como antes.
+
+81
+00:03:01,510 --> 00:03:07.180
+Posso imprimir, qual é a distância de C à origem?
+
+82
+00:03:07,180 --> 00:03:10.200
+
+
+83
+00:03:10,200 --> 00:03:12.620
+E diz que é a distância 5, o que faz sentido,
+
+84
+00:03:12,620 --> 00:03:16.460
+3 ao quadrado mais 4 ao quadrado é 25, raiz quadrada é 5.
+
+85
+00:03:16,460 --> 00:03:18.370
+Observe como eu chamei.
+
+86
+00:03:18,370 --> 00:03:21.072
+Liguei dizendo, antes de tudo,
+
+87
+00:03:21,072 --> 00:03:23.280
+qual é o objeto no qual quero chamar o método?
+
+88
+00:03:23,280 --> 00:03:25.420
+Nesse caso, era a coordenada C.
+
+89
+00:03:25,420 --> 00:03:27.430
+Qual o nome do método?
+
+90
+00:03:27,430 --> 00:03:29.600
+E então qual é o parâmetro que eu quero usar?
+
+91
+00:03:29,600 --> 00:03:32.720
+Mas, novamente, observe que eu não forneci nada para si mesmo,
+
+92
+00:03:32,720 --> 00:03:35.830
+e isso ocorre porque, nesta versão em particular,
+
+93
+00:03:35,830 --> 00:03:39.260
+C sendo um quadro, procuro o valor da distância,
+
+94
+00:03:39,260 --> 00:03:42.940
+é um método dentro dele, e porque eu estou usando ele associado
+
+95
+00:03:42,940 --> 00:03:45.670
+com essa instância específica, o Python automaticamente
+
+96
+00:03:45,670 --> 00:03:50.710
+fornece C como o primeiro argumento para essa função de distância.
+
+97
+00:03:50,710 --> 00:03:52.420
+Eu poderia fazer isso de uma maneira diferente.
+
+98
+00:03:52,420 --> 00:03:54.420
+Mais uma vez, eu poderia ter C como coordenada, origem
+
+99
+00:03:54,420 --> 00:03:55.410
+como uma coordenada.
+
+100
+00:03:55,410 --> 00:03:56.970
+E eu poderia fazer o seguinte.
+
+101
+00:03:56,970 --> 00:04:00.660
+Eu poderia imprimir a coordenada da classe
+
+102
+00:04:00,660 --> 00:04:07.814
+distância do ponto C e origem.
+
+103
+00:04:07,814 --> 00:04:09.980
+E isso pode parecer um pouco mais razoável para você,
+
+104
+00:04:09,980 --> 00:04:12.188
+porque agora estou dizendo qual é a distância entre C
+
+105
+00:04:12,188 --> 00:04:13.150
+e origem?
+
+106
+00:04:13,150 --> 00:04:16.220
+E se eu fizer isso, eu também saio 5.
+
+107
+00:04:16,220 --> 00:04:17.410
+Qual a diferença aqui?
+
+108
+00:04:17,410 --> 00:04:20.070
+Agora, estou dando o nome de uma classe.
+
+109
+00:04:20,070 --> 00:04:21.089
+O que é isso?
+
+110
+00:04:21,089 --> 00:04:23.220
+Bem, na verdade também aponta para um quadro,
+
+111
+00:04:23,220 --> 00:04:26.220
+um quadro no qual todas as definições de classe são criadas.
+
+112
+00:04:26,220 --> 00:04:28.310
+Então, dentro do quadro de coordenadas,
+
+113
+00:04:28,310 --> 00:04:30.670
+Estou pesquisando o método da distância.
+
+114
+00:04:30,670 --> 00:04:33.550
+E isso leva dois argumentos e, portanto, eu
+
+115
+00:04:33,550 --> 00:04:37.520
+aplique ambos os parâmetros, C e origem.
+
+116
+00:04:37,520 --> 00:04:40.190
+Se estou usando uma instância para obter o método,
+
+117
+00:04:40,190 --> 00:04:43.600
+O Python usa automaticamente essa instância como o primeiro argumento.
+
+118
+00:04:43,600 --> 00:04:46.580
+Se estou usando a classe para chegar ao método,
+
+119
+00:04:46,580 --> 00:04:48.050
+você precisa fornecer os dois argumentos,
+
+120
+00:04:48,050 --> 00:04:50.730
+porque o Python não sabe qual é a instância que você
+
+121
+00:04:50,730 --> 00:04:53.700
+quer usar.
+
+122
+00:04:53,700 --> 00:04:57.170
+Pense dessa maneira, a coordenada está apontando para um quadro.
+
+123
+00:04:57,170 --> 00:04:58.650
+Dentro do escopo desse quadro, nós
+
+124
+00:04:58,650 --> 00:05:01.630
+métodos criados quando criamos essa definição de classe.
+
+125
+00:05:01,630 --> 00:05:03.990
+Então, coordenar a distância dos pontos basicamente diz
+
+126
+00:05:03,990 --> 00:05:05.370
+obtenha o valor da coordenada.
+
+127
+00:05:05,370 --> 00:05:06.570
+É uma moldura.
+
+128
+00:05:06,570 --> 00:05:10.510
+O ponto diz: procure o valor da distância dentro dele.
+
+129
+00:05:10,510 --> 00:05:12.700
+Entendi, isso é uma definição de procedimento.
+
+130
+00:05:12,700 --> 00:05:16.080
+E então aplico aos argumentos fornecidos.
+
+131
+00:05:16,080 --> 00:05:19.670
+A distância do ponto C não possui um método de distância definido
+
+132
+00:05:19,670 --> 00:05:21.740
+dentro de C. É apenas uma instância.
+
+133
+00:05:21,740 --> 00:05:24.190
+Mas porque é uma instância da classe,
+
+134
+00:05:24,190 --> 00:05:27.110
+ele herda esse método de distância.
+
+135
+00:05:27,110 --> 00:05:28.980
+E como dissemos, o Python automaticamente
+
+136
+00:05:28,980 --> 00:05:31.570
+usa C como o primeiro argumento.
+
+137
+00:05:31,570 --> 00:05:34.120
+Estou enfatizando esse ponto, porque garanto a você
+
+138
+00:05:34,120 --> 00:05:37.190
+que você vai, em algum lugar no futuro próximo,
+
+139
+00:05:37,190 --> 00:05:40.140
+cometer o erro de não fornecer um argumento para si mesmo
+
+140
+00:05:40,140 --> 00:05:42.200
+ou fornecendo um quando você não precisa.
+
+141
+00:05:42,200 --> 00:05:44.200
+Esperamos que este slide dê a você
+
+142
+00:05:44,200 --> 00:05:47.890
+uma maneira de separar as duas diferenças.
+
+143
+00:05:47,890 --> 00:05:48.880
+ESTÁ BEM.
+
+144
+00:05:48,880 --> 00:05:50.680
+Agora que os adquirimos, podemos querer
+
+145
+00:05:50,680 --> 00:05:52.120
+para olhar para essas coordenadas.
+
+146
+00:05:52,120 --> 00:05:53.670
+Para que eu pudesse imprimi-los.
+
+147
+00:05:53,670 --> 00:05:58.580
+E eu poderia voltar para a minha máquina e dizer, imprimir C,
+
+148
+00:05:58,580 --> 00:06:01.302
+e isso me dá lixo.
+
+149
+00:06:01,302 --> 00:06:03.510
+Bem, eu não deveria dizer lixo, isso me dá, na verdade,
+
+150
+00:06:03,510 --> 00:06:06.460
+informação que diz, dentro do ambiente principal,
+
+151
+00:06:06,460 --> 00:06:08.720
+esta é uma instância de um objeto de coordenadas,
+
+152
+00:06:08,720 --> 00:06:11.965
+e aqui está a localização real da memória em que se encontra.
+
+153
+00:06:11,965 --> 00:06:14.340
+Acho que poderia entrar e começar a brincar com essa memória,
+
+154
+00:06:14,340 --> 00:06:16.350
+mas isso não faz muito sentido.
+
+155
+00:06:16,350 --> 00:06:19.310
+Esta é claramente uma representação não informativa.
+
+156
+00:06:19,310 --> 00:06:22.244
+E isso porque, por padrão, é isso que imprime.
+
+157
+00:06:22,244 --> 00:06:24.160
+Gostaria de imprimir algo que seja
+
+158
+00:06:24,160 --> 00:06:26.534
+muito melhor em representar a aparência de uma coordenada,
+
+159
+00:06:26,534 --> 00:06:30.100
+e posso fazer isso definindo outro método para minha classe.
+
+160
+00:06:30,100 --> 00:06:33.400
+Este é outro método especial chamado método string.
+
+161
+00:06:33,400 --> 00:06:35.062
+E é digitado como __str__.
+
+162
+00:06:35,062 --> 00:06:38.850
+
+
+163
+00:06:38,850 --> 00:06:42.250
+Sempre que peço para imprimir uma instância de qualquer tipo de dados
+
+164
+00:06:42,250 --> 00:06:44.520
+objeto, Python vai chamar a string
+
+165
+00:06:44,520 --> 00:06:49.670
+método que foi usado como parte da definição da classe.
+
+166
+00:06:49,670 --> 00:06:52.370
+E você decide o que faz.
+
+167
+00:06:52,370 --> 00:06:54.469
+A propósito, mesmo com os tipos de objetos existentes,
+
+168
+00:06:54,469 --> 00:06:56.010
+existe, em essência, um método de string
+
+169
+00:06:56,010 --> 00:07:00.180
+associado a listas, uma sequência associada a tuplas.
+
+170
+00:07:00,180 --> 00:07:03.110
+Digamos que queremos ter nosso método de string realmente
+
+171
+00:07:03,110 --> 00:07:06.150
+produzir algo com um colchete angular
+
+172
+00:07:06,150 --> 00:07:08.280
+e então as duas coordenadas são separadas por vírgula
+
+173
+00:07:08,280 --> 00:07:10.200
+e outro colchete angular.
+
+174
+00:07:10,200 --> 00:07:13.460
+Bem, eu poderia fazer isso, e é realmente muito fácil.
+
+175
+00:07:13,460 --> 00:07:15.970
+Bem aqui em baixo, vou definir esse método especial
+
+176
+00:07:15,970 --> 00:07:16.470
+corda.
+
+177
+00:07:16,470 --> 00:07:18.803
+Vai me dizer como as coisas serão impressas.
+
+178
+00:07:18,803 --> 00:07:21.570
+E tudo que eu preciso é que, sempre que eu quiser defini-lo,
+
+179
+00:07:21,570 --> 00:07:24.400
+deve retornar uma string.
+
+180
+00:07:24,400 --> 00:07:26.250
+E assim, se eu voltar para a minha máquina,
+
+181
+00:07:26,250 --> 00:07:29.310
+e vou descomentar esse método de string.
+
+182
+00:07:29,310 --> 00:07:32.470
+Agora eu posso avaliar isso.
+
+183
+00:07:32,470 --> 00:07:35.400
+E eu vou definir, novamente, C para ser
+
+184
+00:07:35,400 --> 00:07:39.560
+a coordenada de 3 e 4.
+
+185
+00:07:39,560 --> 00:07:43.060
+Se eu imprimir C, tudo bem.
+
+186
+00:07:43,060 --> 00:07:45.320
+Imprime uma representação muito melhor
+
+187
+00:07:45,320 --> 00:07:47.510
+da coordenada, algo que eu possa reconhecer,
+
+188
+00:07:47,510 --> 00:07:49.843
+e isso tornará mais fácil pensar no que é
+
+189
+00:07:49,843 --> 00:07:51.980
+dentro dessa coordenada.
+
+190
+00:07:51,980 --> 00:07:55.370
+Tendo feito isso, agora também posso pensar em algumas outras coisas
+
+191
+00:07:55,370 --> 00:07:57.480
+Eu gostaria de fazer classes.
+
+192
+00:07:57,480 --> 00:08:01.380
+Eu poderia dizer, qual é o tipo desse objeto em particular.
+
+193
+00:08:01,380 --> 00:08:07.660
+Para que eu pudesse imprimir, como você pode ver lá, qual é o tipo de c?
+
+194
+00:08:07,660 --> 00:08:11.190
+E isso realmente me devolve algo que faz sentido.
+
+195
+00:08:11,190 --> 00:08:14.310
+Diz que C é uma instância de uma classe,
+
+196
+00:08:14,310 --> 00:08:16.990
+e o tipo de classe é coordenada.
+
+197
+00:08:16,990 --> 00:08:20.070
+O .main apenas me diz que foi defined em que geral
+
+198
+00:08:20,070 --> 00:08:22.610
+ambiente em que eu interajo, esse ambiente Python
+
+199
+00:08:22,610 --> 00:08:24.029
+em que eu interajo.
+
+200
+00:08:24,029 --> 00:08:25.570
+E, de fato, faz sentido porque eu
+
+201
+00:08:25,570 --> 00:08:29.140
+pode dizer tanto o que é uma coordenada, é uma classe,
+
+202
+00:08:29,140 --> 00:08:32.950
+e qual é o tipo de uma coordenada, é um tipo.
+
+203
+00:08:32,950 --> 00:08:34.726
+Para que eu possa criar instâncias.
+
+204
+00:08:34,726 --> 00:08:36.059
+Eu posso medir coisas sobre eles.
+
+205
+00:08:36,059 --> 00:08:37.140
+Eu posso imprimi-los.
+
+206
+00:08:37,140 --> 00:08:38.890
+Uma das outras coisas que posso querer fazer
+
+207
+00:08:38,890 --> 00:08:40.720
+é saber que tipo de coisa é essa.
+
+208
+00:08:40,720 --> 00:08:43.152
+Eu tenho algo que é uma instância de uma coordenada?
+
+209
+00:08:43,152 --> 00:08:45.390
+Eu poderia fazer isso olhando para o tipo
+
+210.
+00:08:45,390 --> 00:08:47.830
+e tentando verificar qual é o tipo dessa coisa.
+
+211
+00:08:47,830 --> 00:08:50.890
+Mas você já viu aqui que o tipo de C
+
+212
+00:08:50,890 --> 00:08:52.110
+é essa coisa complicada.
+
+213
+00:08:52,110 --> 00:08:55.250
+Eu realmente não quero escrever, é o tipo desse objeto
+
+214
+00:08:55,250 --> 00:08:59.560
+igual à classe sublinhada coordenada de ponto principal, isso é confuso.
+
+215
+00:08:59,560 --> 00:09:02.720
+Então, em vez disso, vou usar outro método embutido
+
+216
+00:09:02,720 --> 00:09:05.920
+associado a qualquer objeto, que é a instância.
+
+217
+00:09:05,920 --> 00:09:07.990
+E eu posso usar isso para verificar se um objeto está
+
+218
+00:09:07,990 --> 00:09:09.830
+uma instância de uma coordenada.
+
+219
+00:09:09,830 --> 00:09:19.210
+Então, posso dizer, por exemplo, c é uma instância de coordenada?
+
+220
+00:09:19,210 --> 00:09:20.974
+E diz, você aposta.
+
+221
+00:09:20,974 --> 00:09:23.390
+Eu poderia fazer isso com objetos embutidos, a propósito, dizendo:
+
+222
+00:09:23,390 --> 00:09:24.960
+isso é uma instância de uma lista?
+
+223
+00:09:24,960 --> 00:09:27.240
+Isso é uma instância de um int?
+
+224
+00:09:27,240 --> 00:09:29.170
+Geralmente, posso fazer atalhos nesses casos,
+
+225
+00:09:29,170 --> 00:09:31.680
+mas esse método subjacente é instância vem
+
+226
+00:09:31,680 --> 00:09:34.820
+a partir basicamente dos objetos que existem no Python.
+
+227
+00:09:34,820 --> 00:09:37.350
+
+
+228
+00:09:37,350 --> 00:09:39.070
+Também temos alguns outros métodos que nós
+
+229
+00:09:39,070 --> 00:09:41.570
+vi com outros tipos de objetos que podemos construir
+
+230
+00:09:41,570 --> 00:09:44.804
+em nossas novas definições de classe.
+
+231
+00:09:44,804 --> 00:09:45.970
+Há uma longa lista deles.
+
+232
+00:09:45,970 --> 00:09:47.803
+Vou simplesmente deixar você procurar.
+
+233
+00:09:47,803 --> 00:09:49.750
+Mas basicamente, muitos deles vêm
+
+234
+00:09:49,750 --> 00:09:51.690
+fornecido, mas posso substituí-los.
+
+235
+00:09:51,690 --> 00:09:53.800
+E os padrões são, eu posso definir
+
+236
+00:09:53,800 --> 00:09:57.030
+o que significa adicionar duas instâncias,
+
+237
+00:09:57,030 --> 00:09:59.660
+subtraí-los, testar se são iguais,
+
+238
+00:09:59,660 --> 00:10:02.520
+para testar se há menos de, para imprimir o length--
+
+239
+00:10:02,520 --> 00:10:05.540
+e já fizemos a impressão aqui, essa é a str.
+
+240
+00:10:05,540 --> 00:10:08.350
+Cada um desses métodos possui um nome interno
+
+241
+00:10:08,350 --> 00:10:11.650
+que eu posso usar para substituir a versão subjacente disso.
+
+242
+00:10:11,650 --> 00:10:17.880
+Então, por exemplo, imagine que eu quero subtrair duas coordenadas.
+
+243
+00:10:17,880 --> 00:10:19.880
+Eu poderia fazer isso simplesmente definindo
+
+244
+00:10:19,880 --> 00:10:21.970
+como deve ser o sub.
+
+245
+00:10:21,970 --> 00:10:26.150
+E eu vou fazer isso indo ao meu computador, onde
+
+246
+00:10:26,150 --> 00:10:28.070
+Eu construí um desses.
+
+247
+00:10:28,070 --> 00:10:33.150
+E o que o sub deve fazer é simplesmente pegar a instância em si
+
+248
+00:10:33,150 --> 00:10:36.780
+e outra instância, subtraia, coordenadamente, os valores x,
+
+249
+00:10:36,780 --> 00:10:38.242
+e, em seguida, retorne uma coordenada.
+
+250
+00:10:38,242 --> 00:10:40.731
+E se eu executar isso--
+
+251
+00:10:40,731 --> 00:10:42.730
+E eu vou criar duas versões aqui.
+
+252
+00:10:42,730 --> 00:10:48.110
+Vou deixar C ser a coordenada em 3, 4.
+
+253
+00:10:48,110 --> 00:10:54.520
+Vou deixar que a origem seja a coordenada em 0, 0.
+
+254
+00:10:54,520 --> 00:11:00.620
+E se eu quiser dizer C menos origem, ótimo,
+
+255
+00:11:00,620 --> 00:11:01.920
+Eu saio de uma coordenada.
+
+256
+00:11:01,920 --> 00:11:11.190
+Vamos dar um nome, e eu posso imprimir Foo,
+
+257
+00:11:11,190 --> 00:11:13.550
+e me devolve o que eu esperava,
+
+258
+00:11:13,550 --> 00:11:17.350
+que é apenas o vetor entre esse ponto e a origem.
+
+259
+00:11:17,350 --> 00:11:19.500
+O principal a notar aqui é que eu posso ter
+
+260
+00:11:19,500 --> 00:11:21.180
+meu método retorna valores simples.
+
+261
+00:11:21,180 --> 00:11:24.370
+Também posso fazer com que ele retorne novas instâncias das coisas que criei.
+
+262
+00:11:24,370 --> 00:11:27.150
+E isso é uma coisa muito boa de se ter.
