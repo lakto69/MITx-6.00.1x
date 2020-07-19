@@ -1,0 +1,832 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:03,520
+We're ready to start talking about complexity of algorithms,
+
+2
+00:00:03,520 --> 00:00:04,891
+orders of growth.
+
+3
+00:00:04,891 --> 00:00:06,640
+And we're going to do that using something
+
+4
+00:00:06,640 --> 00:00:09,680
+we refer to as big O notation.
+
+5
+00:00:09,680 --> 00:00:11,922
+Comes from the Greek symbol omicron, which was that
+
+6
+00:00:11,922 --> 00:00:13,380
+the symbol that was used to measure
+
+7
+00:00:13,380 --> 00:00:15,995
+it, which is why we will sometimes also write it as O.
+
+8
+00:00:15,995 --> 00:00:18,270
+And we'll be using that notation.
+
+9
+00:00:18,270 --> 00:00:20,160
+And what big O notation is going to do
+
+10
+00:00:20,160 --> 00:00:24,050
+is measure an upper bound on the asymptotic growth
+
+11
+00:00:24,050 --> 00:00:25,560
+of complexity.
+
+12
+00:00:25,560 --> 00:00:28,810
+So asymptotic means as the problem input size gets really
+
+13
+00:00:28,810 --> 00:00:30,710
+big what is the behavior?
+
+14
+00:00:30,710 --> 00:00:32,729
+And how do I put a bound on that,
+
+15
+00:00:32,729 --> 00:00:35,170
+an upper bound on that that let's me describe that
+
+16
+00:00:35,170 --> 00:00:36,266
+class of behavior?
+
+17
+00:00:36,266 --> 00:00:39,570
+And obviously, I'd like as good an upper bound as I can get.
+
+18
+00:00:39,570 --> 00:00:41,890
+Rather than just seeing every problem as exponential,
+
+19
+00:00:41,890 --> 00:00:45,430
+I'd like to say no, this is inherently a quadratic problem,
+
+20
+00:00:45,430 --> 00:00:48,500
+or this is inherently a linear problem.
+
+21
+00:00:48,500 --> 00:00:50,770
+Big O notation is going to describe the worst
+
+22
+00:00:50,770 --> 00:00:52,830
+case, as we've already said.
+
+23
+00:00:52,830 --> 00:00:55,600
+And that's because the worst case can occur often.
+
+24
+00:00:55,600 --> 00:00:58,315
+And it's usually the bottleneck when a program runs.
+
+25
+00:00:58,315 --> 00:00:59,690
+So I'm going to talk about what's
+
+26
+00:00:59,690 --> 00:01:02,810
+the worst case behavior when I put that upper bound on it.
+
+27
+00:01:02,810 --> 00:01:05,349
+And I want to express the rate of growth of a program,
+
+28
+00:01:05,349 --> 00:01:09,490
+as I said earlier, relative to the input size.
+
+29
+00:01:09,490 --> 00:01:11,570
+Finally, rather than using timing,
+
+30
+00:01:11,570 --> 00:01:14,190
+I'm going to do this by evaluating the algorithm, not
+
+31
+00:01:14,190 --> 00:01:17,470
+the machine or the particular implementation inside of it.
+
+32
+00:01:17,470 --> 00:01:19,260
+And so big O notation is going to be
+
+33
+00:01:19,260 --> 00:01:22,057
+our way of describing the asymptotic behavior
+
+34
+00:01:22,057 --> 00:01:22,640
+of algorithms.
+
+35
+00:01:22,640 --> 00:01:25,320
+
+
+36
+00:01:25,320 --> 00:01:28,050
+Let's look at an example of what big O means.
+
+37
+00:01:28,050 --> 00:01:30,790
+And I'm going to do this with a procedure you've seen before.
+
+38
+00:01:30,790 --> 00:01:33,601
+This is computing factorials in an iterative fashion.
+
+39
+00:01:33,601 --> 00:01:34,350
+So how do I do it?
+
+40
+00:01:34,350 --> 00:01:36,660
+I set up a variable answer to one.
+
+41
+00:01:36,660 --> 00:01:39,070
+And then I run through a loop where basically I
+
+42
+00:01:39,070 --> 00:01:40,340
+let n start at 1.
+
+43
+00:01:40,340 --> 00:01:44,140
+And I keep doing that until I get to-- sorry.
+
+44
+00:01:44,140 --> 00:01:46,035
+Let me say it again.
+
+45
+00:01:46,035 --> 00:01:47,410
+Let's look at an example of this.
+
+46
+00:01:47,410 --> 00:01:49,990
+And we're going to do it with factorial [? iterative. ?]
+
+47
+00:01:49,990 --> 00:01:51,530
+We've seen this before.
+
+48
+00:01:51,530 --> 00:01:54,350
+We're going to set up an answer to be the value 1.
+
+49
+00:01:54,350 --> 00:01:57,100
+And then basically, we're going to multiply answer by n,
+
+50
+00:01:57,100 --> 00:01:59,280
+decrease it by 1, and keep doing that until we
+
+51
+00:01:59,280 --> 00:02:01,440
+get down to the point where n is equal to 1.
+
+52
+00:02:01,440 --> 00:02:04,020
+And then we're going to return the answer.
+
+53
+00:02:04,020 --> 00:02:05,210
+So it computes factorial.
+
+54
+00:02:05,210 --> 00:02:07,940
+And I could ask, so how many steps are there here?
+
+55
+00:02:07,940 --> 00:02:09,910
+And in fact, what do I have?
+
+56
+00:02:09,910 --> 00:02:12,500
+Well, I know that there are two steps right there because
+
+57
+00:02:12,500 --> 00:02:15,260
+literally what I'm doing is setting, if you like, n,
+
+58
+00:02:15,260 --> 00:02:18,220
+temp to n minus 1, and then n to temp as I do this,
+
+59
+00:02:18,220 --> 00:02:21,250
+or if you like, doing both an addition and a reset.
+
+60
+00:02:21,250 --> 00:02:24,270
+But what we can see is inside of this expression
+
+61
+00:02:24,270 --> 00:02:26,410
+I have the following.
+
+62
+00:02:26,410 --> 00:02:28,510
+I have one step there.
+
+63
+00:02:28,510 --> 00:02:31,910
+I have a loop here that I'm going to go through n times.
+
+64
+00:02:31,910 --> 00:02:36,010
+And inside of that loop I have actually five steps,
+
+65
+00:02:36,010 --> 00:02:40,400
+the test, two steps there, two steps there.
+
+66
+00:02:40,400 --> 00:02:41,836
+So I've got five steps.
+
+67
+00:02:41,836 --> 00:02:43,210
+And I'm going to do that n times.
+
+68
+00:02:43,210 --> 00:02:44,710
+So I've got 5n operations.
+
+69
+00:02:44,710 --> 00:02:46,760
+And then finally I'm going to return answer,
+
+70
+00:02:46,760 --> 00:02:48,800
+which gives me one more.
+
+71
+00:02:48,800 --> 00:02:51,700
+So the expression for the number of operations independent
+
+72
+00:02:51,700 --> 00:02:56,840
+of the machine is 1 plus 5 n plus 1 or 5 n plus 2.
+
+73
+00:02:56,840 --> 00:02:59,850
+I want to know what's the worst case behavior?
+
+74
+00:02:59,850 --> 00:03:01,930
+And so as n gets really large, the fact
+
+75
+00:03:01,930 --> 00:03:05,120
+that I got two extra steps becomes irrelevant.
+
+76
+00:03:05,120 --> 00:03:08,130
+And that says that I can ignore the additive constants, the two
+
+77
+00:03:08,130 --> 00:03:09,340
+ones.
+
+78
+00:03:09,340 --> 00:03:12,510
+The fact that it's 5n as opposed to 7n or 3n,
+
+79
+00:03:12,510 --> 00:03:15,410
+as n gets large really also doesn't matter.
+
+80
+00:03:15,410 --> 00:03:17,900
+Practically, it'll be a little bit difference in time.
+
+81
+00:03:17,900 --> 00:03:21,230
+But as an asymptotic behavior, it really doesn't matter.
+
+82
+00:03:21,230 --> 00:03:25,090
+And so in fact, I will say that this is order n.
+
+83
+00:03:25,090 --> 00:03:26,880
+I ignore the additive constants.
+
+84
+00:03:26,880 --> 00:03:29,060
+I ignore that multiplicative constant.
+
+85
+00:03:29,060 --> 00:03:34,600
+And I basically say this is a linear or order n algorithm.
+
+86
+00:03:34,600 --> 00:03:37,360
+So that says when I get expressions
+
+87
+00:03:37,360 --> 00:03:41,750
+for the number of steps inside of a particular computation
+
+88
+00:03:41,750 --> 00:03:44,320
+I'm going to drop the constants and I'm going to drop
+
+89
+00:03:44,320 --> 00:03:45,810
+the multiplicative factors.
+
+90
+00:03:45,810 --> 00:03:49,050
+And I'm just going to focus on the dominant terms.
+
+91
+00:03:49,050 --> 00:03:52,040
+So if I had an algorithm that had the number of steps shown
+
+92
+00:03:52,040 --> 00:03:56,230
+in that first example, I'm going to say that's order n squared.
+
+93
+00:03:56,230 --> 00:03:59,630
+And if you think about it, as it says as n gets really large,
+
+94
+00:03:59,630 --> 00:04:03,200
+n squared is going to be much, much more dominant
+
+95
+00:04:03,200 --> 00:04:04,650
+than the 2n factor.
+
+96
+00:04:04,650 --> 00:04:07,590
+And so really this grows as n squared.
+
+97
+00:04:07,590 --> 00:04:11,560
+Even if it's n squared plus 100,000n plus a really large
+
+98
+00:04:11,560 --> 00:04:14,000
+constant, we still say this is order n squared,
+
+99
+00:04:14,000 --> 00:04:16,740
+because asymptotically as n gets really big,
+
+100
+00:04:16,740 --> 00:04:18,860
+that's the dominant term.
+
+101
+00:04:18,860 --> 00:04:22,840
+For the third one, it's order n because n grows more rapidly
+
+102
+00:04:22,840 --> 00:04:24,020
+than log n.
+
+103
+00:04:24,020 --> 00:04:27,000
+And as a consequence, this as things get really large
+
+104
+00:04:27,000 --> 00:04:29,230
+is the dominant term.
+
+105
+00:04:29,230 --> 00:04:32,500
+For the third one, we say it's order n log n.
+
+106
+00:04:32,500 --> 00:04:35,655
+And for the last one it's order 3n.
+
+107
+00:04:35,655 --> 00:04:37,500
+It may look a little weird.
+
+108
+00:04:37,500 --> 00:04:39,220
+N to the 30th is a big number.
+
+109
+00:04:39,220 --> 00:04:42,420
+But as n gets really big, this grows much more rapidly
+
+110
+00:04:42,420 --> 00:04:43,350
+than this.
+
+111
+00:04:43,350 --> 00:04:45,310
+And so we will say the dominant term here
+
+112
+00:04:45,310 --> 00:04:49,960
+is an exponential in 3 as opposed to a polynomial of n
+
+113
+00:04:49,960 --> 00:04:51,726
+to the 30th power.
+
+114
+00:04:51,726 --> 00:04:53,100
+So these are going to show us how
+
+115
+00:04:53,100 --> 00:04:54,460
+we simplify the expressions.
+
+116
+00:04:54,460 --> 00:04:56,654
+And you can now see what we'd like to do.
+
+117
+00:04:56,654 --> 00:04:58,320
+Given an algorithm, we're going to count
+
+118
+00:04:58,320 --> 00:05:00,100
+the number of operations as best we can
+
+119
+00:05:00,100 --> 00:05:01,990
+as a function of size of input.
+
+120
+00:05:01,990 --> 00:05:04,630
+And then we're going to ask what's the dominant term here?
+
+121
+00:05:04,630 --> 00:05:05,810
+Where's the bottleneck?
+
+122
+00:05:05,810 --> 00:05:07,530
+What's the worst case behavior?
+
+123
+00:05:07,530 --> 00:05:09,490
+And that's going to let us characterize
+
+124
+00:05:09,490 --> 00:05:12,110
+the order of growth.
+
+125
+00:05:12,110 --> 00:05:13,760
+We've already seen these examples.
+
+126
+00:05:13,760 --> 00:05:16,630
+These are the kinds of behaviors we're going to look for.
+
+127
+00:05:16,630 --> 00:05:22,420
+Constant, written as order 1, logarithmic, written as order
+
+128
+00:05:22,420 --> 00:05:26,790
+log n, linear, written as om, log
+
+129
+00:05:26,790 --> 00:05:31,800
+linear, written as o of n log n, polynomial,
+
+130
+00:05:31,800 --> 00:05:33,320
+written as order n to the c.
+
+131
+00:05:33,320 --> 00:05:35,822
+And I don't really care that much what the c is.
+
+132
+00:05:35,822 --> 00:05:37,780
+But I'll at least distinguish is this quadratic
+
+133
+00:05:37,780 --> 00:05:40,090
+versus cubic versus something else.
+
+134
+00:05:40,090 --> 00:05:43,350
+And finally, exponential-- does it grow as c to the n
+
+135
+00:05:43,350 --> 00:05:45,469
+as opposed to n to the c?
+
+136
+00:05:45,469 --> 00:05:48,010
+And if you don't understand the difference between those two,
+
+137
+00:05:48,010 --> 00:05:50,093
+write a little program and look at some difference
+
+138
+00:05:50,093 --> 00:05:52,880
+in values between n to the c and c to the n.
+
+139
+00:05:52,880 --> 00:05:54,800
+Pick c, for example, as a 2 or a 3,
+
+140
+00:05:54,800 --> 00:05:57,460
+and see how differently these change.
+
+141
+00:05:57,460 --> 00:06:00,320
+Ideally, I'd like an algorithm that
+
+142
+00:06:00,320 --> 00:06:02,610
+is as close to this point in the hierarchy
+
+143
+00:06:02,610 --> 00:06:05,940
+as possible, because the higher up I am in this hierarchy,
+
+144
+00:06:05,940 --> 00:06:09,400
+the more efficient the algorithm is.
+
+145
+00:06:09,400 --> 00:06:12,330
+So a couple of statements about this and then we're
+
+146
+00:06:12,330 --> 00:06:13,952
+going to look at some examples.
+
+147
+00:06:13,952 --> 00:06:16,160
+One of the things I want to be able to do, as I said,
+
+148
+00:06:16,160 --> 00:06:19,110
+is analyze the programs and talk about their complexity.
+
+149
+00:06:19,110 --> 00:06:21,400
+And I'm going to combine complexity classes.
+
+150
+00:06:21,400 --> 00:06:23,750
+I'm going to analyze statements inside the functions
+
+151
+00:06:23,750 --> 00:06:27,130
+and then apply some rules and focus on the dominant term.
+
+152
+00:06:27,130 --> 00:06:29,010
+So here are two things to look at.
+
+153
+00:06:29,010 --> 00:06:31,150
+The first one we can call the law of addition
+
+154
+00:06:31,150 --> 00:06:32,910
+for big O notation.
+
+155
+00:06:32,910 --> 00:06:35,690
+And we use it with sequential statements.
+
+156
+00:06:35,690 --> 00:06:37,870
+So if I have a piece of code followed
+
+157
+00:06:37,870 --> 00:06:39,766
+by another piece of code, I could
+
+158
+00:06:39,766 --> 00:06:41,890
+get the order of growth of the first piece of code,
+
+159
+00:06:41,890 --> 00:06:44,400
+the complexity of it, and then the second one.
+
+160
+00:06:44,400 --> 00:06:46,990
+And then I can talk about the sum of those
+
+161
+00:06:46,990 --> 00:06:50,680
+being the order of growth of the overall combination.
+
+162
+00:06:50,680 --> 00:06:52,690
+So for example, if I have two little loops,
+
+163
+00:06:52,690 --> 00:06:56,600
+as I've shown down here, the first one is order n.
+
+164
+00:06:56,600 --> 00:06:59,230
+The second one is order m squared.
+
+165
+00:06:59,230 --> 00:07:01,990
+The overall order is order n plus n squared.
+
+166
+00:07:01,990 --> 00:07:04,210
+And as a consequence, the law of addition
+
+167
+00:07:04,210 --> 00:07:07,470
+says that the order I want is just n squared because that's
+
+168
+00:07:07,470 --> 00:07:09,110
+the dominant term.
+
+169
+00:07:09,110 --> 00:07:11,540
+It says I can add up the complexity in order
+
+170
+00:07:11,540 --> 00:07:12,730
+to do the analysis.
+
+171
+00:07:12,730 --> 00:07:13,690
+And that makes sense.
+
+172
+00:07:13,690 --> 00:07:15,750
+This is going to take much longer than that as n
+
+173
+00:07:15,750 --> 00:07:17,560
+gets really big.
+
+174
+00:07:17,560 --> 00:07:21,120
+So I've got a lot of addition for analyzing these pieces.
+
+175
+00:07:21,120 --> 00:07:23,150
+I have a second one, a law of multiplication
+
+176
+00:07:23,150 --> 00:07:24,858
+for [? big order. ?] And we use that when
+
+177
+00:07:24,858 --> 00:07:27,420
+we have nested statements or loops.
+
+178
+00:07:27,420 --> 00:07:29,990
+So in this case, if I have something
+
+179
+00:07:29,990 --> 00:07:32,637
+that has a particular function, and I've
+
+180
+00:07:32,637 --> 00:07:34,720
+got another one that I'm going to do inside of it,
+
+181
+00:07:34,720 --> 00:07:37,520
+the order of growth of that multiplication
+
+182
+00:07:37,520 --> 00:07:41,210
+is the order of growth of those two functions multiplied
+
+183
+00:07:41,210 --> 00:07:42,630
+together.
+
+184
+00:07:42,630 --> 00:07:45,650
+Another way of saying it is if I have two loops, one
+
+185
+00:07:45,650 --> 00:07:48,570
+inside the other-- so I'm going to loop over this loop--
+
+186
+00:07:48,570 --> 00:07:50,960
+and inside of there I'm going to do a second one,
+
+187
+00:07:50,960 --> 00:07:55,140
+then I have an order of growth n for the interior part
+
+188
+00:07:55,140 --> 00:07:57,950
+and an order of growth n for the exterior part.
+
+189
+00:07:57,950 --> 00:08:00,010
+And that is the same as having an order of growth
+
+190
+00:08:00,010 --> 00:08:00,730
+of the product.
+
+191
+00:08:00,730 --> 00:08:02,720
+That is, I'm bringing this multiplication
+
+192
+00:08:02,720 --> 00:08:04,690
+inside the notation.
+
+193
+00:08:04,690 --> 00:08:07,240
+And we say this is n squared.
+
+194
+00:08:07,240 --> 00:08:09,790
+Another way of saying it is it's because that outer loop
+
+195
+00:08:09,790 --> 00:08:11,470
+is done n times.
+
+196
+00:08:11,470 --> 00:08:13,300
+And the inner loop also does n times.
+
+197
+00:08:13,300 --> 00:08:16,500
+And since we do the inner loop n times for every version
+
+198
+00:08:16,500 --> 00:08:19,870
+of the outer loop, it's n times n or n squared times
+
+199
+00:08:19,870 --> 00:08:23,550
+in terms of execution for this particular kind of example.
+
+200
+00:08:23,550 --> 00:08:27,340
+So I can analyze loops or nested statements
+
+201
+00:08:27,340 --> 00:08:29,132
+looking at what does it take the inner part
+
+202
+00:08:29,132 --> 00:08:31,048
+and then what does it take-- how many times do
+
+203
+00:08:31,048 --> 00:08:32,789
+I do that inner part and the outer part,
+
+204
+00:08:32,789 --> 00:08:34,959
+multiplying that complexity together.
+
+205
+00:08:34,959 --> 00:08:37,250
+And we saw with addition when I have sequential things,
+
+206
+00:08:37,250 --> 00:08:39,330
+I want to add the orders of growth together
+
+207
+00:08:39,330 --> 00:08:41,500
+and then do the analysis.
+

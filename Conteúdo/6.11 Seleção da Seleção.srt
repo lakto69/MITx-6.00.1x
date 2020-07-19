@@ -1,0 +1,820 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,890
+The next sorting algorithm we're going to examine
+
+2
+00:00:02,890 --> 00:00:04,860
+is called selection sort.
+
+3
+00:00:04,860 --> 00:00:06,320
+And I'm going to describe the idea,
+
+4
+00:00:06,320 --> 00:00:08,550
+show you an implementation, and then
+
+5
+00:00:08,550 --> 00:00:12,280
+we'll actually look at what the complexity of it is.
+
+6
+00:00:12,280 --> 00:00:16,129
+The idea in selection sort is pretty straightforward.
+
+7
+00:00:16,129 --> 00:00:18,490
+On the first step, I'm going to find the smallest
+
+8
+00:00:18,490 --> 00:00:20,370
+element, which means I'm going to have to look at everything,
+
+9
+00:00:20,370 --> 00:00:22,480
+but I'm going to find the smallest element.
+
+10
+00:00:22,480 --> 00:00:26,310
+And I'm going to swap it with the element at index zero.
+
+11
+00:00:26,310 --> 00:00:29,100
+I'm going to put the smallest element in the first spot.
+
+12
+00:00:29,100 --> 00:00:31,270
+On each subsequent step, I'm going
+
+13
+00:00:31,270 --> 00:00:34,520
+to look at the remaining list, find its smallest element,
+
+14
+00:00:34,520 --> 00:00:35,850
+and put it at the next spot.
+
+15
+00:00:35,850 --> 00:00:38,760
+So in the next step, it would find the next smallest element,
+
+16
+00:00:38,760 --> 00:00:41,250
+put it at location one, and keep doing that.
+
+17
+00:00:41,250 --> 00:00:43,330
+What I'm going to do is constantly keep
+
+18
+00:00:43,330 --> 00:00:46,230
+the left portion of the list sorted.
+
+19
+00:00:46,230 --> 00:00:49,550
+And so at the i-th step, the first i elements in the list
+
+20
+00:00:49,550 --> 00:00:50,870
+are already sorted.
+
+21
+00:00:50,870 --> 00:00:52,230
+All other elements are bigger.
+
+22
+00:00:52,230 --> 00:00:54,521
+And I'm not going to worry about the bubbling of trying
+
+23
+00:00:54,521 --> 00:00:55,514
+to put them into order.
+
+24
+00:00:55,514 --> 00:00:56,930
+I could be a little more efficient
+
+25
+00:00:56,930 --> 00:00:58,430
+about doing some swaps if I wanted,
+
+26
+00:00:58,430 --> 00:01:01,780
+but basically the idea is to select the next element
+
+27
+00:01:01,780 --> 00:01:04,099
+and put it in the right location.
+
+28
+00:01:04,099 --> 00:01:06,230
+Let's think about what this might look like.
+
+29
+00:01:06,230 --> 00:01:07,850
+And to do that, I'm going to show you
+
+30
+00:01:07,850 --> 00:01:11,080
+a little video of Professor Guttag with a set of students
+
+31
+00:01:11,080 --> 00:01:13,190
+actually doing selection sort.
+
+32
+00:01:13,190 --> 00:01:14,630
+And once we've seen that video, we
+
+33
+00:01:14,630 --> 00:01:17,940
+can come back and do the analysis of the algorithm.
+
+34
+00:01:17,940 --> 00:01:18,440
+All right.
+
+35
+00:01:18,440 --> 00:01:21,730
+So now we're going to do selection sort.
+
+36
+00:01:21,730 --> 00:01:24,180
+The idea here is, at each step, we're
+
+37
+00:01:24,180 --> 00:01:26,680
+going to select the shortest person
+
+38
+00:01:26,680 --> 00:01:30,860
+and put them next in line of the sorted group.
+
+39
+00:01:30,860 --> 00:01:34,270
+So we'll bring the leftmost person forward,
+
+40
+00:01:34,270 --> 00:01:37,020
+and we will compare her to everybody else.
+
+41
+00:01:37,020 --> 00:01:39,990
+So one at a time, step forward.
+
+42
+00:01:39,990 --> 00:01:40,990
+You're still the winner.
+
+43
+00:01:40,990 --> 00:01:42,780
+You go back.
+
+44
+00:01:42,780 --> 00:01:45,340
+Please step forward.
+
+45
+00:01:45,340 --> 00:01:47,901
+Oh, you're definitely the winner.
+
+46
+00:01:47,901 --> 00:01:48,400
+Next.
+
+47
+00:01:48,400 --> 00:01:52,400
+
+
+48
+00:01:52,400 --> 00:01:54,590
+Still the winner.
+
+49
+00:01:54,590 --> 00:01:56,720
+Next.
+
+50
+00:01:56,720 --> 00:01:58,830
+Ah, a new winner.
+
+51
+00:01:58,830 --> 00:01:59,531
+All right.
+
+52
+00:01:59,531 --> 00:02:00,030
+So--
+
+53
+00:02:00,030 --> 00:02:00,904
+Can I take her place?
+
+54
+00:02:00,904 --> 00:02:02,096
+You can take her place.
+
+55
+00:02:02,096 --> 00:02:02,595
+OK.
+
+56
+00:02:02,595 --> 00:02:07,720
+
+
+57
+00:02:07,720 --> 00:02:10,030
+Now we'll compare.
+
+58
+00:02:10,030 --> 00:02:10,889
+Same old winner.
+
+59
+00:02:10,889 --> 00:02:15,440
+
+
+60
+00:02:15,440 --> 00:02:16,190
+Same winner.
+
+61
+00:02:16,190 --> 00:02:20,730
+
+
+62
+00:02:20,730 --> 00:02:22,590
+No change.
+
+63
+00:02:22,590 --> 00:02:26,220
+It's getting kind of boring.
+
+64
+00:02:26,220 --> 00:02:27,720
+Don't fall.
+
+65
+00:02:27,720 --> 00:02:29,640
+Same winner.
+
+66
+00:02:29,640 --> 00:02:30,140
+Please.
+
+67
+00:02:30,140 --> 00:02:35,110
+
+
+68
+00:02:35,110 --> 00:02:35,820
+Oh.
+
+69
+00:02:35,820 --> 00:02:38,130
+Close, but I think you're still shorter.
+
+70
+00:02:38,130 --> 00:02:38,675
+All right.
+
+71
+00:02:38,675 --> 00:02:39,175
+Next.
+
+72
+00:02:39,175 --> 00:02:42,470
+
+
+73
+00:02:42,470 --> 00:02:45,920
+No change, which means you are the first in line.
+
+74
+00:02:45,920 --> 00:02:48,120
+Congratulations.
+
+75
+00:02:48,120 --> 00:02:48,620
+All right.
+
+76
+00:02:48,620 --> 00:02:51,970
+Now you step forward, and we'll compare you.
+
+77
+00:02:51,970 --> 00:03:21,460
+
+
+78
+00:03:21,460 --> 00:03:22,760
+You are the winner.
+
+79
+00:03:22,760 --> 00:03:25,020
+Take your place in line.
+
+80
+00:03:25,020 --> 00:03:27,630
+Next.
+
+81
+00:03:27,630 --> 00:03:28,200
+It's you.
+
+82
+00:03:28,200 --> 00:03:34,280
+
+
+83
+00:03:34,280 --> 00:03:36,760
+And once again, we have a lovely group
+
+84
+00:03:36,760 --> 00:03:39,570
+of students sorted in height order.
+
+85
+00:03:39,570 --> 00:03:42,484
+[CLAPPING]
+
+86
+00:03:42,484 --> 00:03:44,890
+
+
+87
+00:03:44,890 --> 00:03:47,860
+So now let's think about what a simulation of that
+
+88
+00:03:47,860 --> 00:03:49,210
+might look like.
+
+89
+00:03:49,210 --> 00:03:51,824
+We saw with bubble sort we were finding the largest elements
+
+90
+00:03:51,824 --> 00:03:52,990
+and putting them at the end.
+
+91
+00:03:52,990 --> 00:03:54,406
+And there was a lot of percolation
+
+92
+00:03:54,406 --> 00:03:55,950
+of elements going through here.
+
+93
+00:03:55,950 --> 00:03:58,646
+With selection sort, we're simply finding the next element
+
+94
+00:03:58,646 --> 00:04:00,020
+and putting it in the right spot.
+
+95
+00:04:00,020 --> 00:04:02,990
+So you'll notice this portion of the list
+
+96
+00:04:02,990 --> 00:04:04,320
+doesn't change very much.
+
+97
+00:04:04,320 --> 00:04:07,866
+And I'm now building up the list in this direction, opposite
+
+98
+00:04:07,866 --> 00:04:08,740
+of what I did before.
+
+99
+00:04:08,740 --> 00:04:10,610
+But otherwise, it's fine.
+
+100
+00:04:10,610 --> 00:04:12,110
+Nice, elegant algorithm.
+
+101
+00:04:12,110 --> 00:04:14,920
+Let's build it.
+
+102
+00:04:14,920 --> 00:04:16,605
+Before I do that, I can basically
+
+103
+00:04:16,605 --> 00:04:18,980
+say, how do I make sure it's going to do the right thing.
+
+104
+00:04:18,980 --> 00:04:21,420
+The simulation suggests it does, but I
+
+105
+00:04:21,420 --> 00:04:23,180
+can use an idea we introduced earlier
+
+106
+00:04:23,180 --> 00:04:25,540
+to say is there a loop invariant, is there
+
+107
+00:04:25,540 --> 00:04:28,040
+a property that will hold true at each stage
+
+108
+00:04:28,040 --> 00:04:31,360
+of this algorithm, and can I use that to actually deduce
+
+109
+00:04:31,360 --> 00:04:33,850
+that my algorithm is going to do the right thing.
+
+110
+00:04:33,850 --> 00:04:36,140
+And here it's pretty straightforward.
+
+111
+00:04:36,140 --> 00:04:38,900
+Given a prefix of the list-- that is, the list from zero
+
+112
+00:04:38,900 --> 00:04:42,070
+up to i-- and a suffix of the list, everything from i
+
+113
+00:04:42,070 --> 00:04:43,950
+plus 1 up to the remainder of the list,
+
+114
+00:04:43,950 --> 00:04:47,810
+then the invariant I have is that the prefix is sorted
+
+115
+00:04:47,810 --> 00:04:50,050
+and there's no element in the prefix that's
+
+116
+00:04:50,050 --> 00:04:52,649
+larger than the smallest element in the suffix.
+
+117
+00:04:52,649 --> 00:04:54,690
+From the way I've described the algorithm, that's
+
+118
+00:04:54,690 --> 00:04:56,437
+clearly going to be true.
+
+119
+00:04:56,437 --> 00:04:57,520
+But how do I now prove it?
+
+120
+00:04:57,520 --> 00:05:00,240
+With that induction property I've used before.
+
+121
+00:05:00,240 --> 00:05:03,260
+In the base case, the prefix is empty,
+
+122
+00:05:03,260 --> 00:05:05,192
+and the suffix is the whole list.
+
+123
+00:05:05,192 --> 00:05:06,150
+So it's obviously true.
+
+124
+00:05:06,150 --> 00:05:07,730
+The prefix is sorted, and there's
+
+125
+00:05:07,730 --> 00:05:10,280
+nothing in the prefix that's bigger than anything--
+
+126
+00:05:10,280 --> 00:05:12,470
+or the smallest thing in the suffix.
+
+127
+00:05:12,470 --> 00:05:14,700
+On the induction step, I'm simply
+
+128
+00:05:14,700 --> 00:05:17,460
+moving the smallest element from the suffix
+
+129
+00:05:17,460 --> 00:05:19,170
+to the end of the prefix.
+
+130
+00:05:19,170 --> 00:05:22,180
+Because I'm putting at the end, after that step,
+
+131
+00:05:22,180 --> 00:05:23,890
+the prefix is still sorted.
+
+132
+00:05:23,890 --> 00:05:27,090
+And by the way I did it, I also know that the invariant is true
+
+133
+00:05:27,090 --> 00:05:29,250
+because not only is it sorted, but when
+
+134
+00:05:29,250 --> 00:05:32,230
+I'm done there's nothing in the suffix that's smaller
+
+135
+00:05:32,230 --> 00:05:33,880
+than something in the prefix.
+
+136
+00:05:33,880 --> 00:05:36,850
+And when I exit, the prefix is the entire list,
+
+137
+00:05:36,850 --> 00:05:40,930
+the suffix is empty, and so I have a sorted list.
+
+138
+00:05:40,930 --> 00:05:43,730
+So the algorithm will work.
+
+139
+00:05:43,730 --> 00:05:45,430
+So where's the algorithm?
+
+140
+00:05:45,430 --> 00:05:48,550
+Well, this is actually a pretty crisp set of code to write.
+
+141
+00:05:48,550 --> 00:05:53,150
+I'm going to set up something called the suffix store, if you
+
+142
+00:05:53,150 --> 00:05:55,220
+like, to be initially zero.
+
+143
+00:05:55,220 --> 00:05:58,780
+And as long as I don't get to the length of the list,
+
+144
+00:05:58,780 --> 00:06:00,770
+I'm just going to run through the loop.
+
+145
+00:06:00,770 --> 00:06:02,260
+And what does the loop do?
+
+146
+00:06:02,260 --> 00:06:06,065
+It says ranging from that point to the end of the list.
+
+147
+00:06:06,065 --> 00:06:08,190
+So it's from the end of the things that are already
+
+148
+00:06:08,190 --> 00:06:09,920
+sorted to the end of the list.
+
+149
+00:06:09,920 --> 00:06:11,720
+I'm simply going to compare.
+
+150
+00:06:11,720 --> 00:06:15,230
+And if the thing I'm looking at at that point
+
+151
+00:06:15,230 --> 00:06:17,610
+is less than the thing I'm looking
+
+152
+00:06:17,610 --> 00:06:22,700
+at at the end of my suffix, I'm just going to do a little swap.
+
+153
+00:06:22,700 --> 00:06:24,810
+Now, this is a little more work than I did before.
+
+154
+00:06:24,810 --> 00:06:26,750
+I'm actually going to do a little bit of bubbling here,
+
+155
+00:06:26,750 --> 00:06:28,917
+but not the complete level of bubbling I did before.
+
+156
+00:06:28,917 --> 00:06:31,333
+I could have literally just said find the smallest element
+
+157
+00:06:31,333 --> 00:06:31,840
+and move it.
+
+158
+00:06:31,840 --> 00:06:33,673
+Here, I'm going to reorder things to save me
+
+159
+00:06:33,673 --> 00:06:34,690
+a little bit of time.
+
+160
+00:06:34,690 --> 00:06:36,980
+But what I know is, when I'm done with that,
+
+161
+00:06:36,980 --> 00:06:40,170
+the smallest element in the suffix is now at the point
+
+162
+00:06:40,170 --> 00:06:42,710
+I wanted to look at, right at that point there.
+
+163
+00:06:42,710 --> 00:06:46,620
+And I increase my index by one and move on.
+
+164
+00:06:46,620 --> 00:06:48,440
+Notice what I'm doing here.
+
+165
+00:06:48,440 --> 00:06:49,950
+I'm taking advantage of that idea
+
+166
+00:06:49,950 --> 00:06:52,020
+that I don't want to copy the list,
+
+167
+00:06:52,020 --> 00:06:54,290
+I simply want to find the right pointer
+
+168
+00:06:54,290 --> 00:06:56,600
+and then insert in the right spot.
+
+169
+00:06:56,600 --> 00:06:58,980
+So there's selection sort.
+
+170
+00:06:58,980 --> 00:07:00,571
+And I could try a version of that.
+
+171
+00:07:00,571 --> 00:07:02,070
+Again, what I'm going to do is do it
+
+172
+00:07:02,070 --> 00:07:05,130
+where I actually print out what I'm doing as I go along.
+
+173
+00:07:05,130 --> 00:07:09,310
+And so with a variant of that, with selection sort,
+
+174
+00:07:09,310 --> 00:07:14,820
+again, on a test, you can see in this case
+
+175
+00:07:14,820 --> 00:07:17,600
+I see the smallest element always being placed
+
+176
+00:07:17,600 --> 00:07:19,040
+at the beginning of the list.
+
+177
+00:07:19,040 --> 00:07:21,706
+In some cases, I get lucky, and it was already there.
+
+178
+00:07:21,706 --> 00:07:23,830
+But in each case, I'm going to keep doing that work
+
+179
+00:07:23,830 --> 00:07:26,400
+until I in fact get out a sorted list.
+
+180
+00:07:26,400 --> 00:07:29,160
+You may notice on my computer it doesn't print out
+
+181
+00:07:29,160 --> 00:07:32,210
+the overall version, because I am only printing as I enter it.
+
+182
+00:07:32,210 --> 00:07:33,980
+And if I actually look at test, you'll
+
+183
+00:07:33,980 --> 00:07:36,940
+see that, in fact, it is now fully sorted.
+
+184
+00:07:36,940 --> 00:07:40,570
+Real question is, what's the complexity here.
+
+185
+00:07:40,570 --> 00:07:42,230
+Well, what do I know?
+
+186
+00:07:42,230 --> 00:07:45,250
+I'm going to have to run through that while loop order
+
+187
+00:07:45,250 --> 00:07:48,350
+length of L times because I have to go through the loop
+
+188
+00:07:48,350 --> 00:07:52,070
+to make sure that I get the next element in the right spot.
+
+189
+00:07:52,070 --> 00:07:55,490
+Inside of there, when I do that loop,
+
+190
+00:07:55,490 --> 00:07:57,520
+I only have to look at a portion of the list.
+
+191
+00:07:57,520 --> 00:08:00,580
+That's basically the length of L minus whatever
+
+192
+00:08:00,580 --> 00:08:02,360
+my index is pointing to.
+
+193
+00:08:02,360 --> 00:08:05,280
+But that still, in general, is order length of L.
+
+194
+00:08:05,280 --> 00:08:07,610
+Gets smaller on each step, but it's still
+
+195
+00:08:07,610 --> 00:08:09,546
+what we would call length of L.
+
+196
+00:08:09,546 --> 00:08:13,290
+And so you therefore see this is quadratic.
+
+197
+00:08:13,290 --> 00:08:16,100
+And it shouldn't surprise you because I've got a loop
+
+198
+00:08:16,100 --> 00:08:18,670
+and, inside of that, I have a nested loop.
+
+199
+00:08:18,670 --> 00:08:21,230
+And that is a characteristic of that property
+
+200
+00:08:21,230 --> 00:08:22,560
+of being quadratic.
+
+201
+00:08:22,560 --> 00:08:25,730
+And so it is quadratic in the length of the list.
+
+202
+00:08:25,730 --> 00:08:28,990
+But it's another way of doing this sort, perhaps timing-wise
+
+203
+00:08:28,990 --> 00:08:31,250
+a little more efficient than the bubble sort version
+
+204
+00:08:31,250 --> 00:08:33,150
+we saw earlier.
+

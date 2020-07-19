@@ -1,0 +1,716 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,330
+Just a step back for a second.
+
+2
+00:00:02,330 --> 00:00:04,710
+We're trying to let you see characteristics
+
+3
+00:00:04,710 --> 00:00:07,850
+that associate an algorithm with a particular class.
+
+4
+00:00:07,850 --> 00:00:12,260
+Constant, linear, we just saw a quadratic,
+
+5
+00:00:12,260 --> 00:00:15,000
+which were things like nested loops that lead to that.
+
+6
+00:00:15,000 --> 00:00:19,150
+The next class in that hierarchy are exponential complexity
+
+7
+00:00:19,150 --> 00:00:20,140
+algorithms.
+
+8
+00:00:20,140 --> 00:00:21,904
+These are the most expensive algorithms.
+
+9
+00:00:21,904 --> 00:00:23,320
+And of course, the goal is always,
+
+10
+00:00:23,320 --> 00:00:25,470
+if I can find a solution to a problem that's
+
+11
+00:00:25,470 --> 00:00:27,340
+lower down in the class of complexities,
+
+12
+00:00:27,340 --> 00:00:28,570
+I want to do that.
+
+13
+00:00:28,570 --> 00:00:30,060
+But sometimes, unfortunately, we're
+
+14
+00:00:30,060 --> 00:00:32,580
+going to be stuck with an exponential algorithm.
+
+15
+00:00:32,580 --> 00:00:34,610
+And indeed, many important problems
+
+16
+00:00:34,610 --> 00:00:36,100
+are inherently exponential.
+
+17
+00:00:36,100 --> 00:00:38,680
+There is no more efficient solution than something
+
+18
+00:00:38,680 --> 00:00:40,230
+that is exponential.
+
+19
+00:00:40,230 --> 00:00:43,040
+And that, by the way, is why often when we realize that,
+
+20
+00:00:43,040 --> 00:00:44,982
+we're going to look for approximate solutions
+
+21
+00:00:44,982 --> 00:00:46,940
+because we may be able to get a good guess more
+
+22
+00:00:46,940 --> 00:00:50,460
+quickly than finding the most accurate guess.
+
+23
+00:00:50,460 --> 00:00:53,960
+A common characteristic to an exponential class algorithm
+
+24
+00:00:53,960 --> 00:00:56,280
+is a recursive function, that is a function that
+
+25
+00:00:56,280 --> 00:01:01,100
+calls itself, but in each call calls up more than once.
+
+26
+00:01:01,100 --> 00:01:04,010
+You saw an example of that, which was Towers of Hanoi.
+
+27
+00:01:04,010 --> 00:01:05,720
+I remind you, in Towers of Hanoi we
+
+28
+00:01:05,720 --> 00:01:07,780
+said to move a tower of size n.
+
+29
+00:01:07,780 --> 00:01:11,370
+We move a tower of size n minus 1 to a spare peg,
+
+30
+00:01:11,370 --> 00:01:14,610
+do something, and then move that tower back.
+
+31
+00:01:14,610 --> 00:01:16,900
+So at each reduction of the problem
+
+32
+00:01:16,900 --> 00:01:19,330
+there were two recursive calls.
+
+33
+00:01:19,330 --> 00:01:21,950
+And that's characteristic of something that's
+
+34
+00:01:21,950 --> 00:01:24,500
+exponential class complexity.
+
+35
+00:01:24,500 --> 00:01:27,400
+Let's look at an example.
+
+36
+00:01:27,400 --> 00:01:30,040
+And here is actually a wonderful piece of code.
+
+37
+00:01:30,040 --> 00:01:33,150
+It's very crisp and computes something really interesting
+
+38
+00:01:33,150 --> 00:01:35,430
+very efficiently, or rather, does it
+
+39
+00:01:35,430 --> 00:01:36,850
+in a very efficient set of code.
+
+40
+00:01:36,850 --> 00:01:39,230
+The cost is going to be exponential.
+
+41
+00:01:39,230 --> 00:01:42,260
+And the idea is if I've got a list, say, of numbers--
+
+42
+00:01:42,260 --> 00:01:44,580
+could be the integers 1, 2, 3, and 4.
+
+43
+00:01:44,580 --> 00:01:49,560
+I'd like to generate a list of all the subsets of that list.
+
+44
+00:01:49,560 --> 00:01:50,830
+So what does that mean?
+
+45
+00:01:50,830 --> 00:01:52,600
+The empty list will be a subset.
+
+46
+00:01:52,600 --> 00:01:54,460
+The list of 1 would be a subset.
+
+47
+00:01:54,460 --> 00:01:58,880
+In fact, every list of 1, of 2, or 3, of 4 would be a subset.
+
+48
+00:01:58,880 --> 00:02:04,140
+Lists of 1, 2, 1, 3, 1, 4, 2, 3, 2, 4, you get the idea.
+
+49
+00:02:04,140 --> 00:02:06,540
+So this is going to generate a list
+
+50
+00:02:06,540 --> 00:02:09,827
+of all of the subsets of the initial list.
+
+51
+00:02:09,827 --> 00:02:12,160
+Let's look quickly at the code and then more importantly
+
+52
+00:02:12,160 --> 00:02:15,600
+see what the cost is to compute this.
+
+53
+00:02:15,600 --> 00:02:18,690
+So the idea is I set up, as always, a little variable here
+
+54
+00:02:18,690 --> 00:02:21,210
+called Res for result I'm going to return.
+
+55
+00:02:21,210 --> 00:02:24,810
+And then my base case here is if there is nothing in the list,
+
+56
+00:02:24,810 --> 00:02:27,160
+the only subset is the empty list.
+
+57
+00:02:27,160 --> 00:02:31,027
+And I actually return a list of the empty list
+
+58
+00:02:31,027 --> 00:02:32,610
+because I remind you, I want to return
+
+59
+00:02:32,610 --> 00:02:34,420
+a list of all possible subsets.
+
+60
+00:02:34,420 --> 00:02:38,830
+And the only possible subset here is in fact the empty list.
+
+61
+00:02:38,830 --> 00:02:41,840
+The clever solution, much as we saw with Towers of Hanoi
+
+62
+00:02:41,840 --> 00:02:44,150
+is to say if I want to generate all
+
+63
+00:02:44,150 --> 00:02:47,140
+of the subsets of a list, what I can do
+
+64
+00:02:47,140 --> 00:02:50,280
+is first generate all the subsets with everything
+
+65
+00:02:50,280 --> 00:02:52,940
+but the last element included.
+
+66
+00:02:52,940 --> 00:02:55,190
+And I do that in a very elegant way.
+
+67
+00:02:55,190 --> 00:02:58,700
+I get the list with everything but the last element
+
+68
+00:02:58,700 --> 00:03:01,490
+and I recursively call this function
+
+69
+00:03:01,490 --> 00:03:03,100
+that will give me back a list of all
+
+70
+00:03:03,100 --> 00:03:06,240
+of the subsets of everything but the last element.
+
+71
+00:03:06,240 --> 00:03:11,710
+I then set into extra a list with just the last element.
+
+72
+00:03:11,710 --> 00:03:14,330
+And now I create another list.
+
+73
+00:03:14,330 --> 00:03:17,380
+And for everything in that smaller set-- that
+
+74
+00:03:17,380 --> 00:03:20,240
+is all of the solutions without the last element--
+
+75
+00:03:20,240 --> 00:03:23,950
+I also create a solution that includes that last element
+
+76
+00:03:23,950 --> 00:03:26,410
+as part of each one of those earlier elements.
+
+77
+00:03:26,410 --> 00:03:27,440
+It's wonderfully clever.
+
+78
+00:03:27,440 --> 00:03:29,460
+I find a solution to the smaller problem.
+
+79
+00:03:29,460 --> 00:03:31,000
+And then I say for every case where
+
+80
+00:03:31,000 --> 00:03:32,540
+I've got a solution, a subset that
+
+81
+00:03:32,540 --> 00:03:34,550
+doesn't have the last element, I will also I
+
+82
+00:03:34,550 --> 00:03:36,650
+have a version of it with the last element.
+
+83
+00:03:36,650 --> 00:03:39,430
+And I do that by simply running through this loop
+
+84
+00:03:39,430 --> 00:03:42,720
+and adding small, which is the solution
+
+85
+00:03:42,720 --> 00:03:45,750
+without the last element, tagging the last element
+
+86
+00:03:45,750 --> 00:03:49,830
+onto it, and putting it into that new list, which is new.
+
+87
+00:03:49,830 --> 00:03:53,290
+And then finally, I just returned every solution
+
+88
+00:03:53,290 --> 00:03:55,650
+without the last element and every solution
+
+89
+00:03:55,650 --> 00:03:57,130
+with the last element.
+
+90
+00:03:57,130 --> 00:03:59,229
+It's a wonderful piece of recursive coding.
+
+91
+00:03:59,229 --> 00:04:00,770
+And I don't know what they have here.
+
+92
+00:04:00,770 --> 00:04:04,450
+About seven lines, I've come up with a great solution to it.
+
+93
+00:04:04,450 --> 00:04:05,980
+Having said all of that, now I just
+
+94
+00:04:05,980 --> 00:04:07,550
+want to look at the complexity.
+
+95
+00:04:07,550 --> 00:04:09,980
+Why is this exponential in size?
+
+96
+00:04:09,980 --> 00:04:12,590
+And let's look at that.
+
+97
+00:04:12,590 --> 00:04:14,212
+So there's my coat.
+
+98
+00:04:14,212 --> 00:04:16,170
+I'm going to make an assumption-- it's actually
+
+99
+00:04:16,170 --> 00:04:17,711
+a very reasonable assumption-- that I
+
+100
+00:04:17,711 --> 00:04:20,954
+can do the append operation in constant time.
+
+101
+00:04:20,954 --> 00:04:22,620
+And that's simply me says I need to know
+
+102
+00:04:22,620 --> 00:04:24,490
+where the end of the list is without having
+
+103
+00:04:24,490 --> 00:04:25,550
+to walk down the list.
+
+104
+00:04:25,550 --> 00:04:28,070
+And that, in fact, happens in Python.
+
+105
+00:04:28,070 --> 00:04:30,570
+So what does the analysis now say?
+
+106
+00:04:30,570 --> 00:04:32,790
+It says that the time that I need
+
+107
+00:04:32,790 --> 00:04:35,150
+is going to include the time to solve the smaller
+
+108
+00:04:35,150 --> 00:04:37,890
+problem plus the time I need to make
+
+109
+00:04:37,890 --> 00:04:40,852
+a copy of all of the elements in the smaller problem.
+
+110
+00:04:40,852 --> 00:04:42,310
+So it's going to be the time I need
+
+111
+00:04:42,310 --> 00:04:46,470
+here plus making the copyright down here
+
+112
+00:04:46,470 --> 00:04:49,120
+of all of the elements in the smaller problem.
+
+113
+00:04:49,120 --> 00:04:50,100
+OK.
+
+114
+00:04:50,100 --> 00:04:52,002
+So what does that look like?
+
+115
+00:04:52,002 --> 00:04:53,460
+Well, it's important to think about
+
+116
+00:04:53,460 --> 00:04:56,140
+what's the size of the smaller problem?
+
+117
+00:04:56,140 --> 00:04:59,030
+And there I can do a nice piece of analysis.
+
+118
+00:04:59,030 --> 00:05:03,290
+Because I know that in order to solve this for a set of size K,
+
+119
+00:05:03,290 --> 00:05:06,770
+there are 2 to the K possible cases.
+
+120
+00:05:06,770 --> 00:05:07,790
+How do I get that?
+
+121
+00:05:07,790 --> 00:05:09,330
+Well, if I've got K element-- say
+
+122
+00:05:09,330 --> 00:05:11,690
+they're integers-- for each integer
+
+123
+00:05:11,690 --> 00:05:13,830
+I can decide is this one in or not?
+
+124
+00:05:13,830 --> 00:05:16,069
+So for every integer I got a choice of two.
+
+125
+00:05:16,069 --> 00:05:16,860
+I've got k of them.
+
+126
+00:05:16,860 --> 00:05:19,760
+So there are 2 to the k possible cases
+
+127
+00:05:19,760 --> 00:05:24,840
+that could be generated as I solve the smaller problem.
+
+128
+00:05:24,840 --> 00:05:26,640
+Now, what does that say?
+
+129
+00:05:26,640 --> 00:05:29,380
+It says to solve this case, if I've
+
+130
+00:05:29,380 --> 00:05:32,100
+got n elements in my largest set,
+
+131
+00:05:32,100 --> 00:05:33,960
+I need to solve a problem of size 2
+
+132
+00:05:33,960 --> 00:05:36,260
+to the n minus 1, all the subsets
+
+133
+00:05:36,260 --> 00:05:37,820
+with n minus 1 elements.
+
+134
+00:05:37,820 --> 00:05:39,860
+I need to solve the problem with 2
+
+135
+00:05:39,860 --> 00:05:43,280
+to the n minus 2, a problem with 2 to the n minus c, all the way
+
+136
+00:05:43,280 --> 00:05:47,420
+down to 2 to the 0 or 1 case.
+
+137
+00:05:47,420 --> 00:05:49,700
+And from mathematics, we know that that
+
+138
+00:05:49,700 --> 00:05:52,140
+is, in fact, 2 to the n.
+
+139
+00:05:52,140 --> 00:05:56,240
+And therefore, this is a problem that is exponential.
+
+140
+00:05:56,240 --> 00:05:57,070
+The base is 2.
+
+141
+00:05:57,070 --> 00:05:59,540
+But it grows as 2 to the n.
+
+142
+00:05:59,540 --> 00:06:02,200
+And if you're a little confused about how bad
+
+143
+00:06:02,200 --> 00:06:06,520
+is it to compare n squared to 2 to the n, try some examples.
+
+144
+00:06:06,520 --> 00:06:09,710
+You'll see that the exponential one grows much more rapidly
+
+145
+00:06:09,710 --> 00:06:11,240
+than the quadratic one.
+
+146
+00:06:11,240 --> 00:06:12,790
+And the characteristic here is I'm
+
+147
+00:06:12,790 --> 00:06:15,100
+breaking this down into sub problems
+
+148
+00:06:15,100 --> 00:06:17,350
+that I have to call multiple times,
+
+149
+00:06:17,350 --> 00:06:20,460
+just as we saw in the Towers of Hanoi case.
+
+150
+00:06:20,460 --> 00:06:23,685
+So there's a nice characteristic of an exponential complexity
+
+151
+00:06:23,685 --> 00:06:24,185
+algorithm.
+
+152
+00:06:24,185 --> 00:06:26,800
+
+
+153
+00:06:26,800 --> 00:06:30,830
+That now has let us have a run through the things we've seen.
+
+154
+00:06:30,830 --> 00:06:33,110
+And I'll simply remind you very quickly.
+
+155
+00:06:33,110 --> 00:06:36,000
+Constantine is just doing a set of operations.
+
+156
+00:06:36,000 --> 00:06:38,467
+There could be a recursive call in there.
+
+157
+00:06:38,467 --> 00:06:40,300
+But it's going to be constant no matter what
+
+158
+00:06:40,300 --> 00:06:42,300
+the size of the problem is.
+
+159
+00:06:42,300 --> 00:06:46,270
+Logarithmic, I'm breaking the problem in half or in portions
+
+160
+00:06:46,270 --> 00:06:47,689
+as quickly as I can.
+
+161
+00:06:47,689 --> 00:06:49,980
+And we want to use that idea when we think about things
+
+162
+00:06:49,980 --> 00:06:51,810
+like bisection search.
+
+163
+00:06:51,810 --> 00:06:54,010
+Linear, we've already seen it could
+
+164
+00:06:54,010 --> 00:06:57,650
+be just a loop that I'm doing throughout some number
+
+165
+00:06:57,650 --> 00:06:59,880
+of times, the number of times being
+
+166
+00:06:59,880 --> 00:07:01,740
+a reflection of the size of the problem,
+
+167
+00:07:01,740 --> 00:07:03,860
+or something that recursively calls itself
+
+168
+00:07:03,860 --> 00:07:06,510
+as in factorial, again, a number of times based
+
+169
+00:07:06,510 --> 00:07:08,380
+on the size of the problem.
+
+170
+00:07:08,380 --> 00:07:10,390
+Polynomial, again, we've already seen
+
+171
+00:07:10,390 --> 00:07:12,130
+examples of that, recursive calls being
+
+172
+00:07:12,130 --> 00:07:13,660
+very clear examples.
+
+173
+00:07:13,660 --> 00:07:17,610
+And exponential, characterized by having recursive
+
+174
+00:07:17,610 --> 00:07:19,720
+calls, but we're breaking the problem
+
+175
+00:07:19,720 --> 00:07:22,530
+down into multiple calls each time around.
+
+176
+00:07:22,530 --> 00:07:24,840
+And as I said, with polynomial, the most common one
+
+177
+00:07:24,840 --> 00:07:26,920
+here is where c is equal to 2.
+
+178
+00:07:26,920 --> 00:07:31,150
+And a greater characteristic of that is nested loops.
+

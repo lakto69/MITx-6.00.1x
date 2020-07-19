@@ -1,0 +1,1072 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:02,884
+Now let's assume we have a sorted list.
+
+2
+00:00:02,884 --> 00:00:04,550
+Whether it's integers or something else,
+
+3
+00:00:04,550 --> 00:00:06,500
+it is a list where the elements can
+
+4
+00:00:06,500 --> 00:00:08,724
+be placed in increasing order.
+
+5
+00:00:08,724 --> 00:00:10,390
+And it's probably simplest just to think
+
+6
+00:00:10,390 --> 00:00:12,290
+about it as a list of integers.
+
+7
+00:00:12,290 --> 00:00:14,540
+Other things would work equally well.
+
+8
+00:00:14,540 --> 00:00:17,590
+I could certainly do linear search on a sorted list.
+
+9
+00:00:17,590 --> 00:00:21,160
+And here you can see a piece of code that would do it.
+
+10
+00:00:21,160 --> 00:00:23,250
+I'm going to walk through a loop down all
+
+11
+00:00:23,250 --> 00:00:24,840
+of the elements of the list.
+
+12
+00:00:24,840 --> 00:00:27,100
+And if I find that the element is there,
+
+13
+00:00:27,100 --> 00:00:30,070
+I can just return true and break out of the search.
+
+14
+00:00:30,070 --> 00:00:32,590
+If I ever get to a point where the thing in the list
+
+15
+00:00:32,590 --> 00:00:35,740
+is bigger than the element I'm looking for since I assumed
+
+16
+00:00:35,740 --> 00:00:38,360
+it was sorted in increasing order, at that point,
+
+17
+00:00:38,360 --> 00:00:41,950
+I can also break out of the list and in that case return false.
+
+18
+00:00:41,950 --> 00:00:44,390
+Because I know it can't be in any of the rest of the list
+
+19
+00:00:44,390 --> 00:00:47,130
+if all of those are bigger than the thing I'm looking for.
+
+20
+00:00:47,130 --> 00:00:49,713
+If I get all the way through the list without having found it,
+
+21
+00:00:49,713 --> 00:00:53,290
+I'll just return false, because it says it's not present.
+
+22
+00:00:53,290 --> 00:00:55,370
+Running time wise, this is actually
+
+23
+00:00:55,370 --> 00:00:58,090
+going to be better than the brute force kind of search.
+
+24
+00:00:58,090 --> 00:00:59,800
+I'm taking advantage of the fact that I
+
+25
+00:00:59,800 --> 00:01:04,640
+know that, in fact, the list has a particular order to it.
+
+26
+00:01:04,640 --> 00:01:07,365
+But the cost is still linear.
+
+27
+00:01:07,365 --> 00:01:09,865
+I only need to look until I get to a point where I can stop,
+
+28
+00:01:09,865 --> 00:01:11,840
+but breaking out of that loop, as we've seen,
+
+29
+00:01:11,840 --> 00:01:14,566
+doesn't prevent the analysis that in the worst case
+
+30
+00:01:14,566 --> 00:01:15,940
+this is still going to be linear.
+
+31
+00:01:15,940 --> 00:01:17,580
+And as before, it's going to be order
+
+32
+00:01:17,580 --> 00:01:20,040
+of the length of the list for the loop.
+
+33
+00:01:20,040 --> 00:01:21,980
+Order 1 to test if it's there or not-- we've
+
+34
+00:01:21,980 --> 00:01:23,570
+already seen that that's constant.
+
+35
+00:01:23,570 --> 00:01:26,870
+So the overall complexity is still order n.
+
+36
+00:01:26,870 --> 00:01:28,360
+Timing wise, maybe a little faster,
+
+37
+00:01:28,360 --> 00:01:32,170
+but complexity is the same class.
+
+38
+00:01:32,170 --> 00:01:35,640
+With that in mind, now let's look at bisection search.
+
+39
+00:01:35,640 --> 00:01:38,130
+And when I want to look at bisection search,
+
+40
+00:01:38,130 --> 00:01:41,250
+I'm going to use that idea of dividing the problem in half.
+
+41
+00:01:41,250 --> 00:01:44,270
+So here's the rough idea, and then we'll implement it.
+
+42
+00:01:44,270 --> 00:01:48,400
+I'm going to pick an index in the list that divides the list
+
+43
+00:01:48,400 --> 00:01:49,140
+roughly in half.
+
+44
+00:01:49,140 --> 00:01:51,390
+If it's not of even length, they're going to be close.
+
+45
+00:01:51,390 --> 00:01:53,620
+So I'm going to pick a thing midway through,
+
+46
+00:01:53,620 --> 00:01:56,190
+and I'm going to ask, is that element at the midpoint
+
+47
+00:01:56,190 --> 00:01:57,730
+the thing I'm looking for.
+
+48
+00:01:57,730 --> 00:01:58,660
+If it is, I'm done.
+
+49
+00:01:58,660 --> 00:01:59,830
+Fantastic.
+
+50
+00:01:59,830 --> 00:02:02,190
+If not, I'm going to ask is the thing I'm
+
+51
+00:02:02,190 --> 00:02:06,300
+looking at bigger or smaller than the thing I'm looking for.
+
+52
+00:02:06,300 --> 00:02:08,039
+And depending on that answer, I'll
+
+53
+00:02:08,039 --> 00:02:12,211
+either throw away the right half or the left half of the list.
+
+54
+00:02:12,211 --> 00:02:14,460
+Because I know that I can only lie in one of those two
+
+55
+00:02:14,460 --> 00:02:15,480
+sublists.
+
+56
+00:02:15,480 --> 00:02:18,450
+And I'm going to then do the same subdivision.
+
+57
+00:02:18,450 --> 00:02:20,130
+This is something you've seen before.
+
+58
+00:02:20,130 --> 00:02:22,410
+It's a divide and conquer algorithm.
+
+59
+00:02:22,410 --> 00:02:24,610
+I'm breaking this up into smaller versions
+
+60
+00:02:24,610 --> 00:02:26,870
+of the problem, smaller lists, and in fact, I'm
+
+61
+00:02:26,870 --> 00:02:30,740
+reducing the size of the problem in half at each step.
+
+62
+00:02:30,740 --> 00:02:32,690
+And of course, the nice property is the answer
+
+63
+00:02:32,690 --> 00:02:35,110
+to the smaller version is still the answer
+
+64
+00:02:35,110 --> 00:02:36,550
+to the original problem.
+
+65
+00:02:36,550 --> 00:02:38,380
+Once I found it, I return true.
+
+66
+00:02:38,380 --> 00:02:41,150
+If I can't find it, I return false.
+
+67
+00:02:41,150 --> 00:02:44,190
+Let's look at what that says about the way we would actually
+
+68
+00:02:44,190 --> 00:02:45,740
+do the search.
+
+69
+00:02:45,740 --> 00:02:47,542
+So if I've got a list of some size,
+
+70
+00:02:47,542 --> 00:02:50,000
+I'm going to start off looking at the midpoint saying is it
+
+71
+00:02:50,000 --> 00:02:51,660
+there or not.
+
+72
+00:02:51,660 --> 00:02:53,547
+n elements in that first version.
+
+73
+00:02:53,547 --> 00:02:55,880
+If it isn't, let's assume that the thing I'm looking for
+
+74
+00:02:55,880 --> 00:02:57,640
+is smaller than that midpoint.
+
+75
+00:02:57,640 --> 00:03:00,520
+So then I look at only half the elements.
+
+76
+00:03:00,520 --> 00:03:02,145
+And then let's assume in this case
+
+77
+00:03:02,145 --> 00:03:03,520
+that the thing I'm looking for is
+
+78
+00:03:03,520 --> 00:03:05,650
+bigger than the midpoint of that sublist.
+
+79
+00:03:05,650 --> 00:03:07,370
+I'm going to look at n over 4 elements.
+
+80
+00:03:07,370 --> 00:03:09,790
+And I'm going to keep reducing the size of the problem
+
+81
+00:03:09,790 --> 00:03:12,050
+down by a factor of 2.
+
+82
+00:03:12,050 --> 00:03:15,300
+So after i steps, I've got n over 2 to the i elements.
+
+83
+00:03:15,300 --> 00:03:17,930
+And I'm done when I've only got one element left.
+
+84
+00:03:17,930 --> 00:03:19,940
+Either it's the thing I'm looking for or not.
+
+85
+00:03:19,940 --> 00:03:21,520
+So what do I know?
+
+86
+00:03:21,520 --> 00:03:23,670
+I know I'm going to finish looking through the list
+
+87
+00:03:23,670 --> 00:03:27,390
+when n over 2 to the i is just 1.
+
+88
+00:03:27,390 --> 00:03:30,570
+And by a little bit of math, that's when i is log n.
+
+89
+00:03:30,570 --> 00:03:31,410
+Wonderful.
+
+90
+00:03:31,410 --> 00:03:33,760
+This is logarithmic in complexity
+
+91
+00:03:33,760 --> 00:03:36,780
+where n is the length of the list.
+
+92
+00:03:36,780 --> 00:03:39,810
+The characteristic-- cutting down the size of the problem
+
+93
+00:03:39,810 --> 00:03:42,200
+by a constant factor at each stage.
+
+94
+00:03:42,200 --> 00:03:44,240
+Wonderful thing to have if we can get it.
+
+95
+00:03:44,240 --> 00:03:45,300
+So this is really nice.
+
+96
+00:03:45,300 --> 00:03:46,910
+It's says if I've got a sorted list,
+
+97
+00:03:46,910 --> 00:03:51,320
+I can do bisection search in log time.
+
+98
+00:03:51,320 --> 00:03:52,850
+How would I implement it?
+
+99
+00:03:52,850 --> 00:03:55,170
+I'll show you two examples and one
+
+100
+00:03:55,170 --> 00:03:58,110
+that has a different kind of cost than the other.
+
+101
+00:03:58,110 --> 00:03:59,620
+So here's the first version of it.
+
+102
+00:03:59,620 --> 00:04:00,900
+Again, I've got a list l.
+
+103
+00:04:00,900 --> 00:04:02,830
+I'm looking for a particular element.
+
+104
+00:04:02,830 --> 00:04:06,040
+The base case is if there's nothing in the list,
+
+105
+00:04:06,040 --> 00:04:07,650
+obviously it's not there.
+
+106
+00:04:07,650 --> 00:04:09,500
+If I've only got one element in the list,
+
+107
+00:04:09,500 --> 00:04:11,980
+I'd simply check to see is it the thing I'm looking for
+
+108
+00:04:11,980 --> 00:04:13,640
+and return that Boolean value.
+
+109
+00:04:13,640 --> 00:04:14,770
+If it is, it's true.
+
+110
+00:04:14,770 --> 00:04:16,430
+If it's not, it's false.
+
+111
+00:04:16,430 --> 00:04:19,200
+Otherwise, what I want to do is find the halfway point
+
+112
+00:04:19,200 --> 00:04:21,570
+by taking the length of the list and doing an integer
+
+113
+00:04:21,570 --> 00:04:24,920
+divide by 2, which is going to give me an int.
+
+114
+00:04:24,920 --> 00:04:26,890
+And then I'm simply going to say is
+
+115
+00:04:26,890 --> 00:04:29,300
+the thing at the halfway point bigger than the thing
+
+116
+00:04:29,300 --> 00:04:30,640
+I'm looking for.
+
+117
+00:04:30,640 --> 00:04:34,710
+And if it is, I'm going to search only 1/2 of the list.
+
+118
+00:04:34,710 --> 00:04:36,720
+And if it isn't, I'm going to search
+
+119
+00:04:36,720 --> 00:04:38,850
+a different half of the list.
+
+120
+00:04:38,850 --> 00:04:42,810
+So there's a nice recursive way of solving this problem.
+
+121
+00:04:42,810 --> 00:04:45,200
+But let's look at the complexity.
+
+122
+00:04:45,200 --> 00:04:47,030
+That's constant.
+
+123
+00:04:47,030 --> 00:04:47,990
+That's constant.
+
+124
+00:04:47,990 --> 00:04:49,430
+That's great.
+
+125
+00:04:49,430 --> 00:04:52,260
+That's constant-- also great.
+
+126
+00:04:52,260 --> 00:04:55,960
+But that's not constant, and neither is that.
+
+127
+00:04:55,960 --> 00:04:58,600
+And by that, I don't just mean there's a recursive call.
+
+128
+00:04:58,600 --> 00:04:59,880
+We know that complexity.
+
+129
+00:04:59,880 --> 00:05:01,820
+We know that's going to be logarithmic.
+
+130
+00:05:01,820 --> 00:05:05,920
+The reason it's not constant is right there.
+
+131
+00:05:05,920 --> 00:05:09,160
+I'm making a copy of the list.
+
+132
+00:05:09,160 --> 00:05:10,390
+It's only half the list.
+
+133
+00:05:10,390 --> 00:05:12,050
+But if you think about it, I'm making
+
+134
+00:05:12,050 --> 00:05:14,502
+a copy of half the list in either case.
+
+135
+00:05:14,502 --> 00:05:15,960
+And in the next recursive call, I'm
+
+136
+00:05:15,960 --> 00:05:17,880
+going to make a copy of that half of the list,
+
+137
+00:05:17,880 --> 00:05:21,220
+but that's going to add up to a larger complexity,
+
+138
+00:05:21,220 --> 00:05:22,920
+and in fact, a complexity that is bigger
+
+139
+00:05:22,920 --> 00:05:28,030
+than I want because of that cost of actually copying the list.
+
+140
+00:05:28,030 --> 00:05:29,690
+What's an alternative?
+
+141
+00:05:29,690 --> 00:05:33,190
+A very nice alternative is to say keep the list,
+
+142
+00:05:33,190 --> 00:05:35,840
+but just keep track of where I'm looking at.
+
+143
+00:05:35,840 --> 00:05:39,350
+So here I'm going to set up right here a little helper
+
+144
+00:05:39,350 --> 00:05:40,150
+function.
+
+145
+00:05:40,150 --> 00:05:43,950
+But it's going to have two arguments-- the lower
+
+146
+00:05:43,950 --> 00:05:47,130
+half of the list I'm searching and the higher half of the list
+
+147
+00:05:47,130 --> 00:05:47,920
+I'm searching.
+
+148
+00:05:47,920 --> 00:05:50,310
+And what I'm going to simply do is change
+
+149
+00:05:50,310 --> 00:05:52,170
+where those pointers go to.
+
+150
+00:05:52,170 --> 00:05:53,750
+So let's look at it.
+
+151
+00:05:53,750 --> 00:05:55,300
+Again, the base case down here is
+
+152
+00:05:55,300 --> 00:05:59,380
+if I've got nothing in the list, the answer is clearly false.
+
+153
+00:05:59,380 --> 00:06:02,050
+Otherwise, I'm going to call this helper function
+
+154
+00:06:02,050 --> 00:06:03,760
+with the low pointer at the beginning
+
+155
+00:06:03,760 --> 00:06:07,960
+of the list and the high pointer at the upper end of the list.
+
+156
+00:06:07,960 --> 00:06:09,680
+And what does this now say?
+
+157
+00:06:09,680 --> 00:06:12,530
+It says if the two pointers are at the same place,
+
+158
+00:06:12,530 --> 00:06:14,030
+there's only one element there.
+
+159
+00:06:14,030 --> 00:06:16,960
+I just check to see if it's the thing I'm looking for.
+
+160
+00:06:16,960 --> 00:06:19,670
+Otherwise, I find the midpoint.
+
+161
+00:06:19,670 --> 00:06:22,031
+We're taking the average of those two things.
+
+162
+00:06:22,031 --> 00:06:22,530
+Ah.
+
+163
+00:06:22,530 --> 00:06:23,130
+That's right.
+
+164
+00:06:23,130 --> 00:06:26,510
+It says that's going to be halfway between low and high.
+
+165
+00:06:26,510 --> 00:06:29,470
+If, at the midpoint, I have the thing I'm looking for,
+
+166
+00:06:29,470 --> 00:06:31,380
+I return true.
+
+167
+00:06:31,380 --> 00:06:33,920
+Otherwise, if the thing at the midpoint
+
+168
+00:06:33,920 --> 00:06:36,890
+is bigger than what I'm looking for,
+
+169
+00:06:36,890 --> 00:06:40,920
+then if there's nothing left to search, I just return false.
+
+170
+00:06:40,920 --> 00:06:45,830
+Otherwise, I call it again with the same low point,
+
+171
+00:06:45,830 --> 00:06:49,750
+but now my high point is reduced to the midpoint.
+
+172
+00:06:49,750 --> 00:06:52,060
+I've thrown away half the things.
+
+173
+00:06:52,060 --> 00:06:55,830
+And in the other case, I change my low point
+
+174
+00:06:55,830 --> 00:06:57,831
+to keep the same high point.
+
+175
+00:06:57,831 --> 00:06:59,330
+So if I were to think about it, it's
+
+176
+00:06:59,330 --> 00:07:01,410
+as if I got my big list here.
+
+177
+00:07:01,410 --> 00:07:05,680
+I start off with low pointing there and high pointing here.
+
+178
+00:07:05,680 --> 00:07:07,780
+And after one recursive call, I might
+
+179
+00:07:07,780 --> 00:07:11,270
+have low pointing there and high still pointing here.
+
+180
+00:07:11,270 --> 00:07:13,130
+And after another recursive call,
+
+181
+00:07:13,130 --> 00:07:15,820
+I might have high pointing there and low pointing there.
+
+182
+00:07:15,820 --> 00:07:18,480
+But I'm cutting down half the search,
+
+183
+00:07:18,480 --> 00:07:19,930
+but not copying the list.
+
+184
+00:07:19,930 --> 00:07:22,070
+I'm just changing some numbers.
+
+185
+00:07:22,070 --> 00:07:24,850
+So now if we look at the complexity here,
+
+186
+00:07:24,850 --> 00:07:27,650
+that's not constant because of the recursive call.
+
+187
+00:07:27,650 --> 00:07:30,420
+But within it, it is a constant amount of work,
+
+188
+00:07:30,420 --> 00:07:31,730
+and the same thing there.
+
+189
+00:07:31,730 --> 00:07:33,510
+So the only things I'm counting now
+
+190
+00:07:33,510 --> 00:07:36,330
+are how many times do I do the recursive call,
+
+191
+00:07:36,330 --> 00:07:40,500
+but the call itself does a constant amount of work.
+
+192
+00:07:40,500 --> 00:07:44,330
+As a consequence, I've got now two algorithms.
+
+193
+00:07:44,330 --> 00:07:47,540
+The first one has login calls.
+
+194
+00:07:47,540 --> 00:07:50,260
+But within each of them, I have to make a copy of the list,
+
+195
+00:07:50,260 --> 00:07:51,660
+and that's a cost of n.
+
+196
+00:07:51,660 --> 00:07:54,470
+So overall, it's n log n.
+
+197
+00:07:54,470 --> 00:07:55,950
+I could make it slightly tighter,
+
+198
+00:07:55,950 --> 00:07:58,400
+but it's still going to be linear because of that copying
+
+199
+00:07:58,400 --> 00:07:59,410
+effort.
+
+200
+00:07:59,410 --> 00:08:01,580
+On the other hand, the second implementation
+
+201
+00:08:01,580 --> 00:08:04,410
+simply uses the indices as the parameters.
+
+202
+00:08:04,410 --> 00:08:05,880
+The list is never copied.
+
+203
+00:08:05,880 --> 00:08:09,770
+And so the only cost here is, in fact, the recursive call.
+
+204
+00:08:09,770 --> 00:08:11,730
+And that's really nice.
+
+205
+00:08:11,730 --> 00:08:13,750
+Just to give you a sense of this,
+
+206
+00:08:13,750 --> 00:08:16,770
+I've got those two implementations over here
+
+207
+00:08:16,770 --> 00:08:17,995
+in my code.
+
+208
+00:08:17,995 --> 00:08:19,620
+I'm going to run them into the machine,
+
+209
+00:08:19,620 --> 00:08:22,036
+and I'm just going to show you that they, in fact, compute
+
+210
+00:08:22,036 --> 00:08:26,070
+the same thing by calling bisection search.
+
+211
+00:08:26,070 --> 00:08:30,220
+
+
+212
+00:08:30,220 --> 00:08:33,370
+And I'm going to do the first version on a test list.
+
+213
+00:08:33,370 --> 00:08:36,059
+And I'm going to ask if the number 9 is there,
+
+214
+00:08:36,059 --> 00:08:37,600
+and it returns true.
+
+215
+00:08:37,600 --> 00:08:39,419
+And I could call the same thing, but ask
+
+216
+00:08:39,419 --> 00:08:42,309
+if the number 15 is there.
+
+217
+00:08:42,309 --> 00:08:43,789
+And it returns false.
+
+218
+00:08:43,789 --> 00:08:48,880
+And I can do bisection search with the more efficient
+
+219
+00:08:48,880 --> 00:08:49,780
+version.
+
+220
+00:08:49,780 --> 00:08:53,400
+Again, I'm going to call it with 9, and it returns true.
+
+221
+00:08:53,400 --> 00:08:56,800
+And if I call it with 15, it also returns false.
+
+222
+00:08:56,800 --> 00:08:58,550
+And it's really hard to see in the machine
+
+223
+00:08:58,550 --> 00:09:01,370
+the difference in timing, because it's a very small list.
+
+224
+00:09:01,370 --> 00:09:03,710
+But a complexity analysis tells us
+
+225
+00:09:03,710 --> 00:09:05,840
+that the second solution is going
+
+226
+00:09:05,840 --> 00:09:09,850
+to be much better than the first solution.
+
+227
+00:09:09,850 --> 00:09:12,170
+So what do we have here?
+
+228
+00:09:12,170 --> 00:09:15,210
+I want to search a sorted list where the size of the problem
+
+229
+00:09:15,210 --> 00:09:17,480
+I'm going to call and the length of the list.
+
+230
+00:09:17,480 --> 00:09:20,450
+Using linear search, order in.
+
+231
+00:09:20,450 --> 00:09:23,530
+Using binary search, I can search for the element
+
+232
+00:09:23,530 --> 00:09:26,730
+in order log n, which is great.
+
+233
+00:09:26,730 --> 00:09:29,620
+But I had to assume that the list was sorted.
+
+234
+00:09:29,620 --> 00:09:32,330
+So what does that say about the cost?
+
+235
+00:09:32,330 --> 00:09:35,490
+Well, does it make sense to first sort
+
+236
+00:09:35,490 --> 00:09:37,910
+the list and then search if I'm given
+
+237
+00:09:37,910 --> 00:09:40,180
+a list in arbitrary order?
+
+238
+00:09:40,180 --> 00:09:41,800
+So what that says is, well, I want
+
+239
+00:09:41,800 --> 00:09:45,540
+to know when is it better to do sort and search rather
+
+240
+00:09:45,540 --> 00:09:47,190
+than just search.
+
+241
+00:09:47,190 --> 00:09:48,990
+And that basically says, well, when
+
+242
+00:09:48,990 --> 00:09:54,140
+is the cost of sorting less than order and minus order log n.
+
+243
+00:09:54,140 --> 00:09:57,070
+And that's when the cost of sorting is less than order n.
+
+244
+00:09:57,070 --> 00:09:58,510
+And oh, darn.
+
+245
+00:09:58,510 --> 00:10:00,900
+That's never true.
+
+246
+00:10:00,900 --> 00:10:02,530
+Did I just waste your time?
+
+247
+00:10:02,530 --> 00:10:03,900
+Of course not.
+
+248
+00:10:03,900 --> 00:10:06,530
+Because if I'm only going to do it once,
+
+249
+00:10:06,530 --> 00:10:09,950
+it's probably not worth doing the sort and then the search.
+
+250
+00:10:09,950 --> 00:10:12,440
+I might as well just do a linear search.
+
+251
+00:10:12,440 --> 00:10:14,610
+I can amortize the cost.
+
+252
+00:10:14,610 --> 00:10:16,840
+And in particular, why would I bother sorting?
+
+253
+00:10:16,840 --> 00:10:18,530
+Well, in many cases, I might simply
+
+254
+00:10:18,530 --> 00:10:22,820
+want to sort the list once, but then do multiple searches.
+
+255
+00:10:22,820 --> 00:10:25,470
+I'm looking for different elements inside of this list.
+
+256
+00:10:25,470 --> 00:10:28,370
+I just did it with my little example on my machine.
+
+257
+00:10:28,370 --> 00:10:32,500
+And so I can amortize the cost of the sort over many searches.
+
+258
+00:10:32,500 --> 00:10:34,390
+If I'm going to do k searches, I then
+
+259
+00:10:34,390 --> 00:10:39,400
+want to know when is the cost of sorting plus k searches-- so k
+
+260
+00:10:39,400 --> 00:10:42,230
+times log n-- when is that less than just doing
+
+261
+00:10:42,230 --> 00:10:44,210
+k linear searches?
+
+262
+00:10:44,210 --> 00:10:47,680
+And for large k, that sort time becomes irrelevant,
+
+263
+00:10:47,680 --> 00:10:51,330
+because it's always going to be the case that that log cost is
+
+264
+00:10:51,330 --> 00:10:53,630
+much better than the linear cost.
+
+265
+00:10:53,630 --> 00:10:56,990
+So it is still important to sort and then search.
+
+266
+00:10:56,990 --> 00:10:58,610
+And that says we now need to look
+
+267
+00:10:58,610 --> 00:11:01,960
+at how do we do the sorting.
+

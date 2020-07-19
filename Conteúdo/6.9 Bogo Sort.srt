@@ -1,0 +1,208 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:01,780
+So we want to sort things.
+
+2
+00:00:01,780 --> 00:00:04,114
+And we're going to start with some really simple ideas
+
+3
+00:00:04,114 --> 00:00:06,280
+and then look at more interesting, more complicated,
+
+4
+00:00:06,280 --> 00:00:08,896
+but more elegant ways of doing this sort.
+
+5
+00:00:08,896 --> 00:00:10,520
+The little animation you're seeing here
+
+6
+00:00:10,520 --> 00:00:12,920
+is in demonstration where I've got N integers
+
+7
+00:00:12,920 --> 00:00:15,050
+from 0 up to M minus 1.
+
+8
+00:00:15,050 --> 00:00:18,290
+And I'd like to have them sorted so if you went along
+
+9
+00:00:18,290 --> 00:00:22,580
+the axis here is the index into the list.
+
+10
+00:00:22,580 --> 00:00:24,630
+And this is the value of those elements.
+
+11
+00:00:24,630 --> 00:00:26,390
+And ideally when they're sorted.
+
+12
+00:00:26,390 --> 00:00:29,900
+They'd all lie along this diagonal.
+
+13
+00:00:29,900 --> 00:00:32,000
+The first sort has a number of names.
+
+14
+00:00:32,000 --> 00:00:33,110
+It's called monkey sort.
+
+15
+00:00:33,110 --> 00:00:34,230
+It's called bogosort.
+
+16
+00:00:34,230 --> 00:00:36,940
+It's called stupid sort-- you'll see why in a second.
+
+17
+00:00:36,940 --> 00:00:37,910
+Slow sort.
+
+18
+00:00:37,910 --> 00:00:39,050
+Permutation sort.
+
+19
+00:00:39,050 --> 00:00:40,400
+Shotgun sort.
+
+20
+00:00:40,400 --> 00:00:42,540
+And the idea is very simple.
+
+21
+00:00:42,540 --> 00:00:46,650
+I randomly assign the elements into the list.
+
+22
+00:00:46,650 --> 00:00:49,050
+And then, I look at them and say are they in order?
+
+23
+00:00:49,050 --> 00:00:52,020
+And if they aren't, I randomly assign them again.
+
+24
+00:00:52,020 --> 00:00:55,180
+You may have played this game with your friends as a kid
+
+25
+00:00:55,180 --> 00:00:57,350
+with a deck of cards.
+
+26
+00:00:57,350 --> 00:00:59,920
+We used to call it 52 card pickup.
+
+27
+00:00:59,920 --> 00:01:01,700
+Because you scatter the cards and then
+
+28
+00:01:01,700 --> 00:01:03,880
+you pick them up to see if they're in order.
+
+29
+00:01:03,880 --> 00:01:07,320
+Clearly, not a great way to do the sort.
+
+30
+00:01:07,320 --> 00:01:08,210
+Are they sorted?
+
+31
+00:01:08,210 --> 00:01:08,922
+No, repeat.
+
+32
+00:01:08,922 --> 00:01:10,630
+And you keep doing that until you come up
+
+33
+00:01:10,630 --> 00:01:12,370
+with something that does work.
+
+34
+00:01:12,370 --> 00:01:15,460
+It is a possibility, it's not one that I recommend,
+
+35
+00:01:15,460 --> 00:01:18,890
+unless you've got a really small sized problem.
+
+36
+00:01:18,890 --> 00:01:21,270
+So what's the complexity of bogosort?
+
+37
+00:01:21,270 --> 00:01:21,800
+There it is.
+
+38
+00:01:21,800 --> 00:01:24,220
+It says, while it's not sorted, just randomly
+
+39
+00:01:24,220 --> 00:01:26,470
+shuffle them and then keep going.
+
+40
+00:01:26,470 --> 00:01:28,610
+Well in the best case, it's great.
+
+41
+00:01:28,610 --> 00:01:30,870
+It's only order n because I just have to check,
+
+42
+00:01:30,870 --> 00:01:32,260
+are they in order.
+
+43
+00:01:32,260 --> 00:01:34,220
+What's the worst case?
+
+44
+00:01:34,220 --> 00:01:35,200
+Who knows.
+
+45
+00:01:35,200 --> 00:01:37,900
+If you're really unlucky, you could be here a very long time.
+
+46
+00:01:37,900 --> 00:01:40,700
+It's unbounded because there's no guarantee I will ever
+
+47
+00:01:40,700 --> 00:01:43,656
+come up with a random solution that comes up with this.
+
+48
+00:01:43,656 --> 00:01:45,280
+So I probably don't want to look at it,
+
+49
+00:01:45,280 --> 00:01:46,946
+but it's going to set a base if you like
+
+50
+00:01:46,946 --> 00:01:48,460
+to compare other things too.
+
+51
+00:01:48,460 --> 00:01:51,550
+So there's a really simple way of doing sort.
+

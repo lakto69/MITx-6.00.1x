@@ -1,0 +1,500 @@
+0
+00:00:00,000 --> 00:00:00,310
+...
+
+1
+00:00:00,310 --> 00:00:01,770
+So far in this course, we've seen
+
+2
+00:00:01,770 --> 00:00:04,030
+a lot of interesting different algorithms computing
+
+3
+00:00:04,030 --> 00:00:05,690
+a wide range of things.
+
+4
+00:00:05,690 --> 00:00:07,440
+And we've also now started talking
+
+5
+00:00:07,440 --> 00:00:09,150
+about the complexity of an algorithm--
+
+6
+00:00:09,150 --> 00:00:11,370
+how costly is this going to be to compute
+
+7
+00:00:11,370 --> 00:00:13,500
+as the size of the problem grows.
+
+8
+00:00:13,500 --> 00:00:17,000
+We're going to look at one last class of algorithms-- really
+
+9
+00:00:17,000 --> 00:00:19,600
+valuable algorithms, really important algorithms, both
+
+10
+00:00:19,600 --> 00:00:23,030
+looking at the solutions and looking at the complexity.
+
+11
+00:00:23,030 --> 00:00:25,480
+And those are what we're going to call search and sort
+
+12
+00:00:25,480 --> 00:00:26,900
+algorithms.
+
+13
+00:00:26,900 --> 00:00:30,310
+So a search algorithm-- an obvious statement.
+
+14
+00:00:30,310 --> 00:00:33,580
+This is something where I want to find an element, or an item,
+
+15
+00:00:33,580 --> 00:00:36,090
+or a group of items with specific properties
+
+16
+00:00:36,090 --> 00:00:38,910
+within a much larger collection of items.
+
+17
+00:00:38,910 --> 00:00:41,626
+Now, that collection could be implicit.
+
+18
+00:00:41,626 --> 00:00:43,250
+Way back at the beginning of the class,
+
+19
+00:00:43,250 --> 00:00:44,874
+we talked about finding the square root
+
+20
+00:00:44,874 --> 00:00:46,220
+as a search problem.
+
+21
+00:00:46,220 --> 00:00:48,250
+We don't generate all possible solutions
+
+22
+00:00:48,250 --> 00:00:49,420
+and then look inside there.
+
+23
+00:00:49,420 --> 00:00:51,960
+We may do it in a more approximate way-- for example,
+
+24
+00:00:51,960 --> 00:00:54,300
+with bisection search or with Newton-Raphson,
+
+25
+00:00:54,300 --> 00:00:55,470
+things we've seen earlier.
+
+26
+00:00:55,470 --> 00:00:58,390
+But these are examples of finding a square root
+
+27
+00:00:58,390 --> 00:00:59,910
+as a search problem.
+
+28
+00:00:59,910 --> 00:01:02,460
+And we know the complexity of those algorithms,
+
+29
+00:01:02,460 --> 00:01:05,090
+because we have the tools to look at them.
+
+30
+00:01:05,090 --> 00:01:07,370
+The collection could also be explicit.
+
+31
+00:01:07,370 --> 00:01:09,970
+And we saw an example of that when we built a little database
+
+32
+00:01:09,970 --> 00:01:11,550
+to look at student grades.
+
+33
+00:01:11,550 --> 00:01:14,930
+Is a particular student record in a stored collection
+
+34
+00:01:14,930 --> 00:01:17,970
+of much larger numbers of those data records?
+
+35
+00:01:17,970 --> 00:01:19,705
+So search is going to be important.
+
+36
+00:01:19,705 --> 00:01:21,580
+How do I know if something's in a collection?
+
+37
+00:01:21,580 --> 00:01:24,540
+How do I find that solution in that collection?
+
+38
+00:01:24,540 --> 00:01:26,660
+We'll see why sort is going to matter in a second.
+
+39
+00:01:26,660 --> 00:01:28,160
+But starting with search, what could
+
+40
+00:01:28,160 --> 00:01:30,440
+we say about a search algorithm?
+
+41
+00:01:30,440 --> 00:01:33,220
+Well, the most straightforward way
+
+42
+00:01:33,220 --> 00:01:35,780
+is just what we would call brute force search.
+
+43
+00:01:35,780 --> 00:01:38,080
+Given a collection, just walk through them
+
+44
+00:01:38,080 --> 00:01:41,129
+one at a time trying to see if I found the solution or not.
+
+45
+00:01:41,129 --> 00:01:43,170
+And in fact, when we were looking at square roots
+
+46
+00:01:43,170 --> 00:01:45,120
+much earlier in the course, we did that.
+
+47
+00:01:45,120 --> 00:01:48,790
+We had a brute force, sometimes called British Museum search,
+
+48
+00:01:48,790 --> 00:01:51,170
+where I look at every possible version of it
+
+49
+00:01:51,170 --> 00:01:52,912
+until I find a solution.
+
+50
+00:01:52,912 --> 00:01:54,370
+The nice thing here is, if I've got
+
+51
+00:01:54,370 --> 00:01:57,810
+a list of possible solutions or a list of things I'm searching,
+
+52
+00:01:57,810 --> 00:01:59,170
+it doesn't have to be sorted.
+
+53
+00:01:59,170 --> 00:02:01,190
+It could just be an arbitrary order.
+
+54
+00:02:01,190 --> 00:02:02,480
+But it's going to be linear.
+
+55
+00:02:02,480 --> 00:02:05,870
+And if the list is really large, that's a problem.
+
+56
+00:02:05,870 --> 00:02:09,270
+Bisection search is a much nicer solution.
+
+57
+00:02:09,270 --> 00:02:11,880
+But it only works if the list is sorted.
+
+58
+00:02:11,880 --> 00:02:13,770
+And the idea if I've got a sorted list is,
+
+59
+00:02:13,770 --> 00:02:16,390
+I don't have to look at all of the list to find it,
+
+60
+00:02:16,390 --> 00:02:18,330
+I can divide up the work the same way
+
+61
+00:02:18,330 --> 00:02:24,170
+we did when we did other kinds of bisectional solutions
+
+62
+00:02:24,170 --> 00:02:25,270
+to problems.
+
+63
+00:02:25,270 --> 00:02:28,330
+And I want to show you two different implementations
+
+64
+00:02:28,330 --> 00:02:31,950
+of the algorithm and look at the complexity.
+
+65
+00:02:31,950 --> 00:02:36,060
+So first of all, linear search, straightforward.
+
+66
+00:02:36,060 --> 00:02:39,750
+I'm simply going to loop through the list until I find them.
+
+67
+00:02:39,750 --> 00:02:41,810
+And here, I have to obviously look
+
+68
+00:02:41,810 --> 00:02:44,370
+through all of the elements to decide if it's not there.
+
+69
+00:02:44,370 --> 00:02:48,560
+So the complexity here is going to be obviously linear.
+
+70
+00:02:48,560 --> 00:02:50,060
+And notice, I could speed things up
+
+71
+00:02:50,060 --> 00:02:54,160
+a little bit by just retuning true here, rather than worrying
+
+72
+00:02:54,160 --> 00:02:56,790
+about this actually setting the flag and returning it.
+
+73
+00:02:56,790 --> 00:02:59,310
+But even breaking out of this loop, in the worst case,
+
+74
+00:02:59,310 --> 00:03:00,250
+is still linear.
+
+75
+00:03:00,250 --> 00:03:04,330
+So linear cost search to run through all of those pieces.
+
+76
+00:03:04,330 --> 00:03:07,110
+Now, I'm also going to make an assumption here.
+
+77
+00:03:07,110 --> 00:03:08,830
+But just to remind you, it's order length
+
+78
+00:03:08,830 --> 00:03:13,490
+of the list l times order 1 to test if the element is actually
+
+79
+00:03:13,490 --> 00:03:15,940
+the thing I'm looking for not.
+
+80
+00:03:15,940 --> 00:03:18,560
+But overall, it's linear.
+
+81
+00:03:18,560 --> 00:03:21,080
+That's great, linear time search.
+
+82
+00:03:21,080 --> 00:03:22,960
+But I have one other piece I'm doing here,
+
+83
+00:03:22,960 --> 00:03:24,810
+which is I'm assuming here that I
+
+84
+00:03:24,810 --> 00:03:28,860
+can retrieve the element of the list in constant time.
+
+85
+00:03:28,860 --> 00:03:30,370
+We said that in a previous lecture,
+
+86
+00:03:30,370 --> 00:03:31,536
+that that would be the case.
+
+87
+00:03:31,536 --> 00:03:34,500
+But let's just do a quick aside to see why that's true.
+
+88
+00:03:34,500 --> 00:03:36,610
+And then we'll look at bisection search.
+
+89
+00:03:36,610 --> 00:03:40,900
+So why can I say I could get to testing whether something
+
+90
+00:03:40,900 --> 00:03:42,930
+is at a particular place I can retrieve
+
+91
+00:03:42,930 --> 00:03:45,880
+an element of a list in constant time?
+
+92
+00:03:45,880 --> 00:03:47,500
+Let's do this simple case.
+
+93
+00:03:47,500 --> 00:03:49,900
+If my list is all, say, of integers,
+
+94
+00:03:49,900 --> 00:03:52,390
+then they're smaller than sum overall size.
+
+95
+00:03:52,390 --> 00:03:56,850
+I could reserve, say, 4 bytes of memory to store each integer.
+
+96
+00:03:56,850 --> 00:03:58,550
+And that says, to represent the list,
+
+97
+00:03:58,550 --> 00:04:01,430
+I would just set aside 4 times the length
+
+98
+00:04:01,430 --> 00:04:04,110
+of the list of consecutive elements of memory
+
+99
+00:04:04,110 --> 00:04:05,430
+to store things in.
+
+100
+00:04:05,430 --> 00:04:07,780
+And then if I want to get to the i-th element,
+
+101
+00:04:07,780 --> 00:04:10,260
+I know that I've allocated that 4 bytes, for example,
+
+102
+00:04:10,260 --> 00:04:10,760
+to each one.
+
+103
+00:04:10,760 --> 00:04:13,070
+I know that the i-th element is that whatever
+
+104
+00:04:13,070 --> 00:04:15,580
+the location of the base element, or first element
+
+105
+00:04:15,580 --> 00:04:18,820
+is, plus 4 times i elements down.
+
+106
+00:04:18,820 --> 00:04:21,089
+So I can go exactly to that location in memory.
+
+107
+00:04:21,089 --> 00:04:23,860
+I can go directly here to pull it out.
+
+108
+00:04:23,860 --> 00:04:26,580
+So I can do this in constant time.
+
+109
+00:04:26,580 --> 00:04:29,280
+What if the list is a more complicated elements?
+
+110
+00:04:29,280 --> 00:04:31,390
+Well, we saw that solution earlier as well.
+
+111
+00:04:31,390 --> 00:04:35,100
+We use what's called a linked list, where I set aside
+
+112
+00:04:35,100 --> 00:04:38,960
+a consecutive number of elements in memory to hold the pieces.
+
+113
+00:04:38,960 --> 00:04:41,030
+They point to the next one in turn.
+
+114
+00:04:41,030 --> 00:04:43,820
+And the entries simply point out to the element
+
+115
+00:04:43,820 --> 00:04:44,570
+that I want to do.
+
+116
+00:04:44,570 --> 00:04:47,100
+So I simply walked down-- not walk down-- I
+
+117
+00:04:47,100 --> 00:04:50,080
+go straight to the i-th location in memory
+
+118
+00:04:50,080 --> 00:04:53,770
+and then just follow the pointer to retrieve the element I want.
+
+119
+00:04:53,770 --> 00:04:57,170
+So in both cases, it is constant time access.
+
+120
+00:04:57,170 --> 00:04:59,600
+So brute force method, linear search,
+
+121
+00:04:59,600 --> 00:05:02,620
+linear time to find out whether the element is there or not.
+
+122
+00:05:02,620 --> 00:05:04,430
+And worst case is, I have to go through all
+
+123
+00:05:04,430 --> 00:05:06,150
+of the elements of the list in order
+
+124
+00:05:06,150 --> 00:05:08,980
+to deduce it's not present.
+

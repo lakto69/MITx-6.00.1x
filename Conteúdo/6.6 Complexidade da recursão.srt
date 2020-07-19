@@ -1,0 +1,808 @@
+0
+00:00:00,000 --> 00:00:00,810
+...
+
+1
+00:00:00,810 --> 00:00:04,320
+So let's wrap up this lecture by looking at a few more examples
+
+2
+00:00:04,320 --> 00:00:06,370
+just to see, again, those common patterns that
+
+3
+00:00:06,370 --> 00:00:10,770
+are characteristic of particular classes of complexity.
+
+4
+00:00:10,770 --> 00:00:13,120
+The first one might look a little tricky.
+
+5
+00:00:13,120 --> 00:00:15,347
+You've actually seen a version of this earlier.
+
+6
+00:00:15,347 --> 00:00:16,680
+I've got a little function here.
+
+7
+00:00:16,680 --> 00:00:18,097
+I'm just calling it h of n.
+
+8
+00:00:18,097 --> 00:00:18,930
+And what's it doing?
+
+9
+00:00:18,930 --> 00:00:21,760
+It's assuming that n is an integer greater than 0.
+
+10
+00:00:21,760 --> 00:00:23,950
+And basically, it's adding up the digits
+
+11
+00:00:23,950 --> 00:00:25,080
+of a number together.
+
+12
+00:00:25,080 --> 00:00:27,540
+So it's going to take every-- sorry.
+
+13
+00:00:27,540 --> 00:00:29,050
+It's going to take that value of n.
+
+14
+00:00:29,050 --> 00:00:30,669
+It's going to turn it into a string.
+
+15
+00:00:30,669 --> 00:00:32,210
+And for each character in the string,
+
+16
+00:00:32,210 --> 00:00:34,710
+it's going to walk down, convert that character back
+
+17
+00:00:34,710 --> 00:00:38,480
+into an added into answer, and then return answer.
+
+18
+00:00:38,480 --> 00:00:40,630
+It's a slightly brain damaged, or if you prefer,
+
+19
+00:00:40,630 --> 00:00:42,277
+computationally challenged algorithm.
+
+20
+00:00:42,277 --> 00:00:43,610
+There are lots of ways to do it.
+
+21
+00:00:43,610 --> 00:00:45,010
+But what I want you to see is how
+
+22
+00:00:45,010 --> 00:00:47,240
+we would do the analysis here.
+
+23
+00:00:47,240 --> 00:00:50,140
+I've got n as my input.
+
+24
+00:00:50,140 --> 00:00:53,310
+And I want to say what's the complexity of this.
+
+25
+00:00:53,310 --> 00:00:58,620
+We know that this is going to be linear in the length of s.
+
+26
+00:00:58,620 --> 00:01:01,690
+But what is it in terms of the input m?
+
+27
+00:01:01,690 --> 00:01:03,690
+And in fact, that's if you like the tricky part.
+
+28
+00:01:03,690 --> 00:01:06,380
+And it's similar to what we saw as an earlier example.
+
+29
+00:01:06,380 --> 00:01:08,730
+I'm converting an integer to a string.
+
+30
+00:01:08,730 --> 00:01:11,550
+I'm then iterating over the length of the string.
+
+31
+00:01:11,550 --> 00:01:14,450
+But that's not the magnitude of the input in.
+
+32
+00:01:14,450 --> 00:01:16,170
+Think of it like that early example
+
+33
+00:01:16,170 --> 00:01:19,270
+dividing n by 10 on each iteration.
+
+34
+00:01:19,270 --> 00:01:21,330
+And so while it is linear in the order
+
+35
+00:01:21,330 --> 00:01:24,090
+of the length of the string, it's
+
+36
+00:01:24,090 --> 00:01:27,384
+log in the size of the input n.
+
+37
+00:01:27,384 --> 00:01:30,050
+And the base here doesn't matter whether it's base 10 or base 2.
+
+38
+00:01:30,050 --> 00:01:31,960
+It's simply logarithmic.
+
+39
+00:01:31,960 --> 00:01:33,960
+My point is it's important to think about
+
+40
+00:01:33,960 --> 00:01:36,750
+what am I using to measure the size of the problem
+
+41
+00:01:36,750 --> 00:01:39,750
+and then how do I characterize the complexity of the algorithm
+
+42
+00:01:39,750 --> 00:01:41,100
+in terms of that size.
+
+43
+00:01:41,100 --> 00:01:43,640
+And this is characteristic of a log algorithm.
+
+44
+00:01:43,640 --> 00:01:45,260
+I'm reducing the size of the problem
+
+45
+00:01:45,260 --> 00:01:49,530
+by a constant factor on each stage.
+
+46
+00:01:49,530 --> 00:01:51,450
+Let's look at another example.
+
+47
+00:01:51,450 --> 00:01:55,140
+Fibonacci And I want to show you both iterative and recursive
+
+48
+00:01:55,140 --> 00:01:56,640
+Fibonacci.
+
+49
+00:01:56,640 --> 00:01:59,020
+Now, I remind you Fibonacci, the nth Fibonacci number
+
+50
+00:01:59,020 --> 00:02:02,170
+was the sum of the previous two Fibonacci numbers.
+
+51
+00:02:02,170 --> 00:02:04,950
+And the first two cases are 1n is equal to 0.
+
+52
+00:02:04,950 --> 00:02:05,460
+It's 0.
+
+53
+00:02:05,460 --> 00:02:06,410
+1n is equal to 1.
+
+54
+00:02:06,410 --> 00:02:07,517
+It's 1.
+
+55
+00:02:07,517 --> 00:02:08,600
+You can see the code here.
+
+56
+00:02:08,600 --> 00:02:10,399
+What I want you to simply notice is
+
+57
+00:02:10,399 --> 00:02:12,190
+how I would look at the complexity of this.
+
+58
+00:02:12,190 --> 00:02:14,720
+I've got the two base cases.
+
+59
+00:02:14,720 --> 00:02:17,410
+And then I'm going to set up two variables.
+
+60
+00:02:17,410 --> 00:02:20,980
+And I'm iteratively going to run from I up to the range of n
+
+61
+00:02:20,980 --> 00:02:26,140
+minus 1 of temporarily holding one value right here
+
+62
+00:02:26,140 --> 00:02:29,469
+and then simply creating the next Fibonacci number by adding
+
+63
+00:02:29,469 --> 00:02:31,010
+the two previous values while holding
+
+64
+00:02:31,010 --> 00:02:34,835
+onto the values for the next iteration through the loop.
+
+65
+00:02:34,835 --> 00:02:36,960
+You can convince yourself this does the right thing
+
+66
+00:02:36,960 --> 00:02:38,280
+for Fibonacci.
+
+67
+00:02:38,280 --> 00:02:41,370
+What I want to know is what's the complexity.
+
+68
+00:02:41,370 --> 00:02:42,760
+We know that's constant.
+
+69
+00:02:42,760 --> 00:02:45,340
+Order 1, I only do it once.
+
+70
+00:02:45,340 --> 00:02:48,000
+We know that that's constant because I simply set it up
+
+71
+00:02:48,000 --> 00:02:49,310
+in the else clause.
+
+72
+00:02:49,310 --> 00:02:52,480
+What I want to look at is inside of the loop.
+
+73
+00:02:52,480 --> 00:02:56,760
+And there I've got basically an assignment, an assignment,
+
+74
+00:02:56,760 --> 00:03:00,320
+an addition, an assignment, four operations.
+
+75
+00:03:00,320 --> 00:03:02,200
+And how many times do I do that?
+
+76
+00:03:02,200 --> 00:03:04,820
+However many times go I go through the loop, which
+
+77
+00:03:04,820 --> 00:03:06,800
+is order n because of range.
+
+78
+00:03:06,800 --> 00:03:09,430
+I'm going to do this, actually, n minus 2 times.
+
+79
+00:03:09,430 --> 00:03:11,610
+But that's the same as doing order n times.
+
+80
+00:03:11,610 --> 00:03:13,210
+And then I return it.
+
+81
+00:03:13,210 --> 00:03:16,040
+So that's-- and that last return, of course, is constant.
+
+82
+00:03:16,040 --> 00:03:17,270
+So this is nice.
+
+83
+00:03:17,270 --> 00:03:21,390
+This is a linear time algorithm to compute Fibonacci.
+
+84
+00:03:21,390 --> 00:03:22,400
+Cool.
+
+85
+00:03:22,400 --> 00:03:24,160
+Actually, the best case is order 1.
+
+86
+00:03:24,160 --> 00:03:26,510
+But the worst case is order 1 plus order n
+
+87
+00:03:26,510 --> 00:03:28,310
+plus order 1, which we know is order n.
+
+88
+00:03:28,310 --> 00:03:29,980
+It's linear.
+
+89
+00:03:29,980 --> 00:03:31,470
+OK.
+
+90
+00:03:31,470 --> 00:03:34,226
+A more elegant way, in some sense to compute this
+
+91
+00:03:34,226 --> 00:03:36,690
+is what we did initially, which is to compute Fibonacci
+
+92
+00:03:36,690 --> 00:03:38,170
+recursively.
+
+93
+00:03:38,170 --> 00:03:40,350
+And there we see a different kind of characteristic
+
+94
+00:03:40,350 --> 00:03:44,210
+because while I've got some base cases,
+
+95
+00:03:44,210 --> 00:03:47,590
+the recursive call is actually two calls.
+
+96
+00:03:47,590 --> 00:03:50,260
+I compute Fib on n minus 1.
+
+97
+00:03:50,260 --> 00:03:52,470
+I compute Fib on n minus 2.
+
+98
+00:03:52,470 --> 00:03:54,375
+And then I add them together.
+
+99
+00:03:54,375 --> 00:03:55,750
+And I'm going to give you a hint.
+
+100
+00:03:55,750 --> 00:03:56,880
+We already looked at this earlier
+
+101
+00:03:56,880 --> 00:03:58,390
+and saw when we had dictionaries we
+
+102
+00:03:58,390 --> 00:04:00,161
+could make this more efficient.
+
+103
+00:04:00,161 --> 00:04:01,660
+And the reason we want to do it that
+
+104
+00:04:01,660 --> 00:04:03,830
+is because what do we have now?
+
+105
+00:04:03,830 --> 00:04:05,010
+Ah, yes.
+
+106
+00:04:05,010 --> 00:04:08,600
+We've got a case where as a reduction to the problem
+
+107
+00:04:08,600 --> 00:04:12,060
+I've got two recursive calls to the function.
+
+108
+00:04:12,060 --> 00:04:14,460
+And we know that should be characteristic of exponential.
+
+109
+00:04:14,460 --> 00:04:15,520
+And it is.
+
+110
+00:04:15,520 --> 00:04:19,790
+Because it says, basically, if I want to solve Fib of n,
+
+111
+00:04:19,790 --> 00:04:23,290
+I've got to do that by solving two versions of Fib
+
+112
+00:04:23,290 --> 00:04:26,720
+of m minus 1, which is going to have to be solved by four
+
+113
+00:04:26,720 --> 00:04:30,590
+versions of a Fib of n minus 2, which has got to be solved by 8
+
+114
+00:04:30,590 --> 00:04:32,350
+versions of Fib of n minus 3.
+
+115
+00:04:32,350 --> 00:04:34,310
+And you can see the characteristic here.
+
+116
+00:04:34,310 --> 00:04:36,940
+I've got to gain that sequence of 2 to the 0 plus 2
+
+117
+00:04:36,940 --> 00:04:40,850
+to the 1 plus 2 squared all the way up to 2 to the n.
+
+118
+00:04:40,850 --> 00:04:44,260
+And that overall sums up to being an exponential or 2
+
+119
+00:04:44,260 --> 00:04:46,340
+to the n problem.
+
+120
+00:04:46,340 --> 00:04:48,720
+Interestingly, as we saw earlier,
+
+121
+00:04:48,720 --> 00:04:52,040
+if I use dictionaries to remember earlier computation
+
+122
+00:04:52,040 --> 00:04:53,910
+so I didn't have to recall them, I
+
+123
+00:04:53,910 --> 00:04:55,850
+can reduce this back to the efficiency
+
+124
+00:04:55,850 --> 00:04:59,070
+of the factorial version while preserving the elegance
+
+125
+00:04:59,070 --> 00:05:00,790
+of the recursive call.
+
+126
+00:05:00,790 --> 00:05:04,460
+But as it is here, recursively this is exponential.
+
+127
+00:05:04,460 --> 00:05:06,440
+Iteratively it was linear.
+
+128
+00:05:06,440 --> 00:05:09,150
+So same problem, different algorithms,
+
+129
+00:05:09,150 --> 00:05:10,315
+different complexity.
+
+130
+00:05:10,315 --> 00:05:12,190
+And that's part of what you want to recognize
+
+131
+00:05:12,190 --> 00:05:15,100
+is, can I find a solution that's lower complexity
+
+132
+00:05:15,100 --> 00:05:18,680
+and still gives me the answer I want.
+
+133
+00:05:18,680 --> 00:05:22,160
+One last example, when the input's a list,
+
+134
+00:05:22,160 --> 00:05:24,130
+I have to think about how do I measure that.
+
+135
+00:05:24,130 --> 00:05:25,817
+And we've already seen examples of this.
+
+136
+00:05:25,817 --> 00:05:27,400
+This is simply one where I'm adding up
+
+137
+00:05:27,400 --> 00:05:28,900
+the elements in the list.
+
+138
+00:05:28,900 --> 00:05:31,510
+The issue here is that I have to define what
+
+139
+00:05:31,510 --> 00:05:33,710
+the size of the input means.
+
+140
+00:05:33,710 --> 00:05:36,280
+Many other cases, it was the magnitude of the number.
+
+141
+00:05:36,280 --> 00:05:39,040
+Here, the obvious one is simply the length of the list.
+
+142
+00:05:39,040 --> 00:05:41,110
+And because there's just that one loop there,
+
+143
+00:05:41,110 --> 00:05:45,300
+this is going to be linear in the size of the list.
+
+144
+00:05:45,300 --> 00:05:48,620
+So a big O is a really valuable tool.
+
+145
+00:05:48,620 --> 00:05:50,920
+It compares efficiency of algorithms.
+
+146
+00:05:50,920 --> 00:05:53,690
+And we use it to describe the growth asymptotically
+
+147
+00:05:53,690 --> 00:05:57,160
+as the algorithm takes on bigger and bigger-sized problems.
+
+148
+00:05:57,160 --> 00:06:00,460
+I want as low an order growth as I can to do that estimate.
+
+149
+00:06:00,460 --> 00:06:02,530
+And I wanted it to be independent of the machine
+
+150
+00:06:02,530 --> 00:06:04,720
+or the specific implementation.
+
+151
+00:06:04,720 --> 00:06:08,520
+So big O lets us describe that growth asymptotically
+
+152
+00:06:08,520 --> 00:06:09,980
+in the worst case.
+
+153
+00:06:09,980 --> 00:06:12,530
+And you've now seen the classes of algorithms
+
+154
+00:06:12,530 --> 00:06:15,160
+that fall into that category.
+
+155
+00:06:15,160 --> 00:06:19,950
+One last example is to look at lists and dictionaries.
+
+156
+00:06:19,950 --> 00:06:21,420
+Because as we've seen, both of them
+
+157
+00:06:21,420 --> 00:06:23,799
+come with a set of built-in operations.
+
+158
+00:06:23,799 --> 00:06:25,340
+And you might want to know, so what's
+
+159
+00:06:25,340 --> 00:06:27,360
+the complexity of those operations.
+
+160
+00:06:27,360 --> 00:06:29,690
+And here's simply a list of them.
+
+161
+00:06:29,690 --> 00:06:34,000
+For many of the list operations, indexing to get an element out,
+
+162
+00:06:34,000 --> 00:06:36,420
+storing it a spot, getting the length,
+
+163
+00:06:36,420 --> 00:06:39,220
+adding something to the end, they're all constant
+
+164
+00:06:39,220 --> 00:06:41,110
+because the implementation in Python
+
+165
+00:06:41,110 --> 00:06:43,890
+is such that we know exactly how to get to that spot
+
+166
+00:06:43,890 --> 00:06:45,420
+and do something.
+
+167
+00:06:45,420 --> 00:06:48,470
+On the other hand, other operations
+
+168
+00:06:48,470 --> 00:06:50,280
+are the two things equal.
+
+169
+00:06:50,280 --> 00:06:52,030
+If I remove an element from the list,
+
+170
+00:06:52,030 --> 00:06:53,650
+if I want to make a copy of the list,
+
+171
+00:06:53,650 --> 00:06:57,665
+and so on, you can see somewhat naturally or linear.
+
+172
+00:06:57,665 --> 00:06:59,040
+If I want to remove an element, I
+
+173
+00:06:59,040 --> 00:07:01,206
+have to walk down the list until I find it because I
+
+174
+00:07:01,206 --> 00:07:02,330
+don't know where it is.
+
+175
+00:07:02,330 --> 00:07:03,820
+If I want to copy a list, I clearly
+
+176
+00:07:03,820 --> 00:07:05,070
+have to look at every element.
+
+177
+00:07:05,070 --> 00:07:08,620
+So these are clearly linear in the size of the problem.
+
+178
+00:07:08,620 --> 00:07:12,040
+Dictionaries have slightly different behavior.
+
+179
+00:07:12,040 --> 00:07:15,110
+Notice here that index is linear.
+
+180
+00:07:15,110 --> 00:07:16,420
+And that makes sense.
+
+181
+00:07:16,420 --> 00:07:19,130
+If the list-- it was ordered, so I knew exactly where
+
+182
+00:07:19,130 --> 00:07:20,740
+to go to get to an element.
+
+183
+00:07:20,740 --> 00:07:22,287
+But here with the dictionary, we said
+
+184
+00:07:22,287 --> 00:07:23,620
+it could be stored in any order.
+
+185
+00:07:23,620 --> 00:07:25,430
+It gives me more power, but it has
+
+186
+00:07:25,430 --> 00:07:28,820
+a cost, which is that it is linear compared
+
+187
+00:07:28,820 --> 00:07:30,680
+to a list, which was constant.
+
+188
+00:07:30,680 --> 00:07:33,440
+Same thing with store, same thing with length,
+
+189
+00:07:33,440 --> 00:07:36,190
+same thing with delete, which is the equivalent to remove--
+
+190
+00:07:36,190 --> 00:07:39,910
+they're all linear in the cost.
+
+191
+00:07:39,910 --> 00:07:42,690
+On the average case, they may be much more efficient.
+
+192
+00:07:42,690 --> 00:07:45,980
+Indexing actually is going to be constant on average.
+
+193
+00:07:45,980 --> 00:07:48,780
+But remember, we're worried about the worst case.
+
+194
+00:07:48,780 --> 00:07:50,890
+And so what you see here is I get more power
+
+195
+00:07:50,890 --> 00:07:51,980
+with a dictionary.
+
+196
+00:07:51,980 --> 00:07:54,920
+But it comes with a cost in terms of the complexity
+
+197
+00:07:54,920 --> 00:07:56,380
+of the algorithm.
+
+198
+00:07:56,380 --> 00:07:59,250
+But you now have, I hope, a really good sense
+
+199
+00:07:59,250 --> 00:08:02,130
+of the different complexity classes of algorithms
+
+200
+00:08:02,130 --> 00:08:04,620
+and the characteristics that are associated
+
+201
+00:08:04,620 --> 00:08:06,800
+with each of those classes.
+

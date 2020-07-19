@@ -1,0 +1,1384 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:02,370
+Throughout this course to this point,
+
+2
+00:00:02,370 --> 00:00:04,840
+you've had the opportunity to write a lot of functions,
+
+3
+00:00:04,840 --> 00:00:07,420
+a lot of procedures, to explore different ideas,
+
+4
+00:00:07,420 --> 00:00:09,760
+to create algorithms to solve problems.
+
+5
+00:00:09,760 --> 00:00:11,430
+You've also seen a number of algorithms
+
+6
+00:00:11,430 --> 00:00:14,389
+that we've introduced that tackle important problems.
+
+7
+00:00:14,389 --> 00:00:15,930
+And one of the questions we could ask
+
+8
+00:00:15,930 --> 00:00:19,222
+is are all algorithms equal?
+
+9
+00:00:19,222 --> 00:00:20,850
+Are all algorithms equal?
+
+10
+00:00:20,850 --> 00:00:23,394
+Are they all created with the same kind of performance
+
+11
+00:00:23,394 --> 00:00:26,785
+or efficiency, or are some algorithms better than others?
+
+12
+00:00:26,785 --> 00:00:29,160
+It's a bit of an odd statement, but it's an important one
+
+13
+00:00:29,160 --> 00:00:30,110
+to ask.
+
+14
+00:00:30,110 --> 00:00:32,312
+And let's set the stage for this.
+
+15
+00:00:32,312 --> 00:00:34,520
+First of all, you might say look, computers are fast.
+
+16
+00:00:34,520 --> 00:00:36,010
+They're getting even faster.
+
+17
+00:00:36,010 --> 00:00:38,694
+So maybe the efficiency of a program doesn't matter.
+
+18
+00:00:38,694 --> 00:00:40,860
+If we want to understand how efficient a program is,
+
+19
+00:00:40,860 --> 00:00:42,818
+does it really matter if the computers are just
+
+20
+00:00:42,818 --> 00:00:44,710
+getting so fast?
+
+21
+00:00:44,710 --> 00:00:46,710
+Well, while they are, I would argue that so
+
+22
+00:00:46,710 --> 00:00:48,026
+are data sets getting larger.
+
+23
+00:00:48,026 --> 00:00:50,025
+And in fact, as you may have already experienced
+
+24
+00:00:50,025 --> 00:00:52,160
+in some of the examples you've tried,
+
+25
+00:00:52,160 --> 00:00:54,860
+simple solutions may simply not scale well
+
+26
+00:00:54,860 --> 00:00:58,350
+to deal with data sets that are very large in size.
+
+27
+00:00:58,350 --> 00:01:00,500
+So it is valuable for us to be able to have
+
+28
+00:01:00,500 --> 00:01:03,320
+a way of talking about the efficiency of an algorithm.
+
+29
+00:01:03,320 --> 00:01:05,239
+The efficiency of a solution.
+
+30
+00:01:05,239 --> 00:01:08,440
+And that leads to the question how could we decide,
+
+31
+00:01:08,440 --> 00:01:10,560
+if we have a couple of options for a program,
+
+32
+00:01:10,560 --> 00:01:12,870
+which ones most efficient?
+
+33
+00:01:12,870 --> 00:01:17,350
+Now, that is coupled by several issues,
+
+34
+00:01:17,350 --> 00:01:19,690
+and one is there's a trade off typically
+
+35
+00:01:19,690 --> 00:01:24,050
+between time as an efficiency measure and space.
+
+36
+00:01:24,050 --> 00:01:25,730
+For example, if I have a program that's
+
+37
+00:01:25,730 --> 00:01:29,050
+going to compute some particular mathematical function,
+
+38
+00:01:29,050 --> 00:01:31,470
+I might decide to precompute a lot of values
+
+39
+00:01:31,470 --> 00:01:34,160
+for expected arguments and simply store them
+
+40
+00:01:34,160 --> 00:01:37,359
+away inside of the computer so I just look them up.
+
+41
+00:01:37,359 --> 00:01:39,150
+And in fact, we saw an example of that when
+
+42
+00:01:39,150 --> 00:01:41,340
+we were computing things like Fibonacci,
+
+43
+00:01:41,340 --> 00:01:44,560
+where by using that technique we called memorization storing
+
+44
+00:01:44,560 --> 00:01:47,460
+in a dictionary precomputed or earlier computed values,
+
+45
+00:01:47,460 --> 00:01:49,490
+we could change efficiency.
+
+46
+00:01:49,490 --> 00:01:51,800
+So there is a trade off between time and space,
+
+47
+00:01:51,800 --> 00:01:53,240
+but for the most part, we're going
+
+48
+00:01:53,240 --> 00:01:55,350
+to focus on time efficiency.
+
+49
+00:01:55,350 --> 00:01:58,740
+Can we characterize how quickly will a program come up
+
+50
+00:01:58,740 --> 00:02:00,880
+with an answer to a set of inputs?
+
+51
+00:02:00,880 --> 00:02:02,910
+And in particular, are there different kinds
+
+52
+00:02:02,910 --> 00:02:05,490
+of algorithms to do that?
+
+53
+00:02:05,490 --> 00:02:07,210
+Now, there are a couple of challenges
+
+54
+00:02:07,210 --> 00:02:08,556
+in understanding that.
+
+55
+00:02:08,556 --> 00:02:10,139
+The first one, as you've already seen,
+
+56
+00:02:10,139 --> 00:02:13,180
+is even given an algorithm, I can implement it often
+
+57
+00:02:13,180 --> 00:02:14,720
+in many different ways.
+
+58
+00:02:14,720 --> 00:02:16,120
+I could implement it recursively.
+
+59
+00:02:16,120 --> 00:02:17,770
+I could implement it iteratively.
+
+60
+00:02:17,770 --> 00:02:19,820
+I might have different choices of things.
+
+61
+00:02:19,820 --> 00:02:21,611
+So there might be a lot of implementations,
+
+62
+00:02:21,611 --> 00:02:24,100
+and I want to separate out choice of Implementation
+
+63
+00:02:24,100 --> 00:02:26,579
+from actual efficiency of the algorithm.
+
+64
+00:02:26,579 --> 00:02:28,620
+While there are many ways to implement something,
+
+65
+00:02:28,620 --> 00:02:31,920
+usually there are only a handful of different actual algorithms.
+
+66
+00:02:31,920 --> 00:02:34,680
+That is, mechanical description of a set of steps
+
+67
+00:02:34,680 --> 00:02:36,540
+that I'm going to use to solve it.
+
+68
+00:02:36,540 --> 00:02:39,760
+And so I'd like to separate out choice of Implementation
+
+69
+00:02:39,760 --> 00:02:42,430
+from choice of actual algorithm to solve that.
+
+70
+00:02:42,430 --> 00:02:46,080
+And we're going to see some examples in a second.
+
+71
+00:02:46,080 --> 00:02:47,970
+Even with that, I could ask, so how
+
+72
+00:02:47,970 --> 00:02:50,490
+might I measure the efficiency?
+
+73
+00:02:50,490 --> 00:02:52,430
+Well, one option is just to time it.
+
+74
+00:02:52,430 --> 00:02:53,930
+Time it on a bunch of inputs and see
+
+75
+00:02:53,930 --> 00:02:56,179
+what the time is like and compare different algorithms
+
+76
+00:02:56,179 --> 00:02:57,210
+based on the timer.
+
+77
+00:02:57,210 --> 00:02:58,710
+We'll look at that and realize there
+
+78
+00:02:58,710 --> 00:03:00,710
+are some challenges with that.
+
+79
+00:03:00,710 --> 00:03:02,450
+The second one, a little more abstractly,
+
+80
+00:03:02,450 --> 00:03:04,980
+is I could count the number of actual operations--
+
+81
+00:03:04,980 --> 00:03:07,540
+primitive things that an algorithm is doing
+
+82
+00:03:07,540 --> 00:03:10,590
+or a program is doing-- and use that to compare
+
+83
+00:03:10,590 --> 00:03:13,520
+different implementations or different algorithms.
+
+84
+00:03:13,520 --> 00:03:15,610
+The third one is I could actually abstract out
+
+85
+00:03:15,610 --> 00:03:17,120
+a little more generally to something
+
+86
+00:03:17,120 --> 00:03:19,146
+we call order of growth.
+
+87
+00:03:19,146 --> 00:03:20,520
+And we're going to focus on that.
+
+88
+00:03:20,520 --> 00:03:22,269
+We're going to argue that this is actually
+
+89
+00:03:22,269 --> 00:03:24,580
+the most appropriate way of associating or assessing,
+
+90
+00:03:24,580 --> 00:03:27,050
+rather, the impact of choices of an algorithm
+
+91
+00:03:27,050 --> 00:03:29,430
+in solving a problem and in measuring
+
+92
+00:03:29,430 --> 00:03:32,760
+the inherent difficulty of solving an associated problem.
+
+93
+00:03:32,760 --> 00:03:33,840
+I haven't defined it yet.
+
+94
+00:03:33,840 --> 00:03:34,930
+We're going to do that in a second.
+
+95
+00:03:34,930 --> 00:03:36,346
+But let's start with the first two
+
+96
+00:03:36,346 --> 00:03:40,220
+to see why they're not quite what I need.
+
+97
+00:03:40,220 --> 00:03:42,470
+As I said, I could just time a program.
+
+98
+00:03:42,470 --> 00:03:44,350
+Here's a simple way to do it.
+
+99
+00:03:44,350 --> 00:03:47,690
+I import the time module into my Python environment.
+
+100
+00:03:47,690 --> 00:03:50,290
+And then, when I want to use this-- for example,
+
+101
+00:03:50,290 --> 00:03:53,540
+if I wanted to measure the efficiency
+
+102
+00:03:53,540 --> 00:03:57,060
+of this simple little thing that computes Celsius to Fahrenheit,
+
+103
+00:03:57,060 --> 00:03:59,460
+I could start up the clock by just calling
+
+104
+00:03:59,460 --> 00:04:02,040
+that particular method, actually run
+
+105
+00:04:02,040 --> 00:04:04,360
+the algorithm on some number, and then
+
+106
+00:04:04,360 --> 00:04:07,487
+stop the clock-- right there-- and look
+
+107
+00:04:07,487 --> 00:04:09,070
+at the difference in time and printout
+
+108
+00:04:09,070 --> 00:04:11,500
+how quickly did it take me to do that.
+
+109
+00:04:11,500 --> 00:04:14,500
+I could do that for a bunch of trials and see how well I do.
+
+110
+00:04:14,500 --> 00:04:17,940
+Problem with this is the following.
+
+111
+00:04:17,940 --> 00:04:19,490
+The running time certainly is going
+
+112
+00:04:19,490 --> 00:04:21,250
+to vary between algorithms, which
+
+113
+00:04:21,250 --> 00:04:23,600
+is what I wanted to measure, but it's also
+
+114
+00:04:23,600 --> 00:04:26,070
+going to vary depending on how I implemented.
+
+115
+00:04:26,070 --> 00:04:28,430
+More importantly, it's going to vary depending
+
+116
+00:04:28,430 --> 00:04:30,021
+on what computer I run it on.
+
+117
+00:04:30,021 --> 00:04:31,770
+Different computers have different speeds,
+
+118
+00:04:31,770 --> 00:04:33,140
+and they won't vary a lot, but it
+
+119
+00:04:33,140 --> 00:04:35,181
+will have a difference in that, and that's really
+
+120
+00:04:35,181 --> 00:04:38,690
+not inherently associated with the problem itself.
+
+121
+00:04:38,690 --> 00:04:40,400
+And finally, the running time is not
+
+122
+00:04:40,400 --> 00:04:42,450
+predictable based on small inputs.
+
+123
+00:04:42,450 --> 00:04:45,470
+I would really have to try it on a wide range of examples
+
+124
+00:04:45,470 --> 00:04:48,170
+to get a sense of how well is this going to scale.
+
+125
+00:04:48,170 --> 00:04:50,320
+Can I use it to predict what the performance is
+
+126
+00:04:50,320 --> 00:04:53,920
+going to be like on a really large data set.
+
+127
+00:04:53,920 --> 00:04:55,560
+So this is not particularly effective,
+
+128
+00:04:55,560 --> 00:04:58,320
+because the time varies for different inputs,
+
+129
+00:04:58,320 --> 00:05:01,740
+but we really can't express a relationship between the inputs
+
+130
+00:05:01,740 --> 00:05:04,390
+and the time we see because all these other factors show up,
+
+131
+00:05:04,390 --> 00:05:06,030
+like what's the implementation?
+
+132
+00:05:06,030 --> 00:05:07,680
+What computer am I running it on?
+
+133
+00:05:07,680 --> 00:05:09,980
+And how well will it scale?
+
+134
+00:05:09,980 --> 00:05:10,880
+OK.
+
+135
+00:05:10,880 --> 00:05:13,030
+Let's generalize this a little bit.
+
+136
+00:05:13,030 --> 00:05:16,090
+I said I could also just count operations.
+
+137
+00:05:16,090 --> 00:05:17,650
+One way to do that is to say let's
+
+138
+00:05:17,650 --> 00:05:22,020
+assume that these steps just take a constant amount of time.
+
+139
+00:05:22,020 --> 00:05:24,260
+Any built-in mathematical operation,
+
+140
+00:05:24,260 --> 00:05:26,080
+any built-in comparison.
+
+141
+00:05:26,080 --> 00:05:28,490
+Assigning values to variable names,
+
+142
+00:05:28,490 --> 00:05:30,694
+accessing things from memory.
+
+143
+00:05:30,694 --> 00:05:32,110
+It's actually not a bad assumption
+
+144
+00:05:32,110 --> 00:05:34,840
+to say they all take about the same amount of time.
+
+145
+00:05:34,840 --> 00:05:36,870
+Then what I could do is say let's just count
+
+146
+00:05:36,870 --> 00:05:39,600
+the number of primitive operations executed
+
+147
+00:05:39,600 --> 00:05:41,790
+as a function of the size of the input,
+
+148
+00:05:41,790 --> 00:05:44,600
+and that would give me a better measure of the efficiency
+
+149
+00:05:44,600 --> 00:05:46,090
+of the algorithm.
+
+150
+00:05:46,090 --> 00:05:50,032
+So in the case of c to f they're just three operations.
+
+151
+00:05:50,032 --> 00:05:51,990
+I've got a multiplication, I've got a division,
+
+152
+00:05:51,990 --> 00:05:53,660
+I've got an addition.
+
+153
+00:05:53,660 --> 00:05:55,770
+And that captures how difficult this task is.
+
+154
+00:05:55,770 --> 00:05:57,400
+It's actually pretty simple.
+
+155
+00:05:57,400 --> 00:05:59,690
+In the case of my little something
+
+156
+00:05:59,690 --> 00:06:02,580
+here, which is going to basically take in a number
+
+157
+00:06:02,580 --> 00:06:05,650
+and letting I range over the value up to that point--
+
+158
+00:06:05,650 --> 00:06:08,700
+it's just going to add them all up-- I can count.
+
+159
+00:06:08,700 --> 00:06:11,180
+I got one operation to do an assignment.
+
+160
+00:06:11,180 --> 00:06:16,100
+I've got one operation to get I out, basically from range.
+
+161
+00:06:16,100 --> 00:06:17,650
+And in here I got two operations,
+
+162
+00:06:17,650 --> 00:06:19,750
+because remember, this is both doing the addition
+
+163
+00:06:19,750 --> 00:06:21,480
+and then doing the assignment.
+
+164
+00:06:21,480 --> 00:06:23,480
+And I'm going to do those three operations
+
+165
+00:06:23,480 --> 00:06:27,170
+over the entire loop, which I'm going to go over x times.
+
+166
+00:06:27,170 --> 00:06:30,560
+So, in fact, this little function, I could say,
+
+167
+00:06:30,560 --> 00:06:34,020
+has 1 plus 3x operations.
+
+168
+00:06:34,020 --> 00:06:36,220
+And as I vary the size of x, it tells me
+
+169
+00:06:36,220 --> 00:06:38,070
+how this is going to scale.
+
+170
+00:06:38,070 --> 00:06:40,040
+And that's actually a better step.
+
+171
+00:06:40,040 --> 00:06:43,200
+It gives me a way of characterizing the difficulty,
+
+172
+00:06:43,200 --> 00:06:45,800
+the efficiency, the inherent complexity
+
+173
+00:06:45,800 --> 00:06:47,830
+of this little function.
+
+174
+00:06:47,830 --> 00:06:50,606
+So maybe counting operations is enough.
+
+175
+00:06:50,606 --> 00:06:52,170
+Well, it gets me closer.
+
+176
+00:06:52,170 --> 00:06:54,220
+It certainly nicely now gives me something that's
+
+177
+00:06:54,220 --> 00:06:55,836
+independent of the computer.
+
+178
+00:06:55,836 --> 00:06:57,210
+And it certainly is going to vary
+
+179
+00:06:57,210 --> 00:06:59,730
+depending on the algorithm, which is what I wanted.
+
+180
+00:06:59,730 --> 00:07:02,290
+It still depends a little bit on the implementation.
+
+181
+00:07:02,290 --> 00:07:03,910
+It's not so bad.
+
+182
+00:07:03,910 --> 00:07:08,422
+But it doesn't really tell us which operation to count.
+
+183
+00:07:08,422 --> 00:07:09,880
+I could figure that out, but I have
+
+184
+00:07:09,880 --> 00:07:11,340
+to maybe think more carefully about what
+
+185
+00:07:11,340 --> 00:07:12,589
+operations I'm going to count.
+
+186
+00:07:12,589 --> 00:07:15,800
+So this one is a drawback, although not a terrible one.
+
+187
+00:07:15,800 --> 00:07:18,150
+So the nice thing here is that the count, based
+
+188
+00:07:18,150 --> 00:07:20,825
+on counting operations, is going to vary for different inputs,
+
+189
+00:07:20,825 --> 00:07:22,310
+which is what I want.
+
+190
+00:07:22,310 --> 00:07:24,240
+And I can come up with a relationship
+
+191
+00:07:24,240 --> 00:07:27,670
+between the size of the input and the expected count.
+
+192
+00:07:27,670 --> 00:07:29,510
+And it has the nice property that it really
+
+193
+00:07:29,510 --> 00:07:31,270
+depends on the algorithm.
+
+194
+00:07:31,270 --> 00:07:32,970
+But it shouldn't, in fact, depend--
+
+195
+00:07:32,970 --> 00:07:35,640
+and it is independent of the computer
+
+196
+00:07:35,640 --> 00:07:38,180
+and is getting closer to what I want.
+
+197
+00:07:38,180 --> 00:07:41,754
+So I'm going to take that idea and build on it.
+
+198
+00:07:41,754 --> 00:07:43,420
+What we know is that timing and counting
+
+199
+00:07:43,420 --> 00:07:45,200
+evaluate implementations.
+
+200
+00:07:45,200 --> 00:07:47,870
+Timing also evaluates the machine, which I don't want.
+
+201
+00:07:47,870 --> 00:07:49,320
+What I do want to do is have a way
+
+202
+00:07:49,320 --> 00:07:51,600
+of evaluating the algorithm, telling
+
+203
+00:07:51,600 --> 00:07:52,960
+how well it's going to scale.
+
+204
+00:07:52,960 --> 00:07:56,250
+And I want to evaluate it in terms of the size of the input.
+
+205
+00:07:56,250 --> 00:07:58,390
+So I'm going to take that counting idea
+
+206
+00:07:58,390 --> 00:08:01,010
+but abstract it slightly.
+
+207
+00:08:01,010 --> 00:08:03,250
+Before I do that, I need to decide
+
+208
+00:08:03,250 --> 00:08:08,150
+if I want to predict efficiency based on size of the input.
+
+209
+00:08:08,150 --> 00:08:10,020
+I have to decide what I'm going to measure
+
+210
+00:08:10,020 --> 00:08:11,654
+as the size of the input.
+
+211
+00:08:11,654 --> 00:08:13,570
+I want to express that efficiency in that way,
+
+212
+00:08:13,570 --> 00:08:16,290
+so that leads me to a choice.
+
+213
+00:08:16,290 --> 00:08:18,170
+Many cases, it's going to be obvious.
+
+214
+00:08:18,170 --> 00:08:21,210
+But in some cases, the input could be an integer.
+
+215
+00:08:21,210 --> 00:08:23,230
+It could be the length of a list.
+
+216
+00:08:23,230 --> 00:08:25,170
+You basically get to decide, especially
+
+217
+00:08:25,170 --> 00:08:27,212
+when you have multiple parameters, what
+
+218
+00:08:27,212 --> 00:08:27,920
+I'm going to use.
+
+219
+00:08:27,920 --> 00:08:30,503
+For example, if I'm searching to see if a particular element's
+
+220
+00:08:30,503 --> 00:08:33,549
+in a list, probably I want to use the length of the list
+
+221
+00:08:33,549 --> 00:08:35,010
+as the size of the problem.
+
+222
+00:08:35,010 --> 00:08:37,179
+And not the size of the element, since I'm simply
+
+223
+00:08:37,179 --> 00:08:39,140
+looking to see if it's present.
+
+224
+00:08:39,140 --> 00:08:41,929
+We'll see some examples of how we use that in a second.
+
+225
+00:08:41,929 --> 00:08:44,090
+But you, as somebody doing the analysis,
+
+226
+00:08:44,090 --> 00:08:46,907
+have to decide, what's the size of the input?
+
+227
+00:08:46,907 --> 00:08:49,490
+Or a better way of saying it-- what is the input that matters?
+
+228
+00:08:49,490 --> 00:08:51,406
+And how am I going to measure the size of that
+
+229
+00:08:51,406 --> 00:08:55,320
+as I talk about the efficiency of the algorithm?
+
+230
+00:08:55,320 --> 00:08:57,060
+Different inputs, of course, will
+
+231
+00:08:57,060 --> 00:08:58,614
+change how the computer runs.
+
+232
+00:08:58,614 --> 00:09:00,280
+And so when I talk about the efficiency,
+
+233
+00:09:00,280 --> 00:09:02,550
+I need to think about that as well.
+
+234
+00:09:02,550 --> 00:09:04,630
+Here's a simple little function that searches
+
+235
+00:09:04,630 --> 00:09:07,727
+to see if a particular element e is in a list l.
+
+236
+00:09:07,727 --> 00:09:08,560
+And what does it do?
+
+237
+00:09:08,560 --> 00:09:12,464
+It simply loops over the elements in the list, asking,
+
+238
+00:09:12,464 --> 00:09:13,630
+have I found the one I want?
+
+239
+00:09:13,630 --> 00:09:15,477
+In which case, I'm going to return true.
+
+240
+00:09:15,477 --> 00:09:17,810
+And if I go through the entire loop and I don't find it,
+
+241
+00:09:17,810 --> 00:09:19,600
+I'm going to return false.
+
+242
+00:09:19,600 --> 00:09:21,940
+Obvious little searching mechanism.
+
+243
+00:09:21,940 --> 00:09:23,980
+Here's what could happen, though.
+
+244
+00:09:23,980 --> 00:09:27,360
+If I'm really lucky, and e is the first element in the list,
+
+245
+00:09:27,360 --> 00:09:28,780
+it's really fast.
+
+246
+00:09:28,780 --> 00:09:29,750
+That's the best case.
+
+247
+00:09:29,750 --> 00:09:31,770
+And in fact, I could say, in the best case,
+
+248
+00:09:31,770 --> 00:09:34,392
+how many operations does this take?
+
+249
+00:09:34,392 --> 00:09:36,600
+Probably not all that useful, because I'm usually not
+
+250
+00:09:36,600 --> 00:09:37,850
+that lucky.
+
+251
+00:09:37,850 --> 00:09:39,842
+If, in fact, the element is not in the list,
+
+252
+00:09:39,842 --> 00:09:41,800
+I'm going to have to go through the entire list
+
+253
+00:09:41,800 --> 00:09:43,400
+before returning false.
+
+254
+00:09:43,400 --> 00:09:45,930
+And that gives me the worst case-- the longest amount
+
+255
+00:09:45,930 --> 00:09:49,080
+of time I'm going to have to have before I answer that.
+
+256
+00:09:49,080 --> 00:09:51,466
+That's going to be a little more important.
+
+257
+00:09:51,466 --> 00:09:53,090
+There's a third way I could measure it,
+
+258
+00:09:53,090 --> 00:09:55,276
+which is just to say, what do I do on average?
+
+259
+00:09:55,276 --> 00:09:56,650
+And on average, I'm going to look
+
+260
+00:09:56,650 --> 00:09:59,440
+through about half the elements in the list before I find it.
+
+261
+00:09:59,440 --> 00:10:01,980
+In fact, if I run a bunch of trials, I would find that out.
+
+262
+00:10:01,980 --> 00:10:05,250
+And so I could talk about the average case as well.
+
+263
+00:10:05,250 --> 00:10:05,964
+Three choices.
+
+264
+00:10:05,964 --> 00:10:07,630
+I could say what's the best case, what's
+
+265
+00:10:07,630 --> 00:10:10,260
+the average case, what's the worst case?
+
+266
+00:10:10,260 --> 00:10:13,030
+Which one's more important to me?
+
+267
+00:10:13,030 --> 00:10:15,400
+Well, I want to measure this in a general way.
+
+268
+00:10:15,400 --> 00:10:17,740
+And as a consequence, I want to do it basically
+
+269
+00:10:17,740 --> 00:10:20,530
+for the worst case.
+
+270
+00:10:20,530 --> 00:10:22,180
+To give you a sense of that-- again,
+
+271
+00:10:22,180 --> 00:10:24,110
+suppose you're given a list l of some length.
+
+272
+00:10:24,110 --> 00:10:26,162
+We could measure it with length of l.
+
+273
+00:10:26,162 --> 00:10:29,010
+The best case simply tells me the minimum running time
+
+274
+00:10:29,010 --> 00:10:30,860
+over all possible inputs.
+
+275
+00:10:30,860 --> 00:10:32,540
+And in this case, it will be constant.
+
+276
+00:10:32,540 --> 00:10:35,220
+No matter how long the list is, I find it in the first element.
+
+277
+00:10:35,220 --> 00:10:37,430
+I give you a very quick answer.
+
+278
+00:10:37,430 --> 00:10:39,540
+The average case is a more practical measure.
+
+279
+00:10:39,540 --> 00:10:41,510
+It's going to tell me on average what
+
+280
+00:10:41,510 --> 00:10:43,830
+I have to do to look halfway through the list.
+
+281
+00:10:43,830 --> 00:10:45,910
+But as I've suggested, the worst case,
+
+282
+00:10:45,910 --> 00:10:48,880
+which is the maximum running time,
+
+283
+00:10:48,880 --> 00:10:50,710
+is really the more useful one to have,
+
+284
+00:10:50,710 --> 00:10:53,190
+because it tells me, what's the worst possible situation I
+
+285
+00:10:53,190 --> 00:10:53,990
+would see?
+
+286
+00:10:53,990 --> 00:10:56,420
+And in this case, that is going to be linear,
+
+287
+00:10:56,420 --> 00:10:58,150
+in the size of the list.
+
+288
+00:10:58,150 --> 00:11:00,490
+As that list grows, the amount of time
+
+289
+00:11:00,490 --> 00:11:03,320
+is going to grow equally, or at the same ratio.
+
+290
+00:11:03,320 --> 00:11:05,070
+And so that's going to be something that's
+
+291
+00:11:05,070 --> 00:11:06,560
+much more valuable to me.
+
+292
+00:11:06,560 --> 00:11:09,730
+What's the worst case behavior?
+
+293
+00:11:09,730 --> 00:11:15,140
+As a consequence, that's the thing we're going to focus on.
+
+294
+00:11:15,140 --> 00:11:18,630
+So our goal now is to talk about what we call orders of growth
+
+295
+00:11:18,630 --> 00:11:20,800
+or complexity of algorithms.
+
+296
+00:11:20,800 --> 00:11:23,960
+And the goal is, we want to evaluate a program's efficiency
+
+297
+00:11:23,960 --> 00:11:25,900
+when the input is very large.
+
+298
+00:11:25,900 --> 00:11:28,790
+How does it grow as we scale the size of the input?
+
+299
+00:11:28,790 --> 00:11:32,000
+We want to express the growth of a program's runtime
+
+300
+00:11:32,000 --> 00:11:33,920
+as the input size grows.
+
+301
+00:11:33,920 --> 00:11:36,730
+So we'd like an expression that says, as I, for example,
+
+302
+00:11:36,730 --> 00:11:39,010
+double the size of the input, here's
+
+303
+00:11:39,010 --> 00:11:42,760
+what happens to the efficiency of this algorithm.
+
+304
+00:11:42,760 --> 00:11:45,104
+I can't always give an absolute bound
+
+305
+00:11:45,104 --> 00:11:46,770
+or-- I'll rephrase that-- I can't always
+
+306
+00:11:46,770 --> 00:11:48,660
+give an absolute expression for that.
+
+307
+00:11:48,660 --> 00:11:51,400
+So what I'd like to do is put an upper bound on the growth.
+
+308
+00:11:51,400 --> 00:11:53,150
+Say it will grow no more than this
+
+309
+00:11:53,150 --> 00:11:55,200
+quickly as I deal with that.
+
+310
+00:11:55,200 --> 00:11:56,830
+And I don't have to be precise.
+
+311
+00:11:56,830 --> 00:11:59,550
+I'm just going to use an order of growth estimate, not
+
+312
+00:11:59,550 --> 00:12:00,750
+an exact one.
+
+313
+00:12:00,750 --> 00:12:02,954
+And we'll see what that means in a second.
+
+314
+00:12:02,954 --> 00:12:05,120
+As a consequence, we're going to look at the largest
+
+315
+00:12:05,120 --> 00:12:06,930
+factors in the runtime.
+
+316
+00:12:06,930 --> 00:12:09,386
+Which part of the program is going to be the slowest?
+
+317
+00:12:09,386 --> 00:12:11,260
+Which one's going to take the longest to run?
+
+318
+00:12:11,260 --> 00:12:13,670
+And what's the worst case behavior for that?
+
+319
+00:12:13,670 --> 00:12:16,860
+And how do I put a bound on that as I describe the complexity
+
+320
+00:12:16,860 --> 00:12:19,810
+of that particular program?
+
+321
+00:12:19,810 --> 00:12:22,570
+What we're going to see is that we can categorize algorithms
+
+322
+00:12:22,570 --> 00:12:24,600
+into different classes.
+
+323
+00:12:24,600 --> 00:12:28,010
+There are things that have what we call constant running time.
+
+324
+00:12:28,010 --> 00:12:31,415
+That is, no matter how we increase the size of the input,
+
+325
+00:12:31,415 --> 00:12:34,580
+it takes the same amount of time in general
+
+326
+00:12:34,580 --> 00:12:36,020
+to solve the problem.
+
+327
+00:12:36,020 --> 00:12:40,030
+Things that grow linearly with the size of the problem.
+
+328
+00:12:40,030 --> 00:12:41,470
+I double the size of the problem,
+
+329
+00:12:41,470 --> 00:12:45,160
+I roughly double the amount of time it takes.
+
+330
+00:12:45,160 --> 00:12:48,020
+Things that grow quadratically, or with the square,
+
+331
+00:12:48,020 --> 00:12:49,440
+of the time.
+
+332
+00:12:49,440 --> 00:12:51,630
+Things that grow logarithmically, that is,
+
+333
+00:12:51,630 --> 00:12:54,590
+with the log of the size of the problem.
+
+334
+00:12:54,590 --> 00:12:57,710
+Things that we'll see later on that grow in what we call n
+
+335
+00:12:57,710 --> 00:13:01,280
+log n time, which are not as bad as quadratic,
+
+336
+00:13:01,280 --> 00:13:03,280
+but a little bit more than linear.
+
+337
+00:13:03,280 --> 00:13:06,270
+And finally, things that grow exponentially.
+
+338
+00:13:06,270 --> 00:13:09,180
+And what you can see here is I'd obviously like, if possible,
+
+339
+00:13:09,180 --> 00:13:12,160
+to have an algorithm that is not in this class,
+
+340
+00:13:12,160 --> 00:13:14,930
+because that's really expensive, but is more likely to be
+
+341
+00:13:14,930 --> 00:13:18,030
+in this class, or this class, because those are not
+
+342
+00:13:18,030 --> 00:13:19,489
+bad behaviors.
+
+343
+00:13:19,489 --> 00:13:21,905
+And then now we're going to talk about looking at examples
+
+344
+00:13:21,905 --> 00:13:24,400
+of each one of those classes and how we capture
+
+345
+00:13:24,400 --> 00:13:26,550
+that pattern of behavior.
+

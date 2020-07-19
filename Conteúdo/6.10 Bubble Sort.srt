@@ -1,0 +1,392 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:02,460
+So the next algorithm we're going to look at
+
+2
+00:00:02,460 --> 00:00:03,430
+is a clever idea.
+
+3
+00:00:03,430 --> 00:00:05,600
+Not the most efficient algorithm, but it's something
+
+4
+00:00:05,600 --> 00:00:07,350
+called bubble sort.
+
+5
+00:00:07,350 --> 00:00:10,980
+And the idea here is that given a list of elements,
+
+6
+00:00:10,980 --> 00:00:12,460
+I'm going to start at the beginning
+
+7
+00:00:12,460 --> 00:00:14,530
+and compare successive elements.
+
+8
+00:00:14,530 --> 00:00:17,890
+And I'm going to swap them so that the smaller one is always
+
+9
+00:00:17,890 --> 00:00:19,114
+first of that pair.
+
+10
+00:00:19,114 --> 00:00:21,280
+So if I look at the first two and the second element
+
+11
+00:00:21,280 --> 00:00:23,460
+is smaller than the first one, I'm going to do the swap.
+
+12
+00:00:23,460 --> 00:00:24,990
+And then I'm going to look at second and third,
+
+13
+00:00:24,990 --> 00:00:26,300
+and then third and fourth.
+
+14
+00:00:26,300 --> 00:00:27,716
+And you can see what happens here.
+
+15
+00:00:27,716 --> 00:00:28,720
+As I walk down the list.
+
+16
+00:00:28,720 --> 00:00:31,490
+I'm basically bubbling the largest element
+
+17
+00:00:31,490 --> 00:00:33,980
+so that after one pass through the list,
+
+18
+00:00:33,980 --> 00:00:36,371
+the largest element's going to be at the end of the list.
+
+19
+00:00:36,371 --> 00:00:37,870
+If I'm lucky, some of the other ones
+
+20
+00:00:37,870 --> 00:00:39,220
+may already be in the right place.
+
+21
+00:00:39,220 --> 00:00:40,636
+But having gone through it once, I
+
+22
+00:00:40,636 --> 00:00:43,440
+can bubble that largest element to the end of the list.
+
+23
+00:00:43,440 --> 00:00:45,680
+I go back and I do the same thing-- passing through,
+
+24
+00:00:45,680 --> 00:00:47,130
+bubbling them along.
+
+25
+00:00:47,130 --> 00:00:50,970
+And I'll do that until, in fact, the entire list is sorted.
+
+26
+00:00:50,970 --> 00:00:54,120
+The little animation nicely shows that you here.
+
+27
+00:00:54,120 --> 00:00:57,300
+You can see how as we pass through here, bubbling things
+
+28
+00:00:57,300 --> 00:01:01,440
+along, we build up basically that diagonal
+
+29
+00:01:01,440 --> 00:01:02,800
+from this end down.
+
+30
+00:01:02,800 --> 00:01:06,050
+Largest element there first, and then as I go along,
+
+31
+00:01:06,050 --> 00:01:09,500
+the next largest and so on pass through.
+
+32
+00:01:09,500 --> 00:01:11,850
+I might not have to go through the list n times here.
+
+33
+00:01:11,850 --> 00:01:15,277
+If I'm lucky, many of the things might be in the right spot.
+
+34
+00:01:15,277 --> 00:01:16,860
+But in the worst case, you can already
+
+35
+00:01:16,860 --> 00:01:19,480
+get a sense of what the complexity's likely to be.
+
+36
+00:01:19,480 --> 00:01:21,270
+I've got to go through the list, and I got
+
+37
+00:01:21,270 --> 00:01:23,050
+to do that probably n times.
+
+38
+00:01:23,050 --> 00:01:25,030
+So it's probably quadratic, but let's
+
+39
+00:01:25,030 --> 00:01:27,750
+look at how we might build it.
+
+40
+00:01:27,750 --> 00:01:30,450
+Here's a little algorithm for bubble sort.
+
+41
+00:01:30,450 --> 00:01:34,250
+I'm going to set up a flag that says, initially,
+
+42
+00:01:34,250 --> 00:01:35,270
+I've got a value false.
+
+43
+00:01:35,270 --> 00:01:35,830
+And we'll see why.
+
+44
+00:01:35,830 --> 00:01:37,530
+It's going to let me tell when I'm done.
+
+45
+00:01:37,530 --> 00:01:39,540
+And then I run through a loop that
+
+46
+00:01:39,540 --> 00:01:44,410
+says, as long as I'm not at a true point,
+
+47
+00:01:44,410 --> 00:01:47,050
+while this flag is false, I'm going
+
+48
+00:01:47,050 --> 00:01:52,440
+to let j go from one up to the length of the list.
+
+49
+00:01:52,440 --> 00:01:55,650
+And I'm just going to compare successive elements.
+
+50
+00:01:55,650 --> 00:02:00,130
+And if, in fact, I have a case where the element I want to do
+
+51
+00:02:00,130 --> 00:02:05,860
+is bigger than I want, I set the flag to false, and I do a swap.
+
+52
+00:02:05,860 --> 00:02:08,520
+And then I go back into it again.
+
+53
+00:02:08,520 --> 00:02:10,630
+So that inner loop's doing the comparisons.
+
+54
+00:02:10,630 --> 00:02:13,470
+The outer while loop is going to be used for multiple passes
+
+55
+00:02:13,470 --> 00:02:16,380
+until there's nothing left to be swapped.
+
+56
+00:02:16,380 --> 00:02:20,010
+What I'm interested in is, what's the complexity of this?
+
+57
+00:02:20,010 --> 00:02:23,460
+And that says, basically, I have to say, how many times do I
+
+58
+00:02:23,460 --> 00:02:24,670
+go through this loop?
+
+59
+00:02:24,670 --> 00:02:27,750
+It could be, in fact-- I'm sorry.
+
+60
+00:02:27,750 --> 00:02:29,250
+To go down the loop, I have to do it
+
+61
+00:02:29,250 --> 00:02:31,541
+n times because I've got to look at all of the elements
+
+62
+00:02:31,541 --> 00:02:32,550
+and do the swap.
+
+63
+00:02:32,550 --> 00:02:34,110
+Inside of here, there's extra work,
+
+64
+00:02:34,110 --> 00:02:36,068
+which is why it's not as efficient because I've
+
+65
+00:02:36,068 --> 00:02:37,580
+got to do some number of operations.
+
+66
+00:02:37,580 --> 00:02:40,080
+But that's constant for every time through the loop.
+
+67
+00:02:40,080 --> 00:02:44,010
+So I've got an order n, or length of the list processing
+
+68
+00:02:44,010 --> 00:02:45,630
+here to go through the loop.
+
+69
+00:02:45,630 --> 00:02:47,640
+And then how many times do I do it?
+
+70
+00:02:47,640 --> 00:02:48,890
+If I'm lucky, not very many.
+
+71
+00:02:48,890 --> 00:02:52,060
+But in general, it's probably order length n.
+
+72
+00:02:52,060 --> 00:02:54,290
+And so I can see what the order of growth here is.
+
+73
+00:02:54,290 --> 00:02:58,140
+It's n squared, because I've got to do n minus 1 comparisons,
+
+74
+00:02:58,140 --> 00:03:00,950
+and I've got to do n minus 1 times.
+
+75
+00:03:00,950 --> 00:03:02,920
+I can look at a little example of this.
+
+76
+00:03:02,920 --> 00:03:05,220
+I've got a version of a bubble sort on my machine.
+
+77
+00:03:05,220 --> 00:03:06,755
+I'm going to load it in.
+
+78
+00:03:06,755 --> 00:03:08,130
+And what I want to do is actually
+
+79
+00:03:08,130 --> 00:03:11,170
+print out what the version of the list is at each pass
+
+80
+00:03:11,170 --> 00:03:13,510
+through the loop so that you can see what happens here.
+
+81
+00:03:13,510 --> 00:03:20,490
+And so if I call a bubble sort on the little test list,
+
+82
+00:03:20,490 --> 00:03:23,260
+you can see what it does.
+
+83
+00:03:23,260 --> 00:03:26,170
+When I enter, the list is just in some arbitrary order.
+
+84
+00:03:26,170 --> 00:03:27,770
+After I've gone through the list once,
+
+85
+00:03:27,770 --> 00:03:29,530
+you'll notice number 9 is at the end.
+
+86
+00:03:29,530 --> 00:03:33,210
+After I've gone through the list twice, 5, 6, 8, and 9
+
+87
+00:03:33,210 --> 00:03:34,370
+are all in the right spot.
+
+88
+00:03:34,370 --> 00:03:35,047
+So I got lucky.
+
+89
+00:03:35,047 --> 00:03:37,130
+Some of them happen to be just in the right place.
+
+90
+00:03:37,130 --> 00:03:39,350
+Although what I was really doing was bubbling 8
+
+91
+00:03:39,350 --> 00:03:41,060
+to its position in the list.
+
+92
+00:03:41,060 --> 00:03:44,060
+And so you see here, I don't actually do this end times.
+
+93
+00:03:44,060 --> 00:03:47,110
+But the complexity is still order n times
+
+94
+00:03:47,110 --> 00:03:50,290
+through the process, and order n times within each loop
+
+95
+00:03:50,290 --> 00:03:52,200
+in order to get out the solution I want.
+
+96
+00:03:52,200 --> 00:03:54,060
+So a quadratic solution.
+
+97
+00:03:54,060 --> 00:03:58,110
+Clean little code, not as efficient as I would like.
+
