@@ -1,0 +1,756 @@
+0
+00:00:00,000 --> 00:00:00,610
+...
+
+1
+00:00:00,610 --> 00:00:02,890
+So we've seen we can overlay plots.
+
+2
+00:00:02,890 --> 00:00:05,730
+We can do plots side by side in different windows.
+
+3
+00:00:05,730 --> 00:00:08,400
+We can control the scales on the axes
+
+4
+00:00:08,400 --> 00:00:10,650
+in order to zero in on how we want
+
+5
+00:00:10,650 --> 00:00:12,570
+to do comparisons of displays.
+
+6
+00:00:12,570 --> 00:00:13,530
+We can add labels.
+
+7
+00:00:13,530 --> 00:00:14,450
+We can add legends.
+
+8
+00:00:14,450 --> 00:00:15,590
+We can add titles.
+
+9
+00:00:15,590 --> 00:00:17,390
+We're in good shape.
+
+10
+00:00:17,390 --> 00:00:19,370
+Let's think now about how we might actually
+
+11
+00:00:19,370 --> 00:00:21,120
+control even more of the parameters
+
+12
+00:00:21,120 --> 00:00:22,830
+of the different displays in order
+
+13
+00:00:22,830 --> 00:00:25,520
+to better highlight different aspects of what
+
+14
+00:00:25,520 --> 00:00:27,100
+we're trying to plot.
+
+15
+00:00:27,100 --> 00:00:29,220
+So we might want to change the color
+
+16
+00:00:29,220 --> 00:00:30,780
+ourselves of what we're drawing in
+
+17
+00:00:30,780 --> 00:00:32,820
+or the style of the datasets.
+
+18
+00:00:32,820 --> 00:00:34,880
+We might want to change the width of the lines
+
+19
+00:00:34,880 --> 00:00:37,220
+to highlight one more strongly than another.
+
+20
+00:00:37,220 --> 00:00:40,415
+And we might actually want to do subplots inside of a plot.
+
+21
+00:00:40,415 --> 00:00:42,040
+Let's look at all three of these things
+
+22
+00:00:42,040 --> 00:00:46,410
+as different ways of using plots to visualize data.
+
+23
+00:00:46,410 --> 00:00:48,995
+I'm going to start with changing the data display.
+
+24
+00:00:48,995 --> 00:00:51,770
+And in particular, I'm going to go back to my similar examples.
+
+25
+00:00:51,770 --> 00:00:54,020
+There's a lot of code here, but we've seen most of it.
+
+26
+00:00:54,020 --> 00:00:56,580
+I'm going to open up a comparison of a window that's
+
+27
+00:00:56,580 --> 00:00:58,350
+going to compare linear and quadratic.
+
+28
+00:00:58,350 --> 00:01:00,717
+I'm going to clear it as I did before.
+
+29
+00:01:00,717 --> 00:01:02,300
+And now when I'm going to do the plot,
+
+30
+00:01:02,300 --> 00:01:05,050
+I'm going to add in one more piece.
+
+31
+00:01:05,050 --> 00:01:08,470
+I'm again plotting my samples against linear or my samples
+
+32
+00:01:08,470 --> 00:01:09,650
+against quadratic.
+
+33
+00:01:09,650 --> 00:01:11,870
+We've seen the labels, as before.
+
+34
+00:01:11,870 --> 00:01:14,120
+The new thing I've added here are
+
+35
+00:01:14,120 --> 00:01:17,910
+strings that specify the color and the style on which I
+
+36
+00:01:17,910 --> 00:01:19,880
+want to do the display.
+
+37
+00:01:19,880 --> 00:01:21,210
+They're a little terse.
+
+38
+00:01:21,210 --> 00:01:22,282
+That's OK.
+
+39
+00:01:22,282 --> 00:01:23,990
+I'll let you go look at the documentation
+
+40
+00:01:23,990 --> 00:01:24,830
+to see your choices.
+
+41
+00:01:24,830 --> 00:01:28,570
+But the first part of the string says what color to use.
+
+42
+00:01:28,570 --> 00:01:30,850
+B, I believe, is Blue.
+
+43
+00:01:30,850 --> 00:01:32,230
+R is Red.
+
+44
+00:01:32,230 --> 00:01:33,740
+G is Green.
+
+45
+00:01:33,740 --> 00:01:35,370
+R, again, is red.
+
+46
+00:01:35,370 --> 00:01:37,440
+K is black, for reasons I don't know,
+
+47
+00:01:37,440 --> 00:01:39,380
+but the designers of pylab do.
+
+48
+00:01:39,380 --> 00:01:42,140
+Basically you can look up the choices of those.
+
+49
+00:01:42,140 --> 00:01:44,520
+The second part of the string lets
+
+50
+00:01:44,520 --> 00:01:47,600
+us decide how we're going to do the display.
+
+51
+00:01:47,600 --> 00:01:50,080
+So a single dash is a line.
+
+52
+00:01:50,080 --> 00:01:52,040
+A 0 is a circle.
+
+53
+00:01:52,040 --> 00:01:55,020
+A little upper arrow or caret is a triangle.
+
+54
+00:01:55,020 --> 00:01:58,420
+And two dashes is literally a dash.
+
+55
+00:01:58,420 --> 00:02:00,300
+The idea is that the third argument
+
+56
+00:02:00,300 --> 00:02:02,700
+is going to let you specify a string that says, here's
+
+57
+00:02:02,700 --> 00:02:04,520
+the color and style to use.
+
+58
+00:02:04,520 --> 00:02:06,710
+I can still add in other keywords like "label"
+
+59
+00:02:06,710 --> 00:02:08,229
+to override this.
+
+60
+00:02:08,229 --> 00:02:09,729
+With that in mind, let's see what
+
+61
+00:02:09,729 --> 00:02:12,124
+happens if we do the display.
+
+62
+00:02:12,124 --> 00:02:13,930
+Hah, cool.
+
+63
+00:02:13,930 --> 00:02:18,180
+And notice, by the way, the legends nicely reflect this.
+
+64
+00:02:18,180 --> 00:02:20,380
+They also say, here is what we're displaying here.
+
+65
+00:02:20,380 --> 00:02:23,420
+So now I've got a dotted line compared to a straight line.
+
+66
+00:02:23,420 --> 00:02:26,660
+I've got a dashed line compared to a sequence of triangles.
+
+67
+00:02:26,660 --> 00:02:29,380
+I'll let you do the exploration of other kinds of variations
+
+68
+00:02:29,380 --> 00:02:30,310
+you could try here.
+
+69
+00:02:30,310 --> 00:02:31,950
+But you've got some control in how
+
+70
+00:02:31,950 --> 00:02:35,177
+you want to highlight how you're actually visualizing things.
+
+71
+00:02:35,177 --> 00:02:37,510
+In a little while, we're going to come back and use this
+
+72
+00:02:37,510 --> 00:02:40,170
+as an example to see how this is really handy to capture
+
+73
+00:02:40,170 --> 00:02:42,240
+different aspects of data.
+
+74
+00:02:42,240 --> 00:02:43,740
+But you can see I've got the ability
+
+75
+00:02:43,740 --> 00:02:46,120
+to change the visualization.
+
+76
+00:02:46,120 --> 00:02:49,770
+So I can change the style in which I display things.
+
+77
+00:02:49,770 --> 00:02:52,090
+What else could I change?
+
+78
+00:02:52,090 --> 00:02:55,530
+The second thing I could change would be actually the line
+
+79
+00:02:55,530 --> 00:02:57,560
+width-- if you like, how thick a pen
+
+80
+00:02:57,560 --> 00:03:00,020
+or how thin a pen am I using to draw these?
+
+81
+00:03:00,020 --> 00:03:02,170
+And here you can see I'm simply adding
+
+82
+00:03:02,170 --> 00:03:05,780
+in now one more keyword-- "linewidth," not surprisingly--
+
+83
+00:03:05,780 --> 00:03:10,210
+and I'm giving it a size from 2, 3, 4, and 5.
+
+84
+00:03:10,210 --> 00:03:12,484
+This is referring to the size of the pixels,
+
+85
+00:03:12,484 --> 00:03:13,900
+if you like, on the graph that I'm
+
+86
+00:03:13,900 --> 00:03:17,810
+using to do the display Everything else here is
+
+87
+00:03:17,810 --> 00:03:19,350
+the same as before.
+
+88
+00:03:19,350 --> 00:03:22,380
+Let's see what happens when I do that.
+
+89
+00:03:22,380 --> 00:03:22,880
+Yeah.
+
+90
+00:03:22,880 --> 00:03:24,150
+Very nice.
+
+91
+00:03:24,150 --> 00:03:26,930
+Now you can see again the legend picks it up.
+
+92
+00:03:26,930 --> 00:03:29,130
+Notice over here, exponential is being--
+
+93
+00:03:29,130 --> 00:03:33,050
+is a very thick line compared to cubic, compared to quadratic,
+
+94
+00:03:33,050 --> 00:03:34,534
+compared to linear.
+
+95
+00:03:34,534 --> 00:03:36,200
+And it's simply another example of being
+
+96
+00:03:36,200 --> 00:03:40,550
+able to change the aspects of the display to highlight things
+
+97
+00:03:40,550 --> 00:03:41,640
+I want to highlight.
+
+98
+00:03:41,640 --> 00:03:43,430
+I could have pick something different.
+
+99
+00:03:43,430 --> 00:03:47,260
+This is just a nice way of showing it off.
+
+100
+00:03:47,260 --> 00:03:48,690
+The last thing I want to show you
+
+101
+00:03:48,690 --> 00:03:51,780
+in terms of controlling displays takes
+
+102
+00:03:51,780 --> 00:03:55,960
+a little bit of explanation, and that is to use subplots.
+
+103
+00:03:55,960 --> 00:03:59,220
+So some of this is as before-- creating a figure,
+
+104
+00:03:59,220 --> 00:04:00,420
+I'm clearing it.
+
+105
+00:04:00,420 --> 00:04:03,570
+But now I'm going to give it a call to subplot.
+
+106
+00:04:03,570 --> 00:04:05,530
+And the subplot takes as arguments
+
+107
+00:04:05,530 --> 00:04:07,930
+three numbers which will look a little bit interesting.
+
+108
+00:04:07,930 --> 00:04:10,410
+So let me tell you what those three numbers are.
+
+109
+00:04:10,410 --> 00:04:13,030
+Those arguments are the number of rows
+
+110
+00:04:13,030 --> 00:04:15,440
+and the number of columns inside of the plot
+
+111
+00:04:15,440 --> 00:04:18,100
+and then which location to use.
+
+112
+00:04:18,100 --> 00:04:21,620
+So on these top two, I'm basically saying, inside
+
+113
+00:04:21,620 --> 00:04:25,370
+of this figure-- same figure-- I want you to display something
+
+114
+00:04:25,370 --> 00:04:29,670
+with two rows and one column, so two graphs like this.
+
+115
+00:04:29,670 --> 00:04:31,980
+Down here, I'm saying, do something
+
+116
+00:04:31,980 --> 00:04:34,599
+with one row and two columns, so something
+
+117
+00:04:34,599 --> 00:04:35,890
+that's going to look like that.
+
+118
+00:04:35,890 --> 00:04:37,740
+We'll see that in a second.
+
+119
+00:04:37,740 --> 00:04:41,360
+And then the third argument is saying, which location am I
+
+120
+00:04:41,360 --> 00:04:44,877
+using in terms of that display?
+
+121
+00:04:44,877 --> 00:04:46,460
+I'm going to do one other things here.
+
+122
+00:04:46,460 --> 00:04:48,460
+I'm going to go back to that idea of controlling
+
+123
+00:04:48,460 --> 00:04:50,890
+the range or the limit on the y-axis,
+
+124
+00:04:50,890 --> 00:04:54,170
+because I know that these are of different sizes-- in this case,
+
+125
+00:04:54,170 --> 00:04:58,910
+setting it to 900; down here, setting it to 400.
+
+126
+00:04:58,910 --> 00:05:01,710
+And with that in mind, I'm going to actually go
+
+127
+00:05:01,710 --> 00:05:03,390
+ahead and do the display.
+
+128
+00:05:03,390 --> 00:05:08,360
+Now notice I've got a call to ylim after each of the subplots
+
+129
+00:05:08,360 --> 00:05:10,370
+in order to try and do that kind of a display.
+
+130
+00:05:10,370 --> 00:05:14,391
+I'm setting the limit within each subplot.
+
+131
+00:05:14,391 --> 00:05:16,640
+I don't have to always do that, but that's a handy way
+
+132
+00:05:16,640 --> 00:05:18,514
+to just make sure I'm being careful about how
+
+133
+00:05:18,514 --> 00:05:20,900
+I'm doing those kinds of plots.
+
+134
+00:05:20,900 --> 00:05:21,940
+OK.
+
+135
+00:05:21,940 --> 00:05:24,590
+Let's see what it looks like.
+
+136
+00:05:24,590 --> 00:05:27,030
+Ah, exactly as I described-- in the first case,
+
+137
+00:05:27,030 --> 00:05:30,420
+I've got one column and two rows.
+
+138
+00:05:30,420 --> 00:05:33,900
+In the second case, I've got one row and two columns.
+
+139
+00:05:33,900 --> 00:05:36,640
+And the reason I picked setting the limits
+
+140
+00:05:36,640 --> 00:05:39,520
+is so we can see the comparison here in the growth,
+
+141
+00:05:39,520 --> 00:05:42,960
+because it's the same y in both of these cases.
+
+142
+00:05:42,960 --> 00:05:45,670
+And similarly, over here, I've picked the same y
+
+143
+00:05:45,670 --> 00:05:47,884
+for both of those cases.
+
+144
+00:05:47,884 --> 00:05:49,550
+You can also see a personal choice here.
+
+145
+00:05:49,550 --> 00:05:51,900
+I don't particularly like this style,
+
+146
+00:05:51,900 --> 00:05:54,920
+because I started getting overlaps of values
+
+147
+00:05:54,920 --> 00:05:56,940
+on top of the actual graphs.
+
+148
+00:05:56,940 --> 00:06:00,130
+I find this comparison a little bit better to use,
+
+149
+00:06:00,130 --> 00:06:01,710
+but it's your choice.
+
+150
+00:06:01,710 --> 00:06:03,630
+The main point is, I've got the ability
+
+151
+00:06:03,630 --> 00:06:06,837
+to compare things side by side or top to bottom.
+
+152
+00:06:06,837 --> 00:06:08,420
+My choice, but another way of thinking
+
+153
+00:06:08,420 --> 00:06:13,000
+about using aspects of plotting to visualize the data.
+
+154
+00:06:13,000 --> 00:06:15,380
+Now we've seen a lot of examples of actually doing
+
+155
+00:06:15,380 --> 00:06:18,610
+different things, looking at these different-- four
+
+156
+00:06:18,610 --> 00:06:22,740
+very simple orders of growth-- linear, quadratic, cubic,
+
+157
+00:06:22,740 --> 00:06:24,410
+and exponential.
+
+158
+00:06:24,410 --> 00:06:27,430
+Let's now switch gears and think about using
+
+159
+00:06:27,430 --> 00:06:29,870
+the tools we've seen here to actually think about,
+
+160
+00:06:29,870 --> 00:06:31,920
+how do I visualize data, and think
+
+161
+00:06:31,920 --> 00:06:35,780
+about computation as part of that visualization process.
+
+162
+00:06:35,780 --> 00:06:38,170
+Before we get to that idea of doing that visualization,
+
+163
+00:06:38,170 --> 00:06:39,669
+though, let's look at one last thing
+
+164
+00:06:39,669 --> 00:06:41,890
+that we can do in terms of changing things here,
+
+165
+00:06:41,890 --> 00:06:44,780
+and that's to change the scales.
+
+166
+00:06:44,780 --> 00:06:47,250
+And changing the scales here basically
+
+167
+00:06:47,250 --> 00:06:51,110
+says, if I've got something that actually grows really rapidly,
+
+168
+00:06:51,110 --> 00:06:53,560
+rather than plotting them linear and linear,
+
+169
+00:06:53,560 --> 00:06:55,460
+I could plot them where one of the axes
+
+170
+00:06:55,460 --> 00:06:57,510
+is done on a log scale.
+
+171
+00:06:57,510 --> 00:07:01,600
+And I use the call y-scale, giving it the argument log,
+
+172
+00:07:01,600 --> 00:07:03,330
+to tell me that I want to use a log
+
+173
+00:07:03,330 --> 00:07:08,560
+scale rather than a linear scale as I do this actual plotting.
+
+174
+00:07:08,560 --> 00:07:10,840
+Everything else is as before.
+
+175
+00:07:10,840 --> 00:07:13,430
+Now when I plot them, I can see I
+
+176
+00:07:13,430 --> 00:07:16,650
+can compare simply linear comparison
+
+177
+00:07:16,650 --> 00:07:19,800
+against logarithmic comparison here.
+
+178
+00:07:19,800 --> 00:07:22,450
+The reason this is handy is something like exponential
+
+179
+00:07:22,450 --> 00:07:26,320
+grows so quickly that it really swamps out things very rapidly.
+
+180
+00:07:26,320 --> 00:07:29,800
+And you can actually see here, even with this rapid rise, when
+
+181
+00:07:29,800 --> 00:07:32,030
+I plot things on a log scale, which
+
+182
+00:07:32,030 --> 00:07:34,960
+is each incremental step here is an increase
+
+183
+00:07:34,960 --> 00:07:38,310
+of an order of magnitude, I get a different way of seeing these
+
+184
+00:07:38,310 --> 00:07:41,920
+so that now the exponential is linear on a log scale,
+
+185
+00:07:41,920 --> 00:07:44,560
+as it should be, and the cubic starts
+
+186
+00:07:44,560 --> 00:07:47,270
+to drop off much more rapidly.
+
+187
+00:07:47,270 --> 00:07:49,270
+So that idea of being able to change scales
+
+188
+00:07:49,270 --> 00:07:53,970
+lets me focus in on orders of growth in a different way.
+

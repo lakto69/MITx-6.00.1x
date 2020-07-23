@@ -1,0 +1,392 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:02,700
+So our goal is actually to explore
+
+2
+00:00:02,700 --> 00:00:05,940
+how visualization plotting helps us think about data to see
+
+3
+00:00:05,940 --> 00:00:07,700
+variations in data.
+
+4
+00:00:07,700 --> 00:00:09,720
+So let's start building on that.
+
+5
+00:00:09,720 --> 00:00:11,562
+Suppose I want to display all four
+
+6
+00:00:11,562 --> 00:00:13,800
+of the graphs of the different orders of growth
+
+7
+00:00:13,800 --> 00:00:15,290
+all at the same time.
+
+8
+00:00:15,290 --> 00:00:17,910
+A simple way to do it-- I just call plot
+
+9
+00:00:17,910 --> 00:00:20,620
+with each of those lists as the y
+
+10
+00:00:20,620 --> 00:00:25,310
+values-- the linear one, the quadratic one, the cubic one,
+
+11
+00:00:25,310 --> 00:00:26,720
+and the exponential.
+
+12
+00:00:26,720 --> 00:00:28,536
+And you'll know I'm keeping the same x
+
+13
+00:00:28,536 --> 00:00:30,910
+values here because I want to have the same x-coordinate.
+
+14
+00:00:30,910 --> 00:00:32,951
+I just want to see what the different graphs look
+
+15
+00:00:32,951 --> 00:00:35,100
+like when I call those.
+
+16
+00:00:35,100 --> 00:00:37,510
+So if I were to execute this in my computer,
+
+17
+00:00:37,510 --> 00:00:41,228
+I get a display like this.
+
+18
+00:00:41,228 --> 00:00:44,390
+Hmm, not quite what I wanted.
+
+19
+00:00:44,390 --> 00:00:46,690
+And that's part of what we want you to see.
+
+20
+00:00:46,690 --> 00:00:50,140
+You can see here that there are at least three graphs overlaid.
+
+21
+00:00:50,140 --> 00:00:52,737
+You can guess that this one out here is probably
+
+22
+00:00:52,737 --> 00:00:53,570
+the exponential one.
+
+23
+00:00:53,570 --> 00:00:54,960
+It's growing really fast.
+
+24
+00:00:54,960 --> 00:00:57,200
+That is probably the cubic one.
+
+25
+00:00:57,200 --> 00:00:59,550
+But you'll notice down at the bottom, what happened
+
+26
+00:00:59,550 --> 00:01:01,410
+to the other two graphs?
+
+27
+00:01:01,410 --> 00:01:04,730
+Well, in fact, it's impossible to see the linear graph
+
+28
+00:01:04,730 --> 00:01:06,730
+here or even, frankly, the quadratic one.
+
+29
+00:01:06,730 --> 00:01:09,590
+If you look closely, you can see a very slight red line
+
+30
+00:01:09,590 --> 00:01:10,670
+down there.
+
+31
+00:01:10,670 --> 00:01:15,370
+And that's because the scales of these graphs change so rapidly.
+
+32
+00:01:15,370 --> 00:01:19,970
+Remember, I'm graphing things with an x-axis from 0 to 29.
+
+33
+00:01:19,970 --> 00:01:22,310
+So the linear graph only goes up to 29.
+
+34
+00:01:22,310 --> 00:01:26,206
+And notice the scale here goes up to 140,000.
+
+35
+00:01:26,206 --> 00:01:27,830
+That's part of what we want to look at.
+
+36
+00:01:27,830 --> 00:01:31,120
+How do we change things so we can actually visualize data?
+
+37
+00:01:31,120 --> 00:01:34,120
+And the first thing we can take from this is, boy, exponential
+
+38
+00:01:34,120 --> 00:01:36,790
+grows really fast and certainly, a great deal
+
+39
+00:01:36,790 --> 00:01:39,020
+faster than linear.
+
+40
+00:01:39,020 --> 00:01:41,630
+OK, how might we think about doing the display so we can
+
+41
+00:01:41,630 --> 00:01:44,397
+see things a little bit better?
+
+42
+00:01:44,397 --> 00:01:45,980
+As we said, it's not helpful because I
+
+43
+00:01:45,980 --> 00:01:48,190
+can't see things because the biggest plot just
+
+44
+00:01:48,190 --> 00:01:49,590
+grows too fast.
+
+45
+00:01:49,590 --> 00:01:51,880
+So could I graph each one separately?
+
+46
+00:01:51,880 --> 00:01:53,500
+And the answer is sure.
+
+47
+00:01:53,500 --> 00:01:56,672
+I'm simply going to call another function called figure.
+
+48
+00:01:56,672 --> 00:01:58,420
+And I'm going to give it an argument.
+
+49
+00:01:58,420 --> 00:02:01,920
+And that argument simply gives a name to this figure.
+
+50
+00:02:01,920 --> 00:02:03,520
+It's going to allow me to generate
+
+51
+00:02:03,520 --> 00:02:06,952
+different windows, different displays, for different graphs.
+
+52
+00:02:06,952 --> 00:02:08,910
+And in fact, I'm going to be able to refer back
+
+53
+00:02:08,910 --> 00:02:12,090
+to that figure if I want to do other things inside of it.
+
+54
+00:02:12,090 --> 00:02:15,370
+Let's look at how that might help my problem here.
+
+55
+00:02:15,370 --> 00:02:19,130
+The idea is that when I call plt.figure,
+
+56
+00:02:19,130 --> 00:02:21,690
+if I call it without argument for the first time,
+
+57
+00:02:21,690 --> 00:02:24,630
+it's going to generate a new display with that name.
+
+58
+00:02:24,630 --> 00:02:27,520
+If a display already exists with that name,
+
+59
+00:02:27,520 --> 00:02:30,600
+it's going to reopen it and let me do additional processing
+
+60
+00:02:30,600 --> 00:02:31,910
+inside of it.
+
+61
+00:02:31,910 --> 00:02:34,340
+And let's look at an example.
+
+62
+00:02:34,340 --> 00:02:39,357
+So here are my four calls to my plots as I did before.
+
+63
+00:02:39,357 --> 00:02:41,190
+In the previous case, I just called them all
+
+64
+00:02:41,190 --> 00:02:43,160
+and they overlaid all those plots inside
+
+65
+00:02:43,160 --> 00:02:45,410
+of the same graph or display.
+
+66
+00:02:45,410 --> 00:02:49,820
+But now, I've added a call in between each one of them,
+
+67
+00:02:49,820 --> 00:02:52,380
+saying, in the figure with name lin,
+
+68
+00:02:52,380 --> 00:02:53,960
+I'm going to do the linear one.
+
+69
+00:02:53,960 --> 00:02:56,540
+In a new figure with name quad, I'm
+
+70
+00:02:56,540 --> 00:03:00,200
+going to do the quadratic one, and similarly for cube and expo
+
+71
+00:03:00,200 --> 00:03:01,470
+for exponential.
+
+72
+00:03:01,470 --> 00:03:04,570
+I'm creating four different displays, each one
+
+73
+00:03:04,570 --> 00:03:06,370
+with its own plot inside.
+
+74
+00:03:06,370 --> 00:03:09,760
+So that lets us then see things like this.
+
+75
+00:03:09,760 --> 00:03:12,840
+Here, calling plt.figure figure of lin
+
+76
+00:03:12,840 --> 00:03:16,260
+opened up a window, or a graph, with the name lin,
+
+77
+00:03:16,260 --> 00:03:19,580
+inside of which I plotted my samples and my linear.
+
+78
+00:03:19,580 --> 00:03:22,290
+And I get that nice graph of a straight linear line
+
+79
+00:03:22,290 --> 00:03:24,430
+with the range only going up to 30
+
+80
+00:03:24,430 --> 00:03:26,910
+because that was the maximum size of something
+
+81
+00:03:26,910 --> 00:03:29,240
+inside of that graph.
+
+82
+00:03:29,240 --> 00:03:32,380
+When I call plt.figure with expo,
+
+83
+00:03:32,380 --> 00:03:35,460
+that has now a new window with the name expo inside of it.
+
+84
+00:03:35,460 --> 00:03:39,170
+And when I call plot of my samples and my exponential,
+
+85
+00:03:39,170 --> 00:03:41,710
+it gives me a different graph.
+
+86
+00:03:41,710 --> 00:03:43,620
+The range here is automatically set
+
+87
+00:03:43,620 --> 00:03:45,870
+to be the largest value I need to show the same thing.
+
+88
+00:03:45,870 --> 00:03:47,802
+That's 140,000.
+
+89
+00:03:47,802 --> 00:03:49,510
+But now, we can compare those two graphs.
+
+90
+00:03:49,510 --> 00:03:52,690
+I can see the effects of these two different displays
+
+91
+00:03:52,690 --> 00:03:55,480
+inside of each window without having them, if you like,
+
+92
+00:03:55,480 --> 00:03:58,050
+buried one very tiny inside of a second one
+
+93
+00:03:58,050 --> 00:04:00,050
+inside of the same window.
+
+94
+00:04:00,050 --> 00:04:01,830
+So I could plot on separate graphs.
+
+95
+00:04:01,830 --> 00:04:02,950
+That's nice.
+
+96
+00:04:02,950 --> 00:04:04,530
+What else might I do?
+
+97
+00:04:04,530 --> 00:04:07,360
+Well, we'll look at that in the next section.
+

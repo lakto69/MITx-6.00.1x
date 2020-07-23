@@ -1,0 +1,808 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:03,200
+Today, we're going to talk about a different topic,
+
+2
+00:00:03,200 --> 00:00:06,310
+but one that we hope is going to be very valuable to you.
+
+3
+00:00:06,310 --> 00:00:09,730
+And that's the topic of how to visualize data.
+
+4
+00:00:09,730 --> 00:00:12,040
+To set the stage for it, let me remind you
+
+5
+00:00:12,040 --> 00:00:14,100
+that a couple of lectures ago, we
+
+6
+00:00:14,100 --> 00:00:18,020
+looked at examining orders of growth, complexity.
+
+7
+00:00:18,020 --> 00:00:20,440
+And there, the issue was worrying about
+
+8
+00:00:20,440 --> 00:00:22,930
+if I write two different algorithms to solve
+
+9
+00:00:22,930 --> 00:00:25,610
+the same problem but they come from different classes,
+
+10
+00:00:25,610 --> 00:00:27,610
+they're going to take different amounts of time.
+
+11
+00:00:27,610 --> 00:00:30,040
+They're going to take different amounts of resources.
+
+12
+00:00:30,040 --> 00:00:32,270
+And our focus was understanding those choices
+
+13
+00:00:32,270 --> 00:00:35,450
+between a linear algorithm, a quadratic algorithm,
+
+14
+00:00:35,450 --> 00:00:39,150
+and, God help us, an exponential algorithm.
+
+15
+00:00:39,150 --> 00:00:41,180
+We could look at that just looking at numbers.
+
+16
+00:00:41,180 --> 00:00:43,920
+We could look at that looking at mathematical expressions.
+
+17
+00:00:43,920 --> 00:00:46,960
+But we also chose to look at it by looking at graphs.
+
+18
+00:00:46,960 --> 00:00:49,210
+Using graphs to help us visualize
+
+19
+00:00:49,210 --> 00:00:51,740
+what are the differences in cost between
+
+20
+00:00:51,740 --> 00:00:53,930
+a quadratic or exponential algorithm
+
+21
+00:00:53,930 --> 00:00:56,830
+and a linear or logarithmic algorithm.
+
+22
+00:00:56,830 --> 00:00:59,760
+That use of graphs gave us an intuitive sense
+
+23
+00:00:59,760 --> 00:01:03,350
+of the differences between those choices.
+
+24
+00:01:03,350 --> 00:01:04,269
+That's valuable.
+
+25
+00:01:04,269 --> 00:01:05,770
+We're going to come back to that.
+
+26
+00:01:05,770 --> 00:01:07,580
+But it also let us do something else.
+
+27
+00:01:07,580 --> 00:01:09,640
+And in particular, it was an example
+
+28
+00:01:09,640 --> 00:01:11,970
+of leveraging an existing library.
+
+29
+00:01:11,970 --> 00:01:13,500
+Something that was provided to us
+
+30
+00:01:13,500 --> 00:01:17,190
+and just using those procedures, rather than writing procedures
+
+31
+00:01:17,190 --> 00:01:18,730
+from scratch.
+
+32
+00:01:18,730 --> 00:01:20,200
+That's also a handy tool.
+
+33
+00:01:20,200 --> 00:01:23,842
+And it's something that modern computer scientists use a lot.
+
+34
+00:01:23,842 --> 00:01:26,050
+In the old days, you might write everything yourself.
+
+35
+00:01:26,050 --> 00:01:28,984
+Today, other people have done a lot of work for you.
+
+36
+00:01:28,984 --> 00:01:30,900
+And so what we want to look at in this lecture
+
+37
+00:01:30,900 --> 00:01:33,780
+is the idea of using existing libraries
+
+38
+00:01:33,780 --> 00:01:37,582
+to help us examine algorithms, procedures, data,
+
+39
+00:01:37,582 --> 00:01:39,040
+and help us think about how we want
+
+40
+00:01:39,040 --> 00:01:41,160
+to write our own procedures building on top
+
+41
+00:01:41,160 --> 00:01:43,080
+of those libraries.
+
+42
+00:01:43,080 --> 00:01:45,020
+It turns out that Python provides--
+
+43
+00:01:45,020 --> 00:01:47,410
+or most Python implementations provide a set
+
+44
+00:01:47,410 --> 00:01:49,290
+of nice libraries for you.
+
+45
+00:01:49,290 --> 00:01:51,340
+Could be libraries for graphing.
+
+46
+00:01:51,340 --> 00:01:53,890
+Could be libraries for numerical computation.
+
+47
+00:01:53,890 --> 00:01:56,340
+Could be libraries for stochastic computation.
+
+48
+00:01:56,340 --> 00:01:57,814
+And many other things.
+
+49
+00:01:57,814 --> 00:01:59,730
+And we're going to look at one example of that
+
+50
+00:01:59,730 --> 00:02:02,910
+today to explore the idea of using existing library
+
+51
+00:02:02,910 --> 00:02:09,180
+procedures to guide processing and exploration of data.
+
+52
+00:02:09,180 --> 00:02:12,546
+The library we're going to use is called pylab.
+
+53
+00:02:12,546 --> 00:02:14,420
+Now, you've already seen how to import things
+
+54
+00:02:14,420 --> 00:02:17,160
+into a computing environment, you just say import.
+
+55
+00:02:17,160 --> 00:02:19,330
+Here, I'm going to use a slightly different version
+
+56
+00:02:19,330 --> 00:02:19,830
+of it.
+
+57
+00:02:19,830 --> 00:02:21,830
+I'm going to import pylab, but I'm
+
+58
+00:02:21,830 --> 00:02:25,800
+going to say in particular, import pylab as PLT,
+
+59
+00:02:25,800 --> 00:02:27,550
+short for plot.
+
+60
+00:02:27,550 --> 00:02:30,290
+That's going to allow me to reference any of those library
+
+61
+00:02:30,290 --> 00:02:34,760
+procedures with their name, but preceded by PLT and dot.
+
+62
+00:02:34,760 --> 00:02:37,000
+Just lets me distinguish in my own shorthand,
+
+63
+00:02:37,000 --> 00:02:38,580
+this is a plotting function.
+
+64
+00:02:38,580 --> 00:02:41,170
+I could have picked anything to do that, PLT
+
+65
+00:02:41,170 --> 00:02:44,190
+seems like a nice choice.
+
+66
+00:02:44,190 --> 00:02:47,360
+That gives me then, access to a range of graphing or plotting
+
+67
+00:02:47,360 --> 00:02:47,990
+procedures.
+
+68
+00:02:47,990 --> 00:02:50,780
+And we're going to look at those in a second.
+
+69
+00:02:50,780 --> 00:02:52,720
+In this lecture, I'm just going to look
+
+70
+00:02:52,720 --> 00:02:54,240
+at some simple examples.
+
+71
+00:02:54,240 --> 00:02:56,350
+There's lots of wonderful additional information
+
+72
+00:02:56,350 --> 00:02:59,510
+available in documentation associated with pylab.
+
+73
+00:02:59,510 --> 00:03:01,480
+I encourage you to go look at that.
+
+74
+00:03:01,480 --> 00:03:03,020
+And indeed, if you choose to take
+
+75
+00:03:03,020 --> 00:03:04,600
+the second part of this course, you
+
+76
+00:03:04,600 --> 00:03:07,910
+will see many other examples and details of these ideas.
+
+77
+00:03:07,910 --> 00:03:11,070
+Here, we want to look at the idea of using a library
+
+78
+00:03:11,070 --> 00:03:12,830
+and using plotting to help us think
+
+79
+00:03:12,830 --> 00:03:17,320
+about what's our algorithm actually telling us.
+
+80
+00:03:17,320 --> 00:03:20,970
+Let's start with a very basic function to do that.
+
+81
+00:03:20,970 --> 00:03:25,300
+The most basic function in pylab simply plots two lists,
+
+82
+00:03:25,300 --> 00:03:29,690
+taken as being the X and Y values of some function.
+
+83
+00:03:29,690 --> 00:03:32,330
+Other data structures are much more powerful.
+
+84
+00:03:32,330 --> 00:03:34,140
+And you'll see some nice examples of that
+
+85
+00:03:34,140 --> 00:03:36,080
+if you take the second part of the course.
+
+86
+00:03:36,080 --> 00:03:39,300
+In particular, using something called an array,
+
+87
+00:03:39,300 --> 00:03:42,210
+lets you do some processing very straightforwardly.
+
+88
+00:03:42,210 --> 00:03:45,450
+Here, we're just going to focus on lists.
+
+89
+00:03:45,450 --> 00:03:48,120
+First, let's generate some data.
+
+90
+00:03:48,120 --> 00:03:51,120
+So I'm going to create five little lists called
+
+91
+00:03:51,120 --> 00:03:54,620
+my samples, my linear, my quadratic, my cubic,
+
+92
+00:03:54,620 --> 00:03:56,500
+my exponential.
+
+93
+00:03:56,500 --> 00:03:58,380
+And I've got a little for loop down here
+
+94
+00:03:58,380 --> 00:04:01,260
+that's going to generate some samples for me.
+
+95
+00:04:01,260 --> 00:04:04,340
+Now if you look at this, I'm running with a range of I
+
+96
+00:04:04,340 --> 00:04:07,010
+from zero up to, but not equal to 30.
+
+97
+00:04:07,010 --> 00:04:10,750
+And I'm generating simply samples of I
+
+98
+00:04:10,750 --> 00:04:14,690
+and linear samples of I. It may seem a little redundant,
+
+99
+00:04:14,690 --> 00:04:17,140
+but I want to separate out the X values, which
+
+100
+00:04:17,140 --> 00:04:21,019
+are my samples, from a linear function over those X values,
+
+101
+00:04:21,019 --> 00:04:22,650
+which is my linear.
+
+102
+00:04:22,650 --> 00:04:26,330
+And you can see I'm computing quadratic, taking I squared.
+
+103
+00:04:26,330 --> 00:04:29,460
+I'm computing cubic, taking I cubed.
+
+104
+00:04:29,460 --> 00:04:32,510
+And I computing an exponential, taking 1.5
+
+105
+00:04:32,510 --> 00:04:34,230
+to the [? Ith ?] value.
+
+106
+00:04:34,230 --> 00:04:36,690
+So I'm generating a set of lists and I'm going to plot them
+
+107
+00:04:36,690 --> 00:04:38,360
+in a second.
+
+108
+00:04:38,360 --> 00:04:43,090
+Now since I motivated this by talking about orders of growth,
+
+109
+00:04:43,090 --> 00:04:44,970
+really, I should have used a value like 2
+
+110
+00:04:44,970 --> 00:04:45,970
+for my exponential.
+
+111
+00:04:45,970 --> 00:04:50,870
+So 2 to the 0, 2 to the 1, 2 to the 2, 2 to the 3, and so on.
+
+112
+00:04:50,870 --> 00:04:52,624
+Unfortunately, that grows so rapidly,
+
+113
+00:04:52,624 --> 00:04:54,790
+it's really going to make it difficult to visualize.
+
+114
+00:04:54,790 --> 00:04:58,030
+So I've taken a slightly smaller value of 1.5.
+
+115
+00:04:58,030 --> 00:05:00,690
+But you could use any value in here.
+
+116
+00:05:00,690 --> 00:05:04,550
+So this little for loop generates for me, 5 lists.
+
+117
+00:05:04,550 --> 00:05:09,240
+A list of the numbers from up to 29, which are my X values.
+
+118
+00:05:09,240 --> 00:05:12,060
+A list of linear functions of that, which again,
+
+119
+00:05:12,060 --> 00:05:13,810
+will be 0 up to 29.
+
+120
+00:05:13,810 --> 00:05:17,240
+A list of the quadratics, the cubics, and the exponentials.
+
+121
+00:05:17,240 --> 00:05:20,050
+All associated with that set of samples.
+
+122
+00:05:20,050 --> 00:05:22,980
+I'm ready to start plotting.
+
+123
+00:05:22,980 --> 00:05:26,630
+So to generate a plot, I'm going to use PLT because I
+
+124
+00:05:26,630 --> 00:05:30,330
+imported pylab into that name.
+
+125
+00:05:30,330 --> 00:05:32,340
+And then I've overwritten it, but then the dot.
+
+126
+00:05:32,340 --> 00:05:34,740
+And then a call to the function plot.
+
+127
+00:05:34,740 --> 00:05:36,730
+It's the simplest possible function
+
+128
+00:05:36,730 --> 00:05:39,000
+for doing our procedure for doing plotting.
+
+129
+00:05:39,000 --> 00:05:42,670
+And I need to give it two lists, a list of the X values
+
+130
+00:05:42,670 --> 00:05:45,050
+and a list of the corresponding Y values.
+
+131
+00:05:45,050 --> 00:05:47,670
+And here, I'm just going to plot my samples, which are the X
+
+132
+00:05:47,670 --> 00:05:51,330
+values, and the simplest of the Y values, which I stored up
+
+133
+00:05:51,330 --> 00:05:53,240
+in my linear.
+
+134
+00:05:53,240 --> 00:05:56,017
+As I said before, for now, the arguments are lists.
+
+135
+00:05:56,017 --> 00:05:57,600
+They could be other structures, you'll
+
+136
+00:05:57,600 --> 00:06:00,330
+see that if you take the second part of the course.
+
+137
+00:06:00,330 --> 00:06:02,250
+Most important point is the lists
+
+138
+00:06:02,250 --> 00:06:04,550
+need to be of the same length.
+
+139
+00:06:04,550 --> 00:06:06,770
+They both need to be of length 30,
+
+140
+00:06:06,770 --> 00:06:09,707
+in this case, in order for this to work.
+
+141
+00:06:09,707 --> 00:06:11,540
+There are two ways in which I could actually
+
+142
+00:06:11,540 --> 00:06:14,490
+call this function, or at least in my version of Python.
+
+143
+00:06:14,490 --> 00:06:16,640
+Your version may be slightly different.
+
+144
+00:06:16,640 --> 00:06:20,440
+But I want to show you both of them because you have a choice.
+
+145
+00:06:20,440 --> 00:06:24,010
+I could call the function in an iPython or interactive Python
+
+146
+00:06:24,010 --> 00:06:24,750
+console.
+
+147
+00:06:24,750 --> 00:06:28,530
+And that will generate a plot right inside of the console.
+
+148
+00:06:28,530 --> 00:06:31,480
+I could also call the function in a Python console.
+
+149
+00:06:31,480 --> 00:06:34,300
+And that's actually going to generate a separate window
+
+150
+00:06:34,300 --> 00:06:36,630
+in which the plot is displayed.
+
+151
+00:06:36,630 --> 00:06:39,120
+So let me show both of those working.
+
+152
+00:06:39,120 --> 00:06:41,160
+If I go to my computer, I'm going to start off
+
+153
+00:06:41,160 --> 00:06:43,285
+with just a Python console.
+
+154
+00:06:43,285 --> 00:06:45,410
+And in this case, I'm going to plot four functions.
+
+155
+00:06:45,410 --> 00:06:46,220
+It doesn't matter.
+
+156
+00:06:46,220 --> 00:06:48,240
+I just want you to see what happens.
+
+157
+00:06:48,240 --> 00:06:51,105
+And if I plot those on my computer,
+
+158
+00:06:51,105 --> 00:06:52,730
+you will see that nothing has happened,
+
+159
+00:06:52,730 --> 00:06:55,510
+but a separate window has shown up.
+
+160
+00:06:55,510 --> 00:06:58,050
+And in that window, I have in fact, four different graphs
+
+161
+00:06:58,050 --> 00:06:58,550
+overlaid.
+
+162
+00:06:58,550 --> 00:07:00,920
+We'll come back to that in a second.
+
+163
+00:07:00,920 --> 00:07:02,610
+This is nice if you want to store things
+
+164
+00:07:02,610 --> 00:07:04,735
+in a separate window, you want to save things away,
+
+165
+00:07:04,735 --> 00:07:06,340
+you want to be able to actually play
+
+166
+00:07:06,340 --> 00:07:08,552
+with different aspects of the window.
+
+167
+00:07:08,552 --> 00:07:10,010
+I'll let you explore that yourself,
+
+168
+00:07:10,010 --> 00:07:12,290
+but in fact, in this window version of things,
+
+169
+00:07:12,290 --> 00:07:14,240
+you can adjust scales, you can adjust
+
+170
+00:07:14,240 --> 00:07:15,930
+other aspects of the graph.
+
+171
+00:07:15,930 --> 00:07:18,400
+It's one way to deal with it.
+
+172
+00:07:18,400 --> 00:07:20,570
+The second way I can deal with it
+
+173
+00:07:20,570 --> 00:07:24,360
+is to do it inside of an iPython or interactive Python console.
+
+174
+00:07:24,360 --> 00:07:27,850
+And here, if I call this function,
+
+175
+00:07:27,850 --> 00:07:30,140
+you will see that it actually embeds
+
+176
+00:07:30,140 --> 00:07:33,550
+the graph, the plot directly inside of that console.
+
+177
+00:07:33,550 --> 00:07:36,130
+And I could do other things inside of here.
+
+178
+00:07:36,130 --> 00:07:38,600
+This is convenient if I just want to visualize but not
+
+179
+00:07:38,600 --> 00:07:39,620
+manipulate.
+
+180
+00:07:39,620 --> 00:07:42,030
+Using the full console version is nice if I actually
+
+181
+00:07:42,030 --> 00:07:44,050
+want to do the manipulation.
+
+182
+00:07:44,050 --> 00:07:46,301
+So I've got two different ways of doing this.
+
+183
+00:07:46,301 --> 00:07:47,800
+And from now on in this lecture, I'm
+
+184
+00:07:47,800 --> 00:07:49,591
+just going to show you the results of doing
+
+185
+00:07:49,591 --> 00:07:52,160
+the graphing using actually a Python console
+
+186
+00:07:52,160 --> 00:07:54,760
+so that I'm generating a separate window.
+
+187
+00:07:54,760 --> 00:07:56,700
+So to remind you then, to generate a plot,
+
+188
+00:07:56,700 --> 00:07:59,000
+I'm just going to call plot, giving it
+
+189
+00:07:59,000 --> 00:08:01,750
+a set of X values, a set of Y values.
+
+190
+00:08:01,750 --> 00:08:03,550
+As long as they are the same length list,
+
+191
+00:08:03,550 --> 00:08:05,520
+I'm going to be able to graph them out.
+
+192
+00:08:05,520 --> 00:08:08,920
+And let's look now what happens if I do that.
+
+193
+00:08:08,920 --> 00:08:11,250
+The simplest plot would simply be
+
+194
+00:08:11,250 --> 00:08:14,380
+to plot my samples against my linear.
+
+195
+00:08:14,380 --> 00:08:17,070
+And not surprisingly, it gives me this nice straight line
+
+196
+00:08:17,070 --> 00:08:21,240
+because each value was in fact the X value represented
+
+197
+00:08:21,240 --> 00:08:23,250
+as a Y value.
+
+198
+00:08:23,250 --> 00:08:24,330
+Simple example.
+
+199
+00:08:24,330 --> 00:08:26,254
+You see what happens when I call the plot.
+
+200
+00:08:26,254 --> 00:08:27,920
+In the next section, we're going to turn
+
+201
+00:08:27,920 --> 00:08:31,570
+to doing more interesting things with these plotting functions.
+

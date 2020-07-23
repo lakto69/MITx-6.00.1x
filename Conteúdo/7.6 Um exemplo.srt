@@ -1,0 +1,1384 @@
+0
+00:00:00,000 --> 00:00:00,570
+...
+
+1
+00:00:00,570 --> 00:00:03,476
+We've now seen different uses of plots.
+
+2
+00:00:03,476 --> 00:00:05,350
+We've been mostly comparing orders of growth,
+
+3
+00:00:05,350 --> 00:00:07,060
+which we've seen before.
+
+4
+00:00:07,060 --> 00:00:09,300
+I wanted you to see the idea of how plotting
+
+5
+00:00:09,300 --> 00:00:11,430
+lets you visualize data.
+
+6
+00:00:11,430 --> 00:00:14,100
+And now I want to turn to a variation of that, which
+
+7
+00:00:14,100 --> 00:00:15,910
+is to think about, how can we actually use
+
+8
+00:00:15,910 --> 00:00:20,350
+that visualization of results to help guide computation, to help
+
+9
+00:00:20,350 --> 00:00:23,400
+guide the values of parameters we might want to pass in
+
+10
+00:00:23,400 --> 00:00:25,470
+or the kinds of things we want to explore inside
+
+11
+00:00:25,470 --> 00:00:27,260
+of a computation?
+
+12
+00:00:27,260 --> 00:00:30,310
+To do this, I want to use a simple little example.
+
+13
+00:00:30,310 --> 00:00:32,580
+Imagine you're planning a retirement.
+
+14
+00:00:32,580 --> 00:00:34,330
+You want to think about making sure you've
+
+15
+00:00:34,330 --> 00:00:35,954
+got enough money saved away so that you
+
+16
+00:00:35,954 --> 00:00:38,650
+can retire at the age you want.
+
+17
+00:00:38,650 --> 00:00:42,800
+Let's look at, basically, how a retirement fund grows
+
+18
+00:00:42,800 --> 00:00:45,119
+with compounding of interest.
+
+19
+00:00:45,119 --> 00:00:47,410
+And I'm going to do it with the following simple little
+
+20
+00:00:47,410 --> 00:00:48,550
+example.
+
+21
+00:00:48,550 --> 00:00:51,240
+I'm going to plan to set aside a particular amount.
+
+22
+00:00:51,240 --> 00:00:54,260
+Let's call it m every month out of my salary,
+
+23
+00:00:54,260 --> 00:00:56,955
+save it away in a retirement account.
+
+24
+00:00:56,955 --> 00:00:59,580
+I also expect that I'm going to earn a little interest in that.
+
+25
+00:00:59,580 --> 00:01:02,350
+I'm going to invest it in some stocks or bonds or C-Bills
+
+26
+00:01:02,350 --> 00:01:03,360
+or something else.
+
+27
+00:01:03,360 --> 00:01:05,550
+So I'm going to expect to earn a percentage
+
+28
+00:01:05,550 --> 00:01:08,390
+r of additional income every month
+
+29
+00:01:08,390 --> 00:01:10,470
+on the investments I set up.
+
+30
+00:01:10,470 --> 00:01:13,710
+And I want to explore, how big is my retirement fund going
+
+31
+00:01:13,710 --> 00:01:15,670
+to be when it compounds over time
+
+32
+00:01:15,670 --> 00:01:19,680
+with both new contributions each month and accrual of interest
+
+33
+00:01:19,680 --> 00:01:22,389
+each month so that I can decide when I want to retire?
+
+34
+00:01:22,389 --> 00:01:23,930
+How much do I need to have before I'm
+
+35
+00:01:23,930 --> 00:01:26,070
+ready to actually retire?
+
+36
+00:01:26,070 --> 00:01:28,720
+Let's look at how we might both write code to do that,
+
+37
+00:01:28,720 --> 00:01:30,280
+and especially how we can visualize
+
+38
+00:01:30,280 --> 00:01:35,190
+results to think about how I want to do that computation.
+
+39
+00:01:35,190 --> 00:01:37,320
+Well, let's start with just something that
+
+40
+00:01:37,320 --> 00:01:39,510
+computes compound interest.
+
+41
+00:01:39,510 --> 00:01:42,070
+I've written a little procedure here called Retire.
+
+42
+00:01:42,070 --> 00:01:44,820
+It takes in three arguments-- the amount
+
+43
+00:01:44,820 --> 00:01:46,900
+I'm going to put aside each month,
+
+44
+00:01:46,900 --> 00:01:52,330
+the rate at which I'm going to earn interest or, if you like,
+
+45
+00:01:52,330 --> 00:01:55,630
+grow my income through investments on it,
+
+46
+00:01:55,630 --> 00:01:58,310
+and how many months or terms I want to compute over,
+
+47
+00:01:58,310 --> 00:02:01,000
+how many terms do I want to look at before I'm
+
+48
+00:02:01,000 --> 00:02:03,360
+ready to look at retirement.
+
+49
+00:02:03,360 --> 00:02:05,420
+This function should not surprise you.
+
+50
+00:02:05,420 --> 00:02:07,470
+It does things you've seen before.
+
+51
+00:02:07,470 --> 00:02:10,110
+I'm going to set up a list called Savings.
+
+52
+00:02:10,110 --> 00:02:11,930
+I want to set up a list called The Base.
+
+53
+00:02:11,930 --> 00:02:15,070
+That's going to be my y and x values, if you like.
+
+54
+00:02:15,070 --> 00:02:16,890
+I'm going to compute the monthly rate.
+
+55
+00:02:16,890 --> 00:02:19,510
+That's just the annual rate, but every month, so
+
+56
+00:02:19,510 --> 00:02:21,310
+divide it by 12.
+
+57
+00:02:21,310 --> 00:02:23,530
+And then I have a simple little for loop here
+
+58
+00:02:23,530 --> 00:02:25,980
+that runs over the range of the number of terms,
+
+59
+00:02:25,980 --> 00:02:28,480
+so however many times I want to look at this.
+
+60
+00:02:28,480 --> 00:02:31,780
+And it just adds into each of those lists
+
+61
+00:02:31,780 --> 00:02:36,290
+the next label for the x-axis, so the next month.
+
+62
+00:02:36,290 --> 00:02:39,010
+And then the savings computation is a little bit different.
+
+63
+00:02:39,010 --> 00:02:43,690
+I take the value of savings the previous month,
+
+64
+00:02:43,690 --> 00:02:47,380
+and I add to it something that adds in the extra rate.
+
+65
+00:02:47,380 --> 00:02:50,770
+So it's multiplying by 1 plus the monthly rate, which says,
+
+66
+00:02:50,770 --> 00:02:52,270
+I've got the savings from last time,
+
+67
+00:02:52,270 --> 00:02:54,190
+plus I've got a little bit more because I've
+
+68
+00:02:54,190 --> 00:02:56,320
+earned a little bit more interest off of it.
+
+69
+00:02:56,320 --> 00:03:00,280
+And then to that updated value in my savings,
+
+70
+00:03:00,280 --> 00:03:03,390
+I add in the new monthly contribution.
+
+71
+00:03:03,390 --> 00:03:06,030
+I'm building up two lists, and I'm simply
+
+72
+00:03:06,030 --> 00:03:08,480
+going to return those-- a base list, which gives me
+
+73
+00:03:08,480 --> 00:03:12,750
+the x labels, if you like, and a savings list, which gives me
+
+74
+00:03:12,750 --> 00:03:14,497
+the y labels.
+
+75
+00:03:14,497 --> 00:03:16,080
+This shouldn't look surprising to you.
+
+76
+00:03:16,080 --> 00:03:18,210
+This is just a standard little accrual
+
+77
+00:03:18,210 --> 00:03:21,410
+of values in a list of a compound interest
+
+78
+00:03:21,410 --> 00:03:24,060
+plus a new contribution each month.
+
+79
+00:03:24,060 --> 00:03:27,160
+What I want to look at is, how do I visualize that?
+
+80
+00:03:27,160 --> 00:03:29,510
+So I'm going to use Retire to compute those two lists.
+
+81
+00:03:29,510 --> 00:03:32,215
+And notice, by the way, I'm returning both of them.
+
+82
+00:03:32,215 --> 00:03:32,840
+It's very nice.
+
+83
+00:03:32,840 --> 00:03:35,150
+I'm going to use that in a second.
+
+84
+00:03:35,150 --> 00:03:37,375
+Now I'd like to display that.
+
+85
+00:03:37,375 --> 00:03:39,590
+And I'm going to start by looking at something that's
+
+86
+00:03:39,590 --> 00:03:43,220
+going to display the different growths in retirement accounts
+
+87
+00:03:43,220 --> 00:03:46,604
+as I change how much I put aside each month.
+
+88
+00:03:46,604 --> 00:03:48,020
+I'm going to call this the display
+
+89
+00:03:48,020 --> 00:03:49,840
+retirement with monthlies.
+
+90
+00:03:49,840 --> 00:03:51,890
+It's going to take in an argument that
+
+91
+00:03:51,890 --> 00:03:56,220
+is a list of different amounts to set aside each month, a rate
+
+92
+00:03:56,220 --> 00:03:58,065
+and terms as before.
+
+93
+00:03:58,065 --> 00:04:01,030
+And I'm going to start setting up to do the plotting.
+
+94
+00:04:01,030 --> 00:04:04,050
+So I'm going to create a figure with a name.
+
+95
+00:04:04,050 --> 00:04:05,820
+I want to clear it, as I did before,
+
+96
+00:04:05,820 --> 00:04:08,623
+to make sure that in fact I'm going to be able to reuse it.
+
+97
+00:04:08,623 --> 00:04:10,630
+So I'm going to clear that out.
+
+98
+00:04:10,630 --> 00:04:12,310
+And then I'm going to run over a loop.
+
+99
+00:04:12,310 --> 00:04:15,040
+And the loop is going to, in that list of different monthly
+
+100
+00:04:15,040 --> 00:04:19,209
+values, select a new value and run Retire.
+
+101
+00:04:19,209 --> 00:04:21,350
+I'll remind you it said it returned two things.
+
+102
+00:04:21,350 --> 00:04:24,140
+So I'm going to get back out the x values and the y values.
+
+103
+00:04:24,140 --> 00:04:27,950
+And now I'm just going to plot them, just as I did before.
+
+104
+00:04:27,950 --> 00:04:31,252
+Great-- I'm going to plot x values and y values.
+
+105
+00:04:31,252 --> 00:04:32,710
+The one other thing I'm going to do
+
+106
+00:04:32,710 --> 00:04:35,890
+is I'm going to put in a nice label on here that actually
+
+107
+00:04:35,890 --> 00:04:38,460
+says, the label is, I'm retiring.
+
+108
+00:04:38,460 --> 00:04:40,320
+And I'm going to put in there what monthly
+
+109
+00:04:40,320 --> 00:04:42,090
+rate I was setting aside so I know how
+
+110
+00:04:42,090 --> 00:04:44,830
+to associate different graphs with the different amounts set
+
+111
+00:04:44,830 --> 00:04:45,722
+aside.
+
+112
+00:04:45,722 --> 00:04:47,180
+And when I'm done with all of that,
+
+113
+00:04:47,180 --> 00:04:48,910
+notice this is going to be a loop.
+
+114
+00:04:48,910 --> 00:04:51,182
+So I'm plotting different versions here.
+
+115
+00:04:51,182 --> 00:04:52,640
+When I'm done with all of that, I'm
+
+116
+00:04:52,640 --> 00:04:55,990
+going to put the legend up in the upper left corner.
+
+117
+00:04:55,990 --> 00:04:57,410
+Let's try it out.
+
+118
+00:04:57,410 --> 00:05:00,050
+I'm going to try it out with a monthly rate
+
+119
+00:05:00,050 --> 00:05:02,700
+of 5%-- nice and healthy.
+
+120
+00:05:02,700 --> 00:05:05,240
+I'm going to take 40 years of contributions.
+
+121
+00:05:05,240 --> 00:05:07,110
+So I've got 40 times 12, because I'm
+
+122
+00:05:07,110 --> 00:05:08,590
+plotting these at each month.
+
+123
+00:05:08,590 --> 00:05:10,279
+So that's the total number of terms.
+
+124
+00:05:10,279 --> 00:05:11,820
+And I'm going to look at what happens
+
+125
+00:05:11,820 --> 00:05:14,060
+when I decide to put different amounts aside
+
+126
+00:05:14,060 --> 00:05:17,720
+each month from $500 up to $1,100 each month.
+
+127
+00:05:17,720 --> 00:05:22,450
+And if I do that plot-- ah, nice.
+
+128
+00:05:22,450 --> 00:05:24,960
+Now, the legend is a little big here.
+
+129
+00:05:24,960 --> 00:05:27,200
+I stuck it in a corner where I know it would show up.
+
+130
+00:05:27,200 --> 00:05:29,040
+But the labels are valuable.
+
+131
+00:05:29,040 --> 00:05:32,480
+Because they tell me, how do I correspond each color
+
+132
+00:05:32,480 --> 00:05:34,240
+to the different graph?
+
+133
+00:05:34,240 --> 00:05:36,230
+And you see the growth, the exponential growth,
+
+134
+00:05:36,230 --> 00:05:38,240
+that you would expect here as I slowly
+
+135
+00:05:38,240 --> 00:05:41,110
+grow up each one of these different terms.
+
+136
+00:05:41,110 --> 00:05:42,890
+So I've got a set of graphs over here.
+
+137
+00:05:42,890 --> 00:05:44,790
+I can see what those differences are.
+
+138
+00:05:44,790 --> 00:05:46,790
+I might want to zero in on those a little bit
+
+139
+00:05:46,790 --> 00:05:49,570
+to look at some things about each one of those pieces
+
+140
+00:05:49,570 --> 00:05:53,420
+in order to decide which one is better for me.
+
+141
+00:05:53,420 --> 00:05:55,890
+And in particular, I can see the impact of increasing
+
+142
+00:05:55,890 --> 00:05:57,190
+the monthly contribution.
+
+143
+00:05:57,190 --> 00:06:01,560
+I get things that range from about $750,000 to almost $1
+
+144
+00:06:01,560 --> 00:06:07,270
+and 2/3 million as a monthly savings go from $500 to $1,100.
+
+145
+00:06:07,270 --> 00:06:10,130
+Again, my point was to look at, how do the visualizations help
+
+146
+00:06:10,130 --> 00:06:12,100
+me think about the computation?
+
+147
+00:06:12,100 --> 00:06:14,830
+This lets me see the range of growth
+
+148
+00:06:14,830 --> 00:06:17,770
+as I change the monthly component.
+
+149
+00:06:17,770 --> 00:06:20,760
+What's the effect of the rate of growth on the investments?
+
+150
+00:06:20,760 --> 00:06:23,230
+Well, I could do the same thing.
+
+151
+00:06:23,230 --> 00:06:26,190
+I could write another function, display retirement now
+
+152
+00:06:26,190 --> 00:06:27,460
+with rates.
+
+153
+00:06:27,460 --> 00:06:30,990
+And here, I'm going to give in a list of different rates.
+
+154
+00:06:30,990 --> 00:06:34,320
+I'm going to pick a particular monthly contribution.
+
+155
+00:06:34,320 --> 00:06:36,630
+I'm going to give it a set of terms to look at.
+
+156
+00:06:36,630 --> 00:06:40,040
+And the rest of this looks much like before.
+
+157
+00:06:40,040 --> 00:06:43,239
+Again, I'm going to put a label on here that lets me understand
+
+158
+00:06:43,239 --> 00:06:44,030
+what I'm capturing.
+
+159
+00:06:44,030 --> 00:06:46,820
+So notice it's got the string Retire.
+
+160
+00:06:46,820 --> 00:06:48,572
+It's got the monthly rate.
+
+161
+00:06:48,572 --> 00:06:50,030
+And I'm also going to put something
+
+162
+00:06:50,030 --> 00:06:53,600
+in here that tells me the actual rate of investment growth
+
+163
+00:06:53,600 --> 00:06:57,730
+so that I can associate each of those pieces with the graph.
+
+164
+00:06:57,730 --> 00:06:59,650
+I'm going to give it a particular argument.
+
+165
+00:06:59,650 --> 00:07:01,441
+I took something about in the middle, $800.
+
+166
+00:07:01,441 --> 00:07:03,890
+I'm going to give it three different ranges of growth
+
+167
+00:07:03,890 --> 00:07:05,930
+in terms of investment rate.
+
+168
+00:07:05,930 --> 00:07:08,720
+And again, I'm going to give it the same number of terms.
+
+169
+00:07:08,720 --> 00:07:12,050
+And now if I do the graph, I see that there's
+
+170
+00:07:12,050 --> 00:07:15,240
+a different variation in the exponential growth.
+
+171
+00:07:15,240 --> 00:07:19,120
+Here, varying the rate of growth of the investment return
+
+172
+00:07:19,120 --> 00:07:23,660
+actually tends to spread out more rapidly the actual graphs
+
+173
+00:07:23,660 --> 00:07:25,570
+that we see here.
+
+174
+00:07:25,570 --> 00:07:28,390
+But again, I can now start seeing the range of variation
+
+175
+00:07:28,390 --> 00:07:29,040
+here.
+
+176
+00:07:29,040 --> 00:07:31,140
+I can see that in fact if I can have something
+
+177
+00:07:31,140 --> 00:07:33,560
+with an aggressive growth-- and hoping for 7%
+
+178
+00:07:33,560 --> 00:07:36,180
+is probably being a little bit optimistic here--
+
+179
+00:07:36,180 --> 00:07:38,520
+I actually end up with a much better range in terms
+
+180
+00:07:38,520 --> 00:07:40,910
+of the total amount I've got in my retirement account
+
+181
+00:07:40,910 --> 00:07:44,260
+when I'm ready to retire-- sounds nice.
+
+182
+00:07:44,260 --> 00:07:47,690
+So here I can see the impact on a different dimension.
+
+183
+00:07:47,690 --> 00:07:52,250
+Now it goes from about $600,000 to almost $2.1 million.
+
+184
+00:07:52,250 --> 00:07:55,022
+OK, I want to look at both rates together.
+
+185
+00:07:55,022 --> 00:07:56,480
+What happens if I both think about,
+
+186
+00:07:56,480 --> 00:07:58,992
+I want to change how much I'm setting aside each month,
+
+187
+00:07:58,992 --> 00:08:00,950
+and, I'm going to be conservative or aggressive
+
+188
+00:08:00,950 --> 00:08:02,908
+in what I want to do in terms of my investments
+
+189
+00:08:02,908 --> 00:08:05,150
+to decide how to get growth in terms
+
+190
+00:08:05,150 --> 00:08:09,830
+of my actual overall retirement account?
+
+191
+00:08:09,830 --> 00:08:12,050
+So I can do both at the same time.
+
+192
+00:08:12,050 --> 00:08:13,524
+It's a little bit more messy code.
+
+193
+00:08:13,524 --> 00:08:14,940
+But you've seen both pieces of it.
+
+194
+00:08:14,940 --> 00:08:18,260
+Now I'm going to have a list of monthly rates.
+
+195
+00:08:18,260 --> 00:08:20,810
+I'm going to have a list of different rates in terms
+
+196
+00:08:20,810 --> 00:08:23,750
+of what I expect of the return on investment, saying,
+
+197
+00:08:23,750 --> 00:08:27,700
+am I conservative or aggressive in how I do all of this?
+
+198
+00:08:27,700 --> 00:08:29,950
+I'm going to set up a figure with an appropriate label
+
+199
+00:08:29,950 --> 00:08:30,449
+on it.
+
+200
+00:08:30,449 --> 00:08:32,260
+I'm going to clear it out.
+
+201
+00:08:32,260 --> 00:08:35,610
+I'm actually now going to zero in on just the high end
+
+202
+00:08:35,610 --> 00:08:36,725
+of the range.
+
+203
+00:08:36,725 --> 00:08:39,000
+And here I probably should have, rather than
+
+204
+00:08:39,000 --> 00:08:43,520
+giving it explicit values, looked at the range of terms
+
+205
+00:08:43,520 --> 00:08:44,120
+and set it up.
+
+206
+00:08:44,120 --> 00:08:46,203
+But I happen to know what I was going to use here.
+
+207
+00:08:46,203 --> 00:08:49,070
+So I'm just going to look at the last 10 years of investment
+
+208
+00:08:49,070 --> 00:08:49,980
+on these pieces.
+
+209
+00:08:49,980 --> 00:08:51,770
+So I'm going to literally separate out
+
+210
+00:08:51,770 --> 00:08:52,995
+the x limit on that.
+
+211
+00:08:52,995 --> 00:08:56,890
+Ah, notice-- previous examples I set the y limit.
+
+212
+00:08:56,890 --> 00:09:00,460
+Here I'm choosing the x limit, the x-axis,
+
+213
+00:09:00,460 --> 00:09:03,130
+and just zeroing in on one piece of it.
+
+214
+00:09:03,130 --> 00:09:07,300
+The last piece of it is I'm now going to loop twice.
+
+215
+00:09:07,300 --> 00:09:10,590
+I'm going to loop over how much to set aside each month.
+
+216
+00:09:10,590 --> 00:09:12,230
+And for each of those choices, I'm
+
+217
+00:09:12,230 --> 00:09:15,960
+going to loop over different rates of return.
+
+218
+00:09:15,960 --> 00:09:18,630
+As before, I'm going to set up a label.
+
+219
+00:09:18,630 --> 00:09:20,630
+And that label is going to help me out.
+
+220
+00:09:20,630 --> 00:09:24,310
+And now I'm going to look at four different monthly rates,
+
+221
+00:09:24,310 --> 00:09:26,100
+three different returns.
+
+222
+00:09:26,100 --> 00:09:29,527
+And let's see what happens when we do that graph.
+
+223
+00:09:29,527 --> 00:09:30,610
+And I should've said that.
+
+224
+00:09:30,610 --> 00:09:34,000
+I'm just going to focus on that last stage of the fund.
+
+225
+00:09:34,000 --> 00:09:37,630
+And if I do that, and I put on the appropriate label,
+
+226
+00:09:37,630 --> 00:09:41,700
+I get-- yuck.
+
+227
+00:09:41,700 --> 00:09:43,820
+Well, the labels help me here.
+
+228
+00:09:43,820 --> 00:09:45,600
+They tell me what's going on.
+
+229
+00:09:45,600 --> 00:09:49,020
+Zeroing in on just the last 10 years was probably valuable.
+
+230
+00:09:49,020 --> 00:09:51,136
+Because it lets me spread these out.
+
+231
+00:09:51,136 --> 00:09:53,990
+But it's a little hard to figure out which of these graphs
+
+232
+00:09:53,990 --> 00:09:56,360
+is corresponding to which color.
+
+233
+00:09:56,360 --> 00:10:00,370
+So I ought to be able to fix that so I can really see more
+
+234
+00:10:00,370 --> 00:10:02,270
+appropriately the comparison.
+
+235
+00:10:02,270 --> 00:10:04,470
+And I remind you, that was one of the points.
+
+236
+00:10:04,470 --> 00:10:07,680
+How do I use the visualization to help me decide how
+
+237
+00:10:07,680 --> 00:10:09,500
+to think about the computation?
+
+238
+00:10:09,500 --> 00:10:12,760
+Here there's too much overlay of the graphs.
+
+239
+00:10:12,760 --> 00:10:14,520
+How can I separate those out into pieces
+
+240
+00:10:14,520 --> 00:10:17,480
+that would really help me think about this a little bit better?
+
+241
+00:10:17,480 --> 00:10:19,570
+So let's do that.
+
+242
+00:10:19,570 --> 00:10:22,370
+I can't distinguish because of the overlap of the graphs.
+
+243
+00:10:22,370 --> 00:10:24,460
+I could just analyze them separately.
+
+244
+00:10:24,460 --> 00:10:27,580
+But I can also be careful about how
+
+245
+00:10:27,580 --> 00:10:29,720
+I want to visualize the different effects.
+
+246
+00:10:29,720 --> 00:10:33,480
+And I'm going to do that in the following way.
+
+247
+00:10:33,480 --> 00:10:36,500
+As before, I'm going to set up a graph,
+
+248
+00:10:36,500 --> 00:10:40,420
+clear it out, focus in on the last 10 years of all of this.
+
+249
+00:10:40,420 --> 00:10:43,040
+But I'm going to do a couple of other things.
+
+250
+00:10:43,040 --> 00:10:46,200
+The first one is I'm going to create a set of labels.
+
+251
+00:10:46,200 --> 00:10:48,560
+I'm going to create a set of monthly labels--
+
+252
+00:10:48,560 --> 00:10:52,100
+r, b, g, and k for red, blue, green, and black.
+
+253
+00:10:52,100 --> 00:10:54,200
+I'm going to set up a set of rate labels.
+
+254
+00:10:54,200 --> 00:10:57,420
+And I'm going to now use-- notice-- the color to tell me,
+
+255
+00:10:57,420 --> 00:10:59,970
+what was the monthly contribution?
+
+256
+00:10:59,970 --> 00:11:03,680
+And I'm going to use the style of display-- solid line,
+
+257
+00:11:03,680 --> 00:11:07,350
+circle, dash line, for example-- to tell me
+
+258
+00:11:07,350 --> 00:11:11,530
+how I want to actually visualize the different rates.
+
+259
+00:11:11,530 --> 00:11:14,730
+Inside of those loops, I'm going to select out
+
+260
+00:11:14,730 --> 00:11:17,910
+a month label by doing the following wonderful little
+
+261
+00:11:17,910 --> 00:11:19,040
+trick.
+
+262
+00:11:19,040 --> 00:11:23,180
+I pick out a monthly rate from that list of monthlies.
+
+263
+00:11:23,180 --> 00:11:25,160
+And to get that month label, I'm simply
+
+264
+00:11:25,160 --> 00:11:28,570
+going to take the remainder after dividing
+
+265
+00:11:28,570 --> 00:11:34,100
+by the number of those pieces to tell me which label to use.
+
+266
+00:11:34,100 --> 00:11:37,080
+So it's going to walk through the labels one at a time.
+
+267
+00:11:37,080 --> 00:11:39,801
+And if I have more choices than I have actual labels,
+
+268
+00:11:39,801 --> 00:11:41,300
+it will cycle back to the beginning.
+
+269
+00:11:41,300 --> 00:11:44,210
+But this is going to let me select out the label.
+
+270
+00:11:44,210 --> 00:11:47,060
+I'm going to do the same thing with the rate label.
+
+271
+00:11:47,060 --> 00:11:50,270
+I'm going to pick it using the remainder function so that I
+
+272
+00:11:50,270 --> 00:11:52,520
+cycle through those choices.
+
+273
+00:11:52,520 --> 00:11:54,810
+And then when I do the display, I
+
+274
+00:11:54,810 --> 00:11:56,900
+should get something that better separates out
+
+275
+00:11:56,900 --> 00:11:58,400
+the visualization.
+
+276
+00:11:58,400 --> 00:12:00,365
+So let's see if that actually happens.
+
+277
+00:12:00,365 --> 00:12:02,490
+I'm going to create that label by putting those two
+
+278
+00:12:02,490 --> 00:12:03,970
+pieces together.
+
+279
+00:12:03,970 --> 00:12:10,050
+Remember, to do the label, I need both a color and a style.
+
+280
+00:12:10,050 --> 00:12:12,670
+And so by putting those two pieces together as a string,
+
+281
+00:12:12,670 --> 00:12:15,210
+that's going to give me the piece I'd like.
+
+282
+00:12:15,210 --> 00:12:17,296
+And there we go.
+
+283
+00:12:17,296 --> 00:12:18,670
+This may still look messy to you.
+
+284
+00:12:18,670 --> 00:12:20,090
+But this is actually nice.
+
+285
+00:12:20,090 --> 00:12:23,690
+Because notice, the color all corresponds.
+
+286
+00:12:23,690 --> 00:12:26,650
+For example, red is all $500.
+
+287
+00:12:26,650 --> 00:12:29,030
+Blue is all $700.
+
+288
+00:12:29,030 --> 00:12:31,960
+So the color tells me very nicely,
+
+289
+00:12:31,960 --> 00:12:33,510
+what was the monthly rate?
+
+290
+00:12:33,510 --> 00:12:37,340
+And the style-- solid line, circle, dash line--
+
+291
+00:12:37,340 --> 00:12:43,230
+tells me whether it was a return of 3%, 5%, or 7%.
+
+292
+00:12:43,230 --> 00:12:44,730
+And while there's still a little bit
+
+293
+00:12:44,730 --> 00:12:47,270
+of overlay between these graphs, it's now easier
+
+294
+00:12:47,270 --> 00:12:49,630
+to see, what's the impact?
+
+295
+00:12:49,630 --> 00:12:51,242
+Which one has a bigger impact?
+
+296
+00:12:51,242 --> 00:12:52,700
+In fact, it's being more aggressive
+
+297
+00:12:52,700 --> 00:12:55,110
+about your investments that has the bigger impact.
+
+298
+00:12:55,110 --> 00:12:58,380
+Because that shifts things up much more rapidly
+
+299
+00:12:58,380 --> 00:13:01,840
+than basically how much I set aside each month.
+
+300
+00:13:01,840 --> 00:13:03,720
+You can see that the slant of the line,
+
+301
+00:13:03,720 --> 00:13:07,120
+if you like, up here with the three-- or the four, actually.
+
+302
+00:13:07,120 --> 00:13:08,370
+I should have done that right.
+
+303
+00:13:08,370 --> 00:13:11,270
+The four dash lines is much better
+
+304
+00:13:11,270 --> 00:13:15,580
+than the slant of the line down here with the four solid lines.
+
+305
+00:13:15,580 --> 00:13:17,130
+And that was my original point.
+
+306
+00:13:17,130 --> 00:13:20,590
+I want to be able to visualize and use the visualization
+
+307
+00:13:20,590 --> 00:13:22,820
+to guide the computation.
+
+308
+00:13:22,820 --> 00:13:25,342
+And this says, start saving early for retirement.
+
+309
+00:13:25,342 --> 00:13:27,050
+Because you really want to do that to get
+
+310
+00:13:27,050 --> 00:13:30,310
+that wonderful compound interest rather than relying on getting
+
+311
+00:13:30,310 --> 00:13:32,010
+a 25% return each year.
+
+312
+00:13:32,010 --> 00:13:33,990
+Because that suggests that somebody
+
+313
+00:13:33,990 --> 00:13:35,980
+has convinced you to invest in a Ponzi scheme,
+
+314
+00:13:35,980 --> 00:13:37,820
+and it's not a good idea.
+
+315
+00:13:37,820 --> 00:13:40,420
+Whatever you do for your own retirement, you get the idea.
+
+316
+00:13:40,420 --> 00:13:41,760
+I can visualize the data.
+
+317
+00:13:41,760 --> 00:13:45,240
+I can use that visualization to guide the computation.
+
+318
+00:13:45,240 --> 00:13:48,360
+And so that nicely leads to this summary.
+
+319
+00:13:48,360 --> 00:13:50,910
+It's now easier to see the grouping of the plots.
+
+320
+00:13:50,910 --> 00:13:54,000
+Color encodes, in this case, monthly contribution.
+
+321
+00:13:54,000 --> 00:13:57,440
+Format-- solid, circle, dash-- encodes the rate of growth
+
+322
+00:13:57,440 --> 00:13:59,470
+that I chose for the investment.
+
+323
+00:13:59,470 --> 00:14:02,630
+And more particularly, as you saw with this example,
+
+324
+00:14:02,630 --> 00:14:04,770
+I can interact between the plotting routine
+
+325
+00:14:04,770 --> 00:14:06,900
+and the computation to explore the data.
+
+326
+00:14:06,900 --> 00:14:10,461
+I can change the display range to zero in on a particular area
+
+327
+00:14:10,461 --> 00:14:10,960
+of interest.
+
+328
+00:14:10,960 --> 00:14:13,430
+In this case, it was the last 10 years.
+
+329
+00:14:13,430 --> 00:14:16,290
+I can change the set of values and visualize the effect.
+
+330
+00:14:16,290 --> 00:14:19,410
+And that then guides a new choice of values to explore.
+
+331
+00:14:19,410 --> 00:14:21,820
+What if I wanted to look at different rates of return?
+
+332
+00:14:21,820 --> 00:14:24,230
+What if I wanted to look at different monthly rates?
+
+333
+00:14:24,230 --> 00:14:26,550
+And finally, I could change the display parameters
+
+334
+00:14:26,550 --> 00:14:30,520
+to highlight how to cluster plots by parameter.
+
+335
+00:14:30,520 --> 00:14:32,920
+If you choose to take the second half of this course,
+
+336
+00:14:32,920 --> 00:14:36,150
+you're going to see lots of nice examples of using plotting
+
+337
+00:14:36,150 --> 00:14:37,850
+to visualize data to think about what
+
+338
+00:14:37,850 --> 00:14:39,970
+it says about a computation.
+
+339
+00:14:39,970 --> 00:14:43,850
+But we also wanted you to see an example of using a library.
+
+340
+00:14:43,850 --> 00:14:46,350
+And notice throughout this entire lecture, all I did
+
+341
+00:14:46,350 --> 00:14:50,510
+was use a set of functions so I could look up inside of PiLab.
+
+342
+00:14:50,510 --> 00:14:54,160
+That lets me rely on somebody having written code I can use
+
+343
+00:14:54,160 --> 00:14:56,290
+and using that library, a tool you're
+
+344
+00:14:56,290 --> 00:14:59,595
+going to use a lot as you move on in your own computation.
+
+345
+00:14:59,595 --> 00:15:00,095
+
+

@@ -1,0 +1,668 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:05,130
+So we looked at adding labels, adding titles to our graphs.
+
+2
+00:00:05,130 --> 00:00:06,900
+Good thing to do if we want to save them,
+
+3
+00:00:06,900 --> 00:00:09,358
+we want to put them in a paper, we want to hang on to them,
+
+4
+00:00:09,358 --> 00:00:10,840
+look at them later on.
+
+5
+00:00:10,840 --> 00:00:13,020
+But we started this discussion by saying we also
+
+6
+00:00:13,020 --> 00:00:14,920
+wanted to use the plotting or graphing
+
+7
+00:00:14,920 --> 00:00:18,330
+as a way of thinking about different kinds of results.
+
+8
+00:00:18,330 --> 00:00:21,360
+We started that when we began plotting different functions
+
+9
+00:00:21,360 --> 00:00:22,830
+in different windows.
+
+10
+00:00:22,830 --> 00:00:24,910
+But even there, what I showed you earlier
+
+11
+00:00:24,910 --> 00:00:27,050
+could have been a bit misleading because it looked
+
+12
+00:00:27,050 --> 00:00:30,240
+like the linear graph and the exponential graph
+
+13
+00:00:30,240 --> 00:00:31,444
+grew at different levels.
+
+14
+00:00:31,444 --> 00:00:33,110
+But we didn't have a clear sense of that
+
+15
+00:00:33,110 --> 00:00:35,610
+because we didn't change the scales.
+
+16
+00:00:35,610 --> 00:00:37,850
+The scale on the y-axis for the linear graph
+
+17
+00:00:37,850 --> 00:00:39,340
+only went up to 30.
+
+18
+00:00:39,340 --> 00:00:41,750
+The scale on the y-axis for the exponential graph
+
+19
+00:00:41,750 --> 00:00:43,700
+went up 140,000.
+
+20
+00:00:43,700 --> 00:00:47,540
+And we'd like to be able to better visualize differences.
+
+21
+00:00:47,540 --> 00:00:49,660
+So if the scales are different on the graphs,
+
+22
+00:00:49,660 --> 00:00:51,400
+how could we deal with that?
+
+23
+00:00:51,400 --> 00:00:55,700
+One option is to explicitly set limits on the axis.
+
+24
+00:00:55,700 --> 00:00:58,840
+Right now, we're just letting PiLab do that automatically.
+
+25
+00:00:58,840 --> 00:01:01,960
+It figures out what's the maximum range of y-values,
+
+26
+00:01:01,960 --> 00:01:04,660
+and it sets the axis scale appropriately.
+
+27
+00:01:04,660 --> 00:01:06,310
+We could control it.
+
+28
+00:01:06,310 --> 00:01:09,390
+A second option is to actually plot multiple functions
+
+29
+00:01:09,390 --> 00:01:11,550
+on the same display, but to choose
+
+30
+00:01:11,550 --> 00:01:13,599
+which ones I want to display.
+
+31
+00:01:13,599 --> 00:01:15,640
+We did this earlier when we put all four together
+
+32
+00:01:15,640 --> 00:01:17,473
+and we saw that that wasn't really effective
+
+33
+00:01:17,473 --> 00:01:19,206
+because the smallest ones were too small.
+
+34
+00:01:19,206 --> 00:01:20,580
+But we're going to look at how we
+
+35
+00:01:20,580 --> 00:01:23,450
+might do a different way of doing that multiple display
+
+36
+00:01:23,450 --> 00:01:27,200
+to get a better sense of that kind of difference in scale.
+
+37
+00:01:27,200 --> 00:01:30,070
+So let's look at both of these.
+
+38
+00:01:30,070 --> 00:01:32,080
+Changing limits on the axes.
+
+39
+00:01:32,080 --> 00:01:34,420
+Here's the code, things we've been using as before.
+
+40
+00:01:34,420 --> 00:01:36,670
+Notice again, I'm going to get into that habit of just
+
+41
+00:01:36,670 --> 00:01:38,810
+clearing the frame before I deal with it.
+
+42
+00:01:38,810 --> 00:01:42,130
+And now, I can explicitly say, I want
+
+43
+00:01:42,130 --> 00:01:46,985
+to have the y limit go from 0 to 1000.
+
+44
+00:01:46,985 --> 00:01:48,360
+I'm picking that number because I
+
+45
+00:01:48,360 --> 00:01:51,080
+happen to know what this display is going to look like.
+
+46
+00:01:51,080 --> 00:01:54,227
+Some experimentation might let you decide an appropriate set.
+
+47
+00:01:54,227 --> 00:01:56,560
+But what you should see here is that when I am plotting,
+
+48
+00:01:56,560 --> 00:02:01,290
+I have the ability to explicitly set the range on the y-axis.
+
+49
+00:02:01,290 --> 00:02:03,860
+By the way, I could set the same thing on the x-axis.
+
+50
+00:02:03,860 --> 00:02:06,080
+And I don't have to show all of the values of the y
+
+51
+00:02:06,080 --> 00:02:08,340
+function or the x function, I could actually
+
+52
+00:02:08,340 --> 00:02:10,810
+pull out just a subset of it.
+
+53
+00:02:10,810 --> 00:02:14,850
+So in this case, I'm going to do a plot for the linear.
+
+54
+00:02:14,850 --> 00:02:16,920
+I'm going to do a plot for the quadratic, each
+
+55
+00:02:16,920 --> 00:02:18,930
+in their own frame.
+
+56
+00:02:18,930 --> 00:02:22,480
+But I'm going to set the y limit to be the same in both frames.
+
+57
+00:02:22,480 --> 00:02:23,910
+And then I label them.
+
+58
+00:02:23,910 --> 00:02:28,660
+And let's look at what happens when we do that.
+
+59
+00:02:28,660 --> 00:02:30,650
+This is actually quite nice.
+
+60
+00:02:30,650 --> 00:02:32,100
+Why is it nice?
+
+61
+00:02:32,100 --> 00:02:34,290
+Because now I can see what's the difference
+
+62
+00:02:34,290 --> 00:02:38,260
+between a linear function and a quadratic function.
+
+63
+00:02:38,260 --> 00:02:40,660
+We knew that the quadratic would grow more rapidly.
+
+64
+00:02:40,660 --> 00:02:43,010
+But now we get a sense of that difference,
+
+65
+00:02:43,010 --> 00:02:46,830
+because I've set it up so that both y-axes have
+
+66
+00:02:46,830 --> 00:02:48,500
+the same range.
+
+67
+00:02:48,500 --> 00:02:51,430
+Notice also, I picked a value that has a little bit of a gap
+
+68
+00:02:51,430 --> 00:02:52,220
+up here.
+
+69
+00:02:52,220 --> 00:02:53,860
+I happen to know that the y-values are
+
+70
+00:02:53,860 --> 00:02:55,480
+going to go up to about 800.
+
+71
+00:02:55,480 --> 00:02:57,130
+I could have lowered it down, but this
+
+72
+00:02:57,130 --> 00:02:59,130
+was a nice way of picking a range that was going
+
+73
+00:02:59,130 --> 00:03:01,110
+to let me see that difference.
+
+74
+00:03:01,110 --> 00:03:03,310
+From the perspective of visualizing data,
+
+75
+00:03:03,310 --> 00:03:05,110
+this is nice because now I can really
+
+76
+00:03:05,110 --> 00:03:07,950
+compare how quickly does quadratic
+
+77
+00:03:07,950 --> 00:03:13,100
+grow relative to linear while still seeing the difference.
+
+78
+00:03:13,100 --> 00:03:14,480
+What else might I do?
+
+79
+00:03:14,480 --> 00:03:18,590
+Well I can overlay the plots on top of one another,
+
+80
+00:03:18,590 --> 00:03:20,870
+but do it in a way where I actually pick which
+
+81
+00:03:20,870 --> 00:03:22,580
+ones I want to think about.
+
+82
+00:03:22,580 --> 00:03:24,757
+We saw earlier that trying to compare linear
+
+83
+00:03:24,757 --> 00:03:27,340
+against exponential is going to be a wash because you'll never
+
+84
+00:03:27,340 --> 00:03:28,620
+see the linear.
+
+85
+00:03:28,620 --> 00:03:31,350
+But now, I can go back to the idea of set
+
+86
+00:03:31,350 --> 00:03:35,305
+up a function or a frame, clear it.
+
+87
+00:03:35,305 --> 00:03:39,240
+And then in this case, let's plot two functions inside
+
+88
+00:03:39,240 --> 00:03:41,940
+of that frame, pick a second one,
+
+89
+00:03:41,940 --> 00:03:46,160
+clear it, and plot another two functions inside of that frame.
+
+90
+00:03:46,160 --> 00:03:49,580
+And if I do that, again, because I
+
+91
+00:03:49,580 --> 00:03:52,630
+am calling both of those plots inside of the same figure
+
+92
+00:03:52,630 --> 00:03:53,865
+they're going to overlay.
+
+93
+00:03:53,865 --> 00:03:55,700
+And because I'm calling the second pair
+
+94
+00:03:55,700 --> 00:03:57,970
+of plots inside the same frame, they're
+
+95
+00:03:57,970 --> 00:03:59,110
+going to get an overlay.
+
+96
+00:03:59,110 --> 00:04:01,440
+But I have a better way of doing the comparison.
+
+97
+00:04:01,440 --> 00:04:04,860
+And when I do that, I get the following display.
+
+98
+00:04:04,860 --> 00:04:08,890
+Now I can see the difference between linear and quadratic,
+
+99
+00:04:08,890 --> 00:04:12,566
+and I can see the difference between cubic and exponential.
+
+100
+00:04:12,566 --> 00:04:14,310
+And interestingly, you may not have
+
+101
+00:04:14,310 --> 00:04:17,320
+realized that cubic, early on, actually
+
+102
+00:04:17,320 --> 00:04:19,420
+grows a little bit faster than exponential.
+
+103
+00:04:19,420 --> 00:04:21,329
+But after some point, exponential
+
+104
+00:04:21,329 --> 00:04:24,490
+takes off and really overwhelms it.
+
+105
+00:04:24,490 --> 00:04:25,910
+Notice at the same time, I should
+
+106
+00:04:25,910 --> 00:04:28,650
+be careful about comparing these two graphs
+
+107
+00:04:28,650 --> 00:04:31,360
+because this one only goes up to 900,
+
+108
+00:04:31,360 --> 00:04:34,520
+that one goes up to 140,000.
+
+109
+00:04:34,520 --> 00:04:36,222
+Part of the message for you here--
+
+110
+00:04:36,222 --> 00:04:37,680
+if I want to compare things, I need
+
+111
+00:04:37,680 --> 00:04:39,466
+to think about what I'm comparing.
+
+112
+00:04:39,466 --> 00:04:41,090
+But it gives me a way of actually doing
+
+113
+00:04:41,090 --> 00:04:43,560
+that visualization in a very nice way.
+
+114
+00:04:43,560 --> 00:04:45,900
+So there are some times when I want to overlay things
+
+115
+00:04:45,900 --> 00:04:47,880
+on the same window, and other times
+
+116
+00:04:47,880 --> 00:04:50,670
+when I want to just have them displayed side by side.
+
+117
+00:04:50,670 --> 00:04:53,350
+
+
+118
+00:04:53,350 --> 00:04:55,620
+I can do a couple of other things here.
+
+119
+00:04:55,620 --> 00:04:57,960
+Now that I'm starting to do other displays on top
+
+120
+00:04:57,960 --> 00:04:59,760
+of things, I could also add a legend
+
+121
+00:04:59,760 --> 00:05:02,170
+that helps me tell which plot is which.
+
+122
+00:05:02,170 --> 00:05:04,670
+If I go back to this window, you kind of know
+
+123
+00:05:04,670 --> 00:05:06,770
+which one's quadratic, which one's linear,
+
+124
+00:05:06,770 --> 00:05:08,800
+but I'd be handy to label them.
+
+125
+00:05:08,800 --> 00:05:09,680
+And I can do that.
+
+126
+00:05:09,680 --> 00:05:14,560
+And in particular, I can add in a label for a plot.
+
+127
+00:05:14,560 --> 00:05:17,060
+Here, I'm using the keyword label, and then
+
+128
+00:05:17,060 --> 00:05:19,330
+the equal sign, and then the specific label
+
+129
+00:05:19,330 --> 00:05:20,740
+to put on each one of them.
+
+130
+00:05:20,740 --> 00:05:23,000
+And I'm putting obvious labels here.
+
+131
+00:05:23,000 --> 00:05:24,980
+I'm going to label each one of these plots
+
+132
+00:05:24,980 --> 00:05:27,960
+so that now when I display them, I'm going
+
+133
+00:05:27,960 --> 00:05:29,790
+to get a nice display out.
+
+134
+00:05:29,790 --> 00:05:31,630
+One more thing before I do them.
+
+135
+00:05:31,630 --> 00:05:34,790
+I need to decide where am I going to put the legend.
+
+136
+00:05:34,790 --> 00:05:36,480
+And I could actually give it a location
+
+137
+00:05:36,480 --> 00:05:39,860
+by giving, under the plot function legend,
+
+138
+00:05:39,860 --> 00:05:43,850
+the keyword loc for location of upper left.
+
+139
+00:05:43,850 --> 00:05:48,040
+Or I could simply say, put the legend up,
+
+140
+00:05:48,040 --> 00:05:51,160
+but give it no argument and let PiLab decide what it thinks
+
+141
+00:05:51,160 --> 00:05:53,622
+is the best location to use.
+
+142
+00:05:53,622 --> 00:05:56,080
+Notice, by the way, that I need to do this because it's not
+
+143
+00:05:56,080 --> 00:05:57,950
+just that I put the label here.
+
+144
+00:05:57,950 --> 00:06:01,520
+I actually have to command PiLab to put a legend in for it
+
+145
+00:06:01,520 --> 00:06:02,930
+to appear.
+
+146
+00:06:02,930 --> 00:06:06,330
+OK, with that in mind, what does it look like?
+
+147
+00:06:06,330 --> 00:06:09,160
+Oh, kind of cool.
+
+148
+00:06:09,160 --> 00:06:11,660
+Remember I said use the upper left location.
+
+149
+00:06:11,660 --> 00:06:12,750
+There's the legend.
+
+150
+00:06:12,750 --> 00:06:16,720
+And now, each graph has a legend associated with it.
+
+151
+00:06:16,720 --> 00:06:20,610
+So I know that the blue line-- this one down here-- is linear,
+
+152
+00:06:20,610 --> 00:06:23,480
+and the green line is quadratic.
+
+153
+00:06:23,480 --> 00:06:25,790
+When I let PiLab decide where to place it,
+
+154
+00:06:25,790 --> 00:06:27,630
+it makes the decision that it thinks
+
+155
+00:06:27,630 --> 00:06:29,680
+is the best location to put it.
+
+156
+00:06:29,680 --> 00:06:31,200
+You might argue that in this case,
+
+157
+00:06:31,200 --> 00:06:32,680
+putting it in the upper right corner really
+
+158
+00:06:32,680 --> 00:06:34,880
+isn't great because it overlaps a little bit of the graph.
+
+159
+00:06:34,880 --> 00:06:36,910
+It might have been better to put it over there.
+
+160
+00:06:36,910 --> 00:06:39,820
+But we leave it up to PiLab to decide where to place it.
+
+161
+00:06:39,820 --> 00:06:42,800
+And again, now I know that this is the cubic,
+
+162
+00:06:42,800 --> 00:06:45,800
+and that is the exponential because the legend tells me
+
+163
+00:06:45,800 --> 00:06:47,280
+that right there.
+
+164
+00:06:47,280 --> 00:06:48,060
+So that's great.
+
+165
+00:06:48,060 --> 00:06:50,750
+I can start adding more information to the plots
+
+166
+00:06:50,750 --> 00:06:52,620
+that I'm using.
+

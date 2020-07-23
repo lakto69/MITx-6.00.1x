@@ -1,0 +1,544 @@
+0
+00:00:00,000 --> 00:00:00,450
+...
+
+1
+00:00:00,450 --> 00:00:01,890
+Now that we have the idea of being
+
+2
+00:00:01,890 --> 00:00:04,570
+able to do different plots in different windows,
+
+3
+00:00:04,570 --> 00:00:07,390
+we'd like to see what other things could we add to this.
+
+4
+00:00:07,390 --> 00:00:10,100
+And the first thing is, I should really label things here.
+
+5
+00:00:10,100 --> 00:00:12,060
+I should really label the axes, because they
+
+6
+00:00:12,060 --> 00:00:14,870
+mean different things in different plots.
+
+7
+00:00:14,870 --> 00:00:17,480
+So here's a set of code all calling functions out
+
+8
+00:00:17,480 --> 00:00:20,560
+of that PiLab library.
+
+9
+00:00:20,560 --> 00:00:23,110
+And notice what I've done.
+
+10
+00:00:23,110 --> 00:00:25,400
+First of all, I open up a figure that I'm
+
+11
+00:00:25,400 --> 00:00:27,320
+going to call lin for linear.
+
+12
+00:00:27,320 --> 00:00:29,290
+And the next two calls are putting
+
+13
+00:00:29,290 --> 00:00:32,119
+an x and y label on that graph.
+
+14
+00:00:32,119 --> 00:00:33,780
+They just take string arguments.
+
+15
+00:00:33,780 --> 00:00:35,250
+So I'm going to say, on the x-axis,
+
+16
+00:00:35,250 --> 00:00:36,950
+I want to say sample points.
+
+17
+00:00:36,950 --> 00:00:39,370
+On the y-axis, I'm just going to say linear function.
+
+18
+00:00:39,370 --> 00:00:41,560
+Obvious things to put in there.
+
+19
+00:00:41,560 --> 00:00:45,590
+I then do the plot of my samples versus my linear,
+
+20
+00:00:45,590 --> 00:00:47,340
+as we did before.
+
+21
+00:00:47,340 --> 00:00:51,074
+I can open up, as I did before, another figure, quadratic,
+
+22
+00:00:51,074 --> 00:00:51,990
+and do plotting there.
+
+23
+00:00:51,990 --> 00:00:54,240
+I could open up another figure which is cubic
+
+24
+00:00:54,240 --> 00:00:55,720
+and do plotting there.
+
+25
+00:00:55,720 --> 00:00:59,111
+I could open another figure and do exponential plotting.
+
+26
+00:00:59,111 --> 00:01:00,486
+And then I might decide, you know
+
+27
+00:01:00,486 --> 00:01:02,910
+what, I want to go back to the quadratic figure
+
+28
+00:01:02,910 --> 00:01:04,200
+and add a label.
+
+29
+00:01:04,200 --> 00:01:08,912
+So notice here, having first created the quad figure there,
+
+30
+00:01:08,912 --> 00:01:10,120
+I've done a few other things.
+
+31
+00:01:10,120 --> 00:01:13,370
+I can come back right here and say, please
+
+32
+00:01:13,370 --> 00:01:15,370
+reopen the quad figure.
+
+33
+00:01:15,370 --> 00:01:17,640
+Calling figure with the same name will do that.
+
+34
+00:01:17,640 --> 00:01:20,960
+And inside of that window, I'm going to add in another label.
+
+35
+00:01:20,960 --> 00:01:22,660
+I'm going to put in a y label that is
+
+36
+00:01:22,660 --> 00:01:24,940
+a quadratic function on there.
+
+37
+00:01:24,940 --> 00:01:27,838
+Let's see what happens if we do this.
+
+38
+00:01:27,838 --> 00:01:29,830
+Oh, nice.
+
+39
+00:01:29,830 --> 00:01:33,370
+Now I've got something that labels the x-axis, that
+
+40
+00:01:33,370 --> 00:01:35,750
+labels the y-axis.
+
+41
+00:01:35,750 --> 00:01:36,770
+And I'll wait a minute.
+
+42
+00:01:36,770 --> 00:01:39,270
+Over here, what happened?
+
+43
+00:01:39,270 --> 00:01:41,400
+There's no label on the x-axis.
+
+44
+00:01:41,400 --> 00:01:44,012
+There is a label on the y-axis.
+
+45
+00:01:44,012 --> 00:01:45,470
+Let's go back to the previous slide
+
+46
+00:01:45,470 --> 00:01:47,650
+and see why that happened.
+
+47
+00:01:47,650 --> 00:01:48,880
+Ah.
+
+48
+00:01:48,880 --> 00:01:51,550
+Notice that here, I put an x and y label.
+
+49
+00:01:51,550 --> 00:01:56,310
+But that was in the linear window.
+
+50
+00:01:56,310 --> 00:02:00,190
+Down here, when I reopened up the quad picture,
+
+51
+00:02:00,190 --> 00:02:03,166
+I only put a y label on.
+
+52
+00:02:03,166 --> 00:02:04,290
+And that makes sense, then.
+
+53
+00:02:04,290 --> 00:02:06,620
+I only said put a y label on there.
+
+54
+00:02:06,620 --> 00:02:08,870
+The label for x happened up here only inside
+
+55
+00:02:08,870 --> 00:02:12,530
+of the linear window, not inside of the quad window.
+
+56
+00:02:12,530 --> 00:02:14,080
+And so I want to fix that, I better
+
+57
+00:02:14,080 --> 00:02:17,930
+make sure I do the labels inside of the appropriate windows.
+
+58
+00:02:17,930 --> 00:02:19,100
+There is my display.
+
+59
+00:02:19,100 --> 00:02:21,420
+And it comes out quite nicely.
+
+60
+00:02:21,420 --> 00:02:24,625
+OK, what else might I do?
+
+61
+00:02:24,625 --> 00:02:26,000
+If I'm really careful about this,
+
+62
+00:02:26,000 --> 00:02:28,270
+I should not only label x and y-axes.
+
+63
+00:02:28,270 --> 00:02:31,800
+I should also put titles on these graphs.
+
+64
+00:02:31,800 --> 00:02:33,810
+And so I can do that by simply adding.
+
+65
+00:02:33,810 --> 00:02:36,470
+And after I've done all of these pieces.
+
+66
+00:02:36,470 --> 00:02:40,040
+Opening up the figure, doing the plots, I could put in labels.
+
+67
+00:02:40,040 --> 00:02:45,330
+And notice here, I'm reopening up each one of the figures,
+
+68
+00:02:45,330 --> 00:02:47,190
+and then putting an appropriate label
+
+69
+00:02:47,190 --> 00:02:49,920
+for the title of each one of these graphs.
+
+70
+00:02:49,920 --> 00:02:54,150
+Great, Let's see what happens when we do that.
+
+71
+00:02:54,150 --> 00:02:56,170
+So there's the display.
+
+72
+00:02:56,170 --> 00:02:58,450
+And there's good news and bad news.
+
+73
+00:02:58,450 --> 00:03:03,560
+The good news is, there are the titles for the graphs
+
+74
+00:03:03,560 --> 00:03:05,210
+that I drew.
+
+75
+00:03:05,210 --> 00:03:10,520
+But notice I've still got some labels on the axes.
+
+76
+00:03:10,520 --> 00:03:12,950
+And in that previous code, if I go back to it just
+
+77
+00:03:12,950 --> 00:03:15,540
+for a second, they're not there, right?
+
+78
+00:03:15,540 --> 00:03:17,260
+I'm opening up a figure, I'm plotting.
+
+79
+00:03:17,260 --> 00:03:19,080
+I'm opening up a figure, I'm plotting.
+
+80
+00:03:19,080 --> 00:03:21,010
+And then I'm putting titles on.
+
+81
+00:03:21,010 --> 00:03:22,500
+So what happened here?
+
+82
+00:03:22,500 --> 00:03:25,280
+Why are the axes still labeled?
+
+83
+00:03:25,280 --> 00:03:26,780
+And the other thing you might notice
+
+84
+00:03:26,780 --> 00:03:29,387
+is, why are the colors the same in the two plots?
+
+85
+00:03:29,387 --> 00:03:31,720
+They're both of the same color, even though I'm actually
+
+86
+00:03:31,720 --> 00:03:33,640
+plotting different things.
+
+87
+00:03:33,640 --> 00:03:36,170
+So let's answer both of those.
+
+88
+00:03:36,170 --> 00:03:38,790
+The first answer is, or the answer to the first question
+
+89
+00:03:38,790 --> 00:03:42,810
+is, we're reusing a previously created window.
+
+90
+00:03:42,810 --> 00:03:45,497
+I had done earlier calls where I created those windows
+
+91
+00:03:45,497 --> 00:03:47,830
+with those names, and I'd done things in them, including
+
+92
+00:03:47,830 --> 00:03:50,040
+putting labels on the axes.
+
+93
+00:03:50,040 --> 00:03:52,160
+So if I want to really be clean, I
+
+94
+00:03:52,160 --> 00:03:54,715
+should clear the window before redrawing it.
+
+95
+00:03:54,715 --> 00:03:56,874
+And I'll show you how to do that in a second.
+
+96
+00:03:56,874 --> 00:03:58,540
+And the second one, if you're wondering,
+
+97
+00:03:58,540 --> 00:04:01,924
+is why are these plotting functions using the same color?
+
+98
+00:04:01,924 --> 00:04:03,340
+We're going to fix it in a second.
+
+99
+00:04:03,340 --> 00:04:04,950
+But basically, we're calling a plot
+
+100
+00:04:04,950 --> 00:04:06,810
+in a new version of a window.
+
+101
+00:04:06,810 --> 00:04:11,380
+And PiLab always starts with the same choice of color,
+
+102
+00:04:11,380 --> 00:04:14,030
+and then we'll move on as we do other kinds of plots.
+
+103
+00:04:14,030 --> 00:04:15,630
+As we'll see, we can control it.
+
+104
+00:04:15,630 --> 00:04:17,690
+But if we don't give any specific instructions,
+
+105
+00:04:17,690 --> 00:04:20,709
+PiLab's always going to start with the same color.
+
+106
+00:04:20,709 --> 00:04:23,900
+Let's deal with cleaning up the windows first.
+
+107
+00:04:23,900 --> 00:04:26,690
+So what I need to do is to say to PiLab,
+
+108
+00:04:26,690 --> 00:04:28,800
+when I open up a figure, in case I've
+
+109
+00:04:28,800 --> 00:04:32,400
+had an earlier version of it open previously, I'm going to,
+
+110
+00:04:32,400 --> 00:04:33,830
+in fact, clear it.
+
+111
+00:04:33,830 --> 00:04:35,810
+And it's simply going to use the CLF,
+
+112
+00:04:35,810 --> 00:04:40,340
+or clear the frame function inside of each one.
+
+113
+00:04:40,340 --> 00:04:41,990
+And it's a nice habit to get into.
+
+114
+00:04:41,990 --> 00:04:43,502
+I open up a window, let me clear it
+
+115
+00:04:43,502 --> 00:04:45,460
+to make sure I haven't been using it previously
+
+116
+00:04:45,460 --> 00:04:46,500
+somewhere else.
+
+117
+00:04:46,500 --> 00:04:48,510
+And I have exactly what I want set
+
+118
+00:04:48,510 --> 00:04:50,142
+in order to have a clean slate.
+
+119
+00:04:50,142 --> 00:04:52,350
+Of course sometimes, I may want to use it previously.
+
+120
+00:04:52,350 --> 00:04:54,610
+And in fact, we'll see that right here
+
+121
+00:04:54,610 --> 00:04:56,960
+on this side when I want to put labels in.
+
+122
+00:04:56,960 --> 00:04:59,600
+I'm reopening that for window and doing
+
+123
+00:04:59,600 --> 00:05:01,730
+the appropriate labeling inside of it.
+
+124
+00:05:01,730 --> 00:05:03,490
+But with that clear, I'm actually
+
+125
+00:05:03,490 --> 00:05:05,100
+going to be able to draw appropriately
+
+126
+00:05:05,100 --> 00:05:06,380
+inside each of them.
+
+127
+00:05:06,380 --> 00:05:09,470
+And when I do that, I get the display I want.
+
+128
+00:05:09,470 --> 00:05:12,440
+Titles, in this case, on the windows,
+
+129
+00:05:12,440 --> 00:05:14,482
+but nothing on the axes.
+
+130
+00:05:14,482 --> 00:05:16,190
+And I should have said earlier, of course
+
+131
+00:05:16,190 --> 00:05:18,650
+there were actually four windows that were displayed here.
+
+132
+00:05:18,650 --> 00:05:21,040
+I'm just showing two of them, the linear and quadratic.
+
+133
+00:05:21,040 --> 00:05:25,030
+I didn't bother to show to you the cubic and the exponential.
+
+134
+00:05:25,030 --> 00:05:27,700
+But those are going to be things that would also be displayed.
+
+135
+00:05:27,700 --> 00:05:30,090
+If I wanted to look at them.
+
