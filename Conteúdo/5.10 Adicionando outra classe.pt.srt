@@ -1,0 +1,732 @@
+1
+00:00:00,810 --> 00:00:03,950
+Agora que vimos a ideia de usar atributos de classe,
+
+2
+00:00:03,950 --> 00:00:06,040
+atributos de dados, para dar nomes exclusivos às coisas,
+
+3
+00:00:06,040 --> 00:00:08,260
+ou identificadores exclusivos para eles,
+
+4
+00:00:08,260 --> 00:00:12,200
+pode começar a construir uma pequena representação das pessoas do MIT.
+
+5
+00:00:12,200 --> 00:00:13,960
+Mais importante, dado que agora temos
+
+6
+00:00:13,960 --> 00:00:15,630
+duas classes em nossa hierarquia,
+
+7
+00:00:15,630 --> 00:00:17,770
+queremos estendê-la para ver as variações
+
+8
+00:00:17,770 --> 00:00:19,690
+sobre como herdamos métodos.
+
+9
+00:00:19,690 --> 00:00:22,320
+Então, vamos adicionar diferentes tipos de pessoas do MIT.
+
+10
+00:00:22,320 --> 00:00:23,380
+Nós temos estudantes.
+
+11
+00:00:23,380 --> 00:00:26,240
+Eles são todos pessoas do MIT, mas têm diferentes sabores.
+
+12
+00:00:26,240 --> 00:00:28,202
+Temos estudantes de graduação que têm uma aula aqui.
+
+13
+00:00:28,202 --> 00:00:30,410
+Temos alunos de pós-graduação que não têm aula,
+
+14
+00:00:30,410 --> 00:00:31,868
+porque não podemos dizer quanto tempo eles
+
+15
+00:00:31,868 --> 00:00:36,580
+vão levar para terminar o seu doutorado Vamos adicioná-los.
+
+16
+00:00:36,580 --> 00:00:39,690
+Para que eu possa estender minha classe repetidamente.
+
+17
+00:00:39,690 --> 00:00:42,480
+Vou começar a construir em cima da MITperson,
+
+18
+00:00:42,480 --> 00:00:45,570
+que eu lembro que você herda de person, que herda
+
+19
+00:00:45,570 --> 00:00:47,370
+da classe de objeto base.
+
+20
+00:00:47,370 --> 00:00:49,070
+E você UG significa graduação.
+
+21
+00:00:49,070 --> 00:00:50,800
+Então, um estudante de graduação tem um nome.
+
+22
+00:00:50,800 --> 00:00:52,880
+Também tem um ano da turma.
+
+23
+00:00:52,880 --> 00:00:56,220
+E como fiz antes, vou usar o herdado,
+
+24
+00:00:56,220 --> 00:00:59,820
+nesse caso, o método MITperson para criar a instância.
+
+25
+00:00:59,820 --> 00:01:03,720
+Lembre-se de que, por sua vez, usará  ométodo deinicialização
+
+26
+00:01:03,720 --> 00:01:05,890
+de person para criar a instância subjacente
+
+27
+00:01:05,890 --> 00:01:08,820
+e depois atribuir um número de identificação exclusivo a eles.
+
+28
+00:01:08,820 --> 00:01:11,200
+Além disso, depois de criar essa instância
+
+29
+00:01:11,200 --> 00:01:14,860
+Vou ligar o ano como um atributo de dados para a classe
+
+30
+00:01:14,860 --> 00:01:16,181
+ano do aluno.
+
+31
+00:01:16,181 --> 00:01:18,180
+Eu poderia, é claro, voltar à classe ano
+
+32
+00:01:18,180 --> 00:01:19,215
+com um getter.
+
+33
+00:01:19,215 --> 00:01:20,590
+A outra coisa que eu quero fazer aqui
+
+34
+00:01:20,590 --> 00:01:22,500
+é que eu quero dar MITUndergraduates
+
+35
+00:01:22,500 --> 00:01:25,480
+uma capacidade de falar um pouco diferente.
+
+36
+00:01:25,480 --> 00:01:28,901
+Eles vão usar o método MITPerson
+
+37
+00:01:28,901 --> 00:01:29,400
+falar.
+
+38
+00:01:29,400 --> 00:01:30,410
+Então observe a ligação.
+
+39
+00:01:30,410 --> 00:01:35,020
+Eu uso MITPerson.speak para obter esse método que nós apenas
+
+40
+00:01:35,020 --> 00:01:36,420
+vimos ser usada em uma pessoa
+
+41
+00:01:36,420 --> 00:01:37,307
+MITPerson.
+
+42
+00:01:37,307 --> 00:01:38,890
+O que eu vou mudar é que eu
+
+43
+00:01:38,890 --> 00:01:41,240
+vou adicionar um pouco ao que eles realmente dizem.
+
+44
+00:01:41,240 --> 00:01:43,850
+E veremos um exemplo disso em um segundo.
+
+45
+00:01:43,850 --> 00:01:44,929
+Eu tenho estudantes de graduação.
+
+46
+00:01:44,929 --> 00:01:46,720
+Também vamos ter alunos de pós-graduação.
+
+47
+00:01:46,720 --> 00:01:48,960
+E você pode fazer uma classe separada para eles.
+
+48
+00:01:48,960 --> 00:01:51,820
+E então eu quero poder dizer se eu tenho
+
+49
+00:01:51,820 --> 00:01:53,200
+um Student, como uma instância disso.
+
+50
+00:01:53,200 --> 00:01:56,880
+E aqui eu posso usar os dois tipos para realmente retirá-los.
+
+51
+00:01:56,880 --> 00:01:58,630
+Para que eu possa verificar a superclasse de
+
+52
+00:01:58,630 --> 00:02:01,340
+alguém é um student simplesmente dizendo,
+
+53
+00:02:01,340 --> 00:02:03,340
+isso é uma instância de uma graduação
+
+54
+00:02:03,340 --> 00:02:06,290
+ou isso é um exemplo de um estudante de graduação?
+
+55
+00:02:06,290 --> 00:02:07,264
+Bom.
+
+56
+00:02:07,264 --> 00:02:08,639
+Vamos ver o que aconteceria se nós
+
+57
+00:02:08,639 --> 00:02:10,900
+fossemos usar isso para começar a construir
+
+58
+00:02:10,900 --> 00:02:13,120
+um pouco da nossa hierarquia.
+
+59
+00:02:13,120 --> 00:02:15,110
+Então, eu vou criar alguns graduandos.
+
+60
+00:02:15,110 --> 00:02:16,760
+Eu vou dar a eles uma classe ano.
+
+61
+00:02:16,760 --> 00:02:19,510
+E eu vou criar um aluno também.
+
+62
+00:02:19,510 --> 00:02:23,350
+E se eu carregar isso, o que vou fazer agora,
+
+63
+00:02:23,350 --> 00:02:26,730
+Agora posso ver o que acontece com essa instância de coisas.
+
+64
+00:02:26,730 --> 00:02:29,160
+Então, primeiro de tudo, deixe-me imprimir
+
+65
+00:02:29,160 --> 00:02:31,310
+algumas informações, em particular de s1.
+
+66
+00:02:31,310 --> 00:02:35,900
+E eu digo que se eu imprimir s1, ele imprimirá o nome,
+
+67
+00:02:35,900 --> 00:02:38,410
+Matt Damon-- ótimo.
+
+68
+00:02:38,410 --> 00:02:40,640
+Também sei em que classe Matt está.
+
+69
+00:02:40,640 --> 00:02:47,920
+Então eu faço a classe get_class em s1, s1.get_class usando esse método
+
+70
+00:02:47,920 --> 00:02:48,560
+getter.
+
+71
+00:02:48,560 --> 00:02:51,810
+E como é um método, abro, fecho o parênteses.
+
+72
+00:02:51,810 --> 00:02:53,850
+E diz classe de 2017.
+
+73
+00:02:53,850 --> 00:02:56,980
+Espero que ele se forme daqui a um ano.
+
+74
+00:02:56,980 --> 00:02:58,880
+E então eu posso usar o método speak.
+
+75
+00:02:58,880 --> 00:03:02,340
+E para lembrá-lo, no meu código, eu tive a graduação
+
+76
+00:03:02,340 --> 00:03:03,430
+método de fala.
+
+77
+00:03:03,430 --> 00:03:06,930
+Use o método de fala MITPerson subjacente,
+
+78
+00:03:06,930 --> 00:03:08,280
+mas adicionando algo a ele.
+
+79
+00:03:08,280 --> 00:03:20,400
+Então, se eu perguntar ao Ben-- desculpe, Matt para falar, onde está o teste,
+
+80
+00:03:20,400 --> 00:03:25,170
+está impresso, Damon diz, cara, onde está o teste?
+
+81
+00:03:25,170 --> 00:03:28,920
+Damon diz que veio do método de fala do MITPerson.
+
+82
+00:03:28,920 --> 00:03:30,630
+E aquela inserção de um cara veio
+
+83
+00:03:30,630 --> 00:03:33,380
+do jeito que eu defini adicionando isso ao enunciado.
+
+84
+00:03:33,380 --> 00:03:40,580
+E, como conseqüência, eu posso fazer o amigo dele responder
+
+85
+00:03:40,580 --> 00:03:45,320
+com, novamente, como um estudante de graduação ouviria, Affleck diz, cara,
+
+86
+00:03:45,320 --> 00:03:47,350
+Eu não faço ideia.
+
+87
+00:03:47,350 --> 00:03:49,480
+Meu ponto disso é, observe como estou
+
+88
+00:03:49,480 --> 00:03:53,840
+usando o método de fala MITPerson subjacente para fazer o trabalho,
+
+89
+00:03:53,840 --> 00:03:55,490
+mas estou simplesmente adicionando algo quando
+
+90
+00:03:55,490 --> 00:03:59,150
+este é um exemplo de um aluno do MIT falando.
+
+91
+00:03:59,150 --> 00:04:00,160
+Eu posso imprimir as coisas.
+
+92
+00:04:00,160 --> 00:04:01,946
+Eu posso tê-los conversando um com o outro.
+
+93
+00:04:01,946 --> 00:04:03,320
+Tudo bem, o que mais eu poderia querer
+
+94
+00:04:03,320 --> 00:04:05,660
+saber sobre essa hierarquia?
+
+95
+00:04:05,660 --> 00:04:08,160
+Primeiro de tudo, vamos lembrá-lo do que tenho aqui.
+
+96
+00:04:08,160 --> 00:04:11,700
+Aqui está um diagrama que mostra o que construímos. Você tem uma Person.
+
+97
+00:04:11,700 --> 00:04:13,840
+Essa é a minha classe base.
+
+98
+00:04:13,840 --> 00:04:16,670
+Segundo isso, temos uma subclasse de uma MITPerson.
+
+99
+00:04:16,670 --> 00:04:19,670
+E foi aí que residiam coisas como o método speak.
+
+100
+00:04:19,670 --> 00:04:22,530
+E então, em relação a isso, eu posso construir ambos os graduandos
+
+101
+00:04:22,530 --> 00:04:23,909
+e estudantes de pós-graduação.
+
+102
+00:04:23,909 --> 00:04:26,200
+Agora ainda não fiz muito com os alunos de pós-graduação.
+
+103
+00:04:26,200 --> 00:04:28,533
+Você pode imaginar que eles podem falar um pouco diferente.
+
+104
+00:04:28,533 --> 00:04:30,710
+Eles podem ter outros tipos de atributos.
+
+105
+00:04:30,710 --> 00:04:33,660
+E minhas setas aqui estão mostrando o relacionamento da subclasse
+
+106
+00:04:33,660 --> 00:04:36,380
+para superclasse e o fato de herdarmos métodos
+
+107
+00:04:36,380 --> 00:04:38,950
+a hierarquia que precisamos deles.
+
+108
+00:04:38,950 --> 00:04:41,180
+Tendo construído isso, agora percebo que há
+
+109
+00:04:41,180 --> 00:04:44,640
+outro tipo de estudante, um estudante transferido, alguém
+
+110
+00:04:44,640 --> 00:04:47,730
+que chega ao MIT depois de um ano em outro lugar.
+
+111
+00:04:47,730 --> 00:04:51,040
+Então, eu gostaria de adicionar uma nova classe à minha hierarquia.
+
+112
+00:04:51,040 --> 00:04:53,440
+Eu certamente poderia fazê-lo ali.
+
+113
+00:04:53,440 --> 00:04:55,170
+Mas agora eu tenho um problema.
+
+114
+00:04:55,170 --> 00:04:58,980
+Eu tenho que repensar is_student.
+
+115
+00:04:58,980 --> 00:05:01,790
+Lembre-se, para is_student, eu simplesmente diria:
+
+116
+00:05:01,790 --> 00:05:05,080
+veja se é uma instância de um estudante de graduação ou pós-graduação.
+
+117
+00:05:05,080 --> 00:05:07,150
+Eu preciso mudar isso.
+
+118
+00:05:07,150 --> 00:05:08,650
+Uma maneira de mudar isso seria simplesmente
+
+119
+00:05:08,650 --> 00:05:11,120
+adicionar outra cláusula à expressão que diz:
+
+120
+00:05:11,120 --> 00:05:13,210
+este é um estudante transferido?
+
+121
+00:05:13,210 --> 00:05:14,880
+Mas uma maneira mais limpa de mudar isso é
+
+122
+00:05:14,880 --> 00:05:17,500
+perceber que eu tenho uma classe implícita aqui.
+
+123
+00:05:17,500 --> 00:05:20,222
+E isso é uma classe de estudante.
+
+124
+00:05:20,222 --> 00:05:21,680
+E deixe-me adicionar isso e mostrar a você
+
+125
+00:05:21,680 --> 00:05:24,210
+como limpa a hierarquia.
+
+126
+00:05:24,210 --> 00:05:27,350
+Eu vou criar outra classe aqui em cima.
+
+127
+00:05:27,350 --> 00:05:28,805
+Herda de MITPerson.
+
+128
+00:05:28,805 --> 00:05:29,430
+É um Student.
+
+129
+00:05:29,430 --> 00:05:30,980
+Eles são pessoas do MIT.
+
+130
+00:05:30,980 --> 00:05:34,690
+E então eu vou ter cada uma dessas subclasses herdando
+
+131
+00:05:34,690 --> 00:05:38,050
+de Student-- muito direto,
+
+132
+00:05:38,050 --> 00:05:39,520
+mas tem duas boas propriedades.
+
+133
+00:05:39,520 --> 00:05:41,970
+O principal é, veja o que aconteceu com is_student bem
+
+134
+00:05:41,970 --> 00:05:42,820
+profundamente.
+
+135
+00:05:42,820 --> 00:05:44,260
+Isso mudou.
+
+136
+00:05:44,260 --> 00:05:46,600
+Mas antes que eu faça isso, observe essa coisa estranha
+
+137
+00:05:46,600 --> 00:05:48,360
+nas definições de classe.
+
+138
+00:05:48,360 --> 00:05:50,960
+Foi em um slide anterior e eu não disse nada sobre isso,
+
+139
+00:05:50,960 --> 00:05:55,010
+mas aqui, o símbolo especial ou a palavra-chave passam basicamente
+
+140
+00:05:55,010 --> 00:05:57,460
+pelo menos no momento, não há expressão
+
+141
+00:05:57,460 --> 00:05:58,680
+associado a isso.
+
+142
+00:05:58,680 --> 00:06:00,457
+Estou simplesmente passando por isso.
+
+143
+00:06:00,457 --> 00:06:02,790
+E isso em particular com student vai ser legal.
+
+144
+00:06:02,790 --> 00:06:05,039
+Eu não tenho nenhum método associado astudent.
+
+145
+00:06:05,039 --> 00:06:06,580
+Eu simplesmente estou passando, mas é
+
+146
+00:06:06,580 --> 00:06:08,990
+deixe-me limpar a hierarquia.
+
+147
+00:06:08,990 --> 00:06:11,750
+E finalmente, observe com is_student agora,
+
+148
+00:06:11,750 --> 00:06:14,690
+simplesmente está checando, é um aluno?
+
+149
+00:06:14,690 --> 00:06:17,120
+Se eu adicionar outros tipos de alunos aqui,
+
+150
+00:06:17,120 --> 00:06:19,730
+é simplesmente uma questão de adicionar a definição de classe,
+
+151
+00:06:19,730 --> 00:06:21,629
+garantindo que herda do aluno,
+
+152
+00:06:21,629 --> 00:06:23,920
+e eu não tenho que mudar a hierarquia ou os métodos
+
+153
+00:06:23,920 --> 00:06:25,520
+associado a eles.
+
+154
+00:06:25,520 --> 00:06:27,880
+Por isso, limpou de uma maneira muito agradável.
+
+155
+00:06:27,880 --> 00:06:30,190
+E, em particular, agora podemos voltar
+
+156
+00:06:30,190 --> 00:06:32,400
+e tenha certeza dessa mudança que ainda
+
+157
+00:06:32,400 --> 00:06:34,990
+têm o mesmo desempenho de antes, que
+
+158
+00:06:34,990 --> 00:06:37,240
+herdará adequadamente.
+
+159
+00:06:37,240 --> 00:06:42,360
+E, se eu carregar uma versão disso, posso fazer o mesmo teste.
+
+160
+00:06:42,360 --> 00:06:48,430
+Posso imprimir, s1, ainda imprime da mesma maneira.
+
+161
+00:06:48,430 --> 00:06:52,010
+E eu poderia imprimir tendo s1.speak.
+
+162
+00:06:52,010 --> 00:06:53,520
+Onde está o teste?
+
+163
+00:06:53,520 --> 00:06:56,470
+Ele ainda está procurando o teste.
+
+164
+00:06:56,470 --> 00:06:58,510
+Ainda imprime da mesma maneira.
+
+165
+00:06:58,510 --> 00:07:07,550
+E se eu imprimir s2.speak, novamente
+
+166
+00:07:07,550 --> 00:07:10,480
+imprime adequadamente.
+
+167
+00:07:10,480 --> 00:07:13,400
+Herdando do local apropriado - adicionando essa classe extra
+
+168
+00:07:13,400 --> 00:07:16,370
+lá não mudou nada porque minhas definições eram
+
+169
+00:07:16,370 --> 00:07:18,640
+ainda voltando ao MITPerson para obter
+
+170
+00:07:18,640 --> 00:07:21,910
+o método de fala subjacente.
+
+171
+00:07:21,910 --> 00:07:25,000
+Se eu olhar para minha hierarquia, eu tenho Person.
+
+172
+00:07:25,000 --> 00:07:26,540
+Eu tenho MITPerson.
+
+173
+00:07:26,540 --> 00:07:30,080
+Agora inseri uma nova turma, Student, no meio.
+
+174
+00:07:30,080 --> 00:07:33,160
+E isso diz que foi muito mais fácil, neste caso,
+
+175
+00:07:33,160 --> 00:07:36,270
+para adicionar nessa classe TransferStudent.
+
+176
+00:07:36,270 --> 00:07:38,070
+E isso se refere a algo às vezes
+
+177
+00:07:38,070 --> 00:07:40,250
+chamado princípio de substituição,
+
+178
+00:07:40,250 --> 00:07:43,870
+que comportamentos importantes de uma superclasse
+
+179
+00:07:43,870 --> 00:07:46,810
+devem ser suportado por todas as subclasses.
+
+180
+00:07:46,810 --> 00:07:49,860
+E, neste caso, adicionar Student como uma superclasse foi
+
+181
+00:07:49,860 --> 00:07:51,960
+reunindo todas essas informações em um lugar
+
+182
+00:07:51,960 --> 00:07:54,770
+enquanto ainda nos permitia herdar métodos,
+
+183
+00:07:54,770 --> 00:07:58,070
+por exemplo, aqui em cima no MITPerson.
+

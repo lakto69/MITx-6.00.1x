@@ -1,0 +1,1212 @@
+0
+00:00:00,000 --> 00:00:00,530
+...
+
+1
+00:00:00,530 --> 00:00:02,810
+First, congratulations.
+
+2
+00:00:02,810 --> 00:00:04,360
+You made it to the end.
+
+3
+00:00:04,360 --> 00:00:07,366
+This is the last lecture in this first part of 600,
+
+4
+00:00:07,366 --> 00:00:09,240
+and we're delighted that you've stuck with us
+
+5
+00:00:09,240 --> 00:00:10,800
+all the way along.
+
+6
+00:00:10,800 --> 00:00:13,850
+Second, this is going to be a short lecture, because we just
+
+7
+00:00:13,850 --> 00:00:15,770
+want to take a step back and think
+
+8
+00:00:15,770 --> 00:00:17,270
+about what have you accomplished--
+
+9
+00:00:17,270 --> 00:00:18,770
+or what have we, hopefully, together
+
+10
+00:00:18,770 --> 00:00:21,750
+accomplished-- in this course.
+
+11
+00:00:21,750 --> 00:00:24,550
+So to pull all of this together, let's think
+
+12
+00:00:24,550 --> 00:00:27,712
+about where you've been and where you're headed.
+
+13
+00:00:27,712 --> 00:00:29,170
+What are the things you've learned?
+
+14
+00:00:29,170 --> 00:00:31,000
+What are the lessons you should take away,
+
+15
+00:00:31,000 --> 00:00:34,340
+and how might you use this as you think about next steps?
+
+16
+00:00:34,340 --> 00:00:37,480
+And let's start with where you've been.
+
+17
+00:00:37,480 --> 00:00:40,070
+If you go way back to the very first lecture,
+
+18
+00:00:40,070 --> 00:00:42,530
+we put up a set of topics.
+
+19
+00:00:42,530 --> 00:00:44,690
+We said, in this class, in this course,
+
+20
+00:00:44,690 --> 00:00:47,990
+you're going to learn a different range of information,
+
+21
+00:00:47,990 --> 00:00:50,680
+a different set of knowledge, a different set of tools.
+
+22
+00:00:50,680 --> 00:00:53,390
+And if think about it, I think we've hit all of them.
+
+23
+00:00:53,390 --> 00:00:55,970
+You've certainly learned about how to represent knowledge
+
+24
+00:00:55,970 --> 00:00:57,790
+with different kinds of data structures--
+
+25
+00:00:57,790 --> 00:01:00,630
+lists, tuples, dictionaries.
+
+26
+00:01:00,630 --> 00:01:01,720
+They aren't the only ones.
+
+27
+00:01:01,720 --> 00:01:04,000
+As you move on, you'll find other kinds of data structures.
+
+28
+00:01:04,000 --> 00:01:05,560
+But most importantly, you've learned
+
+29
+00:01:05,560 --> 00:01:07,960
+the idea of how to group things together, treat
+
+30
+00:01:07,960 --> 00:01:09,550
+them as primitives so that you can
+
+31
+00:01:09,550 --> 00:01:12,150
+reason about complicated structures in very
+
+32
+00:01:12,150 --> 00:01:13,780
+efficient ways.
+
+33
+00:01:13,780 --> 00:01:15,620
+The second thing we certainly did
+
+34
+00:01:15,620 --> 00:01:18,460
+was to come up with different computational metaphors--
+
+35
+00:01:18,460 --> 00:01:20,310
+iteration and recursion.
+
+36
+00:01:20,310 --> 00:01:22,620
+You've seen loops, whether it's for or while loops.
+
+37
+00:01:22,620 --> 00:01:24,450
+You've seen ways of writing things
+
+38
+00:01:24,450 --> 00:01:26,340
+that walk linearly through different kinds
+
+39
+00:01:26,340 --> 00:01:27,130
+of computations.
+
+40
+00:01:27,130 --> 00:01:30,230
+You've seen recursion as a way of capturing computation
+
+41
+00:01:30,230 --> 00:01:31,550
+very effectively.
+
+42
+00:01:31,550 --> 00:01:34,260
+And they really are that wonderful term over there.
+
+43
+00:01:34,260 --> 00:01:37,940
+They're metaphors for thinking about how to write procedures
+
+44
+00:01:37,940 --> 00:01:39,560
+that tackle problems.
+
+45
+00:01:39,560 --> 00:01:41,600
+You've certainly seen the idea of abstraction,
+
+46
+00:01:41,600 --> 00:01:45,070
+both of data types and of procedures, that notion that I
+
+47
+00:01:45,070 --> 00:01:48,370
+can create something once and then bury the details so that I
+
+48
+00:01:48,370 --> 00:01:51,580
+can use, for example, a procedure as if it was provided
+
+49
+00:01:51,580 --> 00:01:54,920
+as part of the machine, knowing that having built it once,
+
+50
+00:01:54,920 --> 00:01:57,020
+there's a contract that ensures if I give it
+
+51
+00:01:57,020 --> 00:01:58,580
+the right kind of input, I'm going
+
+52
+00:01:58,580 --> 00:02:02,895
+to get out output that satisfies a particular constraint.
+
+53
+00:02:02,895 --> 00:02:05,590
+You've definitely seen how to organize and modularize
+
+54
+00:02:05,590 --> 00:02:08,440
+systems, especially around the ideas of using object classes
+
+55
+00:02:08,440 --> 00:02:12,520
+and methods, associating both data and procedures together
+
+56
+00:02:12,520 --> 00:02:15,050
+inside of classes, treating them as primitives,
+
+57
+00:02:15,050 --> 00:02:18,100
+building hierarchies, inheriting all tools that
+
+58
+00:02:18,100 --> 00:02:19,800
+are really valuable for organizing
+
+59
+00:02:19,800 --> 00:02:21,910
+and modularizing your systems.
+
+60
+00:02:21,910 --> 00:02:25,080
+You've also seen different classes of algorithms,
+
+61
+00:02:25,080 --> 00:02:27,930
+both for straightforward things, but especially around things
+
+62
+00:02:27,930 --> 00:02:30,750
+like searching and sorting, things that you do a lot.
+
+63
+00:02:30,750 --> 00:02:32,550
+And associated with that, you saw
+
+64
+00:02:32,550 --> 00:02:34,130
+how to reason about the complexity
+
+65
+00:02:34,130 --> 00:02:35,600
+of different algorithms.
+
+66
+00:02:35,600 --> 00:02:38,200
+Why do certain things have much more cost than others?
+
+67
+00:02:38,200 --> 00:02:41,100
+What's the order of growth associated with inherent kinds
+
+68
+00:02:41,100 --> 00:02:42,960
+of methods and algorithms?
+
+69
+00:02:42,960 --> 00:02:46,550
+So those are all the topics that you covered.
+
+70
+00:02:46,550 --> 00:02:49,010
+If you also think back to that first lecture,
+
+71
+00:02:49,010 --> 00:02:52,170
+we also said that we were going to teach you some higher level
+
+72
+00:02:52,170 --> 00:02:52,780
+things.
+
+73
+00:02:52,780 --> 00:02:55,410
+You were going to learn computational modes
+
+74
+00:02:55,410 --> 00:02:56,320
+of thinking.
+
+75
+00:02:56,320 --> 00:02:59,690
+We want to master the art of computational problem solving.
+
+76
+00:02:59,690 --> 00:03:02,990
+And especially, we said, we want to help you have the confidence
+
+77
+00:03:02,990 --> 00:03:06,030
+to make computers do what you want them to do.
+
+78
+00:03:06,030 --> 00:03:08,770
+So what we hope is, in fact, that we've started you
+
+79
+00:03:08,770 --> 00:03:11,930
+down the path to being able to think and act like a computer
+
+80
+00:03:11,930 --> 00:03:15,140
+scientist, that when you see a problem,
+
+81
+00:03:15,140 --> 00:03:17,210
+you think about how can I abstract that.
+
+82
+00:03:17,210 --> 00:03:19,190
+How can I build the right kinds of modules?
+
+83
+00:03:19,190 --> 00:03:21,640
+What are the interfaces between those modules?
+
+84
+00:03:21,640 --> 00:03:23,720
+How do I approach this computationally,
+
+85
+00:03:23,720 --> 00:03:25,240
+and what does that allow me to do
+
+86
+00:03:25,240 --> 00:03:28,590
+in terms of solving a problem, especially to get the computer
+
+87
+00:03:28,590 --> 00:03:30,786
+to do the hard work for us?
+
+88
+00:03:30,786 --> 00:03:33,160
+So if we hope we've started you down the path of thinking
+
+89
+00:03:33,160 --> 00:03:39,390
+like a computer scientist, you might ask, well,
+
+90
+00:03:39,390 --> 00:03:42,360
+what do computer scientists actually do?
+
+91
+00:03:42,360 --> 00:03:44,900
+And I happen to put up here images of two of the earliest
+
+92
+00:03:44,900 --> 00:03:47,200
+computer scientists and two of my favorite ones.
+
+93
+00:03:47,200 --> 00:03:49,810
+Ada Lovelace, sometimes referred to
+
+94
+00:03:49,810 --> 00:03:53,020
+as the first computer programmer, and Alan Turing.
+
+95
+00:03:53,020 --> 00:03:56,750
+And what do they and more recent computer scientists really do?
+
+96
+00:03:56,750 --> 00:04:00,550
+Well, they do think computationally-- abstractions,
+
+97
+00:04:00,550 --> 00:04:03,270
+algorithms, automated execution--
+
+98
+00:04:03,270 --> 00:04:05,180
+three tools that you've seen and that we're
+
+99
+00:04:05,180 --> 00:04:07,080
+going to summarize in a second.
+
+100
+00:04:07,080 --> 00:04:10,560
+And in particular, just like the traditional three R's
+
+101
+00:04:10,560 --> 00:04:13,030
+of reading, writing, and arithmetic,
+
+102
+00:04:13,030 --> 00:04:16,600
+computational thinking is becoming a fundamental skill
+
+103
+00:04:16,600 --> 00:04:19,399
+that every well-educated person is going to need.
+
+104
+00:04:19,399 --> 00:04:22,260
+And so that ability to think about abstractions,
+
+105
+00:04:22,260 --> 00:04:24,970
+to think about algorithms, to think about automated
+
+106
+00:04:24,970 --> 00:04:27,870
+execution, is a tool that's as valuable as being
+
+107
+00:04:27,870 --> 00:04:30,490
+able to read, write, communicate, and do
+
+108
+00:04:30,490 --> 00:04:33,310
+other kinds of basic computational things.
+
+109
+00:04:33,310 --> 00:04:36,440
+So what is that notion of computational
+
+110
+00:04:36,440 --> 00:04:38,490
+thinking that we hope you've learned?
+
+111
+00:04:38,490 --> 00:04:41,820
+Well, here are basically the steps that you've seen.
+
+112
+00:04:41,820 --> 00:04:44,640
+Given a problem, how do I identify or invent
+
+113
+00:04:44,640 --> 00:04:45,970
+useful abstractions?
+
+114
+00:04:45,970 --> 00:04:48,950
+How do I suppress details that I don't need to worry about?
+
+115
+00:04:48,950 --> 00:04:52,080
+What are the interfaces between the pieces that I want?
+
+116
+00:04:52,080 --> 00:04:55,000
+Once I've done that, how can I formulate a solution
+
+117
+00:04:55,000 --> 00:04:57,350
+to a problem as a computational experiment
+
+118
+00:04:57,350 --> 00:04:58,700
+using those abstractions?
+
+119
+00:04:58,700 --> 00:05:00,680
+What is it I want to test?
+
+120
+00:05:00,680 --> 00:05:02,750
+And then having done that formulation, how do I
+
+121
+00:05:02,750 --> 00:05:04,730
+design and construct a sufficiently
+
+122
+00:05:04,730 --> 00:05:07,810
+efficient implementation of the experiment?
+
+123
+00:05:07,810 --> 00:05:09,930
+Sufficiently efficient the keyword,
+
+124
+00:05:09,930 --> 00:05:12,720
+because we know that some things have more cost than others.
+
+125
+00:05:12,720 --> 00:05:15,210
+Having done that, then I want to validate
+
+126
+00:05:15,210 --> 00:05:18,040
+my experimental setup-- in other words, debug it to make sure
+
+127
+00:05:18,040 --> 00:05:21,070
+it works the way I want it-- run the experiment,
+
+128
+00:05:21,070 --> 00:05:24,954
+evaluate the results, and repeat as needed.
+
+129
+00:05:24,954 --> 00:05:26,870
+That really is the tools that hopefully you're
+
+130
+00:05:26,870 --> 00:05:28,970
+taking away here as you think about what
+
+131
+00:05:28,970 --> 00:05:31,900
+does it mean to run a computational experiment.
+
+132
+00:05:31,900 --> 00:05:34,160
+And then what are the components of that?
+
+133
+00:05:34,160 --> 00:05:37,700
+Well, the three A's of computational thinking.
+
+134
+00:05:37,700 --> 00:05:41,190
+Abstraction-- you've seen many examples of this.
+
+135
+00:05:41,190 --> 00:05:43,460
+How do I choose the right abstraction?
+
+136
+00:05:43,460 --> 00:05:46,210
+How do I operate in multiple layers of abstraction
+
+137
+00:05:46,210 --> 00:05:47,610
+simultaneously?
+
+138
+00:05:47,610 --> 00:05:49,920
+You saw a lot of this when we played with classes,
+
+139
+00:05:49,920 --> 00:05:52,210
+but it shows up in other places as well.
+
+140
+00:05:52,210 --> 00:05:53,820
+How do I define the relationships
+
+141
+00:05:53,820 --> 00:05:56,170
+between the abstraction layers?
+
+142
+00:05:56,170 --> 00:05:59,527
+But abstraction is an essential part of computational thinking.
+
+143
+00:05:59,527 --> 00:06:01,360
+I don't want to have to think about hundreds
+
+144
+00:06:01,360 --> 00:06:03,780
+of thousands of lines of code at a time.
+
+145
+00:06:03,780 --> 00:06:06,700
+I want to be able to take a piece, make sure it works well,
+
+146
+00:06:06,700 --> 00:06:08,950
+understand the constraints on it,
+
+147
+00:06:08,950 --> 00:06:11,760
+and abstract it away so I can just use it as if it
+
+148
+00:06:11,760 --> 00:06:13,616
+was a built-in thing around it.
+
+149
+00:06:13,616 --> 00:06:15,240
+I want to be able to understand where's
+
+150
+00:06:15,240 --> 00:06:18,440
+the right level in that hierarchy of abstractions
+
+151
+00:06:18,440 --> 00:06:20,440
+in which to be performing my work.
+
+152
+00:06:20,440 --> 00:06:22,110
+And you've seen examples of that.
+
+153
+00:06:22,110 --> 00:06:23,693
+You're going to see a lot more of them
+
+154
+00:06:23,693 --> 00:06:25,670
+as you use computation moving forward.
+
+155
+00:06:25,670 --> 00:06:28,630
+Abstraction, a big element of all of this.
+
+156
+00:06:28,630 --> 00:06:31,430
+Automation, second big element-- how
+
+157
+00:06:31,430 --> 00:06:34,806
+do I think in terms of mechanizing those abstractions?
+
+158
+00:06:34,806 --> 00:06:37,180
+It's not just enough to think about what's the algorithm.
+
+159
+00:06:37,180 --> 00:06:39,380
+How do I do it in a way where I can write it
+
+160
+00:06:39,380 --> 00:06:42,710
+down so that the machine can actually understand it?
+
+161
+00:06:42,710 --> 00:06:44,400
+And that mechanization is possible
+
+162
+00:06:44,400 --> 00:06:48,340
+because we have precise and exact notations and models,
+
+163
+00:06:48,340 --> 00:06:51,430
+and because, as we saw way back at the beginning of the class,
+
+164
+00:06:51,430 --> 00:06:55,044
+there is some machine that can interpret that notation.
+
+165
+00:06:55,044 --> 00:06:56,710
+And so learning a new language, in fact,
+
+166
+00:06:56,710 --> 00:06:59,550
+is learning what's the description of the mechanisms
+
+167
+00:06:59,550 --> 00:07:02,830
+and how do I map things from my thinking level of abstraction
+
+168
+00:07:02,830 --> 00:07:06,060
+down into something that the computer can actually do.
+
+169
+00:07:06,060 --> 00:07:09,570
+And then algorithms-- how do I then take those ideas
+
+170
+00:07:09,570 --> 00:07:13,380
+and capture common patterns of behavior that I want to use?
+
+171
+00:07:13,380 --> 00:07:15,600
+And that includes both what language
+
+172
+00:07:15,600 --> 00:07:17,400
+do I use for describing the automated
+
+173
+00:07:17,400 --> 00:07:20,540
+process-- in our case, it was Python, maybe something else
+
+174
+00:07:20,540 --> 00:07:24,330
+in the future-- but it also allows me to abstract away
+
+175
+00:07:24,330 --> 00:07:25,870
+the details of the algorithm.
+
+176
+00:07:25,870 --> 00:07:29,220
+Having built the algorithm once, I can extract away the details
+
+177
+00:07:29,220 --> 00:07:30,690
+so I don't worry about it.
+
+178
+00:07:30,690 --> 00:07:33,080
+And finally, how do I use algorithms actually
+
+179
+00:07:33,080 --> 00:07:35,500
+as a language for communication?
+
+180
+00:07:35,500 --> 00:07:38,240
+Talking about an algorithm at a high level
+
+181
+00:07:38,240 --> 00:07:39,940
+is a way of actually communicating
+
+182
+00:07:39,940 --> 00:07:42,965
+a process or an idea to somebody else.
+
+183
+00:07:42,965 --> 00:07:45,340
+If you look back at everything you've done in this class,
+
+184
+00:07:45,340 --> 00:07:48,700
+you'll see those three pieces constantly-- abstraction,
+
+185
+00:07:48,700 --> 00:07:50,810
+automation, algorithms.
+
+186
+00:07:50,810 --> 00:07:52,640
+Those are the three A's of computational
+
+187
+00:07:52,640 --> 00:07:55,410
+thinking that you're going to take forward.
+
+188
+00:07:55,410 --> 00:07:58,220
+The last aspect of this is to think
+
+189
+00:07:58,220 --> 00:08:01,230
+about computational thinking at a slightly higher level.
+
+190
+00:08:01,230 --> 00:08:02,880
+And here, there are two other things
+
+191
+00:08:02,880 --> 00:08:05,940
+that you've taken away, we hope, from this class.
+
+192
+00:08:05,940 --> 00:08:08,540
+The first one is when given a new problem,
+
+193
+00:08:08,540 --> 00:08:09,850
+how difficult is it?
+
+194
+00:08:09,850 --> 00:08:11,982
+How best can I solve it?
+
+195
+00:08:11,982 --> 00:08:13,690
+We know that theoretical computer science
+
+196
+00:08:13,690 --> 00:08:16,366
+gives precise meanings to these and related questions.
+
+197
+00:08:16,366 --> 00:08:17,240
+And you've seen that.
+
+198
+00:08:17,240 --> 00:08:20,400
+Knowing the difference between a log linear algorithm
+
+199
+00:08:20,400 --> 00:08:23,010
+and an exponential algorithm is really important.
+
+200
+00:08:23,010 --> 00:08:25,270
+Realizing that a choice in algorithm
+
+201
+00:08:25,270 --> 00:08:29,440
+can move you from a more costly class to a less costly class
+
+202
+00:08:29,440 --> 00:08:30,740
+is really valuable.
+
+203
+00:08:30,740 --> 00:08:34,360
+Also, knowing that some algorithms inherently belong in
+
+204
+00:08:34,360 --> 00:08:38,132
+this really expensive class is a valuable lesson to take away.
+
+205
+00:08:38,132 --> 00:08:40,340
+But you ought to, when confronted with a new problem,
+
+206
+00:08:40,340 --> 00:08:42,419
+ask how difficult is this.
+
+207
+00:08:42,419 --> 00:08:44,830
+Does it fit into a class I've seen before?
+
+208
+00:08:44,830 --> 00:08:46,560
+Is there an existing algorithm that's
+
+209
+00:08:46,560 --> 00:08:49,530
+going to solve this problem for me with some small variations,
+
+210
+00:08:49,530 --> 00:08:51,550
+and how do I use that?
+
+211
+00:08:51,550 --> 00:08:53,810
+And then the last aspect of computational thinking
+
+212
+00:08:53,810 --> 00:08:55,580
+we hope you've taken away from this
+
+213
+00:08:55,580 --> 00:08:57,800
+is how to think recursively.
+
+214
+00:08:57,800 --> 00:08:59,920
+It's that wonderfully twisted way of thinking,
+
+215
+00:08:59,920 --> 00:09:01,610
+but it is an incredibly valuable one,
+
+216
+00:09:01,610 --> 00:09:03,790
+and that is that idea of taking what
+
+217
+00:09:03,790 --> 00:09:08,360
+seems like a difficult problem and reformulating it
+
+218
+00:09:08,360 --> 00:09:11,360
+into a simpler version of the same problem
+
+219
+00:09:11,360 --> 00:09:13,790
+plus some other things that I know how to do.
+
+220
+00:09:13,790 --> 00:09:17,300
+That reduction, embedding, transformation, simulation idea
+
+221
+00:09:17,300 --> 00:09:19,290
+is really valuable, but it all relies
+
+222
+00:09:19,290 --> 00:09:22,580
+on that nice notion of given a complex problem,
+
+223
+00:09:22,580 --> 00:09:24,270
+I don't have to start from scratch.
+
+224
+00:09:24,270 --> 00:09:26,500
+I can simply say I could solve this
+
+225
+00:09:26,500 --> 00:09:29,300
+by solving a simpler version of the same problem,
+
+226
+00:09:29,300 --> 00:09:31,000
+and then taking that solution, add
+
+227
+00:09:31,000 --> 00:09:34,460
+in some other things I know how to do in order to make it work.
+
+228
+00:09:34,460 --> 00:09:37,190
+And while it may seem twisted, that idea of recursion
+
+229
+00:09:37,190 --> 00:09:39,370
+really does show up nicely.
+
+230
+00:09:39,370 --> 00:09:41,400
+And this image, called the Droste effect,
+
+231
+00:09:41,400 --> 00:09:45,630
+wonderfully captures it based on a Dutch cocoa company's ad.
+
+232
+00:09:45,630 --> 00:09:48,900
+But you get the idea that when I have a recursive problem,
+
+233
+00:09:48,900 --> 00:09:51,750
+I can keep reducing it to simpler and simpler versions
+
+234
+00:09:51,750 --> 00:09:54,760
+until eventually, somewhere way down in here,
+
+235
+00:09:54,760 --> 00:09:58,020
+I get to a base case, and I can pull it all together
+
+236
+00:09:58,020 --> 00:10:00,322
+to come up with a solution.
+
+237
+00:10:00,322 --> 00:10:02,030
+I hope this image really captures for you
+
+238
+00:10:02,030 --> 00:10:04,620
+that idea of taking a complex problem
+
+239
+00:10:04,620 --> 00:10:06,570
+is not so hard when you simply reduce
+
+240
+00:10:06,570 --> 00:10:09,140
+it recursively to simpler versions.
+
+241
+00:10:09,140 --> 00:10:12,010
+And those are the things that you've seen.
+
+242
+00:10:12,010 --> 00:10:14,470
+So that's where you've been.
+
+243
+00:10:14,470 --> 00:10:16,090
+Where are you headed?
+
+244
+00:10:16,090 --> 00:10:18,300
+Well, that's your choice, of course.
+
+245
+00:10:18,300 --> 00:10:20,250
+But I hope that you'll take away two things
+
+246
+00:10:20,250 --> 00:10:23,270
+as you think about how to use what you've seen in this class.
+
+247
+00:10:23,270 --> 00:10:25,530
+How can you use it, and what are next steps
+
+248
+00:10:25,530 --> 00:10:27,700
+to enhancing your knowledge?
+
+249
+00:10:27,700 --> 00:10:31,000
+In terms of how you can use it, well, you should look, I hope,
+
+250
+00:10:31,000 --> 00:10:33,430
+for ways to apply what you've learned.
+
+251
+00:10:33,430 --> 00:10:35,060
+Can you use algorithmic approaches
+
+252
+00:10:35,060 --> 00:10:37,034
+in your professional life?
+
+253
+00:10:37,034 --> 00:10:38,450
+No matter what you do, there's got
+
+254
+00:10:38,450 --> 00:10:40,780
+to be some place where abstraction or computational
+
+255
+00:10:40,780 --> 00:10:44,150
+experiments can improve what you do in your job.
+
+256
+00:10:44,150 --> 00:10:46,190
+If you're a student, ask how you can
+
+257
+00:10:46,190 --> 00:10:48,160
+use these ideas to help you pursue your choice
+
+258
+00:10:48,160 --> 00:10:49,742
+of discipline more effectively.
+
+259
+00:10:49,742 --> 00:10:51,450
+You don't have to be a computer scientist
+
+260
+00:10:51,450 --> 00:10:53,300
+to use computational thinking.
+
+261
+00:10:53,300 --> 00:10:56,640
+An economist, a statistician, a chemist, a physicist,
+
+262
+00:10:56,640 --> 00:10:58,970
+a biologist, a mechanical engineer--
+
+263
+00:10:58,970 --> 00:11:01,452
+they all use computation in different ways.
+
+264
+00:11:01,452 --> 00:11:02,910
+And I really encourage you to think
+
+265
+00:11:02,910 --> 00:11:06,060
+about how you can use algorithmic approaches to solve
+
+266
+00:11:06,060 --> 00:11:09,660
+problems in your own domain or discipline.
+
+267
+00:11:09,660 --> 00:11:12,250
+You can ask the same question about your personal life.
+
+268
+00:11:12,250 --> 00:11:15,697
+Can you organize your personal finance records better?
+
+269
+00:11:15,697 --> 00:11:17,280
+As we saw in the last lecture, can you
+
+270
+00:11:17,280 --> 00:11:18,500
+plan your retirement better?
+
+271
+00:11:18,500 --> 00:11:20,590
+Can you store your historical records better?
+
+272
+00:11:20,590 --> 00:11:23,800
+Can you simply use computation to help you
+
+273
+00:11:23,800 --> 00:11:26,410
+in things that matter to you in personal life as well
+
+274
+00:11:26,410 --> 00:11:28,260
+as professional life?
+
+275
+00:11:28,260 --> 00:11:30,870
+So I hope you'll think about how can you use what you've
+
+276
+00:11:30,870 --> 00:11:34,150
+learned here in multiple ways.
+
+277
+00:11:34,150 --> 00:11:36,460
+And the other next step is basically
+
+278
+00:11:36,460 --> 00:11:39,700
+to think about taking another course in computation.
+
+279
+00:11:39,700 --> 00:11:42,200
+As we've said, the next course in this sequence,
+
+280
+00:11:42,200 --> 00:11:45,870
+the second part of 600, is an introduction
+
+281
+00:11:45,870 --> 00:11:48,150
+to computational thinking and data science
+
+282
+00:11:48,150 --> 00:11:50,970
+where we look at using these tools in large-scale data
+
+283
+00:11:50,970 --> 00:11:51,990
+analysis.
+
+284
+00:11:51,990 --> 00:11:54,660
+But you might take a course in algorithm design,
+
+285
+00:11:54,660 --> 00:11:57,400
+in software engineering, machine learning--
+
+286
+00:11:57,400 --> 00:12:00,060
+a very important and hot topic-- and data analytics and data
+
+287
+00:12:00,060 --> 00:12:02,840
+storage and whatever tickles your fancy.
+
+288
+00:12:02,840 --> 00:12:04,570
+Basically, you've got an opportunity
+
+289
+00:12:04,570 --> 00:12:06,550
+to build as you see fit, because you've
+
+290
+00:12:06,550 --> 00:12:09,120
+learned the basics of computational thinking
+
+291
+00:12:09,120 --> 00:12:12,050
+and algorithmic processing.
+
+292
+00:12:12,050 --> 00:12:14,560
+So good luck.
+
+293
+00:12:14,560 --> 00:12:16,960
+However you choose to use computational thinking,
+
+294
+00:12:16,960 --> 00:12:18,930
+we hope that it's a useful tool for you
+
+295
+00:12:18,930 --> 00:12:21,430
+in many ways-- as a way of proposing
+
+296
+00:12:21,430 --> 00:12:24,980
+professional problems, as a basis for understanding
+
+297
+00:12:24,980 --> 00:12:28,450
+the impact of computation in everyday life,
+
+298
+00:12:28,450 --> 00:12:31,460
+and as a language for communicating ideas.
+
+299
+00:12:31,460 --> 00:12:34,170
+And I look forward to seeing you do that as you take more
+
+300
+00:12:34,170 --> 00:12:36,680
+courses and you add computational thinking
+
+301
+00:12:36,680 --> 00:12:39,370
+to your own professional and personal life.
+
+302
+00:12:39,370 --> 00:12:41,110
+Good luck.
+

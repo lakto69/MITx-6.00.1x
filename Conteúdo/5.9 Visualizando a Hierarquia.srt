@@ -1,0 +1,964 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:03,930
+Now, as we saw last time, a key element about having classes
+
+2
+00:00:03,930 --> 00:00:05,750
+is that we can build hierarchies,
+
+3
+00:00:05,750 --> 00:00:08,440
+that is, classes that inherit from other classes.
+
+4
+00:00:08,440 --> 00:00:10,810
+It gives us a very crisp way of building code
+
+5
+00:00:10,810 --> 00:00:11,820
+that can be re-used.
+
+6
+00:00:11,820 --> 00:00:14,810
+It lets us build modules that easily interrelate.
+
+7
+00:00:14,810 --> 00:00:16,740
+So let's look at that idea here.
+
+8
+00:00:16,740 --> 00:00:18,370
+I've got the idea of a person.
+
+9
+00:00:18,370 --> 00:00:22,320
+Now I'm going to add a new kind of person, an MIT person.
+
+10
+00:00:22,320 --> 00:00:24,790
+Contrary to popular belief, MIT people are people.
+
+11
+00:00:24,790 --> 00:00:26,040
+They have the same properties.
+
+12
+00:00:26,040 --> 00:00:26,760
+They're born.
+
+13
+00:00:26,760 --> 00:00:28,070
+They have a name.
+
+14
+00:00:28,070 --> 00:00:30,510
+We'll add a few other things, though, to an MIT person.
+
+15
+00:00:30,510 --> 00:00:31,610
+They have an ID number.
+
+16
+00:00:31,610 --> 00:00:33,276
+And one of the things we want to look at
+
+17
+00:00:33,276 --> 00:00:37,690
+is how we can use the ID number to identify specific instances
+
+18
+00:00:37,690 --> 00:00:40,680
+and use that, in fact, for things like sorting.
+
+19
+00:00:40,680 --> 00:00:43,990
+So let's look at how we might build an MIT person.
+
+20
+00:00:43,990 --> 00:00:45,956
+So here's my class definition, and I
+
+21
+00:00:45,956 --> 00:00:47,580
+want to show you a couple of highlights
+
+22
+00:00:47,580 --> 00:00:49,590
+here, things that are important.
+
+23
+00:00:49,590 --> 00:00:52,770
+The first one is, as I did in an earlier example,
+
+24
+00:00:52,770 --> 00:00:55,100
+I'm going to create a class attribute.
+
+25
+00:00:55,100 --> 00:00:58,500
+So this is a definition of a data object
+
+26
+00:00:58,500 --> 00:00:59,950
+that's built into the class.
+
+27
+00:00:59,950 --> 00:01:01,490
+It does not belong to an instance,
+
+28
+00:01:01,490 --> 00:01:03,087
+it belongs to the class.
+
+29
+00:01:03,087 --> 00:01:05,170
+And it's going to let me keep track of how many ID
+
+30
+00:01:05,170 --> 00:01:06,510
+numbers have I assigned.
+
+31
+00:01:06,510 --> 00:01:07,920
+I'll initialize it to 0.
+
+32
+00:01:07,920 --> 00:01:10,100
+That's a good place to start.
+
+33
+00:01:10,100 --> 00:01:12,740
+Even though MIT person is a kind of person,
+
+34
+00:01:12,740 --> 00:01:15,560
+I'm going to build an initializer or something that
+
+35
+00:01:15,560 --> 00:01:18,330
+creates instances for this class as well.
+
+36
+00:01:18,330 --> 00:01:19,730
+But the interesting thing here is
+
+37
+00:01:19,730 --> 00:01:23,340
+I'm going to use the underlying-person method
+
+38
+00:01:23,340 --> 00:01:25,260
+to also create the instance.
+
+39
+00:01:25,260 --> 00:01:27,820
+So when I call MIT person, it's going to create an instance,
+
+40
+00:01:27,820 --> 00:01:31,440
+but it's going to call the person-class initialization
+
+41
+00:01:31,440 --> 00:01:34,676
+method to initialize the same kinds of things-- the name,
+
+42
+00:01:34,676 --> 00:01:37,050
+and as a consequence, it will set up a birth date in case
+
+43
+00:01:37,050 --> 00:01:38,335
+I want to use that.
+
+44
+00:01:38,335 --> 00:01:39,810
+The second thing I'm going to do,
+
+45
+00:01:39,810 --> 00:01:44,010
+though, is assign to this instance an ID number.
+
+46
+00:01:44,010 --> 00:01:45,910
+So self here will say that I want it
+
+47
+00:01:45,910 --> 00:01:49,940
+in this instance by an ID num to a particular value,
+
+48
+00:01:49,940 --> 00:01:53,840
+but I'm going to use the value associated with MIT person.
+
+49
+00:01:53,840 --> 00:01:56,540
+I do MIT person dot next ID num.
+
+50
+00:01:56,540 --> 00:01:59,770
+It will get the value of that data variable
+
+51
+00:01:59,770 --> 00:02:01,570
+and assign it to this instance.
+
+52
+00:02:01,570 --> 00:02:03,530
+And then finally, I'm going to increment
+
+53
+00:02:03,530 --> 00:02:07,247
+that global class data attribute by 1, so
+
+54
+00:02:07,247 --> 00:02:08,830
+that the next person I create is going
+
+55
+00:02:08,830 --> 00:02:11,450
+to have the next number in the sequence.
+
+56
+00:02:11,450 --> 00:02:14,530
+Once I've done that, I could get out the ID number of a person,
+
+57
+00:02:14,530 --> 00:02:19,280
+and sorting here I'm going to do simply by comparing ID numbers.
+
+58
+00:02:19,280 --> 00:02:21,750
+If I want to sort a list of MIT people,
+
+59
+00:02:21,750 --> 00:02:25,466
+I'll do them by ID number, starting at 0 and moving up.
+
+60
+00:02:25,466 --> 00:02:27,090
+The last one I'll come back to later on
+
+61
+00:02:27,090 --> 00:02:29,970
+is I want to give MIT people the ability to speak.
+
+62
+00:02:29,970 --> 00:02:32,210
+I'll give them a string that I want them to say,
+
+63
+00:02:32,210 --> 00:02:34,090
+and they will return something that says,
+
+64
+00:02:34,090 --> 00:02:37,100
+their last name says, and then a string.
+
+65
+00:02:37,100 --> 00:02:39,690
+We'll look at an example of that in a second.
+
+66
+00:02:39,690 --> 00:02:41,400
+With that in mind, let's look at what
+
+67
+00:02:41,400 --> 00:02:45,150
+would happen if I built some examples of this.
+
+68
+00:02:45,150 --> 00:02:48,880
+So a way to think about this is in my memory somewhere,
+
+69
+00:02:48,880 --> 00:02:52,050
+I have a representation for the person class,
+
+70
+00:02:52,050 --> 00:02:55,340
+and I have a representation for the MIT person class.
+
+71
+00:02:55,340 --> 00:02:59,410
+When I call for an instance of MIT Person,
+
+72
+00:02:59,410 --> 00:03:02,735
+it's going to use this init procedure, because it's
+
+73
+00:03:02,735 --> 00:03:04,520
+that class, and that's the one that's
+
+74
+00:03:04,520 --> 00:03:06,940
+visible inside this environment.
+
+75
+00:03:06,940 --> 00:03:10,420
+But as we saw in the code, calling that init procedure
+
+76
+00:03:10,420 --> 00:03:12,870
+then calls the person init procedure.
+
+77
+00:03:12,870 --> 00:03:15,920
+It literally goes into the person class definition
+
+78
+00:03:15,920 --> 00:03:19,090
+and finds that init procedure and calls it,
+
+79
+00:03:19,090 --> 00:03:23,570
+and that will set up a binding for name and birth
+
+80
+00:03:23,570 --> 00:03:27,080
+date inside of that instance.
+
+81
+00:03:27,080 --> 00:03:32,000
+In particular, that is returned to the MIT-person class,
+
+82
+00:03:32,000 --> 00:03:34,350
+because that's the place where the call was done.
+
+83
+00:03:34,350 --> 00:03:38,430
+But the bindings come from the init procedure
+
+84
+00:03:38,430 --> 00:03:40,430
+that's associated with person.
+
+85
+00:03:40,430 --> 00:03:43,020
+So I just created that instance, and having
+
+86
+00:03:43,020 --> 00:03:45,470
+done that-- and that'll have a binding, for example,
+
+87
+00:03:45,470 --> 00:03:47,820
+to a last name-- the next thing I do
+
+88
+00:03:47,820 --> 00:03:51,000
+is I get the value of the ID number
+
+89
+00:03:51,000 --> 00:03:54,370
+from next ID num inside of MIT person,
+
+90
+00:03:54,370 --> 00:03:57,860
+and I bind that to the ID number for this instance.
+
+91
+00:03:57,860 --> 00:03:58,520
+Great.
+
+92
+00:03:58,520 --> 00:04:02,420
+This is now person number 0, and that's because of this call
+
+93
+00:04:02,420 --> 00:04:06,850
+right here, which says within that self, bind ID
+
+94
+00:04:06,850 --> 00:04:10,990
+num to what we see inside the class definition.
+
+95
+00:04:10,990 --> 00:04:13,140
+And then the next thing I do is I
+
+96
+00:04:13,140 --> 00:04:18,500
+update next ID num by 1 inside that MIT person environment.
+
+97
+00:04:18,500 --> 00:04:21,190
+That's great, because now I have an instance with an ID
+
+98
+00:04:21,190 --> 00:04:23,150
+number associated with it, and if I
+
+99
+00:04:23,150 --> 00:04:26,560
+were to call for another instance of MIT Person,
+
+100
+00:04:26,560 --> 00:04:28,060
+it will go through the same process,
+
+101
+00:04:28,060 --> 00:04:30,460
+calling the person init method to set it up.
+
+102
+00:04:30,460 --> 00:04:34,460
+But now, next ID num is 1, so the binding here
+
+103
+00:04:34,460 --> 00:04:38,880
+is ID number 1, and that gets incremented to 2.
+
+104
+00:04:38,880 --> 00:04:41,530
+You see as a consequence how that class attribute
+
+105
+00:04:41,530 --> 00:04:45,200
+can store information I can use to associate with instances
+
+106
+00:04:45,200 --> 00:04:46,850
+of the class.
+
+107
+00:04:46,850 --> 00:04:48,270
+Great.
+
+108
+00:04:48,270 --> 00:04:49,850
+Now, what happens if we create it?
+
+109
+00:04:49,850 --> 00:04:52,310
+Well, again, I'm going to take a similar set of characters.
+
+110
+00:04:52,310 --> 00:04:54,405
+I'm now going to make them MIT people.
+
+111
+00:04:54,405 --> 00:04:56,280
+I'm going to create a Mark Zuckerberg, a Drew
+
+112
+00:04:56,280 --> 00:04:57,560
+Houston, and a Bill Gates.
+
+113
+00:04:57,560 --> 00:04:59,060
+I'm going to give them birthdays.
+
+114
+00:04:59,060 --> 00:05:01,560
+And I you may notice here, even though I want to create them
+
+115
+00:05:01,560 --> 00:05:04,170
+in this order, I'm going to change the numbering so
+
+116
+00:05:04,170 --> 00:05:06,574
+that M3, although it's the first one I created,
+
+117
+00:05:06,574 --> 00:05:08,490
+I'm going to have the third element in my list
+
+118
+00:05:08,490 --> 00:05:10,750
+down here as I build it.
+
+119
+00:05:10,750 --> 00:05:13,150
+And let's see what happens if I were to go and do that
+
+120
+00:05:13,150 --> 00:05:16,954
+for this particular example.
+
+121
+00:05:16,954 --> 00:05:18,245
+Let me just set up my computer.
+
+122
+00:05:18,245 --> 00:05:25,840
+
+
+123
+00:05:25,840 --> 00:05:32,802
+And if I call that, I now have a set of people in my system.
+
+124
+00:05:32,802 --> 00:05:34,260
+And let me just look at an example.
+
+125
+00:05:34,260 --> 00:05:38,047
+If I print out M1, I get Bill Gates.
+
+126
+00:05:38,047 --> 00:05:40,130
+That's great, that's what I called him down there.
+
+127
+00:05:40,130 --> 00:05:45,077
+If I print out M3, I get Mark Zuckerberg,
+
+128
+00:05:45,077 --> 00:05:46,910
+and one of the things I said is I could have
+
+129
+00:05:46,910 --> 00:05:48,090
+these people say something.
+
+130
+00:05:48,090 --> 00:05:53,010
+So I could print M3 speak, and I'll just
+
+131
+00:05:53,010 --> 00:05:55,700
+have him say something pretty straightforward like, Hi there.
+
+132
+00:05:55,700 --> 00:05:59,320
+
+
+133
+00:05:59,320 --> 00:06:01,010
+And it prints out as I expected.
+
+134
+00:06:01,010 --> 00:06:02,290
+Gates says.
+
+135
+00:06:02,290 --> 00:06:03,560
+Hi there.
+
+136
+00:06:03,560 --> 00:06:05,350
+OK.
+
+137
+00:06:05,350 --> 00:06:07,000
+One of the reasons I wanted ID numbers
+
+138
+00:06:07,000 --> 00:06:08,960
+was so that I could do things like sort people.
+
+139
+00:06:08,960 --> 00:06:11,390
+I'm going to use them in other ways to access information.
+
+140
+00:06:11,390 --> 00:06:12,770
+But let's look at now, going back
+
+141
+00:06:12,770 --> 00:06:14,490
+to the same kind of example, what
+
+142
+00:06:14,490 --> 00:06:17,920
+would happen if I were to print out the people in this list?
+
+143
+00:06:17,920 --> 00:06:22,110
+Well, if I just do that, I' going to see what
+
+144
+00:06:22,110 --> 00:06:24,160
+you would expect to happen.
+
+145
+00:06:24,160 --> 00:06:26,790
+We're going to load this up and print it,
+
+146
+00:06:26,790 --> 00:06:29,540
+and it prints out as shown on the screen here-- Bill Gates,
+
+147
+00:06:29,540 --> 00:06:32,000
+Drew Houston, Mark Zuckerberg.
+
+148
+00:06:32,000 --> 00:06:34,901
+Now remember, I created them in a particular order.
+
+149
+00:06:34,901 --> 00:06:36,400
+This is the order I created them in,
+
+150
+00:06:36,400 --> 00:06:39,750
+so in fact, that's the way in which it prints them out,
+
+151
+00:06:39,750 --> 00:06:43,490
+even though in the list, they were in a different order.
+
+152
+00:06:43,490 --> 00:06:46,600
+Now, let's look what happens if I do them by ID number.
+
+153
+00:06:46,600 --> 00:06:53,870
+And if I were to go ahead and sort and then recall this,
+
+154
+00:06:53,870 --> 00:06:56,740
+now it prints them out by ID number,
+
+155
+00:06:56,740 --> 00:06:59,890
+Zuckerberg first, then Houston, and then Gates.
+
+156
+00:06:59,890 --> 00:07:05,090
+So you can see in this case I am sorting by ID,
+
+157
+00:07:05,090 --> 00:07:07,420
+exactly as I set it up.
+
+158
+00:07:07,420 --> 00:07:08,760
+Great.
+
+159
+00:07:08,760 --> 00:07:10,100
+What else might we do with this?
+
+160
+00:07:10,100 --> 00:07:11,558
+Well, let me create another version
+
+161
+00:07:11,558 --> 00:07:15,780
+of a little set of MIT people, partly to show you
+
+162
+00:07:15,780 --> 00:07:18,480
+that the ID number can be important because the names may
+
+163
+00:07:18,480 --> 00:07:19,770
+not be distinctive.
+
+164
+00:07:19,770 --> 00:07:23,720
+So here I've created three MIT people, Eric and two Johns.
+
+165
+00:07:23,720 --> 00:07:25,900
+I've also created just a base person, also
+
+166
+00:07:25,900 --> 00:07:28,910
+with the name John, and I want to think about things
+
+167
+00:07:28,910 --> 00:07:30,970
+like, how might I sort these?
+
+168
+00:07:30,970 --> 00:07:32,980
+In particular, what happens-- well,
+
+169
+00:07:32,980 --> 00:07:35,890
+first of all, what happens when I create them?
+
+170
+00:07:35,890 --> 00:07:39,750
+In this case, I have bindings for P1, P2, and P3,
+
+171
+00:07:39,750 --> 00:07:45,900
+two instances of MIT people, each with a unique ID number.
+
+172
+00:07:45,900 --> 00:07:48,090
+P4 points to a different kind of object.
+
+173
+00:07:48,090 --> 00:07:51,770
+It's just a person-- no ID number associated with them.
+
+174
+00:07:51,770 --> 00:07:53,577
+It's going to be important in a second.
+
+175
+00:07:53,577 --> 00:07:56,160
+And now let's look what happens if we wanted to do things like
+
+176
+00:07:56,160 --> 00:07:59,420
+compare them, which would be part of doing the sort.
+
+177
+00:07:59,420 --> 00:08:01,520
+So I'm going to try some examples here.
+
+178
+00:08:01,520 --> 00:08:03,940
+Having loaded those into my system,
+
+179
+00:08:03,940 --> 00:08:08,230
+let's ask is P1 less than P2?
+
+180
+00:08:08,230 --> 00:08:09,070
+And it says true.
+
+181
+00:08:09,070 --> 00:08:11,561
+
+
+182
+00:08:11,561 --> 00:08:13,310
+That makes sense, because the sorting here
+
+183
+00:08:13,310 --> 00:08:15,590
+should be done on the basis of ID number.
+
+184
+00:08:15,590 --> 00:08:18,280
+I created P1 before I created P2.
+
+185
+00:08:18,280 --> 00:08:19,340
+Great.
+
+186
+00:08:19,340 --> 00:08:24,230
+Now let me ask is P1 less than P4?
+
+187
+00:08:24,230 --> 00:08:27,000
+Oh goodness, I get an attribute error.
+
+188
+00:08:27,000 --> 00:08:29,560
+
+
+189
+00:08:29,560 --> 00:08:31,210
+Let's try it the other way.
+
+190
+00:08:31,210 --> 00:08:34,330
+Is P4 less than P1?
+
+191
+00:08:34,330 --> 00:08:36,049
+No.
+
+192
+00:08:36,049 --> 00:08:37,549
+Wait a minute.
+
+193
+00:08:37,549 --> 00:08:39,340
+What's going on here?
+
+194
+00:08:39,340 --> 00:08:43,309
+Well, this is highlighting how a class or an instance of a class
+
+195
+00:08:43,309 --> 00:08:45,020
+gets a method.
+
+196
+00:08:45,020 --> 00:08:48,025
+So why is it that in one case it works,
+
+197
+00:08:48,025 --> 00:08:50,410
+and in another case it doesn't?
+
+198
+00:08:50,410 --> 00:08:53,630
+So how is the comparison actually taking place?
+
+199
+00:08:53,630 --> 00:08:56,180
+What happens is that MIT person as a class
+
+200
+00:08:56,180 --> 00:09:00,310
+has its own less than method, and that method shadows
+
+201
+00:09:00,310 --> 00:09:04,510
+the person method, meaning if we compare an MIT person object,
+
+202
+00:09:04,510 --> 00:09:07,350
+since its environment inherits from that person class
+
+203
+00:09:07,350 --> 00:09:10,530
+environment, it will see this version of less than.
+
+204
+00:09:10,530 --> 00:09:13,310
+It won't see the person version of it.
+
+205
+00:09:13,310 --> 00:09:16,690
+As a consequence, when we ask, is P1 less than P2,
+
+206
+00:09:16,690 --> 00:09:20,570
+that is literally converted into this form here.
+
+207
+00:09:20,570 --> 00:09:24,420
+It says P1 dot less than of P2.
+
+208
+00:09:24,420 --> 00:09:25,050
+Long string.
+
+209
+00:09:25,050 --> 00:09:27,710
+It basically says, from the P1 object,
+
+210
+00:09:27,710 --> 00:09:29,650
+get the less than method.
+
+211
+00:09:29,650 --> 00:09:31,490
+I've just said because it's an MIT person,
+
+212
+00:09:31,490 --> 00:09:33,480
+it will get that version of the method.
+
+213
+00:09:33,480 --> 00:09:37,891
+And then it's going to apply it to self, which is P1 and P2,
+
+214
+00:09:37,891 --> 00:09:39,640
+and it will do the appropriate comparison.
+
+215
+00:09:39,640 --> 00:09:41,630
+Because these are two MIT people objects,
+
+216
+00:09:41,630 --> 00:09:43,290
+it's going to use the less than method
+
+217
+00:09:43,290 --> 00:09:46,430
+appropriately on that, comparing ID numbers.
+
+218
+00:09:46,430 --> 00:09:49,320
+On the other hand, why does P4 less than P1
+
+219
+00:09:49,320 --> 00:09:52,790
+work if P1 less than P4 does not?
+
+220
+00:09:52,790 --> 00:09:57,440
+P4 less than P1 is equivalent to asking P4 dot less than method
+
+221
+00:09:57,440 --> 00:10:00,880
+applied to P1, which means we use the less than method
+
+222
+00:10:00,880 --> 00:10:03,780
+associated with the type of P4, which in this case
+
+223
+00:10:03,780 --> 00:10:07,580
+is a person, one that compares based on name.
+
+224
+00:10:07,580 --> 00:10:11,280
+So based on name, it can come up with an answer, which is great.
+
+225
+00:10:11,280 --> 00:10:14,230
+On the other hand, when we ask P1 less than P4,
+
+226
+00:10:14,230 --> 00:10:16,390
+that's equivalent to getting the less than method
+
+227
+00:10:16,390 --> 00:10:20,700
+associated with the type of P1, which is an MIT person.
+
+228
+00:10:20,700 --> 00:10:23,710
+And since that tries to compare on ID numbers,
+
+229
+00:10:23,710 --> 00:10:26,500
+and P4 as a person does not have an ID number,
+
+230
+00:10:26,500 --> 00:10:28,630
+this will throw an error, or in this case,
+
+231
+00:10:28,630 --> 00:10:30,230
+say that there's an attribute error.
+
+232
+00:10:30,230 --> 00:10:32,952
+I don't have an ID number associated with it.
+
+233
+00:10:32,952 --> 00:10:34,660
+So we see that with the less than method,
+
+234
+00:10:34,660 --> 00:10:36,070
+we have to be careful to make sure we
+
+235
+00:10:36,070 --> 00:10:38,160
+use the appropriate one for the kinds of objects
+
+236
+00:10:38,160 --> 00:10:39,430
+we want to use.
+
+237
+00:10:39,430 --> 00:10:41,890
+And in particular, the specific object
+
+238
+00:10:41,890 --> 00:10:45,320
+calling it, in this case, the first one in that comparison,
+
+239
+00:10:45,320 --> 00:10:47,720
+is the one that's going to define the type and therefore
+
+240
+00:10:47,720 --> 00:10:50,360
+the method that we want to use.
+

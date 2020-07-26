@@ -1,0 +1,1096 @@
+0
+00:00:00,000 --> 00:00:00,590
+...
+
+1
+00:00:00,590 --> 00:00:02,560
+So far in this course, you've learned
+
+2
+00:00:02,560 --> 00:00:04,750
+a lot about how to program.
+
+3
+00:00:04,750 --> 00:00:06,230
+You learned about data structures.
+
+4
+00:00:06,230 --> 00:00:08,150
+You learned about writing procedures
+
+5
+00:00:08,150 --> 00:00:09,870
+that accomplish things, including
+
+6
+00:00:09,870 --> 00:00:11,290
+doing them in different ways.
+
+7
+00:00:11,290 --> 00:00:12,790
+And you've begun to have the ability
+
+8
+00:00:12,790 --> 00:00:15,150
+to write fairly complicated code.
+
+9
+00:00:15,150 --> 00:00:17,920
+And you've also undoubtedly experienced
+
+10
+00:00:17,920 --> 00:00:19,930
+that that leads to bugs.
+
+11
+00:00:19,930 --> 00:00:21,680
+And so we've talked a little bit about how
+
+12
+00:00:21,680 --> 00:00:23,790
+to think about testing and debugging,
+
+13
+00:00:23,790 --> 00:00:26,790
+to get your code to do what you wanted it to do.
+
+14
+00:00:26,790 --> 00:00:29,040
+And in that discussion, we talked about things
+
+15
+00:00:29,040 --> 00:00:31,110
+like defensive programming, setting things
+
+16
+00:00:31,110 --> 00:00:34,470
+up so that you plan ahead to try and prevent code or at least
+
+17
+00:00:34,470 --> 00:00:36,500
+prevent bugs rather, or at least have
+
+18
+00:00:36,500 --> 00:00:39,720
+them arise in a way in which you can handle them well.
+
+19
+00:00:39,720 --> 00:00:41,740
+And we've talked about the kinds of messages
+
+20
+00:00:41,740 --> 00:00:43,410
+that the computer gives you when things
+
+21
+00:00:43,410 --> 00:00:45,381
+don't go the way you expect it.
+
+22
+00:00:45,381 --> 00:00:47,630
+Today, we're going to pick up on both of those topics,
+
+23
+00:00:47,630 --> 00:00:49,600
+to talk about the use of exceptions
+
+24
+00:00:49,600 --> 00:00:51,870
+and the use of assertions, both to accomplish
+
+25
+00:00:51,870 --> 00:00:54,310
+defensive programming and to let you actually
+
+26
+00:00:54,310 --> 00:00:57,470
+control how the computer reacts when something
+
+27
+00:00:57,470 --> 00:00:59,530
+goes in an unexpected way.
+
+28
+00:00:59,530 --> 00:01:02,820
+So let's look at that.
+
+29
+00:01:02,820 --> 00:01:05,760
+Exceptions really deal with that question
+
+30
+00:01:05,760 --> 00:01:09,000
+of what happens when I'm running a procedure and something
+
+31
+00:01:09,000 --> 00:01:10,300
+happens I didn't expect.
+
+32
+00:01:10,300 --> 00:01:12,680
+I hit an unexpected condition.
+
+33
+00:01:12,680 --> 00:01:14,730
+It's an exception to what we plan for,
+
+34
+00:01:14,730 --> 00:01:16,420
+what we wanted to have happen.
+
+35
+00:01:16,420 --> 00:01:19,010
+And what we've already seen is you will get an exception
+
+36
+00:01:19,010 --> 00:01:21,580
+to what was expected and that will lead typically
+
+37
+00:01:21,580 --> 00:01:24,580
+to a message from Python.
+
+38
+00:01:24,580 --> 00:01:26,974
+Some examples are you have a list
+
+39
+00:01:26,974 --> 00:01:29,640
+and you try and access something beyond the length of that list.
+
+40
+00:01:29,640 --> 00:01:31,600
+A little example right here.
+
+41
+00:01:31,600 --> 00:01:33,770
+I have a list of length 3.
+
+42
+00:01:33,770 --> 00:01:35,807
+I try and access the fourth point,
+
+43
+00:01:35,807 --> 00:01:38,140
+and I get a little message saying I have an index error.
+
+44
+00:01:38,140 --> 00:01:40,654
+It's telling me I've tried to go too far.
+
+45
+00:01:40,654 --> 00:01:42,570
+I could have something where I try and convert
+
+46
+00:01:42,570 --> 00:01:43,800
+an inappropriate type.
+
+47
+00:01:43,800 --> 00:01:45,230
+I get a type error.
+
+48
+00:01:45,230 --> 00:01:47,340
+I try and reference a variable.
+
+49
+00:01:47,340 --> 00:01:50,020
+Get the value for a variable, but I haven't defined it yet.
+
+50
+00:01:50,020 --> 00:01:51,520
+I got a name error.
+
+51
+00:01:51,520 --> 00:01:54,470
+I try and mix types together without actually forcing
+
+52
+00:01:54,470 --> 00:01:57,170
+one or coercing one into being of the appropriate type.
+
+53
+00:01:57,170 --> 00:01:58,510
+And I get a type error.
+
+54
+00:01:58,510 --> 00:02:02,980
+These are all examples of an exception to what was expected.
+
+55
+00:02:02,980 --> 00:02:05,210
+These are from Python's perspective.
+
+56
+00:02:05,210 --> 00:02:07,750
+So what will we do with those things?
+
+57
+00:02:07,750 --> 00:02:11,020
+Well, before we talk about that, let's think about some
+
+58
+00:02:11,020 --> 00:02:12,600
+of the other kinds of common errors
+
+59
+00:02:12,600 --> 00:02:14,760
+you've probably seen here.
+
+60
+00:02:14,760 --> 00:02:16,240
+Syntax error.
+
+61
+00:02:16,240 --> 00:02:17,730
+Python can't parse the program.
+
+62
+00:02:17,730 --> 00:02:21,340
+It doesn't satisfy the rules of writing legal expressions.
+
+63
+00:02:21,340 --> 00:02:22,540
+A name error.
+
+64
+00:02:22,540 --> 00:02:26,290
+Either a local or global name has not been found by Python.
+
+65
+00:02:26,290 --> 00:02:27,300
+An attribute error.
+
+66
+00:02:27,300 --> 00:02:30,540
+When I introduce a class, which we're going to do shortly,
+
+67
+00:02:30,540 --> 00:02:33,850
+or when I actually try and access an existing Python
+
+68
+00:02:33,850 --> 00:02:36,420
+class, a reference fails.
+
+69
+00:02:36,420 --> 00:02:38,660
+Type error we've already talked about.
+
+70
+00:02:38,660 --> 00:02:42,820
+A value error is one where I give an expression, an operand
+
+71
+00:02:42,820 --> 00:02:45,150
+that is done legally in terms of the type,
+
+72
+00:02:45,150 --> 00:02:47,150
+but the value doesn't make sense.
+
+73
+00:02:47,150 --> 00:02:48,700
+And Python will complain.
+
+74
+00:02:48,700 --> 00:02:51,540
+And finally, an input/output error, or an I/O error.
+
+75
+00:02:51,540 --> 00:02:55,170
+Typically, I try and get a file and it doesn't exist.
+
+76
+00:02:55,170 --> 00:02:57,390
+So these are common types of errors.
+
+77
+00:02:57,390 --> 00:02:59,810
+And again, part of our question is, what should we
+
+78
+00:02:59,810 --> 00:03:03,010
+do when these things happen?
+
+79
+00:03:03,010 --> 00:03:05,720
+We've seen some of the options already.
+
+80
+00:03:05,720 --> 00:03:08,750
+So what do we do when we run into an error?
+
+81
+00:03:08,750 --> 00:03:11,200
+One option is just to fail silently.
+
+82
+00:03:11,200 --> 00:03:15,610
+That is, substitute in a default value or just keep carrying on.
+
+83
+00:03:15,610 --> 00:03:16,880
+Bad idea.
+
+84
+00:03:16,880 --> 00:03:18,320
+Really bad idea.
+
+85
+00:03:18,320 --> 00:03:21,990
+In fact, let me circle it because it's such a bad idea.
+
+86
+00:03:21,990 --> 00:03:24,390
+The user gets no warning in this case
+
+87
+00:03:24,390 --> 00:03:26,427
+that something has happened inappropriately.
+
+88
+00:03:26,427 --> 00:03:28,760
+And while it's tempting to think about, well, let's just
+
+89
+00:03:28,760 --> 00:03:31,604
+substitute in a default value for this and keep going,
+
+90
+00:03:31,604 --> 00:03:33,270
+that could lead to all sorts of problems
+
+91
+00:03:33,270 --> 00:03:36,110
+when you try and use that value later on.
+
+92
+00:03:36,110 --> 00:03:38,540
+Second option is what we've already been doing,
+
+93
+00:03:38,540 --> 00:03:40,332
+return an error value.
+
+94
+00:03:40,332 --> 00:03:41,790
+There we have questions like, well,
+
+95
+00:03:41,790 --> 00:03:44,050
+what value should I choose to return?
+
+96
+00:03:44,050 --> 00:03:46,810
+And if I am going to return an explicit error value rather
+
+97
+00:03:46,810 --> 00:03:48,620
+than printing out an error message,
+
+98
+00:03:48,620 --> 00:03:50,740
+then I have to decide, how do I have code that
+
+99
+00:03:50,740 --> 00:03:52,470
+might get that error message?
+
+100
+00:03:52,470 --> 00:03:53,200
+Deal with it.
+
+101
+00:03:53,200 --> 00:03:55,540
+I'm going to have to check for a special value.
+
+102
+00:03:55,540 --> 00:03:57,120
+But it's still an option.
+
+103
+00:03:57,120 --> 00:03:59,160
+And the third option is the one that we
+
+104
+00:03:59,160 --> 00:04:02,580
+do right now, which is when we get an unexpected condition,
+
+105
+00:04:02,580 --> 00:04:04,530
+we stop execution.
+
+106
+00:04:04,530 --> 00:04:07,320
+And in Python, we say it raises an exception.
+
+107
+00:04:07,320 --> 00:04:09,970
+It literally has a piece of code built into it
+
+108
+00:04:09,970 --> 00:04:12,650
+with a special word raise that raises
+
+109
+00:04:12,650 --> 00:04:15,810
+an exception with a string that describes what was
+
+110
+00:04:15,810 --> 00:04:17,319
+going on when this happened.
+
+111
+00:04:17,319 --> 00:04:18,860
+In fact, you've been seeing that when
+
+112
+00:04:18,860 --> 00:04:21,790
+you run code that doesn't run as you expect it.
+
+113
+00:04:21,790 --> 00:04:23,900
+Python is putting out of an error message,
+
+114
+00:04:23,900 --> 00:04:26,780
+raising an exception saying, I've got a type error.
+
+115
+00:04:26,780 --> 00:04:29,089
+And here's where you were when that happened.
+
+116
+00:04:29,089 --> 00:04:31,380
+I know many of you have just ignored that and gone back
+
+117
+00:04:31,380 --> 00:04:33,540
+into the code, but that error description actually
+
+118
+00:04:33,540 --> 00:04:34,210
+is valuable.
+
+119
+00:04:34,210 --> 00:04:35,760
+It tells you something about what
+
+120
+00:04:35,760 --> 00:04:39,430
+was going on when an unexpected circumstances arose.
+
+121
+00:04:39,430 --> 00:04:42,330
+And that helps you do the debugging.
+
+122
+00:04:42,330 --> 00:04:43,450
+OK.
+
+123
+00:04:43,450 --> 00:04:45,610
+With that in mind, we can now think
+
+124
+00:04:45,610 --> 00:04:48,030
+about doing things a little bit differently.
+
+125
+00:04:48,030 --> 00:04:51,170
+And in particular, we can give you
+
+126
+00:04:51,170 --> 00:04:54,650
+as a programmer, or Python in the built-in system,
+
+127
+00:04:54,650 --> 00:04:57,090
+the opportunity to actually handle
+
+128
+00:04:57,090 --> 00:04:59,560
+an exception when it happens.
+
+129
+00:04:59,560 --> 00:05:00,980
+So here's a little piece of code.
+
+130
+00:05:00,980 --> 00:05:02,438
+And I want to walk you through this
+
+131
+00:05:02,438 --> 00:05:04,230
+to let you see what happens here.
+
+132
+00:05:04,230 --> 00:05:07,560
+Try is a special keyword.
+
+133
+00:05:07,560 --> 00:05:10,160
+And what it says is, with the indentation,
+
+134
+00:05:10,160 --> 00:05:11,980
+here's a block of code.
+
+135
+00:05:11,980 --> 00:05:14,940
+And what I'm going to ask the system to do
+
+136
+00:05:14,940 --> 00:05:18,490
+is to try to execute that code.
+
+137
+00:05:18,490 --> 00:05:21,280
+So it's just like I was having that code being handled inside
+
+138
+00:05:21,280 --> 00:05:22,890
+of a Python Shell.
+
+139
+00:05:22,890 --> 00:05:25,910
+It's going to ask for some input.
+
+140
+00:05:25,910 --> 00:05:27,510
+It's going to ask for some more input.
+
+141
+00:05:27,510 --> 00:05:30,190
+It's going to then print out the ratio.
+
+142
+00:05:30,190 --> 00:05:32,810
+And it's going to print out a message.
+
+143
+00:05:32,810 --> 00:05:36,410
+But the difference here is the following.
+
+144
+00:05:36,410 --> 00:05:40,420
+If try runs that block of code and everything
+
+145
+00:05:40,420 --> 00:05:42,220
+works well, great.
+
+146
+00:05:42,220 --> 00:05:47,290
+I jump down to here and simply print out what I had.
+
+147
+00:05:47,290 --> 00:05:51,250
+On the other hand, if an exception is raised,
+
+148
+00:05:51,250 --> 00:05:54,106
+the most likely one is that I'm trying to divide by 0.
+
+149
+00:05:54,106 --> 00:05:56,480
+But I might also give in a string rather than the number.
+
+150
+00:05:56,480 --> 00:05:59,960
+If an exception is raised, particularly here in this print
+
+151
+00:05:59,960 --> 00:06:04,240
+statement, then I'm going to jump to the except case.
+
+152
+00:06:04,240 --> 00:06:06,890
+Again, a keyword that highlights a block of code.
+
+153
+00:06:06,890 --> 00:06:12,240
+And in that case, I'm going to execute this information
+
+154
+00:06:12,240 --> 00:06:15,250
+and jump outside of the loop.
+
+155
+00:06:15,250 --> 00:06:16,610
+So say it one more time.
+
+156
+00:06:16,610 --> 00:06:21,030
+Try says try to execute each of these instructions in turn.
+
+157
+00:06:21,030 --> 00:06:24,580
+But if an exception is raised, stop that processing,
+
+158
+00:06:24,580 --> 00:06:28,950
+jump to the except clause, and execute those statements.
+
+159
+00:06:28,950 --> 00:06:33,570
+And then, carry on outside of the entire loop.
+
+160
+00:06:33,570 --> 00:06:36,420
+This allows me to define things that I
+
+161
+00:06:36,420 --> 00:06:40,079
+would like to do in the case that an exception arises.
+
+162
+00:06:40,079 --> 00:06:42,120
+And right now, it's simply printing out a message
+
+163
+00:06:42,120 --> 00:06:43,820
+and stopping additional processing.
+
+164
+00:06:43,820 --> 00:06:46,550
+But in a second, we'll get to using this a little bit
+
+165
+00:06:46,550 --> 00:06:48,460
+differently.
+
+166
+00:06:48,460 --> 00:06:51,340
+So I'm going to now do a version of this code on my computer.
+
+167
+00:06:51,340 --> 00:06:53,470
+And I've already pre-typed it in,
+
+168
+00:06:53,470 --> 00:06:57,310
+so I've got an example of that little try loop.
+
+169
+00:06:57,310 --> 00:06:59,870
+And actually, I realize I said something a little different
+
+170
+00:06:59,870 --> 00:07:00,370
+here.
+
+171
+00:07:00,370 --> 00:07:04,860
+So I'll change it to say OK in that place.
+
+172
+00:07:04,860 --> 00:07:08,480
+And I'm going to add one more piece to this,
+
+173
+00:07:08,480 --> 00:07:11,370
+to make it consistent with what we had there, which
+
+174
+00:07:11,370 --> 00:07:14,820
+is I'm going to put a print statement right here that
+
+175
+00:07:14,820 --> 00:07:16,910
+says we're outside.
+
+176
+00:07:16,910 --> 00:07:19,032
+And with that in mind, let's run it.
+
+177
+00:07:19,032 --> 00:07:20,240
+So it says, give me a number.
+
+178
+00:07:20,240 --> 00:07:21,109
+I give it 1.
+
+179
+00:07:21,109 --> 00:07:22,400
+It says give me another number.
+
+180
+00:07:22,400 --> 00:07:23,910
+I give it 2.
+
+181
+00:07:23,910 --> 00:07:25,490
+And notice what it did.
+
+182
+00:07:25,490 --> 00:07:27,730
+It printed out the ratio as a float.
+
+183
+00:07:27,730 --> 00:07:30,480
+And it was then able to go to the next line, which says,
+
+184
+00:07:30,480 --> 00:07:31,780
+print out OK.
+
+185
+00:07:31,780 --> 00:07:33,350
+And it skipped past the except clause
+
+186
+00:07:33,350 --> 00:07:35,599
+because there's no error here and it's simply printed,
+
+187
+00:07:35,599 --> 00:07:37,150
+I'm outside the loop.
+
+188
+00:07:37,150 --> 00:07:39,300
+Let's try it again, but this time I'm
+
+189
+00:07:39,300 --> 00:07:45,190
+going to give it an incorrect set of inputs.
+
+190
+00:07:45,190 --> 00:07:47,190
+I give it a number.
+
+191
+00:07:47,190 --> 00:07:50,570
+And I give it a 0.
+
+192
+00:07:50,570 --> 00:07:53,410
+And in this case, I got an error because trying
+
+193
+00:07:53,410 --> 00:07:56,150
+to take the ratio is going to give me a divide by 0 error.
+
+194
+00:07:56,150 --> 00:07:58,810
+It doesn't say that here because I'm handling the exception.
+
+195
+00:07:58,810 --> 00:08:00,560
+But notice what happened.
+
+196
+00:08:00,560 --> 00:08:03,750
+It didn't print OK because that division
+
+197
+00:08:03,750 --> 00:08:06,530
+of a by b led to an exception.
+
+198
+00:08:06,530 --> 00:08:08,240
+It jumped straight to the except clause.
+
+199
+00:08:08,240 --> 00:08:10,510
+And in this case, it printed out my error message,
+
+200
+00:08:10,510 --> 00:08:13,060
+which says there's a bug in the user input.
+
+201
+00:08:13,060 --> 00:08:14,980
+And then it goes to the statement
+
+202
+00:08:14,980 --> 00:08:18,500
+outside of the overall loop and prints out outside.
+
+203
+00:08:18,500 --> 00:08:21,380
+The difference here is, if I didn't have an exception,
+
+204
+00:08:21,380 --> 00:08:24,000
+it would have printed out a divide by 0 error.
+
+205
+00:08:24,000 --> 00:08:26,280
+Now, I'm actually going to be able to control.
+
+206
+00:08:26,280 --> 00:08:28,440
+What do I do when I see an exception?
+
+207
+00:08:28,440 --> 00:08:31,710
+But you can also see it stops the operation,
+
+208
+00:08:31,710 --> 00:08:34,270
+jumps to the except clause, deals with that,
+
+209
+00:08:34,270 --> 00:08:36,630
+and then goes outside the loop.
+
+210
+00:08:36,630 --> 00:08:37,130
+All right.
+
+211
+00:08:37,130 --> 00:08:40,250
+With that in mind, I can now amplify this.
+
+212
+00:08:40,250 --> 00:08:42,744
+Let's take the same kind of example, but now say,
+
+213
+00:08:42,744 --> 00:08:44,660
+gee, there could be different kinds of errors.
+
+214
+00:08:44,660 --> 00:08:47,430
+Maybe I want to do something different in each case.
+
+215
+00:08:47,430 --> 00:08:52,659
+So for example, if I typed in something that was a string,
+
+216
+00:08:52,659 --> 00:08:55,200
+it's not going to be able to do the division because it can't
+
+217
+00:08:55,200 --> 00:08:56,790
+divide strings by numbers.
+
+218
+00:08:56,790 --> 00:08:58,680
+That raises a value error.
+
+219
+00:08:58,680 --> 00:08:59,580
+It's an exception.
+
+220
+00:08:59,580 --> 00:09:02,301
+And in that case, I could print out something useful saying,
+
+221
+00:09:02,301 --> 00:09:02,800
+all right.
+
+222
+00:09:02,800 --> 00:09:07,030
+In that case, I didn't have a number.
+
+223
+00:09:07,030 --> 00:09:09,030
+I want to think about that differently.
+
+224
+00:09:09,030 --> 00:09:11,190
+If I gave it as I did in my example, a division
+
+225
+00:09:11,190 --> 00:09:14,480
+by 0 problem, it will print out something more informative
+
+226
+00:09:14,480 --> 00:09:17,500
+there telling me what went on when I had that happen.
+
+227
+00:09:17,500 --> 00:09:20,510
+And in the final case, if neither of these exceptions
+
+228
+00:09:20,510 --> 00:09:22,780
+come up but some other exception does,
+
+229
+00:09:22,780 --> 00:09:24,930
+I'll still have a default case that I'll
+
+230
+00:09:24,930 --> 00:09:27,387
+use to handle that exception.
+
+231
+00:09:27,387 --> 00:09:28,470
+I could run the same code.
+
+232
+00:09:28,470 --> 00:09:30,350
+I'm not going to do it here, but I could run the same code
+
+233
+00:09:30,350 --> 00:09:32,680
+and you would see the same kind of behavior.
+
+234
+00:09:32,680 --> 00:09:35,070
+If the code runs properly, it will never
+
+235
+00:09:35,070 --> 00:09:37,010
+get to any of these cases.
+
+236
+00:09:37,010 --> 00:09:39,470
+But if I hit an exception, if it's one
+
+237
+00:09:39,470 --> 00:09:41,620
+that I know how to handle, like a value error,
+
+238
+00:09:41,620 --> 00:09:42,740
+I'll deal with it.
+
+239
+00:09:42,740 --> 00:09:44,840
+A division by 0 error, I'll deal with it.
+
+240
+00:09:44,840 --> 00:09:49,980
+Otherwise, I'll go and deal with the overall general idea.
+
+241
+00:09:49,980 --> 00:09:53,270
+What else might I have when I want to deal with exceptions?
+
+242
+00:09:53,270 --> 00:09:55,030
+Well, two other pieces.
+
+243
+00:09:55,030 --> 00:09:57,220
+One is there may be some code that I
+
+244
+00:09:57,220 --> 00:10:02,150
+want to do even if it runs without any exceptions.
+
+245
+00:10:02,150 --> 00:10:04,880
+And so I can put in the keyword else
+
+246
+00:10:04,880 --> 00:10:06,540
+followed by a body of code.
+
+247
+00:10:06,540 --> 00:10:10,780
+And that will be executed when the execution of the try body
+
+248
+00:10:10,780 --> 00:10:12,299
+works correctly.
+
+249
+00:10:12,299 --> 00:10:14,340
+This lets me pull things outside of the try body.
+
+250
+00:10:14,340 --> 00:10:15,750
+I could leave them in there if I wanted,
+
+251
+00:10:15,750 --> 00:10:17,970
+but it lets me pull things outside of the try body
+
+252
+00:10:17,970 --> 00:10:19,910
+to isolate them as being things I always want
+
+253
+00:10:19,910 --> 00:10:22,690
+to do if it runs correctly.
+
+254
+00:10:22,690 --> 00:10:26,350
+And finally, I can have the finally keyword.
+
+255
+00:10:26,350 --> 00:10:29,480
+And this identifies a body of code
+
+256
+00:10:29,480 --> 00:10:31,030
+with the following property.
+
+257
+00:10:31,030 --> 00:10:36,360
+This is always executed after try, else, and except clauses,
+
+258
+00:10:36,360 --> 00:10:39,530
+even if they raise another error or they execute a break,
+
+259
+00:10:39,530 --> 00:10:41,480
+a continue, or a return.
+
+260
+00:10:41,480 --> 00:10:43,800
+And this is handy when I want to clean up some code,
+
+261
+00:10:43,800 --> 00:10:45,754
+no matter what happened in the earlier code.
+
+262
+00:10:45,754 --> 00:10:47,170
+Typically, this would be something
+
+263
+00:10:47,170 --> 00:10:50,490
+like closing a file so that I don't leave it hanging open.
+
+264
+00:10:50,490 --> 00:10:52,720
+But it lets me specify sets of things
+
+265
+00:10:52,720 --> 00:10:55,490
+I will do independent of what happens in the try loop.
+
+266
+00:10:55,490 --> 00:10:58,530
+Whether it runs correctly, it hits an exception,
+
+267
+00:10:58,530 --> 00:11:00,530
+and then deals with an else or an except clause,
+
+268
+00:11:00,530 --> 00:11:04,250
+or even if it breaks out of that execution and carries on.
+
+269
+00:11:04,250 --> 00:11:07,299
+So there are the pieces of dealing with exceptions.
+
+270
+00:11:07,299 --> 00:11:09,340
+And we're going to look at some examples of using
+
+271
+00:11:09,340 --> 00:11:13,170
+it to actually think about how to handle code using ways
+
+272
+00:11:13,170 --> 00:11:15,600
+to deal with exceptions in manners that we want
+
+273
+00:11:15,600 --> 00:11:19,410
+and not just throwing an error as Python currently does.
+

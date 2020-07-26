@@ -1,0 +1,820 @@
+0
+00:00:00,000 --> 00:00:00,500
+...
+
+1
+00:00:00,500 --> 00:00:01,280
+OK.
+
+2
+00:00:01,280 --> 00:00:02,760
+Let's get concrete about this.
+
+3
+00:00:02,760 --> 00:00:06,430
+Let's look at the specifics of how we both define a class,
+
+4
+00:00:06,430 --> 00:00:09,410
+and then implement instances of that class.
+
+5
+00:00:09,410 --> 00:00:11,240
+So, if we want to define our own type,
+
+6
+00:00:11,240 --> 00:00:14,000
+we're going to start by using the keyword class,
+
+7
+00:00:14,000 --> 00:00:15,146
+not surprisingly.
+
+8
+00:00:15,146 --> 00:00:16,520
+And that's going to tell us we're
+
+9
+00:00:16,520 --> 00:00:19,990
+about to create the definition of a new class.
+
+10
+00:00:19,990 --> 00:00:22,850
+So we're going to start with the class definition.
+
+11
+00:00:22,850 --> 00:00:24,100
+We're going to give it a name.
+
+12
+00:00:24,100 --> 00:00:25,766
+In this case, I'm creating a coordinate.
+
+13
+00:00:25,766 --> 00:00:28,850
+That's simply an x-y pairing of points in the plane.
+
+14
+00:00:28,850 --> 00:00:31,140
+And then each class definition is
+
+15
+00:00:31,140 --> 00:00:34,890
+going to take one argument, which is the parent class.
+
+16
+00:00:34,890 --> 00:00:36,520
+And initially, we're going to create
+
+17
+00:00:36,520 --> 00:00:39,050
+classes that inherit from the underlying object
+
+18
+00:00:39,050 --> 00:00:40,300
+class of Python.
+
+19
+00:00:40,300 --> 00:00:42,200
+So we'll always just have object here.
+
+20
+00:00:42,200 --> 00:00:43,700
+When we start building hierarchies
+
+21
+00:00:43,700 --> 00:00:45,770
+we'll see that we want to extend that idea.
+
+22
+00:00:45,770 --> 00:00:48,340
+But just to repeat it, I've got a class definition
+
+23
+00:00:48,340 --> 00:00:50,320
+I've got a name, in this case, coordinate.
+
+24
+00:00:50,320 --> 00:00:53,390
+And its parent in this case is object.
+
+25
+00:00:53,390 --> 00:00:55,630
+It's followed as always by a colon to tell me
+
+26
+00:00:55,630 --> 00:00:56,870
+I'm done with this.
+
+27
+00:00:56,870 --> 00:00:58,530
+And then immediately below that, I'm
+
+28
+00:00:58,530 --> 00:01:01,200
+going to define the attributes of this class.
+
+29
+00:01:01,200 --> 00:01:03,810
+And I'm going to have them indented, as always, to tell me
+
+30
+00:01:03,810 --> 00:01:07,640
+where the bounds of that class definition lie.
+
+31
+00:01:07,640 --> 00:01:10,920
+Now, the word object means the coordinate is itself
+
+32
+00:01:10,920 --> 00:01:12,220
+a kind of Python object.
+
+33
+00:01:12,220 --> 00:01:13,840
+And that means, it's going to inherit
+
+34
+00:01:13,840 --> 00:01:17,060
+all of the attributes of the underlying Python object.
+
+35
+00:01:17,060 --> 00:01:18,560
+We'll come back to that in a second,
+
+36
+00:01:18,560 --> 00:01:20,280
+but that's going to be valuable.
+
+37
+00:01:20,280 --> 00:01:22,280
+One last piece of nomenclature-- we
+
+38
+00:01:22,280 --> 00:01:25,690
+say that a coordinate is a subclass of an object,
+
+39
+00:01:25,690 --> 00:01:28,390
+and an object is a superclass of a coordinate.
+
+40
+00:01:28,390 --> 00:01:31,200
+We're going to have a subclass inherit from its parent
+
+41
+00:01:31,200 --> 00:01:34,240
+or superclass object.
+
+42
+00:01:34,240 --> 00:01:37,670
+So, simple start, define a class with a name in an object.
+
+43
+00:01:37,670 --> 00:01:41,280
+Now I have to get into, how do I actually put attributes inside
+
+44
+00:01:41,280 --> 00:01:45,470
+of that class definition?
+
+45
+00:01:45,470 --> 00:01:47,360
+So first of all, what are the attributes?
+
+46
+00:01:47,360 --> 00:01:50,150
+Well, they're going to be data and procedures that
+
+47
+00:01:50,150 --> 00:01:52,910
+belong to this class.
+
+48
+00:01:52,910 --> 00:01:54,560
+If I take my example of a coordinate,
+
+49
+00:01:54,560 --> 00:01:56,394
+a coordinate's got an x and a y value.
+
+50
+00:01:56,394 --> 00:01:58,310
+So I'm going to have some data attributes that
+
+51
+00:01:58,310 --> 00:02:01,460
+are the x and y values that are associated with a coordinate.
+
+52
+00:02:01,460 --> 00:02:04,060
+What I want to do is think about those data attributes
+
+53
+00:02:04,060 --> 00:02:07,020
+and as other objects that make up the class-- things that
+
+54
+00:02:07,020 --> 00:02:10,810
+get inherently glued together and can be treated as a unit.
+
+55
+00:02:10,810 --> 00:02:12,472
+A point in the plane is a unit-- it
+
+56
+00:02:12,472 --> 00:02:13,680
+happens to have pieces in it.
+
+57
+00:02:13,680 --> 00:02:16,552
+But I want to have that class capture those things together.
+
+58
+00:02:16,552 --> 00:02:18,510
+So as an example, while a coordinate is made up
+
+59
+00:02:18,510 --> 00:02:20,190
+of two numbers, a coordinate itself
+
+60
+00:02:20,190 --> 00:02:22,360
+is something that I can use.
+
+61
+00:02:22,360 --> 00:02:24,280
+Those are the data attributes.
+
+62
+00:02:24,280 --> 00:02:27,140
+We also need ways to use the data.
+
+63
+00:02:27,140 --> 00:02:29,540
+And those are what we call the procedural attributes
+
+64
+00:02:29,540 --> 00:02:31,010
+or the methods.
+
+65
+00:02:31,010 --> 00:02:35,520
+Think of methods as functions that work only for this class.
+
+66
+00:02:35,520 --> 00:02:37,510
+So for example, if I want to compute
+
+67
+00:02:37,510 --> 00:02:39,930
+the distance between two coordinates, I could do that,
+
+68
+00:02:39,930 --> 00:02:42,710
+and I can do that in a second to find a distance method
+
+69
+00:02:42,710 --> 00:02:44,391
+associated with coordinates.
+
+70
+00:02:44,391 --> 00:02:45,890
+But it doesn't typically makes sense
+
+71
+00:02:45,890 --> 00:02:48,060
+to think about doing distances between strings
+
+72
+00:02:48,060 --> 00:02:49,806
+or distances between lists.
+
+73
+00:02:49,806 --> 00:02:51,180
+I'm going to create a method that
+
+74
+00:02:51,180 --> 00:02:53,320
+belongs only to this class.
+
+75
+00:02:53,320 --> 00:02:55,860
+And it's going to be seated inside of that class
+
+76
+00:02:55,860 --> 00:02:58,850
+as one of the data-- sorry, one of the procedural attributes
+
+77
+00:02:58,850 --> 00:03:02,010
+associated with the class.
+
+78
+00:03:02,010 --> 00:03:02,780
+OK.
+
+79
+00:03:02,780 --> 00:03:04,402
+So how do I do that?
+
+80
+00:03:04,402 --> 00:03:05,860
+Well, first thing I've got to do is
+
+81
+00:03:05,860 --> 00:03:09,420
+define how I actually create instances of this object.
+
+82
+00:03:09,420 --> 00:03:12,490
+And for that, we use a special method called init.
+
+83
+00:03:12,490 --> 00:03:15,610
+And in fact it's written a very special way.
+
+84
+00:03:15,610 --> 00:03:19,170
+It has got two underscores, the word init, and then
+
+85
+00:03:19,170 --> 00:03:19,929
+two underscores.
+
+86
+00:03:19,929 --> 00:03:21,470
+We're always going to do it that way.
+
+87
+00:03:21,470 --> 00:03:22,650
+It's a special method.
+
+88
+00:03:22,650 --> 00:03:25,840
+And this special method is going to create an instance
+
+89
+00:03:25,840 --> 00:03:30,240
+when I actually use coordinate as a call.
+
+90
+00:03:30,240 --> 00:03:32,420
+Now, what's inside of init?
+
+91
+00:03:32,420 --> 00:03:34,200
+Its first argument is a parameter
+
+92
+00:03:34,200 --> 00:03:37,290
+that's going to refer to an instance of the class.
+
+93
+00:03:37,290 --> 00:03:40,710
+And by tradition, we always call it, "self."
+
+94
+00:03:40,710 --> 00:03:42,680
+In fact, you'll notice when you type it in,
+
+95
+00:03:42,680 --> 00:03:46,064
+the Python environment always types, "self"
+
+96
+00:03:46,064 --> 00:03:47,730
+in a different color and in a different,
+
+97
+00:03:47,730 --> 00:03:50,750
+in this case italic font, to distinguish that it refers
+
+98
+00:03:50,750 --> 00:03:53,780
+to an instance of the clash.
+
+99
+00:03:53,780 --> 00:03:55,980
+We also want to give this thing that's
+
+100
+00:03:55,980 --> 00:03:58,870
+going to create instances the initial data.
+
+101
+00:03:58,870 --> 00:04:00,730
+If a coordinate has an x and y value,
+
+102
+00:04:00,730 --> 00:04:02,910
+I want my creation of an instance
+
+103
+00:04:02,910 --> 00:04:05,800
+to take in a value for x and a value in y.
+
+104
+00:04:05,800 --> 00:04:07,660
+And we're going to glue them together.
+
+105
+00:04:07,660 --> 00:04:09,410
+And the way we glue them together is we're
+
+106
+00:04:09,410 --> 00:04:11,980
+going to actually create bindings for the names
+
+107
+00:04:11,980 --> 00:04:14,520
+x and y to the values passed in.
+
+108
+00:04:14,520 --> 00:04:17,899
+
+
+109
+00:04:17,899 --> 00:04:19,529
+And what you can do is think of this
+
+110
+00:04:19,529 --> 00:04:23,030
+as, when we actually invoke the creation of an instance-- which
+
+111
+00:04:23,030 --> 00:04:24,930
+we're going to do in a second-- this
+
+112
+00:04:24,930 --> 00:04:28,970
+will bind the variables x and y within that instance
+
+113
+00:04:28,970 --> 00:04:30,547
+to the supplied values.
+
+114
+00:04:30,547 --> 00:04:32,380
+I'm going to come back in a second to why it
+
+115
+00:04:32,380 --> 00:04:34,730
+says self dot x and self dot y.
+
+116
+00:04:34,730 --> 00:04:37,590
+But think of this as saying, within that instance
+
+117
+00:04:37,590 --> 00:04:40,630
+to which self refers, I'm binding x and y to
+
+118
+00:04:40,630 --> 00:04:42,540
+the values passed in.
+
+119
+00:04:42,540 --> 00:04:44,200
+This is typically the first method
+
+120
+00:04:44,200 --> 00:04:45,970
+that we have inside of a class definition.
+
+121
+00:04:45,970 --> 00:04:47,553
+Because we have to say, how am I going
+
+122
+00:04:47,553 --> 00:04:49,740
+to create instances of this class?
+
+123
+00:04:49,740 --> 00:04:52,570
+This is also inherently defining the data attributes
+
+124
+00:04:52,570 --> 00:04:58,640
+associated with this particular class, an x and a y value.
+
+125
+00:04:58,640 --> 00:04:59,670
+OK.
+
+126
+00:04:59,670 --> 00:05:01,666
+Let's make a couple of versions of this.
+
+127
+00:05:01,666 --> 00:05:03,040
+So I'm actually going to do that.
+
+128
+00:05:03,040 --> 00:05:05,970
+I've got over here, on my machine,
+
+129
+00:05:05,970 --> 00:05:08,830
+a definition of coordinate.
+
+130
+00:05:08,830 --> 00:05:10,590
+And I can now create an instance.
+
+131
+00:05:10,590 --> 00:05:13,140
+I can say, I'm going to let c be a coordinate.
+
+132
+00:05:13,140 --> 00:05:16,417
+So I simply use the name coordinate.
+
+133
+00:05:16,417 --> 00:05:17,250
+Oh, and that's nice.
+
+134
+00:05:17,250 --> 00:05:18,860
+Notice when I did the open print--
+
+135
+00:05:18,860 --> 00:05:21,410
+I'm going to do it again before it disappears--
+
+136
+00:05:21,410 --> 00:05:24,880
+it tells me what the arguments are that are expected.
+
+137
+00:05:24,880 --> 00:05:30,190
+And I'm going to give it two, an x and a y value-- 3 and 4.
+
+138
+00:05:30,190 --> 00:05:33,090
+I'm going to define origin to be the origin
+
+139
+00:05:33,090 --> 00:05:34,090
+of my coordinate system.
+
+140
+00:05:34,090 --> 00:05:38,570
+So it is another coordinate of 0 and 0.
+
+141
+00:05:38,570 --> 00:05:41,010
+And notice, each time I invoke coordinate,
+
+142
+00:05:41,010 --> 00:05:44,380
+the name of a class, it's creating a new instance.
+
+143
+00:05:44,380 --> 00:05:47,150
+What it's doing is it's calling that init method,
+
+144
+00:05:47,150 --> 00:05:50,250
+and using that to create local bindings.
+
+145
+00:05:50,250 --> 00:05:54,290
+Now, you might notice here that there's no version of self.
+
+146
+00:05:54,290 --> 00:05:55,440
+Wait a minute.
+
+147
+00:05:55,440 --> 00:05:57,790
+Didn't I have in my definition, the definition of init
+
+148
+00:05:57,790 --> 00:06:00,310
+was self x and y?
+
+149
+00:06:00,310 --> 00:06:04,400
+I did, but the style, or the process if you like, in Python
+
+150
+00:06:04,400 --> 00:06:06,980
+is that self automatically points
+
+151
+00:06:06,980 --> 00:06:10,010
+to the particular instance that I've just created.
+
+152
+00:06:10,010 --> 00:06:12,690
+And Python automatically provides that argument for you.
+
+153
+00:06:12,690 --> 00:06:16,010
+So when I call init, I only call it with the arguments
+
+154
+00:06:16,010 --> 00:06:20,950
+that I need to provide in order to create the data attributes.
+
+155
+00:06:20,950 --> 00:06:23,570
+Once I've got that, I now have instance variables
+
+156
+00:06:23,570 --> 00:06:26,554
+inside of that class instance.
+
+157
+00:06:26,554 --> 00:06:27,470
+And I can get to them.
+
+158
+00:06:27,470 --> 00:06:31,440
+So for example, I could say, print out the x-value value
+
+159
+00:06:31,440 --> 00:06:33,750
+associated with c.
+
+160
+00:06:33,750 --> 00:06:35,530
+And there it is, 3.
+
+161
+00:06:35,530 --> 00:06:41,050
+Or I can print, the x-value associated with the origin.
+
+162
+00:06:41,050 --> 00:06:41,765
+And there it is.
+
+163
+00:06:41,765 --> 00:06:43,940
+I just printed it out.
+
+164
+00:06:43,940 --> 00:06:48,300
+Think of this as c giving me an instance.
+
+165
+00:06:48,300 --> 00:06:50,040
+It did, because I created it.
+
+166
+00:06:50,040 --> 00:06:54,110
+And now I'm going to try and get the x thing associated with c.
+
+167
+00:06:54,110 --> 00:06:56,440
+So, I create a new instance of an object.
+
+168
+00:06:56,440 --> 00:06:58,140
+I pass in the arguments.
+
+169
+00:06:58,140 --> 00:07:01,794
+I use the dot notation to access an attribute of an instance.
+
+170
+00:07:01,794 --> 00:07:03,210
+And what I want to think about is,
+
+171
+00:07:03,210 --> 00:07:06,210
+what does it mean to do that actual accessing?
+
+172
+00:07:06,210 --> 00:07:08,760
+As I already said, notice that the argument for self
+
+173
+00:07:08,760 --> 00:07:10,560
+is automatically supplied by Python.
+
+174
+00:07:10,560 --> 00:07:13,650
+So I don't need to provide it.
+
+175
+00:07:13,650 --> 00:07:16,860
+The way to think about this is as follows.
+
+176
+00:07:16,860 --> 00:07:20,130
+Think of c, an instance I created with coordinate--
+
+177
+00:07:20,130 --> 00:07:22,267
+think of it as pointing to a frame.
+
+178
+00:07:22,267 --> 00:07:24,600
+You may remember we saw that when we did function calls.
+
+179
+00:07:24,600 --> 00:07:26,141
+That every time we called a function,
+
+180
+00:07:26,141 --> 00:07:27,770
+we created a new frame.
+
+181
+00:07:27,770 --> 00:07:30,700
+In essence, a class definition is doing that as well.
+
+182
+00:07:30,700 --> 00:07:34,330
+Coordinate is creating a new frame associated with c.
+
+183
+00:07:34,330 --> 00:07:37,960
+Within the scope of that frame, we bound values
+
+184
+00:07:37,960 --> 00:07:40,040
+to data attribute variables.
+
+185
+00:07:40,040 --> 00:07:42,080
+So inside of c, there is a binding
+
+186
+00:07:42,080 --> 00:07:46,260
+for x and a binding for y, to 3 and 4 respectively.
+
+187
+00:07:46,260 --> 00:07:49,920
+C dot x is then interpreted as saying the following.
+
+188
+00:07:49,920 --> 00:07:51,450
+Get the value of c.
+
+189
+00:07:51,450 --> 00:07:53,060
+Oh, that's a frame.
+
+190
+00:07:53,060 --> 00:07:55,570
+And then inside of that frame, look up
+
+191
+00:07:55,570 --> 00:07:57,510
+the value associated with x.
+
+192
+00:07:57,510 --> 00:08:01,080
+So c dot x says, get the value of c.
+
+193
+00:08:01,080 --> 00:08:02,240
+That's a frame.
+
+194
+00:08:02,240 --> 00:08:03,980
+Now I'll use the next thing to say,
+
+195
+00:08:03,980 --> 00:08:06,494
+what's the binding for x inside of that frame.
+
+196
+00:08:06,494 --> 00:08:08,160
+And thus, that's going to make it easier
+
+197
+00:08:08,160 --> 00:08:11,140
+to understand why c dot x gives me back 3,
+
+198
+00:08:11,140 --> 00:08:13,230
+and origin dot x gives me back 0.
+
+199
+00:08:13,230 --> 00:08:16,010
+In each case, they're referring to a different frame in which
+
+200
+00:08:16,010 --> 00:08:17,800
+the variable x is bound.
+
+201
+00:08:17,800 --> 00:08:19,280
+And just like with functions, there
+
+202
+00:08:19,280 --> 00:08:21,435
+was no confusion about which binding to use.
+
+203
+00:08:21,435 --> 00:08:23,060
+The same thing with different instances
+
+204
+00:08:23,060 --> 00:08:25,420
+of the same object type.
+

@@ -1,0 +1,1052 @@
+0
+00:00:00,000 --> 00:00:00,499
+...
+
+1
+00:00:00,499 --> 00:00:03,080
+So the first part of creating a new class is to say,
+
+2
+00:00:03,080 --> 00:00:04,930
+how am I going to create instances of it?
+
+3
+00:00:04,930 --> 00:00:07,840
+And as I said, that also tends to inherently capture
+
+4
+00:00:07,840 --> 00:00:09,960
+what are the data attributes associated
+
+5
+00:00:09,960 --> 00:00:11,770
+with an instance of a class?
+
+6
+00:00:11,770 --> 00:00:12,800
+But now, I need methods.
+
+7
+00:00:12,800 --> 00:00:15,510
+I need ways of manipulating those attributes,
+
+8
+00:00:15,510 --> 00:00:16,900
+those data attributes.
+
+9
+00:00:16,900 --> 00:00:19,020
+And so first of all, what's a method?
+
+10
+00:00:19,020 --> 00:00:20,600
+It's a procedural attribute.
+
+11
+00:00:20,600 --> 00:00:23,380
+Think of it like a function but a function or procedure that
+
+12
+00:00:23,380 --> 00:00:25,310
+works only with this class.
+
+13
+00:00:25,310 --> 00:00:27,330
+It's designed for that class.
+
+14
+00:00:27,330 --> 00:00:30,610
+As an aside, as I said earlier, that's nice, because it says,
+
+15
+00:00:30,610 --> 00:00:32,890
+I can use the same name many times
+
+16
+00:00:32,890 --> 00:00:34,880
+doing similar things for different classes
+
+17
+00:00:34,880 --> 00:00:37,670
+without worrying about the confusion of the name.
+
+18
+00:00:37,670 --> 00:00:40,700
+Now, when I define a method, Python always
+
+19
+00:00:40,700 --> 00:00:43,250
+passes the actual object, the instance,
+
+20
+00:00:43,250 --> 00:00:44,930
+as the first argument.
+
+21
+00:00:44,930 --> 00:00:46,430
+And so the convention is going to be
+
+22
+00:00:46,430 --> 00:00:49,890
+to use self as the name of the first argument of all methods
+
+23
+00:00:49,890 --> 00:00:51,332
+not just init.
+
+24
+00:00:51,332 --> 00:00:52,790
+As we've also seen, and we're going
+
+25
+00:00:52,790 --> 00:00:55,000
+to see now an example of it, the dot operator
+
+26
+00:00:55,000 --> 00:00:58,220
+is going to be used to access any attribute, certainly
+
+27
+00:00:58,220 --> 00:01:00,300
+the data attributes, the variable names,
+
+28
+00:01:00,300 --> 00:01:01,640
+but also the method.
+
+29
+00:01:01,640 --> 00:01:04,120
+And we're going to see an example of that in a second.
+
+30
+00:01:04,120 --> 00:01:07,420
+But first, let's look at actually making one of these.
+
+31
+00:01:07,420 --> 00:01:10,114
+So let's go back to my coordinate definition.
+
+32
+00:01:10,114 --> 00:01:12,280
+I already said, I might want to compute the distance
+
+33
+00:01:12,280 --> 00:01:13,400
+between two coordinates.
+
+34
+00:01:13,400 --> 00:01:16,960
+So I can add a new method, and here it is.
+
+35
+00:01:16,960 --> 00:01:18,410
+I'm going to define distance.
+
+36
+00:01:18,410 --> 00:01:19,680
+And notice, with both of these-- and I
+
+37
+00:01:19,680 --> 00:01:21,471
+should have said it earlier-- these are now
+
+38
+00:01:21,471 --> 00:01:23,350
+just standard definitions of procedures.
+
+39
+00:01:23,350 --> 00:01:26,220
+They happen to be invented inside this class definition,
+
+40
+00:01:26,220 --> 00:01:28,310
+because they belong to the class.
+
+41
+00:01:28,310 --> 00:01:29,910
+So I'm going to define distance.
+
+42
+00:01:29,910 --> 00:01:32,280
+As I said just previously, we need
+
+43
+00:01:32,280 --> 00:01:34,260
+to have the first argument be self,
+
+44
+00:01:34,260 --> 00:01:37,420
+because it's going to refer to a particular instance.
+
+45
+00:01:37,420 --> 00:01:40,140
+It says, here's the method I want to do on this instance.
+
+46
+00:01:40,140 --> 00:01:42,577
+In this case, I've also got another parameter,
+
+47
+00:01:42,577 --> 00:01:44,160
+because I want to measure the distance
+
+48
+00:01:44,160 --> 00:01:47,059
+between a particular coordinate and some other coordinate.
+
+49
+00:01:47,059 --> 00:01:48,350
+So I'm going to give it a name.
+
+50
+00:01:48,350 --> 00:01:49,780
+I'm going to call it other.
+
+51
+00:01:49,780 --> 00:01:51,980
+Within the body of that method, I just
+
+52
+00:01:51,980 --> 00:01:53,410
+do the standard work I would do.
+
+53
+00:01:53,410 --> 00:01:55,076
+I'm going to compute a couple of things.
+
+54
+00:01:55,076 --> 00:01:56,800
+I'm going to return a value which
+
+55
+00:01:56,800 --> 00:01:59,470
+is just the sum of the squares-- the square root rather
+
+56
+00:01:59,470 --> 00:02:01,180
+of the sum of the squares.
+
+57
+00:02:01,180 --> 00:02:05,950
+The only other nuance here is I'm using dot notation
+
+58
+00:02:05,950 --> 00:02:08,280
+to access the data.
+
+59
+00:02:08,280 --> 00:02:10,210
+Other than that dot notation, everything else
+
+60
+00:02:10,210 --> 00:02:12,620
+behaves just like you would expect.
+
+61
+00:02:12,620 --> 00:02:14,190
+What's the dot notation doing?
+
+62
+00:02:14,190 --> 00:02:16,900
+Well, as we already saw when we wanted to get values out,
+
+63
+00:02:16,900 --> 00:02:19,060
+I need to do that to get the values associated
+
+64
+00:02:19,060 --> 00:02:22,850
+with instances, not only for self but also
+
+65
+00:02:22,850 --> 00:02:24,470
+for this other coordinate.
+
+66
+00:02:24,470 --> 00:02:26,250
+And just as I did in the earlier example,
+
+67
+00:02:26,250 --> 00:02:29,760
+think of other.x as saying, get the value of other,
+
+68
+00:02:29,760 --> 00:02:31,460
+it points to a frame, because it's
+
+69
+00:02:31,460 --> 00:02:33,860
+an instance of a coordinate, and in that frame,
+
+70
+00:02:33,860 --> 00:02:37,860
+when I created it, I defined variable bindings for x and y,
+
+71
+00:02:37,860 --> 00:02:40,450
+retrieve those variable bindings.
+
+72
+00:02:40,450 --> 00:02:44,090
+But there is now a nice little method for computing distance.
+
+73
+00:02:44,090 --> 00:02:45,870
+And so I could actually use it.
+
+74
+00:02:45,870 --> 00:02:47,110
+And in fact, let me do it.
+
+75
+00:02:47,110 --> 00:02:48,690
+I'm going to go over to my machine,
+
+76
+00:02:48,690 --> 00:02:54,160
+and I'm going to make sure I have that definition in place,
+
+77
+00:02:54,160 --> 00:02:55,610
+and I do.
+
+78
+00:02:55,610 --> 00:02:58,650
+And I've got C, and I've got origin.
+
+79
+00:02:58,650 --> 00:02:59,740
+So let's do the following.
+
+80
+00:02:59,740 --> 00:03:01,510
+I've defined C and origin as before.
+
+81
+00:03:01,510 --> 00:03:07,180
+I can print out, what is the distance from C to the origin?
+
+82
+00:03:07,180 --> 00:03:10,200
+
+
+83
+00:03:10,200 --> 00:03:12,620
+And it says it's distance 5, which makes sense,
+
+84
+00:03:12,620 --> 00:03:16,460
+3 squared plus 4 squared is 25, square root is 5.
+
+85
+00:03:16,460 --> 00:03:18,370
+Notice how I called it.
+
+86
+00:03:18,370 --> 00:03:21,072
+I called it by saying, first of all,
+
+87
+00:03:21,072 --> 00:03:23,280
+what's the object on which I want to call the method?
+
+88
+00:03:23,280 --> 00:03:25,420
+In this case, it was the coordinate C.
+
+89
+00:03:25,420 --> 00:03:27,430
+What's the name of the method?
+
+90
+00:03:27,430 --> 00:03:29,600
+And then what's the parameter I want to use?
+
+91
+00:03:29,600 --> 00:03:32,720
+But again, notice I did not provide anything for self,
+
+92
+00:03:32,720 --> 00:03:35,830
+and this is because, in this particular version,
+
+93
+00:03:35,830 --> 00:03:39,260
+C being a frame, I look up the value of distance,
+
+94
+00:03:39,260 --> 00:03:42,940
+it is a method within it, and because I'm using it associated
+
+95
+00:03:42,940 --> 00:03:45,670
+with that particular instance, Python automatically
+
+96
+00:03:45,670 --> 00:03:50,710
+provides C as the first argument to this distance function.
+
+97
+00:03:50,710 --> 00:03:52,420
+I could do it a different way.
+
+98
+00:03:52,420 --> 00:03:54,420
+Again, I could have C as a coordinate, origin
+
+99
+00:03:54,420 --> 00:03:55,410
+as a coordinate.
+
+100
+00:03:55,410 --> 00:03:56,970
+And I could do the following.
+
+101
+00:03:56,970 --> 00:04:00,660
+I could print out the class coordinate
+
+102
+00:04:00,660 --> 00:04:07,814
+dot distance of C and origin.
+
+103
+00:04:07,814 --> 00:04:09,980
+And that might look a little more reasonable to you,
+
+104
+00:04:09,980 --> 00:04:12,188
+because now, I'm saying what's the distance between C
+
+105
+00:04:12,188 --> 00:04:13,150
+and origin?
+
+106
+00:04:13,150 --> 00:04:16,220
+And if I do that, I also get out 5.
+
+107
+00:04:16,220 --> 00:04:17,410
+What's the difference here?
+
+108
+00:04:17,410 --> 00:04:20,070
+Now, I'm giving it the name of a class.
+
+109
+00:04:20,070 --> 00:04:21,089
+What's that?
+
+110
+00:04:21,089 --> 00:04:23,220
+Well, it actually also points to a frame,
+
+111
+00:04:23,220 --> 00:04:26,220
+a frame in which all the class definitions are created.
+
+112
+00:04:26,220 --> 00:04:28,310
+So inside of the coordinate frame,
+
+113
+00:04:28,310 --> 00:04:30,670
+I'm looking up the distance method.
+
+114
+00:04:30,670 --> 00:04:33,550
+And that takes two arguments, and therefore, I
+
+115
+00:04:33,550 --> 00:04:37,520
+apply both parameters, C and origin.
+
+116
+00:04:37,520 --> 00:04:40,190
+If I'm using an instance to get the method,
+
+117
+00:04:40,190 --> 00:04:43,600
+Python automatically uses that instance as the first argument.
+
+118
+00:04:43,600 --> 00:04:46,580
+If I'm using the class to get to the method,
+
+119
+00:04:46,580 --> 00:04:48,050
+you need to provide both arguments,
+
+120
+00:04:48,050 --> 00:04:50,730
+because Python doesn't know which is the instance that you
+
+121
+00:04:50,730 --> 00:04:53,700
+want to use.
+
+122
+00:04:53,700 --> 00:04:57,170
+Think of it this way, coordinate is pointing to a frame.
+
+123
+00:04:57,170 --> 00:04:58,650
+Inside the scope of that frame, we
+
+124
+00:04:58,650 --> 00:05:01,630
+created methods when we created that class definition.
+
+125
+00:05:01,630 --> 00:05:03,990
+So coordinate dot distance basically says
+
+126
+00:05:03,990 --> 00:05:05,370
+get the value of coordinate.
+
+127
+00:05:05,370 --> 00:05:06,570
+It's a frame.
+
+128
+00:05:06,570 --> 00:05:10,510
+The dot says, look up the value of distance within it.
+
+129
+00:05:10,510 --> 00:05:12,700
+I get that, that's a procedure definition.
+
+130
+00:05:12,700 --> 00:05:16,080
+And then I apply it to the arguments that are provided.
+
+131
+00:05:16,080 --> 00:05:19,670
+C dot distance doesn't have a distance method defined
+
+132
+00:05:19,670 --> 00:05:21,740
+within C. It's just an instance.
+
+133
+00:05:21,740 --> 00:05:24,190
+But because it's an instance of the class,
+
+134
+00:05:24,190 --> 00:05:27,110
+it inherits that distance method from it.
+
+135
+00:05:27,110 --> 00:05:28,980
+And as we said, Python automatically
+
+136
+00:05:28,980 --> 00:05:31,570
+uses C as the first argument.
+
+137
+00:05:31,570 --> 00:05:34,120
+I'm belaboring this point, because I guarantee you
+
+138
+00:05:34,120 --> 00:05:37,190
+that you're going to, somewhere in the near future,
+
+139
+00:05:37,190 --> 00:05:40,140
+make the mistake of either not providing an argument for self
+
+140
+00:05:40,140 --> 00:05:42,200
+or providing one when you don't need to.
+
+141
+00:05:42,200 --> 00:05:44,200
+And so this slide hopefully gives you
+
+142
+00:05:44,200 --> 00:05:47,890
+a way of separating out the two differences.
+
+143
+00:05:47,890 --> 00:05:48,880
+OK.
+
+144
+00:05:48,880 --> 00:05:50,680
+Now that we got them, we might want
+
+145
+00:05:50,680 --> 00:05:52,120
+to look at those coordinates.
+
+146
+00:05:52,120 --> 00:05:53,670
+So I could just print them out.
+
+147
+00:05:53,670 --> 00:05:58,580
+And I could go back to my machine and say, print out C,
+
+148
+00:05:58,580 --> 00:06:01,302
+and it gives me garbage.
+
+149
+00:06:01,302 --> 00:06:03,510
+Well, I shouldn't say garbage, it gives me, actually,
+
+150
+00:06:03,510 --> 00:06:06,460
+information that says, within the main environment,
+
+151
+00:06:06,460 --> 00:06:08,720
+this is an instance of a coordinate object,
+
+152
+00:06:08,720 --> 00:06:11,965
+and here's the actual memory location at which it lies.
+
+153
+00:06:11,965 --> 00:06:14,340
+I guess I could go in and start playing with that memory,
+
+154
+00:06:14,340 --> 00:06:16,350
+but that doesn't make a lot of sense.
+
+155
+00:06:16,350 --> 00:06:19,310
+This is clearly an uninformative representation.
+
+156
+00:06:19,310 --> 00:06:22,244
+And that's because, by default, this is what it prints out.
+
+157
+00:06:22,244 --> 00:06:24,160
+I'd like to have it print out something that's
+
+158
+00:06:24,160 --> 00:06:26,534
+much better at representing what a coordinate looks like,
+
+159
+00:06:26,534 --> 00:06:30,100
+and I can do that by defining another method for my class.
+
+160
+00:06:30,100 --> 00:06:33,400
+This is another special method called the string method.
+
+161
+00:06:33,400 --> 00:06:35,062
+And it's typed as __str__.
+
+162
+00:06:35,062 --> 00:06:38,850
+
+
+163
+00:06:38,850 --> 00:06:42,250
+Whenever I ask to print an instance of any kind of data
+
+164
+00:06:42,250 --> 00:06:44,520
+object, Python is going to call the string
+
+165
+00:06:44,520 --> 00:06:49,670
+method that was used as part of the definition of the class.
+
+166
+00:06:49,670 --> 00:06:52,370
+And you get to decide what it does.
+
+167
+00:06:52,370 --> 00:06:54,469
+By the way, even with existing object types,
+
+168
+00:06:54,469 --> 00:06:56,010
+there is, in essence, a string method
+
+169
+00:06:56,010 --> 00:07:00,180
+associated with lists, a string that associated with tuples.
+
+170
+00:07:00,180 --> 00:07:03,110
+So say we want to have our string method actually
+
+171
+00:07:03,110 --> 00:07:06,150
+produce something with an angle bracket
+
+172
+00:07:06,150 --> 00:07:08,280
+and then the two coordinate separated by a comma
+
+173
+00:07:08,280 --> 00:07:10,200
+and another angle bracket.
+
+174
+00:07:10,200 --> 00:07:13,460
+Well, I could do that, and it's actually pretty easy.
+
+175
+00:07:13,460 --> 00:07:15,970
+Right down here, I'm going to define that special method
+
+176
+00:07:15,970 --> 00:07:16,470
+string.
+
+177
+00:07:16,470 --> 00:07:18,803
+It's going to tell me how things are going to print out.
+
+178
+00:07:18,803 --> 00:07:21,570
+And all I require is that, how ever I want to define it,
+
+179
+00:07:21,570 --> 00:07:24,400
+it must return a string.
+
+180
+00:07:24,400 --> 00:07:26,250
+And so if I go back over to my machine,
+
+181
+00:07:26,250 --> 00:07:29,310
+and I'm going to uncomment that string method.
+
+182
+00:07:29,310 --> 00:07:32,470
+Now I can evaluate that.
+
+183
+00:07:32,470 --> 00:07:35,400
+And I'm going to define, again, C to be
+
+184
+00:07:35,400 --> 00:07:39,560
+the coordinate of 3 and 4.
+
+185
+00:07:39,560 --> 00:07:43,060
+If I print C, oh, nice.
+
+186
+00:07:43,060 --> 00:07:45,320
+It prints out a much better representation
+
+187
+00:07:45,320 --> 00:07:47,510
+of the coordinate, something that I can recognize,
+
+188
+00:07:47,510 --> 00:07:49,843
+and that's going to make it easier to think about what's
+
+189
+00:07:49,843 --> 00:07:51,980
+inside of that coordinate.
+
+190
+00:07:51,980 --> 00:07:55,370
+Having done that, I can now also think about a few other things
+
+191
+00:07:55,370 --> 00:07:57,480
+I might like to do with classes.
+
+192
+00:07:57,480 --> 00:08:01,380
+I could say, what's the type of this particular object.
+
+193
+00:08:01,380 --> 00:08:07,660
+So I could print, as you can see there, what's the type of c?
+
+194
+00:08:07,660 --> 00:08:11,190
+And it actually gives me back something that makes sense.
+
+195
+00:08:11,190 --> 00:08:14,310
+It says C is an instance of a class,
+
+196
+00:08:14,310 --> 00:08:16,990
+and the class type is coordinate.
+
+197
+00:08:16,990 --> 00:08:20,070
+The .main just tells me it was defined up in that overall
+
+198
+00:08:20,070 --> 00:08:22,610
+environment to which I interact, that Python environment
+
+199
+00:08:22,610 --> 00:08:24,029
+in which I interact.
+
+200
+00:08:24,029 --> 00:08:25,570
+And in fact, it makes sense because I
+
+201
+00:08:25,570 --> 00:08:29,140
+can say both what is a coordinate, it's a class,
+
+202
+00:08:29,140 --> 00:08:32,950
+and what's the type of a coordinate, it's a type.
+
+203
+00:08:32,950 --> 00:08:34,726
+So I can make instances.
+
+204
+00:08:34,726 --> 00:08:36,059
+I can measure things about them.
+
+205
+00:08:36,059 --> 00:08:37,140
+I can print them out.
+
+206
+00:08:37,140 --> 00:08:38,890
+One of the other things I might want to do
+
+207
+00:08:38,890 --> 00:08:40,720
+is to know what kind of thing is this.
+
+208
+00:08:40,720 --> 00:08:43,152
+Do I have something that is an instance of a coordinate?
+
+209
+00:08:43,152 --> 00:08:45,390
+I could do that by looking at the type
+
+210
+00:08:45,390 --> 00:08:47,830
+and trying to check what's the type of this thing.
+
+211
+00:08:47,830 --> 00:08:50,890
+But you've already seen right here that the type of C
+
+212
+00:08:50,890 --> 00:08:52,110
+is this complicated thing.
+
+213
+00:08:52,110 --> 00:08:55,250
+I really don't want to write, is the type of this object
+
+214
+00:08:55,250 --> 00:08:59,560
+equal to class underscore main dot coordinate, that's messy.
+
+215
+00:08:59,560 --> 00:09:02,720
+So instead, I'm going to use another built-in method
+
+216
+00:09:02,720 --> 00:09:05,920
+associated with any object, which is is instance.
+
+217
+00:09:05,920 --> 00:09:07,990
+And I can use that to check if an object is
+
+218
+00:09:07,990 --> 00:09:09,830
+an instance of a coordinate.
+
+219
+00:09:09,830 --> 00:09:19,210
+So I can say, for example, is c an instance of coordinate?
+
+220
+00:09:19,210 --> 00:09:20,974
+And it says, you bet.
+
+221
+00:09:20,974 --> 00:09:23,390
+I could do that with built-in objects, by the way, saying,
+
+222
+00:09:23,390 --> 00:09:24,960
+is this thing an instance of a list?
+
+223
+00:09:24,960 --> 00:09:27,240
+Is this thing an instance of an int?
+
+224
+00:09:27,240 --> 00:09:29,170
+I can often do shortcuts in those cases,
+
+225
+00:09:29,170 --> 00:09:31,680
+but that underlying method of is instance comes
+
+226
+00:09:31,680 --> 00:09:34,820
+from, basically, the objects that exist within Python.
+
+227
+00:09:34,820 --> 00:09:37,350
+
+
+228
+00:09:37,350 --> 00:09:39,070
+We also have a few other methods that we
+
+229
+00:09:39,070 --> 00:09:41,570
+saw with other kinds of objects that we can build
+
+230
+00:09:41,570 --> 00:09:44,804
+into our new class definitions.
+
+231
+00:09:44,804 --> 00:09:45,970
+There's a long list of them.
+
+232
+00:09:45,970 --> 00:09:47,803
+I'm going to simply let you go look them up.
+
+233
+00:09:47,803 --> 00:09:49,750
+But basically, many of these come
+
+234
+00:09:49,750 --> 00:09:51,690
+provided, but I can override them.
+
+235
+00:09:51,690 --> 00:09:53,800
+And the standard ones are, I can define
+
+236
+00:09:53,800 --> 00:09:57,030
+what it means to add two instances together,
+
+237
+00:09:57,030 --> 00:09:59,660
+to subtract them, to test if they're equal,
+
+238
+00:09:59,660 --> 00:10:02,520
+to test if there are less than, to print out the length--
+
+239
+00:10:02,520 --> 00:10:05,540
+and we've already done print here, that's the str.
+
+240
+00:10:05,540 --> 00:10:08,350
+Each one of these methods has a built-in name
+
+241
+00:10:08,350 --> 00:10:11,650
+that I can use to override the underlying version of that.
+
+242
+00:10:11,650 --> 00:10:17,880
+So for example, imagine I want to subtract two coordinates.
+
+243
+00:10:17,880 --> 00:10:19,880
+I could do that by simply defining
+
+244
+00:10:19,880 --> 00:10:21,970
+what sub should look like.
+
+245
+00:10:21,970 --> 00:10:26,150
+And I'm going to do that by going to my computer, where
+
+246
+00:10:26,150 --> 00:10:28,070
+I've built one of those in.
+
+247
+00:10:28,070 --> 00:10:33,150
+And what sub should do is, simply take the instance itself
+
+248
+00:10:33,150 --> 00:10:36,780
+and another instance, subtract, coordinatewise, the x values,
+
+249
+00:10:36,780 --> 00:10:38,242
+and then return a coordinate.
+
+250
+00:10:38,242 --> 00:10:40,731
+And if I run that--
+
+251
+00:10:40,731 --> 00:10:42,730
+And I'm going to create two versions of it here.
+
+252
+00:10:42,730 --> 00:10:48,110
+I'm going to let C be the coordinate at 3, 4.
+
+253
+00:10:48,110 --> 00:10:54,520
+I'm going to let origin be the coordinate at 0, 0.
+
+254
+00:10:54,520 --> 00:11:00,620
+And if I want to say C minus origin, great,
+
+255
+00:11:00,620 --> 00:11:01,920
+I get out a coordinate.
+
+256
+00:11:01,920 --> 00:11:11,190
+Let's give it a name, and I can print Foo,
+
+257
+00:11:11,190 --> 00:11:13,550
+and it gives me back what I would expect,
+
+258
+00:11:13,550 --> 00:11:17,350
+which is just the vector between that point and the origin.
+
+259
+00:11:17,350 --> 00:11:19,500
+Key thing to note here is, I can have
+
+260
+00:11:19,500 --> 00:11:21,180
+my method return simple values.
+
+261
+00:11:21,180 --> 00:11:24,370
+I can also have it return new instances of things I created.
+
+262
+00:11:24,370 --> 00:11:27,150
+And that's a really nice thing to have.
+
