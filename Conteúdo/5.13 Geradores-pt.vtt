@@ -1,0 +1,508 @@
+﻿WEBVTT
+
+00:00:00.000 --> 00:00:00.550
+...
+
+00:00:00.550 --> 00:00:02.220
+Para resolver o problema que levantei, estou
+
+00:00:02.220 --> 00:00:04.260
+vai apresentar mais um tipo de objeto
+
+00:00:04.260 --> 00:00:07.550
+em Python - algo chamado gerador.
+
+00:00:07.550 --> 00:00:10.000
+E qualquer procedimento e método com uma declaração yeld
+
+00:00:10.000 --> 00:00:12.040
+dentro dele é um gerador.
+
+00:00:12.040 --> 00:00:16.050
+Portanto, yeld é a nova palavra-chave que criarei aqui.
+
+00:00:16.050 --> 00:00:17.560
+E a ideia por trás de um gerador é
+
+00:00:17.560 --> 00:00:20.110
+eu ser capaz de controlar o comportamento.
+
+00:00:20.110 --> 00:00:22.680
+Então, se eu fizer genTest(), que é um procedimento aqui,
+
+00:00:22.680 --> 00:00:26.330
+ele retorna para mim, como você pode ver, um objeto gerador.
+
+00:00:26.330 --> 00:00:28.820
+E depois de fazer isso, o comportamento que vou obter
+
+00:00:28.820 --> 00:00:30.490
+é o seguinte.
+
+00:00:30.490 --> 00:00:33.590
+Os geradores têm associado a eles um método next().
+
+00:00:33.590 --> 00:00:36.760
+Está embutido na implementação Python disso.
+
+00:00:36.760 --> 00:00:40.290
+E esse método next() inicia ou retoma a execução
+
+00:00:40.290 --> 00:00:41.770
+de um procedimento.
+
+00:00:41.770 --> 00:00:45.170
+Então, dentro de um gerador, o yeld suspende a execução
+
+00:00:45.170 --> 00:00:46.770
+e retorna um valor.
+
+00:00:46.770 --> 00:00:49.430
+Na próxima vez que eu chamo o método next(),
+
+00:00:49.430 --> 00:00:51.660
+ele irá até eu chegar ao próximo método yield(),
+
+00:00:51.660 --> 00:00:54.410
+nesse caso, ele irá parar ou suspender a execução e retornar
+
+00:00:54.410 --> 00:00:55.230
+um valor.
+
+00:00:55.230 --> 00:00:57.650
+E continuará fazendo isso até que esgotemos o método yeld()
+
+00:00:57.650 --> 00:01:00.420
+caso em que irá gerar uma exceção
+
+00:01:00.420 --> 00:01:01.860
+StopIteration.
+
+00:01:01.860 --> 00:01:05.790
+Então, se eu realmente criar isso, posso ir para o meu sistema Python
+
+00:01:05.790 --> 00:01:06.330
+e experimentar.
+
+00:01:06.330 --> 00:01:13.230
+E então, se eu definir genTest() como um procedimento com um yeld
+
+00:01:13.230 --> 00:01:19.830
+de 1 e então um yeld de 2, e eu chamo isso -
+
+00:01:19.830 --> 00:01:21.880
+digamos que eu forneça foo is genTest().
+
+00:01:25.230 --> 00:01:33.400
+Se eu disser foo de next(), ele imprimirá 1.
+
+00:01:33.400 --> 00:01:35.640
+Ele foi até encontrar a primeira declaração de yeld,
+
+00:01:35.640 --> 00:01:38.380
+ele retornou esse valor e sua operação foi interrompida.
+
+00:01:38.380 --> 00:01:42.220
+E se eu ligar de novo, ele imprime 2.
+
+00:01:42.220 --> 00:01:45.460
+E se eu ligar de novo, diz que
+
+00:01:45.460 --> 00:01:48.210
+tem uma exceção StopIteration levantada.
+
+00:01:48.210 --> 00:01:51.330
+Então, está me permitindo controlar o quão longe eu vou na computação
+
+00:01:51.330 --> 00:01:54.550
+antes de parar e retornar um valor.
+
+00:01:54.550 --> 00:01:59.070
+Portanto, isso apenas resume o que acabei de fazer - neste caso,
+
+00:01:59.070 --> 00:02:02.320
+executando no corpo de foo, que foi algo criado
+
+00:02:02.320 --> 00:02:05.030
+por genTest() até atingir o primeiro yeld,
+
+00:02:05.030 --> 00:02:09.340
+e da mesma forma para o segundo, e da mesma forma até eu conseguir
+
+00:02:09.340 --> 00:02:12.740
+para algo que gera uma exceção StopIteration.
+
+00:02:12.740 --> 00:02:14.660
+Então, por que eu poderia querer isso?
+
+00:02:14.660 --> 00:02:17.470
+Bem, observe como eu poderia usar isso.
+
+00:02:17.470 --> 00:02:20.150
+Eu poderia usá-lo dentro de uma estrutura em loop.
+
+00:02:20.150 --> 00:02:23.010
+Agora, este é um exemplo simples, mas fará o mesmo tipo
+
+00:02:23.010 --> 00:02:26.090
+da ideia, porque o genTest(), esse gerador,
+
+00:02:26.090 --> 00:02:29.120
+vai criar algo que será executado até eu conseguir
+
+00:02:29.120 --> 00:02:32.910
+para o primeiro ponto de yeld e, em seguida, retorna um valor.
+
+00:02:32.910 --> 00:02:34.820
+E a construção de loop, de fato,
+
+00:02:34.820 --> 00:02:39.400
+sabe pedir aquela coisa retornada por genTest(), aquele gerador,
+
+00:02:39.400 --> 00:02:41.560
+para fazer essa execução e depois parar.
+
+00:02:41.560 --> 00:02:44.047
+E então, se eu fosse executar este exemplo específico,
+
+00:02:44.047 --> 00:02:45.630
+iria imprimir cada um dos objetos
+
+00:02:45.630 --> 00:02:48.130
+por sua vez, porque dentro do loop for,
+
+00:02:48.130 --> 00:02:50.780
+está em execução até obter um valor de retorno,
+
+00:02:50.780 --> 00:02:53.400
+rendendo e imprimindo.
+
+00:02:53.400 --> 00:02:54.760
+Ótimo.
+
+00:02:54.760 --> 00:02:56.940
+Veja como isso poderia ser realmente bom.
+
+00:02:56.940 --> 00:02:58.990
+Aqui está uma operação sofisticada.
+
+00:02:58.990 --> 00:03:00.900
+Voltemos a Fibonacci.
+
+00:03:00.900 --> 00:03:03.280
+Mas em vez de escrever código recursivo para ele,
+
+00:03:03.280 --> 00:03:06.130
+Vou escrever de uma forma um tanto incomummaneira ual.
+
+00:03:06.130 --> 00:03:08.580
+Isso vai gerar, se eu quisesse,
+
+00:03:08.580 --> 00:03:10.590
+todos os números de Fibonacci para mim.
+
+00:03:10.590 --> 00:03:12.120
+E como posso fazer isso?
+
+00:03:12.120 --> 00:03:14.120
+Vou para variáveis ​​internas -
+
+00:03:14.120 --> 00:03:17.020
+aquele que é inicialmente vinculado a 0, um
+
+00:03:17.020 --> 00:03:18.210
+que inicialmente está vinculado a 1.
+
+00:03:18.210 --> 00:03:21.040
+Esses são, se você quiser, o 0-ésimo ou m menos segundo em
+
+00:03:21.040 --> 00:03:23.530
+menos os primeiros números de Fibonacci.
+
+00:03:23.530 --> 00:03:25.210
+E então eu sei que o enésimo Fibonacci
+
+00:03:25.210 --> 00:03:26.840
+o número é a soma daqueles.
+
+00:03:26.840 --> 00:03:29.010
+Vou percorrer um loop que diz:
+
+00:03:29.010 --> 00:03:32.460
+Vou definir next () para ser a soma desses dois,
+
+00:03:32.460 --> 00:03:34.370
+e vou render esse valor,
+
+00:03:34.370 --> 00:03:37.110
+que irá interromper a execução até que eu peça para continuar,
+
+00:03:37.110 --> 00:03:38.630
+retornando esse valor.
+
+00:03:38.630 --> 00:03:43.440
+E quando ele retornar, vou dar um passo acima.
+
+00:03:43.440 --> 00:03:46.930
+Qual era o número Fibonacci anterior
+
+00:03:46.930 --> 00:03:48.620
+agora é o segundo anterior.
+
+00:03:48.620 --> 00:03:51.120
+O próximo é o número de Fibonacci anterior.
+
+00:03:51.120 --> 00:03:53.870
+E vou voltar ao loop.
+
+00:03:53.870 --> 00:03:56.960
+E observe, não há como sair desse loop while.
+
+00:03:56.960 --> 00:03:59.070
+Então, simplesmente, se eu fosse chamá-lo,
+
+00:03:59.070 --> 00:04:03.160
+gere todos os números de Fibonacci por sua vez.
+
+00:04:03.160 --> 00:04:05.390
+Então, vamos experimentar na minha máquina.
+
+00:04:05.390 --> 00:04:07.150
+Vou dizer que fib() é genFib().
+
+00:04:12.580 --> 00:04:13.980
+Deixe-me ter certeza de que vou ligar.
+
+00:04:13.980 --> 00:04:15.860
+Eu vou configurar isso.
+
+00:04:15.860 --> 00:04:20.010
+E então vou usar esse gerador para criar algo.
+
+00:04:20.010 --> 00:04:23.902
+Então fib() é o que eu obtenho usando genFib() para criar um gerador.
+
+00:04:23.902 --> 00:04:29.664
+E se eu imprimir fib(), você dirá que é uma operação genFib().
+
+00:04:29.664 --> 00:04:31.080
+E então eu poderia começar a ligar.
+
+00:04:31.080 --> 00:04:36.460
+Eu digo, dê-me os próximos números de Fibonacci.
+
+00:04:36.460 --> 00:04:37.780
+É 1.
+
+00:04:37.780 --> 00:04:39.380
+Eu chamo de novo, são 2.
+
+00:04:39.380 --> 00:04:43.250
+Eu chamo de novo, é 3 e depois 5, e então 8 e então
+
+00:04:43.250 --> 00:04:46.510
+13, e você começa a ideia.
+
+00:04:46.510 --> 00:04:49.370
+Ele corre até chegar ao próximo ponto de parada, produz
+
+00:04:49.370 --> 00:04:50.440
+um valor.
+
+00:04:50.440 --> 00:04:52.230
+E é configurado nesse loop while
+
+00:04:52.230 --> 00:04:55.420
+para estar pronto para calcular o próximo quando eu precisar.
+
+00:04:55.420 --> 00:04:57.225
+Maneira estranha de lidar com isso.
+
+00:04:57.225 --> 00:04:59.600
+E, de fato, se eu criasse esse loop, que não estou
+
+00:04:59.600 --> 00:05:02.490
+indo, produziria todos os números de Fibonacci
+
+00:05:02.490 --> 00:05:06.080
+até eu pedir para parar - uma sequência infinita deles.
+
+00:05:06.080 --> 00:05:08.290
+Eu não recomendo que você necessariamente programe dessa maneira,
+
+00:05:08.290 --> 00:05:10.220
+mas você pode ver a potência do gerador,
+
+00:05:10.220 --> 00:05:12.820
+porque estou separando onde paro
+
+00:05:12.820 --> 00:05:14.840
+na operação da operação geral
+
+00:05:14.840 --> 00:05:17.100
+Estou tentando codificar.
+
+00:05:17.100 --> 00:05:18.980
+Por que isso é valioso?
+
+00:05:18.980 --> 00:05:22.620
+Bem, os geradores separam muito bem a computação aparente
+
+00:05:22.620 --> 00:05:23.920
+do real.
+
+00:05:23.920 --> 00:05:26.860
+Ele separa o conceito de computação de uma sequência muito longa
+
+00:05:26.860 --> 00:05:29.410
+de objetos do processo real de obtê-los
+
+00:05:29.410 --> 00:05:30.660
+explicitamente.
+
+00:05:30.660 --> 00:05:32.320
+E isso permite que você, como consequência
+
+00:05:32.320 --> 00:05:34.250
+para gerar novos objetos conforme necessário
+
+00:05:34.250 --> 00:05:36.240
+como parte de outro cálculo.
+
+00:05:36.240 --> 00:05:39.280
+Portanto, em vez de, por exemplo, gerar a lista inteira
+
+00:05:39.280 --> 00:05:42.740
+de números de Fibonacci e, em seguida, pedindo o 12º,
+
+00:05:42.740 --> 00:05:45.440
+você pode simplesmente percorrê-lo até chegar ao 12º
+
+00:05:45.440 --> 00:05:47.705
+e retornar esse valor.
+
+00:05:47.705 --> 00:05:49.080
+Isso vai ser valioso quando
+
+00:05:49.080 --> 00:05:51.920
+você quer pensar em uma maneira de criar as coisas conforme necessário.
+
+00:05:51.920 --> 00:05:54.140
+E, de fato, você já viu essa ideia.
+
+00:05:54.140 --> 00:05:56.170
+Você viu no range().
+
+00:05:56.170 --> 00:05:58.920
+Literalmente, o que range() está criando algo como
+
+00:05:58.920 --> 00:05:59.810
+um gerador.
+
+00:05:59.810 --> 00:06:04.670
+Quando digo para n em range(), range() está retornando algo
+
+00:06:04.670 --> 00:06:07.280
+isso me dá o primeiro valor e essencialmente uma promessa
+
+00:06:07.280 --> 00:06:09.380
+para me dar o resto quando eu pedir.
+
+00:06:09.380 --> 00:06:11.960
+Posso fazer algo com o primeiro valor dentro desse loop.
+
+00:06:11.960 --> 00:06:14.820
+E então, quando eu volto ao redor do loop novamente, rang(),
+
+00:06:14.820 --> 00:06:18.030
+aquele gerador, vai me dar o próximo valor, e assim por diante.
+
+00:06:18.030 --> 00:06:20.400
+E isso é bom porque nos dá melhor eficiência
+
+00:06:20.400 --> 00:06:22.000
+sem mudar a maneira como pensamos
+
+00:06:22.000 --> 00:06:23.680
+sobre como fazer o cálculo.
+
+00:06:23.680 --> 00:06:27.250
+Posso programar como se toda a sequência estivesse disponível para mim.
+
+00:06:27.250 --> 00:06:30.460
+O computador irá gerá-lo conforme a necessidade.
+
+00:06:30.460 --> 00:06:33.060
+Agora, se eu voltar ao que começou isso,
+
+00:06:33.060 --> 00:06:35.900
+que diz que, por exemplo, em todos os alunos,
+
+00:06:35.900 --> 00:06:37.500
+Eu poderia mudar o comportamento.
+
+00:06:37.500 --> 00:06:42.520
+No momento, estou devolvendo uma cópia de toda a lista de alunos.
+
+00:06:42.520 --> 00:06:43.880
+Eu só tenho 100.
+
+00:06:43.880 --> 00:06:44.480
+Nada demais.
+
+00:06:44.480 --> 00:06:47.306
+Mas com 100.000 ou um milhão, eu não necessariamente
+
+00:06:47.306 --> 00:06:49.680
+quero gerá-los se quiser fazer algo com eles
+
+00:06:49.680 --> 00:06:51.680
+na hora ou por sua vez.
+
+00:06:51.680 --> 00:06:54.460
+Considerando que na nova versão, o que eu poderia fazer
+
+00:06:54.460 --> 00:06:59.120
+é simplesmente criar um loop aqui que diz, para todos os alunos
+
+00:06:59.120 --> 00:07:01.940
+nessa lista, apenas cite-os.
+
+00:07:01.940 --> 00:07:04.050
+Então, um de cada vez, conforme eu peço,
+
+00:07:04.050 --> 00:07:06.340
+vai me dar o próximo sem gerar
+
+00:07:06.340 --> 00:07:08.950
+a lista inteira conforme eu os examino.
+
+00:07:08.950 --> 00:07:11.550
+Então, eu posso passar para aquilo.
+
+00:07:11.550 --> 00:07:13.530
+E isso me dá uma maneira muito mais eficiente
+
+00:07:13.530 --> 00:07:15.160
+de lidar com as coisas.
+
+00:07:15.160 --> 00:07:16.930
+Então o que você viu aqui agora é como
+
+00:07:16.930 --> 00:07:20.500
+para construir uma hierarquia de classes com comportamentos herdados,
+
+00:07:20.500 --> 00:07:23.880
+modularidade para isolar mudanças e comportamentos, classes que
+
+00:07:23.880 --> 00:07:26.410
+podem ter classes dentro de suas instâncias,
+
+00:07:26.410 --> 00:07:28.630
+e a capacidade de pensar sobre como eu controlo
+
+00:07:28.630 --> 00:07:30.400
+a eficiência de todos eles.
+
+00:07:30.400 --> 00:07:33.670
+E esse é o poder da programação orientada a objetos.

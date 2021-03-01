@@ -4,7 +4,7 @@ Created on Sun Jun 12 07:17:17 2016
 
 @author: ericgrimson
 """
-
+# pip install matplotlib
 #import numpy as np
 import pylab as plt
 
